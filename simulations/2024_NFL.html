@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>2024 NFL Simulation</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 1600px; margin: auto; padding: 20px; background: #f9f9f9; }
+    summary { font-size: 1.4em; cursor: pointer; margin: 10px 0; }
+    details { margin-bottom: 5px; border: 1px solid #ccc; border-radius: 5px; padding: 5px; background: #fff; }
+    iframe { width: 1600px; height: 1000px; border: none; margin: 10px 0; background: #fff; }
+    .tab-buttons { margin: 10px 0; }
+    .tab-buttons button {
+      padding: 10px 15px;
+      margin-right: 5px;
+      border: none;
+      background-color: #ddd;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .tab-buttons button.active {
+      background-color: #003366;
+      color: white;
+    }
+    .tab-content { display: none; }
+  </style>
+</head>
+<body>
+  <h1> 2024 NFL Season</h1>
+
+  <h2>Regular Season</h2>
+
+  <details class="plot-section" data-expanded="false">
+    <summary>Season Summary</summary>
+    <iframe src="NFL/2024/2024_regular_season_summary.html" style="width: 1600px; height: 1000px; display: block; margin: auto;"></iframe>
+  </details>
+
+
+  <details class="plot-section" data-expanded="false">
+    <summary>Comparisons</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How did each team's actual results compare to their simulated results, Elo rating, opponent average Elo rating, and relative position of their actual wins within simulated outcomes?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('comparisons', 'comparisons_sim_vs_actual')" class="active">Simulated Wins</button>
+      <button onclick="showTab('comparisons', 'comparisons_elo_vs_actual')">Team Elo</button>
+      <button onclick="showTab('comparisons', 'comparisons_opponent_elo_vs_actual')">Opponent Elo</button>
+      <button onclick="showTab('comparisons', 'comparisons_percentile_vs_actual')">Percentile</button>
+    </div>
+    <div class="tab-content comparisons" id="comparisons_sim_vs_actual" style="display:block"><iframe src="NFL/2024/2024_sim_vs_actual_graph.html"></iframe></div>
+    <div class="tab-content comparisons" id="comparisons_elo_vs_actual"><iframe src="NFL/2024/2024_team_elo_vs_actual_graph.html"></iframe></div>
+    <div class="tab-content comparisons" id="comparisons_opponent_elo_vs_actual"><iframe src="NFL/2024/2024_opponent_elo_vs_actual_graph.html"></iframe></div>
+    <div class="tab-content comparisons" id="comparisons_percentile_vs_actual"><iframe src="NFL/2024/2024_percentile_vs_actual_graph.html"></iframe></div>
+  </details>
+
+
+  <details class="plot-section" data-expanded="false">
+    <summary>Division Heatmaps</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>Where was each team expected to finish within their division at the beginning of the season?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('div_heatmap', 'div_heatmap_AFC_East')" class="active">AFC East</button>
+      <button onclick="showTab('div_heatmap', 'div_heatmap_AFC_North')">AFC North</button>
+      <button onclick="showTab('div_heatmap', 'div_heatmap_AFC_South')">AFC South</button>
+      <button onclick="showTab('div_heatmap', 'div_heatmap_AFC_West')">AFC West</button>
+      <button onclick="showTab('div_heatmap', 'div_heatmap_NFC_East')">NFC East</button>
+      <button onclick="showTab('div_heatmap', 'div_heatmap_NFC_North')">NFC North</button>
+      <button onclick="showTab('div_heatmap', 'div_heatmap_NFC_South')">NFC South</button>
+      <button onclick="showTab('div_heatmap', 'div_heatmap_NFC_West')">NFC West</button>
+    </div>
+    <div class="tab-content div_heatmap" id="div_heatmap_AFC_East" style="display:block"><iframe src="NFL/2024/2024_AFC East_heatmap.html" style="width: 1600px; height: 550px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content div_heatmap" id="div_heatmap_AFC_North"><iframe src="NFL/2024/2024_AFC North_heatmap.html" style="width: 1600px; height: 550px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content div_heatmap" id="div_heatmap_AFC_South"><iframe src="NFL/2024/2024_AFC South_heatmap.html" style="width: 1600px; height: 550px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content div_heatmap" id="div_heatmap_AFC_West"><iframe src="NFL/2024/2024_AFC West_heatmap.html" style="width: 1600px; height: 550px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content div_heatmap" id="div_heatmap_NFC_East"><iframe src="NFL/2024/2024_NFC East_heatmap.html" style="width: 1600px; height: 550px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content div_heatmap" id="div_heatmap_NFC_North"><iframe src="NFL/2024/2024_NFC North_heatmap.html" style="width: 1600px; height: 550px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content div_heatmap" id="div_heatmap_NFC_South"><iframe src="NFL/2024/2024_NFC South_heatmap.html" style="width: 1600px; height: 550px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content div_heatmap" id="div_heatmap_NFC_West"><iframe src="NFL/2024/2024_NFC West_heatmap.html" style="width: 1600px; height: 550px; display: block; margin: auto;"></iframe></div>
+  </details>
+
+  <details class="plot-section" data-expanded="false">
+    <summary>League & Conference Heatmaps</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>Where was each team expected to finish within their conference and the league as a whole at the beginning of the season?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('league_heatmap', 'league_heatmap_AFC')" class="active">AFC</button>
+      <button onclick="showTab('league_heatmap', 'league_heatmap_NFC')">NFC</button>
+      <button onclick="showTab('league_heatmap', 'league_heatmap_NFL')">NFL</button>
+    </div>
+    <div class="tab-content league_heatmap" id="league_heatmap_AFC" style="display:block"><iframe src="NFL/2024/2024_AFC_heatmap.html" style="width: 1600px; height: 950px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content league_heatmap" id="league_heatmap_NFC"><iframe src="NFL/2024/2024_NFC_heatmap.html" style="width: 1600px; height: 950px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content league_heatmap" id="league_heatmap_NFL"><iframe src="NFL/2024/2024_league_heatmap.html" style="width: 1600px; height: 950px; display: block; margin: auto;"></iframe></div>
+  </details>
+
+
+  <h2>Season Trajectories</h2>
+
+  <details class="plot-section" data-expanded="false">
+    <summary>Elo Ratings</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How did each team's Elo rating change throughout the season?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('elo', 'elo_AFC_East')" class="active">AFC East</button>
+      <button onclick="showTab('elo', 'elo_AFC_North')">AFC North</button>
+      <button onclick="showTab('elo', 'elo_AFC_South')">AFC South</button>
+      <button onclick="showTab('elo', 'elo_AFC_West')">AFC West</button>
+      <button onclick="showTab('elo', 'elo_NFC_East')">NFC East</button>
+      <button onclick="showTab('elo', 'elo_NFC_North')">NFC North</button>
+      <button onclick="showTab('elo', 'elo_NFC_South')">NFC South</button>
+      <button onclick="showTab('elo', 'elo_NFC_West')">NFC West</button>
+    </div>
+    <div class="tab-content elo" id="elo_AFC_East" style="display:block"><iframe src="NFL/2024/2024_AFC East_elo_ratings.html" style="width: 1600px; height: 700px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content elo" id="elo_AFC_North"><iframe src="NFL/2024/2024_AFC North_elo_ratings.html" style="width: 1600px; height: 700px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content elo" id="elo_AFC_South"><iframe src="NFL/2024/2024_AFC South_elo_ratings.html" style="width: 1600px; height: 700px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content elo" id="elo_AFC_West"><iframe src="NFL/2024/2024_AFC West_elo_ratings.html" style="width: 1600px; height: 700px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content elo" id="elo_NFC_East"><iframe src="NFL/2024/2024_NFC East_elo_ratings.html" style="width: 1600px; height: 700px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content elo" id="elo_NFC_North"><iframe src="NFL/2024/2024_NFC North_elo_ratings.html" style="width: 1600px; height: 700px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content elo" id="elo_NFC_South"><iframe src="NFL/2024/2024_NFC South_elo_ratings.html" style="width: 1600px; height: 700px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content elo" id="elo_NFC_West"><iframe src="NFL/2024/2024_NFC West_elo_ratings.html" style="width: 1600px; height: 700px; display: block; margin: auto;"></iframe></div>
+  </details>
+
+  <details class="plot-section" data-expanded="false">
+    <summary>Simulated Wins</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How did each team's simulated win total change throughout the season?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('wins', 'wins_AFC_East')" class="active">AFC East</button>
+      <button onclick="showTab('wins', 'wins_AFC_North')">AFC North</button>
+      <button onclick="showTab('wins', 'wins_AFC_South')">AFC South</button>
+      <button onclick="showTab('wins', 'wins_AFC_West')">AFC West</button>
+      <button onclick="showTab('wins', 'wins_NFC_East')">NFC East</button>
+      <button onclick="showTab('wins', 'wins_NFC_North')">NFC North</button>
+      <button onclick="showTab('wins', 'wins_NFC_South')">NFC South</button>
+      <button onclick="showTab('wins', 'wins_NFC_West')">NFC West</button>
+    </div>
+    <div class="tab-content wins" id="wins_AFC_East" style="display:block"><iframe src="NFL/2024/2024_AFC East_simulated_wins.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content wins" id="wins_AFC_North"><iframe src="NFL/2024/2024_AFC North_simulated_wins.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content wins" id="wins_AFC_South"><iframe src="NFL/2024/2024_AFC South_simulated_wins.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content wins" id="wins_AFC_West"><iframe src="NFL/2024/2024_AFC West_simulated_wins.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content wins" id="wins_NFC_East"><iframe src="NFL/2024/2024_NFC East_simulated_wins.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content wins" id="wins_NFC_North"><iframe src="NFL/2024/2024_NFC North_simulated_wins.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content wins" id="wins_NFC_South"><iframe src="NFL/2024/2024_NFC South_simulated_wins.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content wins" id="wins_NFC_West"><iframe src="NFL/2024/2024_NFC West_simulated_wins.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+  </details>
+
+  <details class="plot-section" data-expanded="false">
+    <summary>Division Champion Probabilities</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How did each team's probability of winning the division change throughout the season?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('div_prob', 'div_prob_AFC_East')" class="active">AFC East</button>
+      <button onclick="showTab('div_prob', 'div_prob_AFC_North')">AFC North</button>
+      <button onclick="showTab('div_prob', 'div_prob_AFC_South')">AFC South</button>
+      <button onclick="showTab('div_prob', 'div_prob_AFC_West')">AFC West</button>
+      <button onclick="showTab('div_prob', 'div_prob_NFC_East')">NFC East</button>
+      <button onclick="showTab('div_prob', 'div_prob_NFC_North')">NFC North</button>
+      <button onclick="showTab('div_prob', 'div_prob_NFC_South')">NFC South</button>
+      <button onclick="showTab('div_prob', 'div_prob_NFC_West')">NFC West</button>
+    </div>
+    <div class="tab-content div_prob" id="div_prob_AFC_East" style="display:block"><iframe src="NFL/2024/2024_AFC East_division_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content div_prob" id="div_prob_AFC_North"><iframe src="NFL/2024/2024_AFC North_division_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content div_prob" id="div_prob_AFC_South"><iframe src="NFL/2024/2024_AFC South_division_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content div_prob" id="div_prob_AFC_West"><iframe src="NFL/2024/2024_AFC West_division_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content div_prob" id="div_prob_NFC_East"><iframe src="NFL/2024/2024_NFC East_division_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content div_prob" id="div_prob_NFC_North"><iframe src="NFL/2024/2024_NFC North_division_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content div_prob" id="div_prob_NFC_South"><iframe src="NFL/2024/2024_NFC South_division_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content div_prob" id="div_prob_NFC_West"><iframe src="NFL/2024/2024_NFC West_division_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+  </details>
+
+  <details class="plot-section" data-expanded="false">
+    <summary>Playoff Probabilities</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How did each team's probability of making the playoffs change throughout the season?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('playoff_prob', 'playoff_prob_AFC_East')" class="active">AFC East</button>
+      <button onclick="showTab('playoff_prob', 'playoff_prob_AFC_North')">AFC North</button>
+      <button onclick="showTab('playoff_prob', 'playoff_prob_AFC_South')">AFC South</button>
+      <button onclick="showTab('playoff_prob', 'playoff_prob_AFC_West')">AFC West</button>
+      <button onclick="showTab('playoff_prob', 'playoff_prob_NFC_East')">NFC East</button>
+      <button onclick="showTab('playoff_prob', 'playoff_prob_NFC_North')">NFC North</button>
+      <button onclick="showTab('playoff_prob', 'playoff_prob_NFC_South')">NFC South</button>
+      <button onclick="showTab('playoff_prob', 'playoff_prob_NFC_West')">NFC West</button>
+    </div>
+    <div class="tab-content playoff_prob" id="playoff_prob_AFC_East" style="display:block"><iframe src="NFL/2024/2024_AFC East_playoff_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content playoff_prob" id="playoff_prob_AFC_North"><iframe src="NFL/2024/2024_AFC North_playoff_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content playoff_prob" id="playoff_prob_AFC_South"><iframe src="NFL/2024/2024_AFC South_playoff_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content playoff_prob" id="playoff_prob_AFC_West"><iframe src="NFL/2024/2024_AFC West_playoff_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content playoff_prob" id="playoff_prob_NFC_East"><iframe src="NFL/2024/2024_NFC East_playoff_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content playoff_prob" id="playoff_prob_NFC_North"><iframe src="NFL/2024/2024_NFC North_playoff_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content playoff_prob" id="playoff_prob_NFC_South"><iframe src="NFL/2024/2024_NFC South_playoff_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content playoff_prob" id="playoff_prob_NFC_West"><iframe src="NFL/2024/2024_NFC West_playoff_probabilities.html" style="width: 1600px; height: 700px; display: block; margin: 0 auto;"></iframe></div>
+  </details>
+
+
+
+
+  <h2>Playoffs</h2>
+
+  <details class="plot-section" data-expanded="false">
+    <summary>Playoff Seed Probabilities</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How likely was each team to earn each playoff seed at the beginning of the season?</i>
+    </div>
+
+    <iframe src="NFL/2024/2024_playoff_heatmap.html" style="width: 1600px; height: 950px; display: block; margin: auto;"></iframe>
+  </details>
+
+  <details class="plot-section" data-expanded="false">
+    <summary>Preseason Playoff Simulation</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How did the simulation expect the playoffs to unfold at the beginning of the season?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('preseason_playoff', 'preseason_playoff_playoff_adv')" class="active">Playoff Progression</button>
+      <button onclick="showTab('preseason_playoff', 'preseason_playoff_wild_card_round')">Wild Card Round</button>
+      <button onclick="showTab('preseason_playoff', 'preseason_playoff_div_round')">Divisional Round</button>
+      <button onclick="showTab('preseason_playoff', 'preseason_playoff_conf_champ')">Conference Championship</button>
+      <button onclick="showTab('preseason_playoff', 'preseason_playoff_super_bowl')">Super Bowl</button>
+    </div>
+    <div class="tab-content preseason_playoff" id="preseason_playoff_playoff_adv" style="display:block"><iframe src="NFL/2024/2024_playoff_success_preseason_playoff.html" style="width: 1600px; height: 1000px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content preseason_playoff" id="preseason_playoff_wild_card_round"><iframe src="NFL/2024/2024_wild_card_round_preseason_playoff.html" style="width: 1600px; height: 1000px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content preseason_playoff" id="preseason_playoff_div_round"><iframe src="NFL/2024/2024_divisional_round_preseason_playoff.html" style="width: 1600px; height: 1000px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content preseason_playoff" id="preseason_playoff_conf_champ"><iframe src="NFL/2024/2024_conference_championship_preseason_playoff.html" style="width: 1600px; height: 1000px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content preseason_playoff" id="preseason_playoff_super_bowl"><iframe src="NFL/2024/2024_super_bowl_preseason_playoff.html" style="width: 1600px; height: 1000px; display: block; margin: auto;"></iframe></div>
+  </details>
+
+  <details class="plot-section" data-expanded="false">
+    <summary>End-of-Season Playoff Simulation</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How did the simulation expect the actual playoff bracket to unfold after the end of the regular season?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_playoff_adv')" class="active">Playoff Progression</button>
+      <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_wild_card_round')">Wild Card Round</button>
+      <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_div_round')">Divisional Round</button>
+      <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_conf_champ')">Conference Championship</button>
+      <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_super_bowl')">Super Bowl</button>
+    </div>
+    <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_playoff_adv" style="display:block"><iframe src="NFL/2024/2024_playoff_success_end_of_regular_season.html" style="width: 1600px; height: 450px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_wild_card_round"><iframe src="NFL/2024/2024_wild_card_round_end_of_regular_season.html" style="width: 1600px; height: 1000px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_div_round"><iframe src="NFL/2024/2024_divisional_round_end_of_regular_season.html" style="width: 1600px; height: 1000px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_conf_champ"><iframe src="NFL/2024/2024_conference_championship_end_of_regular_season.html" style="width: 1600px; height: 1000px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_super_bowl"><iframe src="NFL/2024/2024_super_bowl_end_of_regular_season.html" style="width: 1600px; height: 1000px; display: block; margin: auto;"></iframe></div>
+  </details>
+
+  <script>
+    let isReloadingIframe = false;  // Global flag
+
+    function showTab(group, id) {
+      // If already reloading a previous iframe, wait and retry
+      if (isReloadingIframe) {
+        setTimeout(() => showTab(group, id), 100);  // retry after 100ms
+        return;
+      }
+
+      // Hide all tab contents
+      document.querySelectorAll('.tab-content.' + group).forEach(el => el.style.display = 'none');
+
+      // Show the selected tab
+      const tab = document.getElementById(id);
+      tab.style.display = 'block';
+
+      // Update active button
+      const container = event.target.closest('.tab-buttons');
+      if (container) {
+        container.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+      }
+
+      // Reload the iframe only once per tab
+      const iframe = tab.querySelector('iframe');
+      if (iframe && !iframe.dataset.reloaded) {
+        isReloadingIframe = true;  // lock switching
+
+        const originalSrc = iframe.src;
+        iframe.src = '';  // clear iframe first
+
+        setTimeout(() => {
+          iframe.src = originalSrc + (originalSrc.includes('?') ? '&' : '?') + 'reload';
+          iframe.dataset.reloaded = "true";
+
+          // Wait until iframe finishes loading before allowing any other reload
+          iframe.onload = () => {
+            isReloadingIframe = false;
+          };
+        }, 10);  // delay allows clean reload
+      }
+    }
+  </script>
+
+</body>
+</html>
