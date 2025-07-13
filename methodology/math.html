@@ -44,9 +44,36 @@
 <body>
   <h1>The Math</h1>
 
-  <p>Every sports fan knows that hockey reigns supreme in Canada.  Recent polls have found that 40% of Canadians are active NHL fans while 70% follow to some extent.  Between 1927, the first year the Stanley Cup was awarded exclusively to an NHL team, and 1993, Canadian teams won 41 of the 67 (61.2%) Stanley Cup Final despite never comprising more than half the league.  While 20 of these of these championships came during the “Original Six” era from 1942-1967, Canadian teams still combined to win 16 of 26 (61.5%) championships between 1968 and 1993 despite never comprising more than one-third of the league.</p>
+  <p><b>How are win probabilities calculated?</b></p>
 
-  <p>If there is a silver lining, it’s that Canadian teams have made the Stanley Cup Final in 3 of the last 5 seasons.  Edmonton will be a perennial contender for as long as they have their core of McDavid and Dreisaitl.  Toronto has the longest active playoff streak at 9 seasons and Winnipeg has made 7 appearances in the last 8 years.  The NHL playoffs have long been known for their unpredictability, especially in the Salary Cap Era.  With the talent the country produces and the fanatic culture, Canadian teams very much remain in the mix to win a Stanley Cup in the near future.</p>
+  <p>Given two teams, H and A, we use each team’s Elo rating entering the game.  Let \( E_H \) and \( E_A \) represent the Elo ratings for the home and away teams, respectively.  If the game is not at a neutral site, we add a league-wide and season-specific value of home field advantage, \( \text{HFA} \), to the home team’s Elo rating.</p>
 
+  <p>The probability that the home team wins is calculated using the following logistic formula:</p>
+
+  <p>\[P(H) = \frac{1}{1 + 10^{(E_A - (E_H + \text{HFA}))/400}}\]</p>
+
+  <p>The probability of the away team winning is simply: \[P(A) = 1 - P(H)\]</p>
+
+  <p>In games played at a neutral site, we do not apply home field advantage to either team.  In these cases, win probabilities are based solely on the teams’ Elo ratings.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+    <li><b>Zero sum:</b> The number of points a team earns by winning a game equals the number of points that their opponent loses; this guarantees that the average Elo rating for a league is always 1500.</li>
+    <li><b>Self-correcting:</b> If a strong team suddenly loses key players (due to injury, for example), their Elo rating will not immediately reflect the drop in strength. Only when they start losing unexpectedly or by large margins will their Elo rating begin to decrease quickly, eventually converging toward their true new strength.</li>
+  </ul>
 </body>
 </html>
