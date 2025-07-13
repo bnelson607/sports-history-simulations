@@ -59,7 +59,7 @@
 
   <p>In games played at a neutral site, we do not apply home field advantage to either team.  In these cases, win probabilities are based solely on the teams’ Elo ratings.</p>
 
-  <p><b>How are win probabilities calculated?</b></p>
+  <p style="margin-top: 40px;"><b>How are win probabilities calculated?</b></p>
 
   <p>We estimate home field advantage by assuming that, over the course of a full season, the Elo ratings of home and away teams are equal on average.  Under this assumption, any observed edge for the home team can be attributed to home field advantage alone.  To estimate the value of home field advantage, we calculate the actual percentage of games won by the home team, let the home and away Elo ratings cancel in the above equation, and solve for \( HFA \).</p>
 
@@ -69,23 +69,23 @@
 
   <p>to get \( HFA = 34.8 \).  This means that the average home team plays 34.8 points stronger at home than it would on the road.</p>
 
-  <p><b>How are Elo ratings adjusted after each game?</b></p>
+  <p style="margin-top: 40px;"><b>How are Elo ratings adjusted after each game?</b></p>
 
   <p>The change in a team’s Elo rating after a game depends on three components: the weighting factor, the scaling factor, and the game result.</p>
 
-  <p><u>Weighting Factor</u></p>
+  <p style="margin-top: 20px;"><u>Weighting Factor</u></p>
 
   <p>The weighting factor, denoted by \( k \), dictates how quickly Elo ratings change relative to the importance of the game.  The larger the value of \( k \), the quicker the ratings change.  Leagues with shorter seasons (like the NFL) will have larger weighting factors since each individual game carries more weight and there are fewer opportunities for the ratings to self-correct.  Leagues with longer seasons (such as MLB) will have smaller weighting factors to avoid overreacting to extreme results.  Each league and season has its own weighting factor, calibrated based on the length of the season and the parity of the league.</p>
 
-  <p><u>Scaling Factor</u></p>
+  <p style="margin-top: 20px;"><u>Scaling Factor</u></p>
 
   <p>The scaling factor, denoted \( f(MoV) \), is a function that dictates how quickly Elo ratings change relative to the margin of victory.  Larger margins of victory lead to larger Elo adjustments, while closer games result in smaller changes.  The function used varies by league, but it is common to use the natural log and square root transformations to avoid inflating the Elo ratings in blowouts.  For tie games, a small positive value (less than 1) is used as the margin of victory to ensure the ratings shift slightly. </p>
 
-  <p><u>Game Result</u></p>
+  <p style="margin-top: 20px;"><u>Game Result</u></p>
 
   <p>The game result is measured as the difference between the actual result of the game and the probability of the home team winning the game in the simulation.  The actual result is 1 if the home team won, 0 if the away team won, and 0.5 if the game ended in a tie.</p>
 
-  <p><u>Putting It All Together</u></p>
+  <p style="margin-top: 20px;"><u>Putting It All Together</u></p>
 
   <p>The Elo rating change for the home team is calculated as:</p>
 
@@ -93,7 +93,7 @@
 
   <p>The away team’s Elo rating is adjusted by the same amount in the opposite direction.</p>
 
-  <p><b>How are tie probabilities calculated?</b></p>
+  <p style="margin-top: 40px;"><b>How are tie probabilities calculated?</b></p>
 
   <p>This was the most complex and sensitive part of the modeling process.  Intuitively, we expect ties to be most likely when teams are evenly matched and become less likely as the difference in the Elo ratings increases.</p>
 
@@ -110,7 +110,7 @@
 
   <p> \[ P(T) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2} D^2} \]</p>
 
-  <p><b>How do you know the probabilities are accurate?</b></p>
+  <p style="margin-top: 40px;"><b>How do you know the probabilities are accurate?</b></p>
 
   <p>We tested the accuracy of our predicted win and tie probabilities using a chi-squared goodness of fit test, which checked whether the outcomes of the games were consistent with the probabilities assigned by the model. </p>
 
@@ -134,7 +134,7 @@
 
   <p>These results provide strong statistical evidence that our model is calibrated accurately across all seasons and that the probabilities of wins and ties reflect reality</p>
 
-  <p><b>How are the probabilities for the current season projections handled</b></p>
+  <p style="margin-top: 40px;"><b>How are the probabilities for the current season projections handled?</b></p>
 
   <p>Season projections are handled much like the historic simulations with two key exceptions.</p>
 
