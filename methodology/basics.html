@@ -52,7 +52,7 @@
 
   
 
-  <p><b>What is an Elo rating?</b></p>
+  <p style="margin-top: 40px;"><b>What is an Elo rating?</b></p>
 
   <p>An Elo rating is a number that represents a team’s current strength based on how it has performed in past games.  In our model, Elo ratings are normalized so that the league-wide average across all active teams is always 1500.  Higher ratings indicate stronger teams; lower ratings indicate weaker teams.</p>
 
@@ -65,7 +65,7 @@
     <li><b>Self-correcting:</b> If a strong team suddenly loses key players (due to injury, for example), their Elo rating will not immediately reflect the drop in strength. Only when they start losing unexpectedly or by large margins will their Elo rating begin to decrease quickly, eventually converging toward their true new strength.</li>
   </ul>
 
-  <p><b>How do these simulations work?</b></p>
+  <p style="margin-top: 40px;"><b>How do these simulations work?</b></p>
 
   <p>We run two different types of simulations – regular season and playoffs - both using a Monte Carlo approach.</p>
 
@@ -82,11 +82,11 @@
 
   <p>In both simulation types, we use each team’s Elo rating at the end of the regular season to calculate its win probability for the first game of the playoffs.  Because the simulated playoffs will differ from the playoffs in real life, we simulate both the winner and the margin of victory for each game.  The simulated winner advances the team one game closer to the championship, while the margin of victory determines how much each team’s Elo rating changes since there may not be an actual result to use.  As a result, both Elo ratings and playoff brackets evolve uniquely in each simulation.</p>
 
-  <p><b>How are ties handled?</b></p>
+  <p style="margin-top: 40px;"><b>How are ties handled?</b></p>
 
   <p>When a game ends in a tie, the team with the higher Elo rating will lose a small number of points, while the lower-rated team gains an equal amount.  Although it may seem counterintuitive for Elo ratings to change after a tie, this logic a based on expectations.  If a weaker team holds a stronger team to a draw, it has overperformed and should be rewarded slightly.  Conversely, the stronger team in that matchup has underperformed and should be penalized for playing below expectations.</p>
 
-  <p><b>How are initial Elo ratings determined?</b></p>
+  <p style="margin-top: 40px;"><b>How are initial Elo ratings determined?</b></p>
 
   <p>For each league, our simulations begin with a defined starting season – typically the first in the modern era (e.g. 1901 for MLB, 1933 for the NFL).  At that beginning of that season, all active teams are assigned an initial Elo rating of 1500.  We assume no prior knowledge about team strength, even if a team existed before the simulation begins.  As a result, strong franchises like the 1901 Pittsburgh Pirates often begin underrated, while weaker teams such as the 1901 Cincinnati Reds may appear overrated at first.</p>
 
@@ -118,13 +118,13 @@
     </tbody>
   </table>
   
-  <p><b>How are Elo ratings adjusted for the beginning of the following season?</b></p>
+  <p style="margin-top: 40px;"><b>How are Elo ratings adjusted for the beginning of the following season?</b></p>
 
   <p>Due to roster turnover, coaching changes, and other offseason variability, we never assume that a team’s Elo rating at the end of one season carries over unchanged to the next season.  Thus, each team’s rating is regressed towards 1500 by some percentage.  The degree of regression depends on how highly correlated the standings were between the two seasons and is specific to each league and season.</p>
 
   <p>When teams joint or leave the league – through expansion, contraction, or disbandment – the Elo ratings of the remaining teams are further adjusted by a constant amount to keep the league-wide average at 1500.</p>
 
-  <p><b>How is a team’s personnel taken into consideration?</b></p>
+  <p style="margin-top: 40px;"><b>How is a team’s personnel taken into consideration?</b></p>
 
   <p>In short, it isn’t – at least not in most situations.  Because the primary goal of this site is to understand how a season would have played out historically, we don’t attempt to incorporate every starting pitcher, quarterback, goalie, injury, or trade into a team’s Elo rating.  Doing so would require not only tracking personnel changes in every game, but also estimating their impact at each point in their career.  This would be a monumental task full of speculation and variability.  Instead, we assume that a team’s Elo rating reflects its overall strength regardless of specific personnel.</p>
 
