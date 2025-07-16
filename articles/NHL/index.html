@@ -3,23 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <title>All NHL Articles</title>
+
+  <!-- Link to external styles -->
+  <link rel="stylesheet" href="/sports-history-simulations/styles.css" />
+  
+  <!-- Add any simulation-specific styles here if needed -->
   <style>
-    body { font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; }
-    h1 { color: #2980b9; }
-    ul { padding-left: 20px; }
-    li { margin-bottom: 12px; }
-    a { text-decoration: none; color: #2c3e50; font-weight: 600; }
-    a:hover { color: #2980b9; }
-    .meta { font-size: 0.9em; color: #888; }
+    /* Minimal or unique styles can go here */
   </style>
 </head>
 <body>
-  <h1>All NHL Articles</h1>
+
+  <!-- Header container -->
+  <div id="header"></div>
+
+  <!-- Load header HTML dynamically -->
+  <script>
+    fetch('/sports-history-simulations/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
+  </script>
+  
+  <h2>All NHL Articles</h2>
   <ul>
     <li><a href="/sports-history-simulations/articles/NHL/canada_stanley_cup_drought/canada_stanley_cup_drought.html">Canada's Stanley Cup Drought</a><br /><span class="meta">Published: July 10, 2025</span></li>
 
     <!-- More articles here -->
   </ul>
   <p><a href="/sports-history-simulations/articles/index.html">← Back to All Articles</a></p>
+
+  <script>
+    let isReloadingIframe = false;
+
+    function showTab(group, id) {
+      if (isReloadingIframe) {
+        setTimeout(() => showTab(group, id), 100);
+        return;
+      }
+
+      document.querySelectorAll('.tab-content.' + group).forEach(el => el.style.display = 'none');
+
+      const tab = document.getElementById(id);
+      tab.style.display = 'block';
+
+      const container = event.target.closest('.tab-buttons');
+      if (container) {
+        container.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+      }
+
+      const iframe = tab.querySelector('iframe');
+      if (iframe && !iframe.dataset.reloaded) {
+        isReloadingIframe = true;
+
+        const originalSrc = iframe.src;
+        iframe.src = '';
+
+        setTimeout(() => {
+          iframe.src = originalSrc + (originalSrc.includes('?') ? '&' : '?') + 'reload';
+          iframe.dataset.reloaded = "true";
+          iframe.onload = () => {
+            isReloadingIframe = false;
+          };
+        }, 10);
+      }
+    }
+  </script>
 </body>
 </html>
