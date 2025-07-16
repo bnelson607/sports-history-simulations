@@ -2,50 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Collapse of the 2007 Mets</title>
+  <title>Collapse of 2007 Mets</title>
+
+  <!-- Link to external styles -->
+  <link rel="stylesheet" href="/sports-history-simulations/styles.css" />
+  
+  <!-- Add any simulation-specific styles here if needed -->
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      max-width: 1200px;
-      margin: 40px auto;
-      background-color: #f9f9f9;
-      padding: 20px;
-    }
-    h1, h2, h3 {
-      color: #2c3e50;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 20px auto;
-      border: 1px solid #ccc;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 8px 0;
-    }
-    th, td {
-      border: 1px solid #aaa;
-      padding: 8px 12px;
-      text-align: center;
-    }
-    th {
-      background-color: #e0e0e0;
-    }
-    a {
-      color: #2980b9;
-    }
+    /* Minimal or unique styles can go here */
   </style>
 </head>
 <body>
 
-  <p><a href="/sports-history-simulations/articles/index.html">← Back to All Articles</a></p>
+  <!-- Header container -->
+  <div id="header"></div>
+
+  <!-- Load header HTML dynamically -->
+  <script>
+    fetch('/sports-history-simulations/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
+  </script>
   
-  <h1>Collapse of 2007 Mets</h1>
+  <h2>Collapse of 2007 Mets</h2>
 
   <p>Coming into the 2007 season, the Mets hoped to expand on their success from the previous year, which ended in a Game 7 loss to the Cardinals in the NLCS.  A combination of aging starting pitchers Tom Glavine, Orlando Hernández, and Pedro Martinez, injuries to Duane Sánchez and Juan Padilla, the questionable trade of Heath Bell to the Padres left fans wondering if their young pitchers Óliver Pérez and John Maine were sustainable.  However, these fears seemed to be put to rest early in the season, coming out of the gate strong.</p>
   
@@ -562,5 +543,42 @@
 
   <p>In a sport where Elo ratings change so slowly due to each individual game carrying low importance, it’s almost unfathomable how a team in first-place for 159 days and competing for a division title could drop 15 points at home in one week.   The Mets going 5-12 or worse over their last 17 games occurred in only 0.91% of simulations.  While the Mets certainly played terrible baseball down the stretch, the Phillies did just as much to win the division.  They picked up 17 Elo points over 17 games and went 13-4 down the stretch.  A record that good or better happened 4.16% of the time.  Although neither event was implausible, the combination of the two was what made the Mets’ collapse so unprecedented.  Out of the 67 simulated seasons where the Mets blew their 7-game lead, they were still the wild card team in 42 of them.  Not only did the Mets fall victim to a streaking division rival at the end of the season, they also lost out to a blazing hot Rockies team that would ride a 13-1 regular season finish all the way to the World Series.</p>
   
+<script>
+    let isReloadingIframe = false;
+
+    function showTab(group, id) {
+      if (isReloadingIframe) {
+        setTimeout(() => showTab(group, id), 100);
+        return;
+      }
+
+      document.querySelectorAll('.tab-content.' + group).forEach(el => el.style.display = 'none');
+
+      const tab = document.getElementById(id);
+      tab.style.display = 'block';
+
+      const container = event.target.closest('.tab-buttons');
+      if (container) {
+        container.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+      }
+
+      const iframe = tab.querySelector('iframe');
+      if (iframe && !iframe.dataset.reloaded) {
+        isReloadingIframe = true;
+
+        const originalSrc = iframe.src;
+        iframe.src = '';
+
+        setTimeout(() => {
+          iframe.src = originalSrc + (originalSrc.includes('?') ? '&' : '?') + 'reload';
+          iframe.dataset.reloaded = "true";
+          iframe.onload = () => {
+            isReloadingIframe = false;
+          };
+        }, 10);
+      }
+    }
+  </script>
 </body>
 </html>
