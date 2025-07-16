@@ -201,22 +201,24 @@
   </div>
 
   <script>
+    // Load header
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('header-placeholder').innerHTML = data);
+
     // Tab switching logic
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
 
     tabButtons.forEach(button => {
       button.addEventListener('click', () => {
-        // Remove active from all buttons and contents
         tabButtons.forEach(btn => btn.classList.remove('active'));
         tabContents.forEach(tc => tc.classList.remove('active'));
-
-        // Add active to clicked button and corresponding tab
         button.classList.add('active');
-        const sport = button.getAttribute('data-sport');
-        document.getElementById(sport).classList.add('active');
+        document.getElementById(button.getAttribute('data-sport')).classList.add('active');
       });
     });
   </script>
+
 </body>
 </html>
