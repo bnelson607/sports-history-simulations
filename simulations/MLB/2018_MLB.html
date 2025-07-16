@@ -1,35 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>2018 MLB Simulation</title>
+
+  <!-- Link to external styles -->
+  <link rel="stylesheet" href="/sports-history-simulations/styles.css" />
+  
+  <!-- Add any simulation-specific styles here if needed -->
   <style>
-    body { font-family: Arial, sans-serif; max-width: 1600px; margin: auto; padding: 20px; background: #f9f9f9; }
-    summary { font-size: 1.4em; cursor: pointer; margin: 10px 0; }
-    details { margin-bottom: 5px; border: 1px solid #ccc; border-radius: 5px; padding: 5px; background: #fff; }
-    iframe { width: 1600px; height: 1000px; border: none; margin: 10px 0; background: #fff; }
-    .tab-buttons { margin: 10px 0; }
-    .tab-buttons button {
-      padding: 10px 15px;
-      margin-right: 5px;
-      border: none;
-      background-color: #ddd;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    .tab-buttons button.active {
-      background-color: #003366;
-      color: white;
-    }
-    .tab-content { display: none; }
+    /* Minimal or unique styles can go here */
   </style>
 </head>
 <body>
 
-  <!-- BACK TO HOMEPAGE LINK -->
-  <p><a href="/sports-history-simulations/index.html">← Back to Homepage</a></p>
-  
-  <h1> 2018 MLB Season</h1>
+  <!-- Header container -->
+  <div id="header"></div>
+
+  <!-- Load header HTML dynamically -->
+  <script>
+    fetch('/sports-history-simulations/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
+  </script>
+
+  <!-- Unique simulation content below -->
+  <h1>2018 MLB Season</h1>
 
   <h2>Regular Season</h2>
 
@@ -313,49 +311,41 @@
   </details>
 
   <script>
-    let isReloadingIframe = false;  // Global flag
+    let isReloadingIframe = false;
 
     function showTab(group, id) {
-      // If already reloading a previous iframe, wait and retry
       if (isReloadingIframe) {
-        setTimeout(() => showTab(group, id), 100);  // retry after 100ms
+        setTimeout(() => showTab(group, id), 100);
         return;
       }
 
-      // Hide all tab contents
       document.querySelectorAll('.tab-content.' + group).forEach(el => el.style.display = 'none');
 
-      // Show the selected tab
       const tab = document.getElementById(id);
       tab.style.display = 'block';
 
-      // Update active button
       const container = event.target.closest('.tab-buttons');
       if (container) {
         container.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
         event.target.classList.add('active');
       }
 
-      // Reload the iframe only once per tab
       const iframe = tab.querySelector('iframe');
       if (iframe && !iframe.dataset.reloaded) {
-        isReloadingIframe = true;  // lock switching
+        isReloadingIframe = true;
 
         const originalSrc = iframe.src;
-        iframe.src = '';  // clear iframe first
+        iframe.src = '';
 
         setTimeout(() => {
           iframe.src = originalSrc + (originalSrc.includes('?') ? '&' : '?') + 'reload';
           iframe.dataset.reloaded = "true";
-
-          // Wait until iframe finishes loading before allowing any other reload
           iframe.onload = () => {
             isReloadingIframe = false;
           };
-        }, 10);  // delay allows clean reload
+        }, 10);
       }
     }
   </script>
-
 </body>
 </html>
