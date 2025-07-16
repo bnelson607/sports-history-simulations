@@ -2,105 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Simulation Articles</title>
+
+  <!-- Link to external styles -->
+  <link rel="stylesheet" href="/sports-history-simulations/styles.css" />
+  
+  <!-- Add any simulation-specific styles here if needed -->
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #2c3e50;
-      color: white;
-      padding: 30px 0;
-      text-align: center;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 2.4em;
-    }
-
-    .content {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    section {
-      margin-bottom: 60px;
-    }
-
-    section h2 {
-      color: #2980b9;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 8px;
-      margin-bottom: 24px;
-    }
-
-    .article {
-      background: white;
-      padding: 16px 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.05);
-      border-left: 6px solid #2980b9;
-    }
-
-    .article h3 {
-      margin: 0 0 8px;
-      font-size: 1.3em;
-    }
-
-    .article h3 a {
-      text-decoration: none;
-      color: #2c3e50;
-      font-weight: 600;
-    }
-
-    .article h3 a:hover {
-      color: #2980b9;
-    }
-
-    .meta {
-      font-size: 0.9em;
-      color: #888;
-      margin-bottom: 10px;
-    }
-
-    .preview {
-      font-size: 1em;
-      color: #555;
-    }
-
-    /* Style all links inside .content */
-    .content a {
-      text-decoration: none;
-      color: #2c3e50;
-      font-weight: 600;
-    }
-    .content a:hover {
-      color: #2980b9;
-    }
-
+    /* Minimal or unique styles can go here */
   </style>
 </head>
 <body>
 
+  <!-- Header container -->
+  <div id="header"></div>
+
+  <!-- Load header HTML dynamically -->
+  <script>
+    fetch('/sports-history-simulations/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
+  </script>
+
   <header>
-    <h1>Simulation Articles</h1>
+    <h2>Simulation Articles</h2>
   </header>
 
   <div class="content">
 
     <!-- MLB Section -->
     <section>
-      <h2>MLB</h2>
+      <h3>MLB</h3>
 
       <div class="article">
-        <h3><a href="/sports-history-simulations/articles/MLB/collapse_of_2007_mets/collapse_of_2007_mets.html">Collapse of the 2007 Mets</a></h3>
+        <h4><a href="/sports-history-simulations/articles/MLB/collapse_of_2007_mets/collapse_of_2007_mets.html">Collapse of the 2007 Mets</a></h4>
         <div class="meta">Published: July 10, 2025</div>
         <div class="preview">
           How likely was it for the Mets to blow a 7-game division lead in mid-September? 
@@ -113,10 +50,10 @@
 
     <!-- NFL Section -->
     <section>
-      <h2>NFL</h2>
+      <h3>NFL</h3>
 
       <div class="article">
-        <h3><a href="/sports-history-simulations/articles/NFL/most_difficult_super_bowl_paths_part_2/most_difficult_super_bowl_paths_part_2.html">Ranking the Most Difficult Super Bowl Paths: Part 2</a></h3>
+        <h4><a href="/sports-history-simulations/articles/NFL/most_difficult_super_bowl_paths_part_2/most_difficult_super_bowl_paths_part_2.html">Ranking the Most Difficult Super Bowl Paths: Part 2</a></h4>
         <div class="meta">Published: July 10, 2025</div>
         <div class="preview">
           Which teams had the longest odds of suriving their path to winning the Super Bowl?
@@ -124,7 +61,7 @@
       </div>
 
       <div class="article">
-        <h3><a href="/sports-history-simulations/articles/NFL/most_difficult_super_bowl_paths_part_1/most_difficult_super_bowl_paths_part_1.html">Ranking the Most Difficult Super Bowl Paths: Part 1</a></h3>
+        <h4><a href="/sports-history-simulations/articles/NFL/most_difficult_super_bowl_paths_part_1/most_difficult_super_bowl_paths_part_1.html">Ranking the Most Difficult Super Bowl Paths: Part 1</a></h4>
         <div class="meta">Published: July 10, 2025</div>
         <div class="preview">
           Which teams faced the most difficult opponents en route to winning the Super Bowl?
@@ -137,10 +74,10 @@
 
     <!-- NHL Section -->
     <section>
-      <h2>NHL</h2>
+      <h3>NHL</h3>
 
       <div class="article">
-        <h3><a href="/sports-history-simulations/articles/NHL/canada_stanley_cup_drought/canada_stanley_cup_drought.html">Canada's Stanley Cup Drought</a></h3>
+        <h4><a href="/sports-history-simulations/articles/NHL/canada_stanley_cup_drought/canada_stanley_cup_drought.html">Canada's Stanley Cup Drought</a></h4>
         <div class="meta">Published: July 10, 2025</div>
         <div class="preview">
           How likely is it that no Canadian team has won a Stanley Cup since 1993?
@@ -155,5 +92,43 @@
     <p><a href="/sports-history-simulations/index.html">← Back to Homepage</a></p>
 
   </div>
+
+  <script>
+    let isReloadingIframe = false;
+
+    function showTab(group, id) {
+      if (isReloadingIframe) {
+        setTimeout(() => showTab(group, id), 100);
+        return;
+      }
+
+      document.querySelectorAll('.tab-content.' + group).forEach(el => el.style.display = 'none');
+
+      const tab = document.getElementById(id);
+      tab.style.display = 'block';
+
+      const container = event.target.closest('.tab-buttons');
+      if (container) {
+        container.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+      }
+
+      const iframe = tab.querySelector('iframe');
+      if (iframe && !iframe.dataset.reloaded) {
+        isReloadingIframe = true;
+
+        const originalSrc = iframe.src;
+        iframe.src = '';
+
+        setTimeout(() => {
+          iframe.src = originalSrc + (originalSrc.includes('?') ? '&' : '?') + 'reload';
+          iframe.dataset.reloaded = "true";
+          iframe.onload = () => {
+            isReloadingIframe = false;
+          };
+        }, 10);
+      }
+    }
+  </script>
 </body>
 </html>
