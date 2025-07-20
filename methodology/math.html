@@ -28,6 +28,13 @@
       .then(data => {
         document.getElementById('header').innerHTML = data;
       });
+
+    // Load footer
+    fetch('/sports-history-simulations/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('site-footer').innerHTML = data;
+      });
   </script>
   
   <h2>The Math</h2>
@@ -126,6 +133,8 @@
   <p>First, early-season results are volatile, and it takes time to identify league-wide trends.  For the first 25% of the current season, we use the same weighting factor and home field advantage from the previous season.  After this point, we have enough data to estimate both values more reliably based on how the current season is unfolding.</p>
 
   <p>Second, because new games are played every day, we constantly get new information about the league.  Thus, both the weighting factor and home field advantage are recalculated daily as the season progresses.  This means that Elo ratings from earlier in the season are likely to shift as more games and information become available.  However, these differences tend to be negligible and only have minimal impact on the long-term projections once the first quarter of the season is complete. </p>
+
+  <div id="site-footer"></div>
 
 <script>
     let isReloadingIframe = false;
