@@ -24,6 +24,13 @@
       .then(data => {
         document.getElementById('header').innerHTML = data;
       });
+
+    // Load footer
+    fetch('/sports-history-simulations/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('site-footer').innerHTML = data;
+      });
   </script>
 
   <!-- Unique simulation content below -->
@@ -50,10 +57,10 @@
       <button onclick="showTab('comparisons', 'comparisons_opponent_elo_vs_actual')">Opponent Elo</button>
       <button onclick="showTab('comparisons', 'comparisons_percentile_vs_actual')">Percentile</button>
     </div>
-    <div class="tab-content comparisons" id="comparisons_sim_vs_actual" style="display:block"><iframe src="2022/2022_sim_vs_actual_graph.html" style="height: 1000px; display: block; margin: 0 auto;"></iframe></div>
-    <div class="tab-content comparisons" id="comparisons_elo_vs_actual"><iframe src="2022/2022_team_elo_vs_actual_graph.html" style="height: 1000px; display: block; margin: 0 auto;"></iframe></div>
-    <div class="tab-content comparisons" id="comparisons_opponent_elo_vs_actual"><iframe src="2022/2022_opponent_elo_vs_actual_graph.html" style="height: 1000px; display: block; margin: 0 auto;"></iframe></div>
-    <div class="tab-content comparisons" id="comparisons_percentile_vs_actual"><iframe src="2022/2022_percentile_vs_actual_graph.html" style="height: 1000px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content comparisons" id="comparisons_sim_vs_actual" style="display:block"><iframe src="2022/2022_sim_vs_actual_graph.html" style="width: 1065px; height: 1000px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content comparisons" id="comparisons_elo_vs_actual"><iframe src="2022/2022_team_elo_vs_actual_graph.html" style="width: 1065px; height: 1000px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content comparisons" id="comparisons_opponent_elo_vs_actual"><iframe src="2022/2022_opponent_elo_vs_actual_graph.html" style="width: 1065px; height: 1000px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content comparisons" id="comparisons_percentile_vs_actual"><iframe src="2022/2022_percentile_vs_actual_graph.html" style="width: 1065px; height: 1000px; display: block; margin: 0 auto;"></iframe></div>
   </details>
 
 
@@ -302,36 +309,33 @@
     <!-- Wild Card Round -->
     <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_wild_card_round">
       <div class="iframe-block">
-        <div class="graph-label">American League</div>
-          <iframe src="2022/2022_wild_card_end_of_regular_season_american.html" style="height: 800px; display: block;"></iframe>
+        <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 0.5em; white-space: nowrap;">
+          <div style="width: 580px; text-align: left;">American League</div>
+          <div style="width: 580px; text-align: left;">National League</div>
         </div>
-      <div class="iframe-block">
-        <div class="graph-label">National League</div>
-          <iframe src="2022/2022_wild_card_end_of_regular_season_national.html" style="height: 800px; display: block;"></iframe>
+        <iframe src="2022/2022_wild_card_end_of_regular_season_combined_conferences.html" style="height: 600px; display: block;"></iframe>
       </div>
     </div>
   
     <!-- LDS -->
     <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_lds">
       <div class="iframe-block">
-        <div class="graph-label">American League</div>
-          <iframe src="2022/2022_lds_end_of_regular_season_american.html" style="height: 800px; display: block;"></iframe>
+        <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 0.5em; white-space: nowrap;">
+          <div style="width: 580px; text-align: left;">American League</div>
+          <div style="width: 580px; text-align: left;">National League</div>
         </div>
-      <div class="iframe-block">
-        <div class="graph-label">National League</div>
-          <iframe src="2022/2022_lds_end_of_regular_season_national.html" style="height: 800px; display: block;"></iframe>
+        <iframe src="2022/2022_lds_end_of_regular_season_combined_conferences.html" style="height: 600px; display: block;"></iframe>
       </div>
     </div>
   
     <!-- LCS  -->
     <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_lcs">
       <div class="iframe-block">
-        <div class="graph-label">American League</div>
-          <iframe src="2022/2022_lcs_end_of_regular_season_american.html" style="height: 800px; display: block;"></iframe>
+        <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 0.5em; white-space: nowrap;">
+          <div style="width: 580px; text-align: left;">American League</div>
+          <div style="width: 580px; text-align: left;">National League</div>
         </div>
-      <div class="iframe-block">
-        <div class="graph-label">National League</div>
-          <iframe src="2022/2022_lcs_end_of_regular_season_national.html" style="height: 800px; display: block;"></iframe>
+        <iframe src="2022/2022_lcs_end_of_regular_season_combined_conferences.html" style="height: 600px; display: block;"></iframe>
       </div>
     </div>
   
@@ -340,6 +344,8 @@
       <iframe src="2022/2022_world_series_end_of_regular_season.html" style="height: 1000px; display: block;"></iframe>
     </div>
   </details>
+
+  <div id="site-footer"></div>
 
   <script>
     let isReloadingIframe = false;
