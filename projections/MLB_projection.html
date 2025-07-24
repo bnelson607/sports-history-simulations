@@ -1,1 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>2025 MLB Projections</title>
 
+  <!-- Link to external styles -->
+  <link rel="stylesheet" href="/sports-history-simulations/styles.css" />
+  
+  <!-- Add any simulation-specific styles here if needed -->
+  <style>
+    /* Minimal or unique styles can go here */
+  </style>
+</head>
+<body>
+
+  <!-- Header container -->
+  <div id="header"></div>
+
+  <!-- Load header HTML dynamically -->
+  <script>
+    fetch('/sports-history-simulations/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
+
+    // Load footer
+    fetch('/sports-history-simulations/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('site-footer').innerHTML = data;
+      });
+  </script>
+
+  <!-- Unique simulation content below -->
+  <h2>2025 MLB Season</h2>
+
+  <h3>Regular Season</h3>
+
+  <details>
+    <summary>Season Summary</summary>
+    <iframe src="MLB/2025_regular_season_summary.html" style="height: 1000px; display: block; margin: auto;"></iframe>
+  </details>
+
+
+  <details>
+    <summary>Comparisons</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How did each team's actual results compare to their simulated results, Elo rating, opponent average Elo rating, and relative position of their actual wins within simulated outcomes?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('comparisons', 'comparisons_sim_vs_actual')" class="active">Simulated Wins</button>
+      <button onclick="showTab('comparisons', 'comparisons_elo_vs_actual')">Team Elo</button>
+      <button onclick="showTab('comparisons', 'comparisons_opponent_elo_vs_actual')">Opponent Elo</button>
+      <button onclick="showTab('comparisons', 'comparisons_percentile_vs_actual')">Percentile</button>
+    </div>
+    
+    <div class="tab-content comparisons" id="comparisons_sim_vs_actual" style="display:block"><iframe src="MLB/2025_sim_vs_actual_graph.html" style="width: 1065px; height: 1000px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content comparisons" id="comparisons_elo_vs_actual"><iframe src="MLB/2025_team_elo_vs_actual_graph.html" style="width: 1065px; height: 1000px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content comparisons" id="comparisons_opponent_elo_vs_actual"><iframe src="MLB/2025_opponent_elo_vs_actual_graph.html" style="width: 1065px; height: 1000px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content comparisons" id="comparisons_percentile_vs_actual"><iframe src="MLB/2025_percentile_vs_actual_graph.html" style="width: 1065px; height: 1000px; display: block; margin: 0 auto;"></iframe></div>
+
+  </details>
+
+
+  <details>
+    <summary>Division Heatmaps</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>Where was each team expected to finish within their division at the beginning of the season?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('div_heatmap', 'div_heatmap_AL_East')" class="active">AL East</button>
+      <button onclick="showTab('div_heatmap', 'div_heatmap_AL_Central')">AL Central</button>
+      <button onclick="showTab('div_heatmap', 'div_heatmap_AL_West')">AL West</button>
+      <button onclick="showTab('div_heatmap', 'div_heatmap_NL_East')">NL East</button>
+      <button onclick="showTab('div_heatmap', 'div_heatmap_NL_Central')">NL Central</button>
+      <button onclick="showTab('div_heatmap', 'div_heatmap_NL_West')">NL West</button>
+    </div>
+    <div class="tab-content div_heatmap" id="div_heatmap_AL_East" style="display:block"><iframe src="MLB/2025_AL East_heatmap.html" style="height: 550px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content div_heatmap" id="div_heatmap_AL_Central"><iframe src="MLB/2025_AL Central_heatmap.html" style="height: 550px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content div_heatmap" id="div_heatmap_AL_West"><iframe src="MLB/2025_AL West_heatmap.html" style="height: 550px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content div_heatmap" id="div_heatmap_NL_East"><iframe src="MLB/2025_NL East_heatmap.html" style="height: 550px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content div_heatmap" id="div_heatmap_NL_Central"><iframe src="MLB/2025_NL Central_heatmap.html" style="height: 550px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content div_heatmap" id="div_heatmap_NL_West"><iframe src="MLB/2025_NL West_heatmap.html" style="height: 550px; display: block; margin: auto;"></iframe></div>
+  </details>
+
+  <details>
+    <summary>League Heatmaps</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>Where was each team expected to finish within their conference and the league as a whole at the beginning of the season?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('league_heatmap', 'league_heatmap_American')" class="active">American</button>
+      <button onclick="showTab('league_heatmap', 'league_heatmap_National')">National</button>
+      <button onclick="showTab('league_heatmap', 'league_heatmap_MLB')">MLB</button>
+    </div>
+    <div class="tab-content league_heatmap" id="league_heatmap_American" style="display:block"><iframe src="MLB/2025_American_heatmap.html" style="height: 950px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content league_heatmap" id="league_heatmap_National"><iframe src="MLB/2025_National_heatmap.html" style="height: 950px; display: block; margin: auto;"></iframe></div>
+    <div class="tab-content league_heatmap" id="league_heatmap_MLB"><iframe src="MLB/2025_league_heatmap.html" style="height: 950px; display: block; margin: auto;"></iframe></div>
+  </details>
+
+
+  <h3>Season Trajectories</h3>
+
+  <details>
+    <summary>Elo Ratings</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How did each team's Elo rating change throughout the season?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('elo', 'elo_AL_East')" class="active">AL East</button>
+      <button onclick="showTab('elo', 'elo_AL_Central')">AL Central</button>
+      <button onclick="showTab('elo', 'elo_AL_West')">AL West</button>
+      <button onclick="showTab('elo', 'elo_NL_East')">NL East</button>
+      <button onclick="showTab('elo', 'elo_NL_Central')">NL Central</button>
+      <button onclick="showTab('elo', 'elo_NL_West')">NL West</button>
+    </div>
+    <div class="tab-content elo" id="elo_AL_East" style="display:block"><iframe src="MLB/2025_AL East_elo_ratings.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content elo" id="elo_AL_Central"><iframe src="MLB/2025_AL Central_elo_ratings.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content elo" id="elo_AL_West"><iframe src="MLB/2025_AL West_elo_ratings.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content elo" id="elo_NL_East"><iframe src="MLB/2025_NL East_elo_ratings.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content elo" id="elo_NL_Central"><iframe src="MLB/2025_NL Central_elo_ratings.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content elo" id="elo_NL_West"><iframe src="MLB/2025_NL West_elo_ratings.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+  </details>
+
+  <details>
+    <summary>Simulated Wins</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How did each team's simulated win total change throughout the season?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('wins', 'wins_AL_East')" class="active">AL East</button>
+      <button onclick="showTab('wins', 'wins_AL_Central')">AL Central</button>
+      <button onclick="showTab('wins', 'wins_AL_West')">AL West</button>
+      <button onclick="showTab('wins', 'wins_NL_East')">NL East</button>
+      <button onclick="showTab('wins', 'wins_NL_Central')">NL Central</button>
+      <button onclick="showTab('wins', 'wins_NL_West')">NL West</button>
+    </div>
+    <div class="tab-content wins" id="wins_AL_East" style="display:block"><iframe src="MLB/2025_AL East_simulated_wins.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content wins" id="wins_AL_Central"><iframe src="MLB/2025_AL Central_simulated_wins.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content wins" id="wins_AL_West"><iframe src="MLB/2025_AL West_simulated_wins.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content wins" id="wins_NL_East"><iframe src="MLB/2025_NL East_simulated_wins.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content wins" id="wins_NL_Central"><iframe src="MLB/2025_NL Central_simulated_wins.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content wins" id="wins_NL_West"><iframe src="MLB/2025_NL West_simulated_wins.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+  </details>
+
+  <details>
+    <summary>Division Champion Probabilities</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How did each team's probability of winning the division change throughout the season?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('div_prob', 'div_prob_AL_East')" class="active">AL East</button>
+      <button onclick="showTab('div_prob', 'div_prob_AL_Central')">AL Central</button>
+      <button onclick="showTab('div_prob', 'div_prob_AL_West')">AL West</button>
+      <button onclick="showTab('div_prob', 'div_prob_NL_East')">NL East</button>
+      <button onclick="showTab('div_prob', 'div_prob_NL_Central')">NL Central</button>
+      <button onclick="showTab('div_prob', 'div_prob_NL_West')">NL West</button>
+    </div>
+    <div class="tab-content div_prob" id="div_prob_AL_East" style="display:block"><iframe src="MLB/2025_AL East_division_probabilities.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content div_prob" id="div_prob_AL_Central"><iframe src="MLB/2025_AL Central_division_probabilities.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content div_prob" id="div_prob_AL_West"><iframe src="MLB/2025_AL West_division_probabilities.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content div_prob" id="div_prob_NL_East"><iframe src="MLB/2025_NL East_division_probabilities.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content div_prob" id="div_prob_NL_Central"><iframe src="MLB/2025_NL Central_division_probabilities.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content div_prob" id="div_prob_NL_West"><iframe src="MLB/2025_NL West_division_probabilities.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+  </details>
+
+  <details>
+    <summary>Playoff Probabilities</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How did each team's probability of making the playoffs change throughout the season?</i>
+    </div>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('playoff_prob', 'playoff_prob_AL_East')" class="active">AL East</button>
+      <button onclick="showTab('playoff_prob', 'playoff_prob_AL_Central')">AL Central</button>
+      <button onclick="showTab('playoff_prob', 'playoff_prob_AL_West')">AL West</button>
+      <button onclick="showTab('playoff_prob', 'playoff_prob_NL_East')">NL East</button>
+      <button onclick="showTab('playoff_prob', 'playoff_prob_NL_Central')">NL Central</button>
+      <button onclick="showTab('playoff_prob', 'playoff_prob_NL_West')">NL West</button>
+    </div>
+    <div class="tab-content playoff_prob" id="playoff_prob_AL_East" style="display:block"><iframe src="MLB/2025_AL East_playoff_probabilities.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content playoff_prob" id="playoff_prob_AL_Central"><iframe src="MLB/2025_AL Central_playoff_probabilities.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content playoff_prob" id="playoff_prob_AL_West"><iframe src="MLB/2025_AL West_playoff_probabilities.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content playoff_prob" id="playoff_prob_NL_East"><iframe src="MLB/2025_NL East_playoff_probabilities.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content playoff_prob" id="playoff_prob_NL_Central"><iframe src="MLB/2025_NL Central_playoff_probabilities.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+    <div class="tab-content playoff_prob" id="playoff_prob_NL_West"><iframe src="MLB/2025_NL West_playoff_probabilities.html" style="height: 700px; display: block; margin: 0 auto;"></iframe></div>
+  </details>
+
+
+
+
+  <h3>Playoffs</h3>
+
+  <details>
+    <summary>Playoff Seed Probabilities</summary>
+
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How likely was each team to earn each playoff seed at the beginning of the season?</i>
+    </div>
+
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div class="graph-label">American League</div>
+          <iframe src="MLB/2025_American_playoff_heatmap.html" style="width: 580px; height: 900px;"></iframe>
+        </div>
+
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div class="graph-label">National League</div>
+          <iframe src="MLB/2025_National_playoff_heatmap.html" style="width: 580px; height: 900px;"></iframe>
+        </div>
+    </div>
+    
+  </details>
+
+  <details>
+    <summary>Preseason Playoff Simulation</summary>
+  
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How did the simulation expect the playoffs to unfold at the beginning of the season?</i>
+    </div>
+  
+    <div class="tab-buttons">
+      <button onclick="showTab('preseason_playoff', 'preseason_playoff_playoff_adv')" class="active">Playoff Progression</button>
+      <button onclick="showTab('preseason_playoff', 'preseason_playoff_wild_card_round')">Wild Card Round</button>
+      <button onclick="showTab('preseason_playoff', 'preseason_playoff_lds')">LDS</button>
+      <button onclick="showTab('preseason_playoff', 'preseason_playoff_lcs')">LCS</button>
+      <button onclick="showTab('preseason_playoff', 'preseason_playoff_world_series')">World Series</button>
+    </div>
+  
+    <!-- Playoff Advancement -->
+    <div class="tab-content preseason_playoff" id="preseason_playoff_playoff_adv" style="display:block">
+      <iframe src="MLB/2025_playoff_success_preseason_playoff.html" style="height: 1000px; display: block; margin: auto;"></iframe>
+    </div>
+  
+    <!-- Wild Card Round -->
+    <div class="tab-content preseason_playoff" id="preseason_playoff_wild_card_round">
+      <div class="iframe-block">
+        <div class="graph-label">American League</div>
+          <iframe src="MLB/2025_wild_card_preseason_playoff_american.html" style="height: 950px; display: block;"></iframe>
+        </div>
+      <div class="iframe-block">
+        <div class="graph-label">National League</div>
+          <iframe src="MLB/2025_wild_card_preseason_playoff_national.html" style="height: 950px; display: block;"></iframe>
+      </div>
+    </div>
+  
+    <!-- LDS -->
+    <div class="tab-content preseason_playoff" id="preseason_playoff_lds">
+      <div class="iframe-block">
+        <div class="graph-label">American League</div>
+          <iframe src="MLB/2025_lds_preseason_playoff_american.html" style="height: 950px; display: block;"></iframe>
+        </div>
+      <div class="iframe-block">
+        <div class="graph-label">National League</div>
+          <iframe src="MLB/2025_lds_preseason_playoff_national.html" style="height: 950px; display: block;"></iframe>
+      </div>
+    </div>
+  
+    <!-- LCS -->
+    <div class="tab-content preseason_playoff" id="preseason_playoff_lcs">
+      <div class="iframe-block">
+        <div class="graph-label">American League</div>
+          <iframe src="MLB/2025_lcs_preseason_playoff_american.html" style="height: 950px; display: block;"></iframe>
+        </div>
+      <div class="iframe-block">
+        <div class="graph-label">National League</div>
+          <iframe src="MLB/2025_lcs_preseason_playoff_national.html" style="height: 950px; display: block;"></iframe>
+      </div>
+    </div>
+  
+    <!-- World Series (one chart only) -->
+    <div class="tab-content preseason_playoff" id="preseason_playoff_world_series">
+      <iframe src="MLB/2025_world_series_preseason_playoff.html" style="height: 950px; display: block;"></iframe>
+    </div>
+  </details>
+
+<!--   <details>
+    <summary>End-of-Season Playoff Simulation</summary>
+  
+    <div class="subheading" style="margin: 0.75em 0;">
+      <i>How did the simulation expect the actual playoff bracket to unfold after the end of the regular season?</i>
+    </div>
+  
+    <div class="tab-buttons">
+      <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_playoff_adv')" class="active">Playoff Progression</button>
+      <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_wild_card_round')">Wild Card Round</button>
+      <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_lds')">LDS</button>
+      <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_lcs')">LCS</button>
+      <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_world_series')">World Series</button>
+    </div> -->
+  
+    <!-- Playoff Progression -->
+<!--     <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_playoff_adv" style="display:block">
+      <iframe src="MLB/2025_playoff_success_end_of_regular_season.html" style="height: 450px; display: block; margin: auto;"></iframe>
+    </div> -->
+  
+    <!-- Wild Card Round -->
+<!--     <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_wild_card_round">
+      <div class="iframe-block">
+        <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 0.5em; white-space: nowrap;">
+          <div style="width: 580px; text-align: left;">American League</div>
+          <div style="width: 580px; text-align: left;">National League</div>
+        </div>
+        <iframe src="MLB/2025_wild_card_end_of_regular_season_combined_conferences.html" style="height: 600px; display: block;"></iframe>
+      </div>
+    </div> -->
+    
+    <!-- LDS -->
+<!--     <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_lds">
+      <div class="iframe-block">
+        <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 0.5em; white-space: nowrap;">
+          <div style="width: 580px; text-align: left;">American League</div>
+          <div style="width: 580px; text-align: left;">National League</div>
+        </div>
+        <iframe src="MLB/2025_lds_end_of_regular_season_combined_conferences.html" style="height: 600px; display: block;"></iframe>
+      </div>
+    </div> -->
+    
+    <!-- LCS  -->
+<!--     <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_lcs">
+      <div class="iframe-block">
+        <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 0.5em; white-space: nowrap;">
+          <div style="width: 580px; text-align: left;">American League</div>
+          <div style="width: 580px; text-align: left;">National League</div>
+        </div>
+        <iframe src="MLB/2025_lcs_end_of_regular_season_combined_conferences.html" style="height: 600px; display: block;"></iframe>
+      </div>
+    </div> -->
+    
+    <!-- World Series -->
+<!--     <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_world_series">
+      <iframe src="MLB/2025_world_series_end_of_regular_season.html" style="height: 950px; display: block;"></iframe>
+    </div>
+  </details> -->
+
+  <div id="site-footer"></div>
+
+  <script>
+    let isReloadingIframe = false;
+
+    function showTab(group, id) {
+      if (isReloadingIframe) {
+        setTimeout(() => showTab(group, id), 100);
+        return;
+      }
+
+      document.querySelectorAll('.tab-content.' + group).forEach(el => el.style.display = 'none');
+
+      const tab = document.getElementById(id);
+      tab.style.display = 'block';
+
+      const container = event.target.closest('.tab-buttons');
+      if (container) {
+        container.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+      }
+
+      const iframe = tab.querySelector('iframe');
+      if (iframe && !iframe.dataset.reloaded) {
+        isReloadingIframe = true;
+
+        const originalSrc = iframe.src;
+        iframe.src = '';
+
+        setTimeout(() => {
+          iframe.src = originalSrc + (originalSrc.includes('?') ? '&' : '?') + 'reload';
+          iframe.dataset.reloaded = "true";
+          iframe.onload = () => {
+            isReloadingIframe = false;
+          };
+        }, 10);
+      }
+    }
+  </script>
+</body>
+</html>
