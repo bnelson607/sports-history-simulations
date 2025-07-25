@@ -231,33 +231,59 @@ th {
   background-color: #e0e0e0;     /* Light gray header background */
 }
 
+
 /* Power Table (Homepage) */
 .power-table {
   width: 100%;                   /* Full width */
   border-collapse: collapse;     /* Merge borders */
   font-size: 16px;               /* Font size */
   text-align: left;              /* Left align text */
+  table-layout: fixed;           /* Enforce equal/fixed column widths */
 }
+
 .power-table thead {
   background-color: #002744;     /* Dark navy header */
-  color: white;                  /* White header text */
+  color: #002744;                  /* White header text */
   font-weight: bold;             /* Bold header text */
 }
+
 .power-table th, .power-table td {
   padding: 4px;                  /* Padding for cells */
   border-bottom: 1px solid #ddd; /* Light bottom border */
+  overflow: hidden;              /* Prevent content from overflowing cell */
+  text-overflow: ellipsis;       /* Add "..." for clipped text */
+  white-space: nowrap;           /* Prevent text wrapping */
 }
+
+/* Set fixed widths for each column */
+.power-table th:nth-child(1),
+.power-table td:nth-child(1) {
+  width: 100;                   /* Rank column width */
+}
+
+.power-table th:nth-child(2),
+.power-table td:nth-child(2) {
+  width: 550;                  /* Team column width */
+}
+
+.power-table th:nth-child(3),
+.power-table td:nth-child(3) {
+  width: 150;                  /* Elo Rating column width */
+}
+
 .power-table tbody tr:nth-child(even) {
-  background-color: #f9f9f9;    /* Light gray even rows */
+  background-color: #f9f9f9;     /* Light gray even rows */
 }
+
 .power-table tbody tr:hover {
-  background-color: #f1f1f1;    /* Highlight on hover */
+  background-color: #f1f1f1;     /* Highlight on hover */
   transition: background-color 0.3s; /* Smooth transition */
 }
+
 .power-table-date {
   font-weight: bold;             /* Bold date label */
   font-size: 1em;                /* Normal font size */
-  color: #333;                  /* Dark gray text */
+  color: #333;                   /* Dark gray text */
   margin-bottom: 0.5em;          /* Space below */
   text-align: left;              /* Align left */
 }
