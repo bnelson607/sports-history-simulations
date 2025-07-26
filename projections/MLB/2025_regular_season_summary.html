@@ -1,40 +1,67 @@
 <!DOCTYPE html>
-            <html>
-            <head>
-                <meta charset="UTF-8">
-                <title>2025 MLB Regular Season Summary</title>
-                <style>
-                    table.sortable {
-                        border-collapse: collapse;
-                        margin: auto;
-                        font-family: Arial, sans-serif;
-                        width: 95%;
-                    }
-                    table.sortable th, table.sortable td {
-                        border: 1px solid #ccc;
-                        padding: 4px 8px;
-                        text-align: center;
-                        white-space: nowrap;
-                    }
-                    table.sortable th {
-                        background-color: #f2f2f2;
-                        cursor: pointer;
-                    }
-                    h2 {
-                        text-align: center;
-                        font-weight: bold;
-                        font-family: Arial, sans-serif;
-                    }
-                </style>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>2025 MLB Regular Season Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .filter-controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .filter-controls select {
+            margin: 0 10px;
+            padding: 4px;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+    </style>
 
-                <script src="../../tablesort.min.js"></script>
-                <script src="../../tablesort.number.min.js"></script>
-            </head>
-            <body>
-                <table class="dataframe sortable">
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <h2>2025 MLB Regular Season Summary</h2>
+
+    <div class="filter-controls" id="filterControls" style="display: none;">
+        <label for="divisionFilter" id="divisionLabel" style="display: none;">Division:
+            <select id="divisionFilter">
+                <option value="">All</option>
+            </select>
+        </label>
+
+        <label for="conferenceFilter" id="conferenceLabel" style="display: none;">Conference:
+            <select id="conferenceFilter">
+                <option value="">All</option>
+            </select>
+        </label>
+    </div>
+
+    <table class="dataframe sortable">
   <thead>
     <tr style="text-align: right;">
       <th>Team</th>
+      <th>League</th>
+      <th>Division</th>
       <th>Elo</th>
       <th>Current</th>
       <th>Avg. Wins</th>
@@ -50,6 +77,8 @@
   <tbody>
     <tr>
       <td>Milwaukee Brewers</td>
+      <td>National</td>
+      <td>NL Central</td>
       <td>1561.38</td>
       <td>61</td>
       <td>95.96</td>
@@ -63,6 +92,8 @@
     </tr>
     <tr>
       <td>Chicago Cubs</td>
+      <td>National</td>
+      <td>NL Central</td>
       <td>1548.21</td>
       <td>60</td>
       <td>94.61</td>
@@ -76,6 +107,8 @@
     </tr>
     <tr>
       <td>Los Angeles Dodgers</td>
+      <td>National</td>
+      <td>NL West</td>
       <td>1545.61</td>
       <td>60</td>
       <td>93.54</td>
@@ -89,6 +122,8 @@
     </tr>
     <tr>
       <td>New York Yankees</td>
+      <td>American</td>
+      <td>AL East</td>
       <td>1543.94</td>
       <td>56</td>
       <td>90.24</td>
@@ -102,6 +137,8 @@
     </tr>
     <tr>
       <td>Houston Astros</td>
+      <td>American</td>
+      <td>AL West</td>
       <td>1541.45</td>
       <td>60</td>
       <td>94.49</td>
@@ -115,6 +152,8 @@
     </tr>
     <tr>
       <td>Philadelphia Phillies</td>
+      <td>National</td>
+      <td>NL East</td>
       <td>1535.03</td>
       <td>58</td>
       <td>90.93</td>
@@ -128,6 +167,8 @@
     </tr>
     <tr>
       <td>New York Mets</td>
+      <td>National</td>
+      <td>NL East</td>
       <td>1527.32</td>
       <td>59</td>
       <td>90.12</td>
@@ -141,6 +182,8 @@
     </tr>
     <tr>
       <td>Toronto Blue Jays</td>
+      <td>American</td>
+      <td>AL East</td>
       <td>1522.46</td>
       <td>60</td>
       <td>90.67</td>
@@ -154,6 +197,8 @@
     </tr>
     <tr>
       <td>San Diego Padres</td>
+      <td>National</td>
+      <td>NL West</td>
       <td>1521.00</td>
       <td>55</td>
       <td>87.31</td>
@@ -167,6 +212,8 @@
     </tr>
     <tr>
       <td>Detroit Tigers</td>
+      <td>American</td>
+      <td>AL Central</td>
       <td>1519.65</td>
       <td>60</td>
       <td>91.69</td>
@@ -180,6 +227,8 @@
     </tr>
     <tr>
       <td>Seattle Mariners</td>
+      <td>American</td>
+      <td>AL West</td>
       <td>1518.64</td>
       <td>54</td>
       <td>86.44</td>
@@ -193,6 +242,8 @@
     </tr>
     <tr>
       <td>Boston Red Sox</td>
+      <td>American</td>
+      <td>AL East</td>
       <td>1518.40</td>
       <td>55</td>
       <td>85.19</td>
@@ -206,6 +257,8 @@
     </tr>
     <tr>
       <td>Texas Rangers</td>
+      <td>American</td>
+      <td>AL West</td>
       <td>1514.68</td>
       <td>53</td>
       <td>83.22</td>
@@ -219,6 +272,8 @@
     </tr>
     <tr>
       <td>Tampa Bay Rays</td>
+      <td>American</td>
+      <td>AL East</td>
       <td>1514.66</td>
       <td>53</td>
       <td>82.88</td>
@@ -232,6 +287,8 @@
     </tr>
     <tr>
       <td>Arizona Diamondbacks</td>
+      <td>National</td>
+      <td>NL West</td>
       <td>1512.62</td>
       <td>50</td>
       <td>80.55</td>
@@ -245,6 +302,8 @@
     </tr>
     <tr>
       <td>Cincinnati Reds</td>
+      <td>National</td>
+      <td>NL Central</td>
       <td>1506.68</td>
       <td>53</td>
       <td>82.07</td>
@@ -258,6 +317,8 @@
     </tr>
     <tr>
       <td>San Francisco Giants</td>
+      <td>National</td>
+      <td>NL West</td>
       <td>1505.11</td>
       <td>54</td>
       <td>84.34</td>
@@ -271,6 +332,8 @@
     </tr>
     <tr>
       <td>Kansas City Royals</td>
+      <td>American</td>
+      <td>AL Central</td>
       <td>1497.90</td>
       <td>50</td>
       <td>80.35</td>
@@ -284,6 +347,8 @@
     </tr>
     <tr>
       <td>Atlanta Braves</td>
+      <td>National</td>
+      <td>NL East</td>
       <td>1496.92</td>
       <td>44</td>
       <td>73.83</td>
@@ -297,6 +362,8 @@
     </tr>
     <tr>
       <td>Cleveland Guardians</td>
+      <td>American</td>
+      <td>AL Central</td>
       <td>1496.30</td>
       <td>51</td>
       <td>81.97</td>
@@ -310,6 +377,8 @@
     </tr>
     <tr>
       <td>St. Louis Cardinals</td>
+      <td>National</td>
+      <td>NL Central</td>
       <td>1495.47</td>
       <td>52</td>
       <td>80.81</td>
@@ -323,6 +392,8 @@
     </tr>
     <tr>
       <td>Minnesota Twins</td>
+      <td>American</td>
+      <td>AL Central</td>
       <td>1490.60</td>
       <td>49</td>
       <td>78.81</td>
@@ -336,6 +407,8 @@
     </tr>
     <tr>
       <td>Baltimore Orioles</td>
+      <td>American</td>
+      <td>AL East</td>
       <td>1474.79</td>
       <td>44</td>
       <td>71.31</td>
@@ -349,6 +422,8 @@
     </tr>
     <tr>
       <td>Miami Marlins</td>
+      <td>National</td>
+      <td>NL East</td>
       <td>1471.73</td>
       <td>48</td>
       <td>75.54</td>
@@ -362,6 +437,8 @@
     </tr>
     <tr>
       <td>Pittsburgh Pirates</td>
+      <td>National</td>
+      <td>NL Central</td>
       <td>1463.82</td>
       <td>42</td>
       <td>68.51</td>
@@ -375,6 +452,8 @@
     </tr>
     <tr>
       <td>Los Angeles Angels</td>
+      <td>American</td>
+      <td>AL West</td>
       <td>1459.78</td>
       <td>49</td>
       <td>75.88</td>
@@ -388,6 +467,8 @@
     </tr>
     <tr>
       <td>Washington Nationals</td>
+      <td>National</td>
+      <td>NL East</td>
       <td>1444.30</td>
       <td>41</td>
       <td>65.82</td>
@@ -401,6 +482,8 @@
     </tr>
     <tr>
       <td>Sacramento Athletics</td>
+      <td>American</td>
+      <td>AL West</td>
       <td>1437.92</td>
       <td>42</td>
       <td>65.88</td>
@@ -414,6 +497,8 @@
     </tr>
     <tr>
       <td>Chicago White Sox</td>
+      <td>American</td>
+      <td>AL Central</td>
       <td>1427.85</td>
       <td>37</td>
       <td>60.21</td>
@@ -427,6 +512,8 @@
     </tr>
     <tr>
       <td>Colorado Rockies</td>
+      <td>National</td>
+      <td>NL West</td>
       <td>1385.80</td>
       <td>26</td>
       <td>45.86</td>
@@ -440,10 +527,60 @@
     </tr>
   </tbody>
 </table>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        new Tablesort(document.querySelector('table.sortable'));
-                    });
-                </script>
-            </body>
-        </html>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const table = document.querySelector('table');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+
+            const divColIndex = headers.indexOf("Division");
+            const confColIndex = headers.indexOf("Conference");
+
+            const divFilter = document.getElementById("divisionFilter");
+            const confFilter = document.getElementById("conferenceFilter");
+            const divLabel = document.getElementById("divisionLabel");
+            const confLabel = document.getElementById("conferenceLabel");
+            const filterControls = document.getElementById("filterControls");
+
+            function populateFilter(colIndex, selectElement, labelElement) {
+                if (colIndex === -1) return;
+
+                const values = [...new Set(rows.map(row => row.cells[colIndex].textContent.trim()).filter(x => x))].sort();
+                values.forEach(val => {
+                    const opt = document.createElement("option");
+                    opt.value = val;
+                    opt.textContent = val;
+                    selectElement.appendChild(opt);
+                });
+                labelElement.style.display = "inline-block";
+                filterControls.style.display = "block";
+            }
+
+            function applyFilters() {
+                const selectedDiv = divFilter.value;
+                const selectedConf = confFilter.value;
+
+                rows.forEach(row => {
+                    const divVal = divColIndex !== -1 ? row.cells[divColIndex].textContent.trim() : "";
+                    const confVal = confColIndex !== -1 ? row.cells[confColIndex].textContent.trim() : "";
+
+                    const matchDiv = !selectedDiv || divVal === selectedDiv;
+                    const matchConf = !selectedConf || confVal === selectedConf;
+
+                    row.style.display = (matchDiv && matchConf) ? "" : "none";
+                });
+            }
+
+            // Setup filters if applicable
+            populateFilter(divColIndex, divFilter, divLabel);
+            populateFilter(confColIndex, confFilter, confLabel);
+
+            divFilter.addEventListener("change", applyFilters);
+            confFilter.addEventListener("change", applyFilters);
+        });
+    </script>
+</body>
+</html>
