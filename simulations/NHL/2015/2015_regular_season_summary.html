@@ -1,40 +1,64 @@
 <!DOCTYPE html>
-            <html>
-            <head>
-                <meta charset="UTF-8">
-                <title>2015 NHL Regular Season Summary</title>
-                <style>
-                    table.sortable {
-                        border-collapse: collapse;
-                        margin: auto;
-                        font-family: Arial, sans-serif;
-                        width: 95%;
-                    }
-                    table.sortable th, table.sortable td {
-                        border: 1px solid #ccc;
-                        padding: 4px 8px;
-                        text-align: center;
-                        white-space: nowrap;
-                    }
-                    table.sortable th {
-                        background-color: #f2f2f2;
-                        cursor: pointer;
-                    }
-                    h2 {
-                        text-align: center;
-                        font-weight: bold;
-                        font-family: Arial, sans-serif;
-                    }
-                </style>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .filter-controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .filter-controls select {
+            margin: 0 10px;
+            padding: 4px;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+    </style>
 
-                <script src="../../tablesort.min.js"></script>
-                <script src="../../tablesort.number.min.js"></script>
-            </head>
-            <body>
-                <table class="dataframe sortable">
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls" id="filterControls" style="display: none;">
+        <label for="divisionFilter" id="divisionLabel" style="display: none;">Division:
+            <select id="divisionFilter">
+                <option value="">All</option>
+            </select>
+        </label>
+
+        <label for="conferenceFilter" id="conferenceLabel" style="display: none;">Conference:
+            <select id="conferenceFilter">
+                <option value="">All</option>
+            </select>
+        </label>
+    </div>
+
+    <table class="dataframe sortable">
   <thead>
     <tr style="text-align: right;">
       <th>Team</th>
+      <th>Conference</th>
+      <th>Division</th>
       <th>Elo</th>
       <th>Actual</th>
       <th>Avg. Points</th>
@@ -51,6 +75,8 @@
   <tbody>
     <tr>
       <td>Washington Capitals</td>
+      <td>Eastern</td>
+      <td>Metropolitan</td>
       <td>1585.88</td>
       <td>120</td>
       <td>108.20</td>
@@ -65,6 +91,8 @@
     </tr>
     <tr>
       <td>Pittsburgh Penguins</td>
+      <td>Eastern</td>
+      <td>Metropolitan</td>
       <td>1573.71</td>
       <td>104</td>
       <td>93.26</td>
@@ -79,6 +107,8 @@
     </tr>
     <tr>
       <td>Anaheim Ducks</td>
+      <td>Western</td>
+      <td>Pacific</td>
       <td>1566.43</td>
       <td>103</td>
       <td>97.31</td>
@@ -93,6 +123,8 @@
     </tr>
     <tr>
       <td>Dallas Stars</td>
+      <td>Western</td>
+      <td>Central</td>
       <td>1556.91</td>
       <td>109</td>
       <td>100.69</td>
@@ -107,6 +139,8 @@
     </tr>
     <tr>
       <td>St. Louis Blues</td>
+      <td>Western</td>
+      <td>Central</td>
       <td>1555.72</td>
       <td>107</td>
       <td>97.42</td>
@@ -121,6 +155,8 @@
     </tr>
     <tr>
       <td>Chicago Blackhawks</td>
+      <td>Western</td>
+      <td>Central</td>
       <td>1547.43</td>
       <td>103</td>
       <td>102.37</td>
@@ -135,6 +171,8 @@
     </tr>
     <tr>
       <td>New York Rangers</td>
+      <td>Eastern</td>
+      <td>Metropolitan</td>
       <td>1543.22</td>
       <td>101</td>
       <td>102.47</td>
@@ -149,6 +187,8 @@
     </tr>
     <tr>
       <td>Los Angeles Kings</td>
+      <td>Western</td>
+      <td>Pacific</td>
       <td>1542.90</td>
       <td>102</td>
       <td>100.83</td>
@@ -163,6 +203,8 @@
     </tr>
     <tr>
       <td>Tampa Bay Lightning</td>
+      <td>Eastern</td>
+      <td>Atlantic</td>
       <td>1536.65</td>
       <td>97</td>
       <td>100.84</td>
@@ -177,6 +219,8 @@
     </tr>
     <tr>
       <td>San Jose Sharks</td>
+      <td>Western</td>
+      <td>Pacific</td>
       <td>1533.48</td>
       <td>98</td>
       <td>96.03</td>
@@ -191,6 +235,8 @@
     </tr>
     <tr>
       <td>Florida Panthers</td>
+      <td>Eastern</td>
+      <td>Atlantic</td>
       <td>1532.78</td>
       <td>103</td>
       <td>94.53</td>
@@ -205,6 +251,8 @@
     </tr>
     <tr>
       <td>New York Islanders</td>
+      <td>Eastern</td>
+      <td>Metropolitan</td>
       <td>1524.25</td>
       <td>100</td>
       <td>96.34</td>
@@ -219,6 +267,8 @@
     </tr>
     <tr>
       <td>Nashville Predators</td>
+      <td>Western</td>
+      <td>Central</td>
       <td>1522.46</td>
       <td>96</td>
       <td>93.31</td>
@@ -233,6 +283,8 @@
     </tr>
     <tr>
       <td>Philadelphia Flyers</td>
+      <td>Eastern</td>
+      <td>Metropolitan</td>
       <td>1521.13</td>
       <td>96</td>
       <td>87.82</td>
@@ -247,6 +299,8 @@
     </tr>
     <tr>
       <td>Boston Bruins</td>
+      <td>Eastern</td>
+      <td>Atlantic</td>
       <td>1509.27</td>
       <td>93</td>
       <td>97.39</td>
@@ -261,6 +315,8 @@
     </tr>
     <tr>
       <td>Minnesota Wild</td>
+      <td>Western</td>
+      <td>Central</td>
       <td>1501.11</td>
       <td>87</td>
       <td>96.85</td>
@@ -275,6 +331,8 @@
     </tr>
     <tr>
       <td>Detroit Red Wings</td>
+      <td>Eastern</td>
+      <td>Atlantic</td>
       <td>1496.52</td>
       <td>93</td>
       <td>93.01</td>
@@ -289,6 +347,8 @@
     </tr>
     <tr>
       <td>Ottawa Senators</td>
+      <td>Eastern</td>
+      <td>Atlantic</td>
       <td>1488.15</td>
       <td>85</td>
       <td>90.65</td>
@@ -303,6 +363,8 @@
     </tr>
     <tr>
       <td>New Jersey Devils</td>
+      <td>Eastern</td>
+      <td>Metropolitan</td>
       <td>1465.18</td>
       <td>84</td>
       <td>85.46</td>
@@ -317,6 +379,8 @@
     </tr>
     <tr>
       <td>Montreal Canadiens</td>
+      <td>Eastern</td>
+      <td>Atlantic</td>
       <td>1464.31</td>
       <td>82</td>
       <td>95.09</td>
@@ -331,6 +395,8 @@
     </tr>
     <tr>
       <td>Winnipeg Jets</td>
+      <td>Western</td>
+      <td>Central</td>
       <td>1464.12</td>
       <td>78</td>
       <td>87.45</td>
@@ -345,6 +411,8 @@
     </tr>
     <tr>
       <td>Calgary Flames</td>
+      <td>Western</td>
+      <td>Pacific</td>
       <td>1463.38</td>
       <td>77</td>
       <td>86.03</td>
@@ -359,6 +427,8 @@
     </tr>
     <tr>
       <td>Columbus Blue Jackets</td>
+      <td>Eastern</td>
+      <td>Metropolitan</td>
       <td>1462.36</td>
       <td>76</td>
       <td>82.20</td>
@@ -373,6 +443,8 @@
     </tr>
     <tr>
       <td>Colorado Avalanche</td>
+      <td>Western</td>
+      <td>Central</td>
       <td>1456.53</td>
       <td>82</td>
       <td>89.15</td>
@@ -387,6 +459,8 @@
     </tr>
     <tr>
       <td>Buffalo Sabres</td>
+      <td>Eastern</td>
+      <td>Atlantic</td>
       <td>1456.27</td>
       <td>81</td>
       <td>75.46</td>
@@ -401,6 +475,8 @@
     </tr>
     <tr>
       <td>Carolina Hurricanes</td>
+      <td>Eastern</td>
+      <td>Metropolitan</td>
       <td>1455.58</td>
       <td>86</td>
       <td>83.49</td>
@@ -415,6 +491,8 @@
     </tr>
     <tr>
       <td>Arizona Coyotes</td>
+      <td>Western</td>
+      <td>Pacific</td>
       <td>1432.33</td>
       <td>78</td>
       <td>77.39</td>
@@ -429,6 +507,8 @@
     </tr>
     <tr>
       <td>Vancouver Canucks</td>
+      <td>Western</td>
+      <td>Pacific</td>
       <td>1419.21</td>
       <td>75</td>
       <td>85.37</td>
@@ -443,6 +523,8 @@
     </tr>
     <tr>
       <td>Edmonton Oilers</td>
+      <td>Western</td>
+      <td>Pacific</td>
       <td>1413.70</td>
       <td>70</td>
       <td>74.50</td>
@@ -457,6 +539,8 @@
     </tr>
     <tr>
       <td>Toronto Maple Leafs</td>
+      <td>Eastern</td>
+      <td>Atlantic</td>
       <td>1409.03</td>
       <td>69</td>
       <td>76.39</td>
@@ -471,10 +555,67 @@
     </tr>
   </tbody>
 </table>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        new Tablesort(document.querySelector('table.sortable'));
-                    });
-                </script>
-            </body>
-        </html>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const table = document.querySelector('table');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+
+            const divColIndex = headers.indexOf("Division");
+            const confColIndex = headers.indexOf("Conference");
+
+            const divFilter = document.getElementById("divisionFilter");
+            const confFilter = document.getElementById("conferenceFilter");
+            const divLabel = document.getElementById("divisionLabel");
+            const confLabel = document.getElementById("conferenceLabel");
+            const filterControls = document.getElementById("filterControls");
+
+            function populateFilter(colIndex, selectElement, labelElement) {
+                if (colIndex === -1) return;
+
+                const values = [...new Set(rows.map(row => row.cells[colIndex].textContent.trim()).filter(x => x))].sort();
+                values.forEach(val => {
+                    const opt = document.createElement("option");
+                    opt.value = val;
+                    opt.textContent = val;
+                    selectElement.appendChild(opt);
+                });
+                labelElement.style.display = "inline-block";
+                filterControls.style.display = "block";
+            }
+
+            function applyFilters() {
+                const selectedDiv = divFilter.value;
+                const selectedConf = confFilter.value;
+
+                rows.forEach(row => {
+                    const divVal = divColIndex !== -1 ? row.cells[divColIndex].textContent.trim() : "";
+                    const confVal = confColIndex !== -1 ? row.cells[confColIndex].textContent.trim() : "";
+
+                    const matchDiv = !selectedDiv || divVal === selectedDiv;
+                    const matchConf = !selectedConf || confVal === selectedConf;
+
+                    row.style.display = (matchDiv && matchConf) ? "" : "none";
+                });
+            }
+
+            // Setup filters if applicable
+            populateFilter(divColIndex, divFilter, divLabel);
+            populateFilter(confColIndex, confFilter, confLabel);
+
+            divFilter.addEventListener("change", function() {
+                confFilter.value = "";  // Reset conference/league filter when division changes
+                applyFilters();
+            });
+
+            confFilter.addEventListener("change", function() {
+                divFilter.value = "";   // Reset division filter when conference/league changes
+                applyFilters();
+            });
+        });
+    </script>
+</body>
+</html>
