@@ -64,19 +64,21 @@
   </details>
 
   <details>
-    <summary>Comparisons</summary>
+  <summary>Comparisons</summary>
 
-    <div class="subheading" style="margin: 0.75em 0;">
-      <i>How did each team's actual results compare to their simulated results, Elo rating, opponent average Elo rating, and relative position of their actual points within simulated outcomes?</i>
-    </div>
+  <div class="subheading" style="margin: 0.75em 0;">
+    <i>How did each team's actual results compare to their simulated results, Elo rating, opponent average Elo rating, and relative position of their actual points within simulated outcomes?</i>
+  </div>
 
-    <div class="tab-buttons">
-      <button onclick="showTab('comparisons', 'comparisons_sim_vs_actual')">Simulated Points</button>
-      <button onclick="showTab('comparisons', 'comparisons_elo_vs_actual')">Team Elo</button>
-      <button onclick="showTab('comparisons', 'comparisons_opponent_elo_vs_actual')">Opponent Elo</button>
-      <button onclick="showTab('comparisons', 'comparisons_percentile_vs_actual')">Percentile</button>
-    </div>
-    <div class="tab-content comparisons" id="comparisons_sim_vs_actual">
+  <div class="tab-buttons">
+    <button onclick="showTab('comparisons', 'comparisons_sim_vs_actual')" class="active">Simulated Points</button>
+    <button onclick="showTab('comparisons', 'comparisons_elo_vs_actual')">Team Elo</button>
+    <button onclick="showTab('comparisons', 'comparisons_opponent_elo_vs_actual')">Opponent Elo</button>
+    <button onclick="showTab('comparisons', 'comparisons_percentile_vs_actual')">Percentile</button>
+  </div>
+
+  <div class="tab-content-group">
+    <div class="tab-content comparisons active" id="comparisons_sim_vs_actual">
       <iframe src="2015/sim_vs_actual_graph.html" style="width: 1065px;"></iframe>
     </div>
     <div class="tab-content comparisons" id="comparisons_elo_vs_actual">
@@ -88,7 +90,8 @@
     <div class="tab-content comparisons" id="comparisons_percentile_vs_actual">
       <iframe src="2015/percentile_vs_actual_graph.html" style="width: 1065px;"></iframe>
     </div>
-  </details>
+  </div>
+</details>
 
   
   <details>
@@ -432,56 +435,55 @@
   <div id="site-footer"></div>
 
   <script>
-    // Function to switch tabs
-    function showTab(group, tabId) {
-      const tabs = document.querySelectorAll('.tab-content.' + group);
-      tabs.forEach(tab => {
-        if (tab.id === tabId) {
-          tab.classList.add('active');
-        } else {
-          tab.classList.remove('active');
-        }
-      });
-    
-      const buttons = document.querySelectorAll('.tab-buttons button');
-      buttons.forEach(btn => {
-        if (btn.getAttribute('onclick').includes(tabId)) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
-    }
+  // Function to switch tabs within a specific group
+  function showTab(group, tabId) {
+    // Limit tab scope to current group only
+    const container = document.querySelector('#' + tabId).closest('.tab-content-group');
+    const tabButtonsContainer = container.previousElementSibling;
 
-    // Auto-resize all iframes on load
-    function resizeIframes() {
-      const iframes = document.querySelectorAll('iframe');
-      iframes.forEach(iframe => {
-        try {
-          // Access the iframe document height if same-origin
-          const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-          if (iframeDocument) {
-            // Calculate height by body's scrollHeight
-            const height = iframeDocument.body.scrollHeight;
-            iframe.style.height = height + 'px';
-          }
-        } catch (e) {
-          // Cross-origin - cannot access iframe content
-          // Fallback to default height or keep previous
-          console.warn('Cannot access iframe content to resize:', iframe.src);
-        }
-      });
-    }
-
-    // Resize on load and whenever iframe loads new content
-    window.addEventListener('load', () => {
-      resizeIframes();
-      const iframes = document.querySelectorAll('iframe');
-      iframes.forEach(iframe => {
-        iframe.addEventListener('load', resizeIframes);
-      });
+    const tabs = container.querySelectorAll('.tab-content.' + group);
+    tabs.forEach(tab => {
+      if (tab.id === tabId) {
+        tab.classList.add('active');
+      } else {
+        tab.classList.remove('active');
+      }
     });
-  </script>
+
+    const buttons = tabButtonsContainer.querySelectorAll('button');
+    buttons.forEach(btn => {
+      if (btn.getAttribute('onclick')?.includes(tabId)) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
+
+  // Auto-resize all iframes on load
+  function resizeIframes() {
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach(iframe => {
+      try {
+        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+        if (iframeDocument) {
+          const height = iframeDocument.body.scrollHeight;
+          iframe.style.height = height + 'px';
+        }
+      } catch (e) {
+        console.warn('Cannot access iframe content to resize:', iframe.src);
+      }
+    });
+  }
+
+  window.addEventListener('load', () => {
+    resizeIframes();
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach(iframe => {
+      iframe.addEventListener('load', resizeIframes);
+    });
+  });
+</script>
 </body>
 </html>
 
