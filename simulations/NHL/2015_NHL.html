@@ -435,32 +435,27 @@
   <div id="site-footer"></div>
 
   <script>
-  // Function to switch tabs within a specific group
   function showTab(group, tabId) {
-    // Limit tab scope to current group only
-    const container = document.querySelector('#' + tabId).closest('.tab-content-group');
-    const tabButtonsContainer = container.previousElementSibling;
+    // Find the container that holds this tab group — assuming it's inside a <details> section
+    const tabElement = document.getElementById(tabId);
+    if (!tabElement) return;
 
+    const container = tabElement.closest('details');  // could also be section or div if needed
+    if (!container) return;
+
+    // Toggle tab content within this container
     const tabs = container.querySelectorAll('.tab-content.' + group);
     tabs.forEach(tab => {
-      if (tab.id === tabId) {
-        tab.classList.add('active');
-      } else {
-        tab.classList.remove('active');
-      }
+      tab.classList.toggle('active', tab.id === tabId);
     });
 
-    const buttons = tabButtonsContainer.querySelectorAll('button');
+    // Toggle button styles within this container
+    const buttons = container.querySelectorAll('.tab-buttons button');
     buttons.forEach(btn => {
-      if (btn.getAttribute('onclick')?.includes(tabId)) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
+      btn.classList.toggle('active', btn.getAttribute('onclick')?.includes(tabId));
     });
   }
 
-  // Auto-resize all iframes on load
   function resizeIframes() {
     const iframes = document.querySelectorAll('iframe');
     iframes.forEach(iframe => {
@@ -484,6 +479,7 @@
     });
   });
 </script>
+
 </body>
 </html>
 
