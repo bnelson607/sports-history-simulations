@@ -306,7 +306,7 @@
       <iframe src="2015/Central_playoff_seed_wins.html"></iframe>
     </div>
 
-    <div class="tab-content playoff_seed_wins" id="playoff_seed_wins_pacific" style="display:none">
+    <div class="tab-content playoff_seed_wins" id="playoff_seed_wins_pacific">
       <iframe src="2015/Pacific_playoff_seed_wins.html"></iframe>
     </div>
      
@@ -438,50 +438,51 @@
   <div id="site-footer"></div>
 
   <script>
-  function showTab(group, tabId) {
-    // Find the container that holds this tab group — assuming it's inside a <details> section
-    const tabElement = document.getElementById(tabId);
-    if (!tabElement) return;
-
-    const container = tabElement.closest('details');  // could also be section or div if needed
-    if (!container) return;
-
-    // Toggle tab content within this container
-    const tabs = container.querySelectorAll('.tab-content.' + group);
-    tabs.forEach(tab => {
-      tab.classList.toggle('active', tab.id === tabId);
-    });
-
-    // Toggle button styles within this container
-    const buttons = container.querySelectorAll('.tab-buttons button');
-    buttons.forEach(btn => {
-      btn.classList.toggle('active', btn.getAttribute('onclick')?.includes(tabId));
-    });
-  }
-
-  function resizeIframes() {
+    function showTab(group, tabId) {
+      // Find the container that holds this tab group — assuming it's inside a <details> section
+      const tabElement = document.getElementById(tabId);
+      if (!tabElement) return;
+  
+      const container = tabElement.closest('details');  // could also be section or div if needed
+      if (!container) return;
+  
+      // Toggle tab content within this container
+      const tabs = container.querySelectorAll('.tab-content.' + group);
+      tabs.forEach(tab => {
+        tab.classList.toggle('active', tab.id === tabId);
+      });
+  
+      // Toggle button styles within this container
+      const buttons = container.querySelectorAll('.tab-buttons button');
+      buttons.forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('onclick')?.includes(tabId));
+      });
+    }
+  
+    function resizeIframes() {
     const iframes = document.querySelectorAll('iframe');
     iframes.forEach(iframe => {
       try {
         const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
         if (iframeDocument) {
-          const height = iframeDocument.body.scrollHeight;
-          iframe.style.height = height + 'px';
+          // Use scrollHeight or offsetHeight, whichever is bigger
+          const height = Math.max(iframeDocument.body.scrollHeight, iframeDocument.documentElement.scrollHeight);
+          iframe.style.height = height + 20 + 'px'; // add some padding (20px) for comfort
         }
       } catch (e) {
         console.warn('Cannot access iframe content to resize:', iframe.src);
       }
     });
   }
-
-  window.addEventListener('load', () => {
-    resizeIframes();
-    const iframes = document.querySelectorAll('iframe');
-    iframes.forEach(iframe => {
-      iframe.addEventListener('load', resizeIframes);
+  
+    window.addEventListener('load', () => {
+      resizeIframes();
+      const iframes = document.querySelectorAll('iframe');
+      iframes.forEach(iframe => {
+        iframe.addEventListener('load', resizeIframes);
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>
