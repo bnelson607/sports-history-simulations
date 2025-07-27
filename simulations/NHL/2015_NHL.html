@@ -40,7 +40,7 @@
 
   <details>
     <summary>Season Summary</summary>
-    <iframe src="2015/regular_season_summary.html"></iframe>
+    <iframe src="2015/regular_season_summary.html" class="extra-padding"></iframe>
   </details>
 
   <details>
@@ -56,10 +56,10 @@
     </div>
     
     <div class="tab-content games active" id="games_biggest_upsets">
-      <iframe src="2015/biggest_upsets_table.html"></iframe>
+      <iframe src="2015/biggest_upsets_table.html" class="extra-padding"></iframe>
     </div>
     <div class="tab-content games" id="games_biggest_elo_changes">
-      <iframe src="2015/biggest_elo_changes_table.html"></iframe>
+      <iframe src="2015/biggest_elo_changes_table.html" class="extra-padding"></iframe>
     </div>
   </details>
 
@@ -460,20 +460,20 @@
     }
   
     function resizeIframes() {
-    const iframes = document.querySelectorAll('iframe');
-    iframes.forEach(iframe => {
-      try {
-        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-        if (iframeDocument) {
-          // Use scrollHeight or offsetHeight, whichever is bigger
-          const height = Math.max(iframeDocument.body.scrollHeight, iframeDocument.documentElement.scrollHeight);
-          iframe.style.height = height + 40 + 'px'; // add some padding (20px) for comfort
+      const iframes = document.querySelectorAll('iframe');
+      iframes.forEach(iframe => {
+        try {
+          const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+          if (iframeDocument) {
+            const height = Math.max(iframeDocument.body.scrollHeight, iframeDocument.documentElement.scrollHeight);
+            const extra = iframe.classList.contains('extra-padding') ? 40 : 20;
+            iframe.style.height = (height + extra) + 'px';
+          }
+        } catch (e) {
+          console.warn('Cannot access iframe content to resize:', iframe.src);
         }
-      } catch (e) {
-        console.warn('Cannot access iframe content to resize:', iframe.src);
-      }
-    });
-  }
+      });
+    }
   
     window.addEventListener('load', () => {
       resizeIframes();
