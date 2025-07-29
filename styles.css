@@ -455,11 +455,9 @@ iframe {
 
 .related-articles {
   margin: 60px 0;
-  padding: 20px 30px;
-  background-color: white;
-  border-left: 6px solid #002744;
+  padding: 30px;
+  background-color: #f1f1f1;         /* Updated background color */
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 
 .related-articles h2 {
@@ -472,22 +470,24 @@ iframe {
 
 .related-grid {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 20px;
+  flex-wrap: nowrap;                /* Prevent wrapping on desktop */
 }
 
 .related-card {
-  flex: 1 1 calc(33% - 20px);
-  min-width: 260px;
-  background-color: #FFF4C2;
+  flex: 1 1 0;
+  background-color: white;
   border-radius: 8px;
-  padding: 15px 20px;
+  padding: 20px;
   text-decoration: none;
   color: #1C1C1C;
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .related-card:hover {
@@ -498,7 +498,7 @@ iframe {
 .related-card h3 {
   font-size: 20px;
   color: #002744;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-family: 'Barlow Semi Condensed', sans-serif;
   letter-spacing: 0.5px;
 }
@@ -508,3 +508,14 @@ iframe {
   line-height: 1.4;
   margin: 0;
 }
+
+/* Responsive behavior on narrower screens */
+@media (max-width: 900px) {
+  .related-grid {
+    flex-wrap: wrap;
+  }
+  .related-card {
+    flex: 1 1 100%;
+  }
+}
+
