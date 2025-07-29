@@ -475,24 +475,30 @@ iframe {
 .related-grid {
   display: flex;                      /* Flexbox layout */
   justify-content: space-between;    /* Evenly distribute cards with space between */
-  gap: 20px;                          /* Horizontal gap between cards */
+  gap: 20px;                         /* Horizontal gap between cards */
   flex-wrap: nowrap;                 /* Keep all 3 cards on the same row */
+  align-items: stretch;              /* Make all cards equal height */
 }
 
 /* Individual article card */
 .related-card {
-  flex: 1 1 0;                        /* Equal width, no shrinking, grow if needed */
+  flex: 1 1 0;                       /* Equal width, no shrinking, grow if needed */
   background-color: white;           /* White card background */
   border-radius: 8px;                /* Rounded corners */
-  padding: 20px;                     /* Inner padding */
+  padding: 20px;                    /* Inner padding */
   text-decoration: none;             /* Remove underline from link */
-  color: #1C1C1C;                    /* Dark text (unchanged) */
+  color: #1C1C1C;                   /* Dark text (unchanged) */
   border: 1px solid #999999;         /* Standardized border color */
   box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Soft shadow */
   transition: transform 0.2s ease, box-shadow 0.2s ease; /* Hover animation */
-  display: flex;                     /* Make the card content flexible */
+  display: flex;                    /* Make the card content flexible */
   flex-direction: column;           /* Stack title and paragraph vertically */
-  justify-content: space-between;   /* Even spacing inside card */
+  justify-content: flex-start;      /* Align items at top */
+}
+
+/* Spacer div to push content up and keep equal heights */
+.related-card .spacer {
+  flex-grow: 1;                     /* Takes remaining space at bottom */
 }
 
 /* Hover effect on cards */
@@ -515,7 +521,8 @@ iframe {
 .related-card p {
   font-size: 16px;                   /* Standard paragraph size */
   line-height: 1.4;                  /* Comfortable line spacing */
-  margin: 0;                         /* No extra margin */
+  margin: 0;                        /* No extra margin */
+  flex-grow: 0;                    /* Prevent description from growing */
 }
 
 /* Responsive fallback: stack cards vertically on narrow screens */
