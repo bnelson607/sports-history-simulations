@@ -629,15 +629,17 @@ iframe {
   --right-color: #337ab7;
 }
 
+/* Container that limits overall width and centers content */
 .bracket-container {
   max-width: 1160px;
   width: 100%;
   overflow-x: auto;
   padding-bottom: 10px;
+  margin: 0 auto;
   -webkit-overflow-scrolling: touch;
-  margin: 0 auto; /* Centers the container horizontally */
 }
 
+/* Main bracket layout */
 .bracket {
   display: flex;
   justify-content: center;
@@ -646,12 +648,29 @@ iframe {
   min-width: 1160px;
 }
 
+/* Each region (left, right, finals) */
 .region {
   display: flex;
   flex-direction: row;
   gap: 16px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
+/* Apply background colors to each region */
+#region.left {
+  background-color: #fce4e1; /* Light red */
+}
+
+#region.right {
+  background-color: #d9e7fb; /* Light blue */
+}
+
+#region.finals {
+  background-color: #eee; /* Light gray */
+}
+
+/* Each round inside a region */
 .round {
   display: flex;
   flex-direction: column;
@@ -660,47 +679,60 @@ iframe {
   position: relative;
 }
 
+/* Title for each round */
+.round-title {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Each matchup (two teams) */
 .matchup {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
+/* Team cell container */
 .team {
   display: flex;
   align-items: center;
   width: 148px;
   border-radius: 6px;
   border: 1px solid #ccc;
-  user-select: none;
   font-size: 14px;
+  user-select: none;
 }
 
+/* Seed (left side of team cell) */
 .seed {
   width: 20px;
   text-align: center;
   font-weight: bold;
   padding: 6px 0;
-  border-right: 1px solid #ccc;
   font-size: 12px;
+  border-right: 1px solid #ccc;
   user-select: text;
 }
 
+/* Team name (middle) */
 .name {
   flex-grow: 1;
   padding: 6px 8px;
 }
 
+/* Score (right side of team cell) */
 .score {
   width: 30px;
   text-align: center;
-  border-left: 1px solid #ccc;
   padding: 6px 0;
+  border-left: 1px solid #ccc;
+  font-size: 12px;
   user-select: text;
   cursor: default;
-  font-size: 12px;
 }
 
+/* Style teams by region using parent IDs */
 #left .team {
   background-color: #fce4e1;
   border-color: var(--left-color);
@@ -719,29 +751,29 @@ iframe {
   color: #444;
 }
 
-.round-title {
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
+/* Responsive tweaks for mobile */
 @media (max-width: 600px) {
   .team {
     width: 140px;
     font-size: 14px;
   }
+
   .seed {
     width: 25px;
     font-size: 13px;
   }
+
   .score {
     width: 30px;
     font-size: 13px;
   }
+
   .round {
     gap: 25px;
   }
+
   .matchup {
     gap: 3px;
   }
 }
+
