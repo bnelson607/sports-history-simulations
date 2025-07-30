@@ -624,19 +624,25 @@ iframe {
   Playoff Bracket
 -----------------------------------------------------------*/
 
+:root {
+  --left-color: #d9534f;
+  --right-color: #337ab7;
+}
+
 .bracket-container {
   max-width: 1160px;
-  margin: 0 auto;
+  width: 100%;
   overflow-x: auto;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .bracket {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
   min-width: 1160px;
-  font-family: sans-serif;
 }
 
 .region {
@@ -648,50 +654,93 @@ iframe {
 .round {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  justify-content: center;
+  gap: 40px;
+  position: relative;
 }
 
 .matchup {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 }
 
 .team {
   display: flex;
   align-items: center;
-  padding: 4px 8px;
-  background-color: #eee;
-  border-radius: 4px;
-  width: 160px;
-  justify-content: space-between;
+  width: 148px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  user-select: none;
   font-size: 14px;
-}
-
-.left .team {
-  background-color: #ffdddd;
-}
-
-.right .team {
-  background-color: #ddeaff;
 }
 
 .seed {
   width: 20px;
-  text-align: right;
-  margin-right: 6px;
-  flex-shrink: 0;
+  text-align: center;
   font-weight: bold;
+  padding: 6px 0;
+  border-right: 1px solid #ccc;
+  font-size: 12px;
+  user-select: text;
 }
 
 .name {
   flex-grow: 1;
-  text-align: left;
+  padding: 6px 8px;
 }
 
 .score {
   width: 30px;
-  text-align: right;
-  margin-left: 6px;
-  flex-shrink: 0;
+  text-align: center;
+  border-left: 1px solid #ccc;
+  padding: 6px 0;
+  user-select: text;
+  cursor: default;
+  font-size: 12px;
+}
+
+#left .team {
+  background-color: #fce4e1;
+  border-color: var(--left-color);
+  color: var(--left-color);
+}
+
+#right .team {
+  background-color: #d9e7fb;
+  border-color: var(--right-color);
+  color: var(--right-color);
+}
+
+#finals .team {
+  background-color: #ddd;
+  border-color: #999;
+  color: #444;
+}
+
+.round-title {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .team {
+    width: 140px;
+    font-size: 14px;
+  }
+  .seed {
+    width: 25px;
+    font-size: 13px;
+  }
+  .score {
+    width: 30px;
+    font-size: 13px;
+  }
+  .round {
+    gap: 25px;
+  }
+  .matchup {
+    gap: 3px;
+  }
 }
