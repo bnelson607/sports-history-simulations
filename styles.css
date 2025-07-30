@@ -621,171 +621,164 @@ iframe {
 
 
 /*---------------------------------------------------------
-  Playoff Bracket CSS with detailed comments
+  Playoff Bracket CSS with inline comments
 -----------------------------------------------------------*/
 
-/* Define custom colors for left and right sides */
 :root {
-  --left-color: #d9534f;   /* Red shade for left */
-  --right-color: #337ab7;  /* Blue shade for right */
+  --left-color: #d9534f;   /* Red tone for left conference */
+  --right-color: #337ab7;  /* Blue tone for right conference */
 }
 
-/* Container that limits overall width, centers horizontally, 
-   and enables horizontal scrolling on small screens */
+/* Container for the entire bracket */
 .bracket-container {
-  max-width: 1160px;       /* Maximum width of bracket */
-  width: 100%;             /* Full width up to max */
-  overflow-x: auto;        /* Allow horizontal scroll if needed */
-  padding-bottom: 10px;    /* Padding below container */
-  margin: 0 auto;          /* Center container horizontally */
+  max-width: 1160px;             /* Max width of container */
+  width: 100%;                  /* Full width on smaller screens */
+  overflow-x: auto;             /* Horizontal scrolling if needed */
+  padding-bottom: 10px;         /* Space below for scrollbar or breathing room */
+  margin: 0 auto;               /* Center container horizontally */
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
-/* Main bracket flex container holding the three regions (left, finals, right) */
+/* Main bracket flex container */
 .bracket {
-  display: flex;
-  justify-content: center; /* Center regions horizontally */
-  align-items: center;     /* Vertically center contents */
-  gap: 16px;               /* Space between the three regions */
-  min-width: 1160px;       /* Prevent shrinking below this width */
+  display: flex;                /* Use flexbox */
+  justify-content: center;      /* Center regions horizontally */
+  align-items: center;          /* Center regions vertically */
+  gap: 16px;                   /* Space between regions */
+  min-width: 1160px;           /* Prevent shrinking below this width */
 }
 
-/* Each region (left, right, finals) holds rounds in a row */
-/* Removed padding to reduce unwanted space inside each region */
+/* Each conference or finals region */
 .region {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;               /* Gap between rounds within a region */
-  border-radius: 10px;     /* Rounded corners */
-  padding: 0;              /* Removed padding to reduce internal spacing */
+  display: flex;               /* Flex container */
+  flex-direction: row;         /* Lay out children horizontally */
+  gap: 16px;                   /* Gap between rounds */
+  padding: 10px;               /* Padding inside region */
+  border-radius: 10px;         /* Rounded corners */
 }
 
-/* Left region styling */
-#left {
-  background-color: #fce4e1; /* Light red background */
-  margin-right: 8px;          /* Small margin separating it from finals */
+/* Background and margin for left region */
+#region.left {
+  background-color: #fce4e1;   /* Light red background */
 }
 
-/* Right region styling */
-#right {
-  background-color: #d9e7fb; /* Light blue background */
-  margin-left: 8px;           /* Small margin separating it from finals */
+/* Background and margin for right region */
+#region.right {
+  background-color: #d9e7fb;   /* Light blue background */
 }
 
-/* Finals (center) region styling */
-#finals {
-  background-color: #eee;     /* Light gray background */
-  margin-left: 8px;           /* Small margin on left */
-  margin-right: 8px;          /* Small margin on right */
+/* Background and margin for finals region */
+#region.finals {
+  background-color: #eee;      /* Light gray background */
+  margin-left: 8px;            /* Margin left for spacing */
+  margin-right: 8px;           /* Margin right for spacing */
 }
 
-/* Each round inside a region is a vertical flex container */
+/* Each round container */
 .round {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 20px;                 /* Vertical spacing between matchups */
-  position: relative;        /* For potential future positioning */
+  display: flex;               /* Flex container */
+  flex-direction: column;      /* Stack matchups vertically */
+  justify-content: center;     /* Center vertically */
+  gap: 20px;                  /* Space between matchups */
+  position: relative;          /* For any absolute children positioning */
 }
 
-/* Title for each round centered with margin below */
+/* Title for each round */
 .round-title {
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 10px;
+  text-align: center;          /* Center text */
+  font-weight: bold;           /* Bold font */
+  margin-bottom: 10px;         /* Space below title */
 }
 
-/* Each matchup holds two teams stacked vertically */
+/* Each matchup container */
 .matchup {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;                  /* Small gap between teams */
+  display: flex;               /* Flex container */
+  flex-direction: column;      /* Stack two teams vertically */
+  gap: 5px;                   /* Space between the two teams */
 }
 
-/* Team cell container with fixed width and border */
+/* Team container */
 .team {
-  display: flex;
-  align-items: center;
-  width: 144px;              /* Fixed width for each team cell */
-  border-radius: 6px;
-  border: 1px solid #ccc;    /* Light gray border */
-  font-size: 14px;
-  user-select: none;         /* Prevent text selection */
+  display: flex;               /* Flex container */
+  align-items: center;         /* Vertically center content */
+  width: 144px;                /* Fixed width */
+  border-radius: 6px;          /* Rounded corners */
+  border: 1px solid #ccc;      /* Light gray border */
+  font-size: 14px;             /* Font size */
+  user-select: none;           /* Prevent text selection */
 }
 
-/* Seed section on left side of team cell */
+/* Seed number */
 .seed {
-  width: 20px;
-  text-align: center;
-  font-weight: bold;
-  padding: 6px 0;
-  font-size: 12px;
-  border-right: 1px solid #ccc; /* Vertical border between seed and name */
-  user-select: text;             /* Allow seed text selection */
+  width: 20px;                 /* Fixed width */
+  text-align: center;          /* Center text */
+  font-weight: bold;           /* Bold font */
+  padding: 6px 0;              /* Vertical padding */
+  font-size: 12px;             /* Smaller font */
+  border-right: 1px solid #ccc; /* Right border to separate from name */
+  user-select: text;           /* Allow selecting seed */
 }
 
-/* Team name fills available space */
+/* Team name */
 .name {
-  flex-grow: 1;
-  padding: 6px 8px;
+  flex-grow: 1;                /* Take remaining horizontal space */
+  padding: 6px 8px;            /* Padding inside */
 }
 
-/* Score section on right side of team cell */
+/* Score container */
 .score {
-  width: 30px;
-  text-align: center;
-  padding: 6px 0;
-  border-left: 1px solid #ccc;  /* Vertical border between name and score */
-  font-size: 12px;
-  user-select: text;             /* Allow score text selection */
-  cursor: default;               /* Default cursor, no editing */
+  width: 30px;                 /* Fixed width */
+  text-align: center;          /* Center text */
+  padding: 6px 0;              /* Vertical padding */
+  border-left: 1px solid #ccc; /* Left border to separate from name */
+  font-size: 12px;             /* Smaller font */
+  user-select: text;           /* Allow selecting score */
+  cursor: default;             /* Normal cursor (not editable) */
 }
 
-/* Style teams by region using parent IDs */
-
-/* Left side teams colored red */
+/* Style teams in left region */
 #left .team {
-  background-color: #fce4e1;
-  border-color: var(--left-color);
-  color: var(--left-color);
+  background-color: #fce4e1;   /* Light red background */
+  border-color: var(--left-color); /* Red border from variable */
+  color: var(--left-color);    /* Red text */
 }
 
-/* Right side teams colored blue */
+/* Style teams in right region */
 #right .team {
-  background-color: #d9e7fb;
-  border-color: var(--right-color);
-  color: var(--right-color);
+  background-color: #d9e7fb;   /* Light blue background */
+  border-color: var(--right-color); /* Blue border from variable */
+  color: var(--right-color);   /* Blue text */
 }
 
-/* Finals teams colored neutral gray */
+/* Style teams in finals */
 #finals .team {
-  background-color: #ddd;
-  border-color: #999;
-  color: #444;
+  background-color: #ddd;      /* Gray background */
+  border-color: #999;          /* Darker gray border */
+  color: #444;                 /* Dark gray text */
 }
 
-/* Responsive tweaks for smaller screens */
+/* Responsive adjustments for small screens */
 @media (max-width: 600px) {
   .team {
-    width: 140px;
-    font-size: 14px;
+    width: 140px;              /* Slightly narrower team container */
+    font-size: 14px;           /* Font size */
   }
 
   .seed {
-    width: 25px;
-    font-size: 13px;
+    width: 25px;               /* Wider seed area */
+    font-size: 13px;           /* Larger font */
   }
 
   .score {
-    width: 30px;
-    font-size: 13px;
+    width: 30px;               /* Keep same width */
+    font-size: 13px;           /* Larger font */
   }
 
   .round {
-    gap: 25px;
+    gap: 25px;                 /* More space between matchups */
   }
 
   .matchup {
-    gap: 3px;
+    gap: 3px;                  /* Less gap between teams */
   }
 }
