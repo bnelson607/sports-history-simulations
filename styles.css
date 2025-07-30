@@ -682,17 +682,18 @@ iframe {
 }
 
 /* Title for each round */
+/* Consistent margin-bottom used to separate title from matchups everywhere */
 .round-title {
   text-align: center;          /* Center text */
   font-weight: bold;           /* Bold font */
-  margin-bottom: 10px;         /* Space below title */
+  margin-bottom: 8px;          /* Space below title for vertical spacing */
 }
 
 /* Each matchup container */
 .matchup {
   display: flex;               /* Flex container */
   flex-direction: column;      /* Stack two teams vertically */
-  gap: 5px;                   /* Space between the two teams */
+  gap: 5px;                    /* Space between the two teams */
 }
 
 /* Team container */
@@ -721,7 +722,7 @@ iframe {
   text-align: center;              /* Center text */
   padding: 4px 0;                  /* Vertical padding */
   font-size: 14px;                 /* Smaller font */
-/*   border-right: 1px solid #999999; /* Right border to separate from name */ */
+  /* border-right: 1px solid #999999; /* Right border to separate from name */
   user-select: text;               /* Allow selecting seed */
 }
 
@@ -736,7 +737,7 @@ iframe {
   width: 30px;                    /* Fixed width */
   text-align: center;             /* Center text */
   padding: 4px 0;                 /* Vertical padding */
-/*   border-left: 1px solid #999999; /* Left border to separate from name */ */
+  /* border-left: 1px solid #999999; /* Left border to separate from name */
   font-size: 14px;                /* Smaller font */
   user-select: text;              /* Allow selecting score */
   cursor: default;                /* Normal cursor (not editable) */
@@ -744,9 +745,9 @@ iframe {
 
 /* Style teams in left region */
 #left .team {
-  background-color: #fce4e1;   /* Light red background */
+  background-color: #fce4e1;       /* Light red background */
   border-color: var(--left-color); /* Red border from variable */
-  color: var(--left-color);    /* Red text */
+  color: var(--left-color);        /* Red text */
 }
 
 /* Style teams in right region */
@@ -759,46 +760,48 @@ iframe {
 /* Style teams in finals */
 #finals .team {
   background-color: #ddd;      /* Gray background */
-  border-color: #999999;          /* Darker gray border */
+  border-color: #999999;       /* Darker gray border */
   color: #444;                 /* Dark gray text */
 }
 
 /* Play-In container placed below bracket */
+/* Removed gap here to rely on margin-bottom on .round-title for vertical spacing */
 .playin-container {
   max-width: 1160px;
-  margin: 16px auto 0 auto;
+  margin: 16px auto 0 auto;    /* Margin to separate container from above */
   padding: 0 10px;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  flex-direction: column;      /* Stack heading and matches vertically */
   align-items: center;
+  gap: 0;                      /* No gap — spacing done by .round-title margin */
 }
 
+/* Play-in matchups container — horizontal row of matches */
 .playin-matchups {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 24px;            /* Space between individual matches */
-  flex-wrap: nowrap;    /* Prevent wrapping, force horizontal line */
-  overflow-x: auto;     /* Allow horizontal scroll on narrow screens */
-  padding-bottom: 10px; /* Some breathing room if scroll appears */
+  flex-direction: row;         /* Place matches side-by-side */
+  justify-content: center;     /* Center horizontally */
+  gap: 24px;                   /* Space between individual matches */
+  flex-wrap: nowrap;           /* Prevent wrapping to next line */
+  overflow-x: auto;            /* Allow horizontal scroll on narrow screens */
+  padding-bottom: 10px;        /* Space below if scroll appears */
 }
 
 /* Responsive adjustments for small screens */
 @media (max-width: 600px) {
   .team {
     width: 140px;              /* Slightly narrower team container */
-    font-size: 14px;           /* Font size */
+    font-size: 12px;           /* Font size */
   }
 
   .seed {
     width: 25px;               /* Wider seed area */
-    font-size: 13px;           /* Larger font */
+    font-size: 12px;           /* Larger font */
   }
 
   .score {
     width: 30px;               /* Keep same width */
-    font-size: 13px;           /* Larger font */
+    font-size: 12px;           /* Larger font */
   }
 
   .round {
@@ -809,6 +812,7 @@ iframe {
     gap: 3px;                  /* Less gap between teams */
   }
 
+  /* On small screens, stack play-in matches vertically */
   .playin-matchups {
     flex-direction: column;
     flex-wrap: nowrap;
