@@ -886,28 +886,25 @@ iframe {
   /* Play-in games container styling:
      - Full width
      - Horizontally centered */
-  .playin-container {
-    display: flex !important;
-    justify-content: center !important;
-    width: 100% !important;
-    padding: 0 10px !important;       /* Padding for breathing room */
+ .playin-container {
+    overflow-x: auto !important;           /* scroll container like .bracket-container */
+    -webkit-overflow-scrolling: touch !important;
+    padding: 0 10px !important;
     box-sizing: border-box !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
   }
 
-  /* Play-in matchups row:
-     - Horizontal scrolling if content overflows
-     - Side-by-side layout with spacing */
   .playin-matchups {
-    display: flex !important;
-    flex-direction: row !important;
+    display: inline-flex !important;       /* same as .bracket */
     flex-wrap: nowrap !important;
-    gap: 16px !important;
+    justify-content: flex-start !important;
     align-items: center !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-  
-    /* KEY FIXES */
-    width: max-content !important;       /* Let the row expand beyond viewport if needed */
-    min-width: 0 !important;          /* Prevent collapsing smaller than screen */
+    gap: 16px !important;
+    width: max-content !important;         /* allow row to be wider than screen */
+    min-width: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
   }
 }
