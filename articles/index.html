@@ -83,6 +83,16 @@
         <div id="site-footer"></div>
         
         
-        <script src="/sports-history-simulations/scripts/main.js"></script>
+        <!-- Load JavaScript -->
+        <script src="path/to/main.js"></script>
+        
+        <!-- Custom script for cache busting -->
+        <script>
+          document.querySelectorAll('iframe').forEach(iframe => {
+            const url = new URL(iframe.src);
+            url.searchParams.set('v', new Date().toISOString().slice(0,10).replace(/-/g, ''));
+            iframe.src = url.toString();
+          });
+        </script>
     </body>
 </html>
