@@ -804,74 +804,80 @@ iframe {
   Responsive Tweaks for Smaller Screens
 -------------------------------------------*/
 @media (max-width: 600px) {
-  /* Shrink team containers and font sizes for better fit on small screens */
+  /* Shrink team containers and font sizes for better fit */
   .team {
-    width: 140px;           /* Narrower team box */
-    font-size: 12px;        /* Smaller font */
+    width: 140px;
+    font-size: 12px;
   }
 
   .seed {
-    width: 25px;            /* Slightly wider seed area for readability */
+    width: 25px;
     font-size: 12px;
   }
 
   .score {
-    width: 30px;            /* Consistent score width */
+    width: 30px;
     font-size: 12px;
   }
 
-  /* Add vertical space between matchups in a round */
+  /* Increase vertical space between matchups and remove side margins/padding */
   .round {
-    gap: 25px;              /* More spacing between matchups for clarity */
-
-    /* Remove any left/right margin to prevent unwanted whitespace */
+    gap: 25px;
     margin-left: 0 !important;
     margin-right: 0 !important;
-
-    /* Remove any padding on left/right edges to align flush with container */
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
 
-  /* Reduce gap between teams in a matchup for compactness */
+  /* Reduce gap between teams inside each matchup */
   .matchup {
     gap: 3px;
   }
 
-  /* Play-in matchups should remain side-by-side horizontally */
+  /* Play-in games container - center content */
+  .playin-container {
+    display: flex;
+    justify-content: center;  /* Center play-in games container */
+    width: 100%;              /* Full width to match bracket container */
+    padding: 0 10px;          /* Small horizontal padding for breathing room */
+    box-sizing: border-box;   /* Include padding in width calculation */
+  }
+
+  /* Play-in matchups - keep side-by-side with scrolling if needed */
   .playin-matchups {
-    flex-direction: row !important;  /* Force horizontal layout */
-    flex-wrap: nowrap;                /* Prevent wrapping to new line */
-    gap: 16px;                       /* Space between matchups */
-    align-items: center;             /* Vertically center teams */
-    
-    /* Enable horizontal scrolling on overflow */
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
-  }
-
-  /* Bracket container adjustments for mobile */
-  .bracket-container {
-    display: block;                  /* Disable flex centering */
-    overflow-x: auto;                /* Allow horizontal scroll if needed */
+    display: flex;
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+    gap: 16px;
+    align-items: center;
+    overflow-x: auto;               /* Enable horizontal scroll if overflow */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    
-    padding-left: 0;                 /* Remove left padding to align flush */
+    max-width: 1160px;              /* Limit max width to bracket width */
+    margin: 0 auto;                 /* Center horizontally */
   }
 
-  /* Bracket flex container tweaks */
+  /* Bracket container - remove flex centering and allow horizontal scroll */
+  .bracket-container {
+    display: block;              /* Disable flex centering */
+    overflow-x: auto;            /* Enable horizontal scroll */
+    -webkit-overflow-scrolling: touch;  /* Smooth scrolling on iOS */
+    padding-left: 0;             /* Remove left padding */
+    padding-right: 0;            /* Remove right padding */
+  }
+
+  /* Bracket flex container - align left but fill container width */
   .bracket {
-    display: flex;                   /* Keep flex layout for rounds */
-    justify-content: flex-start;     /* Align all bracket regions flush left */
-    
-    min-width: unset !important;    /* Remove any forced minimum width */
-    width: max-content;              /* Let width be based on actual content size */
-    margin: 0;                      /* Remove automatic centering margins */
+    display: flex;                   /* Flex layout for regions */
+    justify-content: flex-start;     /* Align bracket regions flush left */
+    min-width: 100%;                 /* At least fill container width */
+    width: auto;                    /* Allow flex to control width */
+    margin: 0;                      /* Remove auto margins */
   }
 
-  /* Remove padding inside each region to prevent extra space */
+  /* Remove padding inside regions to avoid whitespace */
   .region {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
 }
+
