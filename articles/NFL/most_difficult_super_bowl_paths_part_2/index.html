@@ -293,59 +293,21 @@
             
             <img src="most_difficult_probability_path.png" alt="Probability of Survival by Round" class="standalone-image" />
         </div>
+
         
         <div id="site-footer"></div>
+
         
+        <!-- Load JavaScript -->
+        <script src="path/to/main.js"></script>
+        
+        <!-- Custom script for cache busting -->
         <script>
-            fetch('/sports-history-simulations/header.html')
-              .then(response => response.text())
-              .then(data => {
-                document.getElementById('header').innerHTML = data;
-              });
-            
-            // Load footer
-            fetch('/sports-history-simulations/footer.html')
-            .then(response => response.text())
-            .then(data => {
-              document.getElementById('site-footer').innerHTML = data;
-            });
-        </script>
-        <script>
-            let isReloadingIframe = false;
-            
-            function showTab(group, id) {
-              if (isReloadingIframe) {
-                setTimeout(() => showTab(group, id), 100);
-                return;
-              }
-            
-              document.querySelectorAll('.tab-content.' + group).forEach(el => el.style.display = 'none');
-            
-              const tab = document.getElementById(id);
-              tab.style.display = 'block';
-            
-              const container = event.target.closest('.tab-buttons');
-              if (container) {
-                container.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
-                event.target.classList.add('active');
-              }
-            
-              const iframe = tab.querySelector('iframe');
-              if (iframe && !iframe.dataset.reloaded) {
-                isReloadingIframe = true;
-            
-                const originalSrc = iframe.src;
-                iframe.src = '';
-            
-                setTimeout(() => {
-                  iframe.src = originalSrc + (originalSrc.includes('?') ? '&' : '?') + 'reload';
-                  iframe.dataset.reloaded = "true";
-                  iframe.onload = () => {
-                    isReloadingIframe = false;
-                  };
-                }, 10);
-              }
-            }
+          document.querySelectorAll('iframe').forEach(iframe => {
+            const url = new URL(iframe.src);
+            url.searchParams.set('v', new Date().toISOString().slice(0,10).replace(/-/g, ''));
+            iframe.src = url.toString();
+          });
         </script>
     </body>
 </html>
