@@ -14,7 +14,6 @@ body {
   padding: 0;                            /* Remove default padding */
   max-width: 1280px;                     /* Limit max width for readability */
   line-height: 1.6;                      /* Increase line spacing */
-  overflow-x: hidden;                    /* Prevent horizontal scroll on the entire page */
 }
 
 a {
@@ -644,20 +643,23 @@ iframe {
 /* Both containers treated as inline blocks so they scroll together */
 .playin-container,
 .bracket-container {
-  display: inline-block;               /* Sit side-by-side inside .playoffs-wrapper */
-  vertical-align: top;                 /* Align tops */
-  min-width: 1160px;                   /* Match bracket width for consistency */
-  white-space: normal;                 /* Allow internal content to wrap normally */
-  text-align: left; /* Reset child text alignment */
+  display: block;           /* Block layout for natural stacking */
+  vertical-align: top;      /* Align tops */
+  min-width: 0;             /* Allow shrinking on smaller screens */
+  max-width: 100%;          /* Never exceed viewport width */
+  white-space: normal;      /* Allow wrapping */
+  text-align: left;         /* Reset child text alignment */
+  box-sizing: border-box;   /* Include padding in width */
 }
 
 /* Container for the entire bracket */
 .bracket-container {
+  max-width: 1160px;
   width: 100%;                        /* Responsive width */
   overflow-x: auto;                   /* Horizontal scroll if needed */
   padding-bottom: 10px;               /* Space for scroll bar */
   margin: 0 auto;                     /* Center horizontally */
-  -webkit-overflow-scrolling: touch; /* Smooth iOS scrolling */
+  -webkit-overflow-scrolling: touch;  /* Smooth iOS scrolling */
   box-sizing: border-box;             /* Include padding in width */
 }
 
