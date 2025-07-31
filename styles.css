@@ -819,13 +819,19 @@ iframe {
   Responsive Tweaks for Smaller Screens
 -------------------------------------------*/
 @media (max-width: 600px) {
-  /* Remove forced minimum widths to allow shrinking and scrolling */
-  .bracket-container,
-  .playin-container {
-    min-width: 0 !important;        /* Allow containers to shrink */
-    max-width: 100% !important;     /* Prevent containers from exceeding viewport */
-    overflow-x: auto !important;    /* Enable horizontal scrolling when needed */
-    box-sizing: border-box;          /* Include padding/borders in size */
+  
+  .playoffs-wrapper {
+    white-space: normal !important; /* allow wrapping, so containers stack vertically */
+  }
+
+  .playin-container,
+  .bracket-container {
+    display: block !important;       /* stack vertically instead of side-by-side */
+    width: 100% !important;          /* full width */
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;       /* remove any horizontal margin */
+    margin-right: 0 !important;
   }
 
   /* Bracket flex container:
