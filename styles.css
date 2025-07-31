@@ -130,7 +130,7 @@ nav {
   display: flex;                     /* Use flexbox layout */
   justify-content: center;           /* Center nav items horizontally */
   gap: 16px;                        /* Space between nav items */
-  flex-wrap: wrap;                  /* Wrap items on small screens */
+  flex-wrap: nowrap;                  /* Wrap items on small screens */
   font-family: 'Bebas Neue', sans-serif; /* Nav font */
   font-size: 20px;               /* Larger nav text */
   letter-spacing: 1px;              /* Spacing between letters */
@@ -826,19 +826,29 @@ iframe {
     overflow-x: auto;
     white-space: nowrap;
     position: static; /* Remove positioning to prevent clipping on iOS */
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
   }
 
+  nav > * {
+    display: inline-block; /* Keep nav items inline */
+    white-space: nowrap;   /* Prevent items wrapping */
+  }
+  
   .dropdown {
-    position: static; /* Prevent dropdown clipping inside nav */
+    position: relative; /* Prevent dropdown clipping inside nav */
+    display: inline-block;
   }
 
   .dropdown-content {
-    position: fixed !important;  /* Fix dropdown relative to viewport */
-    top: 50px !important;        /* Adjust top position depending on nav height */
-    left: auto !important;       /* Reset left */
+    position: absolute !important;  /* Fix dropdown relative to viewport */
+    top: 100% !important;        /* Adjust top position depending on nav height */
+    left: 0 !important;       /* Reset left */
     right: auto !important;
     min-width: 150px !important; /* Slightly wider for mobile */
     z-index: 10000 !important;   /* Very high */
+    border-radius: 4px;
+    min-width: 120px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   }
 
   .playoffs-wrapper {
