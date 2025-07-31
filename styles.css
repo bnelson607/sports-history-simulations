@@ -135,7 +135,11 @@ nav {
   font-size: 20px;               /* Larger nav text */
   letter-spacing: 1px;              /* Spacing between letters */
   color: white;                    /* White text color */
+  position: sticky;               /* 🔹 Keeps nav bar visible on scroll */
+  top: 0;
+  z-index: 1000;
 }
+
 .nav-divider {
   border-left: 1px solid white;      /* Vertical white divider line */
   height: 24px;                      /* Height of divider */
@@ -148,30 +152,38 @@ nav {
   position: relative;                /* Position relative for absolute child */
   display: inline-block;             /* Inline block for layout */
 }
+
 .dropbtn {
-  background-color: #002744;          /* Match nav background */
-  color: white;                     /* White text */
-  padding: 10px;                    /* Padding inside button */
-  font-size: 20px;                  /* Large font */
-  border: none;                    /* Remove border */
-  cursor: pointer;                 /* Pointer cursor */
-  border-radius: 4px;              /* Rounded corners */
+  background-color: transparent;     /* 🔹 Changed from solid to transparent */
+  color: white;                      /* White text */
+  padding: 10px 14px;                /* 🔹 Slightly more horizontal padding */
+  font-size: 20px;                   /* Large font */
+  border: none;                      /* Remove border */
+  cursor: pointer;                   /* Pointer cursor */
+  border-radius: 4px;                /* Rounded corners */
   font-family: 'Bebas Neue', sans-serif; /* Button font */
   transition: background-color 0.3s ease; /* Smooth hover transition */
+  text-align: center;               /* 🔹 Improves alignment in mobile view */
+  width: auto;                      /* 🔹 Explicit width auto in desktop view */
 }
-.dropbtn:hover {
-  background-color: #004080;          /* Slightly lighter navy on hover */
+
+.dropbtn:hover,
+.dropdown:hover > .dropbtn {         /* 🔹 Ensures hover also applies on dropdown open */
+  background-color: #004080;         /* Slightly lighter navy on hover */
 }
+
 .dropdown-content {
   display: none;                     /* Hidden by default */
   position: absolute;               /* Positioned absolutely */
   background-color: white;           /* White background */
   min-width: 120px;                 /* Minimum width */
-  z-index: 1;                      /* Stack above other elements */
+  z-index: 1;                       /* Stack above other elements */
   box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Shadow effect */
   border-radius: 4px;               /* Rounded corners */
   font-size: 18px;                  /* Slightly larger font */
+  padding: 4px 0;                   /* 🔹 Adds vertical spacing */
 }
+
 .dropdown-content a {
   display: block;                   /* Block link for full clickable area */
   padding: 10px 16px;              /* Padding inside links */
@@ -181,46 +193,82 @@ nav {
   font-family: 'Bebas Neue', sans-serif; /* Dropdown font */
   white-space: nowrap;             /* Prevent link text wrapping */
 }
+
 .dropdown-content a:hover {
-  background-color: #f1f1f1;       /* Light gray background on hover */
+  background-color: #f1f1f1;        /* Light gray background on hover */
 }
+
 .dropdown:hover .dropdown-content {
-  display: block;                 /* Show dropdown on hover */
+  display: block;                  /* Show dropdown on hover */
 }
 
 /* Submenu */
 .submenu {
   position: relative;              /* For absolute submenu positioning */
 }
+
 .submenu > a::after {
   content: " ▶";                  /* Arrow symbol after submenu link */
   float: right;                   /* Float arrow to right */
 }
+
 .submenu-content {
   display: none;                   /* Hidden by default */
   position: absolute;             /* Absolute positioning */
   top: 0;
-  left: 100%;                    /* Position to right of parent */
+  left: 100%;                     /* Position to right of parent */
   background-color: white;         /* White background */
-  min-width: 120px;              /* Minimum width */
+  min-width: 120px;               /* Minimum width */
   box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* Shadow */
   border-radius: 4px;             /* Rounded corners */
-  z-index: 2;                    /* Above other menus */
+  z-index: 2;                     /* Above other menus */
 }
+
 .submenu:hover .submenu-content {
-  display: block;                /* Show submenu on hover */
+  display: block;                 /* Show submenu on hover */
 }
+
 .scrollable-menu {
-  max-height: 350px;             /* Limit max height */
-  overflow-y: auto;             /* Scroll vertically if content too tall */
-  border-radius: 4px;            /* Rounded corners */
+  max-height: 350px;              /* Limit max height */
+  overflow-y: auto;               /* Scroll vertically if content too tall */
+  border-radius: 4px;             /* Rounded corners */
 }
 
 .dropdown-content, .submenu-content {
-  will-change: opacity, transform;
+  will-change: opacity, transform; /* Preps for smooth transitions */
 }
 
-/* Season header for season simulations */
+/* Responsive improvements for small screens */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;         /* Stack items vertically */
+    align-items: center;
+    gap: 8px;                       /* Less gap on small screens */
+  }
+
+  .dropbtn {
+    width: 100%;                    /* Full width buttons for easier taps */
+    text-align: center;
+  }
+
+  .dropdown-content,
+  .submenu-content {
+    position: static;               /* Removes float positioning on mobile */
+    min-width: 100%;                /* Full width dropdowns */
+    box-shadow: none;               /* No shadow in vertical mode */
+    border: 1px solid #ddd;         /* Light border instead */
+    border-radius: 0;
+  }
+
+  .dropdown-content a {
+    padding: 10px 12px;             /* Tighter padding for vertical layout */
+  }
+}
+
+
+/*-----------------------------------
+Season header for season simulations
+------------------------------------*/
 .season-header {
   display: flex;
   justify-content: space-between;
