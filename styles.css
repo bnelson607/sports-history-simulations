@@ -822,11 +822,21 @@ iframe {
 
   nav {
     overflow-x: auto;          /* Enable horizontal scroll */
+    overflow-y: hidden;     /* Prevent vertical scrolling */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     flex-wrap: nowrap !important;  /* Prevent wrapping */
     white-space: nowrap;       /* Keep items in one line */
     justify-content: flex-start;  /* Align items left, not centered */
     padding: 8px 12px;         /* Optional: adjust padding */
+    position: sticky;  /* keep sticky nav */
+    top: 0;
+    z-index: 1000;     /* base nav z-index */
+  }
+
+  .dropdown-content {
+    position: absolute;
+    z-index: 2000;     /* higher than nav and page content */
+    background-color: white;
   }
 
   nav > .dropdown {
