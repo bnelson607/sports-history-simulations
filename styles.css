@@ -818,100 +818,94 @@ iframe {
   Responsive Tweaks for Smaller Screens
 -------------------------------------------*/
 @media (max-width: 600px) {
-  
-  /* Override desktop min-width forcing 1160px to allow shrinking */
+  /* Remove forced minimum widths to allow shrinking and scrolling */
   .bracket-container,
-  .playin-container,
-  .bracket {
-    min-width: 0 !important;  /* Remove forced min-width */
+  .playin-container {
+    min-width: 0 !important;        /* Allow containers to shrink */
+    max-width: 100% !important;     /* Prevent containers from exceeding viewport */
+    overflow-x: auto !important;    /* Enable horizontal scrolling when needed */
+    box-sizing: border-box;          /* Include padding/borders in size */
   }
-  
-  /* Shrink team containers and font sizes for better fit on small screens */
+
+  /* Bracket flex container:
+     - Use inline-flex to shrink-wrap content width
+     - Prevent wrapping to avoid overlap
+     - Allow horizontal scrolling inside bracket container */
+  .bracket {
+    display: inline-flex !important;        /* Shrink-wrap bracket width */
+    justify-content: flex-start !important; /* Align rounds flush left */
+    flex-wrap: nowrap !important;           /* Prevent rounds from wrapping vertically */
+    min-width: 0 !important;                 /* Remove minimum width restrictions */
+    width: max-content !important;          /* Width equals content width */
+    margin: 0 !important;                    /* Remove default margins */
+    box-sizing: border-box;                  /* Include padding/borders */
+  }
+
+  /* Individual regions inside bracket:
+     - Remove side padding to avoid extra space
+     - Allow shrinking without min-width constraints */
+  .region {
+    padding-left: 0 !important;      /* Remove left padding */
+    padding-right: 0 !important;     /* Remove right padding */
+    flex-shrink: 1 !important;       /* Allow region to shrink */
+    min-width: 0 !important;         /* Remove min-width to allow shrinking */
+    box-sizing: border-box;          /* Include padding/borders */
+  }
+
+  /* Reduce team container widths and font sizes for mobile readability */
   .team {
-    width: 140px;           /* Narrower team container width */
-    font-size: 12px;        /* Smaller font size for better readability */
+    width: 140px;          /* Narrower container */
+    font-size: 12px;       /* Smaller font size */
   }
 
   .seed {
-    width: 25px;            /* Slightly wider seed area for clarity */
-    font-size: 12px;        /* Match font size with team */
-  }
-
-  .score {
-    width: 30px;            /* Consistent width for scores */
+    width: 25px;           /* Slightly wider for clarity */
     font-size: 12px;
   }
 
-  /* Round container styling */
-  .round {
-    gap: 25px;              /* More vertical space between matchups for clarity */
+  .score {
+    width: 30px;           /* Consistent width */
+    font-size: 12px;
+  }
 
-    /* Remove left and right margin to avoid extra whitespace */
+  /* Increase vertical gaps between rounds and remove margins/padding on sides */
+  .round {
+    gap: 25px;               /* More space between matchups */
     margin-left: 0 !important;
     margin-right: 0 !important;
-
-    /* Remove padding on left and right edges so rounds align flush */
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
 
-  /* Matchup container */
+  /* Reduce gap between teams in each matchup */
   .matchup {
-    gap: 3px;               /* Smaller gap between teams within each matchup */
+    gap: 3px;
   }
 
-  /* Play-in games container: center horizontally, full width */
+  /* Play-in games container styling:
+     - Full width
+     - Horizontally centered */
   .playin-container {
-    display: flex;           /* Flex layout for horizontal centering */
-    justify-content: center; /* Center content horizontally */
-    width: 100%;             /* Full container width */
-    padding: 0 10px;         /* Horizontal padding for breathing room */
-    box-sizing: border-box;  /* Include padding in total width */
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 0 10px !important;       /* Padding for breathing room */
+    box-sizing: border-box !important;
   }
 
-  /* Play-in matchups row: side-by-side with horizontal scrolling if needed */
+  /* Play-in matchups row:
+     - Horizontal scrolling if content overflows
+     - Side-by-side layout with spacing */
   .playin-matchups {
-    display: flex !important;        /* Ensure flex display */
-    flex-direction: row !important;  /* Horizontal layout */
-    flex-wrap: nowrap;               /* Prevent wrapping to next line */
-    gap: 16px;                      /* Spacing between matchups */
-    align-items: center;             /* Vertically center teams */
-
-    overflow-x: auto;               /* Enable horizontal scroll on overflow */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    max-width: 100%;                /* Restrict max width to container */
-    margin: 0 auto;                 /* Center horizontally */
-    box-sizing: border-box;
-  }
-
-  /* Bracket container: block layout with horizontal scroll */
-  .bracket-container {
-    display: block;                  /* Remove flex centering */
-    overflow-x: auto;                /* Enable horizontal scroll */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    padding-left: 0;                 /* Remove left padding */
-    padding-right: 0;                /* Remove right padding */
-    width: 100%;                    /* Full width */
-    max-width: none !important;     /* Remove max-width restriction */
-    box-sizing: border-box;         /* Include padding */
-  }
-
-  /* Bracket flex container: fill container width, left align content */
-  .bracket {
-    display: flex;                  /* Flex layout for bracket regions */
-    justify-content: flex-start !important; /* Align regions flush left */
-    width: 100% !important;         /* Fill parent container width */
-    min-width: 0 !important;        /* Allow shrinking */
-    margin: 0 !important;           /* Remove auto margins */
-    box-sizing: border-box;         /* Include padding/borders in size */
-  }
-
-  /* Individual regions: allow shrinking, remove side padding */
-  .region {
-    padding-left: 0 !important;     /* Remove left padding */
-    padding-right: 0 !important;    /* Remove right padding */
-    flex-shrink: 1 !important;      /* Allow region to shrink */
-    min-width: 0 !important;        /* Prevent minimum width restrictions */
-    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;     /* Prevent line breaks */
+    gap: 16px !important;              /* Space between matches */
+    align-items: center !important;   /* Vertical centering */
+    overflow-x: auto !important;      /* Enable horizontal scroll */
+    -webkit-overflow-scrolling: touch !important; /* Smooth scroll on iOS */
+    max-width: 100% !important;       /* Don't exceed container width */
+    margin: 0 auto !important;         /* Center horizontally */
+    box-sizing: border-box !important;
   }
 }
