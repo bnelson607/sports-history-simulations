@@ -804,48 +804,74 @@ iframe {
   Responsive Tweaks for Smaller Screens
 -------------------------------------------*/
 @media (max-width: 600px) {
-  /* Slightly shrink team display on small screens */
+  /* Shrink team containers and font sizes for better fit on small screens */
   .team {
-    width: 140px;
-    font-size: 12px;
+    width: 140px;           /* Narrower team box */
+    font-size: 12px;        /* Smaller font */
   }
 
   .seed {
-    width: 25px;
+    width: 25px;            /* Slightly wider seed area for readability */
     font-size: 12px;
   }
 
   .score {
-    width: 30px;
+    width: 30px;            /* Consistent score width */
     font-size: 12px;
   }
 
+  /* Add vertical space between matchups in a round */
   .round {
-    gap: 25px;
+    gap: 25px;              /* More spacing between matchups for clarity */
+
+    /* Remove any left/right margin to prevent unwanted whitespace */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    /* Remove any padding on left/right edges to align flush with container */
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
+  /* Reduce gap between teams in a matchup for compactness */
   .matchup {
     gap: 3px;
   }
 
-  /* Force play-in matchups to stay side-by-side on mobile */
+  /* Play-in matchups should remain side-by-side horizontally */
   .playin-matchups {
-    flex-direction: row !important;
-    flex-wrap: nowrap;
-    gap: 16px;
-    align-items: center;
+    flex-direction: row !important;  /* Force horizontal layout */
+    flex-wrap: nowrap;                /* Prevent wrapping to new line */
+    gap: 16px;                       /* Space between matchups */
+    align-items: center;             /* Vertically center teams */
+    
+    /* Enable horizontal scrolling on overflow */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
   }
 
-  /* Center narrow brackets (e.g. just World Series) on small screens */
+  /* Bracket container adjustments for mobile */
   .bracket-container {
-    display: block;              /* No centering on mobile */
-    overflow-x: auto;            /* Allow scroll if too wide */
-    -webkit-overflow-scrolling: touch;
+    display: block;                  /* Disable flex centering */
+    overflow-x: auto;                /* Allow horizontal scroll if needed */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    
+    padding-left: 0;                 /* Remove left padding to align flush */
   }
 
+  /* Bracket flex container tweaks */
   .bracket {
-    min-width: unset;             /* Allow content to shrink */
-    width: max-content;                 /* Natural content width */
-    margin: 0;              /* Center horizontally */
+    display: flex;                   /* Keep flex layout for rounds */
+    justify-content: flex-start;     /* Align all bracket regions flush left */
+    
+    min-width: unset !important;    /* Remove any forced minimum width */
+    width: max-content;              /* Let width be based on actual content size */
+    margin: 0;                      /* Remove automatic centering margins */
+  }
+
+  /* Remove padding inside each region to prevent extra space */
+  .region {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
