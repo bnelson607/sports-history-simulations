@@ -130,13 +130,11 @@ nav {
   display: flex;                     /* Use flexbox layout */
   justify-content: center;           /* Center nav items horizontally */
   gap: 16px;                        /* Space between nav items */
-  flex-wrap: nowrap;                  /* Wrap items on small screens */
+  flex-wrap: wrap;                  /* Wrap items on small screens */
   font-family: 'Bebas Neue', sans-serif; /* Nav font */
   font-size: 20px;               /* Larger nav text */
   letter-spacing: 1px;              /* Spacing between letters */
   color: white;                    /* White text color */
-  position: relative;        /* Ensure nav is a positioning context */
-  z-index: 10;               /* Set a stacking context */
 }
 .nav-divider {
   border-left: 1px solid white;      /* Vertical white divider line */
@@ -821,38 +819,7 @@ iframe {
   Responsive Tweaks for Smaller Screens
 -------------------------------------------*/
 @media (max-width: 600px) {
-
-  nav {
-    overflow-x: auto;
-    overflow-y: hidden;  /* Prevent vertical bounce */
-    white-space: nowrap;
-    position: static; /* Remove positioning to prevent clipping on iOS */
-    z-index: 10;               /* add a small z-index to create stacking context */
-    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-  }
-
-  nav > * {
-    display: inline-block; /* Keep nav items inline */
-    white-space: nowrap;   /* Prevent items wrapping */
-  }
   
-  .dropdown {
-    position: relative; /* Prevent dropdown clipping inside nav */
-    display: inline-block;
-  }
-
-  .dropdown-content {
-    position: absolute !important;  /* Fix dropdown relative to viewport */
-    top: 100% !important;        /* Adjust top position depending on nav height */
-    left: 0 !important;       /* Reset left */
-    right: auto !important;
-    min-width: 150px !important; /* Slightly wider for mobile */
-    z-index: 10000 !important;   /* Very high */
-    border-radius: 4px;
-    min-width: 120px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  }
-
   .playoffs-wrapper {
     white-space: normal !important; /* allow wrapping, so containers stack vertically */
   }
