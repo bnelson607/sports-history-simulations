@@ -886,24 +886,32 @@ iframe {
   /* Play-in games container styling:
      - Full width
      - Horizontally centered */
- .playin-container {
-    overflow-x: auto !important;
-    width: 100% !important;
-    padding-left: 10px !important;   /* padding on parent container */
-    padding-right: 10px !important;
-    box-sizing: border-box !important;
-  }
-  .playin-matchups {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    gap: 16px !important;
-    overflow-x: auto !important;
-    width: max-content !important;  /* ensures enough width */
+ /* Play-in container: same as bracket container */
+  .playin-container {
+    display: inline-block !important;     /* Like bracket-container */
+    vertical-align: top !important;
     min-width: 0 !important;
-    padding-left: 0 !important;     /* no padding here */
-    margin-left: 0 !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
     box-sizing: border-box !important;
-    -webkit-overflow-scrolling: touch !important;
+    padding-left: 10px !important;        /* padding like bracket-container */
+    padding-right: 10px !important;
+    margin: 0 auto !important;
+    text-align: left !important;          /* align left for no cutoff */
+  }
+
+  /* Play-in matchups: same as bracket flex container */
+  .playin-matchups {
+    display: inline-flex !important;        /* shrink-wrap content */
+    justify-content: flex-start !important; /* align left flush */
+    flex-wrap: nowrap !important;           /* prevent vertical wrap */
+    min-width: 0 !important;                 /* remove min-width */
+    width: max-content !important;          /* width = content width */
+    margin: 0 !important;                    /* no margin */
+    padding-left: 0 !important;              /* no padding */
+    box-sizing: border-box !important;
+    gap: 16px !important;
+    overflow-x: auto !important;            /* enable scrolling */
+    -webkit-overflow-scrolling: touch !important; /* smooth scroll */
   }
 }
