@@ -135,8 +135,6 @@ nav {
   font-size: 20px;               /* Larger nav text */
   letter-spacing: 1px;              /* Spacing between letters */
   color: white;                    /* White text color */
-  position: relative;
-  z-index: 1000;
 }
 .nav-divider {
   border-left: 1px solid white;      /* Vertical white divider line */
@@ -169,7 +167,7 @@ nav {
   position: absolute;               /* Positioned absolutely */
   background-color: white;           /* White background */
   min-width: 120px;                 /* Minimum width */
-  z-index: 2000;                      /* Stack above other elements */
+  z-index: 1;                      /* Stack above other elements */
   box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Shadow effect */
   border-radius: 4px;               /* Rounded corners */
   font-size: 18px;                  /* Slightly larger font */
@@ -207,7 +205,7 @@ nav {
   min-width: 120px;              /* Minimum width */
   box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* Shadow */
   border-radius: 4px;             /* Rounded corners */
-  z-index: 2000;                    /* Above other menus */
+  z-index: 2;                    /* Above other menus */
 }
 .submenu:hover .submenu-content {
   display: block;                /* Show submenu on hover */
@@ -264,23 +262,11 @@ nav {
   margin: 40px auto;              /* Center horizontally, vertical spacing */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Soft drop shadow */
 }
-
 .featured-article-box,
 .power-rankings,
 .article-list-page {
   max-width: 800px;               /* Limit width */
   padding: 20px;                 /* Padding inside boxes */
-}
-
-.content,
-.featured-article-box,
-.power-rankings,
-.article-list-page
-.season-page,
-.playoffs-container {
-  position: relative;
-  z-index: 0;
-  overflow: visible !important;  /* Prevents clipping of nav dropdowns */
 }
 
 /*-----------------------------------
@@ -833,37 +819,7 @@ iframe {
   Responsive Tweaks for Smaller Screens
 -------------------------------------------*/
 @media (max-width: 600px) {
-
-  nav {
-    overflow-x: auto;          /* Enable horizontal scroll */
-    overflow-y: visible;     /* Prevent vertical scrolling */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    flex-wrap: nowrap !important;  /* Prevent wrapping */
-    white-space: nowrap;       /* Keep items in one line */
-    justify-content: flex-start;  /* Align items left, not centered */
-    padding: 8px 12px;         /* Optional: adjust padding */
-    position: sticky;  /* keep sticky nav */
-    top: 0;
-    z-index: 1000;     /* base nav z-index */
-  }
-
-  .dropdown-content {
-    position: absolute;
-    z-index: 2000;     /* higher than nav and page content */
-    background-color: white;
-    display: none;
-  }
-
-  nav > .dropdown {
-    display: inline-block;     /* Keep dropdowns inline */
-    float: none;               /* Remove float if any */
-    margin-right: 12px;        /* Space between dropdowns */
-  }
-
-  .nav-divider {
-    display: none;             /* Hide dividers on mobile for cleaner look */
-  }
-
+  
   .playoffs-wrapper {
     white-space: normal !important; /* allow wrapping, so containers stack vertically */
   }
