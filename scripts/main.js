@@ -68,7 +68,7 @@ function resizeIframes() {
                     const extra_2 = iframe.classList.contains('double-extra-padding') ? 30 : 0;
                     iframe.style.height = (height + extra_1 + extra_2) + 'px';
                 }
-            }, 100);
+            }, 200);
         } catch (e) {
             console.warn('Cannot access iframe content to resize:', iframe.src);
         }
