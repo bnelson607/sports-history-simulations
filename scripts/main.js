@@ -32,25 +32,49 @@ function showTab(group, tabId) {
 }
 
 // Resize iframe contents to fit
+// function resizeIframes() {
+//     const iframes = document.querySelectorAll('iframe');
+//     iframes.forEach(iframe => {
+//         try {
+//             const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+//             if (iframeDocument) {
+//                 const height = Math.max(
+//                     iframeDocument.body.scrollHeight,
+//                     iframeDocument.documentElement.scrollHeight
+//                 );
+//                 const extra_1 = iframe.classList.contains('extra-padding') ? 15 : 0;
+//                 const extra_2 = iframe.classList.contains('double-extra-padding') ? 30 : 0;
+//                 iframe.style.height = (height + extra_1 + extra_2) + 'px';
+//             }
+//         } catch (e) {
+//             console.warn('Cannot access iframe content to resize:', iframe.src);
+//         }
+//     });
+// }
+
 function resizeIframes() {
     const iframes = document.querySelectorAll('iframe');
     iframes.forEach(iframe => {
         try {
-            const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-            if (iframeDocument) {
-                const height = Math.max(
-                    iframeDocument.body.scrollHeight,
-                    iframeDocument.documentElement.scrollHeight
-                );
-                const extra_1 = iframe.classList.contains('extra-padding') ? 15 : 0;
-                const extra_2 = iframe.classList.contains('double-extra-padding') ? 30 : 0;
-                iframe.style.height = (height + extra_1 + extra_2) + 'px';
-            }
+            // Wait 100ms to let content stabilize before measuring
+            setTimeout(() => {
+                const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                if (iframeDocument) {
+                    const height = Math.max(
+                        iframeDocument.body.scrollHeight,
+                        iframeDocument.documentElement.scrollHeight
+                    );
+                    const extra_1 = iframe.classList.contains('extra-padding') ? 15 : 0;
+                    const extra_2 = iframe.classList.contains('double-extra-padding') ? 30 : 0;
+                    iframe.style.height = (height + extra_1 + extra_2) + 'px';
+                }
+            }, 100);
         } catch (e) {
             console.warn('Cannot access iframe content to resize:', iframe.src);
         }
     });
 }
+
 
 // Add listeners to resize iframes on load
 window.addEventListener('load', () => {
