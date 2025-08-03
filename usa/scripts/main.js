@@ -2,14 +2,14 @@
 fetch('/sports-history-simulations/usa/header.html')
     .then(response => response.text())
     .then(data => {
-        document.getElementById('header').innerHTML = data;
+        document.getElementById('usa-header').innerHTML = data;
     });
 
 // Load footer HTML dynamically
 fetch('/sports-history-simulations/usa/footer.html')
     .then(response => response.text())
     .then(data => {
-        document.getElementById('site-footer').innerHTML = data;
+        document.getElementById('usa-footer').innerHTML = data;
     });
 
 // Tab switching function
