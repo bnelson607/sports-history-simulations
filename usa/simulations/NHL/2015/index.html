@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>2015–16 NHL Simulation – Elo, Playoffs & Standings</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Explore the 2015-16 NHL season through a Monte Carlo simulation that tracks team performance, Elo ratings, and playoff odds as they evolved throughout the year.">
+        
+        <!-- Link to external styles -->
+        <link rel="stylesheet" href="/sports-history-simulations/styles.css" />
+        
+        <!-- Add any simulation-specific styles here if needed -->
+        <style>
+        </style>
+    </head>
+
+    
+    <body>
+        <div id="site-header"></div>
+        <div id="usa-header"></div>
+        
+        <div class="content">
+            
+            <div class="season-links">
+                <a href="/2014/">← 2014–15</a>
+                <a href="/2016/">2016–17 →</a>
+            </div>
+        
+        
+            <div class="season-header">
+                <h1 class="sim-title">2015–16 NHL Season</h1>
+            </div>
+
+
+            <!-- Actual Playoff Bracket -->
+            <div class="playoffs-wrapper">
+            
+                <!-- Main part of bracket -->
+                <div class="bracket-container">
+                    <div class="bracket">
+                        
+                        <!-- East -->
+                        <div class="region" id="left">
+                            <div class="round">
+                                <div class="round-title">First Round</div>
+                                <div class="matchup">
+                                    <div class="team">
+                                        <div class="seed">1</div>
+                                        <div class="name">Florida</div>
+                                        <div class="score">2</div>
+                                    </div>
+                                    <div class="team">
+                                        <div class="seed">4</div>
+                                        <div class="name">NY Islanders</div>
+                                        <div class="score">4</div>
+                                    </div>
+                                </div>
+                                <div class="matchup">
+                                    <div class="team">
+                                        <div class="seed">2</div>
+                                        <div class="name">Tampa Bay</div>
+                                        <div class="score">4</div>
+                                    </div>
+                                    <div class="team">
+                                        <div class="seed">3</div>
+                                        <div class="name">Detroit</div>
+                                        <div class="score">1</div>
+                                    </div>
+                                </div>
+                                <div class="matchup">
+                                    <div class="team">
+                                        <div class="seed">1</div>
+                                        <div class="name">Washington</div>
+                                        <div class="score">4</div>
+                                    </div>
+                                    <div class="team">
+                                        <div class="seed">5</div>
+                                        <div class="name">Pittsburgh</div>
+                                        <div class="score">2</div>
+                                    </div>
+                                </div>
+                                <div class="matchup">
+                                    <div class="team">
+                                        <div class="seed">2</div>
+                                        <div class="name">Pittsburgh</div>
+                                        <div class="score">4</div>
+                                    </div>
+                                    <div class="team">
+                                        <div class="seed">3</div>
+                                        <div class="name">NY Rangers</div>
+                                        <div class="score">1</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="round">
+                                <div class="round-title">Second Round</div>
+                                <div class="matchup">
+                                    <div class="team">
+                                        <div class="seed">4</div>
+                                        <div class="name">NY Islanders</div>
+                                        <div class="score">1</div>
+                                    </div>
+                                    <div class="team">
+                                        <div class="seed">2</div>
+                                        <div class="name">Tampa Bay</div>
+                                        <div class="score">4</div>
+                                    </div>
+                                </div>
+                                <div class="matchup">
+                                    <div class="team">
+                                        <div class="seed">1</div>
+                                        <div class="name">Washington</div>
+                                        <div class="score">2</div>
+                                    </div>
+                                    <div class="team">
+                                        <div class="seed">2</div>
+                                        <div class="name">Pittsburgh</div>
+                                        <div class="score">4</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="round">
+                                <div class="round-title">Conference Finals</div>
+                                <div class="matchup">
+                                    <div class="team">
+                                        <div class="seed">2</div>
+                                        <div class="name">Tampa Bay</div>
+                                        <div class="score">3</div>
+                                    </div>
+                                    <div class="team">
+                                        <div class="seed">2</div>
+                                        <div class="name">Pittsburgh</div>
+                                        <div class="score">4</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        
+                        <!-- Stanley Cup Finals -->
+                        <div class="region finals" id="finals">
+                            <div class="round" data-round="3">
+                                <div class="round-title">Stanley Cup</div>
+                                <div class="matchup">
+                                    <div class="team">
+                                        <div class="seed">2</div>
+                                        <div class="name">Pittsburgh</div>
+                                        <div class="score">4</div>
+                                    </div>
+                                    <div class="team">
+                                        <div class="seed">3</div>
+                                        <div class="name">San Jose</div>
+                                        <div class="score">2</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <!-- Western -->
+                        <div class="region" id="right" style="flex-direction: row-reverse;">
+                            <div class="round">
+                                <div class="round-title">First Round</div>
+                                <div class="matchup">
+                                    <div class="team">
+                                        <div class="seed">1</div>
+                                        <div class="name">Dallas</div>
+                                        <div class="score">4</div>
+                                    </div>
+                                    <div class="team">
+                                        <div class="seed">5</div>
+                                        <div class="name">Minnesota</div>
+                                        <div class="score">2</div>
+                                    </div>
+                                </div>
+                                <div class="matchup">
+                                    <div class="team">
+                                        <div class="seed">2</div>
+                                        <div class="name">St. Louis</div>
+                                        <div class="score">4</div>
+                                    </div>
+                                    <div class="team">
+                                        <div class="seed">3</div>
+                                        <div class="name">Chicago</div>
+                                        <div class="score">3</div>
+                                    </div>
+                                </div>
+                                <div class="matchup">
+                                    <div class="team">
+                                        <div class="seed">1</div>
+                                        <div class="name">Anaheim</div>
+                                        <div class="score">3</div>
+                                    </div>
+                                    <div class="team">
+                                        <div class="seed">4</div>
+                                        <div class="name">Nashville</div>
+                                        <div class="score">4</div>
+                                    </div>
+                                </div>
+                                <div class="matchup">
+                                    <div class="team">
+                                        <div class="seed">2</div>
+                                        <div class="name">Los Angeles</div>
+                                        <div class="score">1</div>
+                                    </div>
+                                    <div class="team">
+                                        <div class="seed">3</div>
+                                        <div class="name">San Jose</div>
+                                        <div class="score">4</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="round">
+                                <div class="round-title">Second Round</div>
+                                <div class="matchup">
+                                    <div class="team">
+                                        <div class="seed">1</div>
+                                        <div class="name">Dallas</div>
+                                        <div class="score">3</div>
+                                    </div>
+                                    <div class="team">
+                                        <div class="seed">2</div>
+                                        <div class="name">St. Louis</div>
+                                        <div class="score">4</div>
+                                    </div>
+                                </div>
+                                <div class="matchup">
+                                    <div class="team">
+                                        <div class="seed">4</div>
+                                        <div class="name">Nashville</div>
+                                        <div class="score">3</div>
+                                    </div>
+                                    <div class="team">
+                                        <div class="seed">3</div>
+                                        <div class="name">San Jose</div>
+                                        <div class="score">4</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="round">
+                                <div class="round-title">Conference Finals</div>
+                                <div class="matchup">
+                                    <div class="team">
+                                        <div class="seed">2</div>
+                                        <div class="name">St. Louis</div>
+                                        <div class="score">2</div>
+                                    </div>
+                                    <div class="team">
+                                        <div class="seed">3</div>
+                                        <div class="name">San Jose</div>
+                                        <div class="score">4</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <h2 class="sim-subsection">Regular Season</h2>
+            
+            
+            <details>
+                <summary>Season Summary</summary>
+                <iframe src="regular_season_summary.html" class="extra-padding"></iframe>
+            </details>
+                
+                
+            <details>
+                <summary>Game Summaries</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>What were the biggest upsets and Elo rating changes of the season?  (Tie percentage refers to how likely the game was to go to overtime.)</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('games', 'games_biggest_upsets')" class="active">Biggest Upsets</button>
+                    <button onclick="showTab('games', 'games_biggest_elo_changes')">Biggest Elo Changes</button>
+                </div>
+                <div class="tab-content games active" id="games_biggest_upsets">
+                    <iframe src="biggest_upsets_table.html" class="double-extra-padding"></iframe>
+                </div>
+                <div class="tab-content games" id="games_biggest_elo_changes">
+                    <iframe src="biggest_elo_changes_table.html" class="double-extra-padding"></iframe>
+                </div>
+            </details>
+            
+            
+            <details>
+                <summary>Comparisons</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>
+                    How did each team's actual results compare to their simulated results, Elo rating,
+                    opponent average Elo rating, and relative position of their actual points within simulated outcomes?
+                    </i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('comparisons', 'comparisons_sim_vs_actual')" class="active">Simulated Points</button>
+                    <button onclick="showTab('comparisons', 'comparisons_elo_vs_actual')">Team Elo</button>
+                    <button onclick="showTab('comparisons', 'comparisons_opponent_elo_vs_actual')">Opponent Elo</button>
+                    <button onclick="showTab('comparisons', 'comparisons_percentile_vs_actual')">Percentile</button>
+                </div>
+                <div class="tab-content comparisons active" id="comparisons_sim_vs_actual">
+                    <div class="iframe-wrapper">
+                        <iframe src="sim_vs_actual_graph.html"></iframe>
+                    </div>
+                </div>
+                <div class="tab-content comparisons" id="comparisons_elo_vs_actual">
+                    <div class="iframe-wrapper">
+                        <iframe src="team_elo_vs_actual_graph.html"></iframe>
+                    </div>
+                </div>
+                <div class="tab-content comparisons" id="comparisons_opponent_elo_vs_actual">
+                    <div class="iframe-wrapper">
+                        <iframe src="opponent_elo_vs_actual_graph.html"></iframe>
+                    </div>
+                </div>
+                <div class="tab-content comparisons" id="comparisons_percentile_vs_actual">
+                    <div class="iframe-wrapper">
+                        <iframe src="percentile_vs_actual_graph.html"></iframe>
+                    </div>
+                </div>
+            </details>
+                
+            
+            <details>
+                <summary>Division Heatmaps</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>Where was each team expected to finish within their division at the beginning of the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('div_heatmap', 'div_heatmap_Atlantic')" class="active">Atlantic</button>
+                    <button onclick="showTab('div_heatmap', 'div_heatmap_Metropolitan')">Metropolitan</button>
+                    <button onclick="showTab('div_heatmap', 'div_heatmap_Central')">Central</button>
+                    <button onclick="showTab('div_heatmap', 'div_heatmap_Pacific')">Pacific</button>
+                </div>
+                <div class="tab-content div_heatmap active" id="div_heatmap_Atlantic">
+                    <iframe src="Atlantic_finish_heatmap.html"></iframe>
+                </div>
+                <div class="tab-content div_heatmap" id="div_heatmap_Metropolitan">
+                    <iframe src="Metropolitan_finish_heatmap.html"></iframe>
+                </div>
+                <div class="tab-content div_heatmap" id="div_heatmap_Central">
+                    <iframe src="Central_finish_heatmap.html"></iframe>
+                </div>
+                <div class="tab-content div_heatmap" id="div_heatmap_Pacific">
+                    <iframe src="Pacific_finish_heatmap.html"></iframe>
+                </div>
+            </details>
+            
+            
+            <details>
+                <summary>League & Conference Heatmaps</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>Where was each team expected to finish within their conference and the league as a whole at the beginning of the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('league_heatmap', 'league_heatmap_Eastern')" class="active">Eastern</button>
+                    <button onclick="showTab('league_heatmap', 'league_heatmap_Western')">Western</button>
+                    <button onclick="showTab('league_heatmap', 'league_heatmap_NHL')">NHL</button>
+                </div>
+                <div class="tab-content league_heatmap active" id="league_heatmap_Eastern">
+                    <iframe src="Eastern_finish_heatmap.html"></iframe>
+                </div>
+                <div class="tab-content league_heatmap" id="league_heatmap_Western">
+                    <iframe src="Western_finish_heatmap.html"></iframe>
+                </div>
+                <div class="tab-content league_heatmap" id="league_heatmap_NHL">
+                    <iframe src="league_finish_heatmap.html"></iframe>
+                </div>
+            </details>
+        
+        
+            <h2 class="sim-subsection">Season Trajectories</h2>
+            
+            
+            <details>
+                <summary>Elo Ratings</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did each team's Elo rating change throughout the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('elo', 'elo_Atlantic')" class="active">Atlantic</button>
+                    <button onclick="showTab('elo', 'elo_Metropolitan')">Metropolitan</button>
+                    <button onclick="showTab('elo', 'elo_Central')">Central</button>
+                    <button onclick="showTab('elo', 'elo_Pacific')">Pacific</button>
+                </div>
+                <div class="tab-content elo active" id="elo_Atlantic">
+                    <iframe src="Atlantic_elo_ratings.html"></iframe>
+                </div>
+                <div class="tab-content elo" id="elo_Metropolitan">
+                    <iframe src="Metropolitan_elo_ratings.html"></iframe>
+                </div>
+                <div class="tab-content elo" id="elo_Central">
+                    <iframe src="Central_elo_ratings.html"></iframe>
+                </div>
+                <div class="tab-content elo" id="elo_Pacific">
+                    <iframe src="Pacific_elo_ratings.html"></iframe>
+                </div>
+            </details>
+            
+            
+            <details>
+                <summary>Simulated Points</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did each team's simulated point total change throughout the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('wins', 'wins_Atlantic')" class="active">Atlantic</button>
+                    <button onclick="showTab('wins', 'wins_Metropolitan')">Metropolitan</button>
+                    <button onclick="showTab('wins', 'wins_Central')">Central</button>
+                    <button onclick="showTab('wins', 'wins_Pacific')">Pacific</button>
+                </div>
+                <div class="tab-content wins active" id="wins_Atlantic">
+                    <iframe src="Atlantic_simulated_wins.html"></iframe>
+                </div>
+                <div class="tab-content wins" id="wins_Metropolitan">
+                    <iframe src="Metropolitan_simulated_wins.html"></iframe>
+                </div>
+                <div class="tab-content wins" id="wins_Central">
+                    <iframe src="Central_simulated_wins.html"></iframe>
+                </div>
+                <div class="tab-content wins" id="wins_Pacific">
+                    <iframe src="Pacific_simulated_wins.html"></iframe>
+                </div>
+            </details>
+            
+            
+            <details>
+                <summary>Division Champion Probabilities</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did each team's probability of winning the division change throughout the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('div_prob', 'div_prob_Atlantic')" class="active">Atlantic</button>
+                    <button onclick="showTab('div_prob', 'div_prob_Metropolitan')">Metropolitan</button>
+                    <button onclick="showTab('div_prob', 'div_prob_Central')">Central</button>
+                    <button onclick="showTab('div_prob', 'div_prob_Pacific')">Pacific</button>
+                </div>
+                <div class="tab-content div_prob active" id="div_prob_Atlantic">
+                    <iframe src="Atlantic_division_probabilities.html"></iframe>
+                </div>
+                <div class="tab-content div_prob" id="div_prob_Metropolitan">
+                    <iframe src="Metropolitan_division_probabilities.html"></iframe>
+                </div>
+                <div class="tab-content div_prob" id="div_prob_Central">
+                    <iframe src="Central_division_probabilities.html"></iframe>
+                </div>
+                <div class="tab-content div_prob" id="div_prob_Pacific">
+                    <iframe src="Pacific_division_probabilities.html"></iframe>
+                </div>
+            </details>
+            
+            
+            <details>
+                <summary>Playoff Probabilities</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did each team's probability of making the playoffs change throughout the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('playoff_prob', 'playoff_prob_Atlantic')" class="active">Atlantic</button>
+                    <button onclick="showTab('playoff_prob', 'playoff_prob_Metropolitan')">Metropolitan</button>
+                    <button onclick="showTab('playoff_prob', 'playoff_prob_Central')">Central</button>
+                    <button onclick="showTab('playoff_prob', 'playoff_prob_Pacific')">Pacific</button>
+                </div>
+                <div class="tab-content playoff_prob active" id="playoff_prob_Atlantic">
+                    <iframe src="Atlantic_playoff_probabilities.html"></iframe>
+                </div>
+                <div class="tab-content playoff_prob" id="playoff_prob_Metropolitan">
+                    <iframe src="Metropolitan_playoff_probabilities.html"></iframe>
+                </div>
+                <div class="tab-content playoff_prob" id="playoff_prob_Central">
+                    <iframe src="Central_playoff_probabilities.html"></iframe>
+                </div>
+                <div class="tab-content playoff_prob" id="playoff_prob_Pacific">
+                    <iframe src="Pacific_playoff_probabilities.html"></iframe>
+                </div>
+            </details>
+            
+            
+            <h2 class="sim-subsection">Playoffs</h2>
+        
+        
+            <details>
+                <summary>Playoff Seed Probabilities</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How likely was each team to earn each playoff seed at the beginning of the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('preseason_playoff_seed', 'preseason_playoff_seed_eastern')" class="active">Eastern</button>
+                    <button onclick="showTab('preseason_playoff_seed', 'preseason_playoff_seed_western')">Western</button>
+                </div>
+                <!-- Eastern Conference -->
+                <div class="tab-content preseason_playoff_seed active" id="preseason_playoff_seed_eastern">
+                    <iframe src="Eastern_playoff_heatmap.html"></iframe>
+                </div>
+                <!-- Western Conference -->
+                <div class="tab-content preseason_playoff_seed" id="preseason_playoff_seed_western">
+                    <iframe src="Western_playoff_heatmap.html"></iframe>
+                </div>
+            </details>
+            
+            
+            <details>
+                <summary>Playoff Seed Points</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How many points did the simulation believe were needed to earn each seed?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('playoff_seed_wins', 'playoff_seed_wins_atlantic')" class="active">Atlantic</button>
+                    <button onclick="showTab('playoff_seed_wins', 'playoff_seed_wins_metropolitan')">Metropolitan</button>
+                    <button onclick="showTab('playoff_seed_wins', 'playoff_seed_wins_central')">Central</button>
+                    <button onclick="showTab('playoff_seed_wins', 'playoff_seed_wins_pacific')">Pacific</button>
+                </div>
+                <div class="tab-content playoff_seed_wins active" id="playoff_seed_wins_atlantic">
+                    <iframe src="Atlantic_playoff_seed_wins.html"></iframe>
+                </div>
+                <div class="tab-content playoff_seed_wins" id="playoff_seed_wins_metropolitan">
+                    <iframe src="Metropolitan_playoff_seed_wins.html"></iframe>
+                </div>
+                <div class="tab-content playoff_seed_wins" id="playoff_seed_wins_central">
+                    <iframe src="Central_playoff_seed_wins.html"></iframe>
+                </div>
+                <div class="tab-content playoff_seed_wins" id="playoff_seed_wins_pacific">
+                    <iframe src="Pacific_playoff_seed_wins.html"></iframe>
+                </div>
+            </details>
+            
+            
+            <details>
+                <summary>Preseason Playoff Simulation</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did the simulation expect the playoffs to unfold at the beginning of the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_playoff_adv')" class="active">Playoff Progression</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_wild_card_round')">Wild Card Round</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_div_round')">Divisional Round</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_conf_finals')">Conference Finals</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_stanley_cup')">Stanley Cup</button>
+                </div>
+                
+                <!-- Playoff Advancement -->
+                <div class="tab-content preseason_playoff active" id="preseason_playoff_playoff_adv">
+                    <iframe src="playoff_success_preseason_playoff.html"></iframe>
+                </div>
+                
+                <!-- Wild Card Round -->
+                <div class="tab-content preseason_playoff" id="preseason_playoff_wild_card_round">
+                    <div class="iframe-block">
+                        <div class="graph-label">Eastern Conference</div>
+                        <iframe src="wild_card_round_preseason_playoff_eastern.html"></iframe>
+                    </div>
+                    <div class="iframe-block">
+                        <div class="graph-label">Western Conference</div>
+                        <iframe src="wild_card_round_preseason_playoff_western.html"></iframe>
+                    </div>
+                </div>
+                    
+                <!-- Divisional Round -->
+                <div class="tab-content preseason_playoff" id="preseason_playoff_div_round">
+                    <div class="iframe-block">
+                        <div class="graph-label">Eastern Conference</div>
+                        <iframe src="divisional_round_preseason_playoff_eastern.html"></iframe>
+                    </div>
+                    <div class="iframe-block">
+                        <div class="graph-label">Western Conference</div>
+                        <iframe src="divisional_round_preseason_playoff_western.html"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Divisional Round -->
+                <div class="tab-content preseason_playoff" id="preseason_playoff_conf_finals">
+                    <div class="iframe-block">
+                        <div class="graph-label">Eastern Conference</div>
+                        <iframe src="conference_finals_preseason_playoff_eastern.html"></iframe>
+                    </div>
+                    <div class="iframe-block">
+                        <div class="graph-label">Western Conference</div>
+                        <iframe src="conference_finals_preseason_playoff_western.html"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Stanley Cup Finals -->
+                <div class="tab-content preseason_playoff" id="preseason_playoff_stanley_cup">
+                    <iframe src="stanley_cup_preseason_playoff.html"></iframe>
+                </div>
+            </details>
+                
+                
+            <details>
+                <summary>End of Season Playoff Simulation</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did playoff probabilities and outcomes evolve during the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_playoff_adv')" class="active">Playoff Progression</button>
+                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_wild_card_round')">Wild Card Round</button>
+                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_div_round')">Divisional Round</button>
+                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_conf_finals')">Conference Finals</button>
+                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_stanley_cup')">Stanley Cup</button>
+                </div>
+                
+                <!-- Playoff Advancement -->
+                <div class="tab-content end_of_season_playoff active" id="end_of_season_playoff_playoff_adv">
+                    <iframe src="playoff_success_end_of_regular_season.html"></iframe>
+                </div>
+                
+                <!-- Wild Card Round -->
+                <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_wild_card_round">
+                    <div class="iframe-block">
+                        <iframe src="wild_card_round_end_of_regular_season_combined_conferences.html"></iframe>
+                    </div>
+                </div>
+                    
+                <!-- Divisional Round -->
+                <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_div_round">
+                    <div class="iframe-block">
+                        <iframe src="divisional_round_end_of_regular_season_combined_conferences.html"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Conference Finals -->
+                <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_conf_finals">
+                    <div class="iframe-block">
+                        <iframe src="conference_finals_end_of_regular_season_combined_conferences.html"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Stanley Cup -->
+                <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_stanley_cup">
+                    <iframe src="stanley_cup_end_of_regular_season.html"></iframe>
+                </div>
+            </details>
+        </div>
+        
+        <!-- Site footer placeholder -->
+        <div id="site-footer"></div>
+        
+        <script src="/sports-history-simulations/scripts/main.js"></script>
+    </body>
+</html>
