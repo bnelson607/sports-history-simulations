@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .filter-controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .filter-controls select {
+            margin: 0 10px;
+            padding: 4px;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- Use CDN version of Tablesort for local compatibility -->
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls" id="filterControls" style="display: none;">
+        <label for="regionFilter" id="regionLabel">Filter by Division or Conference:
+            <select id="regionFilter">
+                <option value="">All</option>
+            </select>
+        </label>
+    </div>
+
+    <table class="dataframe sortable">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Current</th>
+      <th>Avg. Wins</th>
+      <th>Exp. Wins Rem.</th>
+      <th>Min</th>
+      <th>Q1</th>
+      <th>Median</th>
+      <th>Q3</th>
+      <th>Max</th>
+      <th>Playoffs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Minnesota Lynx</td>
+      <td>1672</td>
+      <td>22</td>
+      <td>33.45</td>
+      <td>11.45</td>
+      <td>26</td>
+      <td>31.67</td>
+      <td>32.99</td>
+      <td>34.29</td>
+      <td>39</td>
+      <td>100.00%</td>
+    </tr>
+    <tr>
+      <td>New York Liberty</td>
+      <td>1614</td>
+      <td>17</td>
+      <td>29.13</td>
+      <td>12.13</td>
+      <td>22</td>
+      <td>27.30</td>
+      <td>28.66</td>
+      <td>29.99</td>
+      <td>36</td>
+      <td>100.00%</td>
+    </tr>
+    <tr>
+      <td>Atlanta Dream</td>
+      <td>1562</td>
+      <td>15</td>
+      <td>26.15</td>
+      <td>11.15</td>
+      <td>18</td>
+      <td>24.31</td>
+      <td>25.69</td>
+      <td>27.00</td>
+      <td>32</td>
+      <td>99.18%</td>
+    </tr>
+    <tr>
+      <td>Phoenix Mercury</td>
+      <td>1558</td>
+      <td>16</td>
+      <td>27.45</td>
+      <td>11.45</td>
+      <td>20</td>
+      <td>25.54</td>
+      <td>26.98</td>
+      <td>28.41</td>
+      <td>35</td>
+      <td>99.82%</td>
+    </tr>
+    <tr>
+      <td>Indiana Fever</td>
+      <td>1545</td>
+      <td>14</td>
+      <td>23.98</td>
+      <td>9.98</td>
+      <td>17</td>
+      <td>22.13</td>
+      <td>23.48</td>
+      <td>24.87</td>
+      <td>31</td>
+      <td>92.30%</td>
+    </tr>
+    <tr>
+      <td>Las Vegas Aces</td>
+      <td>1545</td>
+      <td>14</td>
+      <td>24.03</td>
+      <td>10.03</td>
+      <td>17</td>
+      <td>22.20</td>
+      <td>23.53</td>
+      <td>24.86</td>
+      <td>31</td>
+      <td>94.00%</td>
+    </tr>
+    <tr>
+      <td>Seattle Storm</td>
+      <td>1540</td>
+      <td>16</td>
+      <td>25.34</td>
+      <td>9.34</td>
+      <td>18</td>
+      <td>23.48</td>
+      <td>24.86</td>
+      <td>26.19</td>
+      <td>32</td>
+      <td>97.75%</td>
+    </tr>
+    <tr>
+      <td>Washington Mystics</td>
+      <td>1477</td>
+      <td>13</td>
+      <td>21.54</td>
+      <td>8.54</td>
+      <td>13</td>
+      <td>19.63</td>
+      <td>21.03</td>
+      <td>22.44</td>
+      <td>28</td>
+      <td>62.51%</td>
+    </tr>
+    <tr>
+      <td>Golden State Valkyries</td>
+      <td>1449</td>
+      <td>12</td>
+      <td>20.29</td>
+      <td>8.29</td>
+      <td>13</td>
+      <td>18.33</td>
+      <td>19.76</td>
+      <td>21.21</td>
+      <td>28</td>
+      <td>40.68%</td>
+    </tr>
+    <tr>
+      <td>Los Angeles Sparks</td>
+      <td>1445</td>
+      <td>11</td>
+      <td>18.68</td>
+      <td>7.68</td>
+      <td>12</td>
+      <td>16.80</td>
+      <td>18.18</td>
+      <td>19.55</td>
+      <td>27</td>
+      <td>13.65%</td>
+    </tr>
+    <tr>
+      <td>Dallas Wings</td>
+      <td>1408</td>
+      <td>8</td>
+      <td>14.16</td>
+      <td>6.16</td>
+      <td>8</td>
+      <td>12.31</td>
+      <td>13.62</td>
+      <td>14.92</td>
+      <td>22</td>
+      <td>0.11%</td>
+    </tr>
+    <tr>
+      <td>Connecticut Sun</td>
+      <td>1344</td>
+      <td>4</td>
+      <td>9.42</td>
+      <td>5.42</td>
+      <td>4</td>
+      <td>7.55</td>
+      <td>8.84</td>
+      <td>10.23</td>
+      <td>18</td>
+      <td>0.00%</td>
+    </tr>
+    <tr>
+      <td>Chicago Sky</td>
+      <td>1341</td>
+      <td>7</td>
+      <td>12.38</td>
+      <td>5.38</td>
+      <td>7</td>
+      <td>10.56</td>
+      <td>11.82</td>
+      <td>13.13</td>
+      <td>19</td>
+      <td>0.00%</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const table = document.querySelector('table.sortable');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+
+            const divColIndex = headers.indexOf("Division");
+            const confColIndex = headers.indexOf("Conference");
+
+            const regionFilter = document.getElementById("regionFilter");
+            const regionLabel = document.getElementById("regionLabel");
+            const filterControls = document.getElementById("filterControls");
+
+            const divisionSet = new Set();
+            const conferenceSet = new Set();
+
+            rows.forEach(row => {
+                if (divColIndex !== -1) {
+                    const divVal = row.cells[divColIndex].textContent.trim();
+                    if (divVal) divisionSet.add(divVal);
+                }
+                if (confColIndex !== -1) {
+                    const confVal = row.cells[confColIndex].textContent.trim();
+                    if (confVal) conferenceSet.add(confVal);
+                }
+            });
+
+            const sortedDivisions = Array.from(divisionSet).sort();
+            const sortedConfs = Array.from(conferenceSet).sort();
+
+            sortedDivisions.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                regionFilter.appendChild(opt);
+            });
+
+            sortedConfs.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                regionFilter.appendChild(opt);
+            });
+
+            if (sortedDivisions.length > 0 || sortedConfs.length > 0) {
+                regionLabel.style.display = "inline-block";
+                filterControls.style.display = "block";
+            }
+
+            regionFilter.addEventListener("change", function () {
+                const selected = regionFilter.value;
+
+                rows.forEach(row => {
+                    const divVal = divColIndex !== -1 ? row.cells[divColIndex].textContent.trim() : "";
+                    const confVal = confColIndex !== -1 ? row.cells[confColIndex].textContent.trim() : "";
+
+                    const matches = !selected || divVal === selected || confVal === selected;
+                    row.style.display = matches ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
