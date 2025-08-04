@@ -19,13 +19,6 @@ fetch('/sports-history-simulations/usa/header.html')
         document.getElementById('usa-header').innerHTML = data;
     });
 
-// Load USA footer HTML dynamically
-fetch('/sports-history-simulations/usa/footer.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('usa-footer').innerHTML = data;
-    });
-
 // Tab switching function
 function showTab(group, tabId) {
     const tabElement = document.getElementById(tabId);
