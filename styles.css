@@ -376,6 +376,95 @@ nav.college-nav .dropbtn {
 }
 
 /*-----------------------------------
+  Homepage Layout: Left Column + Sidebar
+------------------------------------*/
+
+.home-layout {
+  display: flex;                          /* Arrange left and right columns side-by-side */
+  justify-content: space-between;         /* Align items at top */
+  align-items: flex-start;                /* Align items at top */
+  margin: 0 auto;                         /* Center layout */
+  padding: 20px;                          /* Padding around layout */
+  gap: 20px;                              /* Space between columns */
+}
+
+.main-left {
+  flex: 1;                                /* Take remaining space */
+  min-width: 0;                           /* Prevent overflow */
+}
+
+/*-----------------------------------
+  Sidebar: Monday Links + Polls
+------------------------------------*/
+
+.sidebar-right {
+  width: 400px;                           /* Fixed width for sidebar */
+  background-color: #f8f8f8;              /* Light background */
+  padding: 15px 20px;                     /* Padding inside sidebar */
+  border: 1px solid #ccc;                 /* Light border */
+  border-radius: 6px;                     /* Rounded corners */
+  font-size: 0.95em;                      /* Slightly smaller text */
+  font-family: 'Inter', sans-serif;       /* Match body font */
+}
+
+.sidebar-right section {
+  margin-bottom: 25px;                    /* Space between sections */
+}
+
+.sidebar-right h2 {
+  font-size: 1.2em;                       /* Section header size */
+  color: #003366;                         /* Deep navy */
+  border-bottom: 1px solid #ccc;          /* Divider under header */
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+
+/* Monday Morning Updates List */
+.monday-updates ul {
+  list-style-type: none;                  /* Remove bullets */
+  padding-left: 0;                        /* No padding */
+}
+
+.monday-updates li {
+  margin-bottom: 6px;
+}
+
+.monday-updates a {
+  text-decoration: none;                  /* No underline */
+  color: #0055a5;                         /* Brighter link color */
+}
+.monday-updates a:hover {
+  text-decoration: underline;             /* Underline on hover */
+}
+
+/* Poll Sections */
+.poll-box form {
+  margin-top: 10px;
+}
+
+.poll-box label {
+  display: block;                         /* One per line */
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+/*---------------------------------------------------
+  Responsive Layout for Smaller Screens for Homepage
+-----------------------------------------------------*/
+
+@media (max-width: 900px) {
+  .home-layout {
+    flex-direction: column;              /* Stack columns on small screens */
+  }
+
+  .sidebar-right {
+    width: 100%;                         /* Full width on mobile */
+    margin-top: 20px;                    /* Space from main content */
+  }
+}
+
+/*-----------------------------------
   Article List
 ------------------------------------*/
 .article-list {
