@@ -1,0 +1,5246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Birmingham Legion">Birmingham Legion</option><option value="Charleston Battery">Charleston Battery</option><option value="Colorado Springs Switchbacks">Colorado Springs Switchbacks</option><option value="Detroit City FC">Detroit City FC</option><option value="El Paso Locomotive">El Paso Locomotive</option><option value="FC Tulsa">FC Tulsa</option><option value="Hartford Athletic">Hartford Athletic</option><option value="Indy Eleven">Indy Eleven</option><option value="Las Vegas Lights FC">Las Vegas Lights FC</option><option value="Lexington SC">Lexington SC</option><option value="Loudoun United">Loudoun United</option><option value="Louisville City FC">Louisville City FC</option><option value="Miami FC">Miami FC</option><option value="Monterey Bay FC">Monterey Bay FC</option><option value="New Mexico United">New Mexico United</option><option value="North Carolina FC">North Carolina FC</option><option value="Oakland Roots">Oakland Roots</option><option value="Orange County SC">Orange County SC</option><option value="Phoenix Rising">Phoenix Rising</option><option value="Pittsburgh Riverhounds">Pittsburgh Riverhounds</option><option value="Rhode Island FC">Rhode Island FC</option><option value="Sacramento Republic">Sacramento Republic</option><option value="San Antonio FC">San Antonio FC</option><option value="Tampa Bay Rowdies">Tampa Bay Rowdies</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="3" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Tie Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Phoenix Rising</td>
+      <td>1486</td>
+      <td>0</td>
+      <td>@ FC Tulsa</td>
+      <td>1464</td>
+      <td>1</td>
+      <td>43.64%</td>
+      <td>26.84%</td>
+      <td>29.52%</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Louisville City FC</td>
+      <td>1563</td>
+      <td>2</td>
+      <td>Charleston Battery</td>
+      <td>1556</td>
+      <td>1</td>
+      <td>30.46%</td>
+      <td>39.60%</td>
+      <td>29.94%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1505</td>
+      <td>0</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1513</td>
+      <td>1</td>
+      <td>28.43%</td>
+      <td>41.83%</td>
+      <td>29.74%</td>
+      <td>-9</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1539</td>
+      <td>1</td>
+      <td>North Carolina FC</td>
+      <td>1522</td>
+      <td>1</td>
+      <td>31.69%</td>
+      <td>38.29%</td>
+      <td>30.02%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>New Mexico United</td>
+      <td>1509</td>
+      <td>1</td>
+      <td>Sacramento Republic</td>
+      <td>1518</td>
+      <td>2</td>
+      <td>28.38%</td>
+      <td>41.89%</td>
+      <td>29.74%</td>
+      <td>-9</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>FC Tulsa</td>
+      <td>1464</td>
+      <td>1</td>
+      <td>Phoenix Rising</td>
+      <td>1486</td>
+      <td>0</td>
+      <td>26.84%</td>
+      <td>43.64%</td>
+      <td>29.52%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Loudoun United</td>
+      <td>1490</td>
+      <td>3</td>
+      <td>Birmingham Legion</td>
+      <td>1485</td>
+      <td>1</td>
+      <td>30.20%</td>
+      <td>39.88%</td>
+      <td>29.92%</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Hartford Athletic</td>
+      <td>1480</td>
+      <td>0</td>
+      <td>Lexington SC</td>
+      <td>1500</td>
+      <td>2</td>
+      <td>27.15%</td>
+      <td>43.29%</td>
+      <td>29.57%</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Detroit City FC</td>
+      <td>1535</td>
+      <td>2</td>
+      <td>Miami FC</td>
+      <td>1388</td>
+      <td>0</td>
+      <td>49.34%</td>
+      <td>22.23%</td>
+      <td>28.42%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Oakland Roots</td>
+      <td>1452</td>
+      <td>2</td>
+      <td>Orange County SC</td>
+      <td>1507</td>
+      <td>4</td>
+      <td>23.22%</td>
+      <td>48.06%</td>
+      <td>28.72%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1549</td>
+      <td>2</td>
+      <td>El Paso Locomotive</td>
+      <td>1458</td>
+      <td>2</td>
+      <td>42.13%</td>
+      <td>28.16%</td>
+      <td>29.71%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Monterey Bay FC</td>
+      <td>1450</td>
+      <td>0</td>
+      <td>San Antonio FC</td>
+      <td>1481</td>
+      <td>1</td>
+      <td>25.73%</td>
+      <td>44.96%</td>
+      <td>29.32%</td>
+      <td>-8</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Birmingham Legion</td>
+      <td>1485</td>
+      <td>1</td>
+      <td>@ Loudoun United</td>
+      <td>1490</td>
+      <td>3</td>
+      <td>39.88%</td>
+      <td>30.20%</td>
+      <td>29.92%</td>
+      <td>-17</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Miami FC</td>
+      <td>1388</td>
+      <td>0</td>
+      <td>@ Detroit City FC</td>
+      <td>1535</td>
+      <td>2</td>
+      <td>22.23%</td>
+      <td>49.34%</td>
+      <td>28.42%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Lexington SC</td>
+      <td>1500</td>
+      <td>2</td>
+      <td>@ Hartford Athletic</td>
+      <td>1480</td>
+      <td>0</td>
+      <td>43.29%</td>
+      <td>27.15%</td>
+      <td>29.57%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Sacramento Republic</td>
+      <td>1518</td>
+      <td>2</td>
+      <td>@ New Mexico United</td>
+      <td>1509</td>
+      <td>1</td>
+      <td>41.89%</td>
+      <td>28.38%</td>
+      <td>29.74%</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>North Carolina FC</td>
+      <td>1522</td>
+      <td>1</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1539</td>
+      <td>1</td>
+      <td>38.29%</td>
+      <td>31.69%</td>
+      <td>30.02%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1513</td>
+      <td>1</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1505</td>
+      <td>0</td>
+      <td>41.83%</td>
+      <td>28.43%</td>
+      <td>29.74%</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Charleston Battery</td>
+      <td>1556</td>
+      <td>1</td>
+      <td>@ Louisville City FC</td>
+      <td>1563</td>
+      <td>2</td>
+      <td>39.60%</td>
+      <td>30.46%</td>
+      <td>29.94%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>San Antonio FC</td>
+      <td>1481</td>
+      <td>1</td>
+      <td>@ Monterey Bay FC</td>
+      <td>1450</td>
+      <td>0</td>
+      <td>44.96%</td>
+      <td>25.73%</td>
+      <td>29.32%</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>Orange County SC</td>
+      <td>1507</td>
+      <td>4</td>
+      <td>@ Oakland Roots</td>
+      <td>1452</td>
+      <td>2</td>
+      <td>48.06%</td>
+      <td>23.22%</td>
+      <td>28.72%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-03-08</td>
+      <td>El Paso Locomotive</td>
+      <td>1458</td>
+      <td>2</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1549</td>
+      <td>2</td>
+      <td>28.16%</td>
+      <td>42.13%</td>
+      <td>29.71%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>New Mexico United</td>
+      <td>1500</td>
+      <td>3</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1523</td>
+      <td>2</td>
+      <td>26.67%</td>
+      <td>43.84%</td>
+      <td>29.49%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1495</td>
+      <td>0</td>
+      <td>FC Tulsa</td>
+      <td>1477</td>
+      <td>1</td>
+      <td>31.84%</td>
+      <td>38.12%</td>
+      <td>30.03%</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>Oakland Roots</td>
+      <td>1441</td>
+      <td>2</td>
+      <td>Monterey Bay FC</td>
+      <td>1441</td>
+      <td>3</td>
+      <td>29.45%</td>
+      <td>40.69%</td>
+      <td>29.85%</td>
+      <td>-9</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>Rhode Island FC</td>
+      <td>1541</td>
+      <td>0</td>
+      <td>Charleston Battery</td>
+      <td>1544</td>
+      <td>2</td>
+      <td>29.15%</td>
+      <td>41.03%</td>
+      <td>29.82%</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>Indy Eleven</td>
+      <td>1496</td>
+      <td>3</td>
+      <td>Miami FC</td>
+      <td>1377</td>
+      <td>1</td>
+      <td>45.76%</td>
+      <td>25.06%</td>
+      <td>29.18%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>Lexington SC</td>
+      <td>1513</td>
+      <td>2</td>
+      <td>Orange County SC</td>
+      <td>1519</td>
+      <td>2</td>
+      <td>28.67%</td>
+      <td>41.56%</td>
+      <td>29.77%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>Loudoun United</td>
+      <td>1508</td>
+      <td>2</td>
+      <td>North Carolina FC</td>
+      <td>1522</td>
+      <td>1</td>
+      <td>27.77%</td>
+      <td>42.58%</td>
+      <td>29.66%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>Detroit City FC</td>
+      <td>1546</td>
+      <td>2</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1549</td>
+      <td>1</td>
+      <td>29.14%</td>
+      <td>41.03%</td>
+      <td>29.82%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1539</td>
+      <td>0</td>
+      <td>San Antonio FC</td>
+      <td>1490</td>
+      <td>2</td>
+      <td>36.22%</td>
+      <td>33.68%</td>
+      <td>30.10%</td>
+      <td>-16</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>Phoenix Rising</td>
+      <td>1473</td>
+      <td>4</td>
+      <td>El Paso Locomotive</td>
+      <td>1459</td>
+      <td>4</td>
+      <td>31.28%</td>
+      <td>38.72%</td>
+      <td>30.00%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>North Carolina FC</td>
+      <td>1522</td>
+      <td>1</td>
+      <td>@ Loudoun United</td>
+      <td>1508</td>
+      <td>2</td>
+      <td>42.58%</td>
+      <td>27.77%</td>
+      <td>29.66%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1549</td>
+      <td>1</td>
+      <td>@ Detroit City FC</td>
+      <td>1546</td>
+      <td>2</td>
+      <td>41.03%</td>
+      <td>29.14%</td>
+      <td>29.82%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>El Paso Locomotive</td>
+      <td>1459</td>
+      <td>4</td>
+      <td>@ Phoenix Rising</td>
+      <td>1473</td>
+      <td>4</td>
+      <td>38.72%</td>
+      <td>31.28%</td>
+      <td>30.00%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>Orange County SC</td>
+      <td>1519</td>
+      <td>2</td>
+      <td>@ Lexington SC</td>
+      <td>1513</td>
+      <td>2</td>
+      <td>41.56%</td>
+      <td>28.67%</td>
+      <td>29.77%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>San Antonio FC</td>
+      <td>1490</td>
+      <td>2</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1539</td>
+      <td>0</td>
+      <td>33.68%</td>
+      <td>36.22%</td>
+      <td>30.10%</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1523</td>
+      <td>2</td>
+      <td>@ New Mexico United</td>
+      <td>1500</td>
+      <td>3</td>
+      <td>43.84%</td>
+      <td>26.67%</td>
+      <td>29.49%</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>FC Tulsa</td>
+      <td>1477</td>
+      <td>1</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1495</td>
+      <td>0</td>
+      <td>38.12%</td>
+      <td>31.84%</td>
+      <td>30.03%</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>Monterey Bay FC</td>
+      <td>1441</td>
+      <td>3</td>
+      <td>@ Oakland Roots</td>
+      <td>1441</td>
+      <td>2</td>
+      <td>40.69%</td>
+      <td>29.45%</td>
+      <td>29.85%</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>Charleston Battery</td>
+      <td>1544</td>
+      <td>2</td>
+      <td>@ Rhode Island FC</td>
+      <td>1541</td>
+      <td>0</td>
+      <td>41.03%</td>
+      <td>29.15%</td>
+      <td>29.82%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2025-03-15</td>
+      <td>Miami FC</td>
+      <td>1377</td>
+      <td>1</td>
+      <td>@ Indy Eleven</td>
+      <td>1496</td>
+      <td>3</td>
+      <td>25.06%</td>
+      <td>45.76%</td>
+      <td>29.18%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-03-16</td>
+      <td>Louisville City FC</td>
+      <td>1576</td>
+      <td>1</td>
+      <td>Birmingham Legion</td>
+      <td>1467</td>
+      <td>1</td>
+      <td>44.38%</td>
+      <td>26.21%</td>
+      <td>29.41%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-03-16</td>
+      <td>Birmingham Legion</td>
+      <td>1467</td>
+      <td>1</td>
+      <td>@ Louisville City FC</td>
+      <td>1576</td>
+      <td>1</td>
+      <td>26.21%</td>
+      <td>44.38%</td>
+      <td>29.41%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Hartford Athletic</td>
+      <td>1467</td>
+      <td>0</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1523</td>
+      <td>1</td>
+      <td>23.16%</td>
+      <td>48.13%</td>
+      <td>28.71%</td>
+      <td>-8</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Birmingham Legion</td>
+      <td>1468</td>
+      <td>2</td>
+      <td>Detroit City FC</td>
+      <td>1559</td>
+      <td>2</td>
+      <td>20.02%</td>
+      <td>52.39%</td>
+      <td>27.59%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Loudoun United</td>
+      <td>1521</td>
+      <td>0</td>
+      <td>Louisville City FC</td>
+      <td>1575</td>
+      <td>2</td>
+      <td>23.35%</td>
+      <td>47.89%</td>
+      <td>28.76%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Indy Eleven</td>
+      <td>1508</td>
+      <td>1</td>
+      <td>Lexington SC</td>
+      <td>1513</td>
+      <td>1</td>
+      <td>28.84%</td>
+      <td>41.37%</td>
+      <td>29.79%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>North Carolina FC</td>
+      <td>1509</td>
+      <td>1</td>
+      <td>FC Tulsa</td>
+      <td>1487</td>
+      <td>0</td>
+      <td>32.24%</td>
+      <td>37.70%</td>
+      <td>30.05%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1536</td>
+      <td>2</td>
+      <td>Sacramento Republic</td>
+      <td>1528</td>
+      <td>2</td>
+      <td>30.57%</td>
+      <td>39.48%</td>
+      <td>29.95%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Rhode Island FC</td>
+      <td>1527</td>
+      <td>2</td>
+      <td>Phoenix Rising</td>
+      <td>1473</td>
+      <td>2</td>
+      <td>36.90%</td>
+      <td>33.02%</td>
+      <td>30.08%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>San Antonio FC</td>
+      <td>1506</td>
+      <td>2</td>
+      <td>Oakland Roots</td>
+      <td>1431</td>
+      <td>1</td>
+      <td>39.87%</td>
+      <td>30.20%</td>
+      <td>29.92%</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>El Paso Locomotive</td>
+      <td>1458</td>
+      <td>0</td>
+      <td>New Mexico United</td>
+      <td>1513</td>
+      <td>1</td>
+      <td>23.30%</td>
+      <td>47.96%</td>
+      <td>28.74%</td>
+      <td>-8</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Monterey Bay FC</td>
+      <td>1451</td>
+      <td>3</td>
+      <td>Orange County SC</td>
+      <td>1518</td>
+      <td>0</td>
+      <td>22.03%</td>
+      <td>49.61%</td>
+      <td>28.36%</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1485</td>
+      <td>2</td>
+      <td>Miami FC</td>
+      <td>1365</td>
+      <td>1</td>
+      <td>45.90%</td>
+      <td>24.94%</td>
+      <td>29.15%</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1523</td>
+      <td>1</td>
+      <td>@ Hartford Athletic</td>
+      <td>1467</td>
+      <td>0</td>
+      <td>48.13%</td>
+      <td>23.16%</td>
+      <td>28.71%</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Louisville City FC</td>
+      <td>1575</td>
+      <td>2</td>
+      <td>@ Loudoun United</td>
+      <td>1521</td>
+      <td>0</td>
+      <td>47.89%</td>
+      <td>23.35%</td>
+      <td>28.76%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Lexington SC</td>
+      <td>1513</td>
+      <td>1</td>
+      <td>@ Indy Eleven</td>
+      <td>1508</td>
+      <td>1</td>
+      <td>41.37%</td>
+      <td>28.84%</td>
+      <td>29.79%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Detroit City FC</td>
+      <td>1559</td>
+      <td>2</td>
+      <td>@ Birmingham Legion</td>
+      <td>1468</td>
+      <td>2</td>
+      <td>52.39%</td>
+      <td>20.02%</td>
+      <td>27.59%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Miami FC</td>
+      <td>1365</td>
+      <td>1</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1485</td>
+      <td>2</td>
+      <td>24.94%</td>
+      <td>45.90%</td>
+      <td>29.15%</td>
+      <td>-8</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Orange County SC</td>
+      <td>1518</td>
+      <td>0</td>
+      <td>@ Monterey Bay FC</td>
+      <td>1451</td>
+      <td>3</td>
+      <td>49.61%</td>
+      <td>22.03%</td>
+      <td>28.36%</td>
+      <td>-25</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Oakland Roots</td>
+      <td>1431</td>
+      <td>1</td>
+      <td>@ San Antonio FC</td>
+      <td>1506</td>
+      <td>2</td>
+      <td>30.20%</td>
+      <td>39.87%</td>
+      <td>29.92%</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Phoenix Rising</td>
+      <td>1473</td>
+      <td>2</td>
+      <td>@ Rhode Island FC</td>
+      <td>1527</td>
+      <td>2</td>
+      <td>33.02%</td>
+      <td>36.90%</td>
+      <td>30.08%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>Sacramento Republic</td>
+      <td>1528</td>
+      <td>2</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1536</td>
+      <td>2</td>
+      <td>39.48%</td>
+      <td>30.57%</td>
+      <td>29.95%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>FC Tulsa</td>
+      <td>1487</td>
+      <td>0</td>
+      <td>@ North Carolina FC</td>
+      <td>1509</td>
+      <td>1</td>
+      <td>37.70%</td>
+      <td>32.24%</td>
+      <td>30.05%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-03-22</td>
+      <td>New Mexico United</td>
+      <td>1513</td>
+      <td>1</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1458</td>
+      <td>0</td>
+      <td>47.96%</td>
+      <td>23.30%</td>
+      <td>28.74%</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>2025-03-28</td>
+      <td>Sacramento Republic</td>
+      <td>1527</td>
+      <td>0</td>
+      <td>FC Tulsa</td>
+      <td>1476</td>
+      <td>1</td>
+      <td>36.48%</td>
+      <td>33.43%</td>
+      <td>30.09%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-03-28</td>
+      <td>FC Tulsa</td>
+      <td>1476</td>
+      <td>1</td>
+      <td>@ Sacramento Republic</td>
+      <td>1527</td>
+      <td>0</td>
+      <td>33.43%</td>
+      <td>36.48%</td>
+      <td>30.09%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Louisville City FC</td>
+      <td>1586</td>
+      <td>2</td>
+      <td>@ Detroit City FC</td>
+      <td>1557</td>
+      <td>0</td>
+      <td>44.70%</td>
+      <td>25.94%</td>
+      <td>29.36%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Charleston Battery</td>
+      <td>1557</td>
+      <td>1</td>
+      <td>North Carolina FC</td>
+      <td>1520</td>
+      <td>2</td>
+      <td>34.43%</td>
+      <td>35.47%</td>
+      <td>30.11%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>San Antonio FC</td>
+      <td>1516</td>
+      <td>3</td>
+      <td>Lexington SC</td>
+      <td>1513</td>
+      <td>2</td>
+      <td>29.91%</td>
+      <td>40.19%</td>
+      <td>29.90%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Rhode Island FC</td>
+      <td>1527</td>
+      <td>0</td>
+      <td>Loudoun United</td>
+      <td>1509</td>
+      <td>2</td>
+      <td>31.81%</td>
+      <td>38.16%</td>
+      <td>30.03%</td>
+      <td>-14</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Detroit City FC</td>
+      <td>1557</td>
+      <td>0</td>
+      <td>Louisville City FC</td>
+      <td>1586</td>
+      <td>2</td>
+      <td>25.94%</td>
+      <td>44.70%</td>
+      <td>29.36%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>El Paso Locomotive</td>
+      <td>1450</td>
+      <td>2</td>
+      <td>Hartford Athletic</td>
+      <td>1459</td>
+      <td>1</td>
+      <td>28.32%</td>
+      <td>41.95%</td>
+      <td>29.73%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>New Mexico United</td>
+      <td>1521</td>
+      <td>1</td>
+      <td>Miami FC</td>
+      <td>1356</td>
+      <td>0</td>
+      <td>51.56%</td>
+      <td>20.61%</td>
+      <td>27.83%</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Phoenix Rising</td>
+      <td>1473</td>
+      <td>1</td>
+      <td>Monterey Bay FC</td>
+      <td>1476</td>
+      <td>3</td>
+      <td>29.17%</td>
+      <td>41.00%</td>
+      <td>29.83%</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1510</td>
+      <td>0</td>
+      <td>Oakland Roots</td>
+      <td>1421</td>
+      <td>0</td>
+      <td>41.75%</td>
+      <td>28.50%</td>
+      <td>29.75%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Hartford Athletic</td>
+      <td>1459</td>
+      <td>1</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1450</td>
+      <td>2</td>
+      <td>41.95%</td>
+      <td>28.32%</td>
+      <td>29.73%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Birmingham Legion</td>
+      <td>1470</td>
+      <td>0</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1531</td>
+      <td>2</td>
+      <td>22.67%</td>
+      <td>48.77%</td>
+      <td>28.56%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1537</td>
+      <td>3</td>
+      <td>Indy Eleven</td>
+      <td>1509</td>
+      <td>2</td>
+      <td>33.11%</td>
+      <td>36.80%</td>
+      <td>30.08%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Lexington SC</td>
+      <td>1513</td>
+      <td>2</td>
+      <td>@ San Antonio FC</td>
+      <td>1516</td>
+      <td>3</td>
+      <td>40.19%</td>
+      <td>29.91%</td>
+      <td>29.90%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>North Carolina FC</td>
+      <td>1520</td>
+      <td>2</td>
+      <td>@ Charleston Battery</td>
+      <td>1557</td>
+      <td>1</td>
+      <td>35.47%</td>
+      <td>34.43%</td>
+      <td>30.11%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1531</td>
+      <td>2</td>
+      <td>@ Birmingham Legion</td>
+      <td>1470</td>
+      <td>0</td>
+      <td>48.77%</td>
+      <td>22.67%</td>
+      <td>28.56%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Indy Eleven</td>
+      <td>1509</td>
+      <td>2</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1537</td>
+      <td>3</td>
+      <td>36.80%</td>
+      <td>33.11%</td>
+      <td>30.08%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Miami FC</td>
+      <td>1356</td>
+      <td>0</td>
+      <td>@ New Mexico United</td>
+      <td>1521</td>
+      <td>1</td>
+      <td>20.61%</td>
+      <td>51.56%</td>
+      <td>27.83%</td>
+      <td>-7</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Monterey Bay FC</td>
+      <td>1476</td>
+      <td>3</td>
+      <td>@ Phoenix Rising</td>
+      <td>1473</td>
+      <td>1</td>
+      <td>41.00%</td>
+      <td>29.17%</td>
+      <td>29.83%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Oakland Roots</td>
+      <td>1421</td>
+      <td>0</td>
+      <td>@ Las Vegas Lights FC</td>
+      <td>1510</td>
+      <td>0</td>
+      <td>28.50%</td>
+      <td>41.75%</td>
+      <td>29.75%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-03-29</td>
+      <td>Loudoun United</td>
+      <td>1509</td>
+      <td>2</td>
+      <td>@ Rhode Island FC</td>
+      <td>1527</td>
+      <td>0</td>
+      <td>38.16%</td>
+      <td>31.81%</td>
+      <td>30.03%</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>Rhode Island FC</td>
+      <td>1512</td>
+      <td>3</td>
+      <td>Oakland Roots</td>
+      <td>1422</td>
+      <td>0</td>
+      <td>42.01%</td>
+      <td>28.27%</td>
+      <td>29.72%</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>Lexington SC</td>
+      <td>1500</td>
+      <td>1</td>
+      <td>El Paso Locomotive</td>
+      <td>1463</td>
+      <td>2</td>
+      <td>34.52%</td>
+      <td>35.38%</td>
+      <td>30.11%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>Orange County SC</td>
+      <td>1493</td>
+      <td>0</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1509</td>
+      <td>1</td>
+      <td>27.54%</td>
+      <td>42.84%</td>
+      <td>29.62%</td>
+      <td>-9</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>Louisville City FC</td>
+      <td>1599</td>
+      <td>1</td>
+      <td>Sacramento Republic</td>
+      <td>1516</td>
+      <td>1</td>
+      <td>40.97%</td>
+      <td>29.20%</td>
+      <td>29.83%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>North Carolina FC</td>
+      <td>1531</td>
+      <td>2</td>
+      <td>Indy Eleven</td>
+      <td>1498</td>
+      <td>2</td>
+      <td>34.00%</td>
+      <td>35.90%</td>
+      <td>30.10%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1494</td>
+      <td>1</td>
+      <td>Charleston Battery</td>
+      <td>1546</td>
+      <td>2</td>
+      <td>23.48%</td>
+      <td>47.73%</td>
+      <td>28.79%</td>
+      <td>-8</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>Sacramento Republic</td>
+      <td>1516</td>
+      <td>1</td>
+      <td>@ Louisville City FC</td>
+      <td>1599</td>
+      <td>1</td>
+      <td>29.20%</td>
+      <td>40.97%</td>
+      <td>29.83%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>Monterey Bay FC</td>
+      <td>1489</td>
+      <td>0</td>
+      <td>Detroit City FC</td>
+      <td>1544</td>
+      <td>0</td>
+      <td>23.30%</td>
+      <td>47.95%</td>
+      <td>28.75%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>Hartford Athletic</td>
+      <td>1447</td>
+      <td>0</td>
+      <td>Loudoun United</td>
+      <td>1524</td>
+      <td>2</td>
+      <td>21.15%</td>
+      <td>50.80%</td>
+      <td>28.05%</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>El Paso Locomotive</td>
+      <td>1463</td>
+      <td>2</td>
+      <td>@ Lexington SC</td>
+      <td>1500</td>
+      <td>1</td>
+      <td>35.38%</td>
+      <td>34.52%</td>
+      <td>30.11%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>Oakland Roots</td>
+      <td>1422</td>
+      <td>0</td>
+      <td>@ Rhode Island FC</td>
+      <td>1512</td>
+      <td>3</td>
+      <td>28.27%</td>
+      <td>42.01%</td>
+      <td>29.72%</td>
+      <td>-16</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>Detroit City FC</td>
+      <td>1544</td>
+      <td>0</td>
+      <td>@ Monterey Bay FC</td>
+      <td>1489</td>
+      <td>0</td>
+      <td>47.95%</td>
+      <td>23.30%</td>
+      <td>28.75%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>Loudoun United</td>
+      <td>1524</td>
+      <td>2</td>
+      <td>@ Hartford Athletic</td>
+      <td>1447</td>
+      <td>0</td>
+      <td>50.80%</td>
+      <td>21.15%</td>
+      <td>28.05%</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>Charleston Battery</td>
+      <td>1546</td>
+      <td>2</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1494</td>
+      <td>1</td>
+      <td>47.73%</td>
+      <td>23.48%</td>
+      <td>28.79%</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>Indy Eleven</td>
+      <td>1498</td>
+      <td>2</td>
+      <td>@ North Carolina FC</td>
+      <td>1531</td>
+      <td>2</td>
+      <td>35.90%</td>
+      <td>34.00%</td>
+      <td>30.10%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-04-05</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1509</td>
+      <td>1</td>
+      <td>@ Orange County SC</td>
+      <td>1493</td>
+      <td>0</td>
+      <td>42.84%</td>
+      <td>27.54%</td>
+      <td>29.62%</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2025-04-06</td>
+      <td>San Antonio FC</td>
+      <td>1528</td>
+      <td>1</td>
+      <td>@ Phoenix Rising</td>
+      <td>1459</td>
+      <td>2</td>
+      <td>49.78%</td>
+      <td>21.91%</td>
+      <td>28.32%</td>
+      <td>-14</td>
+    </tr>
+    <tr>
+      <td>2025-04-06</td>
+      <td>Phoenix Rising</td>
+      <td>1459</td>
+      <td>2</td>
+      <td>San Antonio FC</td>
+      <td>1528</td>
+      <td>1</td>
+      <td>21.91%</td>
+      <td>49.78%</td>
+      <td>28.32%</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>Monterey Bay FC</td>
+      <td>1491</td>
+      <td>2</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1548</td>
+      <td>1</td>
+      <td>32.60%</td>
+      <td>37.34%</td>
+      <td>30.07%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>New Mexico United</td>
+      <td>1528</td>
+      <td>1</td>
+      <td>@ North Carolina FC</td>
+      <td>1532</td>
+      <td>0</td>
+      <td>40.22%</td>
+      <td>29.89%</td>
+      <td>29.90%</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>Sacramento Republic</td>
+      <td>1516</td>
+      <td>1</td>
+      <td>Orange County SC</td>
+      <td>1484</td>
+      <td>2</td>
+      <td>33.79%</td>
+      <td>36.11%</td>
+      <td>30.10%</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1543</td>
+      <td>1</td>
+      <td>Charleston Battery</td>
+      <td>1555</td>
+      <td>2</td>
+      <td>28.00%</td>
+      <td>42.31%</td>
+      <td>29.69%</td>
+      <td>-9</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>Loudoun United</td>
+      <td>1534</td>
+      <td>2</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1485</td>
+      <td>1</td>
+      <td>36.15%</td>
+      <td>33.75%</td>
+      <td>30.10%</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1548</td>
+      <td>1</td>
+      <td>Monterey Bay FC</td>
+      <td>1491</td>
+      <td>2</td>
+      <td>37.34%</td>
+      <td>32.60%</td>
+      <td>30.07%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>North Carolina FC</td>
+      <td>1532</td>
+      <td>0</td>
+      <td>New Mexico United</td>
+      <td>1528</td>
+      <td>1</td>
+      <td>29.89%</td>
+      <td>40.22%</td>
+      <td>29.90%</td>
+      <td>-9</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>Detroit City FC</td>
+      <td>1542</td>
+      <td>3</td>
+      <td>Phoenix Rising</td>
+      <td>1474</td>
+      <td>2</td>
+      <td>38.92%</td>
+      <td>31.09%</td>
+      <td>29.99%</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>Oakland Roots</td>
+      <td>1405</td>
+      <td>2</td>
+      <td>FC Tulsa</td>
+      <td>1487</td>
+      <td>1</td>
+      <td>20.71%</td>
+      <td>51.41%</td>
+      <td>27.87%</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>Miami FC</td>
+      <td>1349</td>
+      <td>2</td>
+      <td>San Antonio FC</td>
+      <td>1514</td>
+      <td>1</td>
+      <td>14.76%</td>
+      <td>60.98%</td>
+      <td>24.26%</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>Charleston Battery</td>
+      <td>1555</td>
+      <td>2</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1543</td>
+      <td>1</td>
+      <td>42.31%</td>
+      <td>28.00%</td>
+      <td>29.69%</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>Orange County SC</td>
+      <td>1484</td>
+      <td>2</td>
+      <td>@ Sacramento Republic</td>
+      <td>1516</td>
+      <td>1</td>
+      <td>36.11%</td>
+      <td>33.79%</td>
+      <td>30.10%</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>Phoenix Rising</td>
+      <td>1474</td>
+      <td>2</td>
+      <td>@ Detroit City FC</td>
+      <td>1542</td>
+      <td>3</td>
+      <td>31.09%</td>
+      <td>38.92%</td>
+      <td>29.99%</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>FC Tulsa</td>
+      <td>1487</td>
+      <td>1</td>
+      <td>@ Oakland Roots</td>
+      <td>1405</td>
+      <td>2</td>
+      <td>51.41%</td>
+      <td>20.71%</td>
+      <td>27.87%</td>
+      <td>-14</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>San Antonio FC</td>
+      <td>1514</td>
+      <td>1</td>
+      <td>@ Miami FC</td>
+      <td>1349</td>
+      <td>2</td>
+      <td>60.98%</td>
+      <td>14.76%</td>
+      <td>24.26%</td>
+      <td>-17</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>Lexington SC</td>
+      <td>1489</td>
+      <td>0</td>
+      <td>@ Las Vegas Lights FC</td>
+      <td>1518</td>
+      <td>0</td>
+      <td>36.60%</td>
+      <td>33.31%</td>
+      <td>30.09%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1518</td>
+      <td>0</td>
+      <td>Lexington SC</td>
+      <td>1489</td>
+      <td>0</td>
+      <td>33.31%</td>
+      <td>36.60%</td>
+      <td>30.09%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-04-12</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1485</td>
+      <td>1</td>
+      <td>@ Loudoun United</td>
+      <td>1534</td>
+      <td>2</td>
+      <td>33.75%</td>
+      <td>36.15%</td>
+      <td>30.10%</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>2025-04-13</td>
+      <td>El Paso Locomotive</td>
+      <td>1474</td>
+      <td>1</td>
+      <td>Birmingham Legion</td>
+      <td>1459</td>
+      <td>3</td>
+      <td>31.35%</td>
+      <td>38.64%</td>
+      <td>30.01%</td>
+      <td>-14</td>
+    </tr>
+    <tr>
+      <td>2025-04-13</td>
+      <td>Birmingham Legion</td>
+      <td>1459</td>
+      <td>3</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1474</td>
+      <td>1</td>
+      <td>38.64%</td>
+      <td>31.35%</td>
+      <td>30.01%</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>El Paso Locomotive</td>
+      <td>1459</td>
+      <td>1</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1537</td>
+      <td>1</td>
+      <td>21.14%</td>
+      <td>50.82%</td>
+      <td>28.04%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Sacramento Republic</td>
+      <td>1505</td>
+      <td>2</td>
+      <td>Phoenix Rising</td>
+      <td>1464</td>
+      <td>2</td>
+      <td>35.10%</td>
+      <td>34.79%</td>
+      <td>30.11%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Oakland Roots</td>
+      <td>1420</td>
+      <td>2</td>
+      <td>@ Orange County SC</td>
+      <td>1495</td>
+      <td>0</td>
+      <td>30.28%</td>
+      <td>39.79%</td>
+      <td>29.93%</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Phoenix Rising</td>
+      <td>1464</td>
+      <td>2</td>
+      <td>@ Sacramento Republic</td>
+      <td>1505</td>
+      <td>2</td>
+      <td>34.79%</td>
+      <td>35.10%</td>
+      <td>30.11%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Hartford Athletic</td>
+      <td>1436</td>
+      <td>1</td>
+      <td>@ Birmingham Legion</td>
+      <td>1474</td>
+      <td>0</td>
+      <td>35.35%</td>
+      <td>34.54%</td>
+      <td>30.11%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Detroit City FC</td>
+      <td>1553</td>
+      <td>2</td>
+      <td>@ Rhode Island FC</td>
+      <td>1529</td>
+      <td>0</td>
+      <td>43.93%</td>
+      <td>26.59%</td>
+      <td>29.48%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Loudoun United</td>
+      <td>1545</td>
+      <td>2</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1533</td>
+      <td>1</td>
+      <td>42.32%</td>
+      <td>27.99%</td>
+      <td>29.69%</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Miami FC</td>
+      <td>1366</td>
+      <td>2</td>
+      <td>@ North Carolina FC</td>
+      <td>1522</td>
+      <td>1</td>
+      <td>21.41%</td>
+      <td>50.45%</td>
+      <td>28.14%</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Indy Eleven</td>
+      <td>1497</td>
+      <td>1</td>
+      <td>@ Charleston Battery</td>
+      <td>1564</td>
+      <td>3</td>
+      <td>31.34%</td>
+      <td>38.65%</td>
+      <td>30.00%</td>
+      <td>-14</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Lexington SC</td>
+      <td>1489</td>
+      <td>0</td>
+      <td>@ Monterey Bay FC</td>
+      <td>1503</td>
+      <td>0</td>
+      <td>38.80%</td>
+      <td>31.21%</td>
+      <td>30.00%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1475</td>
+      <td>1</td>
+      <td>@ Louisville City FC</td>
+      <td>1598</td>
+      <td>2</td>
+      <td>24.54%</td>
+      <td>46.39%</td>
+      <td>29.06%</td>
+      <td>-8</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Orange County SC</td>
+      <td>1495</td>
+      <td>0</td>
+      <td>Oakland Roots</td>
+      <td>1420</td>
+      <td>2</td>
+      <td>39.79%</td>
+      <td>30.28%</td>
+      <td>29.93%</td>
+      <td>-17</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1518</td>
+      <td>1</td>
+      <td>@ FC Tulsa</td>
+      <td>1472</td>
+      <td>4</td>
+      <td>46.87%</td>
+      <td>24.16%</td>
+      <td>28.97%</td>
+      <td>-23</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1537</td>
+      <td>1</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1459</td>
+      <td>1</td>
+      <td>50.82%</td>
+      <td>21.14%</td>
+      <td>28.04%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>North Carolina FC</td>
+      <td>1522</td>
+      <td>1</td>
+      <td>Miami FC</td>
+      <td>1366</td>
+      <td>2</td>
+      <td>50.45%</td>
+      <td>21.41%</td>
+      <td>28.14%</td>
+      <td>-14</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Birmingham Legion</td>
+      <td>1474</td>
+      <td>0</td>
+      <td>Hartford Athletic</td>
+      <td>1436</td>
+      <td>1</td>
+      <td>34.54%</td>
+      <td>35.35%</td>
+      <td>30.11%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>FC Tulsa</td>
+      <td>1472</td>
+      <td>4</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1518</td>
+      <td>1</td>
+      <td>24.16%</td>
+      <td>46.87%</td>
+      <td>28.97%</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Rhode Island FC</td>
+      <td>1529</td>
+      <td>0</td>
+      <td>Detroit City FC</td>
+      <td>1553</td>
+      <td>2</td>
+      <td>26.59%</td>
+      <td>43.93%</td>
+      <td>29.48%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Louisville City FC</td>
+      <td>1598</td>
+      <td>2</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1475</td>
+      <td>1</td>
+      <td>46.39%</td>
+      <td>24.54%</td>
+      <td>29.06%</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Monterey Bay FC</td>
+      <td>1503</td>
+      <td>0</td>
+      <td>Lexington SC</td>
+      <td>1489</td>
+      <td>0</td>
+      <td>31.21%</td>
+      <td>38.80%</td>
+      <td>30.00%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Charleston Battery</td>
+      <td>1564</td>
+      <td>3</td>
+      <td>Indy Eleven</td>
+      <td>1497</td>
+      <td>1</td>
+      <td>38.65%</td>
+      <td>31.34%</td>
+      <td>30.00%</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>2025-04-19</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1533</td>
+      <td>1</td>
+      <td>Loudoun United</td>
+      <td>1545</td>
+      <td>2</td>
+      <td>27.99%</td>
+      <td>42.32%</td>
+      <td>29.69%</td>
+      <td>-9</td>
+    </tr>
+    <tr>
+      <td>2025-04-23</td>
+      <td>San Antonio FC</td>
+      <td>1497</td>
+      <td>3</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1535</td>
+      <td>2</td>
+      <td>35.34%</td>
+      <td>34.55%</td>
+      <td>30.11%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-04-23</td>
+      <td>New Mexico United</td>
+      <td>1538</td>
+      <td>1</td>
+      <td>@ Monterey Bay FC</td>
+      <td>1503</td>
+      <td>0</td>
+      <td>45.43%</td>
+      <td>25.33%</td>
+      <td>29.24%</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>2025-04-23</td>
+      <td>Monterey Bay FC</td>
+      <td>1503</td>
+      <td>0</td>
+      <td>New Mexico United</td>
+      <td>1538</td>
+      <td>1</td>
+      <td>25.33%</td>
+      <td>45.43%</td>
+      <td>29.24%</td>
+      <td>-8</td>
+    </tr>
+    <tr>
+      <td>2025-04-23</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1535</td>
+      <td>2</td>
+      <td>San Antonio FC</td>
+      <td>1497</td>
+      <td>3</td>
+      <td>34.55%</td>
+      <td>35.34%</td>
+      <td>30.11%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-05-01</td>
+      <td>Louisville City FC</td>
+      <td>1607</td>
+      <td>2</td>
+      <td>@ Lexington SC</td>
+      <td>1489</td>
+      <td>0</td>
+      <td>55.69%</td>
+      <td>17.83%</td>
+      <td>26.47%</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2025-05-01</td>
+      <td>Lexington SC</td>
+      <td>1489</td>
+      <td>0</td>
+      <td>Louisville City FC</td>
+      <td>1607</td>
+      <td>2</td>
+      <td>17.83%</td>
+      <td>55.69%</td>
+      <td>26.47%</td>
+      <td>-9</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>Hartford Athletic</td>
+      <td>1447</td>
+      <td>2</td>
+      <td>Charleston Battery</td>
+      <td>1579</td>
+      <td>4</td>
+      <td>16.86%</td>
+      <td>57.27%</td>
+      <td>25.87%</td>
+      <td>-8</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>North Carolina FC</td>
+      <td>1507</td>
+      <td>2</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1524</td>
+      <td>0</td>
+      <td>27.42%</td>
+      <td>42.98%</td>
+      <td>29.61%</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>Detroit City FC</td>
+      <td>1566</td>
+      <td>2</td>
+      <td>Indy Eleven</td>
+      <td>1483</td>
+      <td>2</td>
+      <td>40.90%</td>
+      <td>29.27%</td>
+      <td>29.84%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>Birmingham Legion</td>
+      <td>1463</td>
+      <td>2</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1466</td>
+      <td>2</td>
+      <td>29.05%</td>
+      <td>41.14%</td>
+      <td>29.81%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>Phoenix Rising</td>
+      <td>1464</td>
+      <td>1</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1524</td>
+      <td>1</td>
+      <td>22.77%</td>
+      <td>48.63%</td>
+      <td>28.59%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>FC Tulsa</td>
+      <td>1496</td>
+      <td>1</td>
+      <td>Orange County SC</td>
+      <td>1477</td>
+      <td>2</td>
+      <td>31.92%</td>
+      <td>38.04%</td>
+      <td>30.04%</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>Loudoun United</td>
+      <td>1555</td>
+      <td>0</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1494</td>
+      <td>1</td>
+      <td>37.74%</td>
+      <td>32.21%</td>
+      <td>30.05%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>New Mexico United</td>
+      <td>1547</td>
+      <td>0</td>
+      <td>El Paso Locomotive</td>
+      <td>1461</td>
+      <td>3</td>
+      <td>41.34%</td>
+      <td>28.87%</td>
+      <td>29.79%</td>
+      <td>-21</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>San Antonio FC</td>
+      <td>1508</td>
+      <td>0</td>
+      <td>Rhode Island FC</td>
+      <td>1516</td>
+      <td>0</td>
+      <td>28.47%</td>
+      <td>41.79%</td>
+      <td>29.75%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1524</td>
+      <td>1</td>
+      <td>@ Phoenix Rising</td>
+      <td>1464</td>
+      <td>1</td>
+      <td>48.63%</td>
+      <td>22.77%</td>
+      <td>28.59%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1524</td>
+      <td>0</td>
+      <td>@ North Carolina FC</td>
+      <td>1507</td>
+      <td>2</td>
+      <td>42.98%</td>
+      <td>27.42%</td>
+      <td>29.61%</td>
+      <td>-18</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>Indy Eleven</td>
+      <td>1483</td>
+      <td>2</td>
+      <td>@ Detroit City FC</td>
+      <td>1566</td>
+      <td>2</td>
+      <td>29.27%</td>
+      <td>40.90%</td>
+      <td>29.84%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1466</td>
+      <td>2</td>
+      <td>@ Birmingham Legion</td>
+      <td>1463</td>
+      <td>2</td>
+      <td>41.14%</td>
+      <td>29.05%</td>
+      <td>29.81%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>Orange County SC</td>
+      <td>1477</td>
+      <td>2</td>
+      <td>@ FC Tulsa</td>
+      <td>1496</td>
+      <td>1</td>
+      <td>38.04%</td>
+      <td>31.92%</td>
+      <td>30.04%</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1494</td>
+      <td>1</td>
+      <td>@ Loudoun United</td>
+      <td>1555</td>
+      <td>0</td>
+      <td>32.21%</td>
+      <td>37.74%</td>
+      <td>30.05%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>El Paso Locomotive</td>
+      <td>1461</td>
+      <td>3</td>
+      <td>@ New Mexico United</td>
+      <td>1547</td>
+      <td>0</td>
+      <td>28.87%</td>
+      <td>41.34%</td>
+      <td>29.79%</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>Charleston Battery</td>
+      <td>1579</td>
+      <td>4</td>
+      <td>@ Hartford Athletic</td>
+      <td>1447</td>
+      <td>2</td>
+      <td>57.27%</td>
+      <td>16.86%</td>
+      <td>25.87%</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>2025-05-03</td>
+      <td>Rhode Island FC</td>
+      <td>1516</td>
+      <td>0</td>
+      <td>@ San Antonio FC</td>
+      <td>1508</td>
+      <td>0</td>
+      <td>41.79%</td>
+      <td>28.47%</td>
+      <td>29.75%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-05-04</td>
+      <td>Oakland Roots</td>
+      <td>1437</td>
+      <td>0</td>
+      <td>@ Sacramento Republic</td>
+      <td>1505</td>
+      <td>1</td>
+      <td>31.14%</td>
+      <td>38.87%</td>
+      <td>29.99%</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>2025-05-04</td>
+      <td>Monterey Bay FC</td>
+      <td>1494</td>
+      <td>1</td>
+      <td>@ Miami FC</td>
+      <td>1381</td>
+      <td>1</td>
+      <td>55.17%</td>
+      <td>18.17%</td>
+      <td>26.67%</td>
+      <td>-2</td>
+    </tr>
+    <tr>
+      <td>2025-05-04</td>
+      <td>Sacramento Republic</td>
+      <td>1505</td>
+      <td>1</td>
+      <td>Oakland Roots</td>
+      <td>1437</td>
+      <td>0</td>
+      <td>38.87%</td>
+      <td>31.14%</td>
+      <td>29.99%</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2025-05-04</td>
+      <td>Miami FC</td>
+      <td>1381</td>
+      <td>1</td>
+      <td>Monterey Bay FC</td>
+      <td>1494</td>
+      <td>1</td>
+      <td>18.17%</td>
+      <td>55.17%</td>
+      <td>26.67%</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>2025-05-09</td>
+      <td>North Carolina FC</td>
+      <td>1525</td>
+      <td>1</td>
+      <td>@ Orange County SC</td>
+      <td>1488</td>
+      <td>0</td>
+      <td>45.73%</td>
+      <td>25.09%</td>
+      <td>29.19%</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>2025-05-09</td>
+      <td>Orange County SC</td>
+      <td>1488</td>
+      <td>0</td>
+      <td>North Carolina FC</td>
+      <td>1525</td>
+      <td>1</td>
+      <td>25.09%</td>
+      <td>45.73%</td>
+      <td>29.19%</td>
+      <td>-8</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1465</td>
+      <td>1</td>
+      <td>@ Charleston Battery</td>
+      <td>1587</td>
+      <td>3</td>
+      <td>24.73%</td>
+      <td>46.16%</td>
+      <td>29.11%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1506</td>
+      <td>0</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1522</td>
+      <td>0</td>
+      <td>38.46%</td>
+      <td>31.52%</td>
+      <td>30.02%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>San Antonio FC</td>
+      <td>1509</td>
+      <td>1</td>
+      <td>@ Oakland Roots</td>
+      <td>1427</td>
+      <td>2</td>
+      <td>51.36%</td>
+      <td>20.75%</td>
+      <td>27.89%</td>
+      <td>-14</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>FC Tulsa</td>
+      <td>1486</td>
+      <td>1</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1483</td>
+      <td>1</td>
+      <td>41.10%</td>
+      <td>29.08%</td>
+      <td>29.82%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Sacramento Republic</td>
+      <td>1516</td>
+      <td>1</td>
+      <td>@ Indy Eleven</td>
+      <td>1484</td>
+      <td>1</td>
+      <td>45.02%</td>
+      <td>25.67%</td>
+      <td>29.31%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Louisville City FC</td>
+      <td>1616</td>
+      <td>0</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1505</td>
+      <td>0</td>
+      <td>54.78%</td>
+      <td>18.42%</td>
+      <td>26.80%</td>
+      <td>-2</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Lexington SC</td>
+      <td>1480</td>
+      <td>1</td>
+      <td>Loudoun United</td>
+      <td>1543</td>
+      <td>5</td>
+      <td>22.45%</td>
+      <td>49.06%</td>
+      <td>28.49%</td>
+      <td>-15</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Monterey Bay FC</td>
+      <td>1492</td>
+      <td>1</td>
+      <td>Rhode Island FC</td>
+      <td>1515</td>
+      <td>1</td>
+      <td>26.66%</td>
+      <td>43.85%</td>
+      <td>29.49%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Charleston Battery</td>
+      <td>1587</td>
+      <td>3</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1465</td>
+      <td>1</td>
+      <td>46.16%</td>
+      <td>24.73%</td>
+      <td>29.11%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1505</td>
+      <td>0</td>
+      <td>Louisville City FC</td>
+      <td>1616</td>
+      <td>0</td>
+      <td>18.42%</td>
+      <td>54.78%</td>
+      <td>26.80%</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>New Mexico United</td>
+      <td>1525</td>
+      <td>1</td>
+      <td>@ Phoenix Rising</td>
+      <td>1465</td>
+      <td>2</td>
+      <td>48.62%</td>
+      <td>22.78%</td>
+      <td>28.60%</td>
+      <td>-14</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Indy Eleven</td>
+      <td>1484</td>
+      <td>1</td>
+      <td>Sacramento Republic</td>
+      <td>1516</td>
+      <td>1</td>
+      <td>25.67%</td>
+      <td>45.02%</td>
+      <td>29.31%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>El Paso Locomotive</td>
+      <td>1483</td>
+      <td>1</td>
+      <td>FC Tulsa</td>
+      <td>1486</td>
+      <td>1</td>
+      <td>29.08%</td>
+      <td>41.10%</td>
+      <td>29.82%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Oakland Roots</td>
+      <td>1427</td>
+      <td>2</td>
+      <td>San Antonio FC</td>
+      <td>1509</td>
+      <td>1</td>
+      <td>20.75%</td>
+      <td>51.36%</td>
+      <td>27.89%</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1522</td>
+      <td>0</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1506</td>
+      <td>0</td>
+      <td>31.52%</td>
+      <td>38.46%</td>
+      <td>30.02%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Rhode Island FC</td>
+      <td>1515</td>
+      <td>1</td>
+      <td>@ Monterey Bay FC</td>
+      <td>1492</td>
+      <td>1</td>
+      <td>43.85%</td>
+      <td>26.66%</td>
+      <td>29.49%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Loudoun United</td>
+      <td>1543</td>
+      <td>5</td>
+      <td>@ Lexington SC</td>
+      <td>1480</td>
+      <td>1</td>
+      <td>49.06%</td>
+      <td>22.45%</td>
+      <td>28.49%</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Hartford Athletic</td>
+      <td>1438</td>
+      <td>0</td>
+      <td>@ Detroit City FC</td>
+      <td>1565</td>
+      <td>0</td>
+      <td>24.25%</td>
+      <td>46.76%</td>
+      <td>28.99%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Detroit City FC</td>
+      <td>1565</td>
+      <td>0</td>
+      <td>Hartford Athletic</td>
+      <td>1438</td>
+      <td>0</td>
+      <td>46.76%</td>
+      <td>24.25%</td>
+      <td>28.99%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>Phoenix Rising</td>
+      <td>1465</td>
+      <td>2</td>
+      <td>New Mexico United</td>
+      <td>1525</td>
+      <td>1</td>
+      <td>22.78%</td>
+      <td>48.62%</td>
+      <td>28.60%</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>2025-05-14</td>
+      <td>Rhode Island FC</td>
+      <td>1514</td>
+      <td>1</td>
+      <td>Birmingham Legion</td>
+      <td>1463</td>
+      <td>0</td>
+      <td>36.42%</td>
+      <td>33.49%</td>
+      <td>30.09%</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2025-05-14</td>
+      <td>Birmingham Legion</td>
+      <td>1463</td>
+      <td>0</td>
+      <td>@ Rhode Island FC</td>
+      <td>1514</td>
+      <td>1</td>
+      <td>33.49%</td>
+      <td>36.42%</td>
+      <td>30.09%</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>2025-05-16</td>
+      <td>North Carolina FC</td>
+      <td>1534</td>
+      <td>4</td>
+      <td>@ Oakland Roots</td>
+      <td>1442</td>
+      <td>2</td>
+      <td>52.62%</td>
+      <td>19.86%</td>
+      <td>27.52%</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2025-05-16</td>
+      <td>El Paso Locomotive</td>
+      <td>1483</td>
+      <td>3</td>
+      <td>@ Indy Eleven</td>
+      <td>1485</td>
+      <td>1</td>
+      <td>40.51%</td>
+      <td>29.62%</td>
+      <td>29.87%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2025-05-16</td>
+      <td>Indy Eleven</td>
+      <td>1485</td>
+      <td>1</td>
+      <td>El Paso Locomotive</td>
+      <td>1483</td>
+      <td>3</td>
+      <td>29.62%</td>
+      <td>40.51%</td>
+      <td>29.87%</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>2025-05-16</td>
+      <td>Oakland Roots</td>
+      <td>1442</td>
+      <td>2</td>
+      <td>North Carolina FC</td>
+      <td>1534</td>
+      <td>4</td>
+      <td>19.86%</td>
+      <td>52.62%</td>
+      <td>27.52%</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>San Antonio FC</td>
+      <td>1494</td>
+      <td>0</td>
+      <td>Charleston Battery</td>
+      <td>1599</td>
+      <td>4</td>
+      <td>18.79%</td>
+      <td>54.22%</td>
+      <td>27.00%</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>Rhode Island FC</td>
+      <td>1525</td>
+      <td>3</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1453</td>
+      <td>0</td>
+      <td>39.39%</td>
+      <td>30.66%</td>
+      <td>29.96%</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>Loudoun United</td>
+      <td>1559</td>
+      <td>1</td>
+      <td>Miami FC</td>
+      <td>1383</td>
+      <td>2</td>
+      <td>52.91%</td>
+      <td>19.67%</td>
+      <td>27.43%</td>
+      <td>-15</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>Monterey Bay FC</td>
+      <td>1493</td>
+      <td>0</td>
+      <td>Phoenix Rising</td>
+      <td>1480</td>
+      <td>2</td>
+      <td>31.19%</td>
+      <td>38.81%</td>
+      <td>30.00%</td>
+      <td>-14</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>Louisville City FC</td>
+      <td>1613</td>
+      <td>1</td>
+      <td>Hartford Athletic</td>
+      <td>1440</td>
+      <td>1</td>
+      <td>52.66%</td>
+      <td>19.83%</td>
+      <td>27.50%</td>
+      <td>-2</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>New Mexico United</td>
+      <td>1511</td>
+      <td>3</td>
+      <td>Orange County SC</td>
+      <td>1479</td>
+      <td>0</td>
+      <td>33.69%</td>
+      <td>36.21%</td>
+      <td>30.10%</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1506</td>
+      <td>0</td>
+      <td>Sacramento Republic</td>
+      <td>1514</td>
+      <td>5</td>
+      <td>28.40%</td>
+      <td>41.86%</td>
+      <td>29.74%</td>
+      <td>-21</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1508</td>
+      <td>0</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1522</td>
+      <td>1</td>
+      <td>27.66%</td>
+      <td>42.70%</td>
+      <td>29.64%</td>
+      <td>-9</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>Phoenix Rising</td>
+      <td>1480</td>
+      <td>2</td>
+      <td>@ Monterey Bay FC</td>
+      <td>1493</td>
+      <td>0</td>
+      <td>38.81%</td>
+      <td>31.19%</td>
+      <td>30.00%</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>Sacramento Republic</td>
+      <td>1514</td>
+      <td>5</td>
+      <td>@ Las Vegas Lights FC</td>
+      <td>1506</td>
+      <td>0</td>
+      <td>41.86%</td>
+      <td>28.40%</td>
+      <td>29.74%</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1522</td>
+      <td>1</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1508</td>
+      <td>0</td>
+      <td>42.70%</td>
+      <td>27.66%</td>
+      <td>29.64%</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>Hartford Athletic</td>
+      <td>1440</td>
+      <td>1</td>
+      <td>@ Louisville City FC</td>
+      <td>1613</td>
+      <td>1</td>
+      <td>19.83%</td>
+      <td>52.66%</td>
+      <td>27.50%</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1453</td>
+      <td>0</td>
+      <td>@ Rhode Island FC</td>
+      <td>1525</td>
+      <td>3</td>
+      <td>30.66%</td>
+      <td>39.39%</td>
+      <td>29.96%</td>
+      <td>-17</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>Miami FC</td>
+      <td>1383</td>
+      <td>2</td>
+      <td>@ Loudoun United</td>
+      <td>1559</td>
+      <td>1</td>
+      <td>19.67%</td>
+      <td>52.91%</td>
+      <td>27.43%</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>Charleston Battery</td>
+      <td>1599</td>
+      <td>4</td>
+      <td>@ San Antonio FC</td>
+      <td>1494</td>
+      <td>0</td>
+      <td>54.22%</td>
+      <td>18.79%</td>
+      <td>27.00%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2025-05-17</td>
+      <td>Orange County SC</td>
+      <td>1479</td>
+      <td>0</td>
+      <td>@ New Mexico United</td>
+      <td>1511</td>
+      <td>3</td>
+      <td>36.21%</td>
+      <td>33.69%</td>
+      <td>30.10%</td>
+      <td>-19</td>
+    </tr>
+    <tr>
+      <td>2025-05-18</td>
+      <td>Detroit City FC</td>
+      <td>1563</td>
+      <td>1</td>
+      <td>Birmingham Legion</td>
+      <td>1453</td>
+      <td>1</td>
+      <td>44.73%</td>
+      <td>25.92%</td>
+      <td>29.35%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-05-18</td>
+      <td>FC Tulsa</td>
+      <td>1485</td>
+      <td>2</td>
+      <td>Lexington SC</td>
+      <td>1464</td>
+      <td>0</td>
+      <td>32.25%</td>
+      <td>37.69%</td>
+      <td>30.05%</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>2025-05-18</td>
+      <td>Lexington SC</td>
+      <td>1464</td>
+      <td>0</td>
+      <td>@ FC Tulsa</td>
+      <td>1485</td>
+      <td>2</td>
+      <td>37.69%</td>
+      <td>32.25%</td>
+      <td>30.05%</td>
+      <td>-16</td>
+    </tr>
+    <tr>
+      <td>2025-05-18</td>
+      <td>Birmingham Legion</td>
+      <td>1453</td>
+      <td>1</td>
+      <td>@ Detroit City FC</td>
+      <td>1563</td>
+      <td>1</td>
+      <td>25.92%</td>
+      <td>44.73%</td>
+      <td>29.35%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>Oakland Roots</td>
+      <td>1432</td>
+      <td>0</td>
+      <td>@ New Mexico United</td>
+      <td>1531</td>
+      <td>3</td>
+      <td>27.31%</td>
+      <td>43.10%</td>
+      <td>29.59%</td>
+      <td>-16</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>Detroit City FC</td>
+      <td>1562</td>
+      <td>1</td>
+      <td>@ Charleston Battery</td>
+      <td>1613</td>
+      <td>3</td>
+      <td>33.58%</td>
+      <td>36.33%</td>
+      <td>30.09%</td>
+      <td>-15</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>Lexington SC</td>
+      <td>1447</td>
+      <td>1</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1436</td>
+      <td>1</td>
+      <td>42.27%</td>
+      <td>28.04%</td>
+      <td>29.69%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>Miami FC</td>
+      <td>1398</td>
+      <td>1</td>
+      <td>@ Birmingham Legion</td>
+      <td>1454</td>
+      <td>2</td>
+      <td>32.87%</td>
+      <td>37.06%</td>
+      <td>30.08%</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>Orange County SC</td>
+      <td>1459</td>
+      <td>3</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1532</td>
+      <td>1</td>
+      <td>30.57%</td>
+      <td>39.47%</td>
+      <td>29.95%</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>Rhode Island FC</td>
+      <td>1543</td>
+      <td>0</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1498</td>
+      <td>1</td>
+      <td>46.61%</td>
+      <td>24.37%</td>
+      <td>29.02%</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>Monterey Bay FC</td>
+      <td>1478</td>
+      <td>0</td>
+      <td>@ Louisville City FC</td>
+      <td>1611</td>
+      <td>2</td>
+      <td>23.58%</td>
+      <td>47.59%</td>
+      <td>28.82%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1498</td>
+      <td>1</td>
+      <td>Rhode Island FC</td>
+      <td>1543</td>
+      <td>0</td>
+      <td>24.37%</td>
+      <td>46.61%</td>
+      <td>29.02%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>Birmingham Legion</td>
+      <td>1454</td>
+      <td>2</td>
+      <td>Miami FC</td>
+      <td>1398</td>
+      <td>1</td>
+      <td>37.06%</td>
+      <td>32.87%</td>
+      <td>30.08%</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>El Paso Locomotive</td>
+      <td>1497</td>
+      <td>2</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1484</td>
+      <td>1</td>
+      <td>31.14%</td>
+      <td>38.87%</td>
+      <td>29.99%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>Louisville City FC</td>
+      <td>1611</td>
+      <td>2</td>
+      <td>Monterey Bay FC</td>
+      <td>1478</td>
+      <td>0</td>
+      <td>47.59%</td>
+      <td>23.58%</td>
+      <td>28.82%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>Charleston Battery</td>
+      <td>1613</td>
+      <td>3</td>
+      <td>Detroit City FC</td>
+      <td>1562</td>
+      <td>1</td>
+      <td>36.33%</td>
+      <td>33.58%</td>
+      <td>30.09%</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1436</td>
+      <td>1</td>
+      <td>Lexington SC</td>
+      <td>1447</td>
+      <td>1</td>
+      <td>28.04%</td>
+      <td>42.27%</td>
+      <td>29.69%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1484</td>
+      <td>1</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1497</td>
+      <td>2</td>
+      <td>38.87%</td>
+      <td>31.14%</td>
+      <td>29.99%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1532</td>
+      <td>1</td>
+      <td>Orange County SC</td>
+      <td>1459</td>
+      <td>3</td>
+      <td>39.47%</td>
+      <td>30.57%</td>
+      <td>29.95%</td>
+      <td>-17</td>
+    </tr>
+    <tr>
+      <td>2025-05-24</td>
+      <td>New Mexico United</td>
+      <td>1531</td>
+      <td>3</td>
+      <td>Oakland Roots</td>
+      <td>1432</td>
+      <td>0</td>
+      <td>43.10%</td>
+      <td>27.31%</td>
+      <td>29.59%</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>2025-05-28</td>
+      <td>Phoenix Rising</td>
+      <td>1494</td>
+      <td>1</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1472</td>
+      <td>0</td>
+      <td>32.30%</td>
+      <td>37.65%</td>
+      <td>30.05%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-05-28</td>
+      <td>FC Tulsa</td>
+      <td>1502</td>
+      <td>1</td>
+      <td>San Antonio FC</td>
+      <td>1480</td>
+      <td>1</td>
+      <td>32.26%</td>
+      <td>37.69%</td>
+      <td>30.05%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-05-28</td>
+      <td>Hartford Athletic</td>
+      <td>1442</td>
+      <td>4</td>
+      <td>Indy Eleven</td>
+      <td>1471</td>
+      <td>4</td>
+      <td>26.02%</td>
+      <td>44.60%</td>
+      <td>29.37%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-05-28</td>
+      <td>Indy Eleven</td>
+      <td>1471</td>
+      <td>4</td>
+      <td>@ Hartford Athletic</td>
+      <td>1442</td>
+      <td>4</td>
+      <td>44.60%</td>
+      <td>26.02%</td>
+      <td>29.37%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-05-28</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1472</td>
+      <td>0</td>
+      <td>@ Phoenix Rising</td>
+      <td>1494</td>
+      <td>1</td>
+      <td>37.65%</td>
+      <td>32.30%</td>
+      <td>30.05%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-05-28</td>
+      <td>San Antonio FC</td>
+      <td>1480</td>
+      <td>1</td>
+      <td>@ FC Tulsa</td>
+      <td>1502</td>
+      <td>1</td>
+      <td>37.69%</td>
+      <td>32.26%</td>
+      <td>30.05%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-06-04</td>
+      <td>Birmingham Legion</td>
+      <td>1464</td>
+      <td>0</td>
+      <td>@ Indy Eleven</td>
+      <td>1470</td>
+      <td>1</td>
+      <td>39.94%</td>
+      <td>30.14%</td>
+      <td>29.92%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-06-04</td>
+      <td>Indy Eleven</td>
+      <td>1470</td>
+      <td>1</td>
+      <td>Birmingham Legion</td>
+      <td>1464</td>
+      <td>0</td>
+      <td>30.14%</td>
+      <td>39.94%</td>
+      <td>29.92%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-06-06</td>
+      <td>Hartford Athletic</td>
+      <td>1443</td>
+      <td>0</td>
+      <td>@ North Carolina FC</td>
+      <td>1544</td>
+      <td>1</td>
+      <td>27.06%</td>
+      <td>43.39%</td>
+      <td>29.55%</td>
+      <td>-9</td>
+    </tr>
+    <tr>
+      <td>2025-06-06</td>
+      <td>North Carolina FC</td>
+      <td>1544</td>
+      <td>1</td>
+      <td>Hartford Athletic</td>
+      <td>1443</td>
+      <td>0</td>
+      <td>43.39%</td>
+      <td>27.06%</td>
+      <td>29.55%</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Phoenix Rising</td>
+      <td>1506</td>
+      <td>3</td>
+      <td>@ Orange County SC</td>
+      <td>1477</td>
+      <td>1</td>
+      <td>44.64%</td>
+      <td>25.99%</td>
+      <td>29.37%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Rhode Island FC</td>
+      <td>1529</td>
+      <td>0</td>
+      <td>@ Miami FC</td>
+      <td>1388</td>
+      <td>1</td>
+      <td>58.34%</td>
+      <td>16.23%</td>
+      <td>25.43%</td>
+      <td>-16</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Orange County SC</td>
+      <td>1477</td>
+      <td>1</td>
+      <td>Phoenix Rising</td>
+      <td>1506</td>
+      <td>3</td>
+      <td>25.99%</td>
+      <td>44.64%</td>
+      <td>29.37%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1436</td>
+      <td>1</td>
+      <td>Louisville City FC</td>
+      <td>1623</td>
+      <td>2</td>
+      <td>13.55%</td>
+      <td>63.32%</td>
+      <td>23.12%</td>
+      <td>-4</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1461</td>
+      <td>0</td>
+      <td>San Antonio FC</td>
+      <td>1480</td>
+      <td>3</td>
+      <td>27.12%</td>
+      <td>43.32%</td>
+      <td>29.56%</td>
+      <td>-15</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>FC Tulsa</td>
+      <td>1502</td>
+      <td>1</td>
+      <td>Sacramento Republic</td>
+      <td>1536</td>
+      <td>0</td>
+      <td>25.48%</td>
+      <td>45.25%</td>
+      <td>29.27%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Loudoun United</td>
+      <td>1543</td>
+      <td>1</td>
+      <td>@ Charleston Battery</td>
+      <td>1628</td>
+      <td>1</td>
+      <td>29.04%</td>
+      <td>41.14%</td>
+      <td>29.81%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Lexington SC</td>
+      <td>1446</td>
+      <td>1</td>
+      <td>Monterey Bay FC</td>
+      <td>1467</td>
+      <td>2</td>
+      <td>27.00%</td>
+      <td>43.46%</td>
+      <td>29.54%</td>
+      <td>-9</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Detroit City FC</td>
+      <td>1547</td>
+      <td>0</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1512</td>
+      <td>2</td>
+      <td>34.15%</td>
+      <td>35.75%</td>
+      <td>30.10%</td>
+      <td>-15</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1515</td>
+      <td>1</td>
+      <td>New Mexico United</td>
+      <td>1547</td>
+      <td>1</td>
+      <td>25.68%</td>
+      <td>45.01%</td>
+      <td>29.31%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Miami FC</td>
+      <td>1388</td>
+      <td>1</td>
+      <td>Rhode Island FC</td>
+      <td>1529</td>
+      <td>0</td>
+      <td>16.23%</td>
+      <td>58.34%</td>
+      <td>25.43%</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Sacramento Republic</td>
+      <td>1536</td>
+      <td>0</td>
+      <td>@ FC Tulsa</td>
+      <td>1502</td>
+      <td>1</td>
+      <td>45.25%</td>
+      <td>25.48%</td>
+      <td>29.27%</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>San Antonio FC</td>
+      <td>1480</td>
+      <td>3</td>
+      <td>@ Las Vegas Lights FC</td>
+      <td>1461</td>
+      <td>0</td>
+      <td>43.32%</td>
+      <td>27.12%</td>
+      <td>29.56%</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Louisville City FC</td>
+      <td>1623</td>
+      <td>2</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1436</td>
+      <td>1</td>
+      <td>63.32%</td>
+      <td>13.55%</td>
+      <td>23.12%</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>New Mexico United</td>
+      <td>1547</td>
+      <td>1</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1515</td>
+      <td>1</td>
+      <td>45.01%</td>
+      <td>25.68%</td>
+      <td>29.31%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Oakland Roots</td>
+      <td>1416</td>
+      <td>0</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1509</td>
+      <td>0</td>
+      <td>27.93%</td>
+      <td>42.40%</td>
+      <td>29.68%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Monterey Bay FC</td>
+      <td>1467</td>
+      <td>2</td>
+      <td>@ Lexington SC</td>
+      <td>1446</td>
+      <td>1</td>
+      <td>43.46%</td>
+      <td>27.00%</td>
+      <td>29.54%</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1512</td>
+      <td>2</td>
+      <td>@ Detroit City FC</td>
+      <td>1547</td>
+      <td>0</td>
+      <td>35.75%</td>
+      <td>34.15%</td>
+      <td>30.10%</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>Charleston Battery</td>
+      <td>1628</td>
+      <td>1</td>
+      <td>Loudoun United</td>
+      <td>1543</td>
+      <td>1</td>
+      <td>41.14%</td>
+      <td>29.04%</td>
+      <td>29.81%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-06-07</td>
+      <td>El Paso Locomotive</td>
+      <td>1509</td>
+      <td>0</td>
+      <td>Oakland Roots</td>
+      <td>1416</td>
+      <td>0</td>
+      <td>42.40%</td>
+      <td>27.93%</td>
+      <td>29.68%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-06-11</td>
+      <td>Rhode Island FC</td>
+      <td>1512</td>
+      <td>1</td>
+      <td>Louisville City FC</td>
+      <td>1628</td>
+      <td>2</td>
+      <td>18.02%</td>
+      <td>55.40%</td>
+      <td>26.58%</td>
+      <td>-6</td>
+    </tr>
+    <tr>
+      <td>2025-06-11</td>
+      <td>Louisville City FC</td>
+      <td>1628</td>
+      <td>2</td>
+      <td>@ Rhode Island FC</td>
+      <td>1512</td>
+      <td>1</td>
+      <td>55.40%</td>
+      <td>18.02%</td>
+      <td>26.58%</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Charleston Battery</td>
+      <td>1627</td>
+      <td>2</td>
+      <td>Hartford Athletic</td>
+      <td>1434</td>
+      <td>1</td>
+      <td>55.04%</td>
+      <td>18.25%</td>
+      <td>26.71%</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>New Mexico United</td>
+      <td>1546</td>
+      <td>1</td>
+      <td>Lexington SC</td>
+      <td>1437</td>
+      <td>2</td>
+      <td>44.38%</td>
+      <td>26.21%</td>
+      <td>29.41%</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Detroit City FC</td>
+      <td>1532</td>
+      <td>2</td>
+      <td>Loudoun United</td>
+      <td>1544</td>
+      <td>3</td>
+      <td>27.93%</td>
+      <td>42.39%</td>
+      <td>29.68%</td>
+      <td>-9</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1528</td>
+      <td>0</td>
+      <td>Indy Eleven</td>
+      <td>1482</td>
+      <td>1</td>
+      <td>35.69%</td>
+      <td>34.20%</td>
+      <td>30.10%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Miami FC</td>
+      <td>1404</td>
+      <td>1</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1432</td>
+      <td>2</td>
+      <td>26.17%</td>
+      <td>44.42%</td>
+      <td>29.40%</td>
+      <td>-8</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Phoenix Rising</td>
+      <td>1518</td>
+      <td>1</td>
+      <td>FC Tulsa</td>
+      <td>1516</td>
+      <td>1</td>
+      <td>29.83%</td>
+      <td>40.28%</td>
+      <td>29.89%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Louisville City FC</td>
+      <td>1634</td>
+      <td>4</td>
+      <td>@ Birmingham Legion</td>
+      <td>1452</td>
+      <td>2</td>
+      <td>62.85%</td>
+      <td>13.79%</td>
+      <td>23.36%</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Sacramento Republic</td>
+      <td>1522</td>
+      <td>0</td>
+      <td>@ San Antonio FC</td>
+      <td>1496</td>
+      <td>0</td>
+      <td>44.25%</td>
+      <td>26.32%</td>
+      <td>29.43%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Oakland Roots</td>
+      <td>1417</td>
+      <td>0</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1516</td>
+      <td>1</td>
+      <td>19.27%</td>
+      <td>53.48%</td>
+      <td>27.24%</td>
+      <td>-6</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>FC Tulsa</td>
+      <td>1516</td>
+      <td>1</td>
+      <td>@ Phoenix Rising</td>
+      <td>1518</td>
+      <td>1</td>
+      <td>40.28%</td>
+      <td>29.83%</td>
+      <td>29.89%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1516</td>
+      <td>1</td>
+      <td>@ Oakland Roots</td>
+      <td>1417</td>
+      <td>0</td>
+      <td>53.48%</td>
+      <td>19.27%</td>
+      <td>27.24%</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1432</td>
+      <td>2</td>
+      <td>@ Miami FC</td>
+      <td>1404</td>
+      <td>1</td>
+      <td>44.42%</td>
+      <td>26.17%</td>
+      <td>29.40%</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>North Carolina FC</td>
+      <td>1553</td>
+      <td>1</td>
+      <td>Rhode Island FC</td>
+      <td>1506</td>
+      <td>2</td>
+      <td>35.91%</td>
+      <td>33.99%</td>
+      <td>30.10%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>El Paso Locomotive</td>
+      <td>1509</td>
+      <td>0</td>
+      <td>@ Orange County SC</td>
+      <td>1464</td>
+      <td>3</td>
+      <td>46.67%</td>
+      <td>24.32%</td>
+      <td>29.01%</td>
+      <td>-23</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Lexington SC</td>
+      <td>1437</td>
+      <td>2</td>
+      <td>@ New Mexico United</td>
+      <td>1546</td>
+      <td>1</td>
+      <td>26.21%</td>
+      <td>44.38%</td>
+      <td>29.41%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Indy Eleven</td>
+      <td>1482</td>
+      <td>1</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1528</td>
+      <td>0</td>
+      <td>34.20%</td>
+      <td>35.69%</td>
+      <td>30.10%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Hartford Athletic</td>
+      <td>1434</td>
+      <td>1</td>
+      <td>@ Charleston Battery</td>
+      <td>1627</td>
+      <td>2</td>
+      <td>18.25%</td>
+      <td>55.04%</td>
+      <td>26.71%</td>
+      <td>-6</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Loudoun United</td>
+      <td>1544</td>
+      <td>3</td>
+      <td>@ Detroit City FC</td>
+      <td>1532</td>
+      <td>2</td>
+      <td>42.39%</td>
+      <td>27.93%</td>
+      <td>29.68%</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Rhode Island FC</td>
+      <td>1506</td>
+      <td>2</td>
+      <td>@ North Carolina FC</td>
+      <td>1553</td>
+      <td>1</td>
+      <td>33.99%</td>
+      <td>35.91%</td>
+      <td>30.10%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1445</td>
+      <td>2</td>
+      <td>@ Monterey Bay FC</td>
+      <td>1476</td>
+      <td>0</td>
+      <td>36.28%</td>
+      <td>33.62%</td>
+      <td>30.10%</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Birmingham Legion</td>
+      <td>1452</td>
+      <td>2</td>
+      <td>Louisville City FC</td>
+      <td>1634</td>
+      <td>4</td>
+      <td>13.79%</td>
+      <td>62.85%</td>
+      <td>23.36%</td>
+      <td>-6</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>San Antonio FC</td>
+      <td>1496</td>
+      <td>0</td>
+      <td>Sacramento Republic</td>
+      <td>1522</td>
+      <td>0</td>
+      <td>26.32%</td>
+      <td>44.25%</td>
+      <td>29.43%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Monterey Bay FC</td>
+      <td>1476</td>
+      <td>0</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1445</td>
+      <td>2</td>
+      <td>33.62%</td>
+      <td>36.28%</td>
+      <td>30.10%</td>
+      <td>-15</td>
+    </tr>
+    <tr>
+      <td>2025-06-14</td>
+      <td>Orange County SC</td>
+      <td>1464</td>
+      <td>3</td>
+      <td>El Paso Locomotive</td>
+      <td>1509</td>
+      <td>0</td>
+      <td>24.32%</td>
+      <td>46.67%</td>
+      <td>29.01%</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <td>2025-06-18</td>
+      <td>Miami FC</td>
+      <td>1395</td>
+      <td>1</td>
+      <td>@ Charleston Battery</td>
+      <td>1634</td>
+      <td>0</td>
+      <td>15.20%</td>
+      <td>60.17%</td>
+      <td>24.63%</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>2025-06-18</td>
+      <td>Birmingham Legion</td>
+      <td>1445</td>
+      <td>1</td>
+      <td>@ Sacramento Republic</td>
+      <td>1521</td>
+      <td>0</td>
+      <td>30.11%</td>
+      <td>39.98%</td>
+      <td>29.92%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-06-18</td>
+      <td>Charleston Battery</td>
+      <td>1634</td>
+      <td>0</td>
+      <td>Miami FC</td>
+      <td>1395</td>
+      <td>1</td>
+      <td>60.17%</td>
+      <td>15.20%</td>
+      <td>24.63%</td>
+      <td>-16</td>
+    </tr>
+    <tr>
+      <td>2025-06-18</td>
+      <td>Sacramento Republic</td>
+      <td>1521</td>
+      <td>0</td>
+      <td>Birmingham Legion</td>
+      <td>1445</td>
+      <td>1</td>
+      <td>39.98%</td>
+      <td>30.11%</td>
+      <td>29.92%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-06-20</td>
+      <td>Lexington SC</td>
+      <td>1451</td>
+      <td>2</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1523</td>
+      <td>1</td>
+      <td>30.60%</td>
+      <td>39.44%</td>
+      <td>29.95%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-06-20</td>
+      <td>Hartford Athletic</td>
+      <td>1427</td>
+      <td>3</td>
+      <td>@ Loudoun United</td>
+      <td>1554</td>
+      <td>0</td>
+      <td>24.25%</td>
+      <td>46.75%</td>
+      <td>29.00%</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <td>2025-06-20</td>
+      <td>North Carolina FC</td>
+      <td>1542</td>
+      <td>2</td>
+      <td>@ Louisville City FC</td>
+      <td>1641</td>
+      <td>1</td>
+      <td>27.27%</td>
+      <td>43.15%</td>
+      <td>29.58%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-06-20</td>
+      <td>Louisville City FC</td>
+      <td>1641</td>
+      <td>1</td>
+      <td>North Carolina FC</td>
+      <td>1542</td>
+      <td>2</td>
+      <td>43.15%</td>
+      <td>27.27%</td>
+      <td>29.58%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-06-20</td>
+      <td>Loudoun United</td>
+      <td>1554</td>
+      <td>0</td>
+      <td>Hartford Athletic</td>
+      <td>1427</td>
+      <td>3</td>
+      <td>46.75%</td>
+      <td>24.25%</td>
+      <td>29.00%</td>
+      <td>-23</td>
+    </tr>
+    <tr>
+      <td>2025-06-20</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1523</td>
+      <td>1</td>
+      <td>Lexington SC</td>
+      <td>1451</td>
+      <td>2</td>
+      <td>39.44%</td>
+      <td>30.60%</td>
+      <td>29.95%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>Indy Eleven</td>
+      <td>1493</td>
+      <td>0</td>
+      <td>@ Las Vegas Lights FC</td>
+      <td>1460</td>
+      <td>1</td>
+      <td>45.16%</td>
+      <td>25.56%</td>
+      <td>29.28%</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>Charleston Battery</td>
+      <td>1617</td>
+      <td>4</td>
+      <td>@ Phoenix Rising</td>
+      <td>1519</td>
+      <td>1</td>
+      <td>53.32%</td>
+      <td>19.38%</td>
+      <td>27.30%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>Rhode Island FC</td>
+      <td>1517</td>
+      <td>0</td>
+      <td>@ Sacramento Republic</td>
+      <td>1509</td>
+      <td>2</td>
+      <td>41.80%</td>
+      <td>28.46%</td>
+      <td>29.75%</td>
+      <td>-17</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1516</td>
+      <td>2</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1441</td>
+      <td>1</td>
+      <td>50.61%</td>
+      <td>21.29%</td>
+      <td>28.10%</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>Detroit City FC</td>
+      <td>1522</td>
+      <td>2</td>
+      <td>@ Miami FC</td>
+      <td>1412</td>
+      <td>0</td>
+      <td>54.78%</td>
+      <td>18.42%</td>
+      <td>26.80%</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>New Mexico United</td>
+      <td>1532</td>
+      <td>4</td>
+      <td>@ San Antonio FC</td>
+      <td>1497</td>
+      <td>2</td>
+      <td>45.43%</td>
+      <td>25.33%</td>
+      <td>29.24%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>Monterey Bay FC</td>
+      <td>1461</td>
+      <td>1</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1485</td>
+      <td>2</td>
+      <td>37.31%</td>
+      <td>32.62%</td>
+      <td>30.07%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>Phoenix Rising</td>
+      <td>1519</td>
+      <td>1</td>
+      <td>Charleston Battery</td>
+      <td>1617</td>
+      <td>4</td>
+      <td>19.38%</td>
+      <td>53.32%</td>
+      <td>27.30%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1460</td>
+      <td>1</td>
+      <td>Indy Eleven</td>
+      <td>1493</td>
+      <td>0</td>
+      <td>25.56%</td>
+      <td>45.16%</td>
+      <td>29.28%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>Miami FC</td>
+      <td>1412</td>
+      <td>0</td>
+      <td>Detroit City FC</td>
+      <td>1522</td>
+      <td>2</td>
+      <td>18.42%</td>
+      <td>54.78%</td>
+      <td>26.80%</td>
+      <td>-9</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1441</td>
+      <td>1</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1516</td>
+      <td>2</td>
+      <td>21.29%</td>
+      <td>50.61%</td>
+      <td>28.10%</td>
+      <td>-7</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>Sacramento Republic</td>
+      <td>1509</td>
+      <td>2</td>
+      <td>Rhode Island FC</td>
+      <td>1517</td>
+      <td>0</td>
+      <td>28.46%</td>
+      <td>41.80%</td>
+      <td>29.75%</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>Oakland Roots</td>
+      <td>1410</td>
+      <td>1</td>
+      <td>Birmingham Legion</td>
+      <td>1458</td>
+      <td>0</td>
+      <td>23.99%</td>
+      <td>47.08%</td>
+      <td>28.93%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>El Paso Locomotive</td>
+      <td>1485</td>
+      <td>2</td>
+      <td>Monterey Bay FC</td>
+      <td>1461</td>
+      <td>1</td>
+      <td>32.62%</td>
+      <td>37.31%</td>
+      <td>30.07%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>San Antonio FC</td>
+      <td>1497</td>
+      <td>2</td>
+      <td>New Mexico United</td>
+      <td>1532</td>
+      <td>4</td>
+      <td>25.33%</td>
+      <td>45.43%</td>
+      <td>29.24%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-06-21</td>
+      <td>Birmingham Legion</td>
+      <td>1458</td>
+      <td>0</td>
+      <td>@ Oakland Roots</td>
+      <td>1410</td>
+      <td>1</td>
+      <td>47.08%</td>
+      <td>23.99%</td>
+      <td>28.93%</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>2025-06-25</td>
+      <td>Loudoun United</td>
+      <td>1530</td>
+      <td>1</td>
+      <td>@ Louisville City FC</td>
+      <td>1628</td>
+      <td>4</td>
+      <td>27.36%</td>
+      <td>43.04%</td>
+      <td>29.60%</td>
+      <td>-16</td>
+    </tr>
+    <tr>
+      <td>2025-06-25</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1433</td>
+      <td>3</td>
+      <td>@ Indy Eleven</td>
+      <td>1480</td>
+      <td>1</td>
+      <td>34.09%</td>
+      <td>35.81%</td>
+      <td>30.10%</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>2025-06-25</td>
+      <td>Indy Eleven</td>
+      <td>1480</td>
+      <td>1</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1433</td>
+      <td>3</td>
+      <td>35.81%</td>
+      <td>34.09%</td>
+      <td>30.10%</td>
+      <td>-15</td>
+    </tr>
+    <tr>
+      <td>2025-06-25</td>
+      <td>Louisville City FC</td>
+      <td>1628</td>
+      <td>4</td>
+      <td>Loudoun United</td>
+      <td>1530</td>
+      <td>1</td>
+      <td>43.04%</td>
+      <td>27.36%</td>
+      <td>29.60%</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>2025-07-02</td>
+      <td>Charleston Battery</td>
+      <td>1629</td>
+      <td>0</td>
+      <td>Birmingham Legion</td>
+      <td>1444</td>
+      <td>0</td>
+      <td>54.07%</td>
+      <td>18.89%</td>
+      <td>27.05%</td>
+      <td>-2</td>
+    </tr>
+    <tr>
+      <td>2025-07-02</td>
+      <td>Birmingham Legion</td>
+      <td>1444</td>
+      <td>0</td>
+      <td>@ Charleston Battery</td>
+      <td>1629</td>
+      <td>0</td>
+      <td>18.89%</td>
+      <td>54.07%</td>
+      <td>27.05%</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>2025-07-03</td>
+      <td>Loudoun United</td>
+      <td>1514</td>
+      <td>0</td>
+      <td>@ Orange County SC</td>
+      <td>1488</td>
+      <td>0</td>
+      <td>44.17%</td>
+      <td>26.39%</td>
+      <td>29.44%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-07-03</td>
+      <td>Orange County SC</td>
+      <td>1488</td>
+      <td>0</td>
+      <td>Loudoun United</td>
+      <td>1514</td>
+      <td>0</td>
+      <td>26.39%</td>
+      <td>44.17%</td>
+      <td>29.44%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-07-04</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1524</td>
+      <td>1</td>
+      <td>@ New Mexico United</td>
+      <td>1545</td>
+      <td>0</td>
+      <td>37.77%</td>
+      <td>32.18%</td>
+      <td>30.05%</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2025-07-04</td>
+      <td>Phoenix Rising</td>
+      <td>1507</td>
+      <td>0</td>
+      <td>@ Lexington SC</td>
+      <td>1463</td>
+      <td>1</td>
+      <td>46.64%</td>
+      <td>24.34%</td>
+      <td>29.02%</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>2025-07-04</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1474</td>
+      <td>0</td>
+      <td>@ Sacramento Republic</td>
+      <td>1527</td>
+      <td>2</td>
+      <td>33.12%</td>
+      <td>36.79%</td>
+      <td>30.08%</td>
+      <td>-15</td>
+    </tr>
+    <tr>
+      <td>2025-07-04</td>
+      <td>San Antonio FC</td>
+      <td>1485</td>
+      <td>2</td>
+      <td>El Paso Locomotive</td>
+      <td>1496</td>
+      <td>1</td>
+      <td>28.04%</td>
+      <td>42.27%</td>
+      <td>29.69%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-07-04</td>
+      <td>Sacramento Republic</td>
+      <td>1527</td>
+      <td>2</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1474</td>
+      <td>0</td>
+      <td>36.79%</td>
+      <td>33.12%</td>
+      <td>30.08%</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>2025-07-04</td>
+      <td>Lexington SC</td>
+      <td>1463</td>
+      <td>1</td>
+      <td>Phoenix Rising</td>
+      <td>1507</td>
+      <td>0</td>
+      <td>24.34%</td>
+      <td>46.64%</td>
+      <td>29.02%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2025-07-04</td>
+      <td>Louisville City FC</td>
+      <td>1644</td>
+      <td>1</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1511</td>
+      <td>0</td>
+      <td>47.67%</td>
+      <td>23.52%</td>
+      <td>28.81%</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>2025-07-04</td>
+      <td>New Mexico United</td>
+      <td>1545</td>
+      <td>0</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1524</td>
+      <td>1</td>
+      <td>32.18%</td>
+      <td>37.77%</td>
+      <td>30.05%</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>2025-07-04</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1511</td>
+      <td>0</td>
+      <td>@ Louisville City FC</td>
+      <td>1644</td>
+      <td>1</td>
+      <td>23.52%</td>
+      <td>47.67%</td>
+      <td>28.81%</td>
+      <td>-8</td>
+    </tr>
+    <tr>
+      <td>2025-07-04</td>
+      <td>El Paso Locomotive</td>
+      <td>1496</td>
+      <td>1</td>
+      <td>@ San Antonio FC</td>
+      <td>1485</td>
+      <td>2</td>
+      <td>42.27%</td>
+      <td>28.04%</td>
+      <td>29.69%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-07-05</td>
+      <td>FC Tulsa</td>
+      <td>1515</td>
+      <td>2</td>
+      <td>Miami FC</td>
+      <td>1403</td>
+      <td>2</td>
+      <td>44.89%</td>
+      <td>25.78%</td>
+      <td>29.33%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-07-05</td>
+      <td>Detroit City FC</td>
+      <td>1532</td>
+      <td>0</td>
+      <td>Oakland Roots</td>
+      <td>1424</td>
+      <td>2</td>
+      <td>44.32%</td>
+      <td>26.26%</td>
+      <td>29.42%</td>
+      <td>-18</td>
+    </tr>
+    <tr>
+      <td>2025-07-05</td>
+      <td>Rhode Island FC</td>
+      <td>1499</td>
+      <td>1</td>
+      <td>@ Birmingham Legion</td>
+      <td>1446</td>
+      <td>1</td>
+      <td>47.81%</td>
+      <td>23.41%</td>
+      <td>28.78%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-07-05</td>
+      <td>Miami FC</td>
+      <td>1403</td>
+      <td>2</td>
+      <td>@ FC Tulsa</td>
+      <td>1515</td>
+      <td>2</td>
+      <td>25.78%</td>
+      <td>44.89%</td>
+      <td>29.33%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-07-05</td>
+      <td>Indy Eleven</td>
+      <td>1464</td>
+      <td>3</td>
+      <td>@ Monterey Bay FC</td>
+      <td>1449</td>
+      <td>0</td>
+      <td>42.69%</td>
+      <td>27.67%</td>
+      <td>29.64%</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>2025-07-05</td>
+      <td>Oakland Roots</td>
+      <td>1424</td>
+      <td>2</td>
+      <td>@ Detroit City FC</td>
+      <td>1532</td>
+      <td>0</td>
+      <td>26.26%</td>
+      <td>44.32%</td>
+      <td>29.42%</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>2025-07-05</td>
+      <td>Birmingham Legion</td>
+      <td>1446</td>
+      <td>1</td>
+      <td>Rhode Island FC</td>
+      <td>1499</td>
+      <td>1</td>
+      <td>23.41%</td>
+      <td>47.81%</td>
+      <td>28.78%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-07-05</td>
+      <td>Monterey Bay FC</td>
+      <td>1449</td>
+      <td>0</td>
+      <td>Indy Eleven</td>
+      <td>1464</td>
+      <td>3</td>
+      <td>27.67%</td>
+      <td>42.69%</td>
+      <td>29.64%</td>
+      <td>-16</td>
+    </tr>
+    <tr>
+      <td>2025-07-06</td>
+      <td>North Carolina FC</td>
+      <td>1555</td>
+      <td>0</td>
+      <td>Charleston Battery</td>
+      <td>1627</td>
+      <td>1</td>
+      <td>21.63%</td>
+      <td>50.14%</td>
+      <td>28.22%</td>
+      <td>-7</td>
+    </tr>
+    <tr>
+      <td>2025-07-06</td>
+      <td>Charleston Battery</td>
+      <td>1627</td>
+      <td>1</td>
+      <td>@ North Carolina FC</td>
+      <td>1555</td>
+      <td>0</td>
+      <td>50.14%</td>
+      <td>21.63%</td>
+      <td>28.22%</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>2025-07-11</td>
+      <td>Birmingham Legion</td>
+      <td>1447</td>
+      <td>3</td>
+      <td>North Carolina FC</td>
+      <td>1547</td>
+      <td>2</td>
+      <td>19.22%</td>
+      <td>53.56%</td>
+      <td>27.22%</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>2025-07-11</td>
+      <td>Orange County SC</td>
+      <td>1489</td>
+      <td>1</td>
+      <td>Monterey Bay FC</td>
+      <td>1433</td>
+      <td>2</td>
+      <td>37.17%</td>
+      <td>32.76%</td>
+      <td>30.07%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-07-11</td>
+      <td>North Carolina FC</td>
+      <td>1547</td>
+      <td>2</td>
+      <td>@ Birmingham Legion</td>
+      <td>1447</td>
+      <td>3</td>
+      <td>53.56%</td>
+      <td>19.22%</td>
+      <td>27.22%</td>
+      <td>-15</td>
+    </tr>
+    <tr>
+      <td>2025-07-11</td>
+      <td>Monterey Bay FC</td>
+      <td>1433</td>
+      <td>2</td>
+      <td>@ Orange County SC</td>
+      <td>1489</td>
+      <td>1</td>
+      <td>32.76%</td>
+      <td>37.17%</td>
+      <td>30.07%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>Indy Eleven</td>
+      <td>1480</td>
+      <td>1</td>
+      <td>@ Rhode Island FC</td>
+      <td>1498</td>
+      <td>0</td>
+      <td>38.18%</td>
+      <td>31.79%</td>
+      <td>30.03%</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>Detroit City FC</td>
+      <td>1513</td>
+      <td>1</td>
+      <td>@ Hartford Athletic</td>
+      <td>1451</td>
+      <td>2</td>
+      <td>48.86%</td>
+      <td>22.60%</td>
+      <td>28.54%</td>
+      <td>-14</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>Miami FC</td>
+      <td>1404</td>
+      <td>1</td>
+      <td>@ Lexington SC</td>
+      <td>1476</td>
+      <td>1</td>
+      <td>30.56%</td>
+      <td>39.49%</td>
+      <td>29.95%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>FC Tulsa</td>
+      <td>1514</td>
+      <td>4</td>
+      <td>@ Las Vegas Lights FC</td>
+      <td>1458</td>
+      <td>3</td>
+      <td>48.06%</td>
+      <td>23.21%</td>
+      <td>28.72%</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>New Mexico United</td>
+      <td>1534</td>
+      <td>1</td>
+      <td>@ Charleston Battery</td>
+      <td>1634</td>
+      <td>2</td>
+      <td>27.16%</td>
+      <td>43.28%</td>
+      <td>29.57%</td>
+      <td>-9</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>San Antonio FC</td>
+      <td>1498</td>
+      <td>1</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1449</td>
+      <td>0</td>
+      <td>47.16%</td>
+      <td>23.93%</td>
+      <td>28.91%</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1449</td>
+      <td>0</td>
+      <td>San Antonio FC</td>
+      <td>1498</td>
+      <td>1</td>
+      <td>23.93%</td>
+      <td>47.16%</td>
+      <td>28.91%</td>
+      <td>-8</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1458</td>
+      <td>3</td>
+      <td>FC Tulsa</td>
+      <td>1514</td>
+      <td>4</td>
+      <td>23.21%</td>
+      <td>48.06%</td>
+      <td>28.72%</td>
+      <td>-8</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>Charleston Battery</td>
+      <td>1634</td>
+      <td>2</td>
+      <td>New Mexico United</td>
+      <td>1534</td>
+      <td>1</td>
+      <td>43.28%</td>
+      <td>27.16%</td>
+      <td>29.57%</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>Phoenix Rising</td>
+      <td>1493</td>
+      <td>2</td>
+      <td>Oakland Roots</td>
+      <td>1442</td>
+      <td>1</td>
+      <td>36.43%</td>
+      <td>33.48%</td>
+      <td>30.09%</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>Lexington SC</td>
+      <td>1476</td>
+      <td>1</td>
+      <td>Miami FC</td>
+      <td>1404</td>
+      <td>1</td>
+      <td>39.49%</td>
+      <td>30.56%</td>
+      <td>29.95%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>Hartford Athletic</td>
+      <td>1451</td>
+      <td>2</td>
+      <td>Detroit City FC</td>
+      <td>1513</td>
+      <td>1</td>
+      <td>22.60%</td>
+      <td>48.86%</td>
+      <td>28.54%</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>El Paso Locomotive</td>
+      <td>1484</td>
+      <td>0</td>
+      <td>Sacramento Republic</td>
+      <td>1542</td>
+      <td>3</td>
+      <td>22.90%</td>
+      <td>48.46%</td>
+      <td>28.63%</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>Rhode Island FC</td>
+      <td>1498</td>
+      <td>0</td>
+      <td>Indy Eleven</td>
+      <td>1480</td>
+      <td>1</td>
+      <td>31.79%</td>
+      <td>38.18%</td>
+      <td>30.03%</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>Oakland Roots</td>
+      <td>1442</td>
+      <td>1</td>
+      <td>@ Phoenix Rising</td>
+      <td>1493</td>
+      <td>2</td>
+      <td>33.48%</td>
+      <td>36.43%</td>
+      <td>30.09%</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>2025-07-12</td>
+      <td>Sacramento Republic</td>
+      <td>1542</td>
+      <td>3</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1484</td>
+      <td>0</td>
+      <td>48.46%</td>
+      <td>22.90%</td>
+      <td>28.63%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2025-07-13</td>
+      <td>Loudoun United</td>
+      <td>1512</td>
+      <td>2</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1534</td>
+      <td>2</td>
+      <td>26.83%</td>
+      <td>43.66%</td>
+      <td>29.51%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-07-13</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1534</td>
+      <td>2</td>
+      <td>@ Loudoun United</td>
+      <td>1512</td>
+      <td>2</td>
+      <td>43.66%</td>
+      <td>26.83%</td>
+      <td>29.51%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-07-16</td>
+      <td>Monterey Bay FC</td>
+      <td>1444</td>
+      <td>1</td>
+      <td>FC Tulsa</td>
+      <td>1522</td>
+      <td>2</td>
+      <td>21.13%</td>
+      <td>50.84%</td>
+      <td>28.04%</td>
+      <td>-7</td>
+    </tr>
+    <tr>
+      <td>2025-07-16</td>
+      <td>FC Tulsa</td>
+      <td>1522</td>
+      <td>2</td>
+      <td>@ Monterey Bay FC</td>
+      <td>1444</td>
+      <td>1</td>
+      <td>50.84%</td>
+      <td>21.13%</td>
+      <td>28.04%</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>2025-07-16</td>
+      <td>Hartford Athletic</td>
+      <td>1465</td>
+      <td>0</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1441</td>
+      <td>1</td>
+      <td>44.03%</td>
+      <td>26.51%</td>
+      <td>29.46%</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>2025-07-16</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1441</td>
+      <td>1</td>
+      <td>Hartford Athletic</td>
+      <td>1465</td>
+      <td>0</td>
+      <td>26.51%</td>
+      <td>44.03%</td>
+      <td>29.46%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2025-07-18</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1533</td>
+      <td>0</td>
+      <td>Detroit City FC</td>
+      <td>1498</td>
+      <td>0</td>
+      <td>34.14%</td>
+      <td>35.76%</td>
+      <td>30.10%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-07-18</td>
+      <td>Indy Eleven</td>
+      <td>1490</td>
+      <td>2</td>
+      <td>North Carolina FC</td>
+      <td>1532</td>
+      <td>4</td>
+      <td>24.66%</td>
+      <td>46.25%</td>
+      <td>29.09%</td>
+      <td>-12</td>
+    </tr>
+    <tr>
+      <td>2025-07-18</td>
+      <td>North Carolina FC</td>
+      <td>1532</td>
+      <td>4</td>
+      <td>@ Indy Eleven</td>
+      <td>1490</td>
+      <td>2</td>
+      <td>46.25%</td>
+      <td>24.66%</td>
+      <td>29.09%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>2025-07-18</td>
+      <td>Detroit City FC</td>
+      <td>1498</td>
+      <td>0</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1533</td>
+      <td>0</td>
+      <td>35.76%</td>
+      <td>34.14%</td>
+      <td>30.10%</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2025-07-19</td>
+      <td>Hartford Athletic</td>
+      <td>1452</td>
+      <td>0</td>
+      <td>Rhode Island FC</td>
+      <td>1487</td>
+      <td>0</td>
+      <td>25.33%</td>
+      <td>45.43%</td>
+      <td>29.24%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-07-19</td>
+      <td>Oakland Roots</td>
+      <td>1432</td>
+      <td>2</td>
+      <td>Loudoun United</td>
+      <td>1513</td>
+      <td>0</td>
+      <td>20.73%</td>
+      <td>51.38%</td>
+      <td>27.88%</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <td>2025-07-19</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1450</td>
+      <td>0</td>
+      <td>Orange County SC</td>
+      <td>1477</td>
+      <td>4</td>
+      <td>26.23%</td>
+      <td>44.36%</td>
+      <td>29.41%</td>
+      <td>-17</td>
+    </tr>
+    <tr>
+      <td>2025-07-19</td>
+      <td>Miami FC</td>
+      <td>1404</td>
+      <td>0</td>
+      <td>Charleston Battery</td>
+      <td>1643</td>
+      <td>3</td>
+      <td>11.06%</td>
+      <td>68.77%</td>
+      <td>20.17%</td>
+      <td>-6</td>
+    </tr>
+    <tr>
+      <td>2025-07-19</td>
+      <td>Louisville City FC</td>
+      <td>1652</td>
+      <td>1</td>
+      <td>@ FC Tulsa</td>
+      <td>1529</td>
+      <td>1</td>
+      <td>56.27%</td>
+      <td>17.47%</td>
+      <td>26.26%</td>
+      <td>-2</td>
+    </tr>
+    <tr>
+      <td>2025-07-19</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1502</td>
+      <td>1</td>
+      <td>Birmingham Legion</td>
+      <td>1463</td>
+      <td>0</td>
+      <td>34.82%</td>
+      <td>35.07%</td>
+      <td>30.11%</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2025-07-19</td>
+      <td>Sacramento Republic</td>
+      <td>1556</td>
+      <td>0</td>
+      <td>@ Lexington SC</td>
+      <td>1476</td>
+      <td>0</td>
+      <td>51.16%</td>
+      <td>20.89%</td>
+      <td>27.95%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-07-19</td>
+      <td>Birmingham Legion</td>
+      <td>1463</td>
+      <td>0</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1502</td>
+      <td>1</td>
+      <td>35.07%</td>
+      <td>34.82%</td>
+      <td>30.11%</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>2025-07-19</td>
+      <td>Orange County SC</td>
+      <td>1477</td>
+      <td>4</td>
+      <td>@ Las Vegas Lights FC</td>
+      <td>1450</td>
+      <td>0</td>
+      <td>44.36%</td>
+      <td>26.23%</td>
+      <td>29.41%</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td>2025-07-19</td>
+      <td>Charleston Battery</td>
+      <td>1643</td>
+      <td>3</td>
+      <td>@ Miami FC</td>
+      <td>1404</td>
+      <td>0</td>
+      <td>68.77%</td>
+      <td>11.06%</td>
+      <td>20.17%</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>2025-07-19</td>
+      <td>Loudoun United</td>
+      <td>1513</td>
+      <td>0</td>
+      <td>@ Oakland Roots</td>
+      <td>1432</td>
+      <td>2</td>
+      <td>51.38%</td>
+      <td>20.73%</td>
+      <td>27.88%</td>
+      <td>-21</td>
+    </tr>
+    <tr>
+      <td>2025-07-19</td>
+      <td>Rhode Island FC</td>
+      <td>1487</td>
+      <td>0</td>
+      <td>@ Hartford Athletic</td>
+      <td>1452</td>
+      <td>0</td>
+      <td>45.43%</td>
+      <td>25.33%</td>
+      <td>29.24%</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2025-07-19</td>
+      <td>FC Tulsa</td>
+      <td>1529</td>
+      <td>1</td>
+      <td>Louisville City FC</td>
+      <td>1652</td>
+      <td>1</td>
+      <td>17.47%</td>
+      <td>56.27%</td>
+      <td>26.26%</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>2025-07-19</td>
+      <td>Lexington SC</td>
+      <td>1476</td>
+      <td>0</td>
+      <td>Sacramento Republic</td>
+      <td>1556</td>
+      <td>0</td>
+      <td>20.89%</td>
+      <td>51.16%</td>
+      <td>27.95%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-07-29</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1533</td>
+      <td>1</td>
+      <td>@ Miami FC</td>
+      <td>1398</td>
+      <td>1</td>
+      <td>57.71%</td>
+      <td>16.60%</td>
+      <td>25.69%</td>
+      <td>-2</td>
+    </tr>
+    <tr>
+      <td>2025-07-29</td>
+      <td>Miami FC</td>
+      <td>1398</td>
+      <td>1</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1533</td>
+      <td>1</td>
+      <td>16.60%</td>
+      <td>57.71%</td>
+      <td>25.69%</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
