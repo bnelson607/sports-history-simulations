@@ -38,50 +38,30 @@ function showTab(group, tabId) {
     });
 }
 
-// Resize iframe contents to fit
-// function resizeIframes() {
-//     const iframes = document.querySelectorAll('iframe');
-//     iframes.forEach(iframe => {
-//         try {
-//             const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-//             if (iframeDocument) {
-//                 const height = Math.max(
-//                     iframeDocument.body.scrollHeight,
-//                     iframeDocument.documentElement.scrollHeight
-//                 );
-//                 const extra_1 = iframe.classList.contains('extra-padding') ? 15 : 0;
-//                 const extra_2 = iframe.classList.contains('double-extra-padding') ? 30 : 0;
-//                 iframe.style.height = (height + extra_1 + extra_2) + 'px';
-//             }
-//         } catch (e) {
-//             console.warn('Cannot access iframe content to resize:', iframe.src);
-//         }
-//     });
-// }
+// function resizeIframe(iframe) {
+//     try {
+//         const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+//         if (!iframeDocument) return;
 
-// function resizeIframes() {
-//     const iframes = document.querySelectorAll('iframe');
-//     iframes.forEach(iframe => {
-//         try {
-//             // Wait 100ms to let content stabilize before measuring
-//             setTimeout(() => {
-//                 const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-//                 if (iframeDocument) {
-//                     const height = Math.max(
-//                         iframeDocument.body.scrollHeight,
-//                         iframeDocument.documentElement.scrollHeight
-//                     );
-//                     const extra_1 = iframe.classList.contains('extra-padding') ? 15 : 0;
-//                     const extra_2 = iframe.classList.contains('double-extra-padding') ? 30 : 0;
-//                     iframe.style.height = (height + extra_1 + extra_2) + 'px';
-//                 }
-//             }, 200);
-//         } catch (e) {
-//             console.warn('Cannot access iframe content to resize:', iframe.src);
-//         }
-//     });
-// }
+//         const body = iframeDocument.body;
+//         const html = iframeDocument.documentElement;
 
+//         const contentHeight = Math.max(
+//             body.scrollHeight,
+//             body.offsetHeight,
+//             html.clientHeight,
+//             html.scrollHeight,
+//             html.offsetHeight
+//         );
+
+//         const extra_1 = iframe.classList.contains('extra-padding') ? 15 : 0;
+//         const extra_2 = iframe.classList.contains('double-extra-padding') ? 30 : 0;
+
+//         iframe.style.height = (contentHeight + extra_1 + extra_2) + 'px';
+//     } catch (e) {
+//         console.warn('Resize failed:', e);
+//     }
+// }
 
 function resizeIframe(iframe) {
     try {
@@ -91,12 +71,15 @@ function resizeIframe(iframe) {
         const body = iframeDocument.body;
         const html = iframeDocument.documentElement;
 
+        // Only proceed if both exist
+        if (!body || !html) return;
+
         const contentHeight = Math.max(
-            body.scrollHeight,
-            body.offsetHeight,
-            html.clientHeight,
-            html.scrollHeight,
-            html.offsetHeight
+            body.scrollHeight || 0,
+            body.offsetHeight || 0,
+            html.clientHeight || 0,
+            html.scrollHeight || 0,
+            html.offsetHeight || 0
         );
 
         const extra_1 = iframe.classList.contains('extra-padding') ? 15 : 0;
@@ -107,6 +90,7 @@ function resizeIframe(iframe) {
         console.warn('Resize failed:', e);
     }
 }
+
 
 function attachIframeListeners() {
     const iframes = document.querySelectorAll('iframe');
