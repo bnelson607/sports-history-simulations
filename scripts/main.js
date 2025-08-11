@@ -138,3 +138,35 @@ window.addEventListener('load', attachIframeListeners);
 //         iframe.addEventListener('load', resizeIframes);
 //     });
 // });
+
+function lazyLoadIframes() {
+  // Select all <details> elements
+  const detailsElements = document.querySelectorAll('details');
+
+  detailsElements.forEach(details => {
+    details.addEventListener('toggle', () => {
+      if (details.open) {
+        // When details is opened, find all iframes inside
+        const iframes = details.querySelectorAll('iframe');
+
+        iframes.forEach(iframe => {
+          // Only set src if it’s not already set (prevents reloading)
+          if (!iframe.src) {
+            const dataSrc = iframe.getAttribute('data-src');
+            if (dataSrc) {
+              iframe.src = dataSrc;
+            }
+          }
+        });
+      }
+    });
+  });
+}
+
+// Run this on page load
+window.addEventListener('load', () => {
+  lazyLoadIframes();
+
+  // Also attach your existing iframe resize listeners here
+  attachIframeListeners();
+});
