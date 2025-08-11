@@ -119,3 +119,33 @@ window.addEventListener('load', attachIframeListeners);
 //         iframe.addEventListener('load', resizeIframes);
 //     });
 // });
+
+function lazyLoadIframes() {
+  const detailsElements = document.querySelectorAll('details');
+
+  detailsElements.forEach(details => {
+    details.addEventListener('toggle', () => {
+      if (details.open) {
+        // Find iframes inside the opened details
+        const iframes = details.querySelectorAll('iframe');
+
+        iframes.forEach(iframe => {
+          if (!iframe.src) {
+            const dataSrc = iframe.getAttribute('data-src');
+            if (dataSrc) {
+              iframe.src = dataSrc;
+            }
+          }
+        });
+      }
+    });
+  });
+}
+
+window.addEventListener('load', () => {
+  lazyLoadIframes();
+
+  // Existing iframe resize listeners
+  attachIframeListeners();
+});
+
