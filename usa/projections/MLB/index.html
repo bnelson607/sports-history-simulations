@@ -407,6 +407,15 @@
         <script src="/sports-history-simulations/scripts/main.js"></script>
         
         <!-- Custom script for cache busting -->
+        <script>
+          document.querySelectorAll('iframe[data-src]').forEach(iframe => {
+            const url = new URL(iframe.getAttribute('data-src'), window.location.href);
+            url.searchParams.set('v', new Date().toISOString().slice(0,10).replace(/-/g, ''));
+            iframe.setAttribute('data-src', url.toString());
+          });
+        </script>
+
+         <!-- Original custom script for cache busting -->
 <!--         <script>
           document.querySelectorAll('iframe').forEach(iframe => {
             const url = new URL(iframe.src);
