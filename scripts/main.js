@@ -38,6 +38,50 @@ function showTab(group, tabId) {
     });
 }
 
+// Resize iframe contents to fit
+// function resizeIframes() {
+//     const iframes = document.querySelectorAll('iframe');
+//     iframes.forEach(iframe => {
+//         try {
+//             const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+//             if (iframeDocument) {
+//                 const height = Math.max(
+//                     iframeDocument.body.scrollHeight,
+//                     iframeDocument.documentElement.scrollHeight
+//                 );
+//                 const extra_1 = iframe.classList.contains('extra-padding') ? 15 : 0;
+//                 const extra_2 = iframe.classList.contains('double-extra-padding') ? 30 : 0;
+//                 iframe.style.height = (height + extra_1 + extra_2) + 'px';
+//             }
+//         } catch (e) {
+//             console.warn('Cannot access iframe content to resize:', iframe.src);
+//         }
+//     });
+// }
+
+// function resizeIframes() {
+//     const iframes = document.querySelectorAll('iframe');
+//     iframes.forEach(iframe => {
+//         try {
+//             // Wait 100ms to let content stabilize before measuring
+//             setTimeout(() => {
+//                 const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+//                 if (iframeDocument) {
+//                     const height = Math.max(
+//                         iframeDocument.body.scrollHeight,
+//                         iframeDocument.documentElement.scrollHeight
+//                     );
+//                     const extra_1 = iframe.classList.contains('extra-padding') ? 15 : 0;
+//                     const extra_2 = iframe.classList.contains('double-extra-padding') ? 30 : 0;
+//                     iframe.style.height = (height + extra_1 + extra_2) + 'px';
+//                 }
+//             }, 200);
+//         } catch (e) {
+//             console.warn('Cannot access iframe content to resize:', iframe.src);
+//         }
+//     });
+// }
+
 
 function resizeIframe(iframe) {
     try {
@@ -67,7 +111,6 @@ function resizeIframe(iframe) {
     }
 }
 
-
 function attachIframeListeners() {
     const iframes = document.querySelectorAll('iframe');
 
@@ -95,37 +138,3 @@ window.addEventListener('load', attachIframeListeners);
 //         iframe.addEventListener('load', resizeIframes);
 //     });
 // });
-
-function lazyLoadIframes() {
-  const detailsElements = document.querySelectorAll('details');
-
-  detailsElements.forEach(details => {
-    details.addEventListener('toggle', () => {
-      if (details.open) {
-        // Find iframes inside the opened details
-        const iframes = details.querySelectorAll('iframe');
-
-        iframes.forEach(iframe => {
-          if (!iframe.src) {
-            const dataSrc = iframe.getAttribute('data-src');
-            if (dataSrc) {
-              // Append a cache-busting param with today's date (YYYYMMDD)
-              let url = new URL(dataSrc, window.location.href);
-              url.searchParams.set('v', new Date().toISOString().slice(0,10).replace(/-/g, ''));
-              iframe.src = url.toString();
-            }
-          }
-        });
-      }
-    });
-  });
-}
-
-
-window.addEventListener('load', () => {
-  lazyLoadIframes();
-
-  // Existing iframe resize listeners
-  attachIframeListeners();
-});
-
