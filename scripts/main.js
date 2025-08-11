@@ -109,7 +109,10 @@ function lazyLoadIframes() {
           if (!iframe.src) {
             const dataSrc = iframe.getAttribute('data-src');
             if (dataSrc) {
-              iframe.src = dataSrc;
+              // Append a cache-busting param with today's date (YYYYMMDD)
+              let url = new URL(dataSrc, window.location.href);
+              url.searchParams.set('v', new Date().toISOString().slice(0,10).replace(/-/g, ''));
+              iframe.src = url.toString();
             }
           }
         });
@@ -117,6 +120,7 @@ function lazyLoadIframes() {
     });
   });
 }
+
 
 window.addEventListener('load', () => {
   lazyLoadIframes();
