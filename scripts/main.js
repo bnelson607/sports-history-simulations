@@ -38,30 +38,6 @@ function showTab(group, tabId) {
     });
 }
 
-// function resizeIframe(iframe) {
-//     try {
-//         const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-//         if (!iframeDocument) return;
-
-//         const body = iframeDocument.body;
-//         const html = iframeDocument.documentElement;
-
-//         const contentHeight = Math.max(
-//             body.scrollHeight,
-//             body.offsetHeight,
-//             html.clientHeight,
-//             html.scrollHeight,
-//             html.offsetHeight
-//         );
-
-//         const extra_1 = iframe.classList.contains('extra-padding') ? 15 : 0;
-//         const extra_2 = iframe.classList.contains('double-extra-padding') ? 30 : 0;
-
-//         iframe.style.height = (contentHeight + extra_1 + extra_2) + 'px';
-//     } catch (e) {
-//         console.warn('Resize failed:', e);
-//     }
-// }
 
 function resizeIframe(iframe) {
     try {
