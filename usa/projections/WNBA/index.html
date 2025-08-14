@@ -134,7 +134,7 @@
             <details>
                 <summary>Playoff Seed Wins</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How many wins does the simulation believe are needed to earn each seed?</i>
+                    <i>How many regular season games does the simulation believe each seed will win?</i>
                 </div>
                 <iframe data-src="WNBA_playoff_seed_wins.html" class="extra-padding"></iframe>
             </details>
@@ -177,28 +177,32 @@
             <h2 class="sim-subsection">Game Logs</h2>
     
             <details>
-                <summary>Regular Season</summary>
+                <summary>Season Schedule</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How has each team's regular season unfolded?</i>?</i>
+                    <i>How has each team's regular season unfolded?</i>
                 </div>
-                <iframe data-src="team_games_table.html" class="extra-padding" style="max-height:800px;"></iframe>
+                <div class="tab-buttons">
+                    <button onclick="showTab('games', 'completed_games')" class="active">Completed Games</button>
+                    <button onclick="showTab('games', 'games_upcoming')">Upcoming Games</button>
+                </div>
+                <div class="tab-content games active" id="completed_games">
+                    <iframe data-src="team_games_table.html" class="double-extra-padding" style="max-height:800px;"></iframe>
+                </div>
+                <div class="tab-content games" id="games_upcoming">
+                    <iframe data-src="upcoming_games_table.html" class="double-extra-padding"></iframe>
+                </div>
             </details>
     
-    
             <details>
-                <summary>Game Summaries</summary>
+                <summary>Upsets</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
                     <i>What were the biggest upsets and Elo rating changes of the season?</i>
                 </div>
                 <div class="tab-buttons">
-                    <button onclick="showTab('games', 'games_upcoming')" class="active">Upcoming Games</button>
-                    <button onclick="showTab('games', 'games_biggest_upsets')">Biggest Upsets</button>
+                    <button onclick="showTab('games', 'games_biggest_upsets')" class="active">Biggest Upsets</button>
                     <button onclick="showTab('games', 'games_biggest_elo_changes')">Biggest Elo Changes</button>
                 </div>
-                <div class="tab-content games active" id="games_upcoming">
-                    <iframe data-src="upcoming_games_table.html" class="double-extra-padding"></iframe>
-                </div>
-                <div class="tab-content games" id="games_biggest_upsets">
+                <div class="tab-content games active" id="games_biggest_upsets">
                     <iframe data-src="biggest_upsets_table.html" class="double-extra-padding"></iframe>
                 </div>
                 <div class="tab-content games" id="games_biggest_elo_changes">
