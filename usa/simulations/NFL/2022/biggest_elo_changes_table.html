@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th colspan="3" halign="left"></th>
+      <th colspan="4" halign="left">Winning Team</th>
+      <th colspan="4" halign="left">Losing Team</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <th>Date</th>
+      <th>Elo Change</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Tie Pct.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2022-11-20</td>
+      <td>64.44</td>
+      <td>Dallas Cowboys</td>
+      <td>1584.42</td>
+      <td>40</td>
+      <td>39.25%</td>
+      <td>Minnesota Vikings (H)</td>
+      <td>1614.89</td>
+      <td>3</td>
+      <td>59.86%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2022-09-25</td>
+      <td>59.18</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1449.96</td>
+      <td>38</td>
+      <td>35.89%</td>
+      <td>Los Angeles Chargers (H)</td>
+      <td>1505.27</td>
+      <td>10</td>
+      <td>63.21%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2022-10-24</td>
+      <td>56.78</td>
+      <td>Chicago Bears</td>
+      <td>1410.68</td>
+      <td>33</td>
+      <td>25.48%</td>
+      <td>New England Patriots (H)</td>
+      <td>1551.67</td>
+      <td>14</td>
+      <td>73.62%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2022-10-09</td>
+      <td>55.35</td>
+      <td>New York Jets (H)</td>
+      <td>1394.79</td>
+      <td>40</td>
+      <td>33.88%</td>
+      <td>Miami Dolphins</td>
+      <td>1550.14</td>
+      <td>17</td>
+      <td>65.22%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2022-09-18</td>
+      <td>54.42</td>
+      <td>Jacksonville Jaguars (H)</td>
+      <td>1395.54</td>
+      <td>24</td>
+      <td>36.33%</td>
+      <td>Indianapolis Colts</td>
+      <td>1532.20</td>
+      <td>0</td>
+      <td>62.77%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2022-10-23</td>
+      <td>53.56</td>
+      <td>Carolina Panthers (H)</td>
+      <td>1373.53</td>
+      <td>21</td>
+      <td>27.75%</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1578.96</td>
+      <td>3</td>
+      <td>71.35%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2022-10-16</td>
+      <td>49.96</td>
+      <td>New York Jets</td>
+      <td>1450.14</td>
+      <td>27</td>
+      <td>30.62%</td>
+      <td>Green Bay Packers (H)</td>
+      <td>1546.81</td>
+      <td>10</td>
+      <td>68.49%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2022-10-31</td>
+      <td>49.93</td>
+      <td>Cleveland Browns (H)</td>
+      <td>1435.84</td>
+      <td>32</td>
+      <td>34.37%</td>
+      <td>Cincinnati Bengals</td>
+      <td>1587.43</td>
+      <td>13</td>
+      <td>64.74%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2022-12-11</td>
+      <td>49.72</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1389.30</td>
+      <td>36</td>
+      <td>23.99%</td>
+      <td>Tennessee Titans (H)</td>
+      <td>1544.16</td>
+      <td>22</td>
+      <td>75.11%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2022-12-25</td>
+      <td>49.02</td>
+      <td>Los Angeles Rams (H)</td>
+      <td>1370.74</td>
+      <td>51</td>
+      <td>53.65%</td>
+      <td>Denver Broncos</td>
+      <td>1384.46</td>
+      <td>14</td>
+      <td>45.45%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2022-11-14</td>
+      <td>47.91</td>
+      <td>Washington Commanders</td>
+      <td>1430.81</td>
+      <td>32</td>
+      <td>17.48%</td>
+      <td>Philadelphia Eagles (H)</td>
+      <td>1654.93</td>
+      <td>21</td>
+      <td>81.62%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>2023-01-01</td>
+      <td>45.58</td>
+      <td>Green Bay Packers (H)</td>
+      <td>1505.63</td>
+      <td>41</td>
+      <td>46.57%</td>
+      <td>Minnesota Vikings</td>
+      <td>1568.68</td>
+      <td>17</td>
+      <td>52.53%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2022-10-16</td>
+      <td>45.39</td>
+      <td>New England Patriots</td>
+      <td>1506.28</td>
+      <td>38</td>
+      <td>45.66%</td>
+      <td>Cleveland Browns (H)</td>
+      <td>1491.10</td>
+      <td>15</td>
+      <td>53.45%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2022-11-20</td>
+      <td>45.31</td>
+      <td>Detroit Lions</td>
+      <td>1389.53</td>
+      <td>31</td>
+      <td>28.08%</td>
+      <td>New York Giants (H)</td>
+      <td>1507.50</td>
+      <td>18</td>
+      <td>71.03%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2023-01-01</td>
+      <td>44.11</td>
+      <td>New Orleans Saints</td>
+      <td>1474.66</td>
+      <td>20</td>
+      <td>20.27%</td>
+      <td>Philadelphia Eagles (H)</td>
+      <td>1667.08</td>
+      <td>10</td>
+      <td>78.83%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>2022-10-30</td>
+      <td>42.42</td>
+      <td>New Orleans Saints (H)</td>
+      <td>1450.50</td>
+      <td>24</td>
+      <td>50.25%</td>
+      <td>Las Vegas Raiders</td>
+      <td>1487.98</td>
+      <td>0</td>
+      <td>48.86%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>2022-09-08</td>
+      <td>42.11</td>
+      <td>Buffalo Bills</td>
+      <td>1582.89</td>
+      <td>31</td>
+      <td>47.23%</td>
+      <td>Los Angeles Rams (H)</td>
+      <td>1556.72</td>
+      <td>10</td>
+      <td>51.87%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>2022-10-16</td>
+      <td>41.35</td>
+      <td>Atlanta Falcons (H)</td>
+      <td>1458.20</td>
+      <td>28</td>
+      <td>36.65%</td>
+      <td>San Francisco 49ers</td>
+      <td>1592.44</td>
+      <td>14</td>
+      <td>62.45%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>2022-12-22</td>
+      <td>40.69</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1471.65</td>
+      <td>19</td>
+      <td>41.64%</td>
+      <td>New York Jets (H)</td>
+      <td>1484.84</td>
+      <td>3</td>
+      <td>57.46%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>2022-10-30</td>
+      <td>40.14</td>
+      <td>San Francisco 49ers</td>
+      <td>1513.81</td>
+      <td>31</td>
+      <td>44.11%</td>
+      <td>Los Angeles Rams (H)</td>
+      <td>1509.46</td>
+      <td>14</td>
+      <td>54.99%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>2022-12-04</td>
+      <td>39.53</td>
+      <td>Detroit Lions (H)</td>
+      <td>1427.36</td>
+      <td>40</td>
+      <td>55.40%</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1428.83</td>
+      <td>14</td>
+      <td>43.71%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>2022-09-11</td>
+      <td>38.83</td>
+      <td>Kansas City Chiefs</td>
+      <td>1571.55</td>
+      <td>44</td>
+      <td>53.43%</td>
+      <td>Arizona Cardinals (H)</td>
+      <td>1502.18</td>
+      <td>21</td>
+      <td>45.67%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>2022-10-23</td>
+      <td>38.75</td>
+      <td>Seattle Seahawks</td>
+      <td>1480.40</td>
+      <td>37</td>
+      <td>40.60%</td>
+      <td>Los Angeles Chargers (H)</td>
+      <td>1501.10</td>
+      <td>23</td>
+      <td>58.51%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>2022-10-23</td>
+      <td>37.28</td>
+      <td>Kansas City Chiefs</td>
+      <td>1618.93</td>
+      <td>44</td>
+      <td>53.21%</td>
+      <td>San Francisco 49ers (H)</td>
+      <td>1551.09</td>
+      <td>23</td>
+      <td>45.89%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>2022-12-24</td>
+      <td>36.53</td>
+      <td>Carolina Panthers (H)</td>
+      <td>1438.11</td>
+      <td>37</td>
+      <td>43.97%</td>
+      <td>Detroit Lions</td>
+      <td>1519.44</td>
+      <td>23</td>
+      <td>55.14%</td>
+      <td>0.90%</td>
+    </tr>
+  </tbody>
+</table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+        });
+    </script>
+</body>
+</html>

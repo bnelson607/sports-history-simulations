@@ -1,0 +1,6624 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Arizona Cardinals">Arizona Cardinals</option><option value="Atlanta Falcons">Atlanta Falcons</option><option value="Baltimore Ravens">Baltimore Ravens</option><option value="Buffalo Bills">Buffalo Bills</option><option value="Carolina Panthers">Carolina Panthers</option><option value="Chicago Bears">Chicago Bears</option><option value="Cincinnati Bengals">Cincinnati Bengals</option><option value="Cleveland Browns">Cleveland Browns</option><option value="Dallas Cowboys">Dallas Cowboys</option><option value="Denver Broncos">Denver Broncos</option><option value="Detroit Lions">Detroit Lions</option><option value="Green Bay Packers">Green Bay Packers</option><option value="Houston Texans">Houston Texans</option><option value="Indianapolis Colts">Indianapolis Colts</option><option value="Jacksonville Jaguars">Jacksonville Jaguars</option><option value="Kansas City Chiefs">Kansas City Chiefs</option><option value="Miami Dolphins">Miami Dolphins</option><option value="Minnesota Vikings">Minnesota Vikings</option><option value="New England Patriots">New England Patriots</option><option value="New Orleans Saints">New Orleans Saints</option><option value="New York Giants">New York Giants</option><option value="New York Jets">New York Jets</option><option value="Oakland Raiders">Oakland Raiders</option><option value="Philadelphia Eagles">Philadelphia Eagles</option><option value="Pittsburgh Steelers">Pittsburgh Steelers</option><option value="San Diego Chargers">San Diego Chargers</option><option value="San Francisco 49ers">San Francisco 49ers</option><option value="Seattle Seahawks">Seattle Seahawks</option><option value="St. Louis Rams">St. Louis Rams</option><option value="Tampa Bay Buccaneers">Tampa Bay Buccaneers</option><option value="Tennessee Titans">Tennessee Titans</option><option value="Washington Redskins">Washington Redskins</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="3" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Tie Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2007-09-06</td>
+      <td>Indianapolis Colts</td>
+      <td>1574.64</td>
+      <td>41</td>
+      <td>@ New Orleans Saints</td>
+      <td>1514.66</td>
+      <td>10</td>
+      <td>65.61%</td>
+      <td>34.16%</td>
+      <td>0.23%</td>
+      <td>32.74</td>
+    </tr>
+    <tr>
+      <td>2007-09-06</td>
+      <td>New Orleans Saints</td>
+      <td>1514.66</td>
+      <td>10</td>
+      <td>Indianapolis Colts</td>
+      <td>1574.64</td>
+      <td>41</td>
+      <td>34.16%</td>
+      <td>65.61%</td>
+      <td>0.23%</td>
+      <td>-32.73</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Detroit Lions</td>
+      <td>1444.08</td>
+      <td>36</td>
+      <td>Oakland Raiders</td>
+      <td>1411.85</td>
+      <td>21</td>
+      <td>46.87%</td>
+      <td>52.90%</td>
+      <td>0.23%</td>
+      <td>35.24</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Chicago Bears</td>
+      <td>1563.32</td>
+      <td>3</td>
+      <td>San Diego Chargers</td>
+      <td>1580.19</td>
+      <td>14</td>
+      <td>39.94%</td>
+      <td>59.83%</td>
+      <td>0.23%</td>
+      <td>-22.80</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Carolina Panthers</td>
+      <td>1504.69</td>
+      <td>27</td>
+      <td>St. Louis Rams</td>
+      <td>1486.57</td>
+      <td>13</td>
+      <td>44.85%</td>
+      <td>54.92%</td>
+      <td>0.23%</td>
+      <td>35.34</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>New England Patriots</td>
+      <td>1577.98</td>
+      <td>38</td>
+      <td>New York Jets</td>
+      <td>1501.61</td>
+      <td>14</td>
+      <td>53.21%</td>
+      <td>46.56%</td>
+      <td>0.23%</td>
+      <td>39.23</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Atlanta Falcons</td>
+      <td>1465.23</td>
+      <td>3</td>
+      <td>Minnesota Vikings</td>
+      <td>1461.82</td>
+      <td>24</td>
+      <td>42.77%</td>
+      <td>57.00%</td>
+      <td>0.23%</td>
+      <td>-33.72</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Tennessee Titans</td>
+      <td>1494.47</td>
+      <td>13</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1536.72</td>
+      <td>10</td>
+      <td>36.49%</td>
+      <td>63.28%</td>
+      <td>0.23%</td>
+      <td>18.84</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Kansas City Chiefs</td>
+      <td>1516.62</td>
+      <td>3</td>
+      <td>Houston Texans</td>
+      <td>1452.58</td>
+      <td>20</td>
+      <td>51.44%</td>
+      <td>48.33%</td>
+      <td>0.23%</td>
+      <td>-36.48</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Philadelphia Eagles</td>
+      <td>1527.59</td>
+      <td>13</td>
+      <td>Green Bay Packers</td>
+      <td>1470.22</td>
+      <td>16</td>
+      <td>50.48%</td>
+      <td>49.29%</td>
+      <td>0.23%</td>
+      <td>-15.04</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1543.89</td>
+      <td>34</td>
+      <td>Cleveland Browns</td>
+      <td>1433.38</td>
+      <td>7</td>
+      <td>58.05%</td>
+      <td>41.72%</td>
+      <td>0.23%</td>
+      <td>37.30</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1439.92</td>
+      <td>6</td>
+      <td>Seattle Seahawks</td>
+      <td>1508.44</td>
+      <td>20</td>
+      <td>33.06%</td>
+      <td>66.71%</td>
+      <td>0.23%</td>
+      <td>-21.29</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Denver Broncos</td>
+      <td>1525.58</td>
+      <td>15</td>
+      <td>Buffalo Bills</td>
+      <td>1507.07</td>
+      <td>14</td>
+      <td>44.91%</td>
+      <td>54.86%</td>
+      <td>0.23%</td>
+      <td>9.43</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Miami Dolphins</td>
+      <td>1490.46</td>
+      <td>13</td>
+      <td>Washington Redskins</td>
+      <td>1468.05</td>
+      <td>16</td>
+      <td>45.46%</td>
+      <td>54.31%</td>
+      <td>0.23%</td>
+      <td>-13.55</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>New York Giants</td>
+      <td>1495.42</td>
+      <td>35</td>
+      <td>Dallas Cowboys</td>
+      <td>1499.57</td>
+      <td>45</td>
+      <td>41.70%</td>
+      <td>58.06%</td>
+      <td>0.23%</td>
+      <td>-22.69</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Houston Texans</td>
+      <td>1452.58</td>
+      <td>20</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1516.62</td>
+      <td>3</td>
+      <td>48.33%</td>
+      <td>51.44%</td>
+      <td>0.23%</td>
+      <td>36.48</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Dallas Cowboys</td>
+      <td>1499.57</td>
+      <td>45</td>
+      <td>@ New York Giants</td>
+      <td>1495.42</td>
+      <td>35</td>
+      <td>58.06%</td>
+      <td>41.70%</td>
+      <td>0.23%</td>
+      <td>22.69</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Oakland Raiders</td>
+      <td>1411.85</td>
+      <td>21</td>
+      <td>@ Detroit Lions</td>
+      <td>1444.08</td>
+      <td>36</td>
+      <td>52.90%</td>
+      <td>46.87%</td>
+      <td>0.23%</td>
+      <td>-35.24</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>San Diego Chargers</td>
+      <td>1580.19</td>
+      <td>14</td>
+      <td>@ Chicago Bears</td>
+      <td>1563.32</td>
+      <td>3</td>
+      <td>59.83%</td>
+      <td>39.94%</td>
+      <td>0.23%</td>
+      <td>22.79</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>St. Louis Rams</td>
+      <td>1486.57</td>
+      <td>13</td>
+      <td>@ Carolina Panthers</td>
+      <td>1504.69</td>
+      <td>27</td>
+      <td>54.92%</td>
+      <td>44.85%</td>
+      <td>0.23%</td>
+      <td>-35.33</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>New York Jets</td>
+      <td>1501.61</td>
+      <td>14</td>
+      <td>@ New England Patriots</td>
+      <td>1577.98</td>
+      <td>38</td>
+      <td>46.56%</td>
+      <td>53.21%</td>
+      <td>0.23%</td>
+      <td>-39.24</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Minnesota Vikings</td>
+      <td>1461.82</td>
+      <td>24</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1465.23</td>
+      <td>3</td>
+      <td>57.00%</td>
+      <td>42.77%</td>
+      <td>0.23%</td>
+      <td>33.72</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1536.72</td>
+      <td>10</td>
+      <td>@ Tennessee Titans</td>
+      <td>1494.47</td>
+      <td>13</td>
+      <td>63.28%</td>
+      <td>36.49%</td>
+      <td>0.23%</td>
+      <td>-18.84</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Green Bay Packers</td>
+      <td>1470.22</td>
+      <td>16</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1527.59</td>
+      <td>13</td>
+      <td>49.29%</td>
+      <td>50.48%</td>
+      <td>0.23%</td>
+      <td>15.04</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Cleveland Browns</td>
+      <td>1433.38</td>
+      <td>7</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1543.89</td>
+      <td>34</td>
+      <td>41.72%</td>
+      <td>58.05%</td>
+      <td>0.23%</td>
+      <td>-37.30</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Seattle Seahawks</td>
+      <td>1508.44</td>
+      <td>20</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1439.92</td>
+      <td>6</td>
+      <td>66.71%</td>
+      <td>33.06%</td>
+      <td>0.23%</td>
+      <td>21.29</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Buffalo Bills</td>
+      <td>1507.07</td>
+      <td>14</td>
+      <td>@ Denver Broncos</td>
+      <td>1525.58</td>
+      <td>15</td>
+      <td>54.86%</td>
+      <td>44.91%</td>
+      <td>0.23%</td>
+      <td>-9.44</td>
+    </tr>
+    <tr>
+      <td>2007-09-09</td>
+      <td>Washington Redskins</td>
+      <td>1468.05</td>
+      <td>16</td>
+      <td>@ Miami Dolphins</td>
+      <td>1490.46</td>
+      <td>13</td>
+      <td>54.31%</td>
+      <td>45.46%</td>
+      <td>0.23%</td>
+      <td>13.54</td>
+    </tr>
+    <tr>
+      <td>2007-09-10</td>
+      <td>Arizona Cardinals</td>
+      <td>1462.55</td>
+      <td>17</td>
+      <td>San Francisco 49ers</td>
+      <td>1450.27</td>
+      <td>20</td>
+      <td>44.02%</td>
+      <td>55.75%</td>
+      <td>0.23%</td>
+      <td>-13.11</td>
+    </tr>
+    <tr>
+      <td>2007-09-10</td>
+      <td>Baltimore Ravens</td>
+      <td>1568.12</td>
+      <td>20</td>
+      <td>Cincinnati Bengals</td>
+      <td>1522.45</td>
+      <td>27</td>
+      <td>48.80%</td>
+      <td>50.97%</td>
+      <td>0.23%</td>
+      <td>-22.21</td>
+    </tr>
+    <tr>
+      <td>2007-09-10</td>
+      <td>Cincinnati Bengals</td>
+      <td>1522.45</td>
+      <td>27</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1568.12</td>
+      <td>20</td>
+      <td>50.97%</td>
+      <td>48.80%</td>
+      <td>0.23%</td>
+      <td>22.21</td>
+    </tr>
+    <tr>
+      <td>2007-09-10</td>
+      <td>San Francisco 49ers</td>
+      <td>1450.27</td>
+      <td>20</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1462.55</td>
+      <td>17</td>
+      <td>55.75%</td>
+      <td>44.02%</td>
+      <td>0.23%</td>
+      <td>13.12</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Green Bay Packers</td>
+      <td>1485.26</td>
+      <td>35</td>
+      <td>New York Giants</td>
+      <td>1472.73</td>
+      <td>13</td>
+      <td>44.06%</td>
+      <td>55.71%</td>
+      <td>0.23%</td>
+      <td>44.93</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Oakland Raiders</td>
+      <td>1376.61</td>
+      <td>20</td>
+      <td>Denver Broncos</td>
+      <td>1535.01</td>
+      <td>23</td>
+      <td>22.74%</td>
+      <td>77.02%</td>
+      <td>0.23%</td>
+      <td>-6.78</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Seattle Seahawks</td>
+      <td>1529.73</td>
+      <td>20</td>
+      <td>Arizona Cardinals</td>
+      <td>1449.44</td>
+      <td>23</td>
+      <td>53.77%</td>
+      <td>46.00%</td>
+      <td>0.23%</td>
+      <td>-16.01</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Cincinnati Bengals</td>
+      <td>1544.66</td>
+      <td>45</td>
+      <td>Cleveland Browns</td>
+      <td>1396.08</td>
+      <td>51</td>
+      <td>63.26%</td>
+      <td>36.50%</td>
+      <td>0.23%</td>
+      <td>-26.65</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Buffalo Bills</td>
+      <td>1497.63</td>
+      <td>3</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1581.19</td>
+      <td>26</td>
+      <td>31.17%</td>
+      <td>68.59%</td>
+      <td>0.23%</td>
+      <td>-25.73</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Indianapolis Colts</td>
+      <td>1607.38</td>
+      <td>22</td>
+      <td>Tennessee Titans</td>
+      <td>1513.31</td>
+      <td>20</td>
+      <td>55.73%</td>
+      <td>44.03%</td>
+      <td>0.23%</td>
+      <td>10.71</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Kansas City Chiefs</td>
+      <td>1480.14</td>
+      <td>10</td>
+      <td>Chicago Bears</td>
+      <td>1540.52</td>
+      <td>20</td>
+      <td>34.11%</td>
+      <td>65.66%</td>
+      <td>0.23%</td>
+      <td>-18.57</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Houston Texans</td>
+      <td>1489.06</td>
+      <td>34</td>
+      <td>Carolina Panthers</td>
+      <td>1540.03</td>
+      <td>21</td>
+      <td>35.33%</td>
+      <td>64.43%</td>
+      <td>0.23%</td>
+      <td>39.94</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>New York Jets</td>
+      <td>1462.37</td>
+      <td>13</td>
+      <td>Baltimore Ravens</td>
+      <td>1545.91</td>
+      <td>20</td>
+      <td>31.18%</td>
+      <td>68.59%</td>
+      <td>0.23%</td>
+      <td>-14.20</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>San Diego Chargers</td>
+      <td>1602.98</td>
+      <td>14</td>
+      <td>New England Patriots</td>
+      <td>1617.21</td>
+      <td>38</td>
+      <td>40.30%</td>
+      <td>59.47%</td>
+      <td>0.23%</td>
+      <td>-33.97</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>San Francisco 49ers</td>
+      <td>1463.39</td>
+      <td>17</td>
+      <td>St. Louis Rams</td>
+      <td>1451.24</td>
+      <td>16</td>
+      <td>44.00%</td>
+      <td>55.77%</td>
+      <td>0.23%</td>
+      <td>9.59</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>New Orleans Saints</td>
+      <td>1481.93</td>
+      <td>14</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1418.63</td>
+      <td>31</td>
+      <td>51.33%</td>
+      <td>48.43%</td>
+      <td>0.23%</td>
+      <td>-36.40</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Minnesota Vikings</td>
+      <td>1495.54</td>
+      <td>17</td>
+      <td>Detroit Lions</td>
+      <td>1479.32</td>
+      <td>20</td>
+      <td>44.58%</td>
+      <td>55.19%</td>
+      <td>0.23%</td>
+      <td>-13.29</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Dallas Cowboys</td>
+      <td>1522.26</td>
+      <td>37</td>
+      <td>Miami Dolphins</td>
+      <td>1476.91</td>
+      <td>20</td>
+      <td>48.75%</td>
+      <td>51.02%</td>
+      <td>0.23%</td>
+      <td>36.18</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Atlanta Falcons</td>
+      <td>1431.51</td>
+      <td>7</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1517.88</td>
+      <td>13</td>
+      <td>30.83%</td>
+      <td>68.94%</td>
+      <td>0.23%</td>
+      <td>-13.00</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Tennessee Titans</td>
+      <td>1513.31</td>
+      <td>20</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1607.38</td>
+      <td>22</td>
+      <td>44.03%</td>
+      <td>55.73%</td>
+      <td>0.23%</td>
+      <td>-10.71</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Miami Dolphins</td>
+      <td>1476.91</td>
+      <td>20</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1522.26</td>
+      <td>37</td>
+      <td>51.02%</td>
+      <td>48.75%</td>
+      <td>0.23%</td>
+      <td>-36.17</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1517.88</td>
+      <td>13</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1431.51</td>
+      <td>7</td>
+      <td>68.94%</td>
+      <td>30.83%</td>
+      <td>0.23%</td>
+      <td>13.00</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1418.63</td>
+      <td>31</td>
+      <td>@ New Orleans Saints</td>
+      <td>1481.93</td>
+      <td>14</td>
+      <td>48.43%</td>
+      <td>51.33%</td>
+      <td>0.23%</td>
+      <td>36.40</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>St. Louis Rams</td>
+      <td>1451.24</td>
+      <td>16</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1463.39</td>
+      <td>17</td>
+      <td>55.77%</td>
+      <td>44.00%</td>
+      <td>0.23%</td>
+      <td>-9.59</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>New England Patriots</td>
+      <td>1617.21</td>
+      <td>38</td>
+      <td>@ San Diego Chargers</td>
+      <td>1602.98</td>
+      <td>14</td>
+      <td>59.47%</td>
+      <td>40.30%</td>
+      <td>0.23%</td>
+      <td>33.98</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Baltimore Ravens</td>
+      <td>1545.91</td>
+      <td>20</td>
+      <td>@ New York Jets</td>
+      <td>1462.37</td>
+      <td>13</td>
+      <td>68.59%</td>
+      <td>31.18%</td>
+      <td>0.23%</td>
+      <td>14.20</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Carolina Panthers</td>
+      <td>1540.03</td>
+      <td>21</td>
+      <td>@ Houston Texans</td>
+      <td>1489.06</td>
+      <td>34</td>
+      <td>64.43%</td>
+      <td>35.33%</td>
+      <td>0.23%</td>
+      <td>-39.94</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>New York Giants</td>
+      <td>1472.73</td>
+      <td>13</td>
+      <td>@ Green Bay Packers</td>
+      <td>1485.26</td>
+      <td>35</td>
+      <td>55.71%</td>
+      <td>44.06%</td>
+      <td>0.23%</td>
+      <td>-44.94</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Chicago Bears</td>
+      <td>1540.52</td>
+      <td>20</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1480.14</td>
+      <td>10</td>
+      <td>65.66%</td>
+      <td>34.11%</td>
+      <td>0.23%</td>
+      <td>18.57</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1581.19</td>
+      <td>26</td>
+      <td>@ Buffalo Bills</td>
+      <td>1497.63</td>
+      <td>3</td>
+      <td>68.59%</td>
+      <td>31.17%</td>
+      <td>0.23%</td>
+      <td>25.74</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Cleveland Browns</td>
+      <td>1396.08</td>
+      <td>51</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1544.66</td>
+      <td>45</td>
+      <td>36.50%</td>
+      <td>63.26%</td>
+      <td>0.23%</td>
+      <td>26.65</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Arizona Cardinals</td>
+      <td>1449.44</td>
+      <td>23</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1529.73</td>
+      <td>20</td>
+      <td>46.00%</td>
+      <td>53.77%</td>
+      <td>0.23%</td>
+      <td>16.01</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Denver Broncos</td>
+      <td>1535.01</td>
+      <td>23</td>
+      <td>@ Oakland Raiders</td>
+      <td>1376.61</td>
+      <td>20</td>
+      <td>77.02%</td>
+      <td>22.74%</td>
+      <td>0.23%</td>
+      <td>6.79</td>
+    </tr>
+    <tr>
+      <td>2007-09-16</td>
+      <td>Detroit Lions</td>
+      <td>1479.32</td>
+      <td>20</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1495.54</td>
+      <td>17</td>
+      <td>55.19%</td>
+      <td>44.58%</td>
+      <td>0.23%</td>
+      <td>13.28</td>
+    </tr>
+    <tr>
+      <td>2007-09-17</td>
+      <td>Washington Redskins</td>
+      <td>1481.59</td>
+      <td>20</td>
+      <td>Philadelphia Eagles</td>
+      <td>1512.55</td>
+      <td>12</td>
+      <td>38.01%</td>
+      <td>61.76%</td>
+      <td>0.23%</td>
+      <td>30.04</td>
+    </tr>
+    <tr>
+      <td>2007-09-17</td>
+      <td>Philadelphia Eagles</td>
+      <td>1512.55</td>
+      <td>12</td>
+      <td>@ Washington Redskins</td>
+      <td>1481.59</td>
+      <td>20</td>
+      <td>61.76%</td>
+      <td>38.01%</td>
+      <td>0.23%</td>
+      <td>-30.03</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Washington Redskins</td>
+      <td>1511.63</td>
+      <td>17</td>
+      <td>@ New York Giants</td>
+      <td>1427.79</td>
+      <td>24</td>
+      <td>68.63%</td>
+      <td>31.14%</td>
+      <td>0.23%</td>
+      <td>-31.22</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Indianapolis Colts</td>
+      <td>1618.09</td>
+      <td>30</td>
+      <td>Houston Texans</td>
+      <td>1529.00</td>
+      <td>24</td>
+      <td>55.03%</td>
+      <td>44.74%</td>
+      <td>0.23%</td>
+      <td>18.86</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1530.88</td>
+      <td>23</td>
+      <td>Denver Broncos</td>
+      <td>1541.80</td>
+      <td>14</td>
+      <td>40.76%</td>
+      <td>59.01%</td>
+      <td>0.23%</td>
+      <td>30.43</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Atlanta Falcons</td>
+      <td>1418.51</td>
+      <td>20</td>
+      <td>@ Carolina Panthers</td>
+      <td>1500.09</td>
+      <td>27</td>
+      <td>45.81%</td>
+      <td>53.95%</td>
+      <td>0.23%</td>
+      <td>-20.85</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1455.03</td>
+      <td>24</td>
+      <td>@ St. Louis Rams</td>
+      <td>1441.65</td>
+      <td>3</td>
+      <td>59.35%</td>
+      <td>40.42%</td>
+      <td>0.23%</td>
+      <td>31.87</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Chicago Bears</td>
+      <td>1559.09</td>
+      <td>10</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1558.44</td>
+      <td>34</td>
+      <td>57.57%</td>
+      <td>42.20%</td>
+      <td>0.23%</td>
+      <td>-48.50</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Seattle Seahawks</td>
+      <td>1513.72</td>
+      <td>24</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1518.01</td>
+      <td>21</td>
+      <td>56.88%</td>
+      <td>42.89%</td>
+      <td>0.23%</td>
+      <td>12.78</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Baltimore Ravens</td>
+      <td>1560.11</td>
+      <td>26</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1465.45</td>
+      <td>23</td>
+      <td>69.95%</td>
+      <td>29.82%</td>
+      <td>0.23%</td>
+      <td>8.89</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Oakland Raiders</td>
+      <td>1369.83</td>
+      <td>26</td>
+      <td>@ Cleveland Browns</td>
+      <td>1422.73</td>
+      <td>24</td>
+      <td>49.93%</td>
+      <td>49.84%</td>
+      <td>0.23%</td>
+      <td>12.12</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Carolina Panthers</td>
+      <td>1500.09</td>
+      <td>27</td>
+      <td>Atlanta Falcons</td>
+      <td>1418.51</td>
+      <td>20</td>
+      <td>53.95%</td>
+      <td>45.81%</td>
+      <td>0.23%</td>
+      <td>20.85</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>St. Louis Rams</td>
+      <td>1441.65</td>
+      <td>3</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1455.03</td>
+      <td>24</td>
+      <td>40.42%</td>
+      <td>59.35%</td>
+      <td>0.23%</td>
+      <td>-31.87</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>New York Giants</td>
+      <td>1427.79</td>
+      <td>24</td>
+      <td>Washington Redskins</td>
+      <td>1511.63</td>
+      <td>17</td>
+      <td>31.14%</td>
+      <td>68.63%</td>
+      <td>0.23%</td>
+      <td>31.22</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Cincinnati Bengals</td>
+      <td>1518.01</td>
+      <td>21</td>
+      <td>Seattle Seahawks</td>
+      <td>1513.72</td>
+      <td>24</td>
+      <td>42.89%</td>
+      <td>56.88%</td>
+      <td>0.23%</td>
+      <td>-12.78</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Arizona Cardinals</td>
+      <td>1465.45</td>
+      <td>23</td>
+      <td>Baltimore Ravens</td>
+      <td>1560.11</td>
+      <td>26</td>
+      <td>29.82%</td>
+      <td>69.95%</td>
+      <td>0.23%</td>
+      <td>-8.89</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Cleveland Browns</td>
+      <td>1422.73</td>
+      <td>24</td>
+      <td>Oakland Raiders</td>
+      <td>1369.83</td>
+      <td>26</td>
+      <td>49.84%</td>
+      <td>49.93%</td>
+      <td>0.23%</td>
+      <td>-12.12</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>San Francisco 49ers</td>
+      <td>1472.98</td>
+      <td>16</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1606.93</td>
+      <td>37</td>
+      <td>25.31%</td>
+      <td>74.46%</td>
+      <td>0.23%</td>
+      <td>-19.98</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>San Diego Chargers</td>
+      <td>1569.01</td>
+      <td>24</td>
+      <td>Green Bay Packers</td>
+      <td>1530.19</td>
+      <td>31</td>
+      <td>47.81%</td>
+      <td>51.96%</td>
+      <td>0.23%</td>
+      <td>-21.76</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Detroit Lions</td>
+      <td>1492.60</td>
+      <td>21</td>
+      <td>Philadelphia Eagles</td>
+      <td>1482.52</td>
+      <td>56</td>
+      <td>43.71%</td>
+      <td>56.06%</td>
+      <td>0.23%</td>
+      <td>-44.49</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Dallas Cowboys</td>
+      <td>1558.44</td>
+      <td>34</td>
+      <td>Chicago Bears</td>
+      <td>1559.09</td>
+      <td>10</td>
+      <td>42.20%</td>
+      <td>57.57%</td>
+      <td>0.23%</td>
+      <td>48.50</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Miami Dolphins</td>
+      <td>1440.74</td>
+      <td>28</td>
+      <td>New York Jets</td>
+      <td>1448.17</td>
+      <td>31</td>
+      <td>41.25%</td>
+      <td>58.52%</td>
+      <td>0.23%</td>
+      <td>-12.30</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Minnesota Vikings</td>
+      <td>1482.25</td>
+      <td>10</td>
+      <td>Kansas City Chiefs</td>
+      <td>1461.57</td>
+      <td>13</td>
+      <td>45.22%</td>
+      <td>54.55%</td>
+      <td>0.23%</td>
+      <td>-13.47</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Denver Broncos</td>
+      <td>1541.80</td>
+      <td>14</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1530.88</td>
+      <td>23</td>
+      <td>59.01%</td>
+      <td>40.76%</td>
+      <td>0.23%</td>
+      <td>-30.44</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Houston Texans</td>
+      <td>1529.00</td>
+      <td>24</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1618.09</td>
+      <td>30</td>
+      <td>44.74%</td>
+      <td>55.03%</td>
+      <td>0.23%</td>
+      <td>-18.85</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Kansas City Chiefs</td>
+      <td>1461.57</td>
+      <td>13</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1482.25</td>
+      <td>10</td>
+      <td>54.55%</td>
+      <td>45.22%</td>
+      <td>0.23%</td>
+      <td>13.48</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>New England Patriots</td>
+      <td>1651.19</td>
+      <td>38</td>
+      <td>@ Buffalo Bills</td>
+      <td>1471.90</td>
+      <td>7</td>
+      <td>79.07%</td>
+      <td>20.70%</td>
+      <td>0.23%</td>
+      <td>19.85</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>New York Jets</td>
+      <td>1448.17</td>
+      <td>31</td>
+      <td>@ Miami Dolphins</td>
+      <td>1440.74</td>
+      <td>28</td>
+      <td>58.52%</td>
+      <td>41.25%</td>
+      <td>0.23%</td>
+      <td>12.30</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Philadelphia Eagles</td>
+      <td>1482.52</td>
+      <td>56</td>
+      <td>@ Detroit Lions</td>
+      <td>1492.60</td>
+      <td>21</td>
+      <td>56.06%</td>
+      <td>43.71%</td>
+      <td>0.23%</td>
+      <td>44.49</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Green Bay Packers</td>
+      <td>1530.19</td>
+      <td>31</td>
+      <td>@ San Diego Chargers</td>
+      <td>1569.01</td>
+      <td>24</td>
+      <td>51.96%</td>
+      <td>47.81%</td>
+      <td>0.23%</td>
+      <td>21.76</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1606.93</td>
+      <td>37</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1472.98</td>
+      <td>16</td>
+      <td>74.46%</td>
+      <td>25.31%</td>
+      <td>0.23%</td>
+      <td>19.97</td>
+    </tr>
+    <tr>
+      <td>2007-09-23</td>
+      <td>Buffalo Bills</td>
+      <td>1471.90</td>
+      <td>7</td>
+      <td>New England Patriots</td>
+      <td>1651.19</td>
+      <td>38</td>
+      <td>20.70%</td>
+      <td>79.07%</td>
+      <td>0.23%</td>
+      <td>-19.86</td>
+    </tr>
+    <tr>
+      <td>2007-09-24</td>
+      <td>Tennessee Titans</td>
+      <td>1502.60</td>
+      <td>31</td>
+      <td>New Orleans Saints</td>
+      <td>1445.53</td>
+      <td>14</td>
+      <td>50.44%</td>
+      <td>49.33%</td>
+      <td>0.23%</td>
+      <td>34.98</td>
+    </tr>
+    <tr>
+      <td>2007-09-24</td>
+      <td>New Orleans Saints</td>
+      <td>1445.53</td>
+      <td>14</td>
+      <td>@ Tennessee Titans</td>
+      <td>1502.60</td>
+      <td>31</td>
+      <td>49.33%</td>
+      <td>50.44%</td>
+      <td>0.23%</td>
+      <td>-34.99</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Philadelphia Eagles</td>
+      <td>1527.01</td>
+      <td>3</td>
+      <td>New York Giants</td>
+      <td>1459.01</td>
+      <td>16</td>
+      <td>52.01%</td>
+      <td>47.76%</td>
+      <td>0.23%</td>
+      <td>-32.25</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Buffalo Bills</td>
+      <td>1452.04</td>
+      <td>17</td>
+      <td>@ New York Jets</td>
+      <td>1460.47</td>
+      <td>14</td>
+      <td>56.29%</td>
+      <td>43.47%</td>
+      <td>0.23%</td>
+      <td>12.96</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Atlanta Falcons</td>
+      <td>1397.66</td>
+      <td>26</td>
+      <td>@ Houston Texans</td>
+      <td>1510.15</td>
+      <td>16</td>
+      <td>41.44%</td>
+      <td>58.33%</td>
+      <td>0.23%</td>
+      <td>31.72</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Cleveland Browns</td>
+      <td>1410.61</td>
+      <td>27</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1569.00</td>
+      <td>13</td>
+      <td>35.20%</td>
+      <td>64.56%</td>
+      <td>0.23%</td>
+      <td>41.53</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Indianapolis Colts</td>
+      <td>1636.95</td>
+      <td>38</td>
+      <td>@ Denver Broncos</td>
+      <td>1511.36</td>
+      <td>20</td>
+      <td>73.54%</td>
+      <td>26.23%</td>
+      <td>0.23%</td>
+      <td>19.16</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Arizona Cardinals</td>
+      <td>1456.56</td>
+      <td>21</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1626.90</td>
+      <td>14</td>
+      <td>33.65%</td>
+      <td>66.12%</td>
+      <td>0.23%</td>
+      <td>30.08</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Detroit Lions</td>
+      <td>1448.11</td>
+      <td>37</td>
+      <td>@ Chicago Bears</td>
+      <td>1510.59</td>
+      <td>27</td>
+      <td>48.55%</td>
+      <td>51.22%</td>
+      <td>0.23%</td>
+      <td>27.86</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Miami Dolphins</td>
+      <td>1428.44</td>
+      <td>17</td>
+      <td>@ Oakland Raiders</td>
+      <td>1381.95</td>
+      <td>35</td>
+      <td>63.84%</td>
+      <td>35.92%</td>
+      <td>0.23%</td>
+      <td>-46.57</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Minnesota Vikings</td>
+      <td>1468.78</td>
+      <td>16</td>
+      <td>@ Green Bay Packers</td>
+      <td>1551.95</td>
+      <td>23</td>
+      <td>45.59%</td>
+      <td>54.18%</td>
+      <td>0.23%</td>
+      <td>-20.75</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>New York Giants</td>
+      <td>1459.01</td>
+      <td>16</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1527.01</td>
+      <td>3</td>
+      <td>47.76%</td>
+      <td>52.01%</td>
+      <td>0.23%</td>
+      <td>32.25</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>San Francisco 49ers</td>
+      <td>1453.00</td>
+      <td>3</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1526.50</td>
+      <td>23</td>
+      <td>46.97%</td>
+      <td>52.80%</td>
+      <td>0.23%</td>
+      <td>-36.13</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Dallas Cowboys</td>
+      <td>1606.94</td>
+      <td>35</td>
+      <td>@ St. Louis Rams</td>
+      <td>1409.78</td>
+      <td>7</td>
+      <td>80.71%</td>
+      <td>19.06%</td>
+      <td>0.23%</td>
+      <td>17.37</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Carolina Panthers</td>
+      <td>1520.94</td>
+      <td>7</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1486.90</td>
+      <td>20</td>
+      <td>62.18%</td>
+      <td>37.59%</td>
+      <td>0.23%</td>
+      <td>-38.55</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>San Diego Chargers</td>
+      <td>1547.25</td>
+      <td>16</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1475.05</td>
+      <td>30</td>
+      <td>67.17%</td>
+      <td>32.59%</td>
+      <td>0.23%</td>
+      <td>-43.22</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Kansas City Chiefs</td>
+      <td>1475.05</td>
+      <td>30</td>
+      <td>San Diego Chargers</td>
+      <td>1547.25</td>
+      <td>16</td>
+      <td>32.59%</td>
+      <td>67.17%</td>
+      <td>0.23%</td>
+      <td>43.21</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1486.90</td>
+      <td>20</td>
+      <td>Carolina Panthers</td>
+      <td>1520.94</td>
+      <td>7</td>
+      <td>37.59%</td>
+      <td>62.18%</td>
+      <td>0.23%</td>
+      <td>38.55</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>St. Louis Rams</td>
+      <td>1409.78</td>
+      <td>7</td>
+      <td>Dallas Cowboys</td>
+      <td>1606.94</td>
+      <td>35</td>
+      <td>19.06%</td>
+      <td>80.71%</td>
+      <td>0.23%</td>
+      <td>-17.38</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>New York Jets</td>
+      <td>1460.47</td>
+      <td>14</td>
+      <td>Buffalo Bills</td>
+      <td>1452.04</td>
+      <td>17</td>
+      <td>43.47%</td>
+      <td>56.29%</td>
+      <td>0.23%</td>
+      <td>-12.96</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Houston Texans</td>
+      <td>1510.15</td>
+      <td>16</td>
+      <td>Atlanta Falcons</td>
+      <td>1397.66</td>
+      <td>26</td>
+      <td>58.33%</td>
+      <td>41.44%</td>
+      <td>0.23%</td>
+      <td>-31.72</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Baltimore Ravens</td>
+      <td>1569.00</td>
+      <td>13</td>
+      <td>Cleveland Browns</td>
+      <td>1410.61</td>
+      <td>27</td>
+      <td>64.56%</td>
+      <td>35.20%</td>
+      <td>0.23%</td>
+      <td>-41.53</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Denver Broncos</td>
+      <td>1511.36</td>
+      <td>20</td>
+      <td>Indianapolis Colts</td>
+      <td>1636.95</td>
+      <td>38</td>
+      <td>26.23%</td>
+      <td>73.54%</td>
+      <td>0.23%</td>
+      <td>-19.16</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1626.90</td>
+      <td>14</td>
+      <td>Arizona Cardinals</td>
+      <td>1456.56</td>
+      <td>21</td>
+      <td>66.12%</td>
+      <td>33.65%</td>
+      <td>0.23%</td>
+      <td>-30.08</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Chicago Bears</td>
+      <td>1510.59</td>
+      <td>27</td>
+      <td>Detroit Lions</td>
+      <td>1448.11</td>
+      <td>37</td>
+      <td>51.22%</td>
+      <td>48.55%</td>
+      <td>0.23%</td>
+      <td>-27.86</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Oakland Raiders</td>
+      <td>1381.95</td>
+      <td>35</td>
+      <td>Miami Dolphins</td>
+      <td>1428.44</td>
+      <td>17</td>
+      <td>35.92%</td>
+      <td>63.84%</td>
+      <td>0.23%</td>
+      <td>46.57</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Green Bay Packers</td>
+      <td>1551.95</td>
+      <td>23</td>
+      <td>Minnesota Vikings</td>
+      <td>1468.78</td>
+      <td>16</td>
+      <td>54.18%</td>
+      <td>45.59%</td>
+      <td>0.23%</td>
+      <td>20.75</td>
+    </tr>
+    <tr>
+      <td>2007-09-30</td>
+      <td>Seattle Seahawks</td>
+      <td>1526.50</td>
+      <td>23</td>
+      <td>San Francisco 49ers</td>
+      <td>1453.00</td>
+      <td>3</td>
+      <td>52.80%</td>
+      <td>46.97%</td>
+      <td>0.23%</td>
+      <td>36.13</td>
+    </tr>
+    <tr>
+      <td>2007-10-01</td>
+      <td>New England Patriots</td>
+      <td>1671.04</td>
+      <td>34</td>
+      <td>Cincinnati Bengals</td>
+      <td>1505.23</td>
+      <td>13</td>
+      <td>65.53%</td>
+      <td>34.24%</td>
+      <td>0.23%</td>
+      <td>27.00</td>
+    </tr>
+    <tr>
+      <td>2007-10-01</td>
+      <td>Cincinnati Bengals</td>
+      <td>1505.23</td>
+      <td>13</td>
+      <td>@ New England Patriots</td>
+      <td>1671.04</td>
+      <td>34</td>
+      <td>34.24%</td>
+      <td>65.53%</td>
+      <td>0.23%</td>
+      <td>-27.01</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Chicago Bears</td>
+      <td>1482.73</td>
+      <td>27</td>
+      <td>Green Bay Packers</td>
+      <td>1572.70</td>
+      <td>20</td>
+      <td>30.39%</td>
+      <td>69.38%</td>
+      <td>0.23%</td>
+      <td>31.56</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>San Diego Chargers</td>
+      <td>1504.03</td>
+      <td>41</td>
+      <td>Denver Broncos</td>
+      <td>1492.20</td>
+      <td>3</td>
+      <td>43.96%</td>
+      <td>55.81%</td>
+      <td>0.23%</td>
+      <td>59.16</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Kansas City Chiefs</td>
+      <td>1518.26</td>
+      <td>7</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1561.31</td>
+      <td>17</td>
+      <td>51.35%</td>
+      <td>48.42%</td>
+      <td>0.23%</td>
+      <td>-27.92</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Denver Broncos</td>
+      <td>1492.20</td>
+      <td>3</td>
+      <td>@ San Diego Chargers</td>
+      <td>1504.03</td>
+      <td>41</td>
+      <td>55.81%</td>
+      <td>43.96%</td>
+      <td>0.23%</td>
+      <td>-59.17</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Washington Redskins</td>
+      <td>1480.41</td>
+      <td>34</td>
+      <td>@ Detroit Lions</td>
+      <td>1475.97</td>
+      <td>3</td>
+      <td>58.10%</td>
+      <td>41.66%</td>
+      <td>0.23%</td>
+      <td>39.92</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>San Francisco 49ers</td>
+      <td>1416.87</td>
+      <td>7</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1527.47</td>
+      <td>9</td>
+      <td>41.70%</td>
+      <td>58.06%</td>
+      <td>0.23%</td>
+      <td>-10.15</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1596.82</td>
+      <td>21</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1562.63</td>
+      <td>0</td>
+      <td>62.20%</td>
+      <td>37.57%</td>
+      <td>0.23%</td>
+      <td>29.63</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Tennessee Titans</td>
+      <td>1537.58</td>
+      <td>20</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1429.38</td>
+      <td>13</td>
+      <td>71.55%</td>
+      <td>28.21%</td>
+      <td>0.23%</td>
+      <td>12.86</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>New York Giants</td>
+      <td>1491.26</td>
+      <td>35</td>
+      <td>@ New York Jets</td>
+      <td>1447.51</td>
+      <td>24</td>
+      <td>63.48%</td>
+      <td>36.29%</td>
+      <td>0.23%</td>
+      <td>20.71</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>New England Patriots</td>
+      <td>1698.04</td>
+      <td>34</td>
+      <td>@ Cleveland Browns</td>
+      <td>1452.14</td>
+      <td>17</td>
+      <td>84.66%</td>
+      <td>15.10%</td>
+      <td>0.23%</td>
+      <td>10.73</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Houston Texans</td>
+      <td>1478.43</td>
+      <td>22</td>
+      <td>@ Miami Dolphins</td>
+      <td>1381.87</td>
+      <td>19</td>
+      <td>70.18%</td>
+      <td>29.59%</td>
+      <td>0.23%</td>
+      <td>8.83</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1561.31</td>
+      <td>17</td>
+      <td>Kansas City Chiefs</td>
+      <td>1518.26</td>
+      <td>7</td>
+      <td>48.42%</td>
+      <td>51.35%</td>
+      <td>0.23%</td>
+      <td>27.93</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Indianapolis Colts</td>
+      <td>1656.11</td>
+      <td>33</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1525.45</td>
+      <td>14</td>
+      <td>74.10%</td>
+      <td>25.67%</td>
+      <td>0.23%</td>
+      <td>19.27</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>St. Louis Rams</td>
+      <td>1392.40</td>
+      <td>31</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1486.64</td>
+      <td>34</td>
+      <td>44.01%</td>
+      <td>55.76%</td>
+      <td>0.23%</td>
+      <td>-13.11</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>New Orleans Saints</td>
+      <td>1410.54</td>
+      <td>13</td>
+      <td>@ Carolina Panthers</td>
+      <td>1482.39</td>
+      <td>16</td>
+      <td>47.21%</td>
+      <td>52.56%</td>
+      <td>0.23%</td>
+      <td>-14.06</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Green Bay Packers</td>
+      <td>1572.70</td>
+      <td>20</td>
+      <td>@ Chicago Bears</td>
+      <td>1482.73</td>
+      <td>27</td>
+      <td>69.38%</td>
+      <td>30.39%</td>
+      <td>0.23%</td>
+      <td>-31.56</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Baltimore Ravens</td>
+      <td>1527.47</td>
+      <td>9</td>
+      <td>San Francisco 49ers</td>
+      <td>1416.87</td>
+      <td>7</td>
+      <td>58.06%</td>
+      <td>41.70%</td>
+      <td>0.23%</td>
+      <td>10.14</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Carolina Panthers</td>
+      <td>1482.39</td>
+      <td>16</td>
+      <td>New Orleans Saints</td>
+      <td>1410.54</td>
+      <td>13</td>
+      <td>52.56%</td>
+      <td>47.21%</td>
+      <td>0.23%</td>
+      <td>14.07</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Arizona Cardinals</td>
+      <td>1486.64</td>
+      <td>34</td>
+      <td>St. Louis Rams</td>
+      <td>1392.40</td>
+      <td>31</td>
+      <td>55.76%</td>
+      <td>44.01%</td>
+      <td>0.23%</td>
+      <td>13.11</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1525.45</td>
+      <td>14</td>
+      <td>Indianapolis Colts</td>
+      <td>1656.11</td>
+      <td>33</td>
+      <td>25.67%</td>
+      <td>74.10%</td>
+      <td>0.23%</td>
+      <td>-19.27</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Miami Dolphins</td>
+      <td>1381.87</td>
+      <td>19</td>
+      <td>Houston Texans</td>
+      <td>1478.43</td>
+      <td>22</td>
+      <td>29.59%</td>
+      <td>70.18%</td>
+      <td>0.23%</td>
+      <td>-8.82</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Cleveland Browns</td>
+      <td>1452.14</td>
+      <td>17</td>
+      <td>New England Patriots</td>
+      <td>1698.04</td>
+      <td>34</td>
+      <td>15.10%</td>
+      <td>84.66%</td>
+      <td>0.23%</td>
+      <td>-10.73</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>New York Jets</td>
+      <td>1447.51</td>
+      <td>24</td>
+      <td>New York Giants</td>
+      <td>1491.26</td>
+      <td>35</td>
+      <td>36.29%</td>
+      <td>63.48%</td>
+      <td>0.23%</td>
+      <td>-20.71</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Atlanta Falcons</td>
+      <td>1429.38</td>
+      <td>13</td>
+      <td>Tennessee Titans</td>
+      <td>1537.58</td>
+      <td>20</td>
+      <td>28.21%</td>
+      <td>71.55%</td>
+      <td>0.23%</td>
+      <td>-12.86</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Seattle Seahawks</td>
+      <td>1562.63</td>
+      <td>0</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1596.82</td>
+      <td>21</td>
+      <td>37.57%</td>
+      <td>62.20%</td>
+      <td>0.23%</td>
+      <td>-29.63</td>
+    </tr>
+    <tr>
+      <td>2007-10-07</td>
+      <td>Detroit Lions</td>
+      <td>1475.97</td>
+      <td>3</td>
+      <td>Washington Redskins</td>
+      <td>1480.41</td>
+      <td>34</td>
+      <td>41.66%</td>
+      <td>58.10%</td>
+      <td>0.23%</td>
+      <td>-39.92</td>
+    </tr>
+    <tr>
+      <td>2007-10-08</td>
+      <td>Dallas Cowboys</td>
+      <td>1624.31</td>
+      <td>25</td>
+      <td>Buffalo Bills</td>
+      <td>1465.00</td>
+      <td>24</td>
+      <td>64.68%</td>
+      <td>35.08%</td>
+      <td>0.23%</td>
+      <td>6.04</td>
+    </tr>
+    <tr>
+      <td>2007-10-08</td>
+      <td>Buffalo Bills</td>
+      <td>1465.00</td>
+      <td>24</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1624.31</td>
+      <td>25</td>
+      <td>35.08%</td>
+      <td>64.68%</td>
+      <td>0.23%</td>
+      <td>-6.04</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Tennessee Titans</td>
+      <td>1550.44</td>
+      <td>10</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1506.18</td>
+      <td>13</td>
+      <td>48.59%</td>
+      <td>51.17%</td>
+      <td>0.23%</td>
+      <td>-14.48</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>New Orleans Saints</td>
+      <td>1396.48</td>
+      <td>28</td>
+      <td>Seattle Seahawks</td>
+      <td>1533.00</td>
+      <td>17</td>
+      <td>25.03%</td>
+      <td>74.74%</td>
+      <td>0.23%</td>
+      <td>42.61</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Cincinnati Bengals</td>
+      <td>1478.22</td>
+      <td>20</td>
+      <td>Kansas City Chiefs</td>
+      <td>1490.34</td>
+      <td>27</td>
+      <td>40.60%</td>
+      <td>59.17%</td>
+      <td>0.23%</td>
+      <td>-18.48</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Washington Redskins</td>
+      <td>1520.33</td>
+      <td>14</td>
+      <td>Green Bay Packers</td>
+      <td>1541.14</td>
+      <td>17</td>
+      <td>39.39%</td>
+      <td>60.37%</td>
+      <td>0.23%</td>
+      <td>-11.75</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Houston Texans</td>
+      <td>1487.26</td>
+      <td>17</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1589.24</td>
+      <td>37</td>
+      <td>28.94%</td>
+      <td>70.82%</td>
+      <td>0.23%</td>
+      <td>-22.29</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>New England Patriots</td>
+      <td>1708.77</td>
+      <td>48</td>
+      <td>Dallas Cowboys</td>
+      <td>1630.35</td>
+      <td>27</td>
+      <td>53.50%</td>
+      <td>46.26%</td>
+      <td>0.23%</td>
+      <td>36.47</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Carolina Panthers</td>
+      <td>1496.46</td>
+      <td>25</td>
+      <td>Arizona Cardinals</td>
+      <td>1499.75</td>
+      <td>10</td>
+      <td>41.82%</td>
+      <td>57.94%</td>
+      <td>0.23%</td>
+      <td>38.58</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Miami Dolphins</td>
+      <td>1373.05</td>
+      <td>31</td>
+      <td>Cleveland Browns</td>
+      <td>1441.41</td>
+      <td>41</td>
+      <td>33.08%</td>
+      <td>66.69%</td>
+      <td>0.23%</td>
+      <td>-18.01</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>St. Louis Rams</td>
+      <td>1379.29</td>
+      <td>3</td>
+      <td>Baltimore Ravens</td>
+      <td>1537.61</td>
+      <td>22</td>
+      <td>22.75%</td>
+      <td>77.02%</td>
+      <td>0.23%</td>
+      <td>-17.08</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Oakland Raiders</td>
+      <td>1428.52</td>
+      <td>14</td>
+      <td>San Diego Chargers</td>
+      <td>1563.19</td>
+      <td>28</td>
+      <td>25.23%</td>
+      <td>74.53%</td>
+      <td>0.23%</td>
+      <td>-16.26</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Philadelphia Eagles</td>
+      <td>1494.76</td>
+      <td>16</td>
+      <td>New York Jets</td>
+      <td>1426.80</td>
+      <td>9</td>
+      <td>52.00%</td>
+      <td>47.76%</td>
+      <td>0.23%</td>
+      <td>21.74</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Minnesota Vikings</td>
+      <td>1448.03</td>
+      <td>34</td>
+      <td>Chicago Bears</td>
+      <td>1514.29</td>
+      <td>31</td>
+      <td>33.35%</td>
+      <td>66.42%</td>
+      <td>0.23%</td>
+      <td>19.78</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Kansas City Chiefs</td>
+      <td>1490.34</td>
+      <td>27</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1478.22</td>
+      <td>20</td>
+      <td>59.17%</td>
+      <td>40.60%</td>
+      <td>0.23%</td>
+      <td>18.48</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1589.24</td>
+      <td>37</td>
+      <td>@ Houston Texans</td>
+      <td>1487.26</td>
+      <td>17</td>
+      <td>70.82%</td>
+      <td>28.94%</td>
+      <td>0.23%</td>
+      <td>22.29</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>New York Jets</td>
+      <td>1426.80</td>
+      <td>9</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1494.76</td>
+      <td>16</td>
+      <td>47.76%</td>
+      <td>52.00%</td>
+      <td>0.23%</td>
+      <td>-21.74</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Chicago Bears</td>
+      <td>1514.29</td>
+      <td>31</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1448.03</td>
+      <td>34</td>
+      <td>66.42%</td>
+      <td>33.35%</td>
+      <td>0.23%</td>
+      <td>-19.78</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Cleveland Browns</td>
+      <td>1441.41</td>
+      <td>41</td>
+      <td>@ Miami Dolphins</td>
+      <td>1373.05</td>
+      <td>31</td>
+      <td>66.69%</td>
+      <td>33.08%</td>
+      <td>0.23%</td>
+      <td>18.01</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Arizona Cardinals</td>
+      <td>1499.75</td>
+      <td>10</td>
+      <td>@ Carolina Panthers</td>
+      <td>1496.46</td>
+      <td>25</td>
+      <td>57.94%</td>
+      <td>41.82%</td>
+      <td>0.23%</td>
+      <td>-38.59</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1506.18</td>
+      <td>13</td>
+      <td>@ Tennessee Titans</td>
+      <td>1550.44</td>
+      <td>10</td>
+      <td>51.17%</td>
+      <td>48.59%</td>
+      <td>0.23%</td>
+      <td>14.48</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Baltimore Ravens</td>
+      <td>1537.61</td>
+      <td>22</td>
+      <td>@ St. Louis Rams</td>
+      <td>1379.29</td>
+      <td>3</td>
+      <td>77.02%</td>
+      <td>22.75%</td>
+      <td>0.23%</td>
+      <td>17.08</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Green Bay Packers</td>
+      <td>1541.14</td>
+      <td>17</td>
+      <td>@ Washington Redskins</td>
+      <td>1520.33</td>
+      <td>14</td>
+      <td>60.37%</td>
+      <td>39.39%</td>
+      <td>0.23%</td>
+      <td>11.74</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>San Diego Chargers</td>
+      <td>1563.19</td>
+      <td>28</td>
+      <td>@ Oakland Raiders</td>
+      <td>1428.52</td>
+      <td>14</td>
+      <td>74.53%</td>
+      <td>25.23%</td>
+      <td>0.23%</td>
+      <td>16.26</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Dallas Cowboys</td>
+      <td>1630.35</td>
+      <td>27</td>
+      <td>@ New England Patriots</td>
+      <td>1708.77</td>
+      <td>48</td>
+      <td>46.26%</td>
+      <td>53.50%</td>
+      <td>0.23%</td>
+      <td>-36.47</td>
+    </tr>
+    <tr>
+      <td>2007-10-14</td>
+      <td>Seattle Seahawks</td>
+      <td>1533.00</td>
+      <td>17</td>
+      <td>@ New Orleans Saints</td>
+      <td>1396.48</td>
+      <td>28</td>
+      <td>74.74%</td>
+      <td>25.03%</td>
+      <td>0.23%</td>
+      <td>-42.61</td>
+    </tr>
+    <tr>
+      <td>2007-10-15</td>
+      <td>Atlanta Falcons</td>
+      <td>1416.52</td>
+      <td>10</td>
+      <td>@ New York Giants</td>
+      <td>1511.97</td>
+      <td>31</td>
+      <td>43.84%</td>
+      <td>55.93%</td>
+      <td>0.23%</td>
+      <td>-34.56</td>
+    </tr>
+    <tr>
+      <td>2007-10-15</td>
+      <td>New York Giants</td>
+      <td>1511.97</td>
+      <td>31</td>
+      <td>Atlanta Falcons</td>
+      <td>1416.52</td>
+      <td>10</td>
+      <td>55.93%</td>
+      <td>43.84%</td>
+      <td>0.23%</td>
+      <td>34.57</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Atlanta Falcons</td>
+      <td>1381.96</td>
+      <td>16</td>
+      <td>New Orleans Saints</td>
+      <td>1439.09</td>
+      <td>22</td>
+      <td>34.53%</td>
+      <td>65.24%</td>
+      <td>0.23%</td>
+      <td>-14.56</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Philadelphia Eagles</td>
+      <td>1516.50</td>
+      <td>16</td>
+      <td>@ Chicago Bears</td>
+      <td>1494.51</td>
+      <td>19</td>
+      <td>60.53%</td>
+      <td>39.23%</td>
+      <td>0.23%</td>
+      <td>-18.03</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>New Orleans Saints</td>
+      <td>1439.09</td>
+      <td>22</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1381.96</td>
+      <td>16</td>
+      <td>65.24%</td>
+      <td>34.53%</td>
+      <td>0.23%</td>
+      <td>14.56</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Cincinnati Bengals</td>
+      <td>1459.74</td>
+      <td>38</td>
+      <td>@ New York Jets</td>
+      <td>1405.06</td>
+      <td>31</td>
+      <td>64.92%</td>
+      <td>34.85%</td>
+      <td>0.23%</td>
+      <td>15.87</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>St. Louis Rams</td>
+      <td>1362.21</td>
+      <td>6</td>
+      <td>Seattle Seahawks</td>
+      <td>1490.39</td>
+      <td>33</td>
+      <td>25.94%</td>
+      <td>73.82%</td>
+      <td>0.23%</td>
+      <td>-23.22</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Tennessee Titans</td>
+      <td>1535.96</td>
+      <td>38</td>
+      <td>Houston Texans</td>
+      <td>1464.97</td>
+      <td>36</td>
+      <td>52.44%</td>
+      <td>47.33%</td>
+      <td>0.23%</td>
+      <td>11.51</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1520.66</td>
+      <td>16</td>
+      <td>Detroit Lions</td>
+      <td>1436.05</td>
+      <td>23</td>
+      <td>54.39%</td>
+      <td>45.38%</td>
+      <td>0.23%</td>
+      <td>-24.75</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1626.45</td>
+      <td>28</td>
+      <td>Denver Broncos</td>
+      <td>1433.03</td>
+      <td>31</td>
+      <td>69.01%</td>
+      <td>30.75%</td>
+      <td>0.23%</td>
+      <td>-20.55</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Minnesota Vikings</td>
+      <td>1467.81</td>
+      <td>14</td>
+      <td>Dallas Cowboys</td>
+      <td>1593.88</td>
+      <td>24</td>
+      <td>26.18%</td>
+      <td>73.59%</td>
+      <td>0.23%</td>
+      <td>-14.25</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>New York Jets</td>
+      <td>1405.06</td>
+      <td>31</td>
+      <td>Cincinnati Bengals</td>
+      <td>1459.74</td>
+      <td>38</td>
+      <td>34.85%</td>
+      <td>64.92%</td>
+      <td>0.23%</td>
+      <td>-15.87</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Chicago Bears</td>
+      <td>1494.51</td>
+      <td>19</td>
+      <td>Philadelphia Eagles</td>
+      <td>1516.50</td>
+      <td>16</td>
+      <td>39.23%</td>
+      <td>60.53%</td>
+      <td>0.23%</td>
+      <td>18.03</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Kansas City Chiefs</td>
+      <td>1508.82</td>
+      <td>12</td>
+      <td>Oakland Raiders</td>
+      <td>1412.26</td>
+      <td>10</td>
+      <td>56.09%</td>
+      <td>43.68%</td>
+      <td>0.23%</td>
+      <td>10.63</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>New England Patriots</td>
+      <td>1745.24</td>
+      <td>49</td>
+      <td>Miami Dolphins</td>
+      <td>1355.04</td>
+      <td>28</td>
+      <td>87.25%</td>
+      <td>12.52%</td>
+      <td>0.23%</td>
+      <td>9.88</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>San Francisco 49ers</td>
+      <td>1406.72</td>
+      <td>15</td>
+      <td>New York Giants</td>
+      <td>1546.54</td>
+      <td>33</td>
+      <td>24.68%</td>
+      <td>75.09%</td>
+      <td>0.23%</td>
+      <td>-18.03</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Arizona Cardinals</td>
+      <td>1461.16</td>
+      <td>19</td>
+      <td>Washington Redskins</td>
+      <td>1508.58</td>
+      <td>21</td>
+      <td>35.80%</td>
+      <td>63.97%</td>
+      <td>0.23%</td>
+      <td>-8.71</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Baltimore Ravens</td>
+      <td>1554.69</td>
+      <td>14</td>
+      <td>Buffalo Bills</td>
+      <td>1458.96</td>
+      <td>19</td>
+      <td>55.97%</td>
+      <td>43.80%</td>
+      <td>0.23%</td>
+      <td>-21.52</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Miami Dolphins</td>
+      <td>1355.04</td>
+      <td>28</td>
+      <td>@ New England Patriots</td>
+      <td>1745.24</td>
+      <td>49</td>
+      <td>12.52%</td>
+      <td>87.25%</td>
+      <td>0.23%</td>
+      <td>-9.88</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>New York Giants</td>
+      <td>1546.54</td>
+      <td>33</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1406.72</td>
+      <td>15</td>
+      <td>75.09%</td>
+      <td>24.68%</td>
+      <td>0.23%</td>
+      <td>18.03</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Oakland Raiders</td>
+      <td>1412.26</td>
+      <td>10</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1508.82</td>
+      <td>12</td>
+      <td>43.68%</td>
+      <td>56.09%</td>
+      <td>0.23%</td>
+      <td>-10.62</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Buffalo Bills</td>
+      <td>1458.96</td>
+      <td>19</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1554.69</td>
+      <td>14</td>
+      <td>43.80%</td>
+      <td>55.97%</td>
+      <td>0.23%</td>
+      <td>21.52</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Seattle Seahawks</td>
+      <td>1490.39</td>
+      <td>33</td>
+      <td>@ St. Louis Rams</td>
+      <td>1362.21</td>
+      <td>6</td>
+      <td>73.82%</td>
+      <td>25.94%</td>
+      <td>0.23%</td>
+      <td>23.21</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Houston Texans</td>
+      <td>1464.97</td>
+      <td>36</td>
+      <td>@ Tennessee Titans</td>
+      <td>1535.96</td>
+      <td>38</td>
+      <td>47.33%</td>
+      <td>52.44%</td>
+      <td>0.23%</td>
+      <td>-11.51</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Detroit Lions</td>
+      <td>1436.05</td>
+      <td>23</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1520.66</td>
+      <td>16</td>
+      <td>45.38%</td>
+      <td>54.39%</td>
+      <td>0.23%</td>
+      <td>24.75</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Dallas Cowboys</td>
+      <td>1593.88</td>
+      <td>24</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1467.81</td>
+      <td>14</td>
+      <td>73.59%</td>
+      <td>26.18%</td>
+      <td>0.23%</td>
+      <td>14.25</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Washington Redskins</td>
+      <td>1508.58</td>
+      <td>21</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1461.16</td>
+      <td>19</td>
+      <td>63.97%</td>
+      <td>35.80%</td>
+      <td>0.23%</td>
+      <td>8.72</td>
+    </tr>
+    <tr>
+      <td>2007-10-21</td>
+      <td>Denver Broncos</td>
+      <td>1433.03</td>
+      <td>31</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1626.45</td>
+      <td>28</td>
+      <td>30.75%</td>
+      <td>69.01%</td>
+      <td>0.23%</td>
+      <td>20.56</td>
+    </tr>
+    <tr>
+      <td>2007-10-22</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1611.53</td>
+      <td>7</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1675.38</td>
+      <td>29</td>
+      <td>48.35%</td>
+      <td>51.41%</td>
+      <td>0.23%</td>
+      <td>-39.02</td>
+    </tr>
+    <tr>
+      <td>2007-10-22</td>
+      <td>Indianapolis Colts</td>
+      <td>1675.38</td>
+      <td>29</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1611.53</td>
+      <td>7</td>
+      <td>51.41%</td>
+      <td>48.35%</td>
+      <td>0.23%</td>
+      <td>39.01</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1605.90</td>
+      <td>24</td>
+      <td>Cincinnati Bengals</td>
+      <td>1475.61</td>
+      <td>13</td>
+      <td>60.79%</td>
+      <td>38.98%</td>
+      <td>0.23%</td>
+      <td>22.25</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Miami Dolphins</td>
+      <td>1345.16</td>
+      <td>10</td>
+      <td>New York Giants</td>
+      <td>1564.57</td>
+      <td>13</td>
+      <td>21.97%</td>
+      <td>77.80%</td>
+      <td>0.23%</td>
+      <td>-6.55</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Washington Redskins</td>
+      <td>1517.30</td>
+      <td>7</td>
+      <td>New England Patriots</td>
+      <td>1755.12</td>
+      <td>52</td>
+      <td>15.71%</td>
+      <td>84.06%</td>
+      <td>0.23%</td>
+      <td>-18.15</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>San Francisco 49ers</td>
+      <td>1388.69</td>
+      <td>10</td>
+      <td>@ New Orleans Saints</td>
+      <td>1453.65</td>
+      <td>31</td>
+      <td>48.20%</td>
+      <td>51.57%</td>
+      <td>0.23%</td>
+      <td>-37.99</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1495.91</td>
+      <td>23</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1572.51</td>
+      <td>24</td>
+      <td>46.52%</td>
+      <td>53.24%</td>
+      <td>0.23%</td>
+      <td>-8.00</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>New York Jets</td>
+      <td>1389.19</td>
+      <td>3</td>
+      <td>@ Buffalo Bills</td>
+      <td>1480.48</td>
+      <td>13</td>
+      <td>44.43%</td>
+      <td>55.34%</td>
+      <td>0.23%</td>
+      <td>-24.17</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>St. Louis Rams</td>
+      <td>1338.99</td>
+      <td>20</td>
+      <td>@ Cleveland Browns</td>
+      <td>1459.42</td>
+      <td>27</td>
+      <td>40.34%</td>
+      <td>59.43%</td>
+      <td>0.23%</td>
+      <td>-18.36</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>San Diego Chargers</td>
+      <td>1579.45</td>
+      <td>35</td>
+      <td>@ Houston Texans</td>
+      <td>1453.46</td>
+      <td>10</td>
+      <td>73.58%</td>
+      <td>26.19%</td>
+      <td>0.23%</td>
+      <td>22.55</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Carolina Panthers</td>
+      <td>1535.04</td>
+      <td>7</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1714.39</td>
+      <td>31</td>
+      <td>32.50%</td>
+      <td>67.26%</td>
+      <td>0.23%</td>
+      <td>-27.41</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Chicago Bears</td>
+      <td>1512.54</td>
+      <td>7</td>
+      <td>@ Detroit Lions</td>
+      <td>1460.80</td>
+      <td>16</td>
+      <td>64.54%</td>
+      <td>35.23%</td>
+      <td>0.23%</td>
+      <td>-33.29</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Cincinnati Bengals</td>
+      <td>1475.61</td>
+      <td>13</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1605.90</td>
+      <td>24</td>
+      <td>38.98%</td>
+      <td>60.79%</td>
+      <td>0.23%</td>
+      <td>-22.24</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>New York Giants</td>
+      <td>1564.57</td>
+      <td>13</td>
+      <td>@ Miami Dolphins</td>
+      <td>1345.16</td>
+      <td>10</td>
+      <td>77.80%</td>
+      <td>21.97%</td>
+      <td>0.23%</td>
+      <td>6.55</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>New England Patriots</td>
+      <td>1755.12</td>
+      <td>52</td>
+      <td>@ Washington Redskins</td>
+      <td>1517.30</td>
+      <td>7</td>
+      <td>84.06%</td>
+      <td>15.71%</td>
+      <td>0.23%</td>
+      <td>18.16</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Detroit Lions</td>
+      <td>1460.80</td>
+      <td>16</td>
+      <td>Chicago Bears</td>
+      <td>1512.54</td>
+      <td>7</td>
+      <td>35.23%</td>
+      <td>64.54%</td>
+      <td>0.23%</td>
+      <td>33.29</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Minnesota Vikings</td>
+      <td>1453.56</td>
+      <td>16</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1498.47</td>
+      <td>23</td>
+      <td>51.08%</td>
+      <td>48.69%</td>
+      <td>0.23%</td>
+      <td>-23.25</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Indianapolis Colts</td>
+      <td>1714.39</td>
+      <td>31</td>
+      <td>Carolina Panthers</td>
+      <td>1535.04</td>
+      <td>7</td>
+      <td>67.26%</td>
+      <td>32.50%</td>
+      <td>0.23%</td>
+      <td>27.41</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Tennessee Titans</td>
+      <td>1547.47</td>
+      <td>13</td>
+      <td>@ Oakland Raiders</td>
+      <td>1401.64</td>
+      <td>9</td>
+      <td>75.73%</td>
+      <td>24.04%</td>
+      <td>0.23%</td>
+      <td>8.28</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Cleveland Browns</td>
+      <td>1459.42</td>
+      <td>27</td>
+      <td>St. Louis Rams</td>
+      <td>1338.99</td>
+      <td>20</td>
+      <td>59.43%</td>
+      <td>40.34%</td>
+      <td>0.23%</td>
+      <td>18.36</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Philadelphia Eagles</td>
+      <td>1498.47</td>
+      <td>23</td>
+      <td>Minnesota Vikings</td>
+      <td>1453.56</td>
+      <td>16</td>
+      <td>48.69%</td>
+      <td>51.08%</td>
+      <td>0.23%</td>
+      <td>23.24</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1572.51</td>
+      <td>24</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1495.91</td>
+      <td>23</td>
+      <td>53.24%</td>
+      <td>46.52%</td>
+      <td>0.23%</td>
+      <td>8.01</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>New Orleans Saints</td>
+      <td>1453.65</td>
+      <td>31</td>
+      <td>San Francisco 49ers</td>
+      <td>1388.69</td>
+      <td>10</td>
+      <td>51.57%</td>
+      <td>48.20%</td>
+      <td>0.23%</td>
+      <td>37.99</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Oakland Raiders</td>
+      <td>1401.64</td>
+      <td>9</td>
+      <td>Tennessee Titans</td>
+      <td>1547.47</td>
+      <td>13</td>
+      <td>24.04%</td>
+      <td>75.73%</td>
+      <td>0.23%</td>
+      <td>-8.28</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Buffalo Bills</td>
+      <td>1480.48</td>
+      <td>13</td>
+      <td>New York Jets</td>
+      <td>1389.19</td>
+      <td>3</td>
+      <td>55.34%</td>
+      <td>44.43%</td>
+      <td>0.23%</td>
+      <td>24.17</td>
+    </tr>
+    <tr>
+      <td>2007-10-28</td>
+      <td>Houston Texans</td>
+      <td>1453.46</td>
+      <td>10</td>
+      <td>San Diego Chargers</td>
+      <td>1579.45</td>
+      <td>35</td>
+      <td>26.19%</td>
+      <td>73.58%</td>
+      <td>0.23%</td>
+      <td>-22.55</td>
+    </tr>
+    <tr>
+      <td>2007-10-29</td>
+      <td>Denver Broncos</td>
+      <td>1453.59</td>
+      <td>13</td>
+      <td>@ Green Bay Packers</td>
+      <td>1552.88</td>
+      <td>19</td>
+      <td>43.29%</td>
+      <td>56.47%</td>
+      <td>0.23%</td>
+      <td>-18.25</td>
+    </tr>
+    <tr>
+      <td>2007-10-29</td>
+      <td>Green Bay Packers</td>
+      <td>1552.88</td>
+      <td>19</td>
+      <td>Denver Broncos</td>
+      <td>1453.59</td>
+      <td>13</td>
+      <td>56.47%</td>
+      <td>43.29%</td>
+      <td>0.23%</td>
+      <td>18.25</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Houston Texans</td>
+      <td>1430.91</td>
+      <td>24</td>
+      <td>Oakland Raiders</td>
+      <td>1393.36</td>
+      <td>17</td>
+      <td>47.63%</td>
+      <td>52.14%</td>
+      <td>0.23%</td>
+      <td>23.72</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Minnesota Vikings</td>
+      <td>1430.31</td>
+      <td>35</td>
+      <td>@ San Diego Chargers</td>
+      <td>1602.00</td>
+      <td>17</td>
+      <td>33.48%</td>
+      <td>66.29%</td>
+      <td>0.23%</td>
+      <td>48.36</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Atlanta Falcons</td>
+      <td>1367.40</td>
+      <td>20</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1350.70</td>
+      <td>16</td>
+      <td>59.81%</td>
+      <td>39.96%</td>
+      <td>0.23%</td>
+      <td>13.76</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Buffalo Bills</td>
+      <td>1504.65</td>
+      <td>33</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1453.37</td>
+      <td>21</td>
+      <td>64.48%</td>
+      <td>35.29%</td>
+      <td>0.23%</td>
+      <td>21.05</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Cleveland Browns</td>
+      <td>1477.78</td>
+      <td>33</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1513.60</td>
+      <td>30</td>
+      <td>52.39%</td>
+      <td>47.38%</td>
+      <td>0.23%</td>
+      <td>14.12</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Indianapolis Colts</td>
+      <td>1741.80</td>
+      <td>20</td>
+      <td>@ New England Patriots</td>
+      <td>1773.28</td>
+      <td>24</td>
+      <td>53.01%</td>
+      <td>46.76%</td>
+      <td>0.23%</td>
+      <td>-18.23</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Detroit Lions</td>
+      <td>1494.09</td>
+      <td>44</td>
+      <td>@ Denver Broncos</td>
+      <td>1435.34</td>
+      <td>7</td>
+      <td>65.45%</td>
+      <td>34.32%</td>
+      <td>0.23%</td>
+      <td>35.93</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Kansas City Chiefs</td>
+      <td>1519.45</td>
+      <td>22</td>
+      <td>@ Green Bay Packers</td>
+      <td>1571.13</td>
+      <td>33</td>
+      <td>50.11%</td>
+      <td>49.66%</td>
+      <td>0.23%</td>
+      <td>-28.59</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>New Orleans Saints</td>
+      <td>1491.64</td>
+      <td>41</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1580.52</td>
+      <td>24</td>
+      <td>44.77%</td>
+      <td>55.00%</td>
+      <td>0.23%</td>
+      <td>39.00</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>New York Jets</td>
+      <td>1365.02</td>
+      <td>20</td>
+      <td>@ Washington Redskins</td>
+      <td>1499.15</td>
+      <td>23</td>
+      <td>38.45%</td>
+      <td>61.32%</td>
+      <td>0.23%</td>
+      <td>-11.46</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Arizona Cardinals</td>
+      <td>1452.45</td>
+      <td>10</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1487.91</td>
+      <td>17</td>
+      <td>37.40%</td>
+      <td>62.37%</td>
+      <td>0.23%</td>
+      <td>-17.03</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Philadelphia Eagles</td>
+      <td>1521.71</td>
+      <td>17</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1608.13</td>
+      <td>38</td>
+      <td>45.12%</td>
+      <td>54.65%</td>
+      <td>0.23%</td>
+      <td>-35.57</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Oakland Raiders</td>
+      <td>1393.36</td>
+      <td>17</td>
+      <td>@ Houston Texans</td>
+      <td>1430.91</td>
+      <td>24</td>
+      <td>52.14%</td>
+      <td>47.63%</td>
+      <td>0.23%</td>
+      <td>-23.73</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Tennessee Titans</td>
+      <td>1555.75</td>
+      <td>20</td>
+      <td>@ Carolina Panthers</td>
+      <td>1507.63</td>
+      <td>7</td>
+      <td>64.06%</td>
+      <td>35.71%</td>
+      <td>0.23%</td>
+      <td>22.16</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Washington Redskins</td>
+      <td>1499.15</td>
+      <td>23</td>
+      <td>New York Jets</td>
+      <td>1365.02</td>
+      <td>20</td>
+      <td>61.32%</td>
+      <td>38.45%</td>
+      <td>0.23%</td>
+      <td>11.46</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>San Diego Chargers</td>
+      <td>1602.00</td>
+      <td>17</td>
+      <td>Minnesota Vikings</td>
+      <td>1430.31</td>
+      <td>35</td>
+      <td>66.29%</td>
+      <td>33.48%</td>
+      <td>0.23%</td>
+      <td>-48.36</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>San Francisco 49ers</td>
+      <td>1350.70</td>
+      <td>16</td>
+      <td>Atlanta Falcons</td>
+      <td>1367.40</td>
+      <td>20</td>
+      <td>39.96%</td>
+      <td>59.81%</td>
+      <td>0.23%</td>
+      <td>-13.75</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Cincinnati Bengals</td>
+      <td>1453.37</td>
+      <td>21</td>
+      <td>Buffalo Bills</td>
+      <td>1504.65</td>
+      <td>33</td>
+      <td>35.29%</td>
+      <td>64.48%</td>
+      <td>0.23%</td>
+      <td>-21.05</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Seattle Seahawks</td>
+      <td>1513.60</td>
+      <td>30</td>
+      <td>Cleveland Browns</td>
+      <td>1477.78</td>
+      <td>33</td>
+      <td>47.38%</td>
+      <td>52.39%</td>
+      <td>0.23%</td>
+      <td>-14.12</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>New England Patriots</td>
+      <td>1773.28</td>
+      <td>24</td>
+      <td>Indianapolis Colts</td>
+      <td>1741.80</td>
+      <td>20</td>
+      <td>46.76%</td>
+      <td>53.01%</td>
+      <td>0.23%</td>
+      <td>18.23</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Denver Broncos</td>
+      <td>1435.34</td>
+      <td>7</td>
+      <td>Detroit Lions</td>
+      <td>1494.09</td>
+      <td>44</td>
+      <td>34.32%</td>
+      <td>65.45%</td>
+      <td>0.23%</td>
+      <td>-35.93</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Green Bay Packers</td>
+      <td>1571.13</td>
+      <td>33</td>
+      <td>Kansas City Chiefs</td>
+      <td>1519.45</td>
+      <td>22</td>
+      <td>49.66%</td>
+      <td>50.11%</td>
+      <td>0.23%</td>
+      <td>28.58</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1580.52</td>
+      <td>24</td>
+      <td>New Orleans Saints</td>
+      <td>1491.64</td>
+      <td>41</td>
+      <td>55.00%</td>
+      <td>44.77%</td>
+      <td>0.23%</td>
+      <td>-39.00</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1487.91</td>
+      <td>17</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1452.45</td>
+      <td>10</td>
+      <td>62.37%</td>
+      <td>37.40%</td>
+      <td>0.23%</td>
+      <td>17.03</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Carolina Panthers</td>
+      <td>1507.63</td>
+      <td>7</td>
+      <td>Tennessee Titans</td>
+      <td>1555.75</td>
+      <td>20</td>
+      <td>35.71%</td>
+      <td>64.06%</td>
+      <td>0.23%</td>
+      <td>-22.16</td>
+    </tr>
+    <tr>
+      <td>2007-11-04</td>
+      <td>Dallas Cowboys</td>
+      <td>1608.13</td>
+      <td>38</td>
+      <td>Philadelphia Eagles</td>
+      <td>1521.71</td>
+      <td>17</td>
+      <td>54.65%</td>
+      <td>45.12%</td>
+      <td>0.23%</td>
+      <td>35.58</td>
+    </tr>
+    <tr>
+      <td>2007-11-05</td>
+      <td>Baltimore Ravens</td>
+      <td>1533.17</td>
+      <td>7</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1628.15</td>
+      <td>38</td>
+      <td>29.78%</td>
+      <td>69.99%</td>
+      <td>0.23%</td>
+      <td>-28.55</td>
+    </tr>
+    <tr>
+      <td>2007-11-05</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1628.15</td>
+      <td>38</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1533.17</td>
+      <td>7</td>
+      <td>69.99%</td>
+      <td>29.78%</td>
+      <td>0.23%</td>
+      <td>28.54</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Oakland Raiders</td>
+      <td>1369.63</td>
+      <td>6</td>
+      <td>@ Chicago Bears</td>
+      <td>1479.25</td>
+      <td>17</td>
+      <td>41.84%</td>
+      <td>57.93%</td>
+      <td>0.23%</td>
+      <td>-23.87</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1656.69</td>
+      <td>31</td>
+      <td>@ Cleveland Browns</td>
+      <td>1491.90</td>
+      <td>28</td>
+      <td>77.66%</td>
+      <td>22.10%</td>
+      <td>0.23%</td>
+      <td>6.60</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Kansas City Chiefs</td>
+      <td>1490.86</td>
+      <td>11</td>
+      <td>@ Denver Broncos</td>
+      <td>1399.41</td>
+      <td>27</td>
+      <td>69.56%</td>
+      <td>30.21%</td>
+      <td>0.23%</td>
+      <td>-47.84</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>San Diego Chargers</td>
+      <td>1553.64</td>
+      <td>23</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1723.57</td>
+      <td>21</td>
+      <td>33.71%</td>
+      <td>66.06%</td>
+      <td>0.23%</td>
+      <td>16.06</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Carolina Panthers</td>
+      <td>1485.47</td>
+      <td>13</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1381.16</td>
+      <td>20</td>
+      <td>71.10%</td>
+      <td>28.67%</td>
+      <td>0.23%</td>
+      <td>-32.34</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Tennessee Titans</td>
+      <td>1577.91</td>
+      <td>13</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1541.52</td>
+      <td>28</td>
+      <td>62.49%</td>
+      <td>37.27%</td>
+      <td>0.23%</td>
+      <td>-41.61</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Baltimore Ravens</td>
+      <td>1504.62</td>
+      <td>7</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1432.32</td>
+      <td>21</td>
+      <td>67.19%</td>
+      <td>32.58%</td>
+      <td>0.23%</td>
+      <td>-43.22</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Dallas Cowboys</td>
+      <td>1643.71</td>
+      <td>31</td>
+      <td>New York Giants</td>
+      <td>1571.12</td>
+      <td>20</td>
+      <td>52.67%</td>
+      <td>47.10%</td>
+      <td>0.23%</td>
+      <td>26.87</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Arizona Cardinals</td>
+      <td>1435.42</td>
+      <td>31</td>
+      <td>@ Detroit Lions</td>
+      <td>1530.02</td>
+      <td>21</td>
+      <td>43.96%</td>
+      <td>55.81%</td>
+      <td>0.23%</td>
+      <td>30.35</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Atlanta Falcons</td>
+      <td>1381.16</td>
+      <td>20</td>
+      <td>Carolina Panthers</td>
+      <td>1485.47</td>
+      <td>13</td>
+      <td>28.67%</td>
+      <td>71.10%</td>
+      <td>0.23%</td>
+      <td>32.34</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Indianapolis Colts</td>
+      <td>1723.57</td>
+      <td>21</td>
+      <td>San Diego Chargers</td>
+      <td>1553.64</td>
+      <td>23</td>
+      <td>66.06%</td>
+      <td>33.71%</td>
+      <td>0.23%</td>
+      <td>-16.07</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1541.52</td>
+      <td>28</td>
+      <td>Tennessee Titans</td>
+      <td>1577.91</td>
+      <td>13</td>
+      <td>37.27%</td>
+      <td>62.49%</td>
+      <td>0.23%</td>
+      <td>41.62</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Cleveland Browns</td>
+      <td>1491.90</td>
+      <td>28</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1656.69</td>
+      <td>31</td>
+      <td>22.10%</td>
+      <td>77.66%</td>
+      <td>0.23%</td>
+      <td>-6.59</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Chicago Bears</td>
+      <td>1479.25</td>
+      <td>17</td>
+      <td>Oakland Raiders</td>
+      <td>1369.63</td>
+      <td>6</td>
+      <td>57.93%</td>
+      <td>41.84%</td>
+      <td>0.23%</td>
+      <td>23.88</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Denver Broncos</td>
+      <td>1399.41</td>
+      <td>27</td>
+      <td>Kansas City Chiefs</td>
+      <td>1490.86</td>
+      <td>11</td>
+      <td>30.21%</td>
+      <td>69.56%</td>
+      <td>0.23%</td>
+      <td>47.84</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Cincinnati Bengals</td>
+      <td>1432.32</td>
+      <td>21</td>
+      <td>Baltimore Ravens</td>
+      <td>1504.62</td>
+      <td>7</td>
+      <td>32.58%</td>
+      <td>67.19%</td>
+      <td>0.23%</td>
+      <td>43.23</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Minnesota Vikings</td>
+      <td>1478.67</td>
+      <td>0</td>
+      <td>Green Bay Packers</td>
+      <td>1599.71</td>
+      <td>34</td>
+      <td>26.74%</td>
+      <td>73.03%</td>
+      <td>0.23%</td>
+      <td>-26.85</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Detroit Lions</td>
+      <td>1530.02</td>
+      <td>21</td>
+      <td>Arizona Cardinals</td>
+      <td>1435.42</td>
+      <td>31</td>
+      <td>55.81%</td>
+      <td>43.96%</td>
+      <td>0.23%</td>
+      <td>-30.35</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Green Bay Packers</td>
+      <td>1599.71</td>
+      <td>34</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1478.67</td>
+      <td>0</td>
+      <td>73.03%</td>
+      <td>26.74%</td>
+      <td>0.23%</td>
+      <td>26.85</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Philadelphia Eagles</td>
+      <td>1486.14</td>
+      <td>33</td>
+      <td>Washington Redskins</td>
+      <td>1510.61</td>
+      <td>25</td>
+      <td>38.89%</td>
+      <td>60.88%</td>
+      <td>0.23%</td>
+      <td>29.60</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>St. Louis Rams</td>
+      <td>1320.63</td>
+      <td>37</td>
+      <td>New Orleans Saints</td>
+      <td>1530.64</td>
+      <td>29</td>
+      <td>17.95%</td>
+      <td>81.82%</td>
+      <td>0.23%</td>
+      <td>39.79</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>New York Giants</td>
+      <td>1571.12</td>
+      <td>20</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1643.71</td>
+      <td>31</td>
+      <td>47.10%</td>
+      <td>52.67%</td>
+      <td>0.23%</td>
+      <td>-26.87</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>New Orleans Saints</td>
+      <td>1530.64</td>
+      <td>29</td>
+      <td>@ St. Louis Rams</td>
+      <td>1320.63</td>
+      <td>37</td>
+      <td>81.82%</td>
+      <td>17.95%</td>
+      <td>0.23%</td>
+      <td>-39.80</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Miami Dolphins</td>
+      <td>1338.61</td>
+      <td>10</td>
+      <td>@ Buffalo Bills</td>
+      <td>1525.70</td>
+      <td>13</td>
+      <td>31.53%</td>
+      <td>68.23%</td>
+      <td>0.23%</td>
+      <td>-9.41</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Washington Redskins</td>
+      <td>1510.61</td>
+      <td>25</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1486.14</td>
+      <td>33</td>
+      <td>60.88%</td>
+      <td>38.89%</td>
+      <td>0.23%</td>
+      <td>-29.61</td>
+    </tr>
+    <tr>
+      <td>2007-11-11</td>
+      <td>Buffalo Bills</td>
+      <td>1525.70</td>
+      <td>13</td>
+      <td>Miami Dolphins</td>
+      <td>1338.61</td>
+      <td>10</td>
+      <td>68.23%</td>
+      <td>31.53%</td>
+      <td>0.23%</td>
+      <td>9.40</td>
+    </tr>
+    <tr>
+      <td>2007-11-12</td>
+      <td>San Francisco 49ers</td>
+      <td>1336.95</td>
+      <td>0</td>
+      <td>Seattle Seahawks</td>
+      <td>1499.48</td>
+      <td>24</td>
+      <td>22.33%</td>
+      <td>77.44%</td>
+      <td>0.23%</td>
+      <td>-18.84</td>
+    </tr>
+    <tr>
+      <td>2007-11-12</td>
+      <td>Seattle Seahawks</td>
+      <td>1499.48</td>
+      <td>24</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1336.95</td>
+      <td>0</td>
+      <td>77.44%</td>
+      <td>22.33%</td>
+      <td>0.23%</td>
+      <td>18.84</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1504.94</td>
+      <td>31</td>
+      <td>Atlanta Falcons</td>
+      <td>1413.50</td>
+      <td>7</td>
+      <td>55.36%</td>
+      <td>44.41%</td>
+      <td>0.23%</td>
+      <td>37.42</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Washington Redskins</td>
+      <td>1481.00</td>
+      <td>23</td>
+      <td>Dallas Cowboys</td>
+      <td>1670.58</td>
+      <td>28</td>
+      <td>19.75%</td>
+      <td>80.02%</td>
+      <td>0.23%</td>
+      <td>-7.60</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Carolina Panthers</td>
+      <td>1453.13</td>
+      <td>17</td>
+      <td>Green Bay Packers</td>
+      <td>1626.56</td>
+      <td>31</td>
+      <td>21.26%</td>
+      <td>78.51%</td>
+      <td>0.23%</td>
+      <td>-13.70</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Indianapolis Colts</td>
+      <td>1707.50</td>
+      <td>13</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1443.02</td>
+      <td>10</td>
+      <td>85.99%</td>
+      <td>13.78%</td>
+      <td>0.23%</td>
+      <td>4.12</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Seattle Seahawks</td>
+      <td>1518.32</td>
+      <td>30</td>
+      <td>@ Chicago Bears</td>
+      <td>1503.13</td>
+      <td>23</td>
+      <td>59.60%</td>
+      <td>40.17%</td>
+      <td>0.23%</td>
+      <td>18.29</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>New Orleans Saints</td>
+      <td>1490.84</td>
+      <td>10</td>
+      <td>Houston Texans</td>
+      <td>1454.63</td>
+      <td>23</td>
+      <td>47.44%</td>
+      <td>52.33%</td>
+      <td>0.23%</td>
+      <td>-29.42</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Oakland Raiders</td>
+      <td>1345.76</td>
+      <td>22</td>
+      <td>Minnesota Vikings</td>
+      <td>1451.82</td>
+      <td>29</td>
+      <td>28.46%</td>
+      <td>71.30%</td>
+      <td>0.23%</td>
+      <td>-12.97</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1663.29</td>
+      <td>16</td>
+      <td>New York Jets</td>
+      <td>1353.56</td>
+      <td>19</td>
+      <td>81.24%</td>
+      <td>18.52%</td>
+      <td>0.23%</td>
+      <td>-24.20</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Miami Dolphins</td>
+      <td>1329.20</td>
+      <td>7</td>
+      <td>Philadelphia Eagles</td>
+      <td>1515.74</td>
+      <td>17</td>
+      <td>20.02%</td>
+      <td>79.74%</td>
+      <td>0.23%</td>
+      <td>-10.90</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Cleveland Browns</td>
+      <td>1485.31</td>
+      <td>33</td>
+      <td>Baltimore Ravens</td>
+      <td>1461.40</td>
+      <td>30</td>
+      <td>45.68%</td>
+      <td>54.09%</td>
+      <td>0.23%</td>
+      <td>16.11</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Chicago Bears</td>
+      <td>1503.13</td>
+      <td>23</td>
+      <td>Seattle Seahawks</td>
+      <td>1518.32</td>
+      <td>30</td>
+      <td>40.17%</td>
+      <td>59.60%</td>
+      <td>0.23%</td>
+      <td>-18.29</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>New York Giants</td>
+      <td>1544.25</td>
+      <td>16</td>
+      <td>Detroit Lions</td>
+      <td>1499.67</td>
+      <td>10</td>
+      <td>48.64%</td>
+      <td>51.13%</td>
+      <td>0.23%</td>
+      <td>21.54</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Arizona Cardinals</td>
+      <td>1465.77</td>
+      <td>35</td>
+      <td>Cincinnati Bengals</td>
+      <td>1475.55</td>
+      <td>27</td>
+      <td>40.92%</td>
+      <td>58.85%</td>
+      <td>0.23%</td>
+      <td>28.62</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>San Diego Chargers</td>
+      <td>1569.70</td>
+      <td>17</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1583.14</td>
+      <td>24</td>
+      <td>40.41%</td>
+      <td>59.36%</td>
+      <td>0.23%</td>
+      <td>-18.39</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Kansas City Chiefs</td>
+      <td>1443.02</td>
+      <td>10</td>
+      <td>Indianapolis Colts</td>
+      <td>1707.50</td>
+      <td>13</td>
+      <td>13.78%</td>
+      <td>85.99%</td>
+      <td>0.23%</td>
+      <td>-4.11</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Detroit Lions</td>
+      <td>1499.67</td>
+      <td>10</td>
+      <td>@ New York Giants</td>
+      <td>1544.25</td>
+      <td>16</td>
+      <td>51.13%</td>
+      <td>48.64%</td>
+      <td>0.23%</td>
+      <td>-21.54</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Dallas Cowboys</td>
+      <td>1670.58</td>
+      <td>28</td>
+      <td>@ Washington Redskins</td>
+      <td>1481.00</td>
+      <td>23</td>
+      <td>80.02%</td>
+      <td>19.75%</td>
+      <td>0.23%</td>
+      <td>7.60</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Buffalo Bills</td>
+      <td>1535.10</td>
+      <td>10</td>
+      <td>@ New England Patriots</td>
+      <td>1791.51</td>
+      <td>56</td>
+      <td>23.61%</td>
+      <td>76.16%</td>
+      <td>0.23%</td>
+      <td>-27.58</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>St. Louis Rams</td>
+      <td>1360.42</td>
+      <td>13</td>
+      <td>San Francisco 49ers</td>
+      <td>1318.11</td>
+      <td>9</td>
+      <td>48.31%</td>
+      <td>51.45%</td>
+      <td>0.23%</td>
+      <td>17.70</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1583.14</td>
+      <td>24</td>
+      <td>@ San Diego Chargers</td>
+      <td>1569.70</td>
+      <td>17</td>
+      <td>59.36%</td>
+      <td>40.41%</td>
+      <td>0.23%</td>
+      <td>18.40</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Cincinnati Bengals</td>
+      <td>1475.55</td>
+      <td>27</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1465.77</td>
+      <td>35</td>
+      <td>58.85%</td>
+      <td>40.92%</td>
+      <td>0.23%</td>
+      <td>-28.62</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>San Francisco 49ers</td>
+      <td>1318.11</td>
+      <td>9</td>
+      <td>@ St. Louis Rams</td>
+      <td>1360.42</td>
+      <td>13</td>
+      <td>51.45%</td>
+      <td>48.31%</td>
+      <td>0.23%</td>
+      <td>-17.70</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Green Bay Packers</td>
+      <td>1626.56</td>
+      <td>31</td>
+      <td>@ Carolina Panthers</td>
+      <td>1453.13</td>
+      <td>17</td>
+      <td>78.51%</td>
+      <td>21.26%</td>
+      <td>0.23%</td>
+      <td>13.70</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Houston Texans</td>
+      <td>1454.63</td>
+      <td>23</td>
+      <td>@ New Orleans Saints</td>
+      <td>1490.84</td>
+      <td>10</td>
+      <td>52.33%</td>
+      <td>47.44%</td>
+      <td>0.23%</td>
+      <td>29.43</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Minnesota Vikings</td>
+      <td>1451.82</td>
+      <td>29</td>
+      <td>@ Oakland Raiders</td>
+      <td>1345.76</td>
+      <td>22</td>
+      <td>71.30%</td>
+      <td>28.46%</td>
+      <td>0.23%</td>
+      <td>12.97</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>New York Jets</td>
+      <td>1353.56</td>
+      <td>19</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1663.29</td>
+      <td>16</td>
+      <td>18.52%</td>
+      <td>81.24%</td>
+      <td>0.23%</td>
+      <td>24.19</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Philadelphia Eagles</td>
+      <td>1515.74</td>
+      <td>17</td>
+      <td>@ Miami Dolphins</td>
+      <td>1329.20</td>
+      <td>7</td>
+      <td>79.74%</td>
+      <td>20.02%</td>
+      <td>0.23%</td>
+      <td>10.91</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Baltimore Ravens</td>
+      <td>1461.40</td>
+      <td>30</td>
+      <td>@ Cleveland Browns</td>
+      <td>1485.31</td>
+      <td>33</td>
+      <td>54.09%</td>
+      <td>45.68%</td>
+      <td>0.23%</td>
+      <td>-16.11</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>New England Patriots</td>
+      <td>1791.51</td>
+      <td>56</td>
+      <td>Buffalo Bills</td>
+      <td>1535.10</td>
+      <td>10</td>
+      <td>76.16%</td>
+      <td>23.61%</td>
+      <td>0.23%</td>
+      <td>27.57</td>
+    </tr>
+    <tr>
+      <td>2007-11-18</td>
+      <td>Atlanta Falcons</td>
+      <td>1413.50</td>
+      <td>7</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1504.94</td>
+      <td>31</td>
+      <td>44.41%</td>
+      <td>55.36%</td>
+      <td>0.23%</td>
+      <td>-37.43</td>
+    </tr>
+    <tr>
+      <td>2007-11-19</td>
+      <td>Denver Broncos</td>
+      <td>1447.25</td>
+      <td>34</td>
+      <td>@ Tennessee Titans</td>
+      <td>1536.30</td>
+      <td>20</td>
+      <td>44.75%</td>
+      <td>55.02%</td>
+      <td>0.23%</td>
+      <td>35.40</td>
+    </tr>
+    <tr>
+      <td>2007-11-19</td>
+      <td>Tennessee Titans</td>
+      <td>1536.30</td>
+      <td>20</td>
+      <td>Denver Broncos</td>
+      <td>1447.25</td>
+      <td>34</td>
+      <td>55.02%</td>
+      <td>44.75%</td>
+      <td>0.23%</td>
+      <td>-35.41</td>
+    </tr>
+    <tr>
+      <td>2007-11-22</td>
+      <td>Detroit Lions</td>
+      <td>1478.13</td>
+      <td>26</td>
+      <td>@ Green Bay Packers</td>
+      <td>1640.26</td>
+      <td>37</td>
+      <td>34.72%</td>
+      <td>65.05%</td>
+      <td>0.23%</td>
+      <td>-19.82</td>
+    </tr>
+    <tr>
+      <td>2007-11-22</td>
+      <td>Atlanta Falcons</td>
+      <td>1376.07</td>
+      <td>13</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1711.62</td>
+      <td>31</td>
+      <td>16.39%</td>
+      <td>83.38%</td>
+      <td>0.23%</td>
+      <td>-11.97</td>
+    </tr>
+    <tr>
+      <td>2007-11-22</td>
+      <td>Dallas Cowboys</td>
+      <td>1678.18</td>
+      <td>34</td>
+      <td>@ New York Jets</td>
+      <td>1377.75</td>
+      <td>3</td>
+      <td>88.27%</td>
+      <td>11.50%</td>
+      <td>0.23%</td>
+      <td>11.04</td>
+    </tr>
+    <tr>
+      <td>2007-11-22</td>
+      <td>Indianapolis Colts</td>
+      <td>1711.62</td>
+      <td>31</td>
+      <td>Atlanta Falcons</td>
+      <td>1376.07</td>
+      <td>13</td>
+      <td>83.38%</td>
+      <td>16.39%</td>
+      <td>0.23%</td>
+      <td>11.97</td>
+    </tr>
+    <tr>
+      <td>2007-11-22</td>
+      <td>New York Jets</td>
+      <td>1377.75</td>
+      <td>3</td>
+      <td>Dallas Cowboys</td>
+      <td>1678.18</td>
+      <td>34</td>
+      <td>11.50%</td>
+      <td>88.27%</td>
+      <td>0.23%</td>
+      <td>-11.03</td>
+    </tr>
+    <tr>
+      <td>2007-11-22</td>
+      <td>Green Bay Packers</td>
+      <td>1640.26</td>
+      <td>37</td>
+      <td>Detroit Lions</td>
+      <td>1478.13</td>
+      <td>26</td>
+      <td>65.05%</td>
+      <td>34.72%</td>
+      <td>0.23%</td>
+      <td>19.82</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Buffalo Bills</td>
+      <td>1507.52</td>
+      <td>14</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1601.54</td>
+      <td>36</td>
+      <td>29.90%</td>
+      <td>69.87%</td>
+      <td>0.23%</td>
+      <td>-24.14</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>New Orleans Saints</td>
+      <td>1461.42</td>
+      <td>31</td>
+      <td>Carolina Panthers</td>
+      <td>1439.43</td>
+      <td>6</td>
+      <td>45.40%</td>
+      <td>54.37%</td>
+      <td>0.23%</td>
+      <td>46.75</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Denver Broncos</td>
+      <td>1482.65</td>
+      <td>34</td>
+      <td>Chicago Bears</td>
+      <td>1484.84</td>
+      <td>37</td>
+      <td>41.98%</td>
+      <td>57.79%</td>
+      <td>0.23%</td>
+      <td>-12.51</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Seattle Seahawks</td>
+      <td>1536.61</td>
+      <td>24</td>
+      <td>St. Louis Rams</td>
+      <td>1378.12</td>
+      <td>19</td>
+      <td>64.58%</td>
+      <td>35.19%</td>
+      <td>0.23%</td>
+      <td>13.54</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Tennessee Titans</td>
+      <td>1500.89</td>
+      <td>6</td>
+      <td>Cincinnati Bengals</td>
+      <td>1446.93</td>
+      <td>35</td>
+      <td>49.99%</td>
+      <td>49.78%</td>
+      <td>0.23%</td>
+      <td>-46.30</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Philadelphia Eagles</td>
+      <td>1526.65</td>
+      <td>28</td>
+      <td>New England Patriots</td>
+      <td>1819.08</td>
+      <td>31</td>
+      <td>11.98%</td>
+      <td>87.79%</td>
+      <td>0.23%</td>
+      <td>-3.57</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Minnesota Vikings</td>
+      <td>1464.79</td>
+      <td>41</td>
+      <td>New York Giants</td>
+      <td>1565.79</td>
+      <td>17</td>
+      <td>29.06%</td>
+      <td>70.71%</td>
+      <td>0.23%</td>
+      <td>59.55</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Baltimore Ravens</td>
+      <td>1445.29</td>
+      <td>14</td>
+      <td>San Diego Chargers</td>
+      <td>1551.31</td>
+      <td>32</td>
+      <td>28.47%</td>
+      <td>71.30%</td>
+      <td>0.23%</td>
+      <td>-20.80</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Kansas City Chiefs</td>
+      <td>1438.91</td>
+      <td>17</td>
+      <td>@ Oakland Raiders</td>
+      <td>1332.79</td>
+      <td>20</td>
+      <td>71.31%</td>
+      <td>28.46%</td>
+      <td>0.23%</td>
+      <td>-21.23</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Arizona Cardinals</td>
+      <td>1494.39</td>
+      <td>31</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1300.41</td>
+      <td>37</td>
+      <td>80.42%</td>
+      <td>19.35%</td>
+      <td>0.23%</td>
+      <td>-33.87</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Cleveland Browns</td>
+      <td>1501.42</td>
+      <td>27</td>
+      <td>@ Houston Texans</td>
+      <td>1484.06</td>
+      <td>17</td>
+      <td>59.90%</td>
+      <td>39.87%</td>
+      <td>0.23%</td>
+      <td>21.69</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1542.36</td>
+      <td>19</td>
+      <td>@ Washington Redskins</td>
+      <td>1473.40</td>
+      <td>13</td>
+      <td>66.76%</td>
+      <td>33.00%</td>
+      <td>0.23%</td>
+      <td>13.92</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>New England Patriots</td>
+      <td>1819.08</td>
+      <td>31</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1526.65</td>
+      <td>28</td>
+      <td>87.79%</td>
+      <td>11.98%</td>
+      <td>0.23%</td>
+      <td>3.58</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>New York Giants</td>
+      <td>1565.79</td>
+      <td>17</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1464.79</td>
+      <td>41</td>
+      <td>70.71%</td>
+      <td>29.06%</td>
+      <td>0.23%</td>
+      <td>-59.56</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Cincinnati Bengals</td>
+      <td>1446.93</td>
+      <td>35</td>
+      <td>@ Tennessee Titans</td>
+      <td>1500.89</td>
+      <td>6</td>
+      <td>49.78%</td>
+      <td>49.99%</td>
+      <td>0.23%</td>
+      <td>46.30</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Chicago Bears</td>
+      <td>1484.84</td>
+      <td>37</td>
+      <td>@ Denver Broncos</td>
+      <td>1482.65</td>
+      <td>34</td>
+      <td>57.79%</td>
+      <td>41.98%</td>
+      <td>0.23%</td>
+      <td>12.51</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>St. Louis Rams</td>
+      <td>1378.12</td>
+      <td>19</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1536.61</td>
+      <td>24</td>
+      <td>35.19%</td>
+      <td>64.58%</td>
+      <td>0.23%</td>
+      <td>-13.54</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Carolina Panthers</td>
+      <td>1439.43</td>
+      <td>6</td>
+      <td>@ New Orleans Saints</td>
+      <td>1461.42</td>
+      <td>31</td>
+      <td>54.37%</td>
+      <td>45.40%</td>
+      <td>0.23%</td>
+      <td>-46.74</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1601.54</td>
+      <td>36</td>
+      <td>@ Buffalo Bills</td>
+      <td>1507.52</td>
+      <td>14</td>
+      <td>69.87%</td>
+      <td>29.90%</td>
+      <td>0.23%</td>
+      <td>24.14</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>San Diego Chargers</td>
+      <td>1551.31</td>
+      <td>32</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1445.29</td>
+      <td>14</td>
+      <td>71.30%</td>
+      <td>28.47%</td>
+      <td>0.23%</td>
+      <td>20.79</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>San Francisco 49ers</td>
+      <td>1300.41</td>
+      <td>37</td>
+      <td>Arizona Cardinals</td>
+      <td>1494.39</td>
+      <td>31</td>
+      <td>19.35%</td>
+      <td>80.42%</td>
+      <td>0.23%</td>
+      <td>33.87</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Oakland Raiders</td>
+      <td>1332.79</td>
+      <td>20</td>
+      <td>Kansas City Chiefs</td>
+      <td>1438.91</td>
+      <td>17</td>
+      <td>28.46%</td>
+      <td>71.31%</td>
+      <td>0.23%</td>
+      <td>21.24</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Houston Texans</td>
+      <td>1484.06</td>
+      <td>17</td>
+      <td>Cleveland Browns</td>
+      <td>1501.42</td>
+      <td>27</td>
+      <td>39.87%</td>
+      <td>59.90%</td>
+      <td>0.23%</td>
+      <td>-21.70</td>
+    </tr>
+    <tr>
+      <td>2007-11-25</td>
+      <td>Washington Redskins</td>
+      <td>1473.40</td>
+      <td>13</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1542.36</td>
+      <td>19</td>
+      <td>33.00%</td>
+      <td>66.76%</td>
+      <td>0.23%</td>
+      <td>-13.92</td>
+    </tr>
+    <tr>
+      <td>2007-11-26</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1639.09</td>
+      <td>3</td>
+      <td>@ Miami Dolphins</td>
+      <td>1318.30</td>
+      <td>0</td>
+      <td>89.41%</td>
+      <td>10.36%</td>
+      <td>0.23%</td>
+      <td>3.09</td>
+    </tr>
+    <tr>
+      <td>2007-11-26</td>
+      <td>Miami Dolphins</td>
+      <td>1318.30</td>
+      <td>0</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1639.09</td>
+      <td>3</td>
+      <td>10.36%</td>
+      <td>89.41%</td>
+      <td>0.23%</td>
+      <td>-3.09</td>
+    </tr>
+    <tr>
+      <td>2007-11-29</td>
+      <td>Green Bay Packers</td>
+      <td>1660.08</td>
+      <td>27</td>
+      <td>Dallas Cowboys</td>
+      <td>1689.22</td>
+      <td>37</td>
+      <td>38.25%</td>
+      <td>61.51%</td>
+      <td>0.23%</td>
+      <td>-20.82</td>
+    </tr>
+    <tr>
+      <td>2007-11-29</td>
+      <td>Dallas Cowboys</td>
+      <td>1689.22</td>
+      <td>37</td>
+      <td>@ Green Bay Packers</td>
+      <td>1660.08</td>
+      <td>27</td>
+      <td>61.51%</td>
+      <td>38.25%</td>
+      <td>0.23%</td>
+      <td>20.82</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>New Orleans Saints</td>
+      <td>1508.17</td>
+      <td>23</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1556.28</td>
+      <td>27</td>
+      <td>50.62%</td>
+      <td>49.15%</td>
+      <td>0.23%</td>
+      <td>-17.41</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Miami Dolphins</td>
+      <td>1315.21</td>
+      <td>13</td>
+      <td>@ New York Jets</td>
+      <td>1366.72</td>
+      <td>40</td>
+      <td>50.13%</td>
+      <td>49.64%</td>
+      <td>0.23%</td>
+      <td>-44.81</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Washington Redskins</td>
+      <td>1459.48</td>
+      <td>16</td>
+      <td>@ Buffalo Bills</td>
+      <td>1483.38</td>
+      <td>17</td>
+      <td>54.09%</td>
+      <td>45.68%</td>
+      <td>0.23%</td>
+      <td>-9.30</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Philadelphia Eagles</td>
+      <td>1523.08</td>
+      <td>24</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1550.15</td>
+      <td>28</td>
+      <td>53.64%</td>
+      <td>46.13%</td>
+      <td>0.23%</td>
+      <td>-18.45</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1642.18</td>
+      <td>24</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1493.23</td>
+      <td>10</td>
+      <td>76.05%</td>
+      <td>23.71%</td>
+      <td>0.23%</td>
+      <td>15.28</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Arizona Cardinals</td>
+      <td>1460.52</td>
+      <td>27</td>
+      <td>@ Cleveland Browns</td>
+      <td>1523.11</td>
+      <td>21</td>
+      <td>48.54%</td>
+      <td>51.23%</td>
+      <td>0.23%</td>
+      <td>21.58</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Oakland Raiders</td>
+      <td>1354.03</td>
+      <td>34</td>
+      <td>@ Denver Broncos</td>
+      <td>1470.14</td>
+      <td>20</td>
+      <td>40.93%</td>
+      <td>58.83%</td>
+      <td>0.23%</td>
+      <td>37.85</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Kansas City Chiefs</td>
+      <td>1417.68</td>
+      <td>10</td>
+      <td>@ San Diego Chargers</td>
+      <td>1572.10</td>
+      <td>24</td>
+      <td>35.73%</td>
+      <td>64.04%</td>
+      <td>0.23%</td>
+      <td>-23.01</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Indianapolis Colts</td>
+      <td>1723.59</td>
+      <td>28</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1625.68</td>
+      <td>25</td>
+      <td>70.34%</td>
+      <td>29.43%</td>
+      <td>0.23%</td>
+      <td>8.78</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Chicago Bears</td>
+      <td>1497.35</td>
+      <td>16</td>
+      <td>@ New York Giants</td>
+      <td>1506.23</td>
+      <td>21</td>
+      <td>56.23%</td>
+      <td>43.54%</td>
+      <td>0.23%</td>
+      <td>-21.62</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Carolina Panthers</td>
+      <td>1392.69</td>
+      <td>31</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1334.28</td>
+      <td>14</td>
+      <td>65.41%</td>
+      <td>34.36%</td>
+      <td>0.23%</td>
+      <td>24.38</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>St. Louis Rams</td>
+      <td>1364.58</td>
+      <td>28</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1364.10</td>
+      <td>16</td>
+      <td>57.55%</td>
+      <td>42.22%</td>
+      <td>0.23%</td>
+      <td>25.16</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Minnesota Vikings</td>
+      <td>1524.34</td>
+      <td>42</td>
+      <td>@ Detroit Lions</td>
+      <td>1458.31</td>
+      <td>10</td>
+      <td>66.39%</td>
+      <td>33.38%</td>
+      <td>0.23%</td>
+      <td>32.50</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Tennessee Titans</td>
+      <td>1454.59</td>
+      <td>28</td>
+      <td>@ Houston Texans</td>
+      <td>1462.36</td>
+      <td>20</td>
+      <td>56.39%</td>
+      <td>43.38%</td>
+      <td>0.23%</td>
+      <td>21.11</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>New York Jets</td>
+      <td>1366.72</td>
+      <td>40</td>
+      <td>Miami Dolphins</td>
+      <td>1315.21</td>
+      <td>13</td>
+      <td>49.64%</td>
+      <td>50.13%</td>
+      <td>0.23%</td>
+      <td>44.80</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Buffalo Bills</td>
+      <td>1483.38</td>
+      <td>17</td>
+      <td>Washington Redskins</td>
+      <td>1459.48</td>
+      <td>16</td>
+      <td>45.68%</td>
+      <td>54.09%</td>
+      <td>0.23%</td>
+      <td>9.31</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>San Diego Chargers</td>
+      <td>1572.10</td>
+      <td>24</td>
+      <td>Kansas City Chiefs</td>
+      <td>1417.68</td>
+      <td>10</td>
+      <td>64.04%</td>
+      <td>35.73%</td>
+      <td>0.23%</td>
+      <td>23.01</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Denver Broncos</td>
+      <td>1470.14</td>
+      <td>20</td>
+      <td>Oakland Raiders</td>
+      <td>1354.03</td>
+      <td>34</td>
+      <td>58.83%</td>
+      <td>40.93%</td>
+      <td>0.23%</td>
+      <td>-37.85</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Cincinnati Bengals</td>
+      <td>1493.23</td>
+      <td>10</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1642.18</td>
+      <td>24</td>
+      <td>23.71%</td>
+      <td>76.05%</td>
+      <td>0.23%</td>
+      <td>-15.28</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Seattle Seahawks</td>
+      <td>1550.15</td>
+      <td>28</td>
+      <td>Philadelphia Eagles</td>
+      <td>1523.08</td>
+      <td>24</td>
+      <td>46.13%</td>
+      <td>53.64%</td>
+      <td>0.23%</td>
+      <td>18.45</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Houston Texans</td>
+      <td>1462.36</td>
+      <td>20</td>
+      <td>Tennessee Titans</td>
+      <td>1454.59</td>
+      <td>28</td>
+      <td>43.38%</td>
+      <td>56.39%</td>
+      <td>0.23%</td>
+      <td>-21.11</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Cleveland Browns</td>
+      <td>1523.11</td>
+      <td>21</td>
+      <td>Arizona Cardinals</td>
+      <td>1460.52</td>
+      <td>27</td>
+      <td>51.23%</td>
+      <td>48.54%</td>
+      <td>0.23%</td>
+      <td>-21.58</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Detroit Lions</td>
+      <td>1458.31</td>
+      <td>10</td>
+      <td>Minnesota Vikings</td>
+      <td>1524.34</td>
+      <td>42</td>
+      <td>33.38%</td>
+      <td>66.39%</td>
+      <td>0.23%</td>
+      <td>-32.50</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Atlanta Falcons</td>
+      <td>1364.10</td>
+      <td>16</td>
+      <td>St. Louis Rams</td>
+      <td>1364.58</td>
+      <td>28</td>
+      <td>42.22%</td>
+      <td>57.55%</td>
+      <td>0.23%</td>
+      <td>-25.17</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>San Francisco 49ers</td>
+      <td>1334.28</td>
+      <td>14</td>
+      <td>Carolina Panthers</td>
+      <td>1392.69</td>
+      <td>31</td>
+      <td>34.36%</td>
+      <td>65.41%</td>
+      <td>0.23%</td>
+      <td>-24.38</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1556.28</td>
+      <td>27</td>
+      <td>New Orleans Saints</td>
+      <td>1508.17</td>
+      <td>23</td>
+      <td>49.15%</td>
+      <td>50.62%</td>
+      <td>0.23%</td>
+      <td>17.41</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>New York Giants</td>
+      <td>1506.23</td>
+      <td>21</td>
+      <td>Chicago Bears</td>
+      <td>1497.35</td>
+      <td>16</td>
+      <td>43.54%</td>
+      <td>56.23%</td>
+      <td>0.23%</td>
+      <td>21.62</td>
+    </tr>
+    <tr>
+      <td>2007-12-02</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1625.68</td>
+      <td>25</td>
+      <td>Indianapolis Colts</td>
+      <td>1723.59</td>
+      <td>28</td>
+      <td>29.43%</td>
+      <td>70.34%</td>
+      <td>0.23%</td>
+      <td>-8.78</td>
+    </tr>
+    <tr>
+      <td>2007-12-03</td>
+      <td>Baltimore Ravens</td>
+      <td>1424.49</td>
+      <td>24</td>
+      <td>@ New England Patriots</td>
+      <td>1822.66</td>
+      <td>27</td>
+      <td>12.02%</td>
+      <td>87.75%</td>
+      <td>0.23%</td>
+      <td>-3.58</td>
+    </tr>
+    <tr>
+      <td>2007-12-03</td>
+      <td>New England Patriots</td>
+      <td>1822.66</td>
+      <td>27</td>
+      <td>Baltimore Ravens</td>
+      <td>1424.49</td>
+      <td>24</td>
+      <td>87.75%</td>
+      <td>12.02%</td>
+      <td>0.23%</td>
+      <td>3.59</td>
+    </tr>
+    <tr>
+      <td>2007-12-06</td>
+      <td>Washington Redskins</td>
+      <td>1450.18</td>
+      <td>24</td>
+      <td>@ Chicago Bears</td>
+      <td>1475.73</td>
+      <td>16</td>
+      <td>53.86%</td>
+      <td>45.91%</td>
+      <td>0.23%</td>
+      <td>22.34</td>
+    </tr>
+    <tr>
+      <td>2007-12-06</td>
+      <td>Chicago Bears</td>
+      <td>1475.73</td>
+      <td>16</td>
+      <td>Washington Redskins</td>
+      <td>1450.18</td>
+      <td>24</td>
+      <td>45.91%</td>
+      <td>53.86%</td>
+      <td>0.23%</td>
+      <td>-22.34</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Denver Broncos</td>
+      <td>1432.29</td>
+      <td>41</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1394.67</td>
+      <td>7</td>
+      <td>62.66%</td>
+      <td>37.11%</td>
+      <td>0.23%</td>
+      <td>37.24</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Detroit Lions</td>
+      <td>1425.81</td>
+      <td>27</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1710.04</td>
+      <td>28</td>
+      <td>20.84%</td>
+      <td>78.93%</td>
+      <td>0.23%</td>
+      <td>-3.59</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Tennessee Titans</td>
+      <td>1475.70</td>
+      <td>17</td>
+      <td>@ San Diego Chargers</td>
+      <td>1595.11</td>
+      <td>23</td>
+      <td>40.48%</td>
+      <td>59.29%</td>
+      <td>0.23%</td>
+      <td>-17.06</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Kansas City Chiefs</td>
+      <td>1394.67</td>
+      <td>7</td>
+      <td>Denver Broncos</td>
+      <td>1432.29</td>
+      <td>41</td>
+      <td>37.11%</td>
+      <td>62.66%</td>
+      <td>0.23%</td>
+      <td>-37.24</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>St. Louis Rams</td>
+      <td>1389.74</td>
+      <td>10</td>
+      <td>Cincinnati Bengals</td>
+      <td>1477.95</td>
+      <td>19</td>
+      <td>30.60%</td>
+      <td>69.17%</td>
+      <td>0.23%</td>
+      <td>-15.80</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>San Diego Chargers</td>
+      <td>1595.11</td>
+      <td>23</td>
+      <td>Tennessee Titans</td>
+      <td>1475.70</td>
+      <td>17</td>
+      <td>59.29%</td>
+      <td>40.48%</td>
+      <td>0.23%</td>
+      <td>17.06</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Minnesota Vikings</td>
+      <td>1556.84</td>
+      <td>27</td>
+      <td>San Francisco 49ers</td>
+      <td>1309.90</td>
+      <td>7</td>
+      <td>75.16%</td>
+      <td>24.60%</td>
+      <td>0.23%</td>
+      <td>18.95</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Arizona Cardinals</td>
+      <td>1482.10</td>
+      <td>21</td>
+      <td>Seattle Seahawks</td>
+      <td>1568.60</td>
+      <td>42</td>
+      <td>30.81%</td>
+      <td>68.96%</td>
+      <td>0.23%</td>
+      <td>-24.31</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Indianapolis Colts</td>
+      <td>1732.37</td>
+      <td>44</td>
+      <td>Baltimore Ravens</td>
+      <td>1420.91</td>
+      <td>20</td>
+      <td>81.39%</td>
+      <td>18.37%</td>
+      <td>0.23%</td>
+      <td>15.50</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>New York Giants</td>
+      <td>1527.85</td>
+      <td>16</td>
+      <td>Philadelphia Eagles</td>
+      <td>1504.63</td>
+      <td>13</td>
+      <td>45.58%</td>
+      <td>54.19%</td>
+      <td>0.23%</td>
+      <td>16.14</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Cleveland Browns</td>
+      <td>1501.53</td>
+      <td>24</td>
+      <td>New York Jets</td>
+      <td>1411.52</td>
+      <td>18</td>
+      <td>55.16%</td>
+      <td>44.61%</td>
+      <td>0.23%</td>
+      <td>18.80</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1657.46</td>
+      <td>13</td>
+      <td>New England Patriots</td>
+      <td>1826.25</td>
+      <td>34</td>
+      <td>21.71%</td>
+      <td>78.06%</td>
+      <td>0.23%</td>
+      <td>-17.13</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Carolina Panthers</td>
+      <td>1417.07</td>
+      <td>6</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1616.90</td>
+      <td>37</td>
+      <td>18.83%</td>
+      <td>80.94%</td>
+      <td>0.23%</td>
+      <td>-18.05</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1573.69</td>
+      <td>14</td>
+      <td>Houston Texans</td>
+      <td>1441.25</td>
+      <td>28</td>
+      <td>61.09%</td>
+      <td>38.68%</td>
+      <td>0.23%</td>
+      <td>-39.30</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Oakland Raiders</td>
+      <td>1391.88</td>
+      <td>7</td>
+      <td>Green Bay Packers</td>
+      <td>1639.26</td>
+      <td>38</td>
+      <td>14.99%</td>
+      <td>84.77%</td>
+      <td>0.23%</td>
+      <td>-14.38</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Dallas Cowboys</td>
+      <td>1710.04</td>
+      <td>28</td>
+      <td>Detroit Lions</td>
+      <td>1425.81</td>
+      <td>27</td>
+      <td>78.93%</td>
+      <td>20.84%</td>
+      <td>0.23%</td>
+      <td>3.59</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Cincinnati Bengals</td>
+      <td>1477.95</td>
+      <td>19</td>
+      <td>@ St. Louis Rams</td>
+      <td>1389.74</td>
+      <td>10</td>
+      <td>69.17%</td>
+      <td>30.60%</td>
+      <td>0.23%</td>
+      <td>15.80</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Miami Dolphins</td>
+      <td>1270.40</td>
+      <td>17</td>
+      <td>Buffalo Bills</td>
+      <td>1492.69</td>
+      <td>38</td>
+      <td>16.93%</td>
+      <td>82.84%</td>
+      <td>0.23%</td>
+      <td>-13.36</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Buffalo Bills</td>
+      <td>1492.69</td>
+      <td>38</td>
+      <td>@ Miami Dolphins</td>
+      <td>1270.40</td>
+      <td>17</td>
+      <td>82.84%</td>
+      <td>16.93%</td>
+      <td>0.23%</td>
+      <td>13.36</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Green Bay Packers</td>
+      <td>1639.26</td>
+      <td>38</td>
+      <td>@ Oakland Raiders</td>
+      <td>1391.88</td>
+      <td>7</td>
+      <td>84.77%</td>
+      <td>14.99%</td>
+      <td>0.23%</td>
+      <td>14.38</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Houston Texans</td>
+      <td>1441.25</td>
+      <td>28</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1573.69</td>
+      <td>14</td>
+      <td>38.68%</td>
+      <td>61.09%</td>
+      <td>0.23%</td>
+      <td>39.30</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1616.90</td>
+      <td>37</td>
+      <td>@ Carolina Panthers</td>
+      <td>1417.07</td>
+      <td>6</td>
+      <td>80.94%</td>
+      <td>18.83%</td>
+      <td>0.23%</td>
+      <td>18.06</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>New England Patriots</td>
+      <td>1826.25</td>
+      <td>34</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1657.46</td>
+      <td>13</td>
+      <td>78.06%</td>
+      <td>21.71%</td>
+      <td>0.23%</td>
+      <td>17.13</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>New York Jets</td>
+      <td>1411.52</td>
+      <td>18</td>
+      <td>@ Cleveland Browns</td>
+      <td>1501.53</td>
+      <td>24</td>
+      <td>44.61%</td>
+      <td>55.16%</td>
+      <td>0.23%</td>
+      <td>-18.80</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Philadelphia Eagles</td>
+      <td>1504.63</td>
+      <td>13</td>
+      <td>@ New York Giants</td>
+      <td>1527.85</td>
+      <td>16</td>
+      <td>54.19%</td>
+      <td>45.58%</td>
+      <td>0.23%</td>
+      <td>-16.14</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Baltimore Ravens</td>
+      <td>1420.91</td>
+      <td>20</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1732.37</td>
+      <td>44</td>
+      <td>18.37%</td>
+      <td>81.39%</td>
+      <td>0.23%</td>
+      <td>-15.51</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>Seattle Seahawks</td>
+      <td>1568.60</td>
+      <td>42</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1482.10</td>
+      <td>21</td>
+      <td>68.96%</td>
+      <td>30.81%</td>
+      <td>0.23%</td>
+      <td>24.31</td>
+    </tr>
+    <tr>
+      <td>2007-12-09</td>
+      <td>San Francisco 49ers</td>
+      <td>1309.90</td>
+      <td>7</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1556.84</td>
+      <td>27</td>
+      <td>24.60%</td>
+      <td>75.16%</td>
+      <td>0.23%</td>
+      <td>-18.95</td>
+    </tr>
+    <tr>
+      <td>2007-12-10</td>
+      <td>Atlanta Falcons</td>
+      <td>1338.93</td>
+      <td>14</td>
+      <td>@ New Orleans Saints</td>
+      <td>1490.76</td>
+      <td>34</td>
+      <td>36.07%</td>
+      <td>63.70%</td>
+      <td>0.23%</td>
+      <td>-27.76</td>
+    </tr>
+    <tr>
+      <td>2007-12-10</td>
+      <td>New Orleans Saints</td>
+      <td>1490.76</td>
+      <td>34</td>
+      <td>Atlanta Falcons</td>
+      <td>1338.93</td>
+      <td>14</td>
+      <td>63.70%</td>
+      <td>36.07%</td>
+      <td>0.23%</td>
+      <td>27.76</td>
+    </tr>
+    <tr>
+      <td>2007-12-13</td>
+      <td>Denver Broncos</td>
+      <td>1469.53</td>
+      <td>13</td>
+      <td>Houston Texans</td>
+      <td>1480.55</td>
+      <td>31</td>
+      <td>40.75%</td>
+      <td>59.02%</td>
+      <td>0.23%</td>
+      <td>-29.75</td>
+    </tr>
+    <tr>
+      <td>2007-12-13</td>
+      <td>Houston Texans</td>
+      <td>1480.55</td>
+      <td>31</td>
+      <td>@ Denver Broncos</td>
+      <td>1469.53</td>
+      <td>13</td>
+      <td>59.02%</td>
+      <td>40.75%</td>
+      <td>0.23%</td>
+      <td>29.75</td>
+    </tr>
+    <tr>
+      <td>2007-12-15</td>
+      <td>Cincinnati Bengals</td>
+      <td>1493.75</td>
+      <td>13</td>
+      <td>San Francisco 49ers</td>
+      <td>1290.95</td>
+      <td>20</td>
+      <td>70.15%</td>
+      <td>29.61%</td>
+      <td>0.23%</td>
+      <td>-31.91</td>
+    </tr>
+    <tr>
+      <td>2007-12-15</td>
+      <td>San Francisco 49ers</td>
+      <td>1290.95</td>
+      <td>20</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1493.75</td>
+      <td>13</td>
+      <td>29.61%</td>
+      <td>70.15%</td>
+      <td>0.23%</td>
+      <td>31.91</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Detroit Lions</td>
+      <td>1422.22</td>
+      <td>14</td>
+      <td>San Diego Chargers</td>
+      <td>1612.17</td>
+      <td>51</td>
+      <td>19.71%</td>
+      <td>80.06%</td>
+      <td>0.23%</td>
+      <td>-20.65</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Green Bay Packers</td>
+      <td>1653.64</td>
+      <td>33</td>
+      <td>St. Louis Rams</td>
+      <td>1373.94</td>
+      <td>14</td>
+      <td>78.49%</td>
+      <td>21.28%</td>
+      <td>0.23%</td>
+      <td>15.97</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>New Orleans Saints</td>
+      <td>1518.52</td>
+      <td>31</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1457.79</td>
+      <td>24</td>
+      <td>65.71%</td>
+      <td>34.06%</td>
+      <td>0.23%</td>
+      <td>15.51</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Miami Dolphins</td>
+      <td>1257.04</td>
+      <td>22</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1405.40</td>
+      <td>16</td>
+      <td>36.53%</td>
+      <td>63.24%</td>
+      <td>0.23%</td>
+      <td>26.63</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Kansas City Chiefs</td>
+      <td>1357.43</td>
+      <td>17</td>
+      <td>@ Tennessee Titans</td>
+      <td>1458.64</td>
+      <td>26</td>
+      <td>43.02%</td>
+      <td>56.74%</td>
+      <td>0.23%</td>
+      <td>-22.21</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1640.33</td>
+      <td>22</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1634.96</td>
+      <td>29</td>
+      <td>58.23%</td>
+      <td>41.53%</td>
+      <td>0.23%</td>
+      <td>-26.49</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1534.39</td>
+      <td>37</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1311.17</td>
+      <td>3</td>
+      <td>82.91%</td>
+      <td>16.85%</td>
+      <td>0.23%</td>
+      <td>16.93</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Indianapolis Colts</td>
+      <td>1747.87</td>
+      <td>21</td>
+      <td>Oakland Raiders</td>
+      <td>1377.50</td>
+      <td>14</td>
+      <td>85.95%</td>
+      <td>13.82%</td>
+      <td>0.23%</td>
+      <td>6.30</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Cleveland Browns</td>
+      <td>1520.33</td>
+      <td>8</td>
+      <td>@ Buffalo Bills</td>
+      <td>1506.05</td>
+      <td>0</td>
+      <td>59.47%</td>
+      <td>40.29%</td>
+      <td>0.23%</td>
+      <td>19.61</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Carolina Panthers</td>
+      <td>1399.02</td>
+      <td>13</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1592.91</td>
+      <td>10</td>
+      <td>30.69%</td>
+      <td>69.07%</td>
+      <td>0.23%</td>
+      <td>20.57</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Dallas Cowboys</td>
+      <td>1713.63</td>
+      <td>6</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1488.49</td>
+      <td>10</td>
+      <td>83.07%</td>
+      <td>16.70%</td>
+      <td>0.23%</td>
+      <td>-28.57</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>St. Louis Rams</td>
+      <td>1373.94</td>
+      <td>14</td>
+      <td>@ Green Bay Packers</td>
+      <td>1653.64</td>
+      <td>33</td>
+      <td>21.28%</td>
+      <td>78.49%</td>
+      <td>0.23%</td>
+      <td>-15.98</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>New England Patriots</td>
+      <td>1843.38</td>
+      <td>20</td>
+      <td>@ New York Jets</td>
+      <td>1392.72</td>
+      <td>10</td>
+      <td>94.58%</td>
+      <td>5.19%</td>
+      <td>0.23%</td>
+      <td>2.83</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>San Diego Chargers</td>
+      <td>1612.17</td>
+      <td>51</td>
+      <td>@ Detroit Lions</td>
+      <td>1422.22</td>
+      <td>14</td>
+      <td>80.06%</td>
+      <td>19.71%</td>
+      <td>0.23%</td>
+      <td>20.65</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Oakland Raiders</td>
+      <td>1377.50</td>
+      <td>14</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1747.87</td>
+      <td>21</td>
+      <td>13.82%</td>
+      <td>85.95%</td>
+      <td>0.23%</td>
+      <td>-6.30</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Atlanta Falcons</td>
+      <td>1311.17</td>
+      <td>3</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1534.39</td>
+      <td>37</td>
+      <td>16.85%</td>
+      <td>82.91%</td>
+      <td>0.23%</td>
+      <td>-16.93</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Philadelphia Eagles</td>
+      <td>1488.49</td>
+      <td>10</td>
+      <td>Dallas Cowboys</td>
+      <td>1713.63</td>
+      <td>6</td>
+      <td>16.70%</td>
+      <td>83.07%</td>
+      <td>0.23%</td>
+      <td>28.56</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Seattle Seahawks</td>
+      <td>1592.91</td>
+      <td>10</td>
+      <td>Carolina Panthers</td>
+      <td>1399.02</td>
+      <td>13</td>
+      <td>69.07%</td>
+      <td>30.69%</td>
+      <td>0.23%</td>
+      <td>-20.57</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Buffalo Bills</td>
+      <td>1506.05</td>
+      <td>0</td>
+      <td>Cleveland Browns</td>
+      <td>1520.33</td>
+      <td>8</td>
+      <td>40.29%</td>
+      <td>59.47%</td>
+      <td>0.23%</td>
+      <td>-19.61</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1634.96</td>
+      <td>29</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1640.33</td>
+      <td>22</td>
+      <td>41.53%</td>
+      <td>58.23%</td>
+      <td>0.23%</td>
+      <td>26.49</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Washington Redskins</td>
+      <td>1472.52</td>
+      <td>22</td>
+      <td>New York Giants</td>
+      <td>1543.99</td>
+      <td>10</td>
+      <td>32.69%</td>
+      <td>67.08%</td>
+      <td>0.23%</td>
+      <td>39.95</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>New York Giants</td>
+      <td>1543.99</td>
+      <td>10</td>
+      <td>@ Washington Redskins</td>
+      <td>1472.52</td>
+      <td>22</td>
+      <td>67.08%</td>
+      <td>32.69%</td>
+      <td>0.23%</td>
+      <td>-39.95</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Arizona Cardinals</td>
+      <td>1457.79</td>
+      <td>24</td>
+      <td>New Orleans Saints</td>
+      <td>1518.52</td>
+      <td>31</td>
+      <td>34.06%</td>
+      <td>65.71%</td>
+      <td>0.23%</td>
+      <td>-15.51</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Baltimore Ravens</td>
+      <td>1405.40</td>
+      <td>16</td>
+      <td>Miami Dolphins</td>
+      <td>1257.04</td>
+      <td>22</td>
+      <td>63.24%</td>
+      <td>36.53%</td>
+      <td>0.23%</td>
+      <td>-26.63</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>Tennessee Titans</td>
+      <td>1458.64</td>
+      <td>26</td>
+      <td>Kansas City Chiefs</td>
+      <td>1357.43</td>
+      <td>17</td>
+      <td>56.74%</td>
+      <td>43.02%</td>
+      <td>0.23%</td>
+      <td>22.21</td>
+    </tr>
+    <tr>
+      <td>2007-12-16</td>
+      <td>New York Jets</td>
+      <td>1392.72</td>
+      <td>10</td>
+      <td>New England Patriots</td>
+      <td>1843.38</td>
+      <td>20</td>
+      <td>5.19%</td>
+      <td>94.58%</td>
+      <td>0.23%</td>
+      <td>-2.83</td>
+    </tr>
+    <tr>
+      <td>2007-12-17</td>
+      <td>Minnesota Vikings</td>
+      <td>1575.79</td>
+      <td>20</td>
+      <td>@ Chicago Bears</td>
+      <td>1453.39</td>
+      <td>13</td>
+      <td>73.18%</td>
+      <td>26.59%</td>
+      <td>0.23%</td>
+      <td>12.11</td>
+    </tr>
+    <tr>
+      <td>2007-12-17</td>
+      <td>Chicago Bears</td>
+      <td>1453.39</td>
+      <td>13</td>
+      <td>Minnesota Vikings</td>
+      <td>1575.79</td>
+      <td>20</td>
+      <td>26.59%</td>
+      <td>73.18%</td>
+      <td>0.23%</td>
+      <td>-12.11</td>
+    </tr>
+    <tr>
+      <td>2007-12-20</td>
+      <td>St. Louis Rams</td>
+      <td>1357.96</td>
+      <td>24</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1613.84</td>
+      <td>41</td>
+      <td>23.66%</td>
+      <td>76.10%</td>
+      <td>0.23%</td>
+      <td>-16.80</td>
+    </tr>
+    <tr>
+      <td>2007-12-20</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1613.84</td>
+      <td>41</td>
+      <td>St. Louis Rams</td>
+      <td>1357.96</td>
+      <td>24</td>
+      <td>76.10%</td>
+      <td>23.66%</td>
+      <td>0.23%</td>
+      <td>16.80</td>
+    </tr>
+    <tr>
+      <td>2007-12-22</td>
+      <td>Dallas Cowboys</td>
+      <td>1685.06</td>
+      <td>20</td>
+      <td>Carolina Panthers</td>
+      <td>1419.59</td>
+      <td>13</td>
+      <td>77.09%</td>
+      <td>22.68%</td>
+      <td>0.23%</td>
+      <td>10.33</td>
+    </tr>
+    <tr>
+      <td>2007-12-22</td>
+      <td>Carolina Panthers</td>
+      <td>1419.59</td>
+      <td>13</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1685.06</td>
+      <td>20</td>
+      <td>22.68%</td>
+      <td>77.09%</td>
+      <td>0.23%</td>
+      <td>-10.34</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Oakland Raiders</td>
+      <td>1371.20</td>
+      <td>11</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1661.45</td>
+      <td>49</td>
+      <td>12.11%</td>
+      <td>87.66%</td>
+      <td>0.23%</td>
+      <td>-12.87</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Kansas City Chiefs</td>
+      <td>1335.22</td>
+      <td>20</td>
+      <td>Detroit Lions</td>
+      <td>1401.57</td>
+      <td>25</td>
+      <td>33.34%</td>
+      <td>66.43%</td>
+      <td>0.23%</td>
+      <td>-12.83</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Washington Redskins</td>
+      <td>1512.47</td>
+      <td>32</td>
+      <td>Minnesota Vikings</td>
+      <td>1587.90</td>
+      <td>21</td>
+      <td>32.19%</td>
+      <td>67.58%</td>
+      <td>0.23%</td>
+      <td>38.54</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Miami Dolphins</td>
+      <td>1283.67</td>
+      <td>7</td>
+      <td>New England Patriots</td>
+      <td>1846.21</td>
+      <td>28</td>
+      <td>2.79%</td>
+      <td>96.97%</td>
+      <td>0.23%</td>
+      <td>-2.21</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>New York Jets</td>
+      <td>1389.89</td>
+      <td>6</td>
+      <td>Tennessee Titans</td>
+      <td>1480.85</td>
+      <td>10</td>
+      <td>30.27%</td>
+      <td>69.50%</td>
+      <td>0.23%</td>
+      <td>-10.42</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Baltimore Ravens</td>
+      <td>1378.77</td>
+      <td>6</td>
+      <td>Seattle Seahawks</td>
+      <td>1572.34</td>
+      <td>27</td>
+      <td>19.38%</td>
+      <td>80.38%</td>
+      <td>0.23%</td>
+      <td>-15.30</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1551.32</td>
+      <td>19</td>
+      <td>San Francisco 49ers</td>
+      <td>1322.86</td>
+      <td>21</td>
+      <td>73.14%</td>
+      <td>26.63%</td>
+      <td>0.23%</td>
+      <td>-17.78</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>New York Giants</td>
+      <td>1504.04</td>
+      <td>38</td>
+      <td>Buffalo Bills</td>
+      <td>1486.44</td>
+      <td>21</td>
+      <td>44.78%</td>
+      <td>54.99%</td>
+      <td>0.23%</td>
+      <td>38.99</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Atlanta Falcons</td>
+      <td>1294.24</td>
+      <td>27</td>
+      <td>Arizona Cardinals</td>
+      <td>1442.28</td>
+      <td>30</td>
+      <td>23.81%</td>
+      <td>75.96%</td>
+      <td>0.23%</td>
+      <td>-7.10</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Philadelphia Eagles</td>
+      <td>1517.05</td>
+      <td>38</td>
+      <td>New Orleans Saints</td>
+      <td>1534.03</td>
+      <td>23</td>
+      <td>39.92%</td>
+      <td>59.85%</td>
+      <td>0.23%</td>
+      <td>39.86</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Green Bay Packers</td>
+      <td>1669.61</td>
+      <td>7</td>
+      <td>Chicago Bears</td>
+      <td>1441.28</td>
+      <td>35</td>
+      <td>73.12%</td>
+      <td>26.65%</td>
+      <td>0.23%</td>
+      <td>-66.52</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Chicago Bears</td>
+      <td>1441.28</td>
+      <td>35</td>
+      <td>@ Green Bay Packers</td>
+      <td>1669.61</td>
+      <td>7</td>
+      <td>26.65%</td>
+      <td>73.12%</td>
+      <td>0.23%</td>
+      <td>66.53</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Buffalo Bills</td>
+      <td>1486.44</td>
+      <td>21</td>
+      <td>@ New York Giants</td>
+      <td>1504.04</td>
+      <td>38</td>
+      <td>54.99%</td>
+      <td>44.78%</td>
+      <td>0.23%</td>
+      <td>-38.99</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>San Francisco 49ers</td>
+      <td>1322.86</td>
+      <td>21</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1551.32</td>
+      <td>19</td>
+      <td>26.63%</td>
+      <td>73.14%</td>
+      <td>0.23%</td>
+      <td>17.78</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Seattle Seahawks</td>
+      <td>1572.34</td>
+      <td>27</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1378.77</td>
+      <td>6</td>
+      <td>80.38%</td>
+      <td>19.38%</td>
+      <td>0.23%</td>
+      <td>15.30</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Tennessee Titans</td>
+      <td>1480.85</td>
+      <td>10</td>
+      <td>@ New York Jets</td>
+      <td>1389.89</td>
+      <td>6</td>
+      <td>69.50%</td>
+      <td>30.27%</td>
+      <td>0.23%</td>
+      <td>10.42</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Cleveland Browns</td>
+      <td>1539.94</td>
+      <td>14</td>
+      <td>Cincinnati Bengals</td>
+      <td>1461.84</td>
+      <td>19</td>
+      <td>53.46%</td>
+      <td>46.31%</td>
+      <td>0.23%</td>
+      <td>-20.56</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>New England Patriots</td>
+      <td>1846.21</td>
+      <td>28</td>
+      <td>@ Miami Dolphins</td>
+      <td>1283.67</td>
+      <td>7</td>
+      <td>96.97%</td>
+      <td>2.79%</td>
+      <td>0.23%</td>
+      <td>2.21</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>New Orleans Saints</td>
+      <td>1534.03</td>
+      <td>23</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1517.05</td>
+      <td>38</td>
+      <td>59.85%</td>
+      <td>39.92%</td>
+      <td>0.23%</td>
+      <td>-39.85</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Minnesota Vikings</td>
+      <td>1587.90</td>
+      <td>21</td>
+      <td>@ Washington Redskins</td>
+      <td>1512.47</td>
+      <td>32</td>
+      <td>67.58%</td>
+      <td>32.19%</td>
+      <td>0.23%</td>
+      <td>-38.53</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1661.45</td>
+      <td>49</td>
+      <td>@ Oakland Raiders</td>
+      <td>1371.20</td>
+      <td>11</td>
+      <td>87.66%</td>
+      <td>12.11%</td>
+      <td>0.23%</td>
+      <td>12.87</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Detroit Lions</td>
+      <td>1401.57</td>
+      <td>25</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1335.22</td>
+      <td>20</td>
+      <td>66.43%</td>
+      <td>33.34%</td>
+      <td>0.23%</td>
+      <td>12.83</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Cincinnati Bengals</td>
+      <td>1461.84</td>
+      <td>19</td>
+      <td>@ Cleveland Browns</td>
+      <td>1539.94</td>
+      <td>14</td>
+      <td>46.31%</td>
+      <td>53.46%</td>
+      <td>0.23%</td>
+      <td>20.56</td>
+    </tr>
+    <tr>
+      <td>2007-12-23</td>
+      <td>Arizona Cardinals</td>
+      <td>1442.28</td>
+      <td>30</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1294.24</td>
+      <td>27</td>
+      <td>75.96%</td>
+      <td>23.81%</td>
+      <td>0.23%</td>
+      <td>7.10</td>
+    </tr>
+    <tr>
+      <td>2007-12-24</td>
+      <td>San Diego Chargers</td>
+      <td>1632.82</td>
+      <td>23</td>
+      <td>@ Denver Broncos</td>
+      <td>1439.78</td>
+      <td>3</td>
+      <td>80.34%</td>
+      <td>19.43%</td>
+      <td>0.23%</td>
+      <td>14.97</td>
+    </tr>
+    <tr>
+      <td>2007-12-24</td>
+      <td>Denver Broncos</td>
+      <td>1439.78</td>
+      <td>3</td>
+      <td>San Diego Chargers</td>
+      <td>1632.82</td>
+      <td>23</td>
+      <td>19.43%</td>
+      <td>80.34%</td>
+      <td>0.23%</td>
+      <td>-14.97</td>
+    </tr>
+    <tr>
+      <td>2007-12-29</td>
+      <td>New England Patriots</td>
+      <td>1848.42</td>
+      <td>38</td>
+      <td>New York Giants</td>
+      <td>1543.03</td>
+      <td>35</td>
+      <td>80.86%</td>
+      <td>18.90%</td>
+      <td>0.23%</td>
+      <td>5.64</td>
+    </tr>
+    <tr>
+      <td>2007-12-29</td>
+      <td>New York Giants</td>
+      <td>1543.03</td>
+      <td>35</td>
+      <td>@ New England Patriots</td>
+      <td>1848.42</td>
+      <td>38</td>
+      <td>18.90%</td>
+      <td>80.86%</td>
+      <td>0.23%</td>
+      <td>-5.64</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>St. Louis Rams</td>
+      <td>1341.16</td>
+      <td>19</td>
+      <td>Arizona Cardinals</td>
+      <td>1449.38</td>
+      <td>48</td>
+      <td>28.21%</td>
+      <td>71.56%</td>
+      <td>0.23%</td>
+      <td>-26.16</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Buffalo Bills</td>
+      <td>1447.45</td>
+      <td>9</td>
+      <td>Philadelphia Eagles</td>
+      <td>1556.91</td>
+      <td>17</td>
+      <td>28.07%</td>
+      <td>71.70%</td>
+      <td>0.23%</td>
+      <td>-13.67</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Dallas Cowboys</td>
+      <td>1695.39</td>
+      <td>6</td>
+      <td>Washington Redskins</td>
+      <td>1551.01</td>
+      <td>27</td>
+      <td>62.70%</td>
+      <td>37.06%</td>
+      <td>0.23%</td>
+      <td>-49.40</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Cincinnati Bengals</td>
+      <td>1482.40</td>
+      <td>38</td>
+      <td>Miami Dolphins</td>
+      <td>1281.46</td>
+      <td>25</td>
+      <td>69.93%</td>
+      <td>29.84%</td>
+      <td>0.23%</td>
+      <td>18.52</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Detroit Lions</td>
+      <td>1414.40</td>
+      <td>13</td>
+      <td>Green Bay Packers</td>
+      <td>1603.09</td>
+      <td>34</td>
+      <td>19.83%</td>
+      <td>79.94%</td>
+      <td>0.23%</td>
+      <td>-15.65</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Kansas City Chiefs</td>
+      <td>1322.39</td>
+      <td>10</td>
+      <td>New York Jets</td>
+      <td>1379.47</td>
+      <td>13</td>
+      <td>34.53%</td>
+      <td>65.23%</td>
+      <td>0.23%</td>
+      <td>-10.30</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>San Diego Chargers</td>
+      <td>1647.79</td>
+      <td>30</td>
+      <td>Oakland Raiders</td>
+      <td>1358.33</td>
+      <td>17</td>
+      <td>79.42%</td>
+      <td>20.35%</td>
+      <td>0.23%</td>
+      <td>12.64</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Minnesota Vikings</td>
+      <td>1549.37</td>
+      <td>19</td>
+      <td>Denver Broncos</td>
+      <td>1424.81</td>
+      <td>22</td>
+      <td>60.00%</td>
+      <td>39.76%</td>
+      <td>0.23%</td>
+      <td>-17.87</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1674.32</td>
+      <td>28</td>
+      <td>Houston Texans</td>
+      <td>1506.09</td>
+      <td>42</td>
+      <td>65.84%</td>
+      <td>33.92%</td>
+      <td>0.23%</td>
+      <td>-42.36</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Cleveland Browns</td>
+      <td>1519.38</td>
+      <td>20</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1340.64</td>
+      <td>7</td>
+      <td>79.02%</td>
+      <td>20.75%</td>
+      <td>0.23%</td>
+      <td>12.89</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Chicago Bears</td>
+      <td>1507.81</td>
+      <td>33</td>
+      <td>@ New Orleans Saints</td>
+      <td>1494.18</td>
+      <td>25</td>
+      <td>59.38%</td>
+      <td>40.38%</td>
+      <td>0.23%</td>
+      <td>19.65</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Arizona Cardinals</td>
+      <td>1449.38</td>
+      <td>48</td>
+      <td>@ St. Louis Rams</td>
+      <td>1341.16</td>
+      <td>19</td>
+      <td>71.56%</td>
+      <td>28.21%</td>
+      <td>0.23%</td>
+      <td>26.16</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Philadelphia Eagles</td>
+      <td>1556.91</td>
+      <td>17</td>
+      <td>@ Buffalo Bills</td>
+      <td>1447.45</td>
+      <td>9</td>
+      <td>71.70%</td>
+      <td>28.07%</td>
+      <td>0.23%</td>
+      <td>13.66</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Washington Redskins</td>
+      <td>1551.01</td>
+      <td>27</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1695.39</td>
+      <td>6</td>
+      <td>37.06%</td>
+      <td>62.70%</td>
+      <td>0.23%</td>
+      <td>49.40</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Miami Dolphins</td>
+      <td>1281.46</td>
+      <td>25</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1482.40</td>
+      <td>38</td>
+      <td>29.84%</td>
+      <td>69.93%</td>
+      <td>0.23%</td>
+      <td>-18.52</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Houston Texans</td>
+      <td>1506.09</td>
+      <td>42</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1674.32</td>
+      <td>28</td>
+      <td>33.92%</td>
+      <td>65.84%</td>
+      <td>0.23%</td>
+      <td>42.36</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Green Bay Packers</td>
+      <td>1603.09</td>
+      <td>34</td>
+      <td>@ Detroit Lions</td>
+      <td>1414.40</td>
+      <td>13</td>
+      <td>79.94%</td>
+      <td>19.83%</td>
+      <td>0.23%</td>
+      <td>15.65</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>New York Jets</td>
+      <td>1379.47</td>
+      <td>13</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1322.39</td>
+      <td>10</td>
+      <td>65.23%</td>
+      <td>34.53%</td>
+      <td>0.23%</td>
+      <td>10.30</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Oakland Raiders</td>
+      <td>1358.33</td>
+      <td>17</td>
+      <td>@ San Diego Chargers</td>
+      <td>1647.79</td>
+      <td>30</td>
+      <td>20.35%</td>
+      <td>79.42%</td>
+      <td>0.23%</td>
+      <td>-12.64</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>Denver Broncos</td>
+      <td>1424.81</td>
+      <td>22</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1549.37</td>
+      <td>19</td>
+      <td>39.76%</td>
+      <td>60.00%</td>
+      <td>0.23%</td>
+      <td>17.87</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>New Orleans Saints</td>
+      <td>1494.18</td>
+      <td>25</td>
+      <td>Chicago Bears</td>
+      <td>1507.81</td>
+      <td>33</td>
+      <td>40.38%</td>
+      <td>59.38%</td>
+      <td>0.23%</td>
+      <td>-19.66</td>
+    </tr>
+    <tr>
+      <td>2007-12-30</td>
+      <td>San Francisco 49ers</td>
+      <td>1340.64</td>
+      <td>7</td>
+      <td>Cleveland Browns</td>
+      <td>1519.38</td>
+      <td>20</td>
+      <td>20.75%</td>
+      <td>79.02%</td>
+      <td>0.23%</td>
+      <td>-12.88</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

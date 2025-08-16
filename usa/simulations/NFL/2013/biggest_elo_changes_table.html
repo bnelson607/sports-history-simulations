@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th colspan="3" halign="left"></th>
+      <th colspan="4" halign="left">Winning Team</th>
+      <th colspan="4" halign="left">Losing Team</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <th>Date</th>
+      <th>Elo Change</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Tie Pct.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2013-11-10</td>
+      <td>76.60</td>
+      <td>St. Louis Rams</td>
+      <td>1414.05</td>
+      <td>38</td>
+      <td>18.93%</td>
+      <td>Indianapolis Colts (H)</td>
+      <td>1595.59</td>
+      <td>8</td>
+      <td>80.63%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2013-10-13</td>
+      <td>59.74</td>
+      <td>St. Louis Rams</td>
+      <td>1413.70</td>
+      <td>38</td>
+      <td>30.67%</td>
+      <td>Houston Texans (H)</td>
+      <td>1484.28</td>
+      <td>13</td>
+      <td>68.90%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2013-11-03</td>
+      <td>57.73</td>
+      <td>Philadelphia Eagles</td>
+      <td>1406.40</td>
+      <td>49</td>
+      <td>37.76%</td>
+      <td>Oakland Raiders (H)</td>
+      <td>1422.12</td>
+      <td>20</td>
+      <td>61.81%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2013-09-08</td>
+      <td>53.66</td>
+      <td>Kansas City Chiefs</td>
+      <td>1404.21</td>
+      <td>28</td>
+      <td>38.89%</td>
+      <td>Jacksonville Jaguars (H)</td>
+      <td>1411.64</td>
+      <td>2</td>
+      <td>60.68%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2013-09-22</td>
+      <td>53.42</td>
+      <td>Indianapolis Colts</td>
+      <td>1485.18</td>
+      <td>27</td>
+      <td>30.69%</td>
+      <td>San Francisco 49ers (H)</td>
+      <td>1555.64</td>
+      <td>7</td>
+      <td>68.88%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2013-12-22</td>
+      <td>52.42</td>
+      <td>New England Patriots</td>
+      <td>1627.76</td>
+      <td>41</td>
+      <td>47.76%</td>
+      <td>Baltimore Ravens (H)</td>
+      <td>1572.27</td>
+      <td>7</td>
+      <td>51.81%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2013-10-13</td>
+      <td>50.88</td>
+      <td>Carolina Panthers</td>
+      <td>1487.63</td>
+      <td>35</td>
+      <td>40.91%</td>
+      <td>Minnesota Vikings (H)</td>
+      <td>1480.45</td>
+      <td>10</td>
+      <td>58.66%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2013-12-22</td>
+      <td>50.04</td>
+      <td>Indianapolis Colts</td>
+      <td>1509.00</td>
+      <td>23</td>
+      <td>27.44%</td>
+      <td>Kansas City Chiefs (H)</td>
+      <td>1606.86</td>
+      <td>7</td>
+      <td>72.13%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2013-12-22</td>
+      <td>49.15</td>
+      <td>Philadelphia Eagles (H)</td>
+      <td>1519.20</td>
+      <td>54</td>
+      <td>56.41%</td>
+      <td>Chicago Bears</td>
+      <td>1542.45</td>
+      <td>11</td>
+      <td>43.16%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2013-11-10</td>
+      <td>48.64</td>
+      <td>Philadelphia Eagles</td>
+      <td>1464.13</td>
+      <td>27</td>
+      <td>24.61%</td>
+      <td>Green Bay Packers (H)</td>
+      <td>1587.55</td>
+      <td>13</td>
+      <td>74.96%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2013-12-22</td>
+      <td>47.25</td>
+      <td>Buffalo Bills (H)</td>
+      <td>1395.24</td>
+      <td>19</td>
+      <td>37.08%</td>
+      <td>Miami Dolphins</td>
+      <td>1555.19</td>
+      <td>0</td>
+      <td>62.49%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>2013-12-29</td>
+      <td>47.00</td>
+      <td>New York Jets</td>
+      <td>1382.66</td>
+      <td>20</td>
+      <td>24.41%</td>
+      <td>Miami Dolphins (H)</td>
+      <td>1507.95</td>
+      <td>7</td>
+      <td>75.16%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2013-12-15</td>
+      <td>46.76</td>
+      <td>Minnesota Vikings (H)</td>
+      <td>1398.12</td>
+      <td>48</td>
+      <td>36.03%</td>
+      <td>Philadelphia Eagles</td>
+      <td>1565.96</td>
+      <td>30</td>
+      <td>63.54%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2013-09-22</td>
+      <td>43.61</td>
+      <td>Carolina Panthers (H)</td>
+      <td>1478.78</td>
+      <td>38</td>
+      <td>58.84%</td>
+      <td>New York Giants</td>
+      <td>1484.70</td>
+      <td>0</td>
+      <td>40.73%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2013-09-26</td>
+      <td>43.08</td>
+      <td>San Francisco 49ers</td>
+      <td>1502.22</td>
+      <td>35</td>
+      <td>48.89%</td>
+      <td>St. Louis Rams (H)</td>
+      <td>1438.84</td>
+      <td>11</td>
+      <td>50.68%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>2013-10-06</td>
+      <td>41.37</td>
+      <td>Philadelphia Eagles</td>
+      <td>1399.35</td>
+      <td>36</td>
+      <td>37.98%</td>
+      <td>New York Giants (H)</td>
+      <td>1413.43</td>
+      <td>21</td>
+      <td>61.58%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>2013-10-13</td>
+      <td>41.31</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1405.38</td>
+      <td>19</td>
+      <td>33.50%</td>
+      <td>New York Jets (H)</td>
+      <td>1453.41</td>
+      <td>6</td>
+      <td>66.07%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>2013-11-24</td>
+      <td>40.94</td>
+      <td>Arizona Cardinals (H)</td>
+      <td>1506.82</td>
+      <td>40</td>
+      <td>55.79%</td>
+      <td>Indianapolis Colts</td>
+      <td>1534.45</td>
+      <td>11</td>
+      <td>43.78%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>2013-11-17</td>
+      <td>39.85</td>
+      <td>Buffalo Bills (H)</td>
+      <td>1381.62</td>
+      <td>37</td>
+      <td>51.70%</td>
+      <td>New York Jets</td>
+      <td>1437.89</td>
+      <td>14</td>
+      <td>47.87%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>2013-11-28</td>
+      <td>38.92</td>
+      <td>Detroit Lions (H)</td>
+      <td>1494.56</td>
+      <td>40</td>
+      <td>58.66%</td>
+      <td>Green Bay Packers</td>
+      <td>1501.73</td>
+      <td>10</td>
+      <td>40.90%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>2013-12-12</td>
+      <td>38.10</td>
+      <td>San Diego Chargers</td>
+      <td>1506.31</td>
+      <td>27</td>
+      <td>16.54%</td>
+      <td>Denver Broncos (H)</td>
+      <td>1716.43</td>
+      <td>20</td>
+      <td>83.03%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>2013-11-24</td>
+      <td>38.04</td>
+      <td>St. Louis Rams (H)</td>
+      <td>1490.65</td>
+      <td>42</td>
+      <td>51.74%</td>
+      <td>Chicago Bears</td>
+      <td>1546.62</td>
+      <td>21</td>
+      <td>47.83%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>2013-10-13</td>
+      <td>37.58</td>
+      <td>Detroit Lions</td>
+      <td>1502.89</td>
+      <td>31</td>
+      <td>41.67%</td>
+      <td>Cleveland Browns (H)</td>
+      <td>1490.25</td>
+      <td>17</td>
+      <td>57.90%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>2013-12-15</td>
+      <td>36.92</td>
+      <td>St. Louis Rams (H)</td>
+      <td>1485.59</td>
+      <td>27</td>
+      <td>35.37%</td>
+      <td>New Orleans Saints</td>
+      <td>1658.35</td>
+      <td>16</td>
+      <td>64.19%</td>
+      <td>0.43%</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>2013-12-22</td>
+      <td>36.53</td>
+      <td>Arizona Cardinals</td>
+      <td>1576.17</td>
+      <td>17</td>
+      <td>19.97%</td>
+      <td>Seattle Seahawks (H)</td>
+      <td>1746.27</td>
+      <td>10</td>
+      <td>79.60%</td>
+      <td>0.43%</td>
+    </tr>
+  </tbody>
+</table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+        });
+    </script>
+</body>
+</html>

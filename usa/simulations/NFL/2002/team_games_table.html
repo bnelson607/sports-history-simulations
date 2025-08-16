@@ -1,0 +1,6728 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Arizona Cardinals">Arizona Cardinals</option><option value="Atlanta Falcons">Atlanta Falcons</option><option value="Baltimore Ravens">Baltimore Ravens</option><option value="Buffalo Bills">Buffalo Bills</option><option value="Carolina Panthers">Carolina Panthers</option><option value="Chicago Bears">Chicago Bears</option><option value="Cincinnati Bengals">Cincinnati Bengals</option><option value="Cleveland Browns">Cleveland Browns</option><option value="Dallas Cowboys">Dallas Cowboys</option><option value="Denver Broncos">Denver Broncos</option><option value="Detroit Lions">Detroit Lions</option><option value="Green Bay Packers">Green Bay Packers</option><option value="Houston Texans">Houston Texans</option><option value="Indianapolis Colts">Indianapolis Colts</option><option value="Jacksonville Jaguars">Jacksonville Jaguars</option><option value="Kansas City Chiefs">Kansas City Chiefs</option><option value="Miami Dolphins">Miami Dolphins</option><option value="Minnesota Vikings">Minnesota Vikings</option><option value="New England Patriots">New England Patriots</option><option value="New Orleans Saints">New Orleans Saints</option><option value="New York Giants">New York Giants</option><option value="New York Jets">New York Jets</option><option value="Oakland Raiders">Oakland Raiders</option><option value="Philadelphia Eagles">Philadelphia Eagles</option><option value="Pittsburgh Steelers">Pittsburgh Steelers</option><option value="San Diego Chargers">San Diego Chargers</option><option value="San Francisco 49ers">San Francisco 49ers</option><option value="Seattle Seahawks">Seattle Seahawks</option><option value="St. Louis Rams">St. Louis Rams</option><option value="Tampa Bay Buccaneers">Tampa Bay Buccaneers</option><option value="Tennessee Titans">Tennessee Titans</option><option value="Washington Redskins">Washington Redskins</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="3" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Tie Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2002-09-05</td>
+      <td>New York Giants</td>
+      <td>1483.21</td>
+      <td>13</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1560.09</td>
+      <td>16</td>
+      <td>46.62%</td>
+      <td>52.92%</td>
+      <td>0.45%</td>
+      <td>-12.21</td>
+    </tr>
+    <tr>
+      <td>2002-09-05</td>
+      <td>San Francisco 49ers</td>
+      <td>1560.09</td>
+      <td>16</td>
+      <td>New York Giants</td>
+      <td>1483.21</td>
+      <td>13</td>
+      <td>52.92%</td>
+      <td>46.62%</td>
+      <td>0.45%</td>
+      <td>12.21</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Indianapolis Colts</td>
+      <td>1490.38</td>
+      <td>28</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1498.40</td>
+      <td>25</td>
+      <td>40.82%</td>
+      <td>58.73%</td>
+      <td>0.45%</td>
+      <td>15.36</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Detroit Lions</td>
+      <td>1434.73</td>
+      <td>21</td>
+      <td>Miami Dolphins</td>
+      <td>1521.52</td>
+      <td>49</td>
+      <td>30.47%</td>
+      <td>69.08%</td>
+      <td>0.45%</td>
+      <td>-24.41</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Philadelphia Eagles</td>
+      <td>1611.40</td>
+      <td>24</td>
+      <td>Tennessee Titans</td>
+      <td>1504.41</td>
+      <td>27</td>
+      <td>57.20%</td>
+      <td>42.34%</td>
+      <td>0.45%</td>
+      <td>-14.96</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Seattle Seahawks</td>
+      <td>1501.76</td>
+      <td>17</td>
+      <td>Oakland Raiders</td>
+      <td>1556.53</td>
+      <td>31</td>
+      <td>34.51%</td>
+      <td>65.04%</td>
+      <td>0.45%</td>
+      <td>-19.54</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>New Orleans Saints</td>
+      <td>1454.92</td>
+      <td>26</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1538.57</td>
+      <td>20</td>
+      <td>30.85%</td>
+      <td>68.69%</td>
+      <td>0.45%</td>
+      <td>25.40</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Arizona Cardinals</td>
+      <td>1460.86</td>
+      <td>23</td>
+      <td>Washington Redskins</td>
+      <td>1521.23</td>
+      <td>31</td>
+      <td>33.78%</td>
+      <td>65.76%</td>
+      <td>0.45%</td>
+      <td>-14.46</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>New York Jets</td>
+      <td>1522.68</td>
+      <td>37</td>
+      <td>Buffalo Bills</td>
+      <td>1427.70</td>
+      <td>31</td>
+      <td>55.51%</td>
+      <td>44.04%</td>
+      <td>0.45%</td>
+      <td>16.31</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>St. Louis Rams</td>
+      <td>1629.12</td>
+      <td>16</td>
+      <td>Denver Broncos</td>
+      <td>1498.17</td>
+      <td>23</td>
+      <td>60.53%</td>
+      <td>39.02%</td>
+      <td>0.45%</td>
+      <td>-24.18</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>San Diego Chargers</td>
+      <td>1466.82</td>
+      <td>34</td>
+      <td>Cincinnati Bengals</td>
+      <td>1440.27</td>
+      <td>6</td>
+      <td>45.70%</td>
+      <td>53.85%</td>
+      <td>0.45%</td>
+      <td>43.04</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Baltimore Ravens</td>
+      <td>1549.43</td>
+      <td>7</td>
+      <td>Carolina Panthers</td>
+      <td>1418.39</td>
+      <td>10</td>
+      <td>60.54%</td>
+      <td>39.01%</td>
+      <td>0.45%</td>
+      <td>-15.83</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Minnesota Vikings</td>
+      <td>1455.75</td>
+      <td>23</td>
+      <td>Chicago Bears</td>
+      <td>1568.20</td>
+      <td>27</td>
+      <td>27.43%</td>
+      <td>72.11%</td>
+      <td>0.45%</td>
+      <td>-8.30</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Kansas City Chiefs</td>
+      <td>1488.97</td>
+      <td>40</td>
+      <td>Cleveland Browns</td>
+      <td>1471.00</td>
+      <td>39</td>
+      <td>44.47%</td>
+      <td>55.07%</td>
+      <td>0.45%</td>
+      <td>8.32</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Atlanta Falcons</td>
+      <td>1440.61</td>
+      <td>34</td>
+      <td>Green Bay Packers</td>
+      <td>1573.20</td>
+      <td>37</td>
+      <td>25.19%</td>
+      <td>74.36%</td>
+      <td>0.45%</td>
+      <td>-6.61</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Dallas Cowboys</td>
+      <td>1445.69</td>
+      <td>10</td>
+      <td>Houston Texans</td>
+      <td>1275.00</td>
+      <td>19</td>
+      <td>65.82%</td>
+      <td>33.73%</td>
+      <td>0.45%</td>
+      <td>-29.81</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Houston Texans</td>
+      <td>1275.00</td>
+      <td>19</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1445.69</td>
+      <td>10</td>
+      <td>33.73%</td>
+      <td>65.82%</td>
+      <td>0.45%</td>
+      <td>29.81</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1498.40</td>
+      <td>25</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1490.38</td>
+      <td>28</td>
+      <td>58.73%</td>
+      <td>40.82%</td>
+      <td>0.45%</td>
+      <td>-15.36</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Miami Dolphins</td>
+      <td>1521.52</td>
+      <td>49</td>
+      <td>@ Detroit Lions</td>
+      <td>1434.73</td>
+      <td>21</td>
+      <td>69.08%</td>
+      <td>30.47%</td>
+      <td>0.45%</td>
+      <td>24.40</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Tennessee Titans</td>
+      <td>1504.41</td>
+      <td>27</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1611.40</td>
+      <td>24</td>
+      <td>42.34%</td>
+      <td>57.20%</td>
+      <td>0.45%</td>
+      <td>14.96</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Oakland Raiders</td>
+      <td>1556.53</td>
+      <td>31</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1501.76</td>
+      <td>17</td>
+      <td>65.04%</td>
+      <td>34.51%</td>
+      <td>0.45%</td>
+      <td>19.53</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1538.57</td>
+      <td>20</td>
+      <td>@ New Orleans Saints</td>
+      <td>1454.92</td>
+      <td>26</td>
+      <td>68.69%</td>
+      <td>30.85%</td>
+      <td>0.45%</td>
+      <td>-25.40</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Washington Redskins</td>
+      <td>1521.23</td>
+      <td>31</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1460.86</td>
+      <td>23</td>
+      <td>65.76%</td>
+      <td>33.78%</td>
+      <td>0.45%</td>
+      <td>14.46</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Buffalo Bills</td>
+      <td>1427.70</td>
+      <td>31</td>
+      <td>@ New York Jets</td>
+      <td>1522.68</td>
+      <td>37</td>
+      <td>44.04%</td>
+      <td>55.51%</td>
+      <td>0.45%</td>
+      <td>-16.31</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Denver Broncos</td>
+      <td>1498.17</td>
+      <td>23</td>
+      <td>@ St. Louis Rams</td>
+      <td>1629.12</td>
+      <td>16</td>
+      <td>39.02%</td>
+      <td>60.53%</td>
+      <td>0.45%</td>
+      <td>24.18</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Cincinnati Bengals</td>
+      <td>1440.27</td>
+      <td>6</td>
+      <td>@ San Diego Chargers</td>
+      <td>1466.82</td>
+      <td>34</td>
+      <td>53.85%</td>
+      <td>45.70%</td>
+      <td>0.45%</td>
+      <td>-43.03</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Carolina Panthers</td>
+      <td>1418.39</td>
+      <td>10</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1549.43</td>
+      <td>7</td>
+      <td>39.01%</td>
+      <td>60.54%</td>
+      <td>0.45%</td>
+      <td>15.84</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Chicago Bears</td>
+      <td>1568.20</td>
+      <td>27</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1455.75</td>
+      <td>23</td>
+      <td>72.11%</td>
+      <td>27.43%</td>
+      <td>0.45%</td>
+      <td>8.31</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Cleveland Browns</td>
+      <td>1471.00</td>
+      <td>39</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1488.97</td>
+      <td>40</td>
+      <td>55.07%</td>
+      <td>44.47%</td>
+      <td>0.45%</td>
+      <td>-8.31</td>
+    </tr>
+    <tr>
+      <td>2002-09-08</td>
+      <td>Green Bay Packers</td>
+      <td>1573.20</td>
+      <td>37</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1440.61</td>
+      <td>34</td>
+      <td>74.36%</td>
+      <td>25.19%</td>
+      <td>0.45%</td>
+      <td>6.61</td>
+    </tr>
+    <tr>
+      <td>2002-09-09</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1590.57</td>
+      <td>14</td>
+      <td>New England Patriots</td>
+      <td>1600.41</td>
+      <td>30</td>
+      <td>40.56%</td>
+      <td>58.98%</td>
+      <td>0.45%</td>
+      <td>-24.54</td>
+    </tr>
+    <tr>
+      <td>2002-09-09</td>
+      <td>New England Patriots</td>
+      <td>1600.41</td>
+      <td>30</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1590.57</td>
+      <td>14</td>
+      <td>58.98%</td>
+      <td>40.56%</td>
+      <td>0.45%</td>
+      <td>24.53</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Green Bay Packers</td>
+      <td>1579.81</td>
+      <td>20</td>
+      <td>New Orleans Saints</td>
+      <td>1480.32</td>
+      <td>35</td>
+      <td>56.14%</td>
+      <td>43.40%</td>
+      <td>0.45%</td>
+      <td>-32.84</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Denver Broncos</td>
+      <td>1522.35</td>
+      <td>24</td>
+      <td>San Francisco 49ers</td>
+      <td>1572.30</td>
+      <td>14</td>
+      <td>35.14%</td>
+      <td>64.41%</td>
+      <td>0.45%</td>
+      <td>30.75</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Arizona Cardinals</td>
+      <td>1446.40</td>
+      <td>24</td>
+      <td>Seattle Seahawks</td>
+      <td>1482.22</td>
+      <td>13</td>
+      <td>37.01%</td>
+      <td>62.53%</td>
+      <td>0.45%</td>
+      <td>31.31</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1513.17</td>
+      <td>25</td>
+      <td>Baltimore Ravens</td>
+      <td>1533.60</td>
+      <td>0</td>
+      <td>39.10%</td>
+      <td>60.44%</td>
+      <td>0.45%</td>
+      <td>45.63</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Oakland Raiders</td>
+      <td>1576.06</td>
+      <td>30</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1566.03</td>
+      <td>17</td>
+      <td>43.35%</td>
+      <td>56.20%</td>
+      <td>0.45%</td>
+      <td>30.60</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>New England Patriots</td>
+      <td>1624.94</td>
+      <td>44</td>
+      <td>New York Jets</td>
+      <td>1538.99</td>
+      <td>7</td>
+      <td>54.22%</td>
+      <td>45.32%</td>
+      <td>0.45%</td>
+      <td>41.68</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Buffalo Bills</td>
+      <td>1411.39</td>
+      <td>45</td>
+      <td>Minnesota Vikings</td>
+      <td>1447.45</td>
+      <td>39</td>
+      <td>36.98%</td>
+      <td>62.56%</td>
+      <td>0.45%</td>
+      <td>23.14</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1483.04</td>
+      <td>23</td>
+      <td>Kansas City Chiefs</td>
+      <td>1497.29</td>
+      <td>16</td>
+      <td>39.95%</td>
+      <td>59.59%</td>
+      <td>0.45%</td>
+      <td>23.81</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Tennessee Titans</td>
+      <td>1519.37</td>
+      <td>13</td>
+      <td>Dallas Cowboys</td>
+      <td>1415.88</td>
+      <td>21</td>
+      <td>56.71%</td>
+      <td>42.84%</td>
+      <td>0.45%</td>
+      <td>-24.22</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Miami Dolphins</td>
+      <td>1545.92</td>
+      <td>21</td>
+      <td>Indianapolis Colts</td>
+      <td>1505.74</td>
+      <td>13</td>
+      <td>47.65%</td>
+      <td>51.90%</td>
+      <td>0.45%</td>
+      <td>22.17</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Cincinnati Bengals</td>
+      <td>1397.24</td>
+      <td>7</td>
+      <td>Cleveland Browns</td>
+      <td>1462.69</td>
+      <td>20</td>
+      <td>33.13%</td>
+      <td>66.41%</td>
+      <td>0.45%</td>
+      <td>-18.08</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Detroit Lions</td>
+      <td>1410.32</td>
+      <td>7</td>
+      <td>Carolina Panthers</td>
+      <td>1434.23</td>
+      <td>31</td>
+      <td>38.63%</td>
+      <td>60.92%</td>
+      <td>0.45%</td>
+      <td>-28.62</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Houston Texans</td>
+      <td>1304.81</td>
+      <td>3</td>
+      <td>San Diego Chargers</td>
+      <td>1509.86</td>
+      <td>24</td>
+      <td>18.16%</td>
+      <td>81.39%</td>
+      <td>0.45%</td>
+      <td>-12.61</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>New York Giants</td>
+      <td>1471.00</td>
+      <td>26</td>
+      <td>St. Louis Rams</td>
+      <td>1604.94</td>
+      <td>21</td>
+      <td>25.04%</td>
+      <td>74.50%</td>
+      <td>0.45%</td>
+      <td>25.15</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Chicago Bears</td>
+      <td>1576.51</td>
+      <td>14</td>
+      <td>Atlanta Falcons</td>
+      <td>1434.00</td>
+      <td>13</td>
+      <td>62.10%</td>
+      <td>37.45%</td>
+      <td>0.45%</td>
+      <td>5.66</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>New York Jets</td>
+      <td>1538.99</td>
+      <td>7</td>
+      <td>@ New England Patriots</td>
+      <td>1624.94</td>
+      <td>44</td>
+      <td>45.32%</td>
+      <td>54.22%</td>
+      <td>0.45%</td>
+      <td>-41.68</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>St. Louis Rams</td>
+      <td>1604.94</td>
+      <td>21</td>
+      <td>@ New York Giants</td>
+      <td>1471.00</td>
+      <td>26</td>
+      <td>74.50%</td>
+      <td>25.04%</td>
+      <td>0.45%</td>
+      <td>-25.15</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Atlanta Falcons</td>
+      <td>1434.00</td>
+      <td>13</td>
+      <td>@ Chicago Bears</td>
+      <td>1576.51</td>
+      <td>14</td>
+      <td>37.45%</td>
+      <td>62.10%</td>
+      <td>0.45%</td>
+      <td>-5.66</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Carolina Panthers</td>
+      <td>1434.23</td>
+      <td>31</td>
+      <td>@ Detroit Lions</td>
+      <td>1410.32</td>
+      <td>7</td>
+      <td>60.92%</td>
+      <td>38.63%</td>
+      <td>0.45%</td>
+      <td>28.62</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Cleveland Browns</td>
+      <td>1462.69</td>
+      <td>20</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1397.24</td>
+      <td>7</td>
+      <td>66.41%</td>
+      <td>33.13%</td>
+      <td>0.45%</td>
+      <td>18.07</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Indianapolis Colts</td>
+      <td>1505.74</td>
+      <td>13</td>
+      <td>@ Miami Dolphins</td>
+      <td>1545.92</td>
+      <td>21</td>
+      <td>51.90%</td>
+      <td>47.65%</td>
+      <td>0.45%</td>
+      <td>-22.17</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Dallas Cowboys</td>
+      <td>1415.88</td>
+      <td>21</td>
+      <td>@ Tennessee Titans</td>
+      <td>1519.37</td>
+      <td>13</td>
+      <td>42.84%</td>
+      <td>56.71%</td>
+      <td>0.45%</td>
+      <td>24.23</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Kansas City Chiefs</td>
+      <td>1497.29</td>
+      <td>16</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1483.04</td>
+      <td>23</td>
+      <td>59.59%</td>
+      <td>39.95%</td>
+      <td>0.45%</td>
+      <td>-23.81</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Minnesota Vikings</td>
+      <td>1447.45</td>
+      <td>39</td>
+      <td>@ Buffalo Bills</td>
+      <td>1411.39</td>
+      <td>45</td>
+      <td>62.56%</td>
+      <td>36.98%</td>
+      <td>0.45%</td>
+      <td>-23.14</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>New Orleans Saints</td>
+      <td>1480.32</td>
+      <td>35</td>
+      <td>@ Green Bay Packers</td>
+      <td>1579.81</td>
+      <td>20</td>
+      <td>43.40%</td>
+      <td>56.14%</td>
+      <td>0.45%</td>
+      <td>32.84</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1566.03</td>
+      <td>17</td>
+      <td>@ Oakland Raiders</td>
+      <td>1576.06</td>
+      <td>30</td>
+      <td>56.20%</td>
+      <td>43.35%</td>
+      <td>0.45%</td>
+      <td>-30.60</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Baltimore Ravens</td>
+      <td>1533.60</td>
+      <td>0</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1513.17</td>
+      <td>25</td>
+      <td>60.44%</td>
+      <td>39.10%</td>
+      <td>0.45%</td>
+      <td>-45.63</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>Seattle Seahawks</td>
+      <td>1482.22</td>
+      <td>13</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1446.40</td>
+      <td>24</td>
+      <td>62.53%</td>
+      <td>37.01%</td>
+      <td>0.45%</td>
+      <td>-31.31</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>San Francisco 49ers</td>
+      <td>1572.30</td>
+      <td>14</td>
+      <td>@ Denver Broncos</td>
+      <td>1522.35</td>
+      <td>24</td>
+      <td>64.41%</td>
+      <td>35.14%</td>
+      <td>0.45%</td>
+      <td>-30.75</td>
+    </tr>
+    <tr>
+      <td>2002-09-15</td>
+      <td>San Diego Chargers</td>
+      <td>1509.86</td>
+      <td>24</td>
+      <td>@ Houston Texans</td>
+      <td>1304.81</td>
+      <td>3</td>
+      <td>81.39%</td>
+      <td>18.16%</td>
+      <td>0.45%</td>
+      <td>12.61</td>
+    </tr>
+    <tr>
+      <td>2002-09-16</td>
+      <td>Philadelphia Eagles</td>
+      <td>1596.44</td>
+      <td>37</td>
+      <td>Washington Redskins</td>
+      <td>1535.69</td>
+      <td>7</td>
+      <td>50.61%</td>
+      <td>48.94%</td>
+      <td>0.45%</td>
+      <td>40.50</td>
+    </tr>
+    <tr>
+      <td>2002-09-16</td>
+      <td>Washington Redskins</td>
+      <td>1535.69</td>
+      <td>7</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1596.44</td>
+      <td>37</td>
+      <td>48.94%</td>
+      <td>50.61%</td>
+      <td>0.45%</td>
+      <td>-40.50</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Detroit Lions</td>
+      <td>1381.70</td>
+      <td>31</td>
+      <td>@ Green Bay Packers</td>
+      <td>1546.97</td>
+      <td>37</td>
+      <td>34.43%</td>
+      <td>65.11%</td>
+      <td>0.45%</td>
+      <td>-12.76</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>New Orleans Saints</td>
+      <td>1513.16</td>
+      <td>29</td>
+      <td>Chicago Bears</td>
+      <td>1582.17</td>
+      <td>23</td>
+      <td>32.68%</td>
+      <td>66.87%</td>
+      <td>0.45%</td>
+      <td>24.72</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Indianapolis Colts</td>
+      <td>1483.57</td>
+      <td>23</td>
+      <td>Houston Texans</td>
+      <td>1292.20</td>
+      <td>3</td>
+      <td>68.42%</td>
+      <td>31.12%</td>
+      <td>0.45%</td>
+      <td>21.06</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Cincinnati Bengals</td>
+      <td>1379.16</td>
+      <td>3</td>
+      <td>Atlanta Falcons</td>
+      <td>1428.34</td>
+      <td>30</td>
+      <td>35.24%</td>
+      <td>64.31%</td>
+      <td>0.45%</td>
+      <td>-27.70</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>San Francisco 49ers</td>
+      <td>1541.55</td>
+      <td>20</td>
+      <td>@ Washington Redskins</td>
+      <td>1495.19</td>
+      <td>10</td>
+      <td>63.93%</td>
+      <td>35.61%</td>
+      <td>0.45%</td>
+      <td>17.04</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Denver Broncos</td>
+      <td>1553.10</td>
+      <td>28</td>
+      <td>@ Buffalo Bills</td>
+      <td>1434.53</td>
+      <td>23</td>
+      <td>72.81%</td>
+      <td>26.74%</td>
+      <td>0.45%</td>
+      <td>9.05</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>New York Giants</td>
+      <td>1496.15</td>
+      <td>9</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1450.91</td>
+      <td>6</td>
+      <td>63.79%</td>
+      <td>35.76%</td>
+      <td>0.45%</td>
+      <td>9.37</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Green Bay Packers</td>
+      <td>1546.97</td>
+      <td>37</td>
+      <td>Detroit Lions</td>
+      <td>1381.70</td>
+      <td>31</td>
+      <td>65.11%</td>
+      <td>34.43%</td>
+      <td>0.45%</td>
+      <td>12.76</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Buffalo Bills</td>
+      <td>1434.53</td>
+      <td>23</td>
+      <td>Denver Broncos</td>
+      <td>1553.10</td>
+      <td>28</td>
+      <td>26.74%</td>
+      <td>72.81%</td>
+      <td>0.45%</td>
+      <td>-9.05</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Washington Redskins</td>
+      <td>1495.19</td>
+      <td>10</td>
+      <td>San Francisco 49ers</td>
+      <td>1541.55</td>
+      <td>20</td>
+      <td>35.61%</td>
+      <td>63.93%</td>
+      <td>0.45%</td>
+      <td>-17.04</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Cleveland Browns</td>
+      <td>1480.76</td>
+      <td>31</td>
+      <td>Tennessee Titans</td>
+      <td>1495.15</td>
+      <td>28</td>
+      <td>39.93%</td>
+      <td>59.61%</td>
+      <td>0.45%</td>
+      <td>15.59</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Seattle Seahawks</td>
+      <td>1450.91</td>
+      <td>6</td>
+      <td>New York Giants</td>
+      <td>1496.15</td>
+      <td>9</td>
+      <td>35.76%</td>
+      <td>63.79%</td>
+      <td>0.45%</td>
+      <td>-9.37</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Kansas City Chiefs</td>
+      <td>1473.48</td>
+      <td>38</td>
+      <td>New England Patriots</td>
+      <td>1666.62</td>
+      <td>41</td>
+      <td>19.20%</td>
+      <td>80.35%</td>
+      <td>0.45%</td>
+      <td>-5.04</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Carolina Panthers</td>
+      <td>1462.85</td>
+      <td>21</td>
+      <td>Minnesota Vikings</td>
+      <td>1424.31</td>
+      <td>14</td>
+      <td>47.41%</td>
+      <td>52.13%</td>
+      <td>0.45%</td>
+      <td>20.83</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Tennessee Titans</td>
+      <td>1495.15</td>
+      <td>28</td>
+      <td>@ Cleveland Browns</td>
+      <td>1480.76</td>
+      <td>31</td>
+      <td>59.61%</td>
+      <td>39.93%</td>
+      <td>0.45%</td>
+      <td>-15.59</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>New York Jets</td>
+      <td>1497.31</td>
+      <td>3</td>
+      <td>Miami Dolphins</td>
+      <td>1568.09</td>
+      <td>30</td>
+      <td>32.46%</td>
+      <td>67.09%</td>
+      <td>0.45%</td>
+      <td>-25.52</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Dallas Cowboys</td>
+      <td>1440.11</td>
+      <td>13</td>
+      <td>Philadelphia Eagles</td>
+      <td>1636.94</td>
+      <td>44</td>
+      <td>18.87%</td>
+      <td>80.68%</td>
+      <td>0.45%</td>
+      <td>-15.92</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>San Diego Chargers</td>
+      <td>1522.47</td>
+      <td>23</td>
+      <td>Arizona Cardinals</td>
+      <td>1477.71</td>
+      <td>15</td>
+      <td>48.31%</td>
+      <td>51.24%</td>
+      <td>0.45%</td>
+      <td>21.89</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Houston Texans</td>
+      <td>1292.20</td>
+      <td>3</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1483.57</td>
+      <td>23</td>
+      <td>31.12%</td>
+      <td>68.42%</td>
+      <td>0.45%</td>
+      <td>-21.06</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Chicago Bears</td>
+      <td>1582.17</td>
+      <td>23</td>
+      <td>@ New Orleans Saints</td>
+      <td>1513.16</td>
+      <td>29</td>
+      <td>66.87%</td>
+      <td>32.68%</td>
+      <td>0.45%</td>
+      <td>-24.72</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Atlanta Falcons</td>
+      <td>1428.34</td>
+      <td>30</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1379.16</td>
+      <td>3</td>
+      <td>64.31%</td>
+      <td>35.24%</td>
+      <td>0.45%</td>
+      <td>27.70</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Philadelphia Eagles</td>
+      <td>1636.94</td>
+      <td>44</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1440.11</td>
+      <td>13</td>
+      <td>80.68%</td>
+      <td>18.87%</td>
+      <td>0.45%</td>
+      <td>15.92</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Miami Dolphins</td>
+      <td>1568.09</td>
+      <td>30</td>
+      <td>@ New York Jets</td>
+      <td>1497.31</td>
+      <td>3</td>
+      <td>67.09%</td>
+      <td>32.46%</td>
+      <td>0.45%</td>
+      <td>25.53</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Arizona Cardinals</td>
+      <td>1477.71</td>
+      <td>15</td>
+      <td>@ San Diego Chargers</td>
+      <td>1522.47</td>
+      <td>23</td>
+      <td>51.24%</td>
+      <td>48.31%</td>
+      <td>0.45%</td>
+      <td>-21.89</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>Minnesota Vikings</td>
+      <td>1424.31</td>
+      <td>14</td>
+      <td>@ Carolina Panthers</td>
+      <td>1462.85</td>
+      <td>21</td>
+      <td>52.13%</td>
+      <td>47.41%</td>
+      <td>0.45%</td>
+      <td>-20.84</td>
+    </tr>
+    <tr>
+      <td>2002-09-22</td>
+      <td>New England Patriots</td>
+      <td>1666.62</td>
+      <td>41</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1473.48</td>
+      <td>38</td>
+      <td>80.35%</td>
+      <td>19.20%</td>
+      <td>0.45%</td>
+      <td>5.03</td>
+    </tr>
+    <tr>
+      <td>2002-09-23</td>
+      <td>St. Louis Rams</td>
+      <td>1579.79</td>
+      <td>14</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1558.80</td>
+      <td>26</td>
+      <td>44.90%</td>
+      <td>54.64%</td>
+      <td>0.45%</td>
+      <td>-23.51</td>
+    </tr>
+    <tr>
+      <td>2002-09-23</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1558.80</td>
+      <td>26</td>
+      <td>@ St. Louis Rams</td>
+      <td>1579.79</td>
+      <td>14</td>
+      <td>54.64%</td>
+      <td>44.90%</td>
+      <td>0.45%</td>
+      <td>23.51</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Minnesota Vikings</td>
+      <td>1403.47</td>
+      <td>23</td>
+      <td>Seattle Seahawks</td>
+      <td>1441.54</td>
+      <td>48</td>
+      <td>36.71%</td>
+      <td>62.83%</td>
+      <td>0.45%</td>
+      <td>-27.76</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Tennessee Titans</td>
+      <td>1479.56</td>
+      <td>25</td>
+      <td>Oakland Raiders</td>
+      <td>1606.66</td>
+      <td>52</td>
+      <td>25.79%</td>
+      <td>73.76%</td>
+      <td>0.45%</td>
+      <td>-20.29</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>New England Patriots</td>
+      <td>1671.65</td>
+      <td>14</td>
+      <td>San Diego Chargers</td>
+      <td>1544.36</td>
+      <td>21</td>
+      <td>60.03%</td>
+      <td>39.52%</td>
+      <td>0.45%</td>
+      <td>-23.98</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Cleveland Browns</td>
+      <td>1496.35</td>
+      <td>13</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1535.43</td>
+      <td>16</td>
+      <td>36.58%</td>
+      <td>62.97%</td>
+      <td>0.45%</td>
+      <td>-9.58</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Houston Texans</td>
+      <td>1271.14</td>
+      <td>17</td>
+      <td>Philadelphia Eagles</td>
+      <td>1652.86</td>
+      <td>35</td>
+      <td>7.43%</td>
+      <td>92.12%</td>
+      <td>0.45%</td>
+      <td>-4.78</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>San Diego Chargers</td>
+      <td>1544.36</td>
+      <td>21</td>
+      <td>@ New England Patriots</td>
+      <td>1671.65</td>
+      <td>14</td>
+      <td>39.52%</td>
+      <td>60.03%</td>
+      <td>0.45%</td>
+      <td>23.98</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>New York Jets</td>
+      <td>1471.79</td>
+      <td>3</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1506.85</td>
+      <td>28</td>
+      <td>37.12%</td>
+      <td>62.43%</td>
+      <td>0.45%</td>
+      <td>-28.07</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1535.43</td>
+      <td>16</td>
+      <td>@ Cleveland Browns</td>
+      <td>1496.35</td>
+      <td>13</td>
+      <td>62.97%</td>
+      <td>36.58%</td>
+      <td>0.45%</td>
+      <td>9.59</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Seattle Seahawks</td>
+      <td>1441.54</td>
+      <td>48</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1403.47</td>
+      <td>23</td>
+      <td>62.83%</td>
+      <td>36.71%</td>
+      <td>0.45%</td>
+      <td>27.77</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Philadelphia Eagles</td>
+      <td>1652.86</td>
+      <td>35</td>
+      <td>@ Houston Texans</td>
+      <td>1271.14</td>
+      <td>17</td>
+      <td>92.12%</td>
+      <td>7.43%</td>
+      <td>0.45%</td>
+      <td>4.78</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Kansas City Chiefs</td>
+      <td>1468.44</td>
+      <td>48</td>
+      <td>@ Miami Dolphins</td>
+      <td>1593.62</td>
+      <td>30</td>
+      <td>39.81%</td>
+      <td>59.73%</td>
+      <td>0.45%</td>
+      <td>38.27</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1506.85</td>
+      <td>28</td>
+      <td>@ New York Jets</td>
+      <td>1471.79</td>
+      <td>3</td>
+      <td>62.43%</td>
+      <td>37.12%</td>
+      <td>0.45%</td>
+      <td>28.07</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Green Bay Packers</td>
+      <td>1559.73</td>
+      <td>17</td>
+      <td>@ Carolina Panthers</td>
+      <td>1483.68</td>
+      <td>14</td>
+      <td>67.75%</td>
+      <td>31.80%</td>
+      <td>0.45%</td>
+      <td>8.33</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Detroit Lions</td>
+      <td>1368.94</td>
+      <td>26</td>
+      <td>@ New Orleans Saints</td>
+      <td>1537.88</td>
+      <td>21</td>
+      <td>33.96%</td>
+      <td>65.59%</td>
+      <td>0.45%</td>
+      <td>22.15</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Arizona Cardinals</td>
+      <td>1455.82</td>
+      <td>21</td>
+      <td>@ New York Giants</td>
+      <td>1505.52</td>
+      <td>7</td>
+      <td>50.53%</td>
+      <td>49.02%</td>
+      <td>0.45%</td>
+      <td>27.71</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Cincinnati Bengals</td>
+      <td>1351.46</td>
+      <td>7</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1582.31</td>
+      <td>35</td>
+      <td>26.47%</td>
+      <td>73.08%</td>
+      <td>0.45%</td>
+      <td>-21.21</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Buffalo Bills</td>
+      <td>1425.48</td>
+      <td>33</td>
+      <td>@ Chicago Bears</td>
+      <td>1557.45</td>
+      <td>27</td>
+      <td>38.88%</td>
+      <td>60.67%</td>
+      <td>0.45%</td>
+      <td>22.44</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>St. Louis Rams</td>
+      <td>1556.28</td>
+      <td>10</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1424.19</td>
+      <td>13</td>
+      <td>74.30%</td>
+      <td>25.24%</td>
+      <td>0.45%</td>
+      <td>-19.43</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Oakland Raiders</td>
+      <td>1606.66</td>
+      <td>52</td>
+      <td>@ Tennessee Titans</td>
+      <td>1479.56</td>
+      <td>25</td>
+      <td>73.76%</td>
+      <td>25.79%</td>
+      <td>0.45%</td>
+      <td>20.29</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Dallas Cowboys</td>
+      <td>1424.19</td>
+      <td>13</td>
+      <td>St. Louis Rams</td>
+      <td>1556.28</td>
+      <td>10</td>
+      <td>25.24%</td>
+      <td>74.30%</td>
+      <td>0.45%</td>
+      <td>19.43</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Chicago Bears</td>
+      <td>1557.45</td>
+      <td>27</td>
+      <td>Buffalo Bills</td>
+      <td>1425.48</td>
+      <td>33</td>
+      <td>60.67%</td>
+      <td>38.88%</td>
+      <td>0.45%</td>
+      <td>-22.44</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1582.31</td>
+      <td>35</td>
+      <td>Cincinnati Bengals</td>
+      <td>1351.46</td>
+      <td>7</td>
+      <td>73.08%</td>
+      <td>26.47%</td>
+      <td>0.45%</td>
+      <td>21.21</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>New York Giants</td>
+      <td>1505.52</td>
+      <td>7</td>
+      <td>Arizona Cardinals</td>
+      <td>1455.82</td>
+      <td>21</td>
+      <td>49.02%</td>
+      <td>50.53%</td>
+      <td>0.45%</td>
+      <td>-27.71</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>New Orleans Saints</td>
+      <td>1537.88</td>
+      <td>21</td>
+      <td>Detroit Lions</td>
+      <td>1368.94</td>
+      <td>26</td>
+      <td>65.59%</td>
+      <td>33.96%</td>
+      <td>0.45%</td>
+      <td>-22.14</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Carolina Panthers</td>
+      <td>1483.68</td>
+      <td>14</td>
+      <td>Green Bay Packers</td>
+      <td>1559.73</td>
+      <td>17</td>
+      <td>31.80%</td>
+      <td>67.75%</td>
+      <td>0.45%</td>
+      <td>-8.33</td>
+    </tr>
+    <tr>
+      <td>2002-09-29</td>
+      <td>Miami Dolphins</td>
+      <td>1593.62</td>
+      <td>30</td>
+      <td>Kansas City Chiefs</td>
+      <td>1468.44</td>
+      <td>48</td>
+      <td>59.73%</td>
+      <td>39.81%</td>
+      <td>0.45%</td>
+      <td>-38.27</td>
+    </tr>
+    <tr>
+      <td>2002-09-30</td>
+      <td>Denver Broncos</td>
+      <td>1562.15</td>
+      <td>23</td>
+      <td>Baltimore Ravens</td>
+      <td>1487.97</td>
+      <td>34</td>
+      <td>52.54%</td>
+      <td>47.01%</td>
+      <td>0.45%</td>
+      <td>-26.32</td>
+    </tr>
+    <tr>
+      <td>2002-09-30</td>
+      <td>Baltimore Ravens</td>
+      <td>1487.97</td>
+      <td>34</td>
+      <td>@ Denver Broncos</td>
+      <td>1562.15</td>
+      <td>23</td>
+      <td>47.01%</td>
+      <td>52.54%</td>
+      <td>0.45%</td>
+      <td>26.32</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Arizona Cardinals</td>
+      <td>1483.53</td>
+      <td>16</td>
+      <td>Carolina Panthers</td>
+      <td>1475.35</td>
+      <td>13</td>
+      <td>43.09%</td>
+      <td>56.46%</td>
+      <td>0.45%</td>
+      <td>14.77</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>New England Patriots</td>
+      <td>1647.67</td>
+      <td>13</td>
+      <td>Miami Dolphins</td>
+      <td>1555.35</td>
+      <td>26</td>
+      <td>55.13%</td>
+      <td>44.42%</td>
+      <td>0.45%</td>
+      <td>-30.02</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>New Orleans Saints</td>
+      <td>1515.74</td>
+      <td>32</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1545.02</td>
+      <td>29</td>
+      <td>53.46%</td>
+      <td>46.09%</td>
+      <td>0.45%</td>
+      <td>12.07</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Miami Dolphins</td>
+      <td>1555.35</td>
+      <td>26</td>
+      <td>@ New England Patriots</td>
+      <td>1647.67</td>
+      <td>13</td>
+      <td>44.42%</td>
+      <td>55.13%</td>
+      <td>0.45%</td>
+      <td>30.02</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1534.92</td>
+      <td>28</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1657.64</td>
+      <td>25</td>
+      <td>40.15%</td>
+      <td>59.40%</td>
+      <td>0.45%</td>
+      <td>15.53</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>San Francisco 49ers</td>
+      <td>1558.59</td>
+      <td>37</td>
+      <td>@ St. Louis Rams</td>
+      <td>1536.85</td>
+      <td>13</td>
+      <td>60.62%</td>
+      <td>38.92%</td>
+      <td>0.45%</td>
+      <td>28.83</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Tennessee Titans</td>
+      <td>1459.27</td>
+      <td>14</td>
+      <td>@ Washington Redskins</td>
+      <td>1478.15</td>
+      <td>31</td>
+      <td>54.94%</td>
+      <td>44.60%</td>
+      <td>0.45%</td>
+      <td>-34.22</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Dallas Cowboys</td>
+      <td>1443.62</td>
+      <td>17</td>
+      <td>@ New York Giants</td>
+      <td>1477.81</td>
+      <td>21</td>
+      <td>52.76%</td>
+      <td>46.79%</td>
+      <td>0.45%</td>
+      <td>-15.94</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>New York Jets</td>
+      <td>1443.72</td>
+      <td>25</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1506.71</td>
+      <td>29</td>
+      <td>48.62%</td>
+      <td>50.93%</td>
+      <td>0.45%</td>
+      <td>-14.69</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Indianapolis Colts</td>
+      <td>1504.63</td>
+      <td>28</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1330.25</td>
+      <td>21</td>
+      <td>78.62%</td>
+      <td>20.93%</td>
+      <td>0.45%</td>
+      <td>8.39</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1545.02</td>
+      <td>29</td>
+      <td>New Orleans Saints</td>
+      <td>1515.74</td>
+      <td>32</td>
+      <td>46.09%</td>
+      <td>53.46%</td>
+      <td>0.45%</td>
+      <td>-12.07</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Carolina Panthers</td>
+      <td>1475.35</td>
+      <td>13</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1483.53</td>
+      <td>16</td>
+      <td>56.46%</td>
+      <td>43.09%</td>
+      <td>0.45%</td>
+      <td>-14.77</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Buffalo Bills</td>
+      <td>1447.92</td>
+      <td>31</td>
+      <td>@ Oakland Raiders</td>
+      <td>1626.95</td>
+      <td>49</td>
+      <td>32.66%</td>
+      <td>66.88%</td>
+      <td>0.45%</td>
+      <td>-20.98</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Atlanta Falcons</td>
+      <td>1456.04</td>
+      <td>6</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1603.52</td>
+      <td>20</td>
+      <td>36.78%</td>
+      <td>62.77%</td>
+      <td>0.45%</td>
+      <td>-20.82</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Denver Broncos</td>
+      <td>1535.83</td>
+      <td>26</td>
+      <td>@ San Diego Chargers</td>
+      <td>1568.34</td>
+      <td>9</td>
+      <td>53.00%</td>
+      <td>46.55%</td>
+      <td>0.45%</td>
+      <td>29.01</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Cleveland Browns</td>
+      <td>1486.77</td>
+      <td>21</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1514.29</td>
+      <td>26</td>
+      <td>53.71%</td>
+      <td>45.83%</td>
+      <td>0.45%</td>
+      <td>-18.14</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>St. Louis Rams</td>
+      <td>1536.85</td>
+      <td>13</td>
+      <td>San Francisco 49ers</td>
+      <td>1558.59</td>
+      <td>37</td>
+      <td>38.92%</td>
+      <td>60.62%</td>
+      <td>0.45%</td>
+      <td>-28.84</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Philadelphia Eagles</td>
+      <td>1657.64</td>
+      <td>25</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1534.92</td>
+      <td>28</td>
+      <td>59.40%</td>
+      <td>40.15%</td>
+      <td>0.45%</td>
+      <td>-15.54</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Washington Redskins</td>
+      <td>1478.15</td>
+      <td>31</td>
+      <td>Tennessee Titans</td>
+      <td>1459.27</td>
+      <td>14</td>
+      <td>44.60%</td>
+      <td>54.94%</td>
+      <td>0.45%</td>
+      <td>34.21</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>New York Giants</td>
+      <td>1477.81</td>
+      <td>21</td>
+      <td>Dallas Cowboys</td>
+      <td>1443.62</td>
+      <td>17</td>
+      <td>46.79%</td>
+      <td>52.76%</td>
+      <td>0.45%</td>
+      <td>15.94</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Cincinnati Bengals</td>
+      <td>1330.25</td>
+      <td>21</td>
+      <td>Indianapolis Colts</td>
+      <td>1504.63</td>
+      <td>28</td>
+      <td>20.93%</td>
+      <td>78.62%</td>
+      <td>0.45%</td>
+      <td>-8.39</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Baltimore Ravens</td>
+      <td>1514.29</td>
+      <td>26</td>
+      <td>Cleveland Browns</td>
+      <td>1486.77</td>
+      <td>21</td>
+      <td>45.83%</td>
+      <td>53.71%</td>
+      <td>0.45%</td>
+      <td>18.14</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Kansas City Chiefs</td>
+      <td>1506.71</td>
+      <td>29</td>
+      <td>New York Jets</td>
+      <td>1443.72</td>
+      <td>25</td>
+      <td>50.93%</td>
+      <td>48.62%</td>
+      <td>0.45%</td>
+      <td>14.69</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Oakland Raiders</td>
+      <td>1626.95</td>
+      <td>49</td>
+      <td>Buffalo Bills</td>
+      <td>1447.92</td>
+      <td>31</td>
+      <td>66.88%</td>
+      <td>32.66%</td>
+      <td>0.45%</td>
+      <td>20.97</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1603.52</td>
+      <td>20</td>
+      <td>Atlanta Falcons</td>
+      <td>1456.04</td>
+      <td>6</td>
+      <td>62.77%</td>
+      <td>36.78%</td>
+      <td>0.45%</td>
+      <td>20.82</td>
+    </tr>
+    <tr>
+      <td>2002-10-06</td>
+      <td>San Diego Chargers</td>
+      <td>1568.34</td>
+      <td>9</td>
+      <td>Denver Broncos</td>
+      <td>1535.83</td>
+      <td>26</td>
+      <td>46.55%</td>
+      <td>53.00%</td>
+      <td>0.45%</td>
+      <td>-29.00</td>
+    </tr>
+    <tr>
+      <td>2002-10-07</td>
+      <td>Chicago Bears</td>
+      <td>1535.01</td>
+      <td>21</td>
+      <td>@ Green Bay Packers</td>
+      <td>1568.06</td>
+      <td>34</td>
+      <td>52.92%</td>
+      <td>46.63%</td>
+      <td>0.45%</td>
+      <td>-28.82</td>
+    </tr>
+    <tr>
+      <td>2002-10-07</td>
+      <td>Green Bay Packers</td>
+      <td>1568.06</td>
+      <td>34</td>
+      <td>Chicago Bears</td>
+      <td>1535.01</td>
+      <td>21</td>
+      <td>46.63%</td>
+      <td>52.92%</td>
+      <td>0.45%</td>
+      <td>28.82</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Detroit Lions</td>
+      <td>1391.09</td>
+      <td>24</td>
+      <td>Minnesota Vikings</td>
+      <td>1375.71</td>
+      <td>31</td>
+      <td>44.11%</td>
+      <td>55.44%</td>
+      <td>0.45%</td>
+      <td>-17.64</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Miami Dolphins</td>
+      <td>1585.37</td>
+      <td>24</td>
+      <td>Denver Broncos</td>
+      <td>1564.84</td>
+      <td>22</td>
+      <td>44.84%</td>
+      <td>54.71%</td>
+      <td>0.45%</td>
+      <td>11.68</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Buffalo Bills</td>
+      <td>1426.94</td>
+      <td>31</td>
+      <td>Houston Texans</td>
+      <td>1266.36</td>
+      <td>24</td>
+      <td>64.50%</td>
+      <td>35.04%</td>
+      <td>0.45%</td>
+      <td>14.03</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Carolina Panthers</td>
+      <td>1460.58</td>
+      <td>13</td>
+      <td>Dallas Cowboys</td>
+      <td>1427.68</td>
+      <td>14</td>
+      <td>46.60%</td>
+      <td>52.94%</td>
+      <td>0.45%</td>
+      <td>-7.04</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Green Bay Packers</td>
+      <td>1596.88</td>
+      <td>28</td>
+      <td>New England Patriots</td>
+      <td>1617.65</td>
+      <td>10</td>
+      <td>39.06%</td>
+      <td>60.49%</td>
+      <td>0.45%</td>
+      <td>38.75</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1532.95</td>
+      <td>34</td>
+      <td>Cincinnati Bengals</td>
+      <td>1321.86</td>
+      <td>7</td>
+      <td>70.80%</td>
+      <td>28.74%</td>
+      <td>0.45%</td>
+      <td>22.61</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1550.45</td>
+      <td>14</td>
+      <td>Tennessee Titans</td>
+      <td>1425.05</td>
+      <td>23</td>
+      <td>59.77%</td>
+      <td>39.78%</td>
+      <td>0.45%</td>
+      <td>-27.07</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Cleveland Browns</td>
+      <td>1468.63</td>
+      <td>3</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1624.34</td>
+      <td>17</td>
+      <td>22.76%</td>
+      <td>76.78%</td>
+      <td>0.45%</td>
+      <td>-12.90</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Oakland Raiders</td>
+      <td>1647.92</td>
+      <td>13</td>
+      <td>St. Louis Rams</td>
+      <td>1508.01</td>
+      <td>28</td>
+      <td>61.75%</td>
+      <td>37.80%</td>
+      <td>0.45%</td>
+      <td>-36.11</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Baltimore Ravens</td>
+      <td>1532.43</td>
+      <td>20</td>
+      <td>Indianapolis Colts</td>
+      <td>1513.02</td>
+      <td>22</td>
+      <td>44.68%</td>
+      <td>54.87%</td>
+      <td>0.45%</td>
+      <td>-9.55</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Atlanta Falcons</td>
+      <td>1435.22</td>
+      <td>17</td>
+      <td>New York Giants</td>
+      <td>1493.75</td>
+      <td>10</td>
+      <td>34.02%</td>
+      <td>65.52%</td>
+      <td>0.45%</td>
+      <td>26.18</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Kansas City Chiefs</td>
+      <td>1521.40</td>
+      <td>34</td>
+      <td>San Diego Chargers</td>
+      <td>1539.34</td>
+      <td>35</td>
+      <td>39.44%</td>
+      <td>60.10%</td>
+      <td>0.45%</td>
+      <td>-5.96</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>New Orleans Saints</td>
+      <td>1527.81</td>
+      <td>43</td>
+      <td>Washington Redskins</td>
+      <td>1512.36</td>
+      <td>27</td>
+      <td>44.11%</td>
+      <td>55.43%</td>
+      <td>0.45%</td>
+      <td>33.48</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Denver Broncos</td>
+      <td>1564.84</td>
+      <td>22</td>
+      <td>@ Miami Dolphins</td>
+      <td>1585.37</td>
+      <td>24</td>
+      <td>54.71%</td>
+      <td>44.84%</td>
+      <td>0.45%</td>
+      <td>-11.69</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Dallas Cowboys</td>
+      <td>1427.68</td>
+      <td>14</td>
+      <td>@ Carolina Panthers</td>
+      <td>1460.58</td>
+      <td>13</td>
+      <td>52.94%</td>
+      <td>46.60%</td>
+      <td>0.45%</td>
+      <td>7.04</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Minnesota Vikings</td>
+      <td>1375.71</td>
+      <td>31</td>
+      <td>@ Detroit Lions</td>
+      <td>1391.09</td>
+      <td>24</td>
+      <td>55.44%</td>
+      <td>44.11%</td>
+      <td>0.45%</td>
+      <td>17.64</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>New England Patriots</td>
+      <td>1617.65</td>
+      <td>10</td>
+      <td>@ Green Bay Packers</td>
+      <td>1596.88</td>
+      <td>28</td>
+      <td>60.49%</td>
+      <td>39.06%</td>
+      <td>0.45%</td>
+      <td>-38.75</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>New York Giants</td>
+      <td>1493.75</td>
+      <td>10</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1435.22</td>
+      <td>17</td>
+      <td>65.52%</td>
+      <td>34.02%</td>
+      <td>0.45%</td>
+      <td>-26.17</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Tennessee Titans</td>
+      <td>1425.05</td>
+      <td>23</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1550.45</td>
+      <td>14</td>
+      <td>39.78%</td>
+      <td>59.77%</td>
+      <td>0.45%</td>
+      <td>27.08</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Houston Texans</td>
+      <td>1266.36</td>
+      <td>24</td>
+      <td>@ Buffalo Bills</td>
+      <td>1426.94</td>
+      <td>31</td>
+      <td>35.04%</td>
+      <td>64.50%</td>
+      <td>0.45%</td>
+      <td>-14.03</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>St. Louis Rams</td>
+      <td>1508.01</td>
+      <td>28</td>
+      <td>@ Oakland Raiders</td>
+      <td>1647.92</td>
+      <td>13</td>
+      <td>37.80%</td>
+      <td>61.75%</td>
+      <td>0.45%</td>
+      <td>36.11</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Indianapolis Colts</td>
+      <td>1513.02</td>
+      <td>22</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1532.43</td>
+      <td>20</td>
+      <td>54.87%</td>
+      <td>44.68%</td>
+      <td>0.45%</td>
+      <td>9.55</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Washington Redskins</td>
+      <td>1512.36</td>
+      <td>27</td>
+      <td>@ New Orleans Saints</td>
+      <td>1527.81</td>
+      <td>43</td>
+      <td>55.43%</td>
+      <td>44.11%</td>
+      <td>0.45%</td>
+      <td>-33.48</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>San Diego Chargers</td>
+      <td>1539.34</td>
+      <td>35</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1521.40</td>
+      <td>34</td>
+      <td>60.10%</td>
+      <td>39.44%</td>
+      <td>0.45%</td>
+      <td>5.96</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1624.34</td>
+      <td>17</td>
+      <td>@ Cleveland Browns</td>
+      <td>1468.63</td>
+      <td>3</td>
+      <td>76.78%</td>
+      <td>22.76%</td>
+      <td>0.45%</td>
+      <td>12.90</td>
+    </tr>
+    <tr>
+      <td>2002-10-13</td>
+      <td>Cincinnati Bengals</td>
+      <td>1321.86</td>
+      <td>7</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1532.95</td>
+      <td>34</td>
+      <td>28.74%</td>
+      <td>70.80%</td>
+      <td>0.45%</td>
+      <td>-22.61</td>
+    </tr>
+    <tr>
+      <td>2002-10-14</td>
+      <td>Seattle Seahawks</td>
+      <td>1469.31</td>
+      <td>21</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1587.42</td>
+      <td>28</td>
+      <td>40.79%</td>
+      <td>58.76%</td>
+      <td>0.45%</td>
+      <td>-16.32</td>
+    </tr>
+    <tr>
+      <td>2002-10-14</td>
+      <td>San Francisco 49ers</td>
+      <td>1587.42</td>
+      <td>28</td>
+      <td>Seattle Seahawks</td>
+      <td>1469.31</td>
+      <td>21</td>
+      <td>58.76%</td>
+      <td>40.79%</td>
+      <td>0.45%</td>
+      <td>16.32</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Denver Broncos</td>
+      <td>1553.15</td>
+      <td>37</td>
+      <td>Kansas City Chiefs</td>
+      <td>1515.44</td>
+      <td>34</td>
+      <td>47.30%</td>
+      <td>52.25%</td>
+      <td>0.45%</td>
+      <td>13.67</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Seattle Seahawks</td>
+      <td>1452.99</td>
+      <td>20</td>
+      <td>St. Louis Rams</td>
+      <td>1544.12</td>
+      <td>37</td>
+      <td>29.94%</td>
+      <td>69.60%</td>
+      <td>0.45%</td>
+      <td>-18.69</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>San Diego Chargers</td>
+      <td>1545.30</td>
+      <td>27</td>
+      <td>Oakland Raiders</td>
+      <td>1611.81</td>
+      <td>21</td>
+      <td>33.00%</td>
+      <td>66.55%</td>
+      <td>0.45%</td>
+      <td>24.61</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Buffalo Bills</td>
+      <td>1440.97</td>
+      <td>23</td>
+      <td>Miami Dolphins</td>
+      <td>1597.05</td>
+      <td>10</td>
+      <td>22.72%</td>
+      <td>76.82%</td>
+      <td>0.45%</td>
+      <td>41.82</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Minnesota Vikings</td>
+      <td>1393.35</td>
+      <td>7</td>
+      <td>New York Jets</td>
+      <td>1429.03</td>
+      <td>20</td>
+      <td>37.03%</td>
+      <td>62.51%</td>
+      <td>0.45%</td>
+      <td>-20.20</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>San Francisco 49ers</td>
+      <td>1603.74</td>
+      <td>27</td>
+      <td>New Orleans Saints</td>
+      <td>1561.29</td>
+      <td>35</td>
+      <td>47.98%</td>
+      <td>51.57%</td>
+      <td>0.45%</td>
+      <td>-20.50</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Washington Redskins</td>
+      <td>1478.88</td>
+      <td>9</td>
+      <td>Green Bay Packers</td>
+      <td>1635.63</td>
+      <td>30</td>
+      <td>22.66%</td>
+      <td>76.89%</td>
+      <td>0.45%</td>
+      <td>-15.73</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Chicago Bears</td>
+      <td>1506.19</td>
+      <td>20</td>
+      <td>Detroit Lions</td>
+      <td>1373.45</td>
+      <td>23</td>
+      <td>60.77%</td>
+      <td>38.77%</td>
+      <td>0.45%</td>
+      <td>-15.90</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1637.24</td>
+      <td>10</td>
+      <td>Philadelphia Eagles</td>
+      <td>1642.10</td>
+      <td>20</td>
+      <td>41.26%</td>
+      <td>58.29%</td>
+      <td>0.45%</td>
+      <td>-19.73</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Dallas Cowboys</td>
+      <td>1434.72</td>
+      <td>6</td>
+      <td>Arizona Cardinals</td>
+      <td>1498.30</td>
+      <td>9</td>
+      <td>33.37%</td>
+      <td>66.17%</td>
+      <td>0.45%</td>
+      <td>-8.74</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Miami Dolphins</td>
+      <td>1597.05</td>
+      <td>10</td>
+      <td>@ Buffalo Bills</td>
+      <td>1440.97</td>
+      <td>23</td>
+      <td>76.82%</td>
+      <td>22.72%</td>
+      <td>0.45%</td>
+      <td>-41.81</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Cleveland Browns</td>
+      <td>1455.73</td>
+      <td>34</td>
+      <td>@ Houston Texans</td>
+      <td>1252.33</td>
+      <td>17</td>
+      <td>81.25%</td>
+      <td>18.30%</td>
+      <td>0.45%</td>
+      <td>11.43</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Arizona Cardinals</td>
+      <td>1498.30</td>
+      <td>9</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1434.72</td>
+      <td>6</td>
+      <td>66.17%</td>
+      <td>33.37%</td>
+      <td>0.45%</td>
+      <td>8.75</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Detroit Lions</td>
+      <td>1373.45</td>
+      <td>23</td>
+      <td>@ Chicago Bears</td>
+      <td>1506.19</td>
+      <td>20</td>
+      <td>38.77%</td>
+      <td>60.77%</td>
+      <td>0.45%</td>
+      <td>15.89</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Green Bay Packers</td>
+      <td>1635.63</td>
+      <td>30</td>
+      <td>@ Washington Redskins</td>
+      <td>1478.88</td>
+      <td>9</td>
+      <td>76.89%</td>
+      <td>22.66%</td>
+      <td>0.45%</td>
+      <td>15.73</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Houston Texans</td>
+      <td>1252.33</td>
+      <td>17</td>
+      <td>Cleveland Browns</td>
+      <td>1455.73</td>
+      <td>34</td>
+      <td>18.30%</td>
+      <td>81.25%</td>
+      <td>0.45%</td>
+      <td>-11.43</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>New Orleans Saints</td>
+      <td>1561.29</td>
+      <td>35</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1603.74</td>
+      <td>27</td>
+      <td>51.57%</td>
+      <td>47.98%</td>
+      <td>0.45%</td>
+      <td>20.51</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>New York Jets</td>
+      <td>1429.03</td>
+      <td>20</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1393.35</td>
+      <td>7</td>
+      <td>62.51%</td>
+      <td>37.03%</td>
+      <td>0.45%</td>
+      <td>20.20</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Philadelphia Eagles</td>
+      <td>1642.10</td>
+      <td>20</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1637.24</td>
+      <td>10</td>
+      <td>58.29%</td>
+      <td>41.26%</td>
+      <td>0.45%</td>
+      <td>19.73</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Baltimore Ravens</td>
+      <td>1522.88</td>
+      <td>17</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1523.38</td>
+      <td>10</td>
+      <td>57.54%</td>
+      <td>42.01%</td>
+      <td>0.45%</td>
+      <td>16.80</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Oakland Raiders</td>
+      <td>1611.81</td>
+      <td>21</td>
+      <td>@ San Diego Chargers</td>
+      <td>1545.30</td>
+      <td>27</td>
+      <td>66.55%</td>
+      <td>33.00%</td>
+      <td>0.45%</td>
+      <td>-24.61</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>St. Louis Rams</td>
+      <td>1544.12</td>
+      <td>37</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1452.99</td>
+      <td>20</td>
+      <td>69.60%</td>
+      <td>29.94%</td>
+      <td>0.45%</td>
+      <td>18.69</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Kansas City Chiefs</td>
+      <td>1515.44</td>
+      <td>34</td>
+      <td>@ Denver Broncos</td>
+      <td>1553.15</td>
+      <td>37</td>
+      <td>52.25%</td>
+      <td>47.30%</td>
+      <td>0.45%</td>
+      <td>-13.67</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Atlanta Falcons</td>
+      <td>1461.40</td>
+      <td>30</td>
+      <td>@ Carolina Panthers</td>
+      <td>1453.54</td>
+      <td>0</td>
+      <td>58.71%</td>
+      <td>40.84%</td>
+      <td>0.45%</td>
+      <td>33.82</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Carolina Panthers</td>
+      <td>1453.54</td>
+      <td>0</td>
+      <td>Atlanta Falcons</td>
+      <td>1461.40</td>
+      <td>30</td>
+      <td>40.84%</td>
+      <td>58.71%</td>
+      <td>0.45%</td>
+      <td>-33.83</td>
+    </tr>
+    <tr>
+      <td>2002-10-20</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1523.38</td>
+      <td>10</td>
+      <td>Baltimore Ravens</td>
+      <td>1522.88</td>
+      <td>17</td>
+      <td>42.01%</td>
+      <td>57.54%</td>
+      <td>0.45%</td>
+      <td>-16.80</td>
+    </tr>
+    <tr>
+      <td>2002-10-21</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1555.56</td>
+      <td>28</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1522.57</td>
+      <td>10</td>
+      <td>62.15%</td>
+      <td>37.40%</td>
+      <td>0.45%</td>
+      <td>24.00</td>
+    </tr>
+    <tr>
+      <td>2002-10-21</td>
+      <td>Indianapolis Colts</td>
+      <td>1522.57</td>
+      <td>10</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1555.56</td>
+      <td>28</td>
+      <td>37.40%</td>
+      <td>62.15%</td>
+      <td>0.45%</td>
+      <td>-24.00</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Cleveland Browns</td>
+      <td>1467.16</td>
+      <td>24</td>
+      <td>New York Jets</td>
+      <td>1449.23</td>
+      <td>21</td>
+      <td>44.47%</td>
+      <td>55.08%</td>
+      <td>0.45%</td>
+      <td>14.41</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1579.56</td>
+      <td>31</td>
+      <td>Baltimore Ravens</td>
+      <td>1539.68</td>
+      <td>18</td>
+      <td>47.61%</td>
+      <td>51.94%</td>
+      <td>0.45%</td>
+      <td>28.29</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Arizona Cardinals</td>
+      <td>1507.05</td>
+      <td>28</td>
+      <td>San Francisco 49ers</td>
+      <td>1583.24</td>
+      <td>38</td>
+      <td>31.78%</td>
+      <td>67.77%</td>
+      <td>0.45%</td>
+      <td>-15.21</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Indianapolis Colts</td>
+      <td>1498.57</td>
+      <td>21</td>
+      <td>Washington Redskins</td>
+      <td>1463.15</td>
+      <td>26</td>
+      <td>46.97%</td>
+      <td>52.58%</td>
+      <td>0.45%</td>
+      <td>-15.87</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Seattle Seahawks</td>
+      <td>1434.30</td>
+      <td>17</td>
+      <td>Dallas Cowboys</td>
+      <td>1425.98</td>
+      <td>14</td>
+      <td>43.11%</td>
+      <td>56.44%</td>
+      <td>0.45%</td>
+      <td>14.77</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Detroit Lions</td>
+      <td>1389.34</td>
+      <td>17</td>
+      <td>Buffalo Bills</td>
+      <td>1482.79</td>
+      <td>24</td>
+      <td>29.66%</td>
+      <td>69.88%</td>
+      <td>0.45%</td>
+      <td>-11.88</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Cincinnati Bengals</td>
+      <td>1299.25</td>
+      <td>24</td>
+      <td>@ Tennessee Titans</td>
+      <td>1452.13</td>
+      <td>30</td>
+      <td>36.06%</td>
+      <td>63.49%</td>
+      <td>0.45%</td>
+      <td>-13.36</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1506.58</td>
+      <td>19</td>
+      <td>@ Houston Texans</td>
+      <td>1240.90</td>
+      <td>21</td>
+      <td>86.01%</td>
+      <td>13.53%</td>
+      <td>0.45%</td>
+      <td>-18.37</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Kansas City Chiefs</td>
+      <td>1501.77</td>
+      <td>20</td>
+      <td>@ Oakland Raiders</td>
+      <td>1587.20</td>
+      <td>10</td>
+      <td>45.40%</td>
+      <td>54.15%</td>
+      <td>0.45%</td>
+      <td>25.86</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Minnesota Vikings</td>
+      <td>1373.15</td>
+      <td>25</td>
+      <td>@ Chicago Bears</td>
+      <td>1490.29</td>
+      <td>7</td>
+      <td>40.92%</td>
+      <td>58.62%</td>
+      <td>0.45%</td>
+      <td>37.56</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>New Orleans Saints</td>
+      <td>1581.80</td>
+      <td>35</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1495.22</td>
+      <td>37</td>
+      <td>69.05%</td>
+      <td>30.50%</td>
+      <td>0.45%</td>
+      <td>-14.75</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>New England Patriots</td>
+      <td>1578.90</td>
+      <td>16</td>
+      <td>@ Denver Broncos</td>
+      <td>1566.82</td>
+      <td>24</td>
+      <td>59.29%</td>
+      <td>40.25%</td>
+      <td>0.45%</td>
+      <td>-25.32</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>New York Jets</td>
+      <td>1449.23</td>
+      <td>21</td>
+      <td>@ Cleveland Browns</td>
+      <td>1467.16</td>
+      <td>24</td>
+      <td>55.08%</td>
+      <td>44.47%</td>
+      <td>0.45%</td>
+      <td>-14.41</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Baltimore Ravens</td>
+      <td>1539.68</td>
+      <td>18</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1579.56</td>
+      <td>31</td>
+      <td>51.94%</td>
+      <td>47.61%</td>
+      <td>0.45%</td>
+      <td>-28.29</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>San Francisco 49ers</td>
+      <td>1583.24</td>
+      <td>38</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1507.05</td>
+      <td>28</td>
+      <td>67.77%</td>
+      <td>31.78%</td>
+      <td>0.45%</td>
+      <td>15.20</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Washington Redskins</td>
+      <td>1463.15</td>
+      <td>26</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1498.57</td>
+      <td>21</td>
+      <td>52.58%</td>
+      <td>46.97%</td>
+      <td>0.45%</td>
+      <td>15.87</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Denver Broncos</td>
+      <td>1566.82</td>
+      <td>24</td>
+      <td>New England Patriots</td>
+      <td>1578.90</td>
+      <td>16</td>
+      <td>40.25%</td>
+      <td>59.29%</td>
+      <td>0.45%</td>
+      <td>25.33</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Dallas Cowboys</td>
+      <td>1425.98</td>
+      <td>14</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1434.30</td>
+      <td>17</td>
+      <td>56.44%</td>
+      <td>43.11%</td>
+      <td>0.45%</td>
+      <td>-14.77</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Atlanta Falcons</td>
+      <td>1495.22</td>
+      <td>37</td>
+      <td>New Orleans Saints</td>
+      <td>1581.80</td>
+      <td>35</td>
+      <td>30.50%</td>
+      <td>69.05%</td>
+      <td>0.45%</td>
+      <td>14.74</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Oakland Raiders</td>
+      <td>1587.20</td>
+      <td>10</td>
+      <td>Kansas City Chiefs</td>
+      <td>1501.77</td>
+      <td>20</td>
+      <td>54.15%</td>
+      <td>45.40%</td>
+      <td>0.45%</td>
+      <td>-25.86</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Chicago Bears</td>
+      <td>1490.29</td>
+      <td>7</td>
+      <td>Minnesota Vikings</td>
+      <td>1373.15</td>
+      <td>25</td>
+      <td>58.62%</td>
+      <td>40.92%</td>
+      <td>0.45%</td>
+      <td>-37.55</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Carolina Panthers</td>
+      <td>1419.71</td>
+      <td>9</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1617.51</td>
+      <td>12</td>
+      <td>30.34%</td>
+      <td>69.21%</td>
+      <td>0.45%</td>
+      <td>-7.95</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Buffalo Bills</td>
+      <td>1482.79</td>
+      <td>24</td>
+      <td>@ Detroit Lions</td>
+      <td>1389.34</td>
+      <td>17</td>
+      <td>69.88%</td>
+      <td>29.66%</td>
+      <td>0.45%</td>
+      <td>11.88</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Tennessee Titans</td>
+      <td>1452.13</td>
+      <td>30</td>
+      <td>Cincinnati Bengals</td>
+      <td>1299.25</td>
+      <td>24</td>
+      <td>63.49%</td>
+      <td>36.06%</td>
+      <td>0.45%</td>
+      <td>13.36</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Houston Texans</td>
+      <td>1240.90</td>
+      <td>21</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1506.58</td>
+      <td>19</td>
+      <td>13.53%</td>
+      <td>86.01%</td>
+      <td>0.45%</td>
+      <td>18.37</td>
+    </tr>
+    <tr>
+      <td>2002-10-27</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1617.51</td>
+      <td>12</td>
+      <td>Carolina Panthers</td>
+      <td>1419.71</td>
+      <td>9</td>
+      <td>69.21%</td>
+      <td>30.34%</td>
+      <td>0.45%</td>
+      <td>7.95</td>
+    </tr>
+    <tr>
+      <td>2002-10-28</td>
+      <td>New York Giants</td>
+      <td>1467.58</td>
+      <td>3</td>
+      <td>Philadelphia Eagles</td>
+      <td>1661.83</td>
+      <td>17</td>
+      <td>19.10%</td>
+      <td>80.45%</td>
+      <td>0.45%</td>
+      <td>-10.83</td>
+    </tr>
+    <tr>
+      <td>2002-10-28</td>
+      <td>Philadelphia Eagles</td>
+      <td>1661.83</td>
+      <td>17</td>
+      <td>@ New York Giants</td>
+      <td>1467.58</td>
+      <td>3</td>
+      <td>80.45%</td>
+      <td>19.10%</td>
+      <td>0.45%</td>
+      <td>10.83</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Detroit Lions</td>
+      <td>1377.46</td>
+      <td>9</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1411.21</td>
+      <td>7</td>
+      <td>52.82%</td>
+      <td>46.73%</td>
+      <td>0.45%</td>
+      <td>9.99</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Indianapolis Colts</td>
+      <td>1482.70</td>
+      <td>15</td>
+      <td>@ Tennessee Titans</td>
+      <td>1465.49</td>
+      <td>23</td>
+      <td>60.00%</td>
+      <td>39.54%</td>
+      <td>0.45%</td>
+      <td>-25.62</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Oakland Raiders</td>
+      <td>1561.34</td>
+      <td>20</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1598.44</td>
+      <td>23</td>
+      <td>52.34%</td>
+      <td>47.21%</td>
+      <td>0.45%</td>
+      <td>-13.69</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Atlanta Falcons</td>
+      <td>1509.96</td>
+      <td>20</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1511.39</td>
+      <td>17</td>
+      <td>57.41%</td>
+      <td>42.14%</td>
+      <td>0.45%</td>
+      <td>11.04</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Buffalo Bills</td>
+      <td>1494.67</td>
+      <td>7</td>
+      <td>@ New England Patriots</td>
+      <td>1553.58</td>
+      <td>38</td>
+      <td>49.20%</td>
+      <td>50.34%</td>
+      <td>0.45%</td>
+      <td>-41.39</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Chicago Bears</td>
+      <td>1452.74</td>
+      <td>13</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1672.66</td>
+      <td>19</td>
+      <td>27.71%</td>
+      <td>71.83%</td>
+      <td>0.45%</td>
+      <td>-10.28</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Arizona Cardinals</td>
+      <td>1491.84</td>
+      <td>14</td>
+      <td>@ St. Louis Rams</td>
+      <td>1562.81</td>
+      <td>27</td>
+      <td>47.47%</td>
+      <td>52.08%</td>
+      <td>0.45%</td>
+      <td>-25.87</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Houston Texans</td>
+      <td>1259.27</td>
+      <td>3</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1285.89</td>
+      <td>38</td>
+      <td>53.84%</td>
+      <td>45.71%</td>
+      <td>0.45%</td>
+      <td>-48.11</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Cleveland Browns</td>
+      <td>1481.57</td>
+      <td>20</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1607.85</td>
+      <td>23</td>
+      <td>39.66%</td>
+      <td>59.89%</td>
+      <td>0.45%</td>
+      <td>-10.39</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>San Diego Chargers</td>
+      <td>1569.91</td>
+      <td>13</td>
+      <td>@ New York Jets</td>
+      <td>1434.82</td>
+      <td>44</td>
+      <td>74.63%</td>
+      <td>24.92%</td>
+      <td>0.45%</td>
+      <td>-62.73</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>New York Giants</td>
+      <td>1456.75</td>
+      <td>24</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1488.21</td>
+      <td>17</td>
+      <td>53.15%</td>
+      <td>46.40%</td>
+      <td>0.45%</td>
+      <td>18.55</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1625.46</td>
+      <td>38</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1410.71</td>
+      <td>24</td>
+      <td>82.21%</td>
+      <td>17.34%</td>
+      <td>0.45%</td>
+      <td>9.84</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1607.85</td>
+      <td>23</td>
+      <td>Cleveland Browns</td>
+      <td>1481.57</td>
+      <td>20</td>
+      <td>59.89%</td>
+      <td>39.66%</td>
+      <td>0.45%</td>
+      <td>10.38</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1488.21</td>
+      <td>17</td>
+      <td>New York Giants</td>
+      <td>1456.75</td>
+      <td>24</td>
+      <td>46.40%</td>
+      <td>53.15%</td>
+      <td>0.45%</td>
+      <td>-18.56</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>San Francisco 49ers</td>
+      <td>1598.44</td>
+      <td>23</td>
+      <td>Oakland Raiders</td>
+      <td>1561.34</td>
+      <td>20</td>
+      <td>47.21%</td>
+      <td>52.34%</td>
+      <td>0.45%</td>
+      <td>13.70</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Baltimore Ravens</td>
+      <td>1511.39</td>
+      <td>17</td>
+      <td>Atlanta Falcons</td>
+      <td>1509.96</td>
+      <td>20</td>
+      <td>42.14%</td>
+      <td>57.41%</td>
+      <td>0.45%</td>
+      <td>-11.03</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>New England Patriots</td>
+      <td>1553.58</td>
+      <td>38</td>
+      <td>Buffalo Bills</td>
+      <td>1494.67</td>
+      <td>7</td>
+      <td>50.34%</td>
+      <td>49.20%</td>
+      <td>0.45%</td>
+      <td>41.39</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Philadelphia Eagles</td>
+      <td>1672.66</td>
+      <td>19</td>
+      <td>Chicago Bears</td>
+      <td>1452.74</td>
+      <td>13</td>
+      <td>71.83%</td>
+      <td>27.71%</td>
+      <td>0.45%</td>
+      <td>10.27</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>St. Louis Rams</td>
+      <td>1562.81</td>
+      <td>27</td>
+      <td>Arizona Cardinals</td>
+      <td>1491.84</td>
+      <td>14</td>
+      <td>52.08%</td>
+      <td>47.47%</td>
+      <td>0.45%</td>
+      <td>25.86</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Cincinnati Bengals</td>
+      <td>1285.89</td>
+      <td>38</td>
+      <td>Houston Texans</td>
+      <td>1259.27</td>
+      <td>3</td>
+      <td>45.71%</td>
+      <td>53.84%</td>
+      <td>0.45%</td>
+      <td>48.11</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Washington Redskins</td>
+      <td>1479.02</td>
+      <td>14</td>
+      <td>Seattle Seahawks</td>
+      <td>1449.07</td>
+      <td>3</td>
+      <td>46.18%</td>
+      <td>53.36%</td>
+      <td>0.45%</td>
+      <td>26.74</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>New York Jets</td>
+      <td>1434.82</td>
+      <td>44</td>
+      <td>San Diego Chargers</td>
+      <td>1569.91</td>
+      <td>13</td>
+      <td>24.92%</td>
+      <td>74.63%</td>
+      <td>0.45%</td>
+      <td>62.73</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Minnesota Vikings</td>
+      <td>1410.71</td>
+      <td>24</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1625.46</td>
+      <td>38</td>
+      <td>17.34%</td>
+      <td>82.21%</td>
+      <td>0.45%</td>
+      <td>-9.84</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Seattle Seahawks</td>
+      <td>1449.07</td>
+      <td>3</td>
+      <td>@ Washington Redskins</td>
+      <td>1479.02</td>
+      <td>14</td>
+      <td>53.36%</td>
+      <td>46.18%</td>
+      <td>0.45%</td>
+      <td>-26.74</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Dallas Cowboys</td>
+      <td>1411.21</td>
+      <td>7</td>
+      <td>Detroit Lions</td>
+      <td>1377.46</td>
+      <td>9</td>
+      <td>46.73%</td>
+      <td>52.82%</td>
+      <td>0.45%</td>
+      <td>-9.98</td>
+    </tr>
+    <tr>
+      <td>2002-11-03</td>
+      <td>Tennessee Titans</td>
+      <td>1465.49</td>
+      <td>23</td>
+      <td>Indianapolis Colts</td>
+      <td>1482.70</td>
+      <td>15</td>
+      <td>39.54%</td>
+      <td>60.00%</td>
+      <td>0.45%</td>
+      <td>25.62</td>
+    </tr>
+    <tr>
+      <td>2002-11-04</td>
+      <td>Miami Dolphins</td>
+      <td>1555.24</td>
+      <td>10</td>
+      <td>Green Bay Packers</td>
+      <td>1651.36</td>
+      <td>24</td>
+      <td>29.34%</td>
+      <td>70.20%</td>
+      <td>0.45%</td>
+      <td>-16.62</td>
+    </tr>
+    <tr>
+      <td>2002-11-04</td>
+      <td>Green Bay Packers</td>
+      <td>1651.36</td>
+      <td>24</td>
+      <td>@ Miami Dolphins</td>
+      <td>1555.24</td>
+      <td>10</td>
+      <td>70.20%</td>
+      <td>29.34%</td>
+      <td>0.45%</td>
+      <td>16.62</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1618.23</td>
+      <td>34</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1521.00</td>
+      <td>34</td>
+      <td>70.33%</td>
+      <td>29.21%</td>
+      <td>0.45%</td>
+      <td>-1.54</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Baltimore Ravens</td>
+      <td>1500.36</td>
+      <td>38</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1334.00</td>
+      <td>27</td>
+      <td>77.84%</td>
+      <td>21.70%</td>
+      <td>0.45%</td>
+      <td>10.90</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>San Francisco 49ers</td>
+      <td>1612.14</td>
+      <td>17</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1527.63</td>
+      <td>13</td>
+      <td>68.80%</td>
+      <td>30.75%</td>
+      <td>0.45%</td>
+      <td>9.31</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>St. Louis Rams</td>
+      <td>1588.67</td>
+      <td>28</td>
+      <td>@ San Diego Chargers</td>
+      <td>1507.18</td>
+      <td>24</td>
+      <td>68.43%</td>
+      <td>31.12%</td>
+      <td>0.45%</td>
+      <td>9.42</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Tennessee Titans</td>
+      <td>1491.11</td>
+      <td>17</td>
+      <td>@ Houston Texans</td>
+      <td>1211.16</td>
+      <td>10</td>
+      <td>86.95%</td>
+      <td>12.60%</td>
+      <td>0.45%</td>
+      <td>5.06</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Philadelphia Eagles</td>
+      <td>1682.93</td>
+      <td>13</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1457.08</td>
+      <td>35</td>
+      <td>83.10%</td>
+      <td>16.44%</td>
+      <td>0.45%</td>
+      <td>-58.85</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>New York Jets</td>
+      <td>1497.55</td>
+      <td>13</td>
+      <td>@ Miami Dolphins</td>
+      <td>1538.62</td>
+      <td>10</td>
+      <td>51.77%</td>
+      <td>47.78%</td>
+      <td>0.45%</td>
+      <td>12.51</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>New Orleans Saints</td>
+      <td>1567.05</td>
+      <td>34</td>
+      <td>Carolina Panthers</td>
+      <td>1411.76</td>
+      <td>24</td>
+      <td>63.81%</td>
+      <td>35.74%</td>
+      <td>0.45%</td>
+      <td>17.10</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1469.65</td>
+      <td>26</td>
+      <td>@ Washington Redskins</td>
+      <td>1505.76</td>
+      <td>7</td>
+      <td>52.48%</td>
+      <td>47.06%</td>
+      <td>0.45%</td>
+      <td>31.01</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>New England Patriots</td>
+      <td>1594.97</td>
+      <td>33</td>
+      <td>Chicago Bears</td>
+      <td>1442.46</td>
+      <td>30</td>
+      <td>63.44%</td>
+      <td>36.11%</td>
+      <td>0.45%</td>
+      <td>9.46</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Seattle Seahawks</td>
+      <td>1422.33</td>
+      <td>27</td>
+      <td>Arizona Cardinals</td>
+      <td>1465.97</td>
+      <td>6</td>
+      <td>35.97%</td>
+      <td>63.57%</td>
+      <td>0.45%</td>
+      <td>43.99</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Detroit Lions</td>
+      <td>1387.45</td>
+      <td>14</td>
+      <td>Green Bay Packers</td>
+      <td>1667.98</td>
+      <td>40</td>
+      <td>12.56%</td>
+      <td>86.98%</td>
+      <td>0.45%</td>
+      <td>-9.71</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Washington Redskins</td>
+      <td>1505.76</td>
+      <td>7</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1469.65</td>
+      <td>26</td>
+      <td>47.06%</td>
+      <td>52.48%</td>
+      <td>0.45%</td>
+      <td>-31.01</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>New York Giants</td>
+      <td>1475.30</td>
+      <td>27</td>
+      <td>Minnesota Vikings</td>
+      <td>1400.87</td>
+      <td>20</td>
+      <td>52.57%</td>
+      <td>46.97%</td>
+      <td>0.45%</td>
+      <td>18.78</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Miami Dolphins</td>
+      <td>1538.62</td>
+      <td>10</td>
+      <td>New York Jets</td>
+      <td>1497.55</td>
+      <td>13</td>
+      <td>47.78%</td>
+      <td>51.77%</td>
+      <td>0.45%</td>
+      <td>-12.51</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Houston Texans</td>
+      <td>1211.16</td>
+      <td>10</td>
+      <td>Tennessee Titans</td>
+      <td>1491.11</td>
+      <td>17</td>
+      <td>12.60%</td>
+      <td>86.95%</td>
+      <td>0.45%</td>
+      <td>-5.05</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Atlanta Falcons</td>
+      <td>1521.00</td>
+      <td>34</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1618.23</td>
+      <td>34</td>
+      <td>29.21%</td>
+      <td>70.33%</td>
+      <td>0.45%</td>
+      <td>1.55</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Cincinnati Bengals</td>
+      <td>1334.00</td>
+      <td>27</td>
+      <td>Baltimore Ravens</td>
+      <td>1500.36</td>
+      <td>38</td>
+      <td>21.70%</td>
+      <td>77.84%</td>
+      <td>0.45%</td>
+      <td>-10.90</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Indianapolis Colts</td>
+      <td>1457.08</td>
+      <td>35</td>
+      <td>Philadelphia Eagles</td>
+      <td>1682.93</td>
+      <td>13</td>
+      <td>16.44%</td>
+      <td>83.10%</td>
+      <td>0.45%</td>
+      <td>58.85</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>San Diego Chargers</td>
+      <td>1507.18</td>
+      <td>24</td>
+      <td>St. Louis Rams</td>
+      <td>1588.67</td>
+      <td>28</td>
+      <td>31.12%</td>
+      <td>68.43%</td>
+      <td>0.45%</td>
+      <td>-9.42</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Kansas City Chiefs</td>
+      <td>1527.63</td>
+      <td>13</td>
+      <td>San Francisco 49ers</td>
+      <td>1612.14</td>
+      <td>17</td>
+      <td>30.75%</td>
+      <td>68.80%</td>
+      <td>0.45%</td>
+      <td>-9.31</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Carolina Panthers</td>
+      <td>1411.76</td>
+      <td>24</td>
+      <td>@ New Orleans Saints</td>
+      <td>1567.05</td>
+      <td>34</td>
+      <td>35.74%</td>
+      <td>63.81%</td>
+      <td>0.45%</td>
+      <td>-17.10</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Chicago Bears</td>
+      <td>1442.46</td>
+      <td>30</td>
+      <td>@ New England Patriots</td>
+      <td>1594.97</td>
+      <td>33</td>
+      <td>36.11%</td>
+      <td>63.44%</td>
+      <td>0.45%</td>
+      <td>-9.46</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Arizona Cardinals</td>
+      <td>1465.97</td>
+      <td>6</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1422.33</td>
+      <td>27</td>
+      <td>63.57%</td>
+      <td>35.97%</td>
+      <td>0.45%</td>
+      <td>-43.98</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Minnesota Vikings</td>
+      <td>1400.87</td>
+      <td>20</td>
+      <td>@ New York Giants</td>
+      <td>1475.30</td>
+      <td>27</td>
+      <td>46.97%</td>
+      <td>52.57%</td>
+      <td>0.45%</td>
+      <td>-18.78</td>
+    </tr>
+    <tr>
+      <td>2002-11-10</td>
+      <td>Green Bay Packers</td>
+      <td>1667.98</td>
+      <td>40</td>
+      <td>@ Detroit Lions</td>
+      <td>1387.45</td>
+      <td>14</td>
+      <td>86.98%</td>
+      <td>12.56%</td>
+      <td>0.45%</td>
+      <td>9.71</td>
+    </tr>
+    <tr>
+      <td>2002-11-11</td>
+      <td>Denver Broncos</td>
+      <td>1592.15</td>
+      <td>10</td>
+      <td>@ Oakland Raiders</td>
+      <td>1547.65</td>
+      <td>34</td>
+      <td>63.69%</td>
+      <td>35.86%</td>
+      <td>0.45%</td>
+      <td>-47.11</td>
+    </tr>
+    <tr>
+      <td>2002-11-11</td>
+      <td>Oakland Raiders</td>
+      <td>1547.65</td>
+      <td>34</td>
+      <td>Denver Broncos</td>
+      <td>1592.15</td>
+      <td>10</td>
+      <td>35.86%</td>
+      <td>63.69%</td>
+      <td>0.45%</td>
+      <td>47.10</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Indianapolis Colts</td>
+      <td>1515.93</td>
+      <td>20</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1401.23</td>
+      <td>3</td>
+      <td>72.37%</td>
+      <td>27.18%</td>
+      <td>0.45%</td>
+      <td>16.97</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1500.66</td>
+      <td>24</td>
+      <td>Houston Texans</td>
+      <td>1206.11</td>
+      <td>21</td>
+      <td>79.58%</td>
+      <td>19.97%</td>
+      <td>0.45%</td>
+      <td>5.24</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>San Francisco 49ers</td>
+      <td>1621.45</td>
+      <td>17</td>
+      <td>San Diego Chargers</td>
+      <td>1497.76</td>
+      <td>20</td>
+      <td>59.53%</td>
+      <td>40.02%</td>
+      <td>0.45%</td>
+      <td>-15.57</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Carolina Panthers</td>
+      <td>1394.66</td>
+      <td>10</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1635.30</td>
+      <td>23</td>
+      <td>15.31%</td>
+      <td>84.24%</td>
+      <td>0.45%</td>
+      <td>-8.36</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Denver Broncos</td>
+      <td>1545.04</td>
+      <td>31</td>
+      <td>Seattle Seahawks</td>
+      <td>1466.32</td>
+      <td>9</td>
+      <td>53.19%</td>
+      <td>46.36%</td>
+      <td>0.45%</td>
+      <td>32.86</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>New England Patriots</td>
+      <td>1604.43</td>
+      <td>20</td>
+      <td>Oakland Raiders</td>
+      <td>1594.75</td>
+      <td>27</td>
+      <td>43.30%</td>
+      <td>56.25%</td>
+      <td>0.45%</td>
+      <td>-17.31</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Arizona Cardinals</td>
+      <td>1421.99</td>
+      <td>14</td>
+      <td>Philadelphia Eagles</td>
+      <td>1624.08</td>
+      <td>38</td>
+      <td>18.41%</td>
+      <td>81.13%</td>
+      <td>0.45%</td>
+      <td>-13.67</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1616.69</td>
+      <td>23</td>
+      <td>Tennessee Titans</td>
+      <td>1496.17</td>
+      <td>31</td>
+      <td>59.09%</td>
+      <td>40.46%</td>
+      <td>0.45%</td>
+      <td>-25.24</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Washington Redskins</td>
+      <td>1474.75</td>
+      <td>17</td>
+      <td>New York Giants</td>
+      <td>1494.08</td>
+      <td>19</td>
+      <td>39.25%</td>
+      <td>60.29%</td>
+      <td>0.45%</td>
+      <td>-8.39</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Green Bay Packers</td>
+      <td>1677.69</td>
+      <td>21</td>
+      <td>Minnesota Vikings</td>
+      <td>1382.09</td>
+      <td>31</td>
+      <td>79.67%</td>
+      <td>19.87%</td>
+      <td>0.45%</td>
+      <td>-38.04</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Baltimore Ravens</td>
+      <td>1511.26</td>
+      <td>7</td>
+      <td>Miami Dolphins</td>
+      <td>1526.11</td>
+      <td>26</td>
+      <td>39.87%</td>
+      <td>59.68%</td>
+      <td>0.45%</td>
+      <td>-26.28</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Buffalo Bills</td>
+      <td>1453.28</td>
+      <td>16</td>
+      <td>Kansas City Chiefs</td>
+      <td>1518.32</td>
+      <td>17</td>
+      <td>33.18%</td>
+      <td>66.36%</td>
+      <td>0.45%</td>
+      <td>-5.03</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>New Orleans Saints</td>
+      <td>1584.15</td>
+      <td>17</td>
+      <td>Atlanta Falcons</td>
+      <td>1522.55</td>
+      <td>24</td>
+      <td>50.73%</td>
+      <td>48.82%</td>
+      <td>0.45%</td>
+      <td>-20.28</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Detroit Lions</td>
+      <td>1377.74</td>
+      <td>14</td>
+      <td>@ New York Jets</td>
+      <td>1510.06</td>
+      <td>31</td>
+      <td>38.83%</td>
+      <td>60.72%</td>
+      <td>0.45%</td>
+      <td>-24.22</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Cleveland Browns</td>
+      <td>1471.18</td>
+      <td>27</td>
+      <td>Cincinnati Bengals</td>
+      <td>1323.10</td>
+      <td>20</td>
+      <td>62.85%</td>
+      <td>36.70%</td>
+      <td>0.45%</td>
+      <td>14.69</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Houston Texans</td>
+      <td>1206.11</td>
+      <td>21</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1500.66</td>
+      <td>24</td>
+      <td>19.97%</td>
+      <td>79.58%</td>
+      <td>0.45%</td>
+      <td>-5.24</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Cincinnati Bengals</td>
+      <td>1323.10</td>
+      <td>20</td>
+      <td>@ Cleveland Browns</td>
+      <td>1471.18</td>
+      <td>27</td>
+      <td>36.70%</td>
+      <td>62.85%</td>
+      <td>0.45%</td>
+      <td>-14.69</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Atlanta Falcons</td>
+      <td>1522.55</td>
+      <td>24</td>
+      <td>@ New Orleans Saints</td>
+      <td>1584.15</td>
+      <td>17</td>
+      <td>48.82%</td>
+      <td>50.73%</td>
+      <td>0.45%</td>
+      <td>20.27</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Kansas City Chiefs</td>
+      <td>1518.32</td>
+      <td>17</td>
+      <td>@ Buffalo Bills</td>
+      <td>1453.28</td>
+      <td>16</td>
+      <td>66.36%</td>
+      <td>33.18%</td>
+      <td>0.45%</td>
+      <td>5.02</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Miami Dolphins</td>
+      <td>1526.11</td>
+      <td>26</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1511.26</td>
+      <td>7</td>
+      <td>59.68%</td>
+      <td>39.87%</td>
+      <td>0.45%</td>
+      <td>26.28</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>New York Jets</td>
+      <td>1510.06</td>
+      <td>31</td>
+      <td>Detroit Lions</td>
+      <td>1377.74</td>
+      <td>14</td>
+      <td>60.72%</td>
+      <td>38.83%</td>
+      <td>0.45%</td>
+      <td>24.21</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>New York Giants</td>
+      <td>1494.08</td>
+      <td>19</td>
+      <td>@ Washington Redskins</td>
+      <td>1474.75</td>
+      <td>17</td>
+      <td>60.29%</td>
+      <td>39.25%</td>
+      <td>0.45%</td>
+      <td>8.40</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Minnesota Vikings</td>
+      <td>1382.09</td>
+      <td>31</td>
+      <td>@ Green Bay Packers</td>
+      <td>1677.69</td>
+      <td>21</td>
+      <td>19.87%</td>
+      <td>79.67%</td>
+      <td>0.45%</td>
+      <td>38.04</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Philadelphia Eagles</td>
+      <td>1624.08</td>
+      <td>38</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1421.99</td>
+      <td>14</td>
+      <td>81.13%</td>
+      <td>18.41%</td>
+      <td>0.45%</td>
+      <td>13.66</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Oakland Raiders</td>
+      <td>1594.75</td>
+      <td>27</td>
+      <td>@ New England Patriots</td>
+      <td>1604.43</td>
+      <td>20</td>
+      <td>56.25%</td>
+      <td>43.30%</td>
+      <td>0.45%</td>
+      <td>17.32</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Seattle Seahawks</td>
+      <td>1466.32</td>
+      <td>9</td>
+      <td>@ Denver Broncos</td>
+      <td>1545.04</td>
+      <td>31</td>
+      <td>46.36%</td>
+      <td>53.19%</td>
+      <td>0.45%</td>
+      <td>-32.86</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1635.30</td>
+      <td>23</td>
+      <td>@ Carolina Panthers</td>
+      <td>1394.66</td>
+      <td>10</td>
+      <td>84.24%</td>
+      <td>15.31%</td>
+      <td>0.45%</td>
+      <td>8.36</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Dallas Cowboys</td>
+      <td>1401.23</td>
+      <td>3</td>
+      <td>Indianapolis Colts</td>
+      <td>1515.93</td>
+      <td>20</td>
+      <td>27.18%</td>
+      <td>72.37%</td>
+      <td>0.45%</td>
+      <td>-16.97</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>Tennessee Titans</td>
+      <td>1496.17</td>
+      <td>31</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1616.69</td>
+      <td>23</td>
+      <td>40.46%</td>
+      <td>59.09%</td>
+      <td>0.45%</td>
+      <td>25.23</td>
+    </tr>
+    <tr>
+      <td>2002-11-17</td>
+      <td>San Diego Chargers</td>
+      <td>1497.76</td>
+      <td>20</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1621.45</td>
+      <td>17</td>
+      <td>40.02%</td>
+      <td>59.53%</td>
+      <td>0.45%</td>
+      <td>15.57</td>
+    </tr>
+    <tr>
+      <td>2002-11-18</td>
+      <td>Chicago Bears</td>
+      <td>1433.00</td>
+      <td>16</td>
+      <td>St. Louis Rams</td>
+      <td>1598.09</td>
+      <td>21</td>
+      <td>21.83%</td>
+      <td>77.72%</td>
+      <td>0.45%</td>
+      <td>-7.39</td>
+    </tr>
+    <tr>
+      <td>2002-11-18</td>
+      <td>St. Louis Rams</td>
+      <td>1598.09</td>
+      <td>21</td>
+      <td>@ Chicago Bears</td>
+      <td>1433.00</td>
+      <td>16</td>
+      <td>77.72%</td>
+      <td>21.83%</td>
+      <td>0.45%</td>
+      <td>7.39</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>New York Giants</td>
+      <td>1502.48</td>
+      <td>14</td>
+      <td>Houston Texans</td>
+      <td>1200.87</td>
+      <td>16</td>
+      <td>80.22%</td>
+      <td>19.33%</td>
+      <td>0.45%</td>
+      <td>-17.13</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1505.90</td>
+      <td>19</td>
+      <td>Dallas Cowboys</td>
+      <td>1384.26</td>
+      <td>21</td>
+      <td>59.25%</td>
+      <td>40.30%</td>
+      <td>0.45%</td>
+      <td>-12.65</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>St. Louis Rams</td>
+      <td>1605.48</td>
+      <td>17</td>
+      <td>Washington Redskins</td>
+      <td>1466.36</td>
+      <td>20</td>
+      <td>61.64%</td>
+      <td>37.90%</td>
+      <td>0.45%</td>
+      <td>-16.12</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>San Diego Chargers</td>
+      <td>1513.33</td>
+      <td>3</td>
+      <td>Miami Dolphins</td>
+      <td>1552.39</td>
+      <td>30</td>
+      <td>36.58%</td>
+      <td>62.97%</td>
+      <td>0.45%</td>
+      <td>-28.75</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Green Bay Packers</td>
+      <td>1639.65</td>
+      <td>7</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1643.66</td>
+      <td>21</td>
+      <td>41.37%</td>
+      <td>58.17%</td>
+      <td>0.45%</td>
+      <td>-23.41</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Kansas City Chiefs</td>
+      <td>1523.34</td>
+      <td>32</td>
+      <td>Seattle Seahawks</td>
+      <td>1433.46</td>
+      <td>39</td>
+      <td>54.78%</td>
+      <td>44.76%</td>
+      <td>0.45%</td>
+      <td>-21.89</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Tennessee Titans</td>
+      <td>1521.40</td>
+      <td>12</td>
+      <td>Baltimore Ravens</td>
+      <td>1484.98</td>
+      <td>13</td>
+      <td>47.11%</td>
+      <td>52.44%</td>
+      <td>0.45%</td>
+      <td>-7.12</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Buffalo Bills</td>
+      <td>1448.25</td>
+      <td>13</td>
+      <td>New York Jets</td>
+      <td>1534.27</td>
+      <td>31</td>
+      <td>30.56%</td>
+      <td>68.98%</td>
+      <td>0.45%</td>
+      <td>-19.62</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Minnesota Vikings</td>
+      <td>1420.13</td>
+      <td>17</td>
+      <td>New England Patriots</td>
+      <td>1587.12</td>
+      <td>24</td>
+      <td>21.64%</td>
+      <td>77.90%</td>
+      <td>0.45%</td>
+      <td>-8.67</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Cleveland Browns</td>
+      <td>1485.87</td>
+      <td>24</td>
+      <td>New Orleans Saints</td>
+      <td>1563.87</td>
+      <td>15</td>
+      <td>31.55%</td>
+      <td>67.99%</td>
+      <td>0.45%</td>
+      <td>30.79</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Indianapolis Colts</td>
+      <td>1532.90</td>
+      <td>23</td>
+      <td>Denver Broncos</td>
+      <td>1577.90</td>
+      <td>20</td>
+      <td>35.79%</td>
+      <td>63.76%</td>
+      <td>0.45%</td>
+      <td>16.67</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Cincinnati Bengals</td>
+      <td>1308.41</td>
+      <td>21</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1591.45</td>
+      <td>29</td>
+      <td>12.40%</td>
+      <td>87.14%</td>
+      <td>0.45%</td>
+      <td>-5.32</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Detroit Lions</td>
+      <td>1353.52</td>
+      <td>17</td>
+      <td>Chicago Bears</td>
+      <td>1425.61</td>
+      <td>20</td>
+      <td>32.29%</td>
+      <td>67.25%</td>
+      <td>0.45%</td>
+      <td>-8.46</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Houston Texans</td>
+      <td>1200.87</td>
+      <td>16</td>
+      <td>@ New York Giants</td>
+      <td>1502.48</td>
+      <td>14</td>
+      <td>19.33%</td>
+      <td>80.22%</td>
+      <td>0.45%</td>
+      <td>17.13</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Miami Dolphins</td>
+      <td>1552.39</td>
+      <td>30</td>
+      <td>@ San Diego Chargers</td>
+      <td>1513.33</td>
+      <td>3</td>
+      <td>62.97%</td>
+      <td>36.58%</td>
+      <td>0.45%</td>
+      <td>28.75</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1643.66</td>
+      <td>21</td>
+      <td>@ Green Bay Packers</td>
+      <td>1639.65</td>
+      <td>7</td>
+      <td>58.17%</td>
+      <td>41.37%</td>
+      <td>0.45%</td>
+      <td>23.41</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Seattle Seahawks</td>
+      <td>1433.46</td>
+      <td>39</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1523.34</td>
+      <td>32</td>
+      <td>44.76%</td>
+      <td>54.78%</td>
+      <td>0.45%</td>
+      <td>21.89</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Baltimore Ravens</td>
+      <td>1484.98</td>
+      <td>13</td>
+      <td>@ Tennessee Titans</td>
+      <td>1521.40</td>
+      <td>12</td>
+      <td>52.44%</td>
+      <td>47.11%</td>
+      <td>0.45%</td>
+      <td>7.12</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1591.45</td>
+      <td>29</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1308.41</td>
+      <td>21</td>
+      <td>87.14%</td>
+      <td>12.40%</td>
+      <td>0.45%</td>
+      <td>5.32</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>New York Jets</td>
+      <td>1534.27</td>
+      <td>31</td>
+      <td>@ Buffalo Bills</td>
+      <td>1448.25</td>
+      <td>13</td>
+      <td>68.98%</td>
+      <td>30.56%</td>
+      <td>0.45%</td>
+      <td>19.63</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>New England Patriots</td>
+      <td>1587.12</td>
+      <td>24</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1420.13</td>
+      <td>17</td>
+      <td>77.90%</td>
+      <td>21.64%</td>
+      <td>0.45%</td>
+      <td>8.67</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>New Orleans Saints</td>
+      <td>1563.87</td>
+      <td>15</td>
+      <td>@ Cleveland Browns</td>
+      <td>1485.87</td>
+      <td>24</td>
+      <td>67.99%</td>
+      <td>31.55%</td>
+      <td>0.45%</td>
+      <td>-30.79</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Denver Broncos</td>
+      <td>1577.90</td>
+      <td>20</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1532.90</td>
+      <td>23</td>
+      <td>63.76%</td>
+      <td>35.79%</td>
+      <td>0.45%</td>
+      <td>-16.67</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Arizona Cardinals</td>
+      <td>1408.32</td>
+      <td>20</td>
+      <td>@ Oakland Raiders</td>
+      <td>1612.07</td>
+      <td>41</td>
+      <td>29.62%</td>
+      <td>69.93%</td>
+      <td>0.45%</td>
+      <td>-20.54</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Chicago Bears</td>
+      <td>1425.61</td>
+      <td>20</td>
+      <td>@ Detroit Lions</td>
+      <td>1353.52</td>
+      <td>17</td>
+      <td>67.25%</td>
+      <td>32.29%</td>
+      <td>0.45%</td>
+      <td>8.46</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Carolina Panthers</td>
+      <td>1386.30</td>
+      <td>0</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1542.82</td>
+      <td>41</td>
+      <td>35.58%</td>
+      <td>63.97%</td>
+      <td>0.45%</td>
+      <td>-34.46</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Oakland Raiders</td>
+      <td>1612.07</td>
+      <td>41</td>
+      <td>Arizona Cardinals</td>
+      <td>1408.32</td>
+      <td>20</td>
+      <td>69.93%</td>
+      <td>29.62%</td>
+      <td>0.45%</td>
+      <td>20.55</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Atlanta Falcons</td>
+      <td>1542.82</td>
+      <td>41</td>
+      <td>Carolina Panthers</td>
+      <td>1386.30</td>
+      <td>0</td>
+      <td>63.97%</td>
+      <td>35.58%</td>
+      <td>0.45%</td>
+      <td>34.46</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Washington Redskins</td>
+      <td>1466.36</td>
+      <td>20</td>
+      <td>@ St. Louis Rams</td>
+      <td>1605.48</td>
+      <td>17</td>
+      <td>37.90%</td>
+      <td>61.64%</td>
+      <td>0.45%</td>
+      <td>16.12</td>
+    </tr>
+    <tr>
+      <td>2002-11-24</td>
+      <td>Dallas Cowboys</td>
+      <td>1384.26</td>
+      <td>21</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1505.90</td>
+      <td>19</td>
+      <td>40.30%</td>
+      <td>59.25%</td>
+      <td>0.45%</td>
+      <td>12.65</td>
+    </tr>
+    <tr>
+      <td>2002-11-25</td>
+      <td>San Francisco 49ers</td>
+      <td>1605.88</td>
+      <td>17</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1637.74</td>
+      <td>38</td>
+      <td>53.09%</td>
+      <td>46.46%</td>
+      <td>0.45%</td>
+      <td>-36.75</td>
+    </tr>
+    <tr>
+      <td>2002-11-25</td>
+      <td>Philadelphia Eagles</td>
+      <td>1637.74</td>
+      <td>38</td>
+      <td>San Francisco 49ers</td>
+      <td>1605.88</td>
+      <td>17</td>
+      <td>46.46%</td>
+      <td>53.09%</td>
+      <td>0.45%</td>
+      <td>36.75</td>
+    </tr>
+    <tr>
+      <td>2002-11-28</td>
+      <td>Washington Redskins</td>
+      <td>1482.48</td>
+      <td>20</td>
+      <td>Dallas Cowboys</td>
+      <td>1396.91</td>
+      <td>27</td>
+      <td>54.17%</td>
+      <td>45.38%</td>
+      <td>0.45%</td>
+      <td>-21.65</td>
+    </tr>
+    <tr>
+      <td>2002-11-28</td>
+      <td>New England Patriots</td>
+      <td>1595.79</td>
+      <td>20</td>
+      <td>Detroit Lions</td>
+      <td>1345.06</td>
+      <td>12</td>
+      <td>75.24%</td>
+      <td>24.30%</td>
+      <td>0.45%</td>
+      <td>10.41</td>
+    </tr>
+    <tr>
+      <td>2002-11-28</td>
+      <td>Dallas Cowboys</td>
+      <td>1396.91</td>
+      <td>27</td>
+      <td>@ Washington Redskins</td>
+      <td>1482.48</td>
+      <td>20</td>
+      <td>45.38%</td>
+      <td>54.17%</td>
+      <td>0.45%</td>
+      <td>21.65</td>
+    </tr>
+    <tr>
+      <td>2002-11-28</td>
+      <td>Detroit Lions</td>
+      <td>1345.06</td>
+      <td>12</td>
+      <td>@ New England Patriots</td>
+      <td>1595.79</td>
+      <td>20</td>
+      <td>24.30%</td>
+      <td>75.24%</td>
+      <td>0.45%</td>
+      <td>-10.41</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Denver Broncos</td>
+      <td>1561.23</td>
+      <td>27</td>
+      <td>San Diego Chargers</td>
+      <td>1484.58</td>
+      <td>30</td>
+      <td>52.89%</td>
+      <td>46.65%</td>
+      <td>0.45%</td>
+      <td>-13.84</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>San Diego Chargers</td>
+      <td>1484.58</td>
+      <td>30</td>
+      <td>@ Denver Broncos</td>
+      <td>1561.23</td>
+      <td>27</td>
+      <td>46.65%</td>
+      <td>52.89%</td>
+      <td>0.45%</td>
+      <td>13.83</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>New York Giants</td>
+      <td>1485.35</td>
+      <td>29</td>
+      <td>@ Tennessee Titans</td>
+      <td>1514.28</td>
+      <td>32</td>
+      <td>53.51%</td>
+      <td>46.04%</td>
+      <td>0.45%</td>
+      <td>-14.00</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Cleveland Browns</td>
+      <td>1516.66</td>
+      <td>6</td>
+      <td>@ Carolina Panthers</td>
+      <td>1351.84</td>
+      <td>13</td>
+      <td>77.69%</td>
+      <td>21.85%</td>
+      <td>0.45%</td>
+      <td>-31.03</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Buffalo Bills</td>
+      <td>1428.63</td>
+      <td>38</td>
+      <td>@ Miami Dolphins</td>
+      <td>1581.14</td>
+      <td>21</td>
+      <td>36.11%</td>
+      <td>63.44%</td>
+      <td>0.45%</td>
+      <td>39.49</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>New Orleans Saints</td>
+      <td>1533.08</td>
+      <td>23</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1667.07</td>
+      <td>20</td>
+      <td>38.60%</td>
+      <td>60.94%</td>
+      <td>0.45%</td>
+      <td>15.94</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Minnesota Vikings</td>
+      <td>1411.46</td>
+      <td>24</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1577.28</td>
+      <td>30</td>
+      <td>34.36%</td>
+      <td>65.19%</td>
+      <td>0.45%</td>
+      <td>-12.73</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>San Francisco 49ers</td>
+      <td>1569.13</td>
+      <td>31</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1455.35</td>
+      <td>24</td>
+      <td>72.26%</td>
+      <td>27.28%</td>
+      <td>0.45%</td>
+      <td>10.93</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Cincinnati Bengals</td>
+      <td>1303.09</td>
+      <td>23</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1492.10</td>
+      <td>27</td>
+      <td>31.41%</td>
+      <td>68.13%</td>
+      <td>0.45%</td>
+      <td>-9.51</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Kansas City Chiefs</td>
+      <td>1501.45</td>
+      <td>49</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1387.78</td>
+      <td>0</td>
+      <td>72.25%</td>
+      <td>27.29%</td>
+      <td>0.45%</td>
+      <td>28.93</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Indianapolis Colts</td>
+      <td>1549.57</td>
+      <td>19</td>
+      <td>@ Houston Texans</td>
+      <td>1218.00</td>
+      <td>3</td>
+      <td>89.87%</td>
+      <td>9.67%</td>
+      <td>0.45%</td>
+      <td>5.87</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1493.25</td>
+      <td>23</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1596.77</td>
+      <td>25</td>
+      <td>42.83%</td>
+      <td>56.71%</td>
+      <td>0.45%</td>
+      <td>-9.16</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Green Bay Packers</td>
+      <td>1616.24</td>
+      <td>30</td>
+      <td>@ Chicago Bears</td>
+      <td>1434.07</td>
+      <td>20</td>
+      <td>79.35%</td>
+      <td>20.20%</td>
+      <td>0.45%</td>
+      <td>9.68</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>St. Louis Rams</td>
+      <td>1589.36</td>
+      <td>3</td>
+      <td>Philadelphia Eagles</td>
+      <td>1674.49</td>
+      <td>10</td>
+      <td>30.67%</td>
+      <td>68.87%</td>
+      <td>0.45%</td>
+      <td>-12.28</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Tennessee Titans</td>
+      <td>1514.28</td>
+      <td>32</td>
+      <td>New York Giants</td>
+      <td>1485.35</td>
+      <td>29</td>
+      <td>46.04%</td>
+      <td>53.51%</td>
+      <td>0.45%</td>
+      <td>14.00</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Carolina Panthers</td>
+      <td>1351.84</td>
+      <td>13</td>
+      <td>Cleveland Browns</td>
+      <td>1516.66</td>
+      <td>6</td>
+      <td>21.85%</td>
+      <td>77.69%</td>
+      <td>0.45%</td>
+      <td>31.03</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Miami Dolphins</td>
+      <td>1581.14</td>
+      <td>21</td>
+      <td>Buffalo Bills</td>
+      <td>1428.63</td>
+      <td>38</td>
+      <td>63.44%</td>
+      <td>36.11%</td>
+      <td>0.45%</td>
+      <td>-39.49</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1667.07</td>
+      <td>20</td>
+      <td>New Orleans Saints</td>
+      <td>1533.08</td>
+      <td>23</td>
+      <td>60.94%</td>
+      <td>38.60%</td>
+      <td>0.45%</td>
+      <td>-15.94</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Philadelphia Eagles</td>
+      <td>1674.49</td>
+      <td>10</td>
+      <td>@ St. Louis Rams</td>
+      <td>1589.36</td>
+      <td>3</td>
+      <td>68.87%</td>
+      <td>30.67%</td>
+      <td>0.45%</td>
+      <td>12.28</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Seattle Seahawks</td>
+      <td>1455.35</td>
+      <td>24</td>
+      <td>San Francisco 49ers</td>
+      <td>1569.13</td>
+      <td>31</td>
+      <td>27.28%</td>
+      <td>72.26%</td>
+      <td>0.45%</td>
+      <td>-10.93</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Atlanta Falcons</td>
+      <td>1577.28</td>
+      <td>30</td>
+      <td>Minnesota Vikings</td>
+      <td>1411.46</td>
+      <td>24</td>
+      <td>65.19%</td>
+      <td>34.36%</td>
+      <td>0.45%</td>
+      <td>12.74</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Arizona Cardinals</td>
+      <td>1387.78</td>
+      <td>0</td>
+      <td>Kansas City Chiefs</td>
+      <td>1501.45</td>
+      <td>49</td>
+      <td>27.29%</td>
+      <td>72.25%</td>
+      <td>0.45%</td>
+      <td>-28.93</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Houston Texans</td>
+      <td>1218.00</td>
+      <td>3</td>
+      <td>Indianapolis Colts</td>
+      <td>1549.57</td>
+      <td>19</td>
+      <td>9.67%</td>
+      <td>89.87%</td>
+      <td>0.45%</td>
+      <td>-5.87</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Chicago Bears</td>
+      <td>1434.07</td>
+      <td>20</td>
+      <td>Green Bay Packers</td>
+      <td>1616.24</td>
+      <td>30</td>
+      <td>20.20%</td>
+      <td>79.35%</td>
+      <td>0.45%</td>
+      <td>-9.67</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1596.77</td>
+      <td>25</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1493.25</td>
+      <td>23</td>
+      <td>56.71%</td>
+      <td>42.83%</td>
+      <td>0.45%</td>
+      <td>9.15</td>
+    </tr>
+    <tr>
+      <td>2002-12-01</td>
+      <td>Baltimore Ravens</td>
+      <td>1492.10</td>
+      <td>27</td>
+      <td>Cincinnati Bengals</td>
+      <td>1303.09</td>
+      <td>23</td>
+      <td>68.13%</td>
+      <td>31.41%</td>
+      <td>0.45%</td>
+      <td>9.51</td>
+    </tr>
+    <tr>
+      <td>2002-12-02</td>
+      <td>New York Jets</td>
+      <td>1553.90</td>
+      <td>20</td>
+      <td>Oakland Raiders</td>
+      <td>1632.62</td>
+      <td>26</td>
+      <td>31.46%</td>
+      <td>68.08%</td>
+      <td>0.45%</td>
+      <td>-11.67</td>
+    </tr>
+    <tr>
+      <td>2002-12-02</td>
+      <td>Oakland Raiders</td>
+      <td>1632.62</td>
+      <td>26</td>
+      <td>@ New York Jets</td>
+      <td>1553.90</td>
+      <td>20</td>
+      <td>68.08%</td>
+      <td>31.46%</td>
+      <td>0.45%</td>
+      <td>11.66</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1605.92</td>
+      <td>6</td>
+      <td>@ Houston Texans</td>
+      <td>1212.13</td>
+      <td>24</td>
+      <td>92.58%</td>
+      <td>6.96%</td>
+      <td>0.45%</td>
+      <td>-59.32</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Dallas Cowboys</td>
+      <td>1418.56</td>
+      <td>27</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1580.06</td>
+      <td>31</td>
+      <td>34.92%</td>
+      <td>64.62%</td>
+      <td>0.45%</td>
+      <td>-10.57</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Seattle Seahawks</td>
+      <td>1444.42</td>
+      <td>20</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1686.77</td>
+      <td>27</td>
+      <td>25.20%</td>
+      <td>74.34%</td>
+      <td>0.45%</td>
+      <td>-10.10</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Baltimore Ravens</td>
+      <td>1501.61</td>
+      <td>25</td>
+      <td>@ New Orleans Saints</td>
+      <td>1549.02</td>
+      <td>37</td>
+      <td>50.86%</td>
+      <td>48.69%</td>
+      <td>0.45%</td>
+      <td>-26.62</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Tennessee Titans</td>
+      <td>1528.28</td>
+      <td>27</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1555.44</td>
+      <td>17</td>
+      <td>53.76%</td>
+      <td>45.78%</td>
+      <td>0.45%</td>
+      <td>21.89</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1651.13</td>
+      <td>34</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1590.02</td>
+      <td>10</td>
+      <td>65.86%</td>
+      <td>33.69%</td>
+      <td>0.45%</td>
+      <td>24.97</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>New England Patriots</td>
+      <td>1606.20</td>
+      <td>27</td>
+      <td>@ Buffalo Bills</td>
+      <td>1468.12</td>
+      <td>17</td>
+      <td>74.95%</td>
+      <td>24.60%</td>
+      <td>0.45%</td>
+      <td>11.78</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Cleveland Browns</td>
+      <td>1485.63</td>
+      <td>21</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1484.09</td>
+      <td>20</td>
+      <td>42.15%</td>
+      <td>57.39%</td>
+      <td>0.45%</td>
+      <td>8.66</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Atlanta Falcons</td>
+      <td>1590.02</td>
+      <td>10</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1651.13</td>
+      <td>34</td>
+      <td>33.69%</td>
+      <td>65.86%</td>
+      <td>0.45%</td>
+      <td>-24.97</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Oakland Raiders</td>
+      <td>1644.28</td>
+      <td>27</td>
+      <td>San Diego Chargers</td>
+      <td>1498.41</td>
+      <td>7</td>
+      <td>62.55%</td>
+      <td>36.99%</td>
+      <td>0.45%</td>
+      <td>25.02</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>New York Jets</td>
+      <td>1542.23</td>
+      <td>19</td>
+      <td>@ Denver Broncos</td>
+      <td>1547.39</td>
+      <td>13</td>
+      <td>56.88%</td>
+      <td>42.66%</td>
+      <td>0.45%</td>
+      <td>15.80</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Cincinnati Bengals</td>
+      <td>1293.58</td>
+      <td>31</td>
+      <td>Carolina Panthers</td>
+      <td>1382.87</td>
+      <td>52</td>
+      <td>30.17%</td>
+      <td>69.38%</td>
+      <td>0.45%</td>
+      <td>-20.92</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Detroit Lions</td>
+      <td>1334.65</td>
+      <td>20</td>
+      <td>Arizona Cardinals</td>
+      <td>1358.85</td>
+      <td>23</td>
+      <td>38.59%</td>
+      <td>60.96%</td>
+      <td>0.45%</td>
+      <td>-10.11</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Minnesota Vikings</td>
+      <td>1398.73</td>
+      <td>22</td>
+      <td>Green Bay Packers</td>
+      <td>1625.92</td>
+      <td>26</td>
+      <td>16.34%</td>
+      <td>83.21%</td>
+      <td>0.45%</td>
+      <td>-4.96</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Buffalo Bills</td>
+      <td>1468.12</td>
+      <td>17</td>
+      <td>New England Patriots</td>
+      <td>1606.20</td>
+      <td>27</td>
+      <td>24.60%</td>
+      <td>74.95%</td>
+      <td>0.45%</td>
+      <td>-11.78</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Denver Broncos</td>
+      <td>1547.39</td>
+      <td>13</td>
+      <td>New York Jets</td>
+      <td>1542.23</td>
+      <td>19</td>
+      <td>42.66%</td>
+      <td>56.88%</td>
+      <td>0.45%</td>
+      <td>-15.79</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Indianapolis Colts</td>
+      <td>1555.44</td>
+      <td>17</td>
+      <td>Tennessee Titans</td>
+      <td>1528.28</td>
+      <td>27</td>
+      <td>45.78%</td>
+      <td>53.76%</td>
+      <td>0.45%</td>
+      <td>-21.89</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>New York Giants</td>
+      <td>1471.35</td>
+      <td>27</td>
+      <td>Washington Redskins</td>
+      <td>1460.83</td>
+      <td>21</td>
+      <td>43.42%</td>
+      <td>56.13%</td>
+      <td>0.45%</td>
+      <td>20.76</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Houston Texans</td>
+      <td>1212.13</td>
+      <td>24</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1605.92</td>
+      <td>6</td>
+      <td>6.96%</td>
+      <td>92.58%</td>
+      <td>0.45%</td>
+      <td>59.33</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Philadelphia Eagles</td>
+      <td>1686.77</td>
+      <td>27</td>
+      <td>Seattle Seahawks</td>
+      <td>1444.42</td>
+      <td>20</td>
+      <td>74.34%</td>
+      <td>25.20%</td>
+      <td>0.45%</td>
+      <td>10.10</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>San Francisco 49ers</td>
+      <td>1580.06</td>
+      <td>31</td>
+      <td>Dallas Cowboys</td>
+      <td>1418.56</td>
+      <td>27</td>
+      <td>64.62%</td>
+      <td>34.92%</td>
+      <td>0.45%</td>
+      <td>10.56</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1484.09</td>
+      <td>20</td>
+      <td>@ Cleveland Browns</td>
+      <td>1485.63</td>
+      <td>21</td>
+      <td>57.39%</td>
+      <td>42.15%</td>
+      <td>0.45%</td>
+      <td>-8.67</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Washington Redskins</td>
+      <td>1460.83</td>
+      <td>21</td>
+      <td>@ New York Giants</td>
+      <td>1471.35</td>
+      <td>27</td>
+      <td>56.13%</td>
+      <td>43.42%</td>
+      <td>0.45%</td>
+      <td>-20.76</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Kansas City Chiefs</td>
+      <td>1530.38</td>
+      <td>49</td>
+      <td>@ St. Louis Rams</td>
+      <td>1577.08</td>
+      <td>10</td>
+      <td>50.96%</td>
+      <td>48.59%</td>
+      <td>0.45%</td>
+      <td>45.85</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>San Diego Chargers</td>
+      <td>1498.41</td>
+      <td>7</td>
+      <td>@ Oakland Raiders</td>
+      <td>1644.28</td>
+      <td>27</td>
+      <td>36.99%</td>
+      <td>62.55%</td>
+      <td>0.45%</td>
+      <td>-25.02</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Carolina Panthers</td>
+      <td>1382.87</td>
+      <td>52</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1293.58</td>
+      <td>31</td>
+      <td>69.38%</td>
+      <td>30.17%</td>
+      <td>0.45%</td>
+      <td>20.92</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Arizona Cardinals</td>
+      <td>1358.85</td>
+      <td>23</td>
+      <td>@ Detroit Lions</td>
+      <td>1334.65</td>
+      <td>20</td>
+      <td>60.96%</td>
+      <td>38.59%</td>
+      <td>0.45%</td>
+      <td>10.11</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>Green Bay Packers</td>
+      <td>1625.92</td>
+      <td>26</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1398.73</td>
+      <td>22</td>
+      <td>83.21%</td>
+      <td>16.34%</td>
+      <td>0.45%</td>
+      <td>4.95</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>New Orleans Saints</td>
+      <td>1549.02</td>
+      <td>37</td>
+      <td>Baltimore Ravens</td>
+      <td>1501.61</td>
+      <td>25</td>
+      <td>48.69%</td>
+      <td>50.86%</td>
+      <td>0.45%</td>
+      <td>26.61</td>
+    </tr>
+    <tr>
+      <td>2002-12-08</td>
+      <td>St. Louis Rams</td>
+      <td>1577.08</td>
+      <td>10</td>
+      <td>Kansas City Chiefs</td>
+      <td>1530.38</td>
+      <td>49</td>
+      <td>48.59%</td>
+      <td>50.96%</td>
+      <td>0.45%</td>
+      <td>-45.85</td>
+    </tr>
+    <tr>
+      <td>2002-12-09</td>
+      <td>Miami Dolphins</td>
+      <td>1541.65</td>
+      <td>27</td>
+      <td>@ Chicago Bears</td>
+      <td>1424.40</td>
+      <td>9</td>
+      <td>72.66%</td>
+      <td>26.89%</td>
+      <td>0.45%</td>
+      <td>17.27</td>
+    </tr>
+    <tr>
+      <td>2002-12-09</td>
+      <td>Chicago Bears</td>
+      <td>1424.40</td>
+      <td>9</td>
+      <td>Miami Dolphins</td>
+      <td>1541.65</td>
+      <td>27</td>
+      <td>26.89%</td>
+      <td>72.66%</td>
+      <td>0.45%</td>
+      <td>-17.27</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Washington Redskins</td>
+      <td>1440.07</td>
+      <td>21</td>
+      <td>Philadelphia Eagles</td>
+      <td>1696.87</td>
+      <td>34</td>
+      <td>14.14%</td>
+      <td>85.41%</td>
+      <td>0.45%</td>
+      <td>-7.73</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Arizona Cardinals</td>
+      <td>1368.96</td>
+      <td>28</td>
+      <td>St. Louis Rams</td>
+      <td>1531.23</td>
+      <td>30</td>
+      <td>22.11%</td>
+      <td>77.44%</td>
+      <td>0.45%</td>
+      <td>-4.73</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Minnesota Vikings</td>
+      <td>1393.77</td>
+      <td>32</td>
+      <td>New Orleans Saints</td>
+      <td>1575.63</td>
+      <td>31</td>
+      <td>20.23%</td>
+      <td>79.32%</td>
+      <td>0.45%</td>
+      <td>11.98</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Carolina Panthers</td>
+      <td>1403.79</td>
+      <td>14</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1546.60</td>
+      <td>30</td>
+      <td>24.10%</td>
+      <td>75.45%</td>
+      <td>0.45%</td>
+      <td>-14.59</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Green Bay Packers</td>
+      <td>1630.87</td>
+      <td>20</td>
+      <td>San Francisco 49ers</td>
+      <td>1590.62</td>
+      <td>14</td>
+      <td>47.66%</td>
+      <td>51.89%</td>
+      <td>0.45%</td>
+      <td>19.20</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Oakland Raiders</td>
+      <td>1669.30</td>
+      <td>17</td>
+      <td>Miami Dolphins</td>
+      <td>1558.92</td>
+      <td>23</td>
+      <td>57.68%</td>
+      <td>41.87%</td>
+      <td>0.45%</td>
+      <td>-21.33</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Baltimore Ravens</td>
+      <td>1474.99</td>
+      <td>23</td>
+      <td>Houston Texans</td>
+      <td>1271.46</td>
+      <td>19</td>
+      <td>69.90%</td>
+      <td>29.64%</td>
+      <td>0.45%</td>
+      <td>8.97</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>San Diego Chargers</td>
+      <td>1473.39</td>
+      <td>13</td>
+      <td>Buffalo Bills</td>
+      <td>1456.34</td>
+      <td>20</td>
+      <td>44.34%</td>
+      <td>55.20%</td>
+      <td>0.45%</td>
+      <td>-17.74</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Kansas City Chiefs</td>
+      <td>1576.23</td>
+      <td>24</td>
+      <td>Denver Broncos</td>
+      <td>1531.60</td>
+      <td>31</td>
+      <td>48.29%</td>
+      <td>51.26%</td>
+      <td>0.45%</td>
+      <td>-19.31</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Seattle Seahawks</td>
+      <td>1434.32</td>
+      <td>30</td>
+      <td>Atlanta Falcons</td>
+      <td>1565.05</td>
+      <td>24</td>
+      <td>25.39%</td>
+      <td>74.16%</td>
+      <td>0.45%</td>
+      <td>27.43</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>New York Jets</td>
+      <td>1558.03</td>
+      <td>13</td>
+      <td>Chicago Bears</td>
+      <td>1407.13</td>
+      <td>20</td>
+      <td>63.22%</td>
+      <td>36.32%</td>
+      <td>0.45%</td>
+      <td>-25.26</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1676.10</td>
+      <td>23</td>
+      <td>Detroit Lions</td>
+      <td>1324.54</td>
+      <td>20</td>
+      <td>84.31%</td>
+      <td>15.23%</td>
+      <td>0.45%</td>
+      <td>4.00</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Dallas Cowboys</td>
+      <td>1407.99</td>
+      <td>7</td>
+      <td>New York Giants</td>
+      <td>1492.11</td>
+      <td>37</td>
+      <td>30.80%</td>
+      <td>68.75%</td>
+      <td>0.45%</td>
+      <td>-25.53</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Indianapolis Colts</td>
+      <td>1533.55</td>
+      <td>28</td>
+      <td>Cleveland Browns</td>
+      <td>1494.29</td>
+      <td>23</td>
+      <td>47.52%</td>
+      <td>52.03%</td>
+      <td>0.45%</td>
+      <td>17.58</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Buffalo Bills</td>
+      <td>1456.34</td>
+      <td>20</td>
+      <td>@ San Diego Chargers</td>
+      <td>1473.39</td>
+      <td>13</td>
+      <td>55.20%</td>
+      <td>44.34%</td>
+      <td>0.45%</td>
+      <td>17.73</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Cincinnati Bengals</td>
+      <td>1272.66</td>
+      <td>15</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1475.42</td>
+      <td>29</td>
+      <td>29.73%</td>
+      <td>69.81%</td>
+      <td>0.45%</td>
+      <td>-16.84</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Chicago Bears</td>
+      <td>1407.13</td>
+      <td>20</td>
+      <td>@ New York Jets</td>
+      <td>1558.03</td>
+      <td>13</td>
+      <td>36.32%</td>
+      <td>63.22%</td>
+      <td>0.45%</td>
+      <td>25.25</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1475.42</td>
+      <td>29</td>
+      <td>Cincinnati Bengals</td>
+      <td>1272.66</td>
+      <td>15</td>
+      <td>69.81%</td>
+      <td>29.73%</td>
+      <td>0.45%</td>
+      <td>16.84</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Atlanta Falcons</td>
+      <td>1565.05</td>
+      <td>24</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1434.32</td>
+      <td>30</td>
+      <td>74.16%</td>
+      <td>25.39%</td>
+      <td>0.45%</td>
+      <td>-27.43</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Denver Broncos</td>
+      <td>1531.60</td>
+      <td>31</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1576.23</td>
+      <td>24</td>
+      <td>51.26%</td>
+      <td>48.29%</td>
+      <td>0.45%</td>
+      <td>19.30</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Houston Texans</td>
+      <td>1271.46</td>
+      <td>19</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1474.99</td>
+      <td>23</td>
+      <td>29.64%</td>
+      <td>69.90%</td>
+      <td>0.45%</td>
+      <td>-8.98</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Miami Dolphins</td>
+      <td>1558.92</td>
+      <td>23</td>
+      <td>@ Oakland Raiders</td>
+      <td>1669.30</td>
+      <td>17</td>
+      <td>41.87%</td>
+      <td>57.68%</td>
+      <td>0.45%</td>
+      <td>21.34</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Cleveland Browns</td>
+      <td>1494.29</td>
+      <td>23</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1533.55</td>
+      <td>28</td>
+      <td>52.03%</td>
+      <td>47.52%</td>
+      <td>0.45%</td>
+      <td>-17.57</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>New York Giants</td>
+      <td>1492.11</td>
+      <td>37</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1407.99</td>
+      <td>7</td>
+      <td>68.75%</td>
+      <td>30.80%</td>
+      <td>0.45%</td>
+      <td>25.53</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1546.60</td>
+      <td>30</td>
+      <td>@ Carolina Panthers</td>
+      <td>1403.79</td>
+      <td>14</td>
+      <td>75.45%</td>
+      <td>24.10%</td>
+      <td>0.45%</td>
+      <td>14.59</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>New Orleans Saints</td>
+      <td>1575.63</td>
+      <td>31</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1393.77</td>
+      <td>32</td>
+      <td>79.32%</td>
+      <td>20.23%</td>
+      <td>0.45%</td>
+      <td>-11.97</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>St. Louis Rams</td>
+      <td>1531.23</td>
+      <td>30</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1368.96</td>
+      <td>28</td>
+      <td>77.44%</td>
+      <td>22.11%</td>
+      <td>0.45%</td>
+      <td>4.74</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Philadelphia Eagles</td>
+      <td>1696.87</td>
+      <td>34</td>
+      <td>@ Washington Redskins</td>
+      <td>1440.07</td>
+      <td>21</td>
+      <td>85.41%</td>
+      <td>14.14%</td>
+      <td>0.45%</td>
+      <td>7.73</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>Detroit Lions</td>
+      <td>1324.54</td>
+      <td>20</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1676.10</td>
+      <td>23</td>
+      <td>15.23%</td>
+      <td>84.31%</td>
+      <td>0.45%</td>
+      <td>-4.00</td>
+    </tr>
+    <tr>
+      <td>2002-12-15</td>
+      <td>San Francisco 49ers</td>
+      <td>1590.62</td>
+      <td>14</td>
+      <td>@ Green Bay Packers</td>
+      <td>1630.87</td>
+      <td>20</td>
+      <td>51.89%</td>
+      <td>47.66%</td>
+      <td>0.45%</td>
+      <td>-19.19</td>
+    </tr>
+    <tr>
+      <td>2002-12-16</td>
+      <td>New England Patriots</td>
+      <td>1617.98</td>
+      <td>7</td>
+      <td>Tennessee Titans</td>
+      <td>1550.17</td>
+      <td>24</td>
+      <td>51.62%</td>
+      <td>47.92%</td>
+      <td>0.45%</td>
+      <td>-32.16</td>
+    </tr>
+    <tr>
+      <td>2002-12-16</td>
+      <td>Tennessee Titans</td>
+      <td>1550.17</td>
+      <td>24</td>
+      <td>@ New England Patriots</td>
+      <td>1617.98</td>
+      <td>7</td>
+      <td>47.92%</td>
+      <td>51.62%</td>
+      <td>0.45%</td>
+      <td>32.15</td>
+    </tr>
+    <tr>
+      <td>2002-12-21</td>
+      <td>Dallas Cowboys</td>
+      <td>1382.46</td>
+      <td>3</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1704.60</td>
+      <td>27</td>
+      <td>17.55%</td>
+      <td>82.00%</td>
+      <td>0.45%</td>
+      <td>-13.03</td>
+    </tr>
+    <tr>
+      <td>2002-12-21</td>
+      <td>Arizona Cardinals</td>
+      <td>1364.23</td>
+      <td>14</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1571.43</td>
+      <td>17</td>
+      <td>29.20%</td>
+      <td>70.34%</td>
+      <td>0.45%</td>
+      <td>-7.66</td>
+    </tr>
+    <tr>
+      <td>2002-12-21</td>
+      <td>Miami Dolphins</td>
+      <td>1580.26</td>
+      <td>17</td>
+      <td>Minnesota Vikings</td>
+      <td>1405.75</td>
+      <td>20</td>
+      <td>66.31%</td>
+      <td>33.24%</td>
+      <td>0.45%</td>
+      <td>-17.34</td>
+    </tr>
+    <tr>
+      <td>2002-12-21</td>
+      <td>San Francisco 49ers</td>
+      <td>1571.43</td>
+      <td>17</td>
+      <td>Arizona Cardinals</td>
+      <td>1364.23</td>
+      <td>14</td>
+      <td>70.34%</td>
+      <td>29.20%</td>
+      <td>0.45%</td>
+      <td>7.65</td>
+    </tr>
+    <tr>
+      <td>2002-12-21</td>
+      <td>Philadelphia Eagles</td>
+      <td>1704.60</td>
+      <td>27</td>
+      <td>Dallas Cowboys</td>
+      <td>1382.46</td>
+      <td>3</td>
+      <td>82.00%</td>
+      <td>17.55%</td>
+      <td>0.45%</td>
+      <td>13.03</td>
+    </tr>
+    <tr>
+      <td>2002-12-21</td>
+      <td>Minnesota Vikings</td>
+      <td>1405.75</td>
+      <td>20</td>
+      <td>@ Miami Dolphins</td>
+      <td>1580.26</td>
+      <td>17</td>
+      <td>33.24%</td>
+      <td>66.31%</td>
+      <td>0.45%</td>
+      <td>17.34</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Baltimore Ravens</td>
+      <td>1483.96</td>
+      <td>13</td>
+      <td>@ Cleveland Browns</td>
+      <td>1476.72</td>
+      <td>14</td>
+      <td>58.62%</td>
+      <td>40.92%</td>
+      <td>0.45%</td>
+      <td>-8.85</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Green Bay Packers</td>
+      <td>1650.07</td>
+      <td>10</td>
+      <td>@ Buffalo Bills</td>
+      <td>1474.07</td>
+      <td>0</td>
+      <td>78.77%</td>
+      <td>20.78%</td>
+      <td>0.45%</td>
+      <td>9.95</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1492.26</td>
+      <td>10</td>
+      <td>@ Tennessee Titans</td>
+      <td>1582.32</td>
+      <td>28</td>
+      <td>44.74%</td>
+      <td>54.81%</td>
+      <td>0.45%</td>
+      <td>-28.69</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Cleveland Browns</td>
+      <td>1476.72</td>
+      <td>14</td>
+      <td>Baltimore Ravens</td>
+      <td>1483.96</td>
+      <td>13</td>
+      <td>40.92%</td>
+      <td>58.62%</td>
+      <td>0.45%</td>
+      <td>8.85</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>New York Jets</td>
+      <td>1532.77</td>
+      <td>30</td>
+      <td>New England Patriots</td>
+      <td>1585.82</td>
+      <td>17</td>
+      <td>34.73%</td>
+      <td>64.81%</td>
+      <td>0.45%</td>
+      <td>35.29</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Tennessee Titans</td>
+      <td>1582.32</td>
+      <td>28</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1492.26</td>
+      <td>10</td>
+      <td>54.81%</td>
+      <td>44.74%</td>
+      <td>0.45%</td>
+      <td>28.69</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Denver Broncos</td>
+      <td>1550.90</td>
+      <td>16</td>
+      <td>Oakland Raiders</td>
+      <td>1647.97</td>
+      <td>28</td>
+      <td>29.23%</td>
+      <td>70.31%</td>
+      <td>0.45%</td>
+      <td>-15.33</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Buffalo Bills</td>
+      <td>1474.07</td>
+      <td>0</td>
+      <td>Green Bay Packers</td>
+      <td>1650.07</td>
+      <td>10</td>
+      <td>20.78%</td>
+      <td>78.77%</td>
+      <td>0.45%</td>
+      <td>-9.95</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>New York Giants</td>
+      <td>1517.64</td>
+      <td>44</td>
+      <td>Indianapolis Colts</td>
+      <td>1551.13</td>
+      <td>27</td>
+      <td>37.33%</td>
+      <td>62.22%</td>
+      <td>0.45%</td>
+      <td>38.74</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>New Orleans Saints</td>
+      <td>1563.66</td>
+      <td>13</td>
+      <td>Cincinnati Bengals</td>
+      <td>1255.82</td>
+      <td>20</td>
+      <td>80.77%</td>
+      <td>18.77%</td>
+      <td>0.45%</td>
+      <td>-32.27</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Chicago Bears</td>
+      <td>1432.38</td>
+      <td>14</td>
+      <td>Carolina Panthers</td>
+      <td>1389.20</td>
+      <td>24</td>
+      <td>48.08%</td>
+      <td>51.47%</td>
+      <td>0.45%</td>
+      <td>-22.97</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Detroit Lions</td>
+      <td>1320.54</td>
+      <td>15</td>
+      <td>Atlanta Falcons</td>
+      <td>1537.62</td>
+      <td>36</td>
+      <td>17.15%</td>
+      <td>82.40%</td>
+      <td>0.45%</td>
+      <td>-11.91</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>St. Louis Rams</td>
+      <td>1535.97</td>
+      <td>10</td>
+      <td>Seattle Seahawks</td>
+      <td>1461.75</td>
+      <td>30</td>
+      <td>52.54%</td>
+      <td>47.00%</td>
+      <td>0.45%</td>
+      <td>-35.50</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>San Diego Chargers</td>
+      <td>1455.65</td>
+      <td>22</td>
+      <td>Kansas City Chiefs</td>
+      <td>1556.92</td>
+      <td>24</td>
+      <td>28.73%</td>
+      <td>70.81%</td>
+      <td>0.45%</td>
+      <td>-6.15</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Houston Texans</td>
+      <td>1262.48</td>
+      <td>10</td>
+      <td>Washington Redskins</td>
+      <td>1432.34</td>
+      <td>26</td>
+      <td>21.36%</td>
+      <td>78.18%</td>
+      <td>0.45%</td>
+      <td>-12.94</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Washington Redskins</td>
+      <td>1432.34</td>
+      <td>26</td>
+      <td>@ Houston Texans</td>
+      <td>1262.48</td>
+      <td>10</td>
+      <td>78.18%</td>
+      <td>21.36%</td>
+      <td>0.45%</td>
+      <td>12.95</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Kansas City Chiefs</td>
+      <td>1556.92</td>
+      <td>24</td>
+      <td>@ San Diego Chargers</td>
+      <td>1455.65</td>
+      <td>22</td>
+      <td>70.81%</td>
+      <td>28.73%</td>
+      <td>0.45%</td>
+      <td>6.15</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Seattle Seahawks</td>
+      <td>1461.75</td>
+      <td>30</td>
+      <td>@ St. Louis Rams</td>
+      <td>1535.97</td>
+      <td>10</td>
+      <td>47.00%</td>
+      <td>52.54%</td>
+      <td>0.45%</td>
+      <td>35.49</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Atlanta Falcons</td>
+      <td>1537.62</td>
+      <td>36</td>
+      <td>@ Detroit Lions</td>
+      <td>1320.54</td>
+      <td>15</td>
+      <td>82.40%</td>
+      <td>17.15%</td>
+      <td>0.45%</td>
+      <td>11.91</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Carolina Panthers</td>
+      <td>1389.20</td>
+      <td>24</td>
+      <td>@ Chicago Bears</td>
+      <td>1432.38</td>
+      <td>14</td>
+      <td>51.47%</td>
+      <td>48.08%</td>
+      <td>0.45%</td>
+      <td>22.97</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Cincinnati Bengals</td>
+      <td>1255.82</td>
+      <td>20</td>
+      <td>@ New Orleans Saints</td>
+      <td>1563.66</td>
+      <td>13</td>
+      <td>18.77%</td>
+      <td>80.77%</td>
+      <td>0.45%</td>
+      <td>32.27</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Indianapolis Colts</td>
+      <td>1551.13</td>
+      <td>27</td>
+      <td>@ New York Giants</td>
+      <td>1517.64</td>
+      <td>44</td>
+      <td>62.22%</td>
+      <td>37.33%</td>
+      <td>0.45%</td>
+      <td>-38.73</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>New England Patriots</td>
+      <td>1585.82</td>
+      <td>17</td>
+      <td>@ New York Jets</td>
+      <td>1532.77</td>
+      <td>30</td>
+      <td>64.81%</td>
+      <td>34.73%</td>
+      <td>0.45%</td>
+      <td>-35.28</td>
+    </tr>
+    <tr>
+      <td>2002-12-22</td>
+      <td>Oakland Raiders</td>
+      <td>1647.97</td>
+      <td>28</td>
+      <td>@ Denver Broncos</td>
+      <td>1550.90</td>
+      <td>16</td>
+      <td>70.31%</td>
+      <td>29.23%</td>
+      <td>0.45%</td>
+      <td>15.33</td>
+    </tr>
+    <tr>
+      <td>2002-12-23</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1561.19</td>
+      <td>17</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1680.10</td>
+      <td>7</td>
+      <td>26.70%</td>
+      <td>72.85%</td>
+      <td>0.45%</td>
+      <td>34.78</td>
+    </tr>
+    <tr>
+      <td>2002-12-23</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1680.10</td>
+      <td>7</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1561.19</td>
+      <td>17</td>
+      <td>72.85%</td>
+      <td>26.70%</td>
+      <td>0.45%</td>
+      <td>-34.78</td>
+    </tr>
+    <tr>
+      <td>2002-12-28</td>
+      <td>Kansas City Chiefs</td>
+      <td>1563.07</td>
+      <td>0</td>
+      <td>Oakland Raiders</td>
+      <td>1663.30</td>
+      <td>24</td>
+      <td>28.86%</td>
+      <td>70.69%</td>
+      <td>0.45%</td>
+      <td>-21.40</td>
+    </tr>
+    <tr>
+      <td>2002-12-28</td>
+      <td>Oakland Raiders</td>
+      <td>1663.30</td>
+      <td>24</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1563.07</td>
+      <td>0</td>
+      <td>70.69%</td>
+      <td>28.86%</td>
+      <td>0.45%</td>
+      <td>21.40</td>
+    </tr>
+    <tr>
+      <td>2002-12-28</td>
+      <td>New York Giants</td>
+      <td>1556.38</td>
+      <td>10</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1717.63</td>
+      <td>7</td>
+      <td>34.96%</td>
+      <td>64.59%</td>
+      <td>0.45%</td>
+      <td>16.89</td>
+    </tr>
+    <tr>
+      <td>2002-12-28</td>
+      <td>Philadelphia Eagles</td>
+      <td>1717.63</td>
+      <td>7</td>
+      <td>New York Giants</td>
+      <td>1556.38</td>
+      <td>10</td>
+      <td>64.59%</td>
+      <td>34.96%</td>
+      <td>0.45%</td>
+      <td>-16.89</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Dallas Cowboys</td>
+      <td>1369.43</td>
+      <td>14</td>
+      <td>Washington Redskins</td>
+      <td>1445.29</td>
+      <td>20</td>
+      <td>31.82%</td>
+      <td>67.73%</td>
+      <td>0.45%</td>
+      <td>-11.79</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Seattle Seahawks</td>
+      <td>1497.24</td>
+      <td>31</td>
+      <td>San Diego Chargers</td>
+      <td>1449.50</td>
+      <td>28</td>
+      <td>48.73%</td>
+      <td>50.81%</td>
+      <td>0.45%</td>
+      <td>13.30</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Atlanta Falcons</td>
+      <td>1549.53</td>
+      <td>16</td>
+      <td>Cleveland Browns</td>
+      <td>1485.57</td>
+      <td>24</td>
+      <td>51.07%</td>
+      <td>48.48%</td>
+      <td>0.45%</td>
+      <td>-21.82</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Baltimore Ravens</td>
+      <td>1475.11</td>
+      <td>31</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1595.97</td>
+      <td>34</td>
+      <td>26.48%</td>
+      <td>73.07%</td>
+      <td>0.45%</td>
+      <td>-6.94</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Green Bay Packers</td>
+      <td>1660.02</td>
+      <td>17</td>
+      <td>New York Jets</td>
+      <td>1568.06</td>
+      <td>42</td>
+      <td>55.08%</td>
+      <td>44.47%</td>
+      <td>0.45%</td>
+      <td>-41.59</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Carolina Panthers</td>
+      <td>1412.17</td>
+      <td>10</td>
+      <td>New Orleans Saints</td>
+      <td>1531.39</td>
+      <td>6</td>
+      <td>26.67%</td>
+      <td>72.88%</td>
+      <td>0.45%</td>
+      <td>22.01</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Tennessee Titans</td>
+      <td>1611.01</td>
+      <td>13</td>
+      <td>Houston Texans</td>
+      <td>1249.54</td>
+      <td>3</td>
+      <td>85.04%</td>
+      <td>14.51%</td>
+      <td>0.45%</td>
+      <td>6.95</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Minnesota Vikings</td>
+      <td>1423.09</td>
+      <td>38</td>
+      <td>Detroit Lions</td>
+      <td>1308.63</td>
+      <td>36</td>
+      <td>58.25%</td>
+      <td>41.30%</td>
+      <td>0.45%</td>
+      <td>8.83</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Arizona Cardinals</td>
+      <td>1356.57</td>
+      <td>7</td>
+      <td>Denver Broncos</td>
+      <td>1535.57</td>
+      <td>37</td>
+      <td>20.49%</td>
+      <td>79.05%</td>
+      <td>0.45%</td>
+      <td>-17.00</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1463.57</td>
+      <td>13</td>
+      <td>Indianapolis Colts</td>
+      <td>1512.40</td>
+      <td>20</td>
+      <td>35.29%</td>
+      <td>64.26%</td>
+      <td>0.45%</td>
+      <td>-14.13</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Miami Dolphins</td>
+      <td>1562.92</td>
+      <td>24</td>
+      <td>New England Patriots</td>
+      <td>1550.54</td>
+      <td>27</td>
+      <td>43.68%</td>
+      <td>55.87%</td>
+      <td>0.45%</td>
+      <td>-11.44</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Buffalo Bills</td>
+      <td>1464.12</td>
+      <td>27</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1288.09</td>
+      <td>9</td>
+      <td>78.77%</td>
+      <td>20.77%</td>
+      <td>0.45%</td>
+      <td>13.35</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Chicago Bears</td>
+      <td>1409.41</td>
+      <td>0</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1645.32</td>
+      <td>15</td>
+      <td>25.91%</td>
+      <td>73.64%</td>
+      <td>0.45%</td>
+      <td>-15.20</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Indianapolis Colts</td>
+      <td>1512.40</td>
+      <td>20</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1463.57</td>
+      <td>13</td>
+      <td>64.26%</td>
+      <td>35.29%</td>
+      <td>0.45%</td>
+      <td>14.12</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Denver Broncos</td>
+      <td>1535.57</td>
+      <td>37</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1356.57</td>
+      <td>7</td>
+      <td>79.05%</td>
+      <td>20.49%</td>
+      <td>0.45%</td>
+      <td>17.01</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Detroit Lions</td>
+      <td>1308.63</td>
+      <td>36</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1423.09</td>
+      <td>38</td>
+      <td>41.30%</td>
+      <td>58.25%</td>
+      <td>0.45%</td>
+      <td>-8.83</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Houston Texans</td>
+      <td>1249.54</td>
+      <td>3</td>
+      <td>@ Tennessee Titans</td>
+      <td>1611.01</td>
+      <td>13</td>
+      <td>14.51%</td>
+      <td>85.04%</td>
+      <td>0.45%</td>
+      <td>-6.95</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>New Orleans Saints</td>
+      <td>1531.39</td>
+      <td>6</td>
+      <td>@ Carolina Panthers</td>
+      <td>1412.17</td>
+      <td>10</td>
+      <td>72.88%</td>
+      <td>26.67%</td>
+      <td>0.45%</td>
+      <td>-22.01</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>New England Patriots</td>
+      <td>1550.54</td>
+      <td>27</td>
+      <td>@ Miami Dolphins</td>
+      <td>1562.92</td>
+      <td>24</td>
+      <td>55.87%</td>
+      <td>43.68%</td>
+      <td>0.45%</td>
+      <td>11.44</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>New York Jets</td>
+      <td>1568.06</td>
+      <td>42</td>
+      <td>@ Green Bay Packers</td>
+      <td>1660.02</td>
+      <td>17</td>
+      <td>44.47%</td>
+      <td>55.08%</td>
+      <td>0.45%</td>
+      <td>41.59</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1595.97</td>
+      <td>34</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1475.11</td>
+      <td>31</td>
+      <td>73.07%</td>
+      <td>26.48%</td>
+      <td>0.45%</td>
+      <td>6.94</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Cleveland Browns</td>
+      <td>1485.57</td>
+      <td>24</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1549.53</td>
+      <td>16</td>
+      <td>48.48%</td>
+      <td>51.07%</td>
+      <td>0.45%</td>
+      <td>21.82</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>San Diego Chargers</td>
+      <td>1449.50</td>
+      <td>28</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1497.24</td>
+      <td>31</td>
+      <td>50.81%</td>
+      <td>48.73%</td>
+      <td>0.45%</td>
+      <td>-13.29</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Washington Redskins</td>
+      <td>1445.29</td>
+      <td>20</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1369.43</td>
+      <td>14</td>
+      <td>67.73%</td>
+      <td>31.82%</td>
+      <td>0.45%</td>
+      <td>11.79</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1645.32</td>
+      <td>15</td>
+      <td>Chicago Bears</td>
+      <td>1409.41</td>
+      <td>0</td>
+      <td>73.64%</td>
+      <td>25.91%</td>
+      <td>0.45%</td>
+      <td>15.20</td>
+    </tr>
+    <tr>
+      <td>2002-12-29</td>
+      <td>Cincinnati Bengals</td>
+      <td>1288.09</td>
+      <td>9</td>
+      <td>Buffalo Bills</td>
+      <td>1464.12</td>
+      <td>27</td>
+      <td>20.77%</td>
+      <td>78.77%</td>
+      <td>0.45%</td>
+      <td>-13.35</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

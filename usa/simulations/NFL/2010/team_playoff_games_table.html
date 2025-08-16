@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Atlanta Falcons">Atlanta Falcons</option><option value="Baltimore Ravens">Baltimore Ravens</option><option value="Chicago Bears">Chicago Bears</option><option value="Green Bay Packers">Green Bay Packers</option><option value="Indianapolis Colts">Indianapolis Colts</option><option value="Kansas City Chiefs">Kansas City Chiefs</option><option value="New England Patriots">New England Patriots</option><option value="New Orleans Saints">New Orleans Saints</option><option value="New York Jets">New York Jets</option><option value="Philadelphia Eagles">Philadelphia Eagles</option><option value="Pittsburgh Steelers">Pittsburgh Steelers</option><option value="Seattle Seahawks">Seattle Seahawks</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2011-01-08</td>
+      <td>Seattle Seahawks</td>
+      <td>1376.61</td>
+      <td>41</td>
+      <td>@ New Orleans Saints</td>
+      <td>1615.64</td>
+      <td>36</td>
+      <td>24.13%</td>
+      <td>75.87%</td>
+      <td>28.23</td>
+    </tr>
+    <tr>
+      <td>2011-01-08</td>
+      <td>Indianapolis Colts</td>
+      <td>1596.11</td>
+      <td>16</td>
+      <td>@ New York Jets</td>
+      <td>1613.66</td>
+      <td>17</td>
+      <td>53.23%</td>
+      <td>46.77%</td>
+      <td>-8.85</td>
+    </tr>
+    <tr>
+      <td>2011-01-08</td>
+      <td>New Orleans Saints</td>
+      <td>1615.64</td>
+      <td>36</td>
+      <td>Seattle Seahawks</td>
+      <td>1376.61</td>
+      <td>41</td>
+      <td>75.87%</td>
+      <td>24.13%</td>
+      <td>-28.23</td>
+    </tr>
+    <tr>
+      <td>2011-01-08</td>
+      <td>New York Jets</td>
+      <td>1613.66</td>
+      <td>17</td>
+      <td>Indianapolis Colts</td>
+      <td>1596.11</td>
+      <td>16</td>
+      <td>46.77%</td>
+      <td>53.23%</td>
+      <td>8.85</td>
+    </tr>
+    <tr>
+      <td>2011-01-09</td>
+      <td>Philadelphia Eagles</td>
+      <td>1596.66</td>
+      <td>16</td>
+      <td>@ Green Bay Packers</td>
+      <td>1668.31</td>
+      <td>21</td>
+      <td>45.46%</td>
+      <td>54.54%</td>
+      <td>-16.91</td>
+    </tr>
+    <tr>
+      <td>2011-01-09</td>
+      <td>Kansas City Chiefs</td>
+      <td>1490.75</td>
+      <td>7</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1667.62</td>
+      <td>30</td>
+      <td>31.26%</td>
+      <td>68.74%</td>
+      <td>-24.94</td>
+    </tr>
+    <tr>
+      <td>2011-01-09</td>
+      <td>Green Bay Packers</td>
+      <td>1668.31</td>
+      <td>21</td>
+      <td>Philadelphia Eagles</td>
+      <td>1596.66</td>
+      <td>16</td>
+      <td>54.54%</td>
+      <td>45.46%</td>
+      <td>16.91</td>
+    </tr>
+    <tr>
+      <td>2011-01-09</td>
+      <td>Baltimore Ravens</td>
+      <td>1667.62</td>
+      <td>30</td>
+      <td>Kansas City Chiefs</td>
+      <td>1490.75</td>
+      <td>7</td>
+      <td>68.74%</td>
+      <td>31.26%</td>
+      <td>24.95</td>
+    </tr>
+    <tr>
+      <td>2011-01-15</td>
+      <td>Atlanta Falcons</td>
+      <td>1666.92</td>
+      <td>21</td>
+      <td>@ Green Bay Packers</td>
+      <td>1685.22</td>
+      <td>48</td>
+      <td>53.12%</td>
+      <td>46.88%</td>
+      <td>-45.92</td>
+    </tr>
+    <tr>
+      <td>2011-01-15</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1655.45</td>
+      <td>31</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1692.57</td>
+      <td>24</td>
+      <td>50.41%</td>
+      <td>49.59%</td>
+      <td>21.83</td>
+    </tr>
+    <tr>
+      <td>2011-01-15</td>
+      <td>Baltimore Ravens</td>
+      <td>1692.57</td>
+      <td>24</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1655.45</td>
+      <td>31</td>
+      <td>49.59%</td>
+      <td>50.41%</td>
+      <td>-21.83</td>
+    </tr>
+    <tr>
+      <td>2011-01-15</td>
+      <td>Green Bay Packers</td>
+      <td>1685.22</td>
+      <td>48</td>
+      <td>Atlanta Falcons</td>
+      <td>1666.92</td>
+      <td>21</td>
+      <td>46.88%</td>
+      <td>53.12%</td>
+      <td>45.93</td>
+    </tr>
+    <tr>
+      <td>2011-01-16</td>
+      <td>New England Patriots</td>
+      <td>1764.93</td>
+      <td>21</td>
+      <td>@ New York Jets</td>
+      <td>1622.51</td>
+      <td>28</td>
+      <td>74.08%</td>
+      <td>25.92%</td>
+      <td>-32.61</td>
+    </tr>
+    <tr>
+      <td>2011-01-16</td>
+      <td>Chicago Bears</td>
+      <td>1593.64</td>
+      <td>35</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1404.84</td>
+      <td>24</td>
+      <td>78.87%</td>
+      <td>21.13%</td>
+      <td>11.67</td>
+    </tr>
+    <tr>
+      <td>2011-01-16</td>
+      <td>New York Jets</td>
+      <td>1622.51</td>
+      <td>28</td>
+      <td>New England Patriots</td>
+      <td>1764.93</td>
+      <td>21</td>
+      <td>25.92%</td>
+      <td>74.08%</td>
+      <td>32.62</td>
+    </tr>
+    <tr>
+      <td>2011-01-16</td>
+      <td>Seattle Seahawks</td>
+      <td>1404.84</td>
+      <td>24</td>
+      <td>Chicago Bears</td>
+      <td>1593.64</td>
+      <td>35</td>
+      <td>21.13%</td>
+      <td>78.87%</td>
+      <td>-11.66</td>
+    </tr>
+    <tr>
+      <td>2011-01-23</td>
+      <td>Chicago Bears</td>
+      <td>1605.31</td>
+      <td>14</td>
+      <td>@ Green Bay Packers</td>
+      <td>1731.15</td>
+      <td>21</td>
+      <td>37.89%</td>
+      <td>62.11%</td>
+      <td>-16.69</td>
+    </tr>
+    <tr>
+      <td>2011-01-23</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1677.28</td>
+      <td>24</td>
+      <td>@ New York Jets</td>
+      <td>1655.13</td>
+      <td>19</td>
+      <td>58.85%</td>
+      <td>41.15%</td>
+      <td>15.31</td>
+    </tr>
+    <tr>
+      <td>2011-01-23</td>
+      <td>Green Bay Packers</td>
+      <td>1731.15</td>
+      <td>21</td>
+      <td>Chicago Bears</td>
+      <td>1605.31</td>
+      <td>14</td>
+      <td>62.11%</td>
+      <td>37.89%</td>
+      <td>16.68</td>
+    </tr>
+    <tr>
+      <td>2011-01-23</td>
+      <td>New York Jets</td>
+      <td>1655.13</td>
+      <td>19</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1677.28</td>
+      <td>24</td>
+      <td>41.15%</td>
+      <td>58.85%</td>
+      <td>-15.31</td>
+    </tr>
+    <tr>
+      <td>2011-02-06</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1692.59</td>
+      <td>25</td>
+      <td>@ Green Bay Packers</td>
+      <td>1747.83</td>
+      <td>31</td>
+      <td>42.12%</td>
+      <td>57.88%</td>
+      <td>-17.16</td>
+    </tr>
+    <tr>
+      <td>2011-02-06</td>
+      <td>Green Bay Packers</td>
+      <td>1747.83</td>
+      <td>31</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1692.59</td>
+      <td>25</td>
+      <td>57.88%</td>
+      <td>42.12%</td>
+      <td>17.17</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

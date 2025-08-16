@@ -1,0 +1,6676 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Arizona Cardinals">Arizona Cardinals</option><option value="Atlanta Falcons">Atlanta Falcons</option><option value="Baltimore Ravens">Baltimore Ravens</option><option value="Buffalo Bills">Buffalo Bills</option><option value="Carolina Panthers">Carolina Panthers</option><option value="Chicago Bears">Chicago Bears</option><option value="Cincinnati Bengals">Cincinnati Bengals</option><option value="Cleveland Browns">Cleveland Browns</option><option value="Dallas Cowboys">Dallas Cowboys</option><option value="Denver Broncos">Denver Broncos</option><option value="Detroit Lions">Detroit Lions</option><option value="Green Bay Packers">Green Bay Packers</option><option value="Houston Texans">Houston Texans</option><option value="Indianapolis Colts">Indianapolis Colts</option><option value="Jacksonville Jaguars">Jacksonville Jaguars</option><option value="Kansas City Chiefs">Kansas City Chiefs</option><option value="Los Angeles Chargers">Los Angeles Chargers</option><option value="Los Angeles Rams">Los Angeles Rams</option><option value="Miami Dolphins">Miami Dolphins</option><option value="Minnesota Vikings">Minnesota Vikings</option><option value="New England Patriots">New England Patriots</option><option value="New Orleans Saints">New Orleans Saints</option><option value="New York Giants">New York Giants</option><option value="New York Jets">New York Jets</option><option value="Oakland Raiders">Oakland Raiders</option><option value="Philadelphia Eagles">Philadelphia Eagles</option><option value="Pittsburgh Steelers">Pittsburgh Steelers</option><option value="San Francisco 49ers">San Francisco 49ers</option><option value="Seattle Seahawks">Seattle Seahawks</option><option value="Tampa Bay Buccaneers">Tampa Bay Buccaneers</option><option value="Tennessee Titans">Tennessee Titans</option><option value="Washington Redskins">Washington Redskins</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="3" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Tie Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2019-09-05</td>
+      <td>Chicago Bears</td>
+      <td>1580.50</td>
+      <td>3</td>
+      <td>@ Green Bay Packers</td>
+      <td>1455.17</td>
+      <td>10</td>
+      <td>68.91%</td>
+      <td>30.56%</td>
+      <td>0.53%</td>
+      <td>-25.95</td>
+    </tr>
+    <tr>
+      <td>2019-09-05</td>
+      <td>Green Bay Packers</td>
+      <td>1455.17</td>
+      <td>10</td>
+      <td>Chicago Bears</td>
+      <td>1580.50</td>
+      <td>3</td>
+      <td>30.56%</td>
+      <td>68.91%</td>
+      <td>0.53%</td>
+      <td>25.95</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Tennessee Titans</td>
+      <td>1511.03</td>
+      <td>43</td>
+      <td>Cleveland Browns</td>
+      <td>1475.36</td>
+      <td>13</td>
+      <td>52.65%</td>
+      <td>46.83%</td>
+      <td>0.53%</td>
+      <td>36.55</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Washington Redskins</td>
+      <td>1431.89</td>
+      <td>27</td>
+      <td>Philadelphia Eagles</td>
+      <td>1563.42</td>
+      <td>32</td>
+      <td>29.81%</td>
+      <td>69.67%</td>
+      <td>0.53%</td>
+      <td>-9.51</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Cincinnati Bengals</td>
+      <td>1433.49</td>
+      <td>20</td>
+      <td>Seattle Seahawks</td>
+      <td>1552.63</td>
+      <td>21</td>
+      <td>31.32%</td>
+      <td>68.15%</td>
+      <td>0.53%</td>
+      <td>-4.47</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Detroit Lions</td>
+      <td>1488.98</td>
+      <td>27</td>
+      <td>Arizona Cardinals</td>
+      <td>1383.09</td>
+      <td>27</td>
+      <td>62.45%</td>
+      <td>37.02%</td>
+      <td>0.53%</td>
+      <td>-0.90</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Indianapolis Colts</td>
+      <td>1559.07</td>
+      <td>24</td>
+      <td>Los Angeles Chargers</td>
+      <td>1568.57</td>
+      <td>30</td>
+      <td>46.16%</td>
+      <td>53.31%</td>
+      <td>0.53%</td>
+      <td>-16.11</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>New York Giants</td>
+      <td>1455.43</td>
+      <td>17</td>
+      <td>Dallas Cowboys</td>
+      <td>1525.20</td>
+      <td>35</td>
+      <td>37.73%</td>
+      <td>61.74%</td>
+      <td>0.53%</td>
+      <td>-22.83</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>San Francisco 49ers</td>
+      <td>1440.02</td>
+      <td>31</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1451.74</td>
+      <td>17</td>
+      <td>45.84%</td>
+      <td>53.63%</td>
+      <td>0.53%</td>
+      <td>28.57</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1558.57</td>
+      <td>3</td>
+      <td>New England Patriots</td>
+      <td>1610.13</td>
+      <td>33</td>
+      <td>40.22%</td>
+      <td>59.25%</td>
+      <td>0.53%</td>
+      <td>-31.42</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Buffalo Bills</td>
+      <td>1447.63</td>
+      <td>17</td>
+      <td>New York Jets</td>
+      <td>1403.14</td>
+      <td>16</td>
+      <td>53.91%</td>
+      <td>45.56%</td>
+      <td>0.53%</td>
+      <td>6.50</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Baltimore Ravens</td>
+      <td>1565.98</td>
+      <td>59</td>
+      <td>Miami Dolphins</td>
+      <td>1405.67</td>
+      <td>10</td>
+      <td>69.42%</td>
+      <td>30.06%</td>
+      <td>0.53%</td>
+      <td>30.03</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Atlanta Falcons</td>
+      <td>1509.95</td>
+      <td>12</td>
+      <td>Minnesota Vikings</td>
+      <td>1526.72</td>
+      <td>28</td>
+      <td>45.12%</td>
+      <td>54.35%</td>
+      <td>0.53%</td>
+      <td>-25.72</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Los Angeles Rams</td>
+      <td>1576.68</td>
+      <td>30</td>
+      <td>Carolina Panthers</td>
+      <td>1485.36</td>
+      <td>27</td>
+      <td>60.48%</td>
+      <td>38.99%</td>
+      <td>0.53%</td>
+      <td>9.64</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Kansas City Chiefs</td>
+      <td>1579.57</td>
+      <td>40</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1460.38</td>
+      <td>26</td>
+      <td>64.22%</td>
+      <td>35.25%</td>
+      <td>0.53%</td>
+      <td>18.82</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Los Angeles Chargers</td>
+      <td>1568.57</td>
+      <td>30</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1559.07</td>
+      <td>24</td>
+      <td>53.31%</td>
+      <td>46.16%</td>
+      <td>0.53%</td>
+      <td>16.11</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Seattle Seahawks</td>
+      <td>1552.63</td>
+      <td>21</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1433.49</td>
+      <td>20</td>
+      <td>68.15%</td>
+      <td>31.32%</td>
+      <td>0.53%</td>
+      <td>4.47</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Carolina Panthers</td>
+      <td>1485.36</td>
+      <td>27</td>
+      <td>@ Los Angeles Rams</td>
+      <td>1576.68</td>
+      <td>30</td>
+      <td>38.99%</td>
+      <td>60.48%</td>
+      <td>0.53%</td>
+      <td>-9.64</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Arizona Cardinals</td>
+      <td>1383.09</td>
+      <td>27</td>
+      <td>@ Detroit Lions</td>
+      <td>1488.98</td>
+      <td>27</td>
+      <td>37.02%</td>
+      <td>62.45%</td>
+      <td>0.53%</td>
+      <td>0.90</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Philadelphia Eagles</td>
+      <td>1563.42</td>
+      <td>32</td>
+      <td>@ Washington Redskins</td>
+      <td>1431.89</td>
+      <td>27</td>
+      <td>69.67%</td>
+      <td>29.81%</td>
+      <td>0.53%</td>
+      <td>9.52</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Dallas Cowboys</td>
+      <td>1525.20</td>
+      <td>35</td>
+      <td>@ New York Giants</td>
+      <td>1455.43</td>
+      <td>17</td>
+      <td>61.74%</td>
+      <td>37.73%</td>
+      <td>0.53%</td>
+      <td>22.83</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1451.74</td>
+      <td>17</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1440.02</td>
+      <td>31</td>
+      <td>53.63%</td>
+      <td>45.84%</td>
+      <td>0.53%</td>
+      <td>-28.57</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1460.38</td>
+      <td>26</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1579.57</td>
+      <td>40</td>
+      <td>35.25%</td>
+      <td>64.22%</td>
+      <td>0.53%</td>
+      <td>-18.82</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>New England Patriots</td>
+      <td>1610.13</td>
+      <td>33</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1558.57</td>
+      <td>3</td>
+      <td>59.25%</td>
+      <td>40.22%</td>
+      <td>0.53%</td>
+      <td>31.41</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>New York Jets</td>
+      <td>1403.14</td>
+      <td>16</td>
+      <td>@ Buffalo Bills</td>
+      <td>1447.63</td>
+      <td>17</td>
+      <td>45.56%</td>
+      <td>53.91%</td>
+      <td>0.53%</td>
+      <td>-6.49</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Miami Dolphins</td>
+      <td>1405.67</td>
+      <td>10</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1565.98</td>
+      <td>59</td>
+      <td>30.06%</td>
+      <td>69.42%</td>
+      <td>0.53%</td>
+      <td>-30.03</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Minnesota Vikings</td>
+      <td>1526.72</td>
+      <td>28</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1509.95</td>
+      <td>12</td>
+      <td>54.35%</td>
+      <td>45.12%</td>
+      <td>0.53%</td>
+      <td>25.72</td>
+    </tr>
+    <tr>
+      <td>2019-09-08</td>
+      <td>Cleveland Browns</td>
+      <td>1475.36</td>
+      <td>13</td>
+      <td>@ Tennessee Titans</td>
+      <td>1511.03</td>
+      <td>43</td>
+      <td>46.83%</td>
+      <td>52.65%</td>
+      <td>0.53%</td>
+      <td>-36.54</td>
+    </tr>
+    <tr>
+      <td>2019-09-09</td>
+      <td>Oakland Raiders</td>
+      <td>1406.26</td>
+      <td>24</td>
+      <td>@ Denver Broncos</td>
+      <td>1461.72</td>
+      <td>16</td>
+      <td>44.00%</td>
+      <td>55.47%</td>
+      <td>0.53%</td>
+      <td>22.34</td>
+    </tr>
+    <tr>
+      <td>2019-09-09</td>
+      <td>Houston Texans</td>
+      <td>1518.69</td>
+      <td>28</td>
+      <td>New Orleans Saints</td>
+      <td>1607.96</td>
+      <td>30</td>
+      <td>35.13%</td>
+      <td>64.34%</td>
+      <td>0.53%</td>
+      <td>-7.09</td>
+    </tr>
+    <tr>
+      <td>2019-09-09</td>
+      <td>Denver Broncos</td>
+      <td>1461.72</td>
+      <td>16</td>
+      <td>Oakland Raiders</td>
+      <td>1406.26</td>
+      <td>24</td>
+      <td>55.47%</td>
+      <td>44.00%</td>
+      <td>0.53%</td>
+      <td>-22.34</td>
+    </tr>
+    <tr>
+      <td>2019-09-09</td>
+      <td>New Orleans Saints</td>
+      <td>1607.96</td>
+      <td>30</td>
+      <td>@ Houston Texans</td>
+      <td>1518.69</td>
+      <td>28</td>
+      <td>64.34%</td>
+      <td>35.13%</td>
+      <td>0.53%</td>
+      <td>7.08</td>
+    </tr>
+    <tr>
+      <td>2019-09-12</td>
+      <td>Carolina Panthers</td>
+      <td>1475.72</td>
+      <td>14</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1423.17</td>
+      <td>20</td>
+      <td>59.39%</td>
+      <td>40.09%</td>
+      <td>0.53%</td>
+      <td>-20.70</td>
+    </tr>
+    <tr>
+      <td>2019-09-12</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1423.17</td>
+      <td>20</td>
+      <td>Carolina Panthers</td>
+      <td>1475.72</td>
+      <td>14</td>
+      <td>40.09%</td>
+      <td>59.39%</td>
+      <td>0.53%</td>
+      <td>20.70</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Denver Broncos</td>
+      <td>1439.38</td>
+      <td>14</td>
+      <td>@ Chicago Bears</td>
+      <td>1554.55</td>
+      <td>16</td>
+      <td>35.78%</td>
+      <td>63.69%</td>
+      <td>0.53%</td>
+      <td>-7.22</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Baltimore Ravens</td>
+      <td>1596.01</td>
+      <td>23</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1383.99</td>
+      <td>17</td>
+      <td>78.39%</td>
+      <td>21.08%</td>
+      <td>0.53%</td>
+      <td>7.38</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>New York Giants</td>
+      <td>1432.60</td>
+      <td>14</td>
+      <td>@ Buffalo Bills</td>
+      <td>1454.13</td>
+      <td>28</td>
+      <td>48.86%</td>
+      <td>50.62%</td>
+      <td>0.53%</td>
+      <td>-26.05</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Washington Redskins</td>
+      <td>1422.38</td>
+      <td>21</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1548.03</td>
+      <td>31</td>
+      <td>34.41%</td>
+      <td>65.06%</td>
+      <td>0.53%</td>
+      <td>-15.53</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Detroit Lions</td>
+      <td>1488.08</td>
+      <td>13</td>
+      <td>@ Los Angeles Chargers</td>
+      <td>1584.68</td>
+      <td>10</td>
+      <td>38.28%</td>
+      <td>61.20%</td>
+      <td>0.53%</td>
+      <td>15.09</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Philadelphia Eagles</td>
+      <td>1572.94</td>
+      <td>20</td>
+      <td>Atlanta Falcons</td>
+      <td>1484.23</td>
+      <td>24</td>
+      <td>60.12%</td>
+      <td>39.35%</td>
+      <td>0.53%</td>
+      <td>-17.12</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Green Bay Packers</td>
+      <td>1481.12</td>
+      <td>21</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1552.44</td>
+      <td>16</td>
+      <td>41.77%</td>
+      <td>57.71%</td>
+      <td>0.53%</td>
+      <td>18.37</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Miami Dolphins</td>
+      <td>1375.64</td>
+      <td>0</td>
+      <td>@ New England Patriots</td>
+      <td>1641.54</td>
+      <td>43</td>
+      <td>18.96%</td>
+      <td>80.51%</td>
+      <td>0.53%</td>
+      <td>-17.77</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Houston Texans</td>
+      <td>1511.60</td>
+      <td>13</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1441.56</td>
+      <td>12</td>
+      <td>61.78%</td>
+      <td>37.70%</td>
+      <td>0.53%</td>
+      <td>5.37</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Tennessee Titans</td>
+      <td>1547.58</td>
+      <td>17</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1542.96</td>
+      <td>19</td>
+      <td>52.62%</td>
+      <td>46.86%</td>
+      <td>0.53%</td>
+      <td>-10.60</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>New Orleans Saints</td>
+      <td>1615.04</td>
+      <td>9</td>
+      <td>Los Angeles Rams</td>
+      <td>1586.32</td>
+      <td>27</td>
+      <td>51.65%</td>
+      <td>47.82%</td>
+      <td>0.53%</td>
+      <td>-31.21</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Chicago Bears</td>
+      <td>1554.55</td>
+      <td>16</td>
+      <td>Denver Broncos</td>
+      <td>1439.38</td>
+      <td>14</td>
+      <td>63.69%</td>
+      <td>35.78%</td>
+      <td>0.53%</td>
+      <td>7.22</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Cincinnati Bengals</td>
+      <td>1429.02</td>
+      <td>17</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1468.59</td>
+      <td>41</td>
+      <td>46.27%</td>
+      <td>53.21%</td>
+      <td>0.53%</td>
+      <td>-32.30</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Seattle Seahawks</td>
+      <td>1557.10</td>
+      <td>28</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1527.15</td>
+      <td>26</td>
+      <td>51.82%</td>
+      <td>47.65%</td>
+      <td>0.53%</td>
+      <td>9.60</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>San Francisco 49ers</td>
+      <td>1468.59</td>
+      <td>41</td>
+      <td>Cincinnati Bengals</td>
+      <td>1429.02</td>
+      <td>17</td>
+      <td>53.21%</td>
+      <td>46.27%</td>
+      <td>0.53%</td>
+      <td>32.30</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1441.56</td>
+      <td>12</td>
+      <td>Houston Texans</td>
+      <td>1511.60</td>
+      <td>13</td>
+      <td>37.70%</td>
+      <td>61.78%</td>
+      <td>0.53%</td>
+      <td>-5.37</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>New England Patriots</td>
+      <td>1641.54</td>
+      <td>43</td>
+      <td>Miami Dolphins</td>
+      <td>1375.64</td>
+      <td>0</td>
+      <td>80.51%</td>
+      <td>18.96%</td>
+      <td>0.53%</td>
+      <td>17.77</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Minnesota Vikings</td>
+      <td>1552.44</td>
+      <td>16</td>
+      <td>Green Bay Packers</td>
+      <td>1481.12</td>
+      <td>21</td>
+      <td>57.71%</td>
+      <td>41.77%</td>
+      <td>0.53%</td>
+      <td>-18.37</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Los Angeles Chargers</td>
+      <td>1584.68</td>
+      <td>10</td>
+      <td>Detroit Lions</td>
+      <td>1488.08</td>
+      <td>13</td>
+      <td>61.20%</td>
+      <td>38.28%</td>
+      <td>0.53%</td>
+      <td>-15.09</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Indianapolis Colts</td>
+      <td>1542.96</td>
+      <td>19</td>
+      <td>Tennessee Titans</td>
+      <td>1547.58</td>
+      <td>17</td>
+      <td>46.86%</td>
+      <td>52.62%</td>
+      <td>0.53%</td>
+      <td>10.60</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Dallas Cowboys</td>
+      <td>1548.03</td>
+      <td>31</td>
+      <td>Washington Redskins</td>
+      <td>1422.38</td>
+      <td>21</td>
+      <td>65.06%</td>
+      <td>34.41%</td>
+      <td>0.53%</td>
+      <td>15.53</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Buffalo Bills</td>
+      <td>1454.13</td>
+      <td>28</td>
+      <td>New York Giants</td>
+      <td>1432.60</td>
+      <td>14</td>
+      <td>50.62%</td>
+      <td>48.86%</td>
+      <td>0.53%</td>
+      <td>26.04</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Arizona Cardinals</td>
+      <td>1383.99</td>
+      <td>17</td>
+      <td>Baltimore Ravens</td>
+      <td>1596.01</td>
+      <td>23</td>
+      <td>21.08%</td>
+      <td>78.39%</td>
+      <td>0.53%</td>
+      <td>-7.38</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Kansas City Chiefs</td>
+      <td>1598.39</td>
+      <td>28</td>
+      <td>Oakland Raiders</td>
+      <td>1428.60</td>
+      <td>10</td>
+      <td>70.55%</td>
+      <td>28.92%</td>
+      <td>0.53%</td>
+      <td>17.52</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1527.15</td>
+      <td>26</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1557.10</td>
+      <td>28</td>
+      <td>47.65%</td>
+      <td>51.82%</td>
+      <td>0.53%</td>
+      <td>-9.60</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Oakland Raiders</td>
+      <td>1428.60</td>
+      <td>10</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1598.39</td>
+      <td>28</td>
+      <td>28.92%</td>
+      <td>70.55%</td>
+      <td>0.53%</td>
+      <td>-17.52</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Los Angeles Rams</td>
+      <td>1586.32</td>
+      <td>27</td>
+      <td>@ New Orleans Saints</td>
+      <td>1615.04</td>
+      <td>9</td>
+      <td>47.82%</td>
+      <td>51.65%</td>
+      <td>0.53%</td>
+      <td>31.21</td>
+    </tr>
+    <tr>
+      <td>2019-09-15</td>
+      <td>Atlanta Falcons</td>
+      <td>1484.23</td>
+      <td>24</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1572.94</td>
+      <td>20</td>
+      <td>39.35%</td>
+      <td>60.12%</td>
+      <td>0.53%</td>
+      <td>17.11</td>
+    </tr>
+    <tr>
+      <td>2019-09-16</td>
+      <td>New York Jets</td>
+      <td>1396.65</td>
+      <td>3</td>
+      <td>@ Cleveland Browns</td>
+      <td>1438.82</td>
+      <td>23</td>
+      <td>45.90%</td>
+      <td>53.58%</td>
+      <td>0.53%</td>
+      <td>-29.25</td>
+    </tr>
+    <tr>
+      <td>2019-09-16</td>
+      <td>Cleveland Browns</td>
+      <td>1438.82</td>
+      <td>23</td>
+      <td>New York Jets</td>
+      <td>1396.65</td>
+      <td>3</td>
+      <td>53.58%</td>
+      <td>45.90%</td>
+      <td>0.53%</td>
+      <td>29.25</td>
+    </tr>
+    <tr>
+      <td>2019-09-19</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1436.19</td>
+      <td>20</td>
+      <td>@ Tennessee Titans</td>
+      <td>1536.98</td>
+      <td>7</td>
+      <td>37.71%</td>
+      <td>61.77%</td>
+      <td>0.53%</td>
+      <td>31.70</td>
+    </tr>
+    <tr>
+      <td>2019-09-19</td>
+      <td>Tennessee Titans</td>
+      <td>1536.98</td>
+      <td>7</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1436.19</td>
+      <td>20</td>
+      <td>61.77%</td>
+      <td>37.71%</td>
+      <td>0.53%</td>
+      <td>-31.70</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>New Orleans Saints</td>
+      <td>1583.83</td>
+      <td>33</td>
+      <td>Seattle Seahawks</td>
+      <td>1566.70</td>
+      <td>27</td>
+      <td>49.98%</td>
+      <td>49.49%</td>
+      <td>0.53%</td>
+      <td>17.27</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Atlanta Falcons</td>
+      <td>1501.34</td>
+      <td>24</td>
+      <td>Indianapolis Colts</td>
+      <td>1553.56</td>
+      <td>27</td>
+      <td>40.13%</td>
+      <td>59.34%</td>
+      <td>0.53%</td>
+      <td>-9.91</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Baltimore Ravens</td>
+      <td>1603.39</td>
+      <td>28</td>
+      <td>Kansas City Chiefs</td>
+      <td>1615.91</td>
+      <td>33</td>
+      <td>45.73%</td>
+      <td>53.75%</td>
+      <td>0.53%</td>
+      <td>-14.57</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Cincinnati Bengals</td>
+      <td>1396.72</td>
+      <td>17</td>
+      <td>Buffalo Bills</td>
+      <td>1480.17</td>
+      <td>21</td>
+      <td>35.90%</td>
+      <td>63.57%</td>
+      <td>0.53%</td>
+      <td>-10.25</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Los Angeles Rams</td>
+      <td>1617.53</td>
+      <td>20</td>
+      <td>Cleveland Browns</td>
+      <td>1468.07</td>
+      <td>13</td>
+      <td>68.09%</td>
+      <td>31.39%</td>
+      <td>0.53%</td>
+      <td>11.85</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Denver Broncos</td>
+      <td>1432.16</td>
+      <td>16</td>
+      <td>Green Bay Packers</td>
+      <td>1499.49</td>
+      <td>27</td>
+      <td>38.06%</td>
+      <td>61.41%</td>
+      <td>0.53%</td>
+      <td>-18.00</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>New York Giants</td>
+      <td>1406.55</td>
+      <td>32</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1443.87</td>
+      <td>31</td>
+      <td>42.21%</td>
+      <td>57.26%</td>
+      <td>0.53%</td>
+      <td>8.16</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Houston Texans</td>
+      <td>1516.97</td>
+      <td>27</td>
+      <td>Los Angeles Chargers</td>
+      <td>1569.59</td>
+      <td>20</td>
+      <td>40.08%</td>
+      <td>59.39%</td>
+      <td>0.53%</td>
+      <td>22.37</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Carolina Panthers</td>
+      <td>1455.02</td>
+      <td>38</td>
+      <td>Arizona Cardinals</td>
+      <td>1376.61</td>
+      <td>20</td>
+      <td>58.69%</td>
+      <td>40.78%</td>
+      <td>0.53%</td>
+      <td>24.66</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Oakland Raiders</td>
+      <td>1411.08</td>
+      <td>14</td>
+      <td>Minnesota Vikings</td>
+      <td>1534.07</td>
+      <td>34</td>
+      <td>30.85%</td>
+      <td>68.63%</td>
+      <td>0.53%</td>
+      <td>-19.69</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>New York Jets</td>
+      <td>1367.40</td>
+      <td>14</td>
+      <td>New England Patriots</td>
+      <td>1659.31</td>
+      <td>30</td>
+      <td>14.43%</td>
+      <td>85.04%</td>
+      <td>0.53%</td>
+      <td>-8.26</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1517.55</td>
+      <td>20</td>
+      <td>San Francisco 49ers</td>
+      <td>1500.89</td>
+      <td>24</td>
+      <td>49.91%</td>
+      <td>49.56%</td>
+      <td>0.53%</td>
+      <td>-14.22</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Cleveland Browns</td>
+      <td>1468.07</td>
+      <td>13</td>
+      <td>@ Los Angeles Rams</td>
+      <td>1617.53</td>
+      <td>20</td>
+      <td>31.39%</td>
+      <td>68.09%</td>
+      <td>0.53%</td>
+      <td>-11.85</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1443.87</td>
+      <td>31</td>
+      <td>@ New York Giants</td>
+      <td>1406.55</td>
+      <td>32</td>
+      <td>57.26%</td>
+      <td>42.21%</td>
+      <td>0.53%</td>
+      <td>-8.15</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Miami Dolphins</td>
+      <td>1357.87</td>
+      <td>6</td>
+      <td>Dallas Cowboys</td>
+      <td>1563.56</td>
+      <td>31</td>
+      <td>21.70%</td>
+      <td>77.78%</td>
+      <td>0.53%</td>
+      <td>-15.50</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Indianapolis Colts</td>
+      <td>1553.56</td>
+      <td>27</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1501.34</td>
+      <td>24</td>
+      <td>59.34%</td>
+      <td>40.13%</td>
+      <td>0.53%</td>
+      <td>9.91</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Kansas City Chiefs</td>
+      <td>1615.91</td>
+      <td>33</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1603.39</td>
+      <td>28</td>
+      <td>53.75%</td>
+      <td>45.73%</td>
+      <td>0.53%</td>
+      <td>14.57</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Buffalo Bills</td>
+      <td>1480.17</td>
+      <td>21</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1396.72</td>
+      <td>17</td>
+      <td>63.57%</td>
+      <td>35.90%</td>
+      <td>0.53%</td>
+      <td>10.24</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Green Bay Packers</td>
+      <td>1499.49</td>
+      <td>27</td>
+      <td>@ Denver Broncos</td>
+      <td>1432.16</td>
+      <td>16</td>
+      <td>61.41%</td>
+      <td>38.06%</td>
+      <td>0.53%</td>
+      <td>18.01</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Philadelphia Eagles</td>
+      <td>1555.82</td>
+      <td>24</td>
+      <td>@ Detroit Lions</td>
+      <td>1503.17</td>
+      <td>27</td>
+      <td>59.40%</td>
+      <td>40.07%</td>
+      <td>0.53%</td>
+      <td>-14.64</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Dallas Cowboys</td>
+      <td>1563.56</td>
+      <td>31</td>
+      <td>@ Miami Dolphins</td>
+      <td>1357.87</td>
+      <td>6</td>
+      <td>77.78%</td>
+      <td>21.70%</td>
+      <td>0.53%</td>
+      <td>15.50</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>New England Patriots</td>
+      <td>1659.31</td>
+      <td>30</td>
+      <td>@ New York Jets</td>
+      <td>1367.40</td>
+      <td>14</td>
+      <td>85.04%</td>
+      <td>14.43%</td>
+      <td>0.53%</td>
+      <td>8.26</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Detroit Lions</td>
+      <td>1503.17</td>
+      <td>27</td>
+      <td>Philadelphia Eagles</td>
+      <td>1555.82</td>
+      <td>24</td>
+      <td>40.07%</td>
+      <td>59.40%</td>
+      <td>0.53%</td>
+      <td>14.64</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Minnesota Vikings</td>
+      <td>1534.07</td>
+      <td>34</td>
+      <td>@ Oakland Raiders</td>
+      <td>1411.08</td>
+      <td>14</td>
+      <td>68.63%</td>
+      <td>30.85%</td>
+      <td>0.53%</td>
+      <td>19.69</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Arizona Cardinals</td>
+      <td>1376.61</td>
+      <td>20</td>
+      <td>@ Carolina Panthers</td>
+      <td>1455.02</td>
+      <td>38</td>
+      <td>40.78%</td>
+      <td>58.69%</td>
+      <td>0.53%</td>
+      <td>-24.66</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Los Angeles Chargers</td>
+      <td>1569.59</td>
+      <td>20</td>
+      <td>@ Houston Texans</td>
+      <td>1516.97</td>
+      <td>27</td>
+      <td>59.39%</td>
+      <td>40.08%</td>
+      <td>0.53%</td>
+      <td>-22.37</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>Seattle Seahawks</td>
+      <td>1566.70</td>
+      <td>27</td>
+      <td>@ New Orleans Saints</td>
+      <td>1583.83</td>
+      <td>33</td>
+      <td>49.49%</td>
+      <td>49.98%</td>
+      <td>0.53%</td>
+      <td>-17.27</td>
+    </tr>
+    <tr>
+      <td>2019-09-22</td>
+      <td>San Francisco 49ers</td>
+      <td>1500.89</td>
+      <td>24</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1517.55</td>
+      <td>20</td>
+      <td>49.56%</td>
+      <td>49.91%</td>
+      <td>0.53%</td>
+      <td>14.22</td>
+    </tr>
+    <tr>
+      <td>2019-09-23</td>
+      <td>Chicago Bears</td>
+      <td>1561.77</td>
+      <td>31</td>
+      <td>Washington Redskins</td>
+      <td>1406.85</td>
+      <td>15</td>
+      <td>68.76%</td>
+      <td>30.71%</td>
+      <td>0.53%</td>
+      <td>17.54</td>
+    </tr>
+    <tr>
+      <td>2019-09-23</td>
+      <td>Washington Redskins</td>
+      <td>1406.85</td>
+      <td>15</td>
+      <td>@ Chicago Bears</td>
+      <td>1561.77</td>
+      <td>31</td>
+      <td>30.71%</td>
+      <td>68.76%</td>
+      <td>0.53%</td>
+      <td>-17.54</td>
+    </tr>
+    <tr>
+      <td>2019-09-26</td>
+      <td>Philadelphia Eagles</td>
+      <td>1541.18</td>
+      <td>34</td>
+      <td>Green Bay Packers</td>
+      <td>1517.50</td>
+      <td>27</td>
+      <td>50.92%</td>
+      <td>48.55%</td>
+      <td>0.53%</td>
+      <td>18.30</td>
+    </tr>
+    <tr>
+      <td>2019-09-26</td>
+      <td>Green Bay Packers</td>
+      <td>1517.50</td>
+      <td>27</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1541.18</td>
+      <td>34</td>
+      <td>48.55%</td>
+      <td>50.92%</td>
+      <td>0.53%</td>
+      <td>-18.30</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Los Angeles Rams</td>
+      <td>1629.38</td>
+      <td>40</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1435.72</td>
+      <td>55</td>
+      <td>76.58%</td>
+      <td>22.90%</td>
+      <td>0.53%</td>
+      <td>-42.21</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Carolina Panthers</td>
+      <td>1479.68</td>
+      <td>16</td>
+      <td>Houston Texans</td>
+      <td>1539.34</td>
+      <td>10</td>
+      <td>39.11%</td>
+      <td>60.36%</td>
+      <td>0.53%</td>
+      <td>21.05</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>New Orleans Saints</td>
+      <td>1601.10</td>
+      <td>12</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1579.06</td>
+      <td>10</td>
+      <td>55.10%</td>
+      <td>44.37%</td>
+      <td>0.53%</td>
+      <td>8.95</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Chicago Bears</td>
+      <td>1579.31</td>
+      <td>16</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1553.76</td>
+      <td>6</td>
+      <td>55.60%</td>
+      <td>43.87%</td>
+      <td>0.53%</td>
+      <td>19.77</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Denver Broncos</td>
+      <td>1414.16</td>
+      <td>24</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1467.89</td>
+      <td>26</td>
+      <td>44.25%</td>
+      <td>55.22%</td>
+      <td>0.53%</td>
+      <td>-8.92</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>New York Giants</td>
+      <td>1414.71</td>
+      <td>24</td>
+      <td>@ Washington Redskins</td>
+      <td>1389.31</td>
+      <td>3</td>
+      <td>55.58%</td>
+      <td>43.89%</td>
+      <td>0.53%</td>
+      <td>28.67</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Atlanta Falcons</td>
+      <td>1491.43</td>
+      <td>10</td>
+      <td>@ Tennessee Titans</td>
+      <td>1505.28</td>
+      <td>24</td>
+      <td>49.96%</td>
+      <td>49.51%</td>
+      <td>0.53%</td>
+      <td>-26.63</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Indianapolis Colts</td>
+      <td>1563.47</td>
+      <td>24</td>
+      <td>@ Oakland Raiders</td>
+      <td>1391.39</td>
+      <td>31</td>
+      <td>74.31%</td>
+      <td>25.16%</td>
+      <td>0.53%</td>
+      <td>-27.98</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Buffalo Bills</td>
+      <td>1490.41</td>
+      <td>10</td>
+      <td>@ New England Patriots</td>
+      <td>1667.57</td>
+      <td>16</td>
+      <td>28.06%</td>
+      <td>71.41%</td>
+      <td>0.53%</td>
+      <td>-9.81</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Miami Dolphins</td>
+      <td>1342.37</td>
+      <td>10</td>
+      <td>@ Los Angeles Chargers</td>
+      <td>1547.22</td>
+      <td>30</td>
+      <td>24.95%</td>
+      <td>74.52%</td>
+      <td>0.53%</td>
+      <td>-15.94</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Detroit Lions</td>
+      <td>1517.81</td>
+      <td>30</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1630.48</td>
+      <td>34</td>
+      <td>36.12%</td>
+      <td>63.36%</td>
+      <td>0.53%</td>
+      <td>-10.30</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Baltimore Ravens</td>
+      <td>1588.82</td>
+      <td>25</td>
+      <td>@ Cleveland Browns</td>
+      <td>1456.22</td>
+      <td>40</td>
+      <td>69.79%</td>
+      <td>29.68%</td>
+      <td>0.53%</td>
+      <td>-38.47</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Arizona Cardinals</td>
+      <td>1351.95</td>
+      <td>10</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1549.43</td>
+      <td>27</td>
+      <td>25.76%</td>
+      <td>73.72%</td>
+      <td>0.53%</td>
+      <td>-15.17</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Houston Texans</td>
+      <td>1539.34</td>
+      <td>10</td>
+      <td>@ Carolina Panthers</td>
+      <td>1479.68</td>
+      <td>16</td>
+      <td>60.36%</td>
+      <td>39.11%</td>
+      <td>0.53%</td>
+      <td>-21.04</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1435.72</td>
+      <td>55</td>
+      <td>Los Angeles Rams</td>
+      <td>1629.38</td>
+      <td>40</td>
+      <td>22.90%</td>
+      <td>76.58%</td>
+      <td>0.53%</td>
+      <td>42.21</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Minnesota Vikings</td>
+      <td>1553.76</td>
+      <td>6</td>
+      <td>Chicago Bears</td>
+      <td>1579.31</td>
+      <td>16</td>
+      <td>43.87%</td>
+      <td>55.60%</td>
+      <td>0.53%</td>
+      <td>-19.77</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1467.89</td>
+      <td>26</td>
+      <td>Denver Broncos</td>
+      <td>1414.16</td>
+      <td>24</td>
+      <td>55.22%</td>
+      <td>44.25%</td>
+      <td>0.53%</td>
+      <td>8.91</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Washington Redskins</td>
+      <td>1389.31</td>
+      <td>3</td>
+      <td>New York Giants</td>
+      <td>1414.71</td>
+      <td>24</td>
+      <td>43.89%</td>
+      <td>55.58%</td>
+      <td>0.53%</td>
+      <td>-28.67</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Tennessee Titans</td>
+      <td>1505.28</td>
+      <td>24</td>
+      <td>Atlanta Falcons</td>
+      <td>1491.43</td>
+      <td>10</td>
+      <td>49.51%</td>
+      <td>49.96%</td>
+      <td>0.53%</td>
+      <td>26.63</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Oakland Raiders</td>
+      <td>1391.39</td>
+      <td>31</td>
+      <td>Indianapolis Colts</td>
+      <td>1563.47</td>
+      <td>24</td>
+      <td>25.16%</td>
+      <td>74.31%</td>
+      <td>0.53%</td>
+      <td>27.98</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>New England Patriots</td>
+      <td>1667.57</td>
+      <td>16</td>
+      <td>Buffalo Bills</td>
+      <td>1490.41</td>
+      <td>10</td>
+      <td>71.41%</td>
+      <td>28.06%</td>
+      <td>0.53%</td>
+      <td>9.81</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Los Angeles Chargers</td>
+      <td>1547.22</td>
+      <td>30</td>
+      <td>Miami Dolphins</td>
+      <td>1342.37</td>
+      <td>10</td>
+      <td>74.52%</td>
+      <td>24.95%</td>
+      <td>0.53%</td>
+      <td>15.94</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Kansas City Chiefs</td>
+      <td>1630.48</td>
+      <td>34</td>
+      <td>Detroit Lions</td>
+      <td>1517.81</td>
+      <td>30</td>
+      <td>63.36%</td>
+      <td>36.12%</td>
+      <td>0.53%</td>
+      <td>10.31</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Cleveland Browns</td>
+      <td>1456.22</td>
+      <td>40</td>
+      <td>Baltimore Ravens</td>
+      <td>1588.82</td>
+      <td>25</td>
+      <td>29.68%</td>
+      <td>69.79%</td>
+      <td>0.53%</td>
+      <td>38.47</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Dallas Cowboys</td>
+      <td>1579.06</td>
+      <td>10</td>
+      <td>New Orleans Saints</td>
+      <td>1601.10</td>
+      <td>12</td>
+      <td>44.37%</td>
+      <td>55.10%</td>
+      <td>0.53%</td>
+      <td>-8.94</td>
+    </tr>
+    <tr>
+      <td>2019-09-29</td>
+      <td>Seattle Seahawks</td>
+      <td>1549.43</td>
+      <td>27</td>
+      <td>Arizona Cardinals</td>
+      <td>1351.95</td>
+      <td>10</td>
+      <td>73.72%</td>
+      <td>25.76%</td>
+      <td>0.53%</td>
+      <td>15.17</td>
+    </tr>
+    <tr>
+      <td>2019-09-30</td>
+      <td>Cincinnati Bengals</td>
+      <td>1386.47</td>
+      <td>3</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1503.33</td>
+      <td>27</td>
+      <td>31.60%</td>
+      <td>67.87%</td>
+      <td>0.53%</td>
+      <td>-22.09</td>
+    </tr>
+    <tr>
+      <td>2019-09-30</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1503.33</td>
+      <td>27</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1386.47</td>
+      <td>3</td>
+      <td>67.87%</td>
+      <td>31.60%</td>
+      <td>0.53%</td>
+      <td>22.10</td>
+    </tr>
+    <tr>
+      <td>2019-10-03</td>
+      <td>Seattle Seahawks</td>
+      <td>1564.60</td>
+      <td>30</td>
+      <td>@ Los Angeles Rams</td>
+      <td>1587.17</td>
+      <td>29</td>
+      <td>48.71%</td>
+      <td>50.77%</td>
+      <td>0.53%</td>
+      <td>7.23</td>
+    </tr>
+    <tr>
+      <td>2019-10-03</td>
+      <td>Los Angeles Rams</td>
+      <td>1587.17</td>
+      <td>29</td>
+      <td>Seattle Seahawks</td>
+      <td>1564.60</td>
+      <td>30</td>
+      <td>50.77%</td>
+      <td>48.71%</td>
+      <td>0.53%</td>
+      <td>-7.23</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1477.93</td>
+      <td>24</td>
+      <td>New Orleans Saints</td>
+      <td>1610.05</td>
+      <td>31</td>
+      <td>29.74%</td>
+      <td>69.74%</td>
+      <td>0.53%</td>
+      <td>-11.23</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Green Bay Packers</td>
+      <td>1499.20</td>
+      <td>34</td>
+      <td>Dallas Cowboys</td>
+      <td>1570.12</td>
+      <td>24</td>
+      <td>37.58%</td>
+      <td>61.90%</td>
+      <td>0.53%</td>
+      <td>27.86</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Denver Broncos</td>
+      <td>1405.24</td>
+      <td>20</td>
+      <td>Los Angeles Chargers</td>
+      <td>1563.16</td>
+      <td>13</td>
+      <td>26.73%</td>
+      <td>72.74%</td>
+      <td>0.53%</td>
+      <td>27.39</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Atlanta Falcons</td>
+      <td>1464.80</td>
+      <td>32</td>
+      <td>Houston Texans</td>
+      <td>1518.30</td>
+      <td>53</td>
+      <td>39.96%</td>
+      <td>59.52%</td>
+      <td>0.53%</td>
+      <td>-26.11</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Indianapolis Colts</td>
+      <td>1535.49</td>
+      <td>19</td>
+      <td>Kansas City Chiefs</td>
+      <td>1640.79</td>
+      <td>13</td>
+      <td>33.06%</td>
+      <td>66.41%</td>
+      <td>0.53%</td>
+      <td>23.15</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Baltimore Ravens</td>
+      <td>1550.35</td>
+      <td>26</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1525.43</td>
+      <td>23</td>
+      <td>51.10%</td>
+      <td>48.37%</td>
+      <td>0.53%</td>
+      <td>11.93</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Buffalo Bills</td>
+      <td>1480.60</td>
+      <td>14</td>
+      <td>Tennessee Titans</td>
+      <td>1531.91</td>
+      <td>7</td>
+      <td>40.26%</td>
+      <td>59.21%</td>
+      <td>0.53%</td>
+      <td>22.30</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Chicago Bears</td>
+      <td>1599.08</td>
+      <td>21</td>
+      <td>Oakland Raiders</td>
+      <td>1419.37</td>
+      <td>24</td>
+      <td>73.46%</td>
+      <td>26.02%</td>
+      <td>0.53%</td>
+      <td>-18.10</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1476.80</td>
+      <td>27</td>
+      <td>Carolina Panthers</td>
+      <td>1500.73</td>
+      <td>34</td>
+      <td>44.10%</td>
+      <td>55.37%</td>
+      <td>0.53%</td>
+      <td>-16.63</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Minnesota Vikings</td>
+      <td>1533.99</td>
+      <td>28</td>
+      <td>New York Giants</td>
+      <td>1443.38</td>
+      <td>10</td>
+      <td>60.38%</td>
+      <td>39.09%</td>
+      <td>0.53%</td>
+      <td>23.65</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Arizona Cardinals</td>
+      <td>1336.78</td>
+      <td>26</td>
+      <td>Cincinnati Bengals</td>
+      <td>1364.38</td>
+      <td>23</td>
+      <td>43.58%</td>
+      <td>55.89%</td>
+      <td>0.53%</td>
+      <td>13.78</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>New England Patriots</td>
+      <td>1677.38</td>
+      <td>33</td>
+      <td>Washington Redskins</td>
+      <td>1360.64</td>
+      <td>7</td>
+      <td>84.61%</td>
+      <td>14.87%</td>
+      <td>0.53%</td>
+      <td>10.84</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>New York Jets</td>
+      <td>1359.14</td>
+      <td>6</td>
+      <td>Philadelphia Eagles</td>
+      <td>1559.48</td>
+      <td>31</td>
+      <td>22.23%</td>
+      <td>77.25%</td>
+      <td>0.53%</td>
+      <td>-15.87</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Kansas City Chiefs</td>
+      <td>1640.79</td>
+      <td>13</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1535.49</td>
+      <td>19</td>
+      <td>66.41%</td>
+      <td>33.06%</td>
+      <td>0.53%</td>
+      <td>-23.16</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Dallas Cowboys</td>
+      <td>1570.12</td>
+      <td>24</td>
+      <td>@ Green Bay Packers</td>
+      <td>1499.20</td>
+      <td>34</td>
+      <td>61.90%</td>
+      <td>37.58%</td>
+      <td>0.53%</td>
+      <td>-27.87</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Los Angeles Chargers</td>
+      <td>1563.16</td>
+      <td>13</td>
+      <td>@ Denver Broncos</td>
+      <td>1405.24</td>
+      <td>20</td>
+      <td>72.74%</td>
+      <td>26.73%</td>
+      <td>0.53%</td>
+      <td>-27.39</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>New Orleans Saints</td>
+      <td>1610.05</td>
+      <td>31</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1477.93</td>
+      <td>24</td>
+      <td>69.74%</td>
+      <td>29.74%</td>
+      <td>0.53%</td>
+      <td>11.23</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Washington Redskins</td>
+      <td>1360.64</td>
+      <td>7</td>
+      <td>@ New England Patriots</td>
+      <td>1677.38</td>
+      <td>33</td>
+      <td>14.87%</td>
+      <td>84.61%</td>
+      <td>0.53%</td>
+      <td>-10.84</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>New York Giants</td>
+      <td>1443.38</td>
+      <td>10</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1533.99</td>
+      <td>28</td>
+      <td>39.09%</td>
+      <td>60.38%</td>
+      <td>0.53%</td>
+      <td>-23.66</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Philadelphia Eagles</td>
+      <td>1559.48</td>
+      <td>31</td>
+      <td>@ New York Jets</td>
+      <td>1359.14</td>
+      <td>6</td>
+      <td>77.25%</td>
+      <td>22.23%</td>
+      <td>0.53%</td>
+      <td>15.87</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Oakland Raiders</td>
+      <td>1419.37</td>
+      <td>24</td>
+      <td>@ Chicago Bears</td>
+      <td>1599.08</td>
+      <td>21</td>
+      <td>26.02%</td>
+      <td>73.46%</td>
+      <td>0.53%</td>
+      <td>18.11</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Tennessee Titans</td>
+      <td>1531.91</td>
+      <td>7</td>
+      <td>@ Buffalo Bills</td>
+      <td>1480.60</td>
+      <td>14</td>
+      <td>59.21%</td>
+      <td>40.26%</td>
+      <td>0.53%</td>
+      <td>-22.30</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1525.43</td>
+      <td>23</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1550.35</td>
+      <td>26</td>
+      <td>48.37%</td>
+      <td>51.10%</td>
+      <td>0.53%</td>
+      <td>-11.94</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Houston Texans</td>
+      <td>1518.30</td>
+      <td>53</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1464.80</td>
+      <td>32</td>
+      <td>59.52%</td>
+      <td>39.96%</td>
+      <td>0.53%</td>
+      <td>26.11</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Cincinnati Bengals</td>
+      <td>1364.38</td>
+      <td>23</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1336.78</td>
+      <td>26</td>
+      <td>55.89%</td>
+      <td>43.58%</td>
+      <td>0.53%</td>
+      <td>-13.79</td>
+    </tr>
+    <tr>
+      <td>2019-10-06</td>
+      <td>Carolina Panthers</td>
+      <td>1500.73</td>
+      <td>34</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1476.80</td>
+      <td>27</td>
+      <td>55.37%</td>
+      <td>44.10%</td>
+      <td>0.53%</td>
+      <td>16.63</td>
+    </tr>
+    <tr>
+      <td>2019-10-07</td>
+      <td>San Francisco 49ers</td>
+      <td>1515.11</td>
+      <td>31</td>
+      <td>@ Cleveland Browns</td>
+      <td>1494.69</td>
+      <td>3</td>
+      <td>54.87%</td>
+      <td>44.60%</td>
+      <td>0.53%</td>
+      <td>33.64</td>
+    </tr>
+    <tr>
+      <td>2019-10-07</td>
+      <td>Cleveland Browns</td>
+      <td>1494.69</td>
+      <td>3</td>
+      <td>San Francisco 49ers</td>
+      <td>1515.11</td>
+      <td>31</td>
+      <td>44.60%</td>
+      <td>54.87%</td>
+      <td>0.53%</td>
+      <td>-33.64</td>
+    </tr>
+    <tr>
+      <td>2019-10-10</td>
+      <td>New York Giants</td>
+      <td>1419.72</td>
+      <td>14</td>
+      <td>New England Patriots</td>
+      <td>1688.22</td>
+      <td>35</td>
+      <td>16.18%</td>
+      <td>83.29%</td>
+      <td>0.53%</td>
+      <td>-10.60</td>
+    </tr>
+    <tr>
+      <td>2019-10-10</td>
+      <td>New England Patriots</td>
+      <td>1688.22</td>
+      <td>35</td>
+      <td>@ New York Giants</td>
+      <td>1419.72</td>
+      <td>14</td>
+      <td>83.29%</td>
+      <td>16.18%</td>
+      <td>0.53%</td>
+      <td>10.60</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Houston Texans</td>
+      <td>1544.41</td>
+      <td>31</td>
+      <td>Kansas City Chiefs</td>
+      <td>1617.63</td>
+      <td>24</td>
+      <td>37.27%</td>
+      <td>62.21%</td>
+      <td>0.53%</td>
+      <td>23.42</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Cincinnati Bengals</td>
+      <td>1350.59</td>
+      <td>17</td>
+      <td>Baltimore Ravens</td>
+      <td>1562.28</td>
+      <td>23</td>
+      <td>21.12%</td>
+      <td>78.36%</td>
+      <td>0.53%</td>
+      <td>-7.39</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Carolina Panthers</td>
+      <td>1517.36</td>
+      <td>37</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1466.70</td>
+      <td>26</td>
+      <td>56.97%</td>
+      <td>42.50%</td>
+      <td>0.53%</td>
+      <td>20.10</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Seattle Seahawks</td>
+      <td>1571.83</td>
+      <td>32</td>
+      <td>Cleveland Browns</td>
+      <td>1461.05</td>
+      <td>28</td>
+      <td>63.11%</td>
+      <td>36.37%</td>
+      <td>0.53%</td>
+      <td>10.37</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Atlanta Falcons</td>
+      <td>1438.69</td>
+      <td>33</td>
+      <td>Arizona Cardinals</td>
+      <td>1350.56</td>
+      <td>34</td>
+      <td>60.04%</td>
+      <td>39.43%</td>
+      <td>0.53%</td>
+      <td>-8.55</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Dallas Cowboys</td>
+      <td>1542.25</td>
+      <td>22</td>
+      <td>New York Jets</td>
+      <td>1343.27</td>
+      <td>24</td>
+      <td>73.88%</td>
+      <td>25.59%</td>
+      <td>0.53%</td>
+      <td>-14.87</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>San Francisco 49ers</td>
+      <td>1548.75</td>
+      <td>20</td>
+      <td>Los Angeles Rams</td>
+      <td>1579.94</td>
+      <td>7</td>
+      <td>43.07%</td>
+      <td>56.40%</td>
+      <td>0.53%</td>
+      <td>28.95</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Tennessee Titans</td>
+      <td>1509.61</td>
+      <td>0</td>
+      <td>Denver Broncos</td>
+      <td>1432.63</td>
+      <td>16</td>
+      <td>58.50%</td>
+      <td>40.98%</td>
+      <td>0.53%</td>
+      <td>-33.31</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>New Orleans Saints</td>
+      <td>1621.28</td>
+      <td>13</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1460.17</td>
+      <td>6</td>
+      <td>69.51%</td>
+      <td>29.96%</td>
+      <td>0.53%</td>
+      <td>11.31</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Washington Redskins</td>
+      <td>1349.80</td>
+      <td>17</td>
+      <td>Miami Dolphins</td>
+      <td>1326.43</td>
+      <td>16</td>
+      <td>50.88%</td>
+      <td>48.59%</td>
+      <td>0.53%</td>
+      <td>6.93</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Philadelphia Eagles</td>
+      <td>1575.35</td>
+      <td>20</td>
+      <td>Minnesota Vikings</td>
+      <td>1557.64</td>
+      <td>38</td>
+      <td>50.07%</td>
+      <td>49.41%</td>
+      <td>0.53%</td>
+      <td>-30.25</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Minnesota Vikings</td>
+      <td>1557.64</td>
+      <td>38</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1575.35</td>
+      <td>20</td>
+      <td>49.41%</td>
+      <td>50.07%</td>
+      <td>0.53%</td>
+      <td>30.26</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Denver Broncos</td>
+      <td>1432.63</td>
+      <td>16</td>
+      <td>@ Tennessee Titans</td>
+      <td>1509.61</td>
+      <td>0</td>
+      <td>40.98%</td>
+      <td>58.50%</td>
+      <td>0.53%</td>
+      <td>33.31</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Los Angeles Rams</td>
+      <td>1579.94</td>
+      <td>7</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1548.75</td>
+      <td>20</td>
+      <td>56.40%</td>
+      <td>43.07%</td>
+      <td>0.53%</td>
+      <td>-28.96</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>New York Jets</td>
+      <td>1343.27</td>
+      <td>24</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1542.25</td>
+      <td>22</td>
+      <td>25.59%</td>
+      <td>73.88%</td>
+      <td>0.53%</td>
+      <td>14.87</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Arizona Cardinals</td>
+      <td>1350.56</td>
+      <td>34</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1438.69</td>
+      <td>33</td>
+      <td>39.43%</td>
+      <td>60.04%</td>
+      <td>0.53%</td>
+      <td>8.55</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Miami Dolphins</td>
+      <td>1326.43</td>
+      <td>16</td>
+      <td>@ Washington Redskins</td>
+      <td>1349.80</td>
+      <td>17</td>
+      <td>48.59%</td>
+      <td>50.88%</td>
+      <td>0.53%</td>
+      <td>-6.93</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Cleveland Browns</td>
+      <td>1461.05</td>
+      <td>28</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1571.83</td>
+      <td>32</td>
+      <td>36.37%</td>
+      <td>63.11%</td>
+      <td>0.53%</td>
+      <td>-10.38</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1513.49</td>
+      <td>24</td>
+      <td>Los Angeles Chargers</td>
+      <td>1535.77</td>
+      <td>17</td>
+      <td>44.34%</td>
+      <td>55.14%</td>
+      <td>0.53%</td>
+      <td>20.77</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1460.17</td>
+      <td>6</td>
+      <td>@ New Orleans Saints</td>
+      <td>1621.28</td>
+      <td>13</td>
+      <td>29.96%</td>
+      <td>69.51%</td>
+      <td>0.53%</td>
+      <td>-11.31</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Kansas City Chiefs</td>
+      <td>1617.63</td>
+      <td>24</td>
+      <td>@ Houston Texans</td>
+      <td>1544.41</td>
+      <td>31</td>
+      <td>62.21%</td>
+      <td>37.27%</td>
+      <td>0.53%</td>
+      <td>-23.42</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Baltimore Ravens</td>
+      <td>1562.28</td>
+      <td>23</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1350.59</td>
+      <td>17</td>
+      <td>78.36%</td>
+      <td>21.12%</td>
+      <td>0.53%</td>
+      <td>7.40</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1466.70</td>
+      <td>26</td>
+      <td>@ Carolina Panthers</td>
+      <td>1517.36</td>
+      <td>37</td>
+      <td>42.50%</td>
+      <td>56.97%</td>
+      <td>0.53%</td>
+      <td>-20.10</td>
+    </tr>
+    <tr>
+      <td>2019-10-13</td>
+      <td>Los Angeles Chargers</td>
+      <td>1535.77</td>
+      <td>17</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1513.49</td>
+      <td>24</td>
+      <td>55.14%</td>
+      <td>44.34%</td>
+      <td>0.53%</td>
+      <td>-20.77</td>
+    </tr>
+    <tr>
+      <td>2019-10-14</td>
+      <td>Detroit Lions</td>
+      <td>1507.51</td>
+      <td>22</td>
+      <td>Green Bay Packers</td>
+      <td>1527.06</td>
+      <td>23</td>
+      <td>44.72%</td>
+      <td>54.75%</td>
+      <td>0.53%</td>
+      <td>-6.38</td>
+    </tr>
+    <tr>
+      <td>2019-10-14</td>
+      <td>Green Bay Packers</td>
+      <td>1527.06</td>
+      <td>23</td>
+      <td>@ Detroit Lions</td>
+      <td>1507.51</td>
+      <td>22</td>
+      <td>54.75%</td>
+      <td>44.72%</td>
+      <td>0.53%</td>
+      <td>6.37</td>
+    </tr>
+    <tr>
+      <td>2019-10-17</td>
+      <td>Denver Broncos</td>
+      <td>1465.94</td>
+      <td>6</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1594.21</td>
+      <td>30</td>
+      <td>34.07%</td>
+      <td>65.40%</td>
+      <td>0.53%</td>
+      <td>-23.82</td>
+    </tr>
+    <tr>
+      <td>2019-10-17</td>
+      <td>Kansas City Chiefs</td>
+      <td>1594.21</td>
+      <td>30</td>
+      <td>Denver Broncos</td>
+      <td>1465.94</td>
+      <td>6</td>
+      <td>65.40%</td>
+      <td>34.07%</td>
+      <td>0.53%</td>
+      <td>23.81</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Houston Texans</td>
+      <td>1567.83</td>
+      <td>23</td>
+      <td>Indianapolis Colts</td>
+      <td>1558.64</td>
+      <td>30</td>
+      <td>48.84%</td>
+      <td>50.63%</td>
+      <td>0.53%</td>
+      <td>-18.41</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1448.86</td>
+      <td>27</td>
+      <td>Cincinnati Bengals</td>
+      <td>1343.20</td>
+      <td>17</td>
+      <td>62.42%</td>
+      <td>37.05%</td>
+      <td>0.53%</td>
+      <td>16.71</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Los Angeles Rams</td>
+      <td>1550.98</td>
+      <td>37</td>
+      <td>Atlanta Falcons</td>
+      <td>1430.14</td>
+      <td>10</td>
+      <td>64.44%</td>
+      <td>35.04%</td>
+      <td>0.53%</td>
+      <td>25.98</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Miami Dolphins</td>
+      <td>1319.50</td>
+      <td>21</td>
+      <td>Buffalo Bills</td>
+      <td>1502.90</td>
+      <td>31</td>
+      <td>23.96%</td>
+      <td>75.52%</td>
+      <td>0.53%</td>
+      <td>-10.82</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Minnesota Vikings</td>
+      <td>1587.90</td>
+      <td>42</td>
+      <td>Detroit Lions</td>
+      <td>1501.13</td>
+      <td>30</td>
+      <td>59.85%</td>
+      <td>39.62%</td>
+      <td>0.53%</td>
+      <td>19.57</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Oakland Raiders</td>
+      <td>1437.48</td>
+      <td>24</td>
+      <td>Green Bay Packers</td>
+      <td>1533.43</td>
+      <td>42</td>
+      <td>34.26%</td>
+      <td>65.21%</td>
+      <td>0.53%</td>
+      <td>-20.74</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>San Francisco 49ers</td>
+      <td>1577.70</td>
+      <td>9</td>
+      <td>Washington Redskins</td>
+      <td>1356.73</td>
+      <td>0</td>
+      <td>76.22%</td>
+      <td>23.26%</td>
+      <td>0.53%</td>
+      <td>9.97</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Baltimore Ravens</td>
+      <td>1569.68</td>
+      <td>30</td>
+      <td>Seattle Seahawks</td>
+      <td>1582.20</td>
+      <td>16</td>
+      <td>45.72%</td>
+      <td>53.75%</td>
+      <td>0.53%</td>
+      <td>28.63</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Los Angeles Chargers</td>
+      <td>1515.00</td>
+      <td>20</td>
+      <td>Tennessee Titans</td>
+      <td>1476.30</td>
+      <td>23</td>
+      <td>53.08%</td>
+      <td>46.39%</td>
+      <td>0.53%</td>
+      <td>-13.10</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>New Orleans Saints</td>
+      <td>1632.59</td>
+      <td>36</td>
+      <td>Chicago Bears</td>
+      <td>1580.98</td>
+      <td>25</td>
+      <td>54.92%</td>
+      <td>44.55%</td>
+      <td>0.53%</td>
+      <td>21.06</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Philadelphia Eagles</td>
+      <td>1545.10</td>
+      <td>10</td>
+      <td>Dallas Cowboys</td>
+      <td>1527.38</td>
+      <td>37</td>
+      <td>50.07%</td>
+      <td>49.41%</td>
+      <td>0.53%</td>
+      <td>-37.06</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Arizona Cardinals</td>
+      <td>1359.11</td>
+      <td>27</td>
+      <td>New York Giants</td>
+      <td>1409.12</td>
+      <td>21</td>
+      <td>40.44%</td>
+      <td>59.03%</td>
+      <td>0.53%</td>
+      <td>20.58</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Tennessee Titans</td>
+      <td>1476.30</td>
+      <td>23</td>
+      <td>@ Los Angeles Chargers</td>
+      <td>1515.00</td>
+      <td>20</td>
+      <td>46.39%</td>
+      <td>53.08%</td>
+      <td>0.53%</td>
+      <td>13.09</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Seattle Seahawks</td>
+      <td>1582.20</td>
+      <td>16</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1569.68</td>
+      <td>30</td>
+      <td>53.75%</td>
+      <td>45.72%</td>
+      <td>0.53%</td>
+      <td>-28.63</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>New York Giants</td>
+      <td>1409.12</td>
+      <td>21</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1359.11</td>
+      <td>27</td>
+      <td>59.03%</td>
+      <td>40.44%</td>
+      <td>0.53%</td>
+      <td>-20.58</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Indianapolis Colts</td>
+      <td>1558.64</td>
+      <td>30</td>
+      <td>@ Houston Texans</td>
+      <td>1567.83</td>
+      <td>23</td>
+      <td>50.63%</td>
+      <td>48.84%</td>
+      <td>0.53%</td>
+      <td>18.41</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Cincinnati Bengals</td>
+      <td>1343.20</td>
+      <td>17</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1448.86</td>
+      <td>27</td>
+      <td>37.05%</td>
+      <td>62.42%</td>
+      <td>0.53%</td>
+      <td>-16.71</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Atlanta Falcons</td>
+      <td>1430.14</td>
+      <td>10</td>
+      <td>@ Los Angeles Rams</td>
+      <td>1550.98</td>
+      <td>37</td>
+      <td>35.04%</td>
+      <td>64.44%</td>
+      <td>0.53%</td>
+      <td>-25.97</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Buffalo Bills</td>
+      <td>1502.90</td>
+      <td>31</td>
+      <td>@ Miami Dolphins</td>
+      <td>1319.50</td>
+      <td>21</td>
+      <td>75.52%</td>
+      <td>23.96%</td>
+      <td>0.53%</td>
+      <td>10.82</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Dallas Cowboys</td>
+      <td>1527.38</td>
+      <td>37</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1545.10</td>
+      <td>10</td>
+      <td>49.41%</td>
+      <td>50.07%</td>
+      <td>0.53%</td>
+      <td>37.06</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Chicago Bears</td>
+      <td>1580.98</td>
+      <td>25</td>
+      <td>@ New Orleans Saints</td>
+      <td>1632.59</td>
+      <td>36</td>
+      <td>44.55%</td>
+      <td>54.92%</td>
+      <td>0.53%</td>
+      <td>-21.06</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Detroit Lions</td>
+      <td>1501.13</td>
+      <td>30</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1587.90</td>
+      <td>42</td>
+      <td>39.62%</td>
+      <td>59.85%</td>
+      <td>0.53%</td>
+      <td>-19.57</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Washington Redskins</td>
+      <td>1356.73</td>
+      <td>0</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1577.70</td>
+      <td>9</td>
+      <td>23.26%</td>
+      <td>76.22%</td>
+      <td>0.53%</td>
+      <td>-9.97</td>
+    </tr>
+    <tr>
+      <td>2019-10-20</td>
+      <td>Green Bay Packers</td>
+      <td>1533.43</td>
+      <td>42</td>
+      <td>@ Oakland Raiders</td>
+      <td>1437.48</td>
+      <td>24</td>
+      <td>65.21%</td>
+      <td>34.26%</td>
+      <td>0.53%</td>
+      <td>20.74</td>
+    </tr>
+    <tr>
+      <td>2019-10-21</td>
+      <td>New York Jets</td>
+      <td>1358.14</td>
+      <td>0</td>
+      <td>@ New England Patriots</td>
+      <td>1698.82</td>
+      <td>33</td>
+      <td>13.21%</td>
+      <td>86.27%</td>
+      <td>0.53%</td>
+      <td>-10.85</td>
+    </tr>
+    <tr>
+      <td>2019-10-21</td>
+      <td>New England Patriots</td>
+      <td>1698.82</td>
+      <td>33</td>
+      <td>New York Jets</td>
+      <td>1358.14</td>
+      <td>0</td>
+      <td>86.27%</td>
+      <td>13.21%</td>
+      <td>0.53%</td>
+      <td>10.85</td>
+    </tr>
+    <tr>
+      <td>2019-10-24</td>
+      <td>Washington Redskins</td>
+      <td>1346.76</td>
+      <td>9</td>
+      <td>Minnesota Vikings</td>
+      <td>1607.47</td>
+      <td>19</td>
+      <td>16.80%</td>
+      <td>82.68%</td>
+      <td>0.53%</td>
+      <td>-7.59</td>
+    </tr>
+    <tr>
+      <td>2019-10-24</td>
+      <td>Minnesota Vikings</td>
+      <td>1607.47</td>
+      <td>19</td>
+      <td>@ Washington Redskins</td>
+      <td>1346.76</td>
+      <td>9</td>
+      <td>82.68%</td>
+      <td>16.80%</td>
+      <td>0.53%</td>
+      <td>7.59</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1465.57</td>
+      <td>29</td>
+      <td>@ New York Jets</td>
+      <td>1347.29</td>
+      <td>15</td>
+      <td>68.05%</td>
+      <td>31.43%</td>
+      <td>0.53%</td>
+      <td>16.78</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Houston Texans</td>
+      <td>1549.42</td>
+      <td>27</td>
+      <td>@ Oakland Raiders</td>
+      <td>1416.74</td>
+      <td>24</td>
+      <td>69.80%</td>
+      <td>29.67%</td>
+      <td>0.53%</td>
+      <td>7.34</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Kansas City Chiefs</td>
+      <td>1618.02</td>
+      <td>24</td>
+      <td>@ Green Bay Packers</td>
+      <td>1554.17</td>
+      <td>31</td>
+      <td>60.94%</td>
+      <td>38.54%</td>
+      <td>0.53%</td>
+      <td>-22.95</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Tennessee Titans</td>
+      <td>1489.39</td>
+      <td>27</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1446.60</td>
+      <td>23</td>
+      <td>58.03%</td>
+      <td>41.44%</td>
+      <td>0.53%</td>
+      <td>11.82</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Buffalo Bills</td>
+      <td>1513.72</td>
+      <td>13</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1508.04</td>
+      <td>31</td>
+      <td>52.77%</td>
+      <td>46.70%</td>
+      <td>0.53%</td>
+      <td>-31.88</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Atlanta Falcons</td>
+      <td>1404.17</td>
+      <td>20</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1553.57</td>
+      <td>27</td>
+      <td>31.39%</td>
+      <td>68.08%</td>
+      <td>0.53%</td>
+      <td>-11.86</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Green Bay Packers</td>
+      <td>1554.17</td>
+      <td>31</td>
+      <td>Kansas City Chiefs</td>
+      <td>1618.02</td>
+      <td>24</td>
+      <td>38.54%</td>
+      <td>60.94%</td>
+      <td>0.53%</td>
+      <td>22.95</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Cincinnati Bengals</td>
+      <td>1326.49</td>
+      <td>10</td>
+      <td>Los Angeles Rams</td>
+      <td>1576.96</td>
+      <td>24</td>
+      <td>18.96%</td>
+      <td>80.51%</td>
+      <td>0.53%</td>
+      <td>-10.14</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>New Orleans Saints</td>
+      <td>1653.65</td>
+      <td>31</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1379.69</td>
+      <td>9</td>
+      <td>83.72%</td>
+      <td>15.76%</td>
+      <td>0.53%</td>
+      <td>10.57</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Los Angeles Rams</td>
+      <td>1576.96</td>
+      <td>24</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1326.49</td>
+      <td>10</td>
+      <td>80.51%</td>
+      <td>18.96%</td>
+      <td>0.53%</td>
+      <td>10.14</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Indianapolis Colts</td>
+      <td>1577.05</td>
+      <td>15</td>
+      <td>@ Denver Broncos</td>
+      <td>1442.12</td>
+      <td>13</td>
+      <td>70.07%</td>
+      <td>29.40%</td>
+      <td>0.53%</td>
+      <td>5.93</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Chicago Bears</td>
+      <td>1559.92</td>
+      <td>16</td>
+      <td>@ Los Angeles Chargers</td>
+      <td>1501.90</td>
+      <td>17</td>
+      <td>60.14%</td>
+      <td>39.33%</td>
+      <td>0.53%</td>
+      <td>-8.56</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Detroit Lions</td>
+      <td>1481.56</td>
+      <td>31</td>
+      <td>@ New York Giants</td>
+      <td>1388.54</td>
+      <td>26</td>
+      <td>64.83%</td>
+      <td>34.64%</td>
+      <td>0.53%</td>
+      <td>11.05</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Arizona Cardinals</td>
+      <td>1379.69</td>
+      <td>9</td>
+      <td>New Orleans Saints</td>
+      <td>1653.65</td>
+      <td>31</td>
+      <td>15.76%</td>
+      <td>83.72%</td>
+      <td>0.53%</td>
+      <td>-10.56</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>New England Patriots</td>
+      <td>1709.67</td>
+      <td>27</td>
+      <td>@ Cleveland Browns</td>
+      <td>1450.67</td>
+      <td>13</td>
+      <td>82.54%</td>
+      <td>16.94%</td>
+      <td>0.53%</td>
+      <td>9.06</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Oakland Raiders</td>
+      <td>1416.74</td>
+      <td>24</td>
+      <td>Houston Texans</td>
+      <td>1549.42</td>
+      <td>27</td>
+      <td>29.67%</td>
+      <td>69.80%</td>
+      <td>0.53%</td>
+      <td>-7.34</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>San Francisco 49ers</td>
+      <td>1587.67</td>
+      <td>51</td>
+      <td>@ Carolina Panthers</td>
+      <td>1537.46</td>
+      <td>13</td>
+      <td>59.06%</td>
+      <td>40.41%</td>
+      <td>0.53%</td>
+      <td>35.52</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Carolina Panthers</td>
+      <td>1537.46</td>
+      <td>13</td>
+      <td>San Francisco 49ers</td>
+      <td>1587.67</td>
+      <td>51</td>
+      <td>40.41%</td>
+      <td>59.06%</td>
+      <td>0.53%</td>
+      <td>-35.52</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Denver Broncos</td>
+      <td>1442.12</td>
+      <td>13</td>
+      <td>Indianapolis Colts</td>
+      <td>1577.05</td>
+      <td>15</td>
+      <td>29.40%</td>
+      <td>70.07%</td>
+      <td>0.53%</td>
+      <td>-5.93</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Los Angeles Chargers</td>
+      <td>1501.90</td>
+      <td>17</td>
+      <td>Chicago Bears</td>
+      <td>1559.92</td>
+      <td>16</td>
+      <td>39.33%</td>
+      <td>60.14%</td>
+      <td>0.53%</td>
+      <td>8.57</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Cleveland Browns</td>
+      <td>1450.67</td>
+      <td>13</td>
+      <td>New England Patriots</td>
+      <td>1709.67</td>
+      <td>27</td>
+      <td>16.94%</td>
+      <td>82.54%</td>
+      <td>0.53%</td>
+      <td>-9.05</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>New York Jets</td>
+      <td>1347.29</td>
+      <td>15</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1465.57</td>
+      <td>29</td>
+      <td>31.43%</td>
+      <td>68.05%</td>
+      <td>0.53%</td>
+      <td>-16.78</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Philadelphia Eagles</td>
+      <td>1508.04</td>
+      <td>31</td>
+      <td>Buffalo Bills</td>
+      <td>1513.72</td>
+      <td>13</td>
+      <td>46.70%</td>
+      <td>52.77%</td>
+      <td>0.53%</td>
+      <td>31.88</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Seattle Seahawks</td>
+      <td>1553.57</td>
+      <td>27</td>
+      <td>Atlanta Falcons</td>
+      <td>1404.17</td>
+      <td>20</td>
+      <td>68.08%</td>
+      <td>31.39%</td>
+      <td>0.53%</td>
+      <td>11.85</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>New York Giants</td>
+      <td>1388.54</td>
+      <td>26</td>
+      <td>Detroit Lions</td>
+      <td>1481.56</td>
+      <td>31</td>
+      <td>34.64%</td>
+      <td>64.83%</td>
+      <td>0.53%</td>
+      <td>-11.05</td>
+    </tr>
+    <tr>
+      <td>2019-10-27</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1446.60</td>
+      <td>23</td>
+      <td>Tennessee Titans</td>
+      <td>1489.39</td>
+      <td>27</td>
+      <td>41.44%</td>
+      <td>58.03%</td>
+      <td>0.53%</td>
+      <td>-11.81</td>
+    </tr>
+    <tr>
+      <td>2019-10-28</td>
+      <td>Miami Dolphins</td>
+      <td>1308.68</td>
+      <td>14</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1534.26</td>
+      <td>27</td>
+      <td>19.82%</td>
+      <td>79.66%</td>
+      <td>0.53%</td>
+      <td>-10.21</td>
+    </tr>
+    <tr>
+      <td>2019-10-28</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1534.26</td>
+      <td>27</td>
+      <td>@ Miami Dolphins</td>
+      <td>1308.68</td>
+      <td>14</td>
+      <td>79.66%</td>
+      <td>19.82%</td>
+      <td>0.53%</td>
+      <td>10.21</td>
+    </tr>
+    <tr>
+      <td>2019-10-31</td>
+      <td>Arizona Cardinals</td>
+      <td>1369.13</td>
+      <td>25</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1623.19</td>
+      <td>28</td>
+      <td>20.03%</td>
+      <td>79.44%</td>
+      <td>0.53%</td>
+      <td>-4.96</td>
+    </tr>
+    <tr>
+      <td>2019-10-31</td>
+      <td>San Francisco 49ers</td>
+      <td>1623.19</td>
+      <td>28</td>
+      <td>Arizona Cardinals</td>
+      <td>1369.13</td>
+      <td>25</td>
+      <td>79.44%</td>
+      <td>20.03%</td>
+      <td>0.53%</td>
+      <td>4.96</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>New York Jets</td>
+      <td>1330.51</td>
+      <td>18</td>
+      <td>Miami Dolphins</td>
+      <td>1298.47</td>
+      <td>26</td>
+      <td>52.12%</td>
+      <td>47.35%</td>
+      <td>0.53%</td>
+      <td>-21.00</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1482.35</td>
+      <td>3</td>
+      <td>@ Houston Texans</td>
+      <td>1556.76</td>
+      <td>26</td>
+      <td>39.20%</td>
+      <td>60.27%</td>
+      <td>0.53%</td>
+      <td>-26.81</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Philadelphia Eagles</td>
+      <td>1539.92</td>
+      <td>22</td>
+      <td>@ Chicago Bears</td>
+      <td>1551.36</td>
+      <td>14</td>
+      <td>50.31%</td>
+      <td>49.16%</td>
+      <td>0.53%</td>
+      <td>19.81</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1544.47</td>
+      <td>26</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1582.98</td>
+      <td>24</td>
+      <td>46.42%</td>
+      <td>53.05%</td>
+      <td>0.53%</td>
+      <td>10.69</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Kansas City Chiefs</td>
+      <td>1595.07</td>
+      <td>26</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1615.06</td>
+      <td>23</td>
+      <td>49.08%</td>
+      <td>50.39%</td>
+      <td>0.53%</td>
+      <td>12.44</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Miami Dolphins</td>
+      <td>1298.47</td>
+      <td>26</td>
+      <td>@ New York Jets</td>
+      <td>1330.51</td>
+      <td>18</td>
+      <td>47.35%</td>
+      <td>52.12%</td>
+      <td>0.53%</td>
+      <td>21.00</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Carolina Panthers</td>
+      <td>1501.94</td>
+      <td>30</td>
+      <td>@ Tennessee Titans</td>
+      <td>1501.21</td>
+      <td>20</td>
+      <td>52.06%</td>
+      <td>47.41%</td>
+      <td>0.53%</td>
+      <td>21.36</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Buffalo Bills</td>
+      <td>1481.84</td>
+      <td>24</td>
+      <td>@ Washington Redskins</td>
+      <td>1339.17</td>
+      <td>9</td>
+      <td>70.99%</td>
+      <td>28.48%</td>
+      <td>0.53%</td>
+      <td>15.75</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Denver Broncos</td>
+      <td>1436.19</td>
+      <td>24</td>
+      <td>@ Cleveland Browns</td>
+      <td>1441.62</td>
+      <td>19</td>
+      <td>51.17%</td>
+      <td>48.30%</td>
+      <td>0.53%</td>
+      <td>15.38</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Oakland Raiders</td>
+      <td>1409.40</td>
+      <td>31</td>
+      <td>@ Detroit Lions</td>
+      <td>1492.61</td>
+      <td>24</td>
+      <td>40.11%</td>
+      <td>59.36%</td>
+      <td>0.53%</td>
+      <td>22.36</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Los Angeles Chargers</td>
+      <td>1510.47</td>
+      <td>26</td>
+      <td>@ Green Bay Packers</td>
+      <td>1577.12</td>
+      <td>11</td>
+      <td>42.42%</td>
+      <td>57.05%</td>
+      <td>0.53%</td>
+      <td>31.45</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Seattle Seahawks</td>
+      <td>1565.42</td>
+      <td>40</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1434.79</td>
+      <td>34</td>
+      <td>69.56%</td>
+      <td>29.92%</td>
+      <td>0.53%</td>
+      <td>10.46</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Baltimore Ravens</td>
+      <td>1598.31</td>
+      <td>37</td>
+      <td>@ New England Patriots</td>
+      <td>1718.73</td>
+      <td>20</td>
+      <td>35.09%</td>
+      <td>64.38%</td>
+      <td>0.53%</td>
+      <td>37.78</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Houston Texans</td>
+      <td>1556.76</td>
+      <td>26</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1482.35</td>
+      <td>3</td>
+      <td>60.27%</td>
+      <td>39.20%</td>
+      <td>0.53%</td>
+      <td>26.81</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Chicago Bears</td>
+      <td>1551.36</td>
+      <td>14</td>
+      <td>Philadelphia Eagles</td>
+      <td>1539.92</td>
+      <td>22</td>
+      <td>49.16%</td>
+      <td>50.31%</td>
+      <td>0.53%</td>
+      <td>-19.81</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Indianapolis Colts</td>
+      <td>1582.98</td>
+      <td>24</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1544.47</td>
+      <td>26</td>
+      <td>53.05%</td>
+      <td>46.42%</td>
+      <td>0.53%</td>
+      <td>-10.68</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1434.79</td>
+      <td>34</td>
+      <td>Seattle Seahawks</td>
+      <td>1565.42</td>
+      <td>40</td>
+      <td>29.92%</td>
+      <td>69.56%</td>
+      <td>0.53%</td>
+      <td>-10.46</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Green Bay Packers</td>
+      <td>1577.12</td>
+      <td>11</td>
+      <td>Los Angeles Chargers</td>
+      <td>1510.47</td>
+      <td>26</td>
+      <td>57.05%</td>
+      <td>42.42%</td>
+      <td>0.53%</td>
+      <td>-31.46</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Detroit Lions</td>
+      <td>1492.61</td>
+      <td>24</td>
+      <td>Oakland Raiders</td>
+      <td>1409.40</td>
+      <td>31</td>
+      <td>59.36%</td>
+      <td>40.11%</td>
+      <td>0.53%</td>
+      <td>-22.35</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Cleveland Browns</td>
+      <td>1441.62</td>
+      <td>19</td>
+      <td>Denver Broncos</td>
+      <td>1436.19</td>
+      <td>24</td>
+      <td>48.30%</td>
+      <td>51.17%</td>
+      <td>0.53%</td>
+      <td>-15.39</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Washington Redskins</td>
+      <td>1339.17</td>
+      <td>9</td>
+      <td>Buffalo Bills</td>
+      <td>1481.84</td>
+      <td>24</td>
+      <td>28.48%</td>
+      <td>70.99%</td>
+      <td>0.53%</td>
+      <td>-15.75</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Tennessee Titans</td>
+      <td>1501.21</td>
+      <td>20</td>
+      <td>Carolina Panthers</td>
+      <td>1501.94</td>
+      <td>30</td>
+      <td>47.41%</td>
+      <td>52.06%</td>
+      <td>0.53%</td>
+      <td>-21.36</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>Minnesota Vikings</td>
+      <td>1615.06</td>
+      <td>23</td>
+      <td>Kansas City Chiefs</td>
+      <td>1595.07</td>
+      <td>26</td>
+      <td>50.39%</td>
+      <td>49.08%</td>
+      <td>0.53%</td>
+      <td>-12.43</td>
+    </tr>
+    <tr>
+      <td>2019-11-03</td>
+      <td>New England Patriots</td>
+      <td>1718.73</td>
+      <td>20</td>
+      <td>Baltimore Ravens</td>
+      <td>1598.31</td>
+      <td>37</td>
+      <td>64.38%</td>
+      <td>35.09%</td>
+      <td>0.53%</td>
+      <td>-37.78</td>
+    </tr>
+    <tr>
+      <td>2019-11-04</td>
+      <td>New York Giants</td>
+      <td>1377.49</td>
+      <td>18</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1564.44</td>
+      <td>37</td>
+      <td>26.93%</td>
+      <td>72.54%</td>
+      <td>0.53%</td>
+      <td>-16.77</td>
+    </tr>
+    <tr>
+      <td>2019-11-04</td>
+      <td>Dallas Cowboys</td>
+      <td>1564.44</td>
+      <td>37</td>
+      <td>New York Giants</td>
+      <td>1377.49</td>
+      <td>18</td>
+      <td>72.54%</td>
+      <td>26.93%</td>
+      <td>0.53%</td>
+      <td>16.77</td>
+    </tr>
+    <tr>
+      <td>2019-11-07</td>
+      <td>Oakland Raiders</td>
+      <td>1431.76</td>
+      <td>26</td>
+      <td>@ Los Angeles Chargers</td>
+      <td>1541.92</td>
+      <td>24</td>
+      <td>36.45%</td>
+      <td>63.02%</td>
+      <td>0.53%</td>
+      <td>12.69</td>
+    </tr>
+    <tr>
+      <td>2019-11-07</td>
+      <td>Los Angeles Chargers</td>
+      <td>1541.92</td>
+      <td>24</td>
+      <td>Oakland Raiders</td>
+      <td>1431.76</td>
+      <td>26</td>
+      <td>63.02%</td>
+      <td>36.45%</td>
+      <td>0.53%</td>
+      <td>-12.68</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Tennessee Titans</td>
+      <td>1479.85</td>
+      <td>35</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1607.51</td>
+      <td>32</td>
+      <td>34.15%</td>
+      <td>65.32%</td>
+      <td>0.53%</td>
+      <td>16.10</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>New Orleans Saints</td>
+      <td>1664.22</td>
+      <td>9</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1392.31</td>
+      <td>26</td>
+      <td>83.56%</td>
+      <td>15.92%</td>
+      <td>0.53%</td>
+      <td>-49.04</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Cleveland Browns</td>
+      <td>1426.23</td>
+      <td>19</td>
+      <td>@ Buffalo Bills</td>
+      <td>1497.59</td>
+      <td>16</td>
+      <td>41.76%</td>
+      <td>57.71%</td>
+      <td>0.53%</td>
+      <td>14.23</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1424.33</td>
+      <td>30</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1364.17</td>
+      <td>27</td>
+      <td>60.43%</td>
+      <td>39.04%</td>
+      <td>0.53%</td>
+      <td>9.64</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Dallas Cowboys</td>
+      <td>1581.21</td>
+      <td>24</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1602.63</td>
+      <td>28</td>
+      <td>48.87%</td>
+      <td>50.60%</td>
+      <td>0.53%</td>
+      <td>-13.93</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Indianapolis Colts</td>
+      <td>1572.30</td>
+      <td>12</td>
+      <td>@ Miami Dolphins</td>
+      <td>1319.47</td>
+      <td>16</td>
+      <td>82.03%</td>
+      <td>17.44%</td>
+      <td>0.53%</td>
+      <td>-23.35</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1555.16</td>
+      <td>17</td>
+      <td>@ Los Angeles Rams</td>
+      <td>1587.10</td>
+      <td>12</td>
+      <td>47.36%</td>
+      <td>52.11%</td>
+      <td>0.53%</td>
+      <td>16.59</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Green Bay Packers</td>
+      <td>1545.66</td>
+      <td>24</td>
+      <td>@ Carolina Panthers</td>
+      <td>1523.30</td>
+      <td>16</td>
+      <td>55.15%</td>
+      <td>44.32%</td>
+      <td>0.53%</td>
+      <td>17.87</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Minnesota Vikings</td>
+      <td>1602.63</td>
+      <td>28</td>
+      <td>Dallas Cowboys</td>
+      <td>1581.21</td>
+      <td>24</td>
+      <td>50.60%</td>
+      <td>48.87%</td>
+      <td>0.53%</td>
+      <td>13.92</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Miami Dolphins</td>
+      <td>1319.47</td>
+      <td>16</td>
+      <td>Indianapolis Colts</td>
+      <td>1572.30</td>
+      <td>12</td>
+      <td>17.44%</td>
+      <td>82.03%</td>
+      <td>0.53%</td>
+      <td>23.35</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Los Angeles Rams</td>
+      <td>1587.10</td>
+      <td>12</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1555.16</td>
+      <td>17</td>
+      <td>52.11%</td>
+      <td>47.36%</td>
+      <td>0.53%</td>
+      <td>-16.59</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>New York Jets</td>
+      <td>1309.51</td>
+      <td>34</td>
+      <td>@ New York Giants</td>
+      <td>1360.72</td>
+      <td>27</td>
+      <td>44.61%</td>
+      <td>54.87%</td>
+      <td>0.53%</td>
+      <td>20.67</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>New York Giants</td>
+      <td>1360.72</td>
+      <td>27</td>
+      <td>New York Jets</td>
+      <td>1309.51</td>
+      <td>34</td>
+      <td>54.87%</td>
+      <td>44.61%</td>
+      <td>0.53%</td>
+      <td>-20.67</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Kansas City Chiefs</td>
+      <td>1607.51</td>
+      <td>32</td>
+      <td>Tennessee Titans</td>
+      <td>1479.85</td>
+      <td>35</td>
+      <td>65.32%</td>
+      <td>34.15%</td>
+      <td>0.53%</td>
+      <td>-16.11</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Detroit Lions</td>
+      <td>1470.26</td>
+      <td>13</td>
+      <td>Chicago Bears</td>
+      <td>1531.55</td>
+      <td>20</td>
+      <td>38.89%</td>
+      <td>60.59%</td>
+      <td>0.53%</td>
+      <td>-14.68</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Cincinnati Bengals</td>
+      <td>1316.35</td>
+      <td>13</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1636.09</td>
+      <td>49</td>
+      <td>14.65%</td>
+      <td>84.82%</td>
+      <td>0.53%</td>
+      <td>-12.57</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Chicago Bears</td>
+      <td>1531.55</td>
+      <td>20</td>
+      <td>@ Detroit Lions</td>
+      <td>1470.26</td>
+      <td>13</td>
+      <td>60.59%</td>
+      <td>38.89%</td>
+      <td>0.53%</td>
+      <td>14.67</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Buffalo Bills</td>
+      <td>1497.59</td>
+      <td>16</td>
+      <td>Cleveland Browns</td>
+      <td>1426.23</td>
+      <td>19</td>
+      <td>57.71%</td>
+      <td>41.76%</td>
+      <td>0.53%</td>
+      <td>-14.23</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Baltimore Ravens</td>
+      <td>1636.09</td>
+      <td>49</td>
+      <td>Cincinnati Bengals</td>
+      <td>1316.35</td>
+      <td>13</td>
+      <td>84.82%</td>
+      <td>14.65%</td>
+      <td>0.53%</td>
+      <td>12.57</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Atlanta Falcons</td>
+      <td>1392.31</td>
+      <td>26</td>
+      <td>New Orleans Saints</td>
+      <td>1664.22</td>
+      <td>9</td>
+      <td>15.92%</td>
+      <td>83.56%</td>
+      <td>0.53%</td>
+      <td>49.05</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Arizona Cardinals</td>
+      <td>1364.17</td>
+      <td>27</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1424.33</td>
+      <td>30</td>
+      <td>39.04%</td>
+      <td>60.43%</td>
+      <td>0.53%</td>
+      <td>-9.65</td>
+    </tr>
+    <tr>
+      <td>2019-11-10</td>
+      <td>Carolina Panthers</td>
+      <td>1523.30</td>
+      <td>16</td>
+      <td>Green Bay Packers</td>
+      <td>1545.66</td>
+      <td>24</td>
+      <td>44.32%</td>
+      <td>55.15%</td>
+      <td>0.53%</td>
+      <td>-17.87</td>
+    </tr>
+    <tr>
+      <td>2019-11-11</td>
+      <td>Seattle Seahawks</td>
+      <td>1575.88</td>
+      <td>27</td>
+      <td>San Francisco 49ers</td>
+      <td>1628.15</td>
+      <td>24</td>
+      <td>40.13%</td>
+      <td>59.35%</td>
+      <td>0.53%</td>
+      <td>14.63</td>
+    </tr>
+    <tr>
+      <td>2019-11-11</td>
+      <td>San Francisco 49ers</td>
+      <td>1628.15</td>
+      <td>24</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1575.88</td>
+      <td>27</td>
+      <td>59.35%</td>
+      <td>40.13%</td>
+      <td>0.53%</td>
+      <td>-14.63</td>
+    </tr>
+    <tr>
+      <td>2019-11-14</td>
+      <td>Cleveland Browns</td>
+      <td>1440.46</td>
+      <td>21</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1571.75</td>
+      <td>7</td>
+      <td>33.68%</td>
+      <td>65.79%</td>
+      <td>0.53%</td>
+      <td>35.04</td>
+    </tr>
+    <tr>
+      <td>2019-11-14</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1571.75</td>
+      <td>7</td>
+      <td>Cleveland Browns</td>
+      <td>1440.46</td>
+      <td>21</td>
+      <td>65.79%</td>
+      <td>33.68%</td>
+      <td>0.53%</td>
+      <td>-35.03</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Miami Dolphins</td>
+      <td>1342.82</td>
+      <td>20</td>
+      <td>@ Buffalo Bills</td>
+      <td>1483.36</td>
+      <td>37</td>
+      <td>32.50%</td>
+      <td>66.97%</td>
+      <td>0.53%</td>
+      <td>-19.12</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Detroit Lions</td>
+      <td>1455.58</td>
+      <td>27</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1567.28</td>
+      <td>35</td>
+      <td>36.24%</td>
+      <td>63.23%</td>
+      <td>0.53%</td>
+      <td>-14.62</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Washington Redskins</td>
+      <td>1323.42</td>
+      <td>17</td>
+      <td>@ New York Jets</td>
+      <td>1330.18</td>
+      <td>34</td>
+      <td>50.98%</td>
+      <td>48.49%</td>
+      <td>0.53%</td>
+      <td>-29.94</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Minnesota Vikings</td>
+      <td>1616.55</td>
+      <td>27</td>
+      <td>@ Denver Broncos</td>
+      <td>1451.57</td>
+      <td>23</td>
+      <td>73.53%</td>
+      <td>25.94%</td>
+      <td>0.53%</td>
+      <td>7.41</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Baltimore Ravens</td>
+      <td>1648.66</td>
+      <td>41</td>
+      <td>@ Houston Texans</td>
+      <td>1583.57</td>
+      <td>7</td>
+      <td>61.11%</td>
+      <td>38.37%</td>
+      <td>0.53%</td>
+      <td>31.91</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Indianapolis Colts</td>
+      <td>1548.95</td>
+      <td>33</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1455.54</td>
+      <td>13</td>
+      <td>64.88%</td>
+      <td>34.59%</td>
+      <td>0.53%</td>
+      <td>22.07</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1433.97</td>
+      <td>17</td>
+      <td>@ New Orleans Saints</td>
+      <td>1615.18</td>
+      <td>34</td>
+      <td>27.59%</td>
+      <td>71.88%</td>
+      <td>0.53%</td>
+      <td>-16.24</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Carolina Panthers</td>
+      <td>1505.43</td>
+      <td>3</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1441.36</td>
+      <td>29</td>
+      <td>60.97%</td>
+      <td>38.50%</td>
+      <td>0.53%</td>
+      <td>-44.25</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>San Francisco 49ers</td>
+      <td>1613.52</td>
+      <td>36</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1354.52</td>
+      <td>26</td>
+      <td>82.54%</td>
+      <td>16.94%</td>
+      <td>0.53%</td>
+      <td>7.65</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>New England Patriots</td>
+      <td>1680.95</td>
+      <td>17</td>
+      <td>Philadelphia Eagles</td>
+      <td>1559.73</td>
+      <td>10</td>
+      <td>64.48%</td>
+      <td>34.99%</td>
+      <td>0.53%</td>
+      <td>13.20</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Philadelphia Eagles</td>
+      <td>1559.73</td>
+      <td>10</td>
+      <td>@ New England Patriots</td>
+      <td>1680.95</td>
+      <td>17</td>
+      <td>34.99%</td>
+      <td>64.48%</td>
+      <td>0.53%</td>
+      <td>-13.21</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Atlanta Falcons</td>
+      <td>1441.36</td>
+      <td>29</td>
+      <td>Carolina Panthers</td>
+      <td>1505.43</td>
+      <td>3</td>
+      <td>38.50%</td>
+      <td>60.97%</td>
+      <td>0.53%</td>
+      <td>44.25</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Buffalo Bills</td>
+      <td>1483.36</td>
+      <td>37</td>
+      <td>Miami Dolphins</td>
+      <td>1342.82</td>
+      <td>20</td>
+      <td>66.97%</td>
+      <td>32.50%</td>
+      <td>0.53%</td>
+      <td>19.12</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Dallas Cowboys</td>
+      <td>1567.28</td>
+      <td>35</td>
+      <td>Detroit Lions</td>
+      <td>1455.58</td>
+      <td>27</td>
+      <td>63.23%</td>
+      <td>36.24%</td>
+      <td>0.53%</td>
+      <td>14.63</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Denver Broncos</td>
+      <td>1451.57</td>
+      <td>23</td>
+      <td>Minnesota Vikings</td>
+      <td>1616.55</td>
+      <td>27</td>
+      <td>25.94%</td>
+      <td>73.53%</td>
+      <td>0.53%</td>
+      <td>-7.41</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Houston Texans</td>
+      <td>1583.57</td>
+      <td>7</td>
+      <td>Baltimore Ravens</td>
+      <td>1648.66</td>
+      <td>41</td>
+      <td>38.37%</td>
+      <td>61.11%</td>
+      <td>0.53%</td>
+      <td>-31.91</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1455.54</td>
+      <td>13</td>
+      <td>Indianapolis Colts</td>
+      <td>1548.95</td>
+      <td>33</td>
+      <td>34.59%</td>
+      <td>64.88%</td>
+      <td>0.53%</td>
+      <td>-22.07</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>New Orleans Saints</td>
+      <td>1615.18</td>
+      <td>34</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1433.97</td>
+      <td>17</td>
+      <td>71.88%</td>
+      <td>27.59%</td>
+      <td>0.53%</td>
+      <td>16.24</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>New York Jets</td>
+      <td>1330.18</td>
+      <td>34</td>
+      <td>Washington Redskins</td>
+      <td>1323.42</td>
+      <td>17</td>
+      <td>48.49%</td>
+      <td>50.98%</td>
+      <td>0.53%</td>
+      <td>29.94</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Arizona Cardinals</td>
+      <td>1354.52</td>
+      <td>26</td>
+      <td>San Francisco 49ers</td>
+      <td>1613.52</td>
+      <td>36</td>
+      <td>16.94%</td>
+      <td>82.54%</td>
+      <td>0.53%</td>
+      <td>-7.65</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Cincinnati Bengals</td>
+      <td>1303.78</td>
+      <td>10</td>
+      <td>Oakland Raiders</td>
+      <td>1444.45</td>
+      <td>17</td>
+      <td>28.72%</td>
+      <td>70.75%</td>
+      <td>0.53%</td>
+      <td>-10.85</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Chicago Bears</td>
+      <td>1546.22</td>
+      <td>7</td>
+      <td>Los Angeles Rams</td>
+      <td>1570.51</td>
+      <td>17</td>
+      <td>44.05%</td>
+      <td>55.42%</td>
+      <td>0.53%</td>
+      <td>-19.86</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Los Angeles Rams</td>
+      <td>1570.51</td>
+      <td>17</td>
+      <td>@ Chicago Bears</td>
+      <td>1546.22</td>
+      <td>7</td>
+      <td>55.42%</td>
+      <td>44.05%</td>
+      <td>0.53%</td>
+      <td>19.85</td>
+    </tr>
+    <tr>
+      <td>2019-11-17</td>
+      <td>Oakland Raiders</td>
+      <td>1444.45</td>
+      <td>17</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1303.78</td>
+      <td>10</td>
+      <td>70.75%</td>
+      <td>28.72%</td>
+      <td>0.53%</td>
+      <td>10.84</td>
+    </tr>
+    <tr>
+      <td>2019-11-18</td>
+      <td>Kansas City Chiefs</td>
+      <td>1591.40</td>
+      <td>24</td>
+      <td>Los Angeles Chargers</td>
+      <td>1529.24</td>
+      <td>17</td>
+      <td>58.58%</td>
+      <td>40.89%</td>
+      <td>0.53%</td>
+      <td>15.43</td>
+    </tr>
+    <tr>
+      <td>2019-11-18</td>
+      <td>Los Angeles Chargers</td>
+      <td>1529.24</td>
+      <td>17</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1591.40</td>
+      <td>24</td>
+      <td>40.89%</td>
+      <td>58.58%</td>
+      <td>0.53%</td>
+      <td>-15.43</td>
+    </tr>
+    <tr>
+      <td>2019-11-21</td>
+      <td>Indianapolis Colts</td>
+      <td>1571.02</td>
+      <td>17</td>
+      <td>Houston Texans</td>
+      <td>1551.66</td>
+      <td>20</td>
+      <td>50.30%</td>
+      <td>49.17%</td>
+      <td>0.53%</td>
+      <td>-12.41</td>
+    </tr>
+    <tr>
+      <td>2019-11-21</td>
+      <td>Houston Texans</td>
+      <td>1551.66</td>
+      <td>20</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1571.02</td>
+      <td>17</td>
+      <td>49.17%</td>
+      <td>50.30%</td>
+      <td>0.53%</td>
+      <td>12.42</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Detroit Lions</td>
+      <td>1440.96</td>
+      <td>16</td>
+      <td>Washington Redskins</td>
+      <td>1293.48</td>
+      <td>19</td>
+      <td>67.84%</td>
+      <td>31.63%</td>
+      <td>0.53%</td>
+      <td>-16.72</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Miami Dolphins</td>
+      <td>1323.70</td>
+      <td>24</td>
+      <td>Cleveland Browns</td>
+      <td>1475.50</td>
+      <td>41</td>
+      <td>27.43%</td>
+      <td>72.05%</td>
+      <td>0.53%</td>
+      <td>-16.15</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Denver Broncos</td>
+      <td>1444.16</td>
+      <td>3</td>
+      <td>Buffalo Bills</td>
+      <td>1502.48</td>
+      <td>20</td>
+      <td>39.29%</td>
+      <td>60.18%</td>
+      <td>0.53%</td>
+      <td>-23.10</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Carolina Panthers</td>
+      <td>1461.18</td>
+      <td>31</td>
+      <td>New Orleans Saints</td>
+      <td>1631.42</td>
+      <td>34</td>
+      <td>25.36%</td>
+      <td>74.11%</td>
+      <td>0.53%</td>
+      <td>-6.27</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>San Francisco 49ers</td>
+      <td>1621.17</td>
+      <td>37</td>
+      <td>@ Green Bay Packers</td>
+      <td>1563.53</td>
+      <td>8</td>
+      <td>60.09%</td>
+      <td>39.39%</td>
+      <td>0.53%</td>
+      <td>30.25</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Tennessee Titans</td>
+      <td>1495.95</td>
+      <td>42</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1433.47</td>
+      <td>20</td>
+      <td>60.75%</td>
+      <td>38.72%</td>
+      <td>0.53%</td>
+      <td>25.90</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>New England Patriots</td>
+      <td>1694.15</td>
+      <td>13</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1581.91</td>
+      <td>9</td>
+      <td>67.29%</td>
+      <td>32.18%</td>
+      <td>0.53%</td>
+      <td>9.19</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Atlanta Falcons</td>
+      <td>1485.61</td>
+      <td>22</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1417.73</td>
+      <td>35</td>
+      <td>61.49%</td>
+      <td>37.99%</td>
+      <td>0.53%</td>
+      <td>-31.56</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Philadelphia Eagles</td>
+      <td>1546.52</td>
+      <td>9</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1590.51</td>
+      <td>17</td>
+      <td>45.64%</td>
+      <td>53.84%</td>
+      <td>0.53%</td>
+      <td>-18.39</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Cincinnati Bengals</td>
+      <td>1292.93</td>
+      <td>10</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1536.72</td>
+      <td>16</td>
+      <td>21.00%</td>
+      <td>78.48%</td>
+      <td>0.53%</td>
+      <td>-7.35</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>New York Jets</td>
+      <td>1360.12</td>
+      <td>34</td>
+      <td>@ Oakland Raiders</td>
+      <td>1455.29</td>
+      <td>3</td>
+      <td>38.47%</td>
+      <td>61.00%</td>
+      <td>0.53%</td>
+      <td>48.35</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Chicago Bears</td>
+      <td>1526.36</td>
+      <td>19</td>
+      <td>@ New York Giants</td>
+      <td>1340.05</td>
+      <td>14</td>
+      <td>75.82%</td>
+      <td>23.65%</td>
+      <td>0.53%</td>
+      <td>7.56</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Cleveland Browns</td>
+      <td>1475.50</td>
+      <td>41</td>
+      <td>@ Miami Dolphins</td>
+      <td>1323.70</td>
+      <td>24</td>
+      <td>72.05%</td>
+      <td>27.43%</td>
+      <td>0.53%</td>
+      <td>16.14</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Washington Redskins</td>
+      <td>1293.48</td>
+      <td>19</td>
+      <td>@ Detroit Lions</td>
+      <td>1440.96</td>
+      <td>16</td>
+      <td>31.63%</td>
+      <td>67.84%</td>
+      <td>0.53%</td>
+      <td>16.72</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>New Orleans Saints</td>
+      <td>1631.42</td>
+      <td>34</td>
+      <td>@ Carolina Panthers</td>
+      <td>1461.18</td>
+      <td>31</td>
+      <td>74.11%</td>
+      <td>25.36%</td>
+      <td>0.53%</td>
+      <td>6.27</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Buffalo Bills</td>
+      <td>1502.48</td>
+      <td>20</td>
+      <td>@ Denver Broncos</td>
+      <td>1444.16</td>
+      <td>3</td>
+      <td>60.18%</td>
+      <td>39.29%</td>
+      <td>0.53%</td>
+      <td>23.11</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1417.73</td>
+      <td>35</td>
+      <td>Atlanta Falcons</td>
+      <td>1485.61</td>
+      <td>22</td>
+      <td>37.99%</td>
+      <td>61.49%</td>
+      <td>0.53%</td>
+      <td>31.55</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1536.72</td>
+      <td>16</td>
+      <td>Cincinnati Bengals</td>
+      <td>1292.93</td>
+      <td>10</td>
+      <td>78.48%</td>
+      <td>21.00%</td>
+      <td>0.53%</td>
+      <td>7.35</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Seattle Seahawks</td>
+      <td>1590.51</td>
+      <td>17</td>
+      <td>Philadelphia Eagles</td>
+      <td>1546.52</td>
+      <td>9</td>
+      <td>53.84%</td>
+      <td>45.64%</td>
+      <td>0.53%</td>
+      <td>18.40</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Oakland Raiders</td>
+      <td>1455.29</td>
+      <td>3</td>
+      <td>New York Jets</td>
+      <td>1360.12</td>
+      <td>34</td>
+      <td>61.00%</td>
+      <td>38.47%</td>
+      <td>0.53%</td>
+      <td>-48.34</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Dallas Cowboys</td>
+      <td>1581.91</td>
+      <td>9</td>
+      <td>New England Patriots</td>
+      <td>1694.15</td>
+      <td>13</td>
+      <td>32.18%</td>
+      <td>67.29%</td>
+      <td>0.53%</td>
+      <td>-9.19</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1433.47</td>
+      <td>20</td>
+      <td>Tennessee Titans</td>
+      <td>1495.95</td>
+      <td>42</td>
+      <td>38.72%</td>
+      <td>60.75%</td>
+      <td>0.53%</td>
+      <td>-25.90</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>Green Bay Packers</td>
+      <td>1563.53</td>
+      <td>8</td>
+      <td>San Francisco 49ers</td>
+      <td>1621.17</td>
+      <td>37</td>
+      <td>39.39%</td>
+      <td>60.09%</td>
+      <td>0.53%</td>
+      <td>-30.25</td>
+    </tr>
+    <tr>
+      <td>2019-11-24</td>
+      <td>New York Giants</td>
+      <td>1340.05</td>
+      <td>14</td>
+      <td>Chicago Bears</td>
+      <td>1526.36</td>
+      <td>19</td>
+      <td>23.65%</td>
+      <td>75.82%</td>
+      <td>0.53%</td>
+      <td>-7.55</td>
+    </tr>
+    <tr>
+      <td>2019-11-25</td>
+      <td>Los Angeles Rams</td>
+      <td>1590.36</td>
+      <td>6</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1680.57</td>
+      <td>45</td>
+      <td>39.15%</td>
+      <td>60.32%</td>
+      <td>0.53%</td>
+      <td>-34.87</td>
+    </tr>
+    <tr>
+      <td>2019-11-25</td>
+      <td>Baltimore Ravens</td>
+      <td>1680.57</td>
+      <td>45</td>
+      <td>Los Angeles Rams</td>
+      <td>1590.36</td>
+      <td>6</td>
+      <td>60.32%</td>
+      <td>39.15%</td>
+      <td>0.53%</td>
+      <td>34.86</td>
+    </tr>
+    <tr>
+      <td>2019-11-28</td>
+      <td>Detroit Lions</td>
+      <td>1424.24</td>
+      <td>20</td>
+      <td>@ Chicago Bears</td>
+      <td>1533.92</td>
+      <td>24</td>
+      <td>36.51%</td>
+      <td>62.96%</td>
+      <td>0.53%</td>
+      <td>-10.42</td>
+    </tr>
+    <tr>
+      <td>2019-11-28</td>
+      <td>Chicago Bears</td>
+      <td>1533.92</td>
+      <td>24</td>
+      <td>Detroit Lions</td>
+      <td>1424.24</td>
+      <td>20</td>
+      <td>62.96%</td>
+      <td>36.51%</td>
+      <td>0.53%</td>
+      <td>10.42</td>
+    </tr>
+    <tr>
+      <td>2019-11-28</td>
+      <td>Buffalo Bills</td>
+      <td>1525.59</td>
+      <td>26</td>
+      <td>Dallas Cowboys</td>
+      <td>1572.72</td>
+      <td>15</td>
+      <td>40.84%</td>
+      <td>58.63%</td>
+      <td>0.53%</td>
+      <td>27.68</td>
+    </tr>
+    <tr>
+      <td>2019-11-28</td>
+      <td>New Orleans Saints</td>
+      <td>1637.69</td>
+      <td>26</td>
+      <td>Atlanta Falcons</td>
+      <td>1454.05</td>
+      <td>18</td>
+      <td>72.16%</td>
+      <td>27.31%</td>
+      <td>0.53%</td>
+      <td>11.03</td>
+    </tr>
+    <tr>
+      <td>2019-11-28</td>
+      <td>Dallas Cowboys</td>
+      <td>1572.72</td>
+      <td>15</td>
+      <td>@ Buffalo Bills</td>
+      <td>1525.59</td>
+      <td>26</td>
+      <td>58.63%</td>
+      <td>40.84%</td>
+      <td>0.53%</td>
+      <td>-27.68</td>
+    </tr>
+    <tr>
+      <td>2019-11-28</td>
+      <td>Atlanta Falcons</td>
+      <td>1454.05</td>
+      <td>18</td>
+      <td>@ New Orleans Saints</td>
+      <td>1637.69</td>
+      <td>26</td>
+      <td>27.31%</td>
+      <td>72.16%</td>
+      <td>0.53%</td>
+      <td>-11.03</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1544.07</td>
+      <td>20</td>
+      <td>@ Cleveland Browns</td>
+      <td>1491.64</td>
+      <td>13</td>
+      <td>59.37%</td>
+      <td>40.11%</td>
+      <td>0.53%</td>
+      <td>15.13</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>New York Giants</td>
+      <td>1332.50</td>
+      <td>13</td>
+      <td>@ Green Bay Packers</td>
+      <td>1533.28</td>
+      <td>31</td>
+      <td>25.40%</td>
+      <td>74.08%</td>
+      <td>0.53%</td>
+      <td>-15.39</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Cincinnati Bengals</td>
+      <td>1285.58</td>
+      <td>22</td>
+      <td>@ New York Jets</td>
+      <td>1408.47</td>
+      <td>6</td>
+      <td>34.77%</td>
+      <td>64.70%</td>
+      <td>0.53%</td>
+      <td>36.84</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Miami Dolphins</td>
+      <td>1307.55</td>
+      <td>37</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1528.13</td>
+      <td>31</td>
+      <td>23.30%</td>
+      <td>76.17%</td>
+      <td>0.53%</td>
+      <td>26.56</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Baltimore Ravens</td>
+      <td>1715.43</td>
+      <td>20</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1651.42</td>
+      <td>17</td>
+      <td>60.96%</td>
+      <td>38.51%</td>
+      <td>0.53%</td>
+      <td>9.52</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1407.57</td>
+      <td>11</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1449.28</td>
+      <td>28</td>
+      <td>45.96%</td>
+      <td>53.51%</td>
+      <td>0.53%</td>
+      <td>-27.01</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Indianapolis Colts</td>
+      <td>1558.61</td>
+      <td>17</td>
+      <td>@ Tennessee Titans</td>
+      <td>1521.85</td>
+      <td>31</td>
+      <td>57.18%</td>
+      <td>42.29%</td>
+      <td>0.53%</td>
+      <td>-30.46</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Carolina Panthers</td>
+      <td>1454.91</td>
+      <td>21</td>
+      <td>@ Washington Redskins</td>
+      <td>1310.20</td>
+      <td>29</td>
+      <td>71.23%</td>
+      <td>28.25%</td>
+      <td>0.53%</td>
+      <td>-28.67</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Denver Broncos</td>
+      <td>1421.06</td>
+      <td>23</td>
+      <td>@ Los Angeles Chargers</td>
+      <td>1513.81</td>
+      <td>20</td>
+      <td>38.80%</td>
+      <td>60.67%</td>
+      <td>0.53%</td>
+      <td>14.96</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Arizona Cardinals</td>
+      <td>1346.87</td>
+      <td>7</td>
+      <td>@ Los Angeles Rams</td>
+      <td>1555.49</td>
+      <td>34</td>
+      <td>24.55%</td>
+      <td>74.92%</td>
+      <td>0.53%</td>
+      <td>-18.22</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Kansas City Chiefs</td>
+      <td>1606.83</td>
+      <td>40</td>
+      <td>@ Oakland Raiders</td>
+      <td>1406.95</td>
+      <td>9</td>
+      <td>77.20%</td>
+      <td>22.27%</td>
+      <td>0.53%</td>
+      <td>17.71</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Houston Texans</td>
+      <td>1564.08</td>
+      <td>28</td>
+      <td>@ New England Patriots</td>
+      <td>1703.34</td>
+      <td>22</td>
+      <td>32.66%</td>
+      <td>66.81%</td>
+      <td>0.53%</td>
+      <td>23.29</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>New York Jets</td>
+      <td>1408.47</td>
+      <td>6</td>
+      <td>Cincinnati Bengals</td>
+      <td>1285.58</td>
+      <td>22</td>
+      <td>64.70%</td>
+      <td>34.77%</td>
+      <td>0.53%</td>
+      <td>-36.84</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>New England Patriots</td>
+      <td>1703.34</td>
+      <td>22</td>
+      <td>Houston Texans</td>
+      <td>1564.08</td>
+      <td>28</td>
+      <td>66.81%</td>
+      <td>32.66%</td>
+      <td>0.53%</td>
+      <td>-23.29</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Oakland Raiders</td>
+      <td>1406.95</td>
+      <td>9</td>
+      <td>Kansas City Chiefs</td>
+      <td>1606.83</td>
+      <td>40</td>
+      <td>22.27%</td>
+      <td>77.20%</td>
+      <td>0.53%</td>
+      <td>-17.72</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Los Angeles Rams</td>
+      <td>1555.49</td>
+      <td>34</td>
+      <td>Arizona Cardinals</td>
+      <td>1346.87</td>
+      <td>7</td>
+      <td>74.92%</td>
+      <td>24.55%</td>
+      <td>0.53%</td>
+      <td>18.23</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Los Angeles Chargers</td>
+      <td>1513.81</td>
+      <td>20</td>
+      <td>Denver Broncos</td>
+      <td>1421.06</td>
+      <td>23</td>
+      <td>60.67%</td>
+      <td>38.80%</td>
+      <td>0.53%</td>
+      <td>-14.96</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Washington Redskins</td>
+      <td>1310.20</td>
+      <td>29</td>
+      <td>Carolina Panthers</td>
+      <td>1454.91</td>
+      <td>21</td>
+      <td>28.25%</td>
+      <td>71.23%</td>
+      <td>0.53%</td>
+      <td>28.67</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Cleveland Browns</td>
+      <td>1491.64</td>
+      <td>13</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1544.07</td>
+      <td>20</td>
+      <td>40.11%</td>
+      <td>59.37%</td>
+      <td>0.53%</td>
+      <td>-15.13</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Tennessee Titans</td>
+      <td>1521.85</td>
+      <td>31</td>
+      <td>Indianapolis Colts</td>
+      <td>1558.61</td>
+      <td>17</td>
+      <td>42.29%</td>
+      <td>57.18%</td>
+      <td>0.53%</td>
+      <td>30.46</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1449.28</td>
+      <td>28</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1407.57</td>
+      <td>11</td>
+      <td>53.51%</td>
+      <td>45.96%</td>
+      <td>0.53%</td>
+      <td>27.01</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>San Francisco 49ers</td>
+      <td>1651.42</td>
+      <td>17</td>
+      <td>Baltimore Ravens</td>
+      <td>1715.43</td>
+      <td>20</td>
+      <td>38.51%</td>
+      <td>60.96%</td>
+      <td>0.53%</td>
+      <td>-9.52</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Philadelphia Eagles</td>
+      <td>1528.13</td>
+      <td>31</td>
+      <td>Miami Dolphins</td>
+      <td>1307.55</td>
+      <td>37</td>
+      <td>76.17%</td>
+      <td>23.30%</td>
+      <td>0.53%</td>
+      <td>-26.56</td>
+    </tr>
+    <tr>
+      <td>2019-12-01</td>
+      <td>Green Bay Packers</td>
+      <td>1533.28</td>
+      <td>31</td>
+      <td>New York Giants</td>
+      <td>1332.50</td>
+      <td>13</td>
+      <td>74.08%</td>
+      <td>25.40%</td>
+      <td>0.53%</td>
+      <td>15.39</td>
+    </tr>
+    <tr>
+      <td>2019-12-02</td>
+      <td>Seattle Seahawks</td>
+      <td>1608.91</td>
+      <td>37</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1623.96</td>
+      <td>30</td>
+      <td>49.79%</td>
+      <td>49.68%</td>
+      <td>0.53%</td>
+      <td>18.72</td>
+    </tr>
+    <tr>
+      <td>2019-12-02</td>
+      <td>Minnesota Vikings</td>
+      <td>1623.96</td>
+      <td>30</td>
+      <td>Seattle Seahawks</td>
+      <td>1608.91</td>
+      <td>37</td>
+      <td>49.68%</td>
+      <td>49.79%</td>
+      <td>0.53%</td>
+      <td>-18.72</td>
+    </tr>
+    <tr>
+      <td>2019-12-05</td>
+      <td>Dallas Cowboys</td>
+      <td>1545.04</td>
+      <td>24</td>
+      <td>Chicago Bears</td>
+      <td>1544.34</td>
+      <td>31</td>
+      <td>47.62%</td>
+      <td>51.85%</td>
+      <td>0.53%</td>
+      <td>-17.96</td>
+    </tr>
+    <tr>
+      <td>2019-12-05</td>
+      <td>Chicago Bears</td>
+      <td>1544.34</td>
+      <td>31</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1545.04</td>
+      <td>24</td>
+      <td>51.85%</td>
+      <td>47.62%</td>
+      <td>0.53%</td>
+      <td>17.95</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Los Angeles Rams</td>
+      <td>1573.72</td>
+      <td>28</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1627.63</td>
+      <td>12</td>
+      <td>44.22%</td>
+      <td>55.25%</td>
+      <td>0.53%</td>
+      <td>31.46</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Atlanta Falcons</td>
+      <td>1443.02</td>
+      <td>40</td>
+      <td>@ Carolina Panthers</td>
+      <td>1426.24</td>
+      <td>20</td>
+      <td>54.36%</td>
+      <td>45.12%</td>
+      <td>0.53%</td>
+      <td>28.76</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Baltimore Ravens</td>
+      <td>1724.95</td>
+      <td>24</td>
+      <td>Buffalo Bills</td>
+      <td>1553.27</td>
+      <td>17</td>
+      <td>70.77%</td>
+      <td>28.70%</td>
+      <td>0.53%</td>
+      <td>10.84</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Carolina Panthers</td>
+      <td>1426.24</td>
+      <td>20</td>
+      <td>Atlanta Falcons</td>
+      <td>1443.02</td>
+      <td>40</td>
+      <td>45.12%</td>
+      <td>54.36%</td>
+      <td>0.53%</td>
+      <td>-28.76</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Cincinnati Bengals</td>
+      <td>1322.42</td>
+      <td>19</td>
+      <td>Cleveland Browns</td>
+      <td>1476.51</td>
+      <td>27</td>
+      <td>27.16%</td>
+      <td>72.31%</td>
+      <td>0.53%</td>
+      <td>-10.97</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Denver Broncos</td>
+      <td>1436.02</td>
+      <td>38</td>
+      <td>Houston Texans</td>
+      <td>1587.37</td>
+      <td>24</td>
+      <td>27.48%</td>
+      <td>72.00%</td>
+      <td>0.53%</td>
+      <td>38.34</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Detroit Lions</td>
+      <td>1413.82</td>
+      <td>7</td>
+      <td>Minnesota Vikings</td>
+      <td>1605.24</td>
+      <td>20</td>
+      <td>23.13%</td>
+      <td>76.35%</td>
+      <td>0.53%</td>
+      <td>-11.91</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Indianapolis Colts</td>
+      <td>1528.15</td>
+      <td>35</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1476.29</td>
+      <td>38</td>
+      <td>54.96%</td>
+      <td>44.51%</td>
+      <td>0.53%</td>
+      <td>-13.56</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Miami Dolphins</td>
+      <td>1334.11</td>
+      <td>21</td>
+      <td>New York Jets</td>
+      <td>1371.63</td>
+      <td>22</td>
+      <td>42.18%</td>
+      <td>57.29%</td>
+      <td>0.53%</td>
+      <td>-6.01</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>San Francisco 49ers</td>
+      <td>1641.90</td>
+      <td>48</td>
+      <td>New Orleans Saints</td>
+      <td>1648.72</td>
+      <td>46</td>
+      <td>46.54%</td>
+      <td>52.93%</td>
+      <td>0.53%</td>
+      <td>10.66</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Washington Redskins</td>
+      <td>1338.87</td>
+      <td>15</td>
+      <td>Green Bay Packers</td>
+      <td>1548.67</td>
+      <td>20</td>
+      <td>21.30%</td>
+      <td>78.17%</td>
+      <td>0.53%</td>
+      <td>-6.80</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Kansas City Chiefs</td>
+      <td>1624.54</td>
+      <td>23</td>
+      <td>New England Patriots</td>
+      <td>1680.05</td>
+      <td>16</td>
+      <td>39.68%</td>
+      <td>59.79%</td>
+      <td>0.53%</td>
+      <td>22.52</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Los Angeles Chargers</td>
+      <td>1498.85</td>
+      <td>45</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1380.56</td>
+      <td>10</td>
+      <td>64.10%</td>
+      <td>35.37%</td>
+      <td>0.53%</td>
+      <td>29.86</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1559.20</td>
+      <td>23</td>
+      <td>Arizona Cardinals</td>
+      <td>1328.65</td>
+      <td>17</td>
+      <td>77.18%</td>
+      <td>22.29%</td>
+      <td>0.53%</td>
+      <td>7.80</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Buffalo Bills</td>
+      <td>1553.27</td>
+      <td>17</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1724.95</td>
+      <td>24</td>
+      <td>28.70%</td>
+      <td>70.77%</td>
+      <td>0.53%</td>
+      <td>-10.84</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Tennessee Titans</td>
+      <td>1552.31</td>
+      <td>42</td>
+      <td>Oakland Raiders</td>
+      <td>1389.23</td>
+      <td>21</td>
+      <td>69.75%</td>
+      <td>29.72%</td>
+      <td>0.53%</td>
+      <td>19.45</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Oakland Raiders</td>
+      <td>1389.23</td>
+      <td>21</td>
+      <td>@ Tennessee Titans</td>
+      <td>1552.31</td>
+      <td>42</td>
+      <td>29.72%</td>
+      <td>69.75%</td>
+      <td>0.53%</td>
+      <td>-19.44</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Arizona Cardinals</td>
+      <td>1328.65</td>
+      <td>17</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1559.20</td>
+      <td>23</td>
+      <td>22.29%</td>
+      <td>77.18%</td>
+      <td>0.53%</td>
+      <td>-7.80</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1380.56</td>
+      <td>10</td>
+      <td>@ Los Angeles Chargers</td>
+      <td>1498.85</td>
+      <td>45</td>
+      <td>35.37%</td>
+      <td>64.10%</td>
+      <td>0.53%</td>
+      <td>-29.85</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>New England Patriots</td>
+      <td>1680.05</td>
+      <td>16</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1624.54</td>
+      <td>23</td>
+      <td>59.79%</td>
+      <td>39.68%</td>
+      <td>0.53%</td>
+      <td>-22.52</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Green Bay Packers</td>
+      <td>1548.67</td>
+      <td>20</td>
+      <td>@ Washington Redskins</td>
+      <td>1338.87</td>
+      <td>15</td>
+      <td>78.17%</td>
+      <td>21.30%</td>
+      <td>0.53%</td>
+      <td>6.81</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>New Orleans Saints</td>
+      <td>1648.72</td>
+      <td>46</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1641.90</td>
+      <td>48</td>
+      <td>52.93%</td>
+      <td>46.54%</td>
+      <td>0.53%</td>
+      <td>-10.66</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>New York Jets</td>
+      <td>1371.63</td>
+      <td>22</td>
+      <td>@ Miami Dolphins</td>
+      <td>1334.11</td>
+      <td>21</td>
+      <td>57.29%</td>
+      <td>42.18%</td>
+      <td>0.53%</td>
+      <td>6.01</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1476.29</td>
+      <td>38</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1528.15</td>
+      <td>35</td>
+      <td>44.51%</td>
+      <td>54.96%</td>
+      <td>0.53%</td>
+      <td>13.55</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Minnesota Vikings</td>
+      <td>1605.24</td>
+      <td>20</td>
+      <td>@ Detroit Lions</td>
+      <td>1413.82</td>
+      <td>7</td>
+      <td>76.35%</td>
+      <td>23.13%</td>
+      <td>0.53%</td>
+      <td>11.91</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Houston Texans</td>
+      <td>1587.37</td>
+      <td>24</td>
+      <td>@ Denver Broncos</td>
+      <td>1436.02</td>
+      <td>38</td>
+      <td>72.00%</td>
+      <td>27.48%</td>
+      <td>0.53%</td>
+      <td>-38.34</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Cleveland Browns</td>
+      <td>1476.51</td>
+      <td>27</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1322.42</td>
+      <td>19</td>
+      <td>72.31%</td>
+      <td>27.16%</td>
+      <td>0.53%</td>
+      <td>10.97</td>
+    </tr>
+    <tr>
+      <td>2019-12-08</td>
+      <td>Seattle Seahawks</td>
+      <td>1627.63</td>
+      <td>12</td>
+      <td>Los Angeles Rams</td>
+      <td>1573.72</td>
+      <td>28</td>
+      <td>55.25%</td>
+      <td>44.22%</td>
+      <td>0.53%</td>
+      <td>-31.46</td>
+    </tr>
+    <tr>
+      <td>2019-12-09</td>
+      <td>New York Giants</td>
+      <td>1317.11</td>
+      <td>17</td>
+      <td>Philadelphia Eagles</td>
+      <td>1501.57</td>
+      <td>23</td>
+      <td>23.85%</td>
+      <td>75.63%</td>
+      <td>0.53%</td>
+      <td>-8.34</td>
+    </tr>
+    <tr>
+      <td>2019-12-09</td>
+      <td>Philadelphia Eagles</td>
+      <td>1501.57</td>
+      <td>23</td>
+      <td>@ New York Giants</td>
+      <td>1317.11</td>
+      <td>17</td>
+      <td>75.63%</td>
+      <td>23.85%</td>
+      <td>0.53%</td>
+      <td>8.34</td>
+    </tr>
+    <tr>
+      <td>2019-12-12</td>
+      <td>New York Jets</td>
+      <td>1377.64</td>
+      <td>21</td>
+      <td>Baltimore Ravens</td>
+      <td>1735.79</td>
+      <td>42</td>
+      <td>10.33%</td>
+      <td>89.14%</td>
+      <td>0.53%</td>
+      <td>-6.77</td>
+    </tr>
+    <tr>
+      <td>2019-12-12</td>
+      <td>Baltimore Ravens</td>
+      <td>1735.79</td>
+      <td>42</td>
+      <td>@ New York Jets</td>
+      <td>1377.64</td>
+      <td>21</td>
+      <td>89.14%</td>
+      <td>10.33%</td>
+      <td>0.53%</td>
+      <td>6.77</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Chicago Bears</td>
+      <td>1562.29</td>
+      <td>13</td>
+      <td>Green Bay Packers</td>
+      <td>1555.48</td>
+      <td>21</td>
+      <td>48.50%</td>
+      <td>50.98%</td>
+      <td>0.53%</td>
+      <td>-19.55</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Houston Texans</td>
+      <td>1549.03</td>
+      <td>24</td>
+      <td>Tennessee Titans</td>
+      <td>1571.76</td>
+      <td>21</td>
+      <td>44.27%</td>
+      <td>55.20%</td>
+      <td>0.53%</td>
+      <td>13.61</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Arizona Cardinals</td>
+      <td>1320.85</td>
+      <td>38</td>
+      <td>@ Cleveland Browns</td>
+      <td>1487.48</td>
+      <td>24</td>
+      <td>29.30%</td>
+      <td>70.18%</td>
+      <td>0.53%</td>
+      <td>37.37</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Oakland Raiders</td>
+      <td>1369.79</td>
+      <td>16</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1350.71</td>
+      <td>20</td>
+      <td>54.68%</td>
+      <td>44.79%</td>
+      <td>0.53%</td>
+      <td>-15.57</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Dallas Cowboys</td>
+      <td>1527.08</td>
+      <td>44</td>
+      <td>@ Los Angeles Rams</td>
+      <td>1605.18</td>
+      <td>21</td>
+      <td>40.82%</td>
+      <td>58.65%</td>
+      <td>0.53%</td>
+      <td>40.05</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Los Angeles Chargers</td>
+      <td>1528.71</td>
+      <td>10</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1617.15</td>
+      <td>39</td>
+      <td>39.39%</td>
+      <td>60.08%</td>
+      <td>0.53%</td>
+      <td>-30.25</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1567.00</td>
+      <td>10</td>
+      <td>@ Buffalo Bills</td>
+      <td>1542.43</td>
+      <td>17</td>
+      <td>55.46%</td>
+      <td>44.01%</td>
+      <td>0.53%</td>
+      <td>-20.90</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Carolina Panthers</td>
+      <td>1397.48</td>
+      <td>24</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1596.17</td>
+      <td>30</td>
+      <td>25.63%</td>
+      <td>73.85%</td>
+      <td>0.53%</td>
+      <td>-8.97</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Washington Redskins</td>
+      <td>1332.07</td>
+      <td>27</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1509.91</td>
+      <td>37</td>
+      <td>27.98%</td>
+      <td>71.49%</td>
+      <td>0.53%</td>
+      <td>-12.63</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Denver Broncos</td>
+      <td>1474.36</td>
+      <td>3</td>
+      <td>Kansas City Chiefs</td>
+      <td>1647.06</td>
+      <td>23</td>
+      <td>25.10%</td>
+      <td>74.38%</td>
+      <td>0.53%</td>
+      <td>-16.03</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Cincinnati Bengals</td>
+      <td>1311.45</td>
+      <td>13</td>
+      <td>@ New England Patriots</td>
+      <td>1657.53</td>
+      <td>34</td>
+      <td>12.85%</td>
+      <td>86.62%</td>
+      <td>0.53%</td>
+      <td>-8.42</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>New York Giants</td>
+      <td>1308.77</td>
+      <td>36</td>
+      <td>@ Miami Dolphins</td>
+      <td>1328.10</td>
+      <td>20</td>
+      <td>49.17%</td>
+      <td>50.30%</td>
+      <td>0.53%</td>
+      <td>28.66</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Tennessee Titans</td>
+      <td>1571.76</td>
+      <td>21</td>
+      <td>@ Houston Texans</td>
+      <td>1549.03</td>
+      <td>24</td>
+      <td>55.20%</td>
+      <td>44.27%</td>
+      <td>0.53%</td>
+      <td>-13.62</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>San Francisco 49ers</td>
+      <td>1652.56</td>
+      <td>22</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1471.78</td>
+      <td>29</td>
+      <td>75.24%</td>
+      <td>24.23%</td>
+      <td>0.53%</td>
+      <td>-28.33</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Green Bay Packers</td>
+      <td>1555.48</td>
+      <td>21</td>
+      <td>@ Chicago Bears</td>
+      <td>1562.29</td>
+      <td>13</td>
+      <td>50.98%</td>
+      <td>48.50%</td>
+      <td>0.53%</td>
+      <td>19.54</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Kansas City Chiefs</td>
+      <td>1647.06</td>
+      <td>23</td>
+      <td>@ Denver Broncos</td>
+      <td>1474.36</td>
+      <td>3</td>
+      <td>74.38%</td>
+      <td>25.10%</td>
+      <td>0.53%</td>
+      <td>16.03</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Detroit Lions</td>
+      <td>1401.91</td>
+      <td>17</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1489.84</td>
+      <td>38</td>
+      <td>39.46%</td>
+      <td>60.01%</td>
+      <td>0.53%</td>
+      <td>-25.79</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Miami Dolphins</td>
+      <td>1328.10</td>
+      <td>20</td>
+      <td>New York Giants</td>
+      <td>1308.77</td>
+      <td>36</td>
+      <td>50.30%</td>
+      <td>49.17%</td>
+      <td>0.53%</td>
+      <td>-28.66</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Buffalo Bills</td>
+      <td>1542.43</td>
+      <td>17</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1567.00</td>
+      <td>10</td>
+      <td>44.01%</td>
+      <td>55.46%</td>
+      <td>0.53%</td>
+      <td>20.89</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Minnesota Vikings</td>
+      <td>1617.15</td>
+      <td>39</td>
+      <td>Los Angeles Chargers</td>
+      <td>1528.71</td>
+      <td>10</td>
+      <td>60.08%</td>
+      <td>39.39%</td>
+      <td>0.53%</td>
+      <td>30.25</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Los Angeles Rams</td>
+      <td>1605.18</td>
+      <td>21</td>
+      <td>Dallas Cowboys</td>
+      <td>1527.08</td>
+      <td>44</td>
+      <td>58.65%</td>
+      <td>40.82%</td>
+      <td>0.53%</td>
+      <td>-40.04</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1350.71</td>
+      <td>20</td>
+      <td>Oakland Raiders</td>
+      <td>1369.79</td>
+      <td>16</td>
+      <td>44.79%</td>
+      <td>54.68%</td>
+      <td>0.53%</td>
+      <td>15.57</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Cleveland Browns</td>
+      <td>1487.48</td>
+      <td>24</td>
+      <td>Arizona Cardinals</td>
+      <td>1320.85</td>
+      <td>38</td>
+      <td>70.18%</td>
+      <td>29.30%</td>
+      <td>0.53%</td>
+      <td>-37.37</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Atlanta Falcons</td>
+      <td>1471.78</td>
+      <td>29</td>
+      <td>San Francisco 49ers</td>
+      <td>1652.56</td>
+      <td>22</td>
+      <td>24.23%</td>
+      <td>75.24%</td>
+      <td>0.53%</td>
+      <td>28.33</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>New England Patriots</td>
+      <td>1657.53</td>
+      <td>34</td>
+      <td>Cincinnati Bengals</td>
+      <td>1311.45</td>
+      <td>13</td>
+      <td>86.62%</td>
+      <td>12.85%</td>
+      <td>0.53%</td>
+      <td>8.42</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Philadelphia Eagles</td>
+      <td>1509.91</td>
+      <td>37</td>
+      <td>Washington Redskins</td>
+      <td>1332.07</td>
+      <td>27</td>
+      <td>71.49%</td>
+      <td>27.98%</td>
+      <td>0.53%</td>
+      <td>12.64</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Seattle Seahawks</td>
+      <td>1596.17</td>
+      <td>30</td>
+      <td>Carolina Panthers</td>
+      <td>1397.48</td>
+      <td>24</td>
+      <td>73.85%</td>
+      <td>25.63%</td>
+      <td>0.53%</td>
+      <td>8.96</td>
+    </tr>
+    <tr>
+      <td>2019-12-15</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1489.84</td>
+      <td>38</td>
+      <td>Detroit Lions</td>
+      <td>1401.91</td>
+      <td>17</td>
+      <td>60.01%</td>
+      <td>39.46%</td>
+      <td>0.53%</td>
+      <td>25.79</td>
+    </tr>
+    <tr>
+      <td>2019-12-16</td>
+      <td>Indianapolis Colts</td>
+      <td>1514.59</td>
+      <td>7</td>
+      <td>New Orleans Saints</td>
+      <td>1638.06</td>
+      <td>34</td>
+      <td>30.79%</td>
+      <td>68.69%</td>
+      <td>0.53%</td>
+      <td>-22.83</td>
+    </tr>
+    <tr>
+      <td>2019-12-16</td>
+      <td>New Orleans Saints</td>
+      <td>1638.06</td>
+      <td>34</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1514.59</td>
+      <td>7</td>
+      <td>68.69%</td>
+      <td>30.79%</td>
+      <td>0.53%</td>
+      <td>22.84</td>
+    </tr>
+    <tr>
+      <td>2019-12-21</td>
+      <td>Los Angeles Rams</td>
+      <td>1565.14</td>
+      <td>31</td>
+      <td>San Francisco 49ers</td>
+      <td>1624.23</td>
+      <td>34</td>
+      <td>39.19%</td>
+      <td>60.29%</td>
+      <td>0.53%</td>
+      <td>-9.68</td>
+    </tr>
+    <tr>
+      <td>2019-12-21</td>
+      <td>New England Patriots</td>
+      <td>1665.95</td>
+      <td>24</td>
+      <td>@ Buffalo Bills</td>
+      <td>1563.32</td>
+      <td>17</td>
+      <td>66.07%</td>
+      <td>33.40%</td>
+      <td>0.53%</td>
+      <td>12.61</td>
+    </tr>
+    <tr>
+      <td>2019-12-21</td>
+      <td>Buffalo Bills</td>
+      <td>1563.32</td>
+      <td>17</td>
+      <td>New England Patriots</td>
+      <td>1665.95</td>
+      <td>24</td>
+      <td>33.40%</td>
+      <td>66.07%</td>
+      <td>0.53%</td>
+      <td>-12.61</td>
+    </tr>
+    <tr>
+      <td>2019-12-21</td>
+      <td>Houston Texans</td>
+      <td>1562.64</td>
+      <td>23</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1515.63</td>
+      <td>20</td>
+      <td>54.27%</td>
+      <td>45.20%</td>
+      <td>0.53%</td>
+      <td>11.16</td>
+    </tr>
+    <tr>
+      <td>2019-12-21</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1515.63</td>
+      <td>20</td>
+      <td>@ Houston Texans</td>
+      <td>1562.64</td>
+      <td>23</td>
+      <td>45.20%</td>
+      <td>54.27%</td>
+      <td>0.53%</td>
+      <td>-11.16</td>
+    </tr>
+    <tr>
+      <td>2019-12-21</td>
+      <td>San Francisco 49ers</td>
+      <td>1624.23</td>
+      <td>34</td>
+      <td>@ Los Angeles Rams</td>
+      <td>1565.14</td>
+      <td>31</td>
+      <td>60.29%</td>
+      <td>39.19%</td>
+      <td>0.53%</td>
+      <td>9.68</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1546.10</td>
+      <td>10</td>
+      <td>New York Jets</td>
+      <td>1370.87</td>
+      <td>16</td>
+      <td>71.19%</td>
+      <td>28.28%</td>
+      <td>0.53%</td>
+      <td>-24.82</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Arizona Cardinals</td>
+      <td>1358.22</td>
+      <td>27</td>
+      <td>Seattle Seahawks</td>
+      <td>1605.13</td>
+      <td>13</td>
+      <td>17.94%</td>
+      <td>81.54%</td>
+      <td>0.53%</td>
+      <td>43.43</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>New York Giants</td>
+      <td>1337.43</td>
+      <td>41</td>
+      <td>Washington Redskins</td>
+      <td>1319.44</td>
+      <td>35</td>
+      <td>50.11%</td>
+      <td>49.37%</td>
+      <td>0.53%</td>
+      <td>17.22</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1366.28</td>
+      <td>12</td>
+      <td>Atlanta Falcons</td>
+      <td>1500.11</td>
+      <td>24</td>
+      <td>29.53%</td>
+      <td>69.94%</td>
+      <td>0.53%</td>
+      <td>-14.60</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Cincinnati Bengals</td>
+      <td>1303.03</td>
+      <td>35</td>
+      <td>Miami Dolphins</td>
+      <td>1299.44</td>
+      <td>38</td>
+      <td>48.03%</td>
+      <td>51.44%</td>
+      <td>0.53%</td>
+      <td>-11.86</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Carolina Panthers</td>
+      <td>1388.51</td>
+      <td>6</td>
+      <td>Indianapolis Colts</td>
+      <td>1491.76</td>
+      <td>38</td>
+      <td>33.32%</td>
+      <td>66.15%</td>
+      <td>0.53%</td>
+      <td>-26.89</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Baltimore Ravens</td>
+      <td>1742.56</td>
+      <td>31</td>
+      <td>Cleveland Browns</td>
+      <td>1450.11</td>
+      <td>15</td>
+      <td>82.75%</td>
+      <td>16.72%</td>
+      <td>0.53%</td>
+      <td>9.56</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Dallas Cowboys</td>
+      <td>1567.13</td>
+      <td>9</td>
+      <td>Philadelphia Eagles</td>
+      <td>1522.55</td>
+      <td>17</td>
+      <td>53.92%</td>
+      <td>45.55%</td>
+      <td>0.53%</td>
+      <td>-21.72</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>New Orleans Saints</td>
+      <td>1660.90</td>
+      <td>38</td>
+      <td>Tennessee Titans</td>
+      <td>1558.14</td>
+      <td>28</td>
+      <td>62.03%</td>
+      <td>37.44%</td>
+      <td>0.53%</td>
+      <td>16.89</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Oakland Raiders</td>
+      <td>1354.22</td>
+      <td>24</td>
+      <td>Los Angeles Chargers</td>
+      <td>1498.46</td>
+      <td>17</td>
+      <td>28.30%</td>
+      <td>71.17%</td>
+      <td>0.53%</td>
+      <td>26.80</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Chicago Bears</td>
+      <td>1542.74</td>
+      <td>3</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1663.09</td>
+      <td>26</td>
+      <td>35.10%</td>
+      <td>64.37%</td>
+      <td>0.53%</td>
+      <td>-24.01</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Cleveland Browns</td>
+      <td>1450.11</td>
+      <td>15</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1742.56</td>
+      <td>31</td>
+      <td>16.72%</td>
+      <td>82.75%</td>
+      <td>0.53%</td>
+      <td>-9.56</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Indianapolis Colts</td>
+      <td>1491.76</td>
+      <td>38</td>
+      <td>@ Carolina Panthers</td>
+      <td>1388.51</td>
+      <td>6</td>
+      <td>66.15%</td>
+      <td>33.32%</td>
+      <td>0.53%</td>
+      <td>26.90</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Miami Dolphins</td>
+      <td>1299.44</td>
+      <td>38</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1303.03</td>
+      <td>35</td>
+      <td>51.44%</td>
+      <td>48.03%</td>
+      <td>0.53%</td>
+      <td>11.85</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Atlanta Falcons</td>
+      <td>1500.11</td>
+      <td>24</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1366.28</td>
+      <td>12</td>
+      <td>69.94%</td>
+      <td>29.53%</td>
+      <td>0.53%</td>
+      <td>14.61</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Tennessee Titans</td>
+      <td>1558.14</td>
+      <td>28</td>
+      <td>@ New Orleans Saints</td>
+      <td>1660.90</td>
+      <td>38</td>
+      <td>37.44%</td>
+      <td>62.03%</td>
+      <td>0.53%</td>
+      <td>-16.88</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Detroit Lions</td>
+      <td>1376.12</td>
+      <td>17</td>
+      <td>Denver Broncos</td>
+      <td>1458.33</td>
+      <td>27</td>
+      <td>36.06%</td>
+      <td>63.41%</td>
+      <td>0.53%</td>
+      <td>-16.27</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Washington Redskins</td>
+      <td>1319.44</td>
+      <td>35</td>
+      <td>@ New York Giants</td>
+      <td>1337.43</td>
+      <td>41</td>
+      <td>49.37%</td>
+      <td>50.11%</td>
+      <td>0.53%</td>
+      <td>-17.23</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>New York Jets</td>
+      <td>1370.87</td>
+      <td>16</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1546.10</td>
+      <td>10</td>
+      <td>28.28%</td>
+      <td>71.19%</td>
+      <td>0.53%</td>
+      <td>24.82</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Seattle Seahawks</td>
+      <td>1605.13</td>
+      <td>13</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1358.22</td>
+      <td>27</td>
+      <td>81.54%</td>
+      <td>17.94%</td>
+      <td>0.53%</td>
+      <td>-43.43</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Philadelphia Eagles</td>
+      <td>1522.55</td>
+      <td>17</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1567.13</td>
+      <td>9</td>
+      <td>45.55%</td>
+      <td>53.92%</td>
+      <td>0.53%</td>
+      <td>21.71</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Denver Broncos</td>
+      <td>1458.33</td>
+      <td>27</td>
+      <td>@ Detroit Lions</td>
+      <td>1376.12</td>
+      <td>17</td>
+      <td>63.41%</td>
+      <td>36.06%</td>
+      <td>0.53%</td>
+      <td>16.27</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Los Angeles Chargers</td>
+      <td>1498.46</td>
+      <td>17</td>
+      <td>@ Oakland Raiders</td>
+      <td>1354.22</td>
+      <td>24</td>
+      <td>71.17%</td>
+      <td>28.30%</td>
+      <td>0.53%</td>
+      <td>-26.80</td>
+    </tr>
+    <tr>
+      <td>2019-12-22</td>
+      <td>Kansas City Chiefs</td>
+      <td>1663.09</td>
+      <td>26</td>
+      <td>Chicago Bears</td>
+      <td>1542.74</td>
+      <td>3</td>
+      <td>64.37%</td>
+      <td>35.10%</td>
+      <td>0.53%</td>
+      <td>24.02</td>
+    </tr>
+    <tr>
+      <td>2019-12-23</td>
+      <td>Green Bay Packers</td>
+      <td>1575.02</td>
+      <td>23</td>
+      <td>Minnesota Vikings</td>
+      <td>1647.40</td>
+      <td>10</td>
+      <td>37.38%</td>
+      <td>62.09%</td>
+      <td>0.53%</td>
+      <td>31.87</td>
+    </tr>
+    <tr>
+      <td>2019-12-23</td>
+      <td>Minnesota Vikings</td>
+      <td>1647.40</td>
+      <td>10</td>
+      <td>@ Green Bay Packers</td>
+      <td>1575.02</td>
+      <td>23</td>
+      <td>62.09%</td>
+      <td>37.38%</td>
+      <td>0.53%</td>
+      <td>-31.87</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Tennessee Titans</td>
+      <td>1541.26</td>
+      <td>35</td>
+      <td>Houston Texans</td>
+      <td>1573.80</td>
+      <td>14</td>
+      <td>42.88%</td>
+      <td>56.59%</td>
+      <td>0.53%</td>
+      <td>36.92</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Philadelphia Eagles</td>
+      <td>1544.26</td>
+      <td>34</td>
+      <td>New York Giants</td>
+      <td>1354.65</td>
+      <td>17</td>
+      <td>72.84%</td>
+      <td>26.63%</td>
+      <td>0.53%</td>
+      <td>15.69</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Oakland Raiders</td>
+      <td>1381.02</td>
+      <td>15</td>
+      <td>Denver Broncos</td>
+      <td>1474.60</td>
+      <td>16</td>
+      <td>34.57%</td>
+      <td>64.90%</td>
+      <td>0.53%</td>
+      <td>-4.94</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Indianapolis Colts</td>
+      <td>1518.66</td>
+      <td>20</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1351.68</td>
+      <td>38</td>
+      <td>70.22%</td>
+      <td>29.25%</td>
+      <td>0.53%</td>
+      <td>-42.40</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Arizona Cardinals</td>
+      <td>1401.65</td>
+      <td>24</td>
+      <td>Los Angeles Rams</td>
+      <td>1555.46</td>
+      <td>31</td>
+      <td>27.19%</td>
+      <td>72.28%</td>
+      <td>0.53%</td>
+      <td>-10.28</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Miami Dolphins</td>
+      <td>1311.29</td>
+      <td>27</td>
+      <td>New England Patriots</td>
+      <td>1678.56</td>
+      <td>24</td>
+      <td>9.85%</td>
+      <td>89.62%</td>
+      <td>0.53%</td>
+      <td>22.10</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Los Angeles Chargers</td>
+      <td>1471.66</td>
+      <td>21</td>
+      <td>Kansas City Chiefs</td>
+      <td>1687.11</td>
+      <td>31</td>
+      <td>20.76%</td>
+      <td>78.72%</td>
+      <td>0.53%</td>
+      <td>-9.38</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Green Bay Packers</td>
+      <td>1606.89</td>
+      <td>23</td>
+      <td>Detroit Lions</td>
+      <td>1359.85</td>
+      <td>20</td>
+      <td>78.79%</td>
+      <td>20.69%</td>
+      <td>0.53%</td>
+      <td>5.12</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Cleveland Browns</td>
+      <td>1440.55</td>
+      <td>23</td>
+      <td>Cincinnati Bengals</td>
+      <td>1291.17</td>
+      <td>33</td>
+      <td>68.08%</td>
+      <td>31.40%</td>
+      <td>0.53%</td>
+      <td>-30.64</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Atlanta Falcons</td>
+      <td>1514.72</td>
+      <td>28</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1504.47</td>
+      <td>22</td>
+      <td>48.99%</td>
+      <td>50.48%</td>
+      <td>0.53%</td>
+      <td>17.61</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>New Orleans Saints</td>
+      <td>1677.79</td>
+      <td>42</td>
+      <td>Carolina Panthers</td>
+      <td>1361.62</td>
+      <td>10</td>
+      <td>84.56%</td>
+      <td>14.91%</td>
+      <td>0.53%</td>
+      <td>12.05</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Seattle Seahawks</td>
+      <td>1561.70</td>
+      <td>21</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1633.91</td>
+      <td>26</td>
+      <td>41.64%</td>
+      <td>57.83%</td>
+      <td>0.53%</td>
+      <td>-13.27</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Dallas Cowboys</td>
+      <td>1545.41</td>
+      <td>47</td>
+      <td>@ Washington Redskins</td>
+      <td>1302.21</td>
+      <td>16</td>
+      <td>81.22%</td>
+      <td>18.25%</td>
+      <td>0.53%</td>
+      <td>14.53</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Houston Texans</td>
+      <td>1573.80</td>
+      <td>14</td>
+      <td>@ Tennessee Titans</td>
+      <td>1541.26</td>
+      <td>35</td>
+      <td>56.59%</td>
+      <td>42.88%</td>
+      <td>0.53%</td>
+      <td>-36.92</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>New York Giants</td>
+      <td>1354.65</td>
+      <td>17</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1544.26</td>
+      <td>34</td>
+      <td>26.63%</td>
+      <td>72.84%</td>
+      <td>0.53%</td>
+      <td>-15.68</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Denver Broncos</td>
+      <td>1474.60</td>
+      <td>16</td>
+      <td>@ Oakland Raiders</td>
+      <td>1381.02</td>
+      <td>15</td>
+      <td>64.90%</td>
+      <td>34.57%</td>
+      <td>0.53%</td>
+      <td>4.93</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1351.68</td>
+      <td>38</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1518.66</td>
+      <td>20</td>
+      <td>29.25%</td>
+      <td>70.22%</td>
+      <td>0.53%</td>
+      <td>42.39</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Los Angeles Rams</td>
+      <td>1555.46</td>
+      <td>31</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1401.65</td>
+      <td>24</td>
+      <td>72.28%</td>
+      <td>27.19%</td>
+      <td>0.53%</td>
+      <td>10.27</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Carolina Panthers</td>
+      <td>1361.62</td>
+      <td>10</td>
+      <td>@ New Orleans Saints</td>
+      <td>1677.79</td>
+      <td>42</td>
+      <td>14.91%</td>
+      <td>84.56%</td>
+      <td>0.53%</td>
+      <td>-12.06</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>New England Patriots</td>
+      <td>1678.56</td>
+      <td>24</td>
+      <td>@ Miami Dolphins</td>
+      <td>1311.29</td>
+      <td>27</td>
+      <td>89.62%</td>
+      <td>9.85%</td>
+      <td>0.53%</td>
+      <td>-22.10</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Kansas City Chiefs</td>
+      <td>1687.11</td>
+      <td>31</td>
+      <td>@ Los Angeles Chargers</td>
+      <td>1471.66</td>
+      <td>21</td>
+      <td>78.72%</td>
+      <td>20.76%</td>
+      <td>0.53%</td>
+      <td>9.38</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Detroit Lions</td>
+      <td>1359.85</td>
+      <td>20</td>
+      <td>@ Green Bay Packers</td>
+      <td>1606.89</td>
+      <td>23</td>
+      <td>20.69%</td>
+      <td>78.79%</td>
+      <td>0.53%</td>
+      <td>-5.12</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Cincinnati Bengals</td>
+      <td>1291.17</td>
+      <td>33</td>
+      <td>@ Cleveland Browns</td>
+      <td>1440.55</td>
+      <td>23</td>
+      <td>31.40%</td>
+      <td>68.08%</td>
+      <td>0.53%</td>
+      <td>30.64</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1504.47</td>
+      <td>22</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1514.72</td>
+      <td>28</td>
+      <td>50.48%</td>
+      <td>48.99%</td>
+      <td>0.53%</td>
+      <td>-17.61</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>Washington Redskins</td>
+      <td>1302.21</td>
+      <td>16</td>
+      <td>Dallas Cowboys</td>
+      <td>1545.41</td>
+      <td>47</td>
+      <td>18.25%</td>
+      <td>81.22%</td>
+      <td>0.53%</td>
+      <td>-14.53</td>
+    </tr>
+    <tr>
+      <td>2019-12-29</td>
+      <td>San Francisco 49ers</td>
+      <td>1633.91</td>
+      <td>26</td>
+      <td>Seattle Seahawks</td>
+      <td>1561.70</td>
+      <td>21</td>
+      <td>57.83%</td>
+      <td>41.64%</td>
+      <td>0.53%</td>
+      <td>13.28</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

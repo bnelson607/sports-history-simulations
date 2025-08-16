@@ -1,0 +1,6598 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Arizona Cardinals">Arizona Cardinals</option><option value="Atlanta Falcons">Atlanta Falcons</option><option value="Baltimore Ravens">Baltimore Ravens</option><option value="Buffalo Bills">Buffalo Bills</option><option value="Carolina Panthers">Carolina Panthers</option><option value="Chicago Bears">Chicago Bears</option><option value="Cincinnati Bengals">Cincinnati Bengals</option><option value="Cleveland Browns">Cleveland Browns</option><option value="Dallas Cowboys">Dallas Cowboys</option><option value="Denver Broncos">Denver Broncos</option><option value="Detroit Lions">Detroit Lions</option><option value="Green Bay Packers">Green Bay Packers</option><option value="Houston Texans">Houston Texans</option><option value="Indianapolis Colts">Indianapolis Colts</option><option value="Jacksonville Jaguars">Jacksonville Jaguars</option><option value="Kansas City Chiefs">Kansas City Chiefs</option><option value="Miami Dolphins">Miami Dolphins</option><option value="Minnesota Vikings">Minnesota Vikings</option><option value="New England Patriots">New England Patriots</option><option value="New Orleans Saints">New Orleans Saints</option><option value="New York Giants">New York Giants</option><option value="New York Jets">New York Jets</option><option value="Oakland Raiders">Oakland Raiders</option><option value="Philadelphia Eagles">Philadelphia Eagles</option><option value="Pittsburgh Steelers">Pittsburgh Steelers</option><option value="San Diego Chargers">San Diego Chargers</option><option value="San Francisco 49ers">San Francisco 49ers</option><option value="Seattle Seahawks">Seattle Seahawks</option><option value="St. Louis Rams">St. Louis Rams</option><option value="Tampa Bay Buccaneers">Tampa Bay Buccaneers</option><option value="Tennessee Titans">Tennessee Titans</option><option value="Washington Redskins">Washington Redskins</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="3" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Tie Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2004-09-09</td>
+      <td>New England Patriots</td>
+      <td>1589.49</td>
+      <td>27</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1559.76</td>
+      <td>24</td>
+      <td>60.04%</td>
+      <td>39.72%</td>
+      <td>0.24%</td>
+      <td>11.02</td>
+    </tr>
+    <tr>
+      <td>2004-09-09</td>
+      <td>Indianapolis Colts</td>
+      <td>1559.76</td>
+      <td>24</td>
+      <td>New England Patriots</td>
+      <td>1589.49</td>
+      <td>27</td>
+      <td>39.72%</td>
+      <td>60.04%</td>
+      <td>0.24%</td>
+      <td>-11.01</td>
+    </tr>
+    <tr>
+      <td>2004-09-11</td>
+      <td>Miami Dolphins</td>
+      <td>1549.35</td>
+      <td>7</td>
+      <td>@ Tennessee Titans</td>
+      <td>1567.06</td>
+      <td>17</td>
+      <td>53.35%</td>
+      <td>46.41%</td>
+      <td>0.24%</td>
+      <td>-26.99</td>
+    </tr>
+    <tr>
+      <td>2004-09-11</td>
+      <td>Tennessee Titans</td>
+      <td>1567.06</td>
+      <td>17</td>
+      <td>Miami Dolphins</td>
+      <td>1549.35</td>
+      <td>7</td>
+      <td>46.41%</td>
+      <td>53.35%</td>
+      <td>0.24%</td>
+      <td>26.99</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>New York Giants</td>
+      <td>1418.33</td>
+      <td>17</td>
+      <td>Philadelphia Eagles</td>
+      <td>1556.04</td>
+      <td>31</td>
+      <td>26.14%</td>
+      <td>73.62%</td>
+      <td>0.24%</td>
+      <td>-15.66</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Seattle Seahawks</td>
+      <td>1513.23</td>
+      <td>21</td>
+      <td>New Orleans Saints</td>
+      <td>1508.14</td>
+      <td>7</td>
+      <td>44.60%</td>
+      <td>55.15%</td>
+      <td>0.24%</td>
+      <td>33.01</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Cincinnati Bengals</td>
+      <td>1475.97</td>
+      <td>24</td>
+      <td>New York Jets</td>
+      <td>1497.09</td>
+      <td>31</td>
+      <td>40.91%</td>
+      <td>58.84%</td>
+      <td>0.24%</td>
+      <td>-17.32</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Dallas Cowboys</td>
+      <td>1500.16</td>
+      <td>17</td>
+      <td>Minnesota Vikings</td>
+      <td>1519.28</td>
+      <td>35</td>
+      <td>41.19%</td>
+      <td>58.57%</td>
+      <td>0.24%</td>
+      <td>-27.97</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Kansas City Chiefs</td>
+      <td>1534.80</td>
+      <td>24</td>
+      <td>Denver Broncos</td>
+      <td>1531.88</td>
+      <td>34</td>
+      <td>44.30%</td>
+      <td>55.46%</td>
+      <td>0.24%</td>
+      <td>-22.42</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>San Diego Chargers</td>
+      <td>1446.68</td>
+      <td>27</td>
+      <td>Houston Texans</td>
+      <td>1423.55</td>
+      <td>20</td>
+      <td>47.18%</td>
+      <td>52.58%</td>
+      <td>0.24%</td>
+      <td>22.25</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1474.35</td>
+      <td>13</td>
+      <td>Buffalo Bills</td>
+      <td>1485.35</td>
+      <td>10</td>
+      <td>42.33%</td>
+      <td>57.43%</td>
+      <td>0.24%</td>
+      <td>15.91</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Detroit Lions</td>
+      <td>1449.40</td>
+      <td>20</td>
+      <td>Chicago Bears</td>
+      <td>1476.17</td>
+      <td>16</td>
+      <td>40.13%</td>
+      <td>59.63%</td>
+      <td>0.24%</td>
+      <td>19.08</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Baltimore Ravens</td>
+      <td>1542.10</td>
+      <td>3</td>
+      <td>Cleveland Browns</td>
+      <td>1462.26</td>
+      <td>20</td>
+      <td>55.32%</td>
+      <td>44.44%</td>
+      <td>0.24%</td>
+      <td>-36.48</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Arizona Cardinals</td>
+      <td>1393.83</td>
+      <td>10</td>
+      <td>St. Louis Rams</td>
+      <td>1531.79</td>
+      <td>17</td>
+      <td>26.11%</td>
+      <td>73.65%</td>
+      <td>0.24%</td>
+      <td>-11.07</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1516.42</td>
+      <td>10</td>
+      <td>Washington Redskins</td>
+      <td>1452.60</td>
+      <td>16</td>
+      <td>53.03%</td>
+      <td>46.73%</td>
+      <td>0.24%</td>
+      <td>-20.78</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Oakland Raiders</td>
+      <td>1450.96</td>
+      <td>21</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1483.72</td>
+      <td>24</td>
+      <td>39.30%</td>
+      <td>60.45%</td>
+      <td>0.24%</td>
+      <td>-10.90</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>San Francisco 49ers</td>
+      <td>1504.07</td>
+      <td>19</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1470.99</td>
+      <td>21</td>
+      <td>60.50%</td>
+      <td>39.26%</td>
+      <td>0.24%</td>
+      <td>-13.68</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1483.72</td>
+      <td>24</td>
+      <td>@ Oakland Raiders</td>
+      <td>1450.96</td>
+      <td>21</td>
+      <td>60.45%</td>
+      <td>39.30%</td>
+      <td>0.24%</td>
+      <td>10.90</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Philadelphia Eagles</td>
+      <td>1556.04</td>
+      <td>31</td>
+      <td>@ New York Giants</td>
+      <td>1418.33</td>
+      <td>17</td>
+      <td>73.62%</td>
+      <td>26.14%</td>
+      <td>0.24%</td>
+      <td>15.66</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>New Orleans Saints</td>
+      <td>1508.14</td>
+      <td>7</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1513.23</td>
+      <td>21</td>
+      <td>55.15%</td>
+      <td>44.60%</td>
+      <td>0.24%</td>
+      <td>-33.01</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>New York Jets</td>
+      <td>1497.09</td>
+      <td>31</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1475.97</td>
+      <td>24</td>
+      <td>58.84%</td>
+      <td>40.91%</td>
+      <td>0.24%</td>
+      <td>17.33</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Minnesota Vikings</td>
+      <td>1519.28</td>
+      <td>35</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1500.16</td>
+      <td>17</td>
+      <td>58.57%</td>
+      <td>41.19%</td>
+      <td>0.24%</td>
+      <td>27.97</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Denver Broncos</td>
+      <td>1531.88</td>
+      <td>34</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1534.80</td>
+      <td>24</td>
+      <td>55.46%</td>
+      <td>44.30%</td>
+      <td>0.24%</td>
+      <td>22.41</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Houston Texans</td>
+      <td>1423.55</td>
+      <td>20</td>
+      <td>@ San Diego Chargers</td>
+      <td>1446.68</td>
+      <td>27</td>
+      <td>52.58%</td>
+      <td>47.18%</td>
+      <td>0.24%</td>
+      <td>-22.25</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Buffalo Bills</td>
+      <td>1485.35</td>
+      <td>10</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1474.35</td>
+      <td>13</td>
+      <td>57.43%</td>
+      <td>42.33%</td>
+      <td>0.24%</td>
+      <td>-15.91</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Chicago Bears</td>
+      <td>1476.17</td>
+      <td>16</td>
+      <td>@ Detroit Lions</td>
+      <td>1449.40</td>
+      <td>20</td>
+      <td>59.63%</td>
+      <td>40.13%</td>
+      <td>0.24%</td>
+      <td>-19.08</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Cleveland Browns</td>
+      <td>1462.26</td>
+      <td>20</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1542.10</td>
+      <td>3</td>
+      <td>44.44%</td>
+      <td>55.32%</td>
+      <td>0.24%</td>
+      <td>36.48</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>St. Louis Rams</td>
+      <td>1531.79</td>
+      <td>17</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1393.83</td>
+      <td>10</td>
+      <td>73.65%</td>
+      <td>26.11%</td>
+      <td>0.24%</td>
+      <td>11.06</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Washington Redskins</td>
+      <td>1452.60</td>
+      <td>16</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1516.42</td>
+      <td>10</td>
+      <td>46.73%</td>
+      <td>53.03%</td>
+      <td>0.24%</td>
+      <td>20.78</td>
+    </tr>
+    <tr>
+      <td>2004-09-12</td>
+      <td>Atlanta Falcons</td>
+      <td>1470.99</td>
+      <td>21</td>
+      <td>San Francisco 49ers</td>
+      <td>1504.07</td>
+      <td>19</td>
+      <td>39.26%</td>
+      <td>60.50%</td>
+      <td>0.24%</td>
+      <td>13.68</td>
+    </tr>
+    <tr>
+      <td>2004-09-13</td>
+      <td>Green Bay Packers</td>
+      <td>1576.59</td>
+      <td>24</td>
+      <td>Carolina Panthers</td>
+      <td>1538.59</td>
+      <td>14</td>
+      <td>49.32%</td>
+      <td>50.44%</td>
+      <td>0.24%</td>
+      <td>25.52</td>
+    </tr>
+    <tr>
+      <td>2004-09-13</td>
+      <td>Carolina Panthers</td>
+      <td>1538.59</td>
+      <td>14</td>
+      <td>@ Green Bay Packers</td>
+      <td>1576.59</td>
+      <td>24</td>
+      <td>50.44%</td>
+      <td>49.32%</td>
+      <td>0.24%</td>
+      <td>-25.52</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Carolina Panthers</td>
+      <td>1513.07</td>
+      <td>28</td>
+      <td>Kansas City Chiefs</td>
+      <td>1512.38</td>
+      <td>17</td>
+      <td>43.98%</td>
+      <td>55.78%</td>
+      <td>0.24%</td>
+      <td>29.59</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Seattle Seahawks</td>
+      <td>1546.24</td>
+      <td>10</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1495.64</td>
+      <td>6</td>
+      <td>51.13%</td>
+      <td>48.62%</td>
+      <td>0.24%</td>
+      <td>15.56</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Buffalo Bills</td>
+      <td>1469.44</td>
+      <td>10</td>
+      <td>Oakland Raiders</td>
+      <td>1440.06</td>
+      <td>13</td>
+      <td>48.08%</td>
+      <td>51.68%</td>
+      <td>0.24%</td>
+      <td>-13.32</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Indianapolis Colts</td>
+      <td>1548.75</td>
+      <td>31</td>
+      <td>Tennessee Titans</td>
+      <td>1594.05</td>
+      <td>17</td>
+      <td>37.60%</td>
+      <td>62.16%</td>
+      <td>0.24%</td>
+      <td>37.20</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Washington Redskins</td>
+      <td>1473.38</td>
+      <td>14</td>
+      <td>New York Giants</td>
+      <td>1402.67</td>
+      <td>20</td>
+      <td>54.02%</td>
+      <td>45.74%</td>
+      <td>0.24%</td>
+      <td>-21.16</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>San Francisco 49ers</td>
+      <td>1490.39</td>
+      <td>27</td>
+      <td>New Orleans Saints</td>
+      <td>1475.13</td>
+      <td>30</td>
+      <td>46.05%</td>
+      <td>53.70%</td>
+      <td>0.24%</td>
+      <td>-12.76</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Denver Broncos</td>
+      <td>1554.29</td>
+      <td>6</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1490.26</td>
+      <td>7</td>
+      <td>53.06%</td>
+      <td>46.70%</td>
+      <td>0.24%</td>
+      <td>-8.49</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Chicago Bears</td>
+      <td>1457.09</td>
+      <td>21</td>
+      <td>Green Bay Packers</td>
+      <td>1602.11</td>
+      <td>10</td>
+      <td>25.34%</td>
+      <td>74.42%</td>
+      <td>0.24%</td>
+      <td>39.48</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Houston Texans</td>
+      <td>1401.30</td>
+      <td>16</td>
+      <td>Detroit Lions</td>
+      <td>1468.48</td>
+      <td>28</td>
+      <td>34.69%</td>
+      <td>65.07%</td>
+      <td>0.24%</td>
+      <td>-19.24</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Cleveland Browns</td>
+      <td>1498.74</td>
+      <td>12</td>
+      <td>Dallas Cowboys</td>
+      <td>1472.19</td>
+      <td>19</td>
+      <td>47.67%</td>
+      <td>52.09%</td>
+      <td>0.24%</td>
+      <td>-20.18</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>New England Patriots</td>
+      <td>1600.51</td>
+      <td>23</td>
+      <td>Arizona Cardinals</td>
+      <td>1382.76</td>
+      <td>12</td>
+      <td>73.20%</td>
+      <td>26.56%</td>
+      <td>0.24%</td>
+      <td>14.10</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>New York Jets</td>
+      <td>1514.42</td>
+      <td>34</td>
+      <td>San Diego Chargers</td>
+      <td>1468.93</td>
+      <td>28</td>
+      <td>50.40%</td>
+      <td>49.36%</td>
+      <td>0.24%</td>
+      <td>19.34</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>St. Louis Rams</td>
+      <td>1542.85</td>
+      <td>17</td>
+      <td>Atlanta Falcons</td>
+      <td>1484.67</td>
+      <td>34</td>
+      <td>52.22%</td>
+      <td>47.54%</td>
+      <td>0.24%</td>
+      <td>-34.44</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Miami Dolphins</td>
+      <td>1522.36</td>
+      <td>13</td>
+      <td>Cincinnati Bengals</td>
+      <td>1458.65</td>
+      <td>16</td>
+      <td>53.01%</td>
+      <td>46.74%</td>
+      <td>0.24%</td>
+      <td>-14.69</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1494.62</td>
+      <td>13</td>
+      <td>Baltimore Ravens</td>
+      <td>1505.62</td>
+      <td>30</td>
+      <td>42.33%</td>
+      <td>57.43%</td>
+      <td>0.24%</td>
+      <td>-27.93</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>New Orleans Saints</td>
+      <td>1475.13</td>
+      <td>30</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1490.39</td>
+      <td>27</td>
+      <td>53.70%</td>
+      <td>46.05%</td>
+      <td>0.24%</td>
+      <td>12.77</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Cincinnati Bengals</td>
+      <td>1458.65</td>
+      <td>16</td>
+      <td>@ Miami Dolphins</td>
+      <td>1522.36</td>
+      <td>13</td>
+      <td>46.74%</td>
+      <td>53.01%</td>
+      <td>0.24%</td>
+      <td>14.69</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Baltimore Ravens</td>
+      <td>1505.62</td>
+      <td>30</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1494.62</td>
+      <td>13</td>
+      <td>57.43%</td>
+      <td>42.33%</td>
+      <td>0.24%</td>
+      <td>27.93</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>San Diego Chargers</td>
+      <td>1468.93</td>
+      <td>28</td>
+      <td>@ New York Jets</td>
+      <td>1514.42</td>
+      <td>34</td>
+      <td>49.36%</td>
+      <td>50.40%</td>
+      <td>0.24%</td>
+      <td>-19.34</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Arizona Cardinals</td>
+      <td>1382.76</td>
+      <td>12</td>
+      <td>@ New England Patriots</td>
+      <td>1600.51</td>
+      <td>23</td>
+      <td>26.56%</td>
+      <td>73.20%</td>
+      <td>0.24%</td>
+      <td>-14.11</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Dallas Cowboys</td>
+      <td>1472.19</td>
+      <td>19</td>
+      <td>@ Cleveland Browns</td>
+      <td>1498.74</td>
+      <td>12</td>
+      <td>52.09%</td>
+      <td>47.67%</td>
+      <td>0.24%</td>
+      <td>20.18</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Detroit Lions</td>
+      <td>1468.48</td>
+      <td>28</td>
+      <td>@ Houston Texans</td>
+      <td>1401.30</td>
+      <td>16</td>
+      <td>65.07%</td>
+      <td>34.69%</td>
+      <td>0.24%</td>
+      <td>19.24</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Green Bay Packers</td>
+      <td>1602.11</td>
+      <td>10</td>
+      <td>@ Chicago Bears</td>
+      <td>1457.09</td>
+      <td>21</td>
+      <td>74.42%</td>
+      <td>25.34%</td>
+      <td>0.24%</td>
+      <td>-39.47</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1490.26</td>
+      <td>7</td>
+      <td>@ Denver Broncos</td>
+      <td>1554.29</td>
+      <td>6</td>
+      <td>46.70%</td>
+      <td>53.06%</td>
+      <td>0.24%</td>
+      <td>8.49</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Kansas City Chiefs</td>
+      <td>1512.38</td>
+      <td>17</td>
+      <td>@ Carolina Panthers</td>
+      <td>1513.07</td>
+      <td>28</td>
+      <td>55.78%</td>
+      <td>43.98%</td>
+      <td>0.24%</td>
+      <td>-29.59</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>New York Giants</td>
+      <td>1402.67</td>
+      <td>20</td>
+      <td>@ Washington Redskins</td>
+      <td>1473.38</td>
+      <td>14</td>
+      <td>45.74%</td>
+      <td>54.02%</td>
+      <td>0.24%</td>
+      <td>21.16</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Tennessee Titans</td>
+      <td>1594.05</td>
+      <td>17</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1548.75</td>
+      <td>31</td>
+      <td>62.16%</td>
+      <td>37.60%</td>
+      <td>0.24%</td>
+      <td>-37.20</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Oakland Raiders</td>
+      <td>1440.06</td>
+      <td>13</td>
+      <td>@ Buffalo Bills</td>
+      <td>1469.44</td>
+      <td>10</td>
+      <td>51.68%</td>
+      <td>48.08%</td>
+      <td>0.24%</td>
+      <td>13.33</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1495.64</td>
+      <td>6</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1546.24</td>
+      <td>10</td>
+      <td>48.62%</td>
+      <td>51.13%</td>
+      <td>0.24%</td>
+      <td>-15.56</td>
+    </tr>
+    <tr>
+      <td>2004-09-19</td>
+      <td>Atlanta Falcons</td>
+      <td>1484.67</td>
+      <td>34</td>
+      <td>@ St. Louis Rams</td>
+      <td>1542.85</td>
+      <td>17</td>
+      <td>47.54%</td>
+      <td>52.22%</td>
+      <td>0.24%</td>
+      <td>34.45</td>
+    </tr>
+    <tr>
+      <td>2004-09-20</td>
+      <td>Minnesota Vikings</td>
+      <td>1547.25</td>
+      <td>16</td>
+      <td>Philadelphia Eagles</td>
+      <td>1571.70</td>
+      <td>27</td>
+      <td>40.45%</td>
+      <td>59.31%</td>
+      <td>0.24%</td>
+      <td>-21.47</td>
+    </tr>
+    <tr>
+      <td>2004-09-20</td>
+      <td>Philadelphia Eagles</td>
+      <td>1571.70</td>
+      <td>27</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1547.25</td>
+      <td>16</td>
+      <td>59.31%</td>
+      <td>40.45%</td>
+      <td>0.24%</td>
+      <td>21.48</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Detroit Lions</td>
+      <td>1487.72</td>
+      <td>13</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1593.18</td>
+      <td>30</td>
+      <td>40.84%</td>
+      <td>58.92%</td>
+      <td>0.24%</td>
+      <td>-26.95</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Arizona Cardinals</td>
+      <td>1368.65</td>
+      <td>3</td>
+      <td>Atlanta Falcons</td>
+      <td>1519.12</td>
+      <td>6</td>
+      <td>24.75%</td>
+      <td>75.01%</td>
+      <td>0.24%</td>
+      <td>-6.86</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>New Orleans Saints</td>
+      <td>1487.90</td>
+      <td>28</td>
+      <td>St. Louis Rams</td>
+      <td>1508.41</td>
+      <td>25</td>
+      <td>41.00%</td>
+      <td>58.76%</td>
+      <td>0.24%</td>
+      <td>16.28</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Baltimore Ravens</td>
+      <td>1533.55</td>
+      <td>23</td>
+      <td>Cincinnati Bengals</td>
+      <td>1473.34</td>
+      <td>9</td>
+      <td>52.51%</td>
+      <td>47.24%</td>
+      <td>0.24%</td>
+      <td>28.28</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Seattle Seahawks</td>
+      <td>1561.80</td>
+      <td>34</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1477.63</td>
+      <td>0</td>
+      <td>67.25%</td>
+      <td>32.51%</td>
+      <td>0.24%</td>
+      <td>30.35</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Denver Broncos</td>
+      <td>1545.80</td>
+      <td>23</td>
+      <td>@ San Diego Chargers</td>
+      <td>1449.59</td>
+      <td>13</td>
+      <td>68.75%</td>
+      <td>31.01%</td>
+      <td>0.24%</td>
+      <td>15.71</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Tennessee Titans</td>
+      <td>1556.85</td>
+      <td>12</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1498.75</td>
+      <td>15</td>
+      <td>63.87%</td>
+      <td>35.88%</td>
+      <td>0.24%</td>
+      <td>-17.70</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Philadelphia Eagles</td>
+      <td>1593.18</td>
+      <td>30</td>
+      <td>Detroit Lions</td>
+      <td>1487.72</td>
+      <td>13</td>
+      <td>58.92%</td>
+      <td>40.84%</td>
+      <td>0.24%</td>
+      <td>26.94</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>San Diego Chargers</td>
+      <td>1449.59</td>
+      <td>13</td>
+      <td>Denver Broncos</td>
+      <td>1545.80</td>
+      <td>23</td>
+      <td>31.01%</td>
+      <td>68.75%</td>
+      <td>0.24%</td>
+      <td>-15.70</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>San Francisco 49ers</td>
+      <td>1477.63</td>
+      <td>0</td>
+      <td>Seattle Seahawks</td>
+      <td>1561.80</td>
+      <td>34</td>
+      <td>32.51%</td>
+      <td>67.25%</td>
+      <td>0.24%</td>
+      <td>-30.36</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1480.08</td>
+      <td>20</td>
+      <td>Oakland Raiders</td>
+      <td>1453.39</td>
+      <td>30</td>
+      <td>47.69%</td>
+      <td>52.06%</td>
+      <td>0.24%</td>
+      <td>-24.13</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1498.75</td>
+      <td>15</td>
+      <td>Tennessee Titans</td>
+      <td>1556.85</td>
+      <td>12</td>
+      <td>35.88%</td>
+      <td>63.87%</td>
+      <td>0.24%</td>
+      <td>17.69</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Cleveland Browns</td>
+      <td>1478.56</td>
+      <td>10</td>
+      <td>New York Giants</td>
+      <td>1423.83</td>
+      <td>27</td>
+      <td>51.72%</td>
+      <td>48.03%</td>
+      <td>0.24%</td>
+      <td>-34.12</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Chicago Bears</td>
+      <td>1496.57</td>
+      <td>22</td>
+      <td>Minnesota Vikings</td>
+      <td>1525.78</td>
+      <td>27</td>
+      <td>39.79%</td>
+      <td>59.97%</td>
+      <td>0.24%</td>
+      <td>-14.25</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Oakland Raiders</td>
+      <td>1453.39</td>
+      <td>30</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1480.08</td>
+      <td>20</td>
+      <td>52.06%</td>
+      <td>47.69%</td>
+      <td>0.24%</td>
+      <td>24.13</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Houston Texans</td>
+      <td>1382.06</td>
+      <td>24</td>
+      <td>Kansas City Chiefs</td>
+      <td>1482.79</td>
+      <td>21</td>
+      <td>30.45%</td>
+      <td>69.31%</td>
+      <td>0.24%</td>
+      <td>19.20</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Green Bay Packers</td>
+      <td>1562.64</td>
+      <td>31</td>
+      <td>Indianapolis Colts</td>
+      <td>1585.95</td>
+      <td>45</td>
+      <td>40.61%</td>
+      <td>59.15%</td>
+      <td>0.24%</td>
+      <td>-24.32</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1466.69</td>
+      <td>13</td>
+      <td>Miami Dolphins</td>
+      <td>1507.67</td>
+      <td>3</td>
+      <td>38.18%</td>
+      <td>61.58%</td>
+      <td>0.24%</td>
+      <td>31.14</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>St. Louis Rams</td>
+      <td>1508.41</td>
+      <td>25</td>
+      <td>@ New Orleans Saints</td>
+      <td>1487.90</td>
+      <td>28</td>
+      <td>58.76%</td>
+      <td>41.00%</td>
+      <td>0.24%</td>
+      <td>-16.28</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Atlanta Falcons</td>
+      <td>1519.12</td>
+      <td>6</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1368.65</td>
+      <td>3</td>
+      <td>75.01%</td>
+      <td>24.75%</td>
+      <td>0.24%</td>
+      <td>6.86</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Cincinnati Bengals</td>
+      <td>1473.34</td>
+      <td>9</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1533.55</td>
+      <td>23</td>
+      <td>47.24%</td>
+      <td>52.51%</td>
+      <td>0.24%</td>
+      <td>-28.29</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Indianapolis Colts</td>
+      <td>1585.95</td>
+      <td>45</td>
+      <td>@ Green Bay Packers</td>
+      <td>1562.64</td>
+      <td>31</td>
+      <td>59.15%</td>
+      <td>40.61%</td>
+      <td>0.24%</td>
+      <td>24.32</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Kansas City Chiefs</td>
+      <td>1482.79</td>
+      <td>21</td>
+      <td>@ Houston Texans</td>
+      <td>1382.06</td>
+      <td>24</td>
+      <td>69.31%</td>
+      <td>30.45%</td>
+      <td>0.24%</td>
+      <td>-19.20</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Miami Dolphins</td>
+      <td>1507.67</td>
+      <td>3</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1466.69</td>
+      <td>13</td>
+      <td>61.58%</td>
+      <td>38.18%</td>
+      <td>0.24%</td>
+      <td>-31.14</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Minnesota Vikings</td>
+      <td>1525.78</td>
+      <td>27</td>
+      <td>@ Chicago Bears</td>
+      <td>1496.57</td>
+      <td>22</td>
+      <td>59.97%</td>
+      <td>39.79%</td>
+      <td>0.24%</td>
+      <td>14.24</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>New York Giants</td>
+      <td>1423.83</td>
+      <td>27</td>
+      <td>@ Cleveland Browns</td>
+      <td>1478.56</td>
+      <td>10</td>
+      <td>48.03%</td>
+      <td>51.72%</td>
+      <td>0.24%</td>
+      <td>34.12</td>
+    </tr>
+    <tr>
+      <td>2004-09-27</td>
+      <td>Dallas Cowboys</td>
+      <td>1492.37</td>
+      <td>21</td>
+      <td>Washington Redskins</td>
+      <td>1452.22</td>
+      <td>18</td>
+      <td>49.63%</td>
+      <td>50.13%</td>
+      <td>0.24%</td>
+      <td>13.89</td>
+    </tr>
+    <tr>
+      <td>2004-09-27</td>
+      <td>Washington Redskins</td>
+      <td>1452.22</td>
+      <td>18</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1492.37</td>
+      <td>21</td>
+      <td>50.13%</td>
+      <td>49.63%</td>
+      <td>0.24%</td>
+      <td>-13.89</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>New England Patriots</td>
+      <td>1614.61</td>
+      <td>31</td>
+      <td>Buffalo Bills</td>
+      <td>1456.12</td>
+      <td>17</td>
+      <td>66.04%</td>
+      <td>33.71%</td>
+      <td>0.24%</td>
+      <td>20.20</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Washington Redskins</td>
+      <td>1438.33</td>
+      <td>13</td>
+      <td>Cleveland Browns</td>
+      <td>1444.44</td>
+      <td>17</td>
+      <td>43.02%</td>
+      <td>56.74%</td>
+      <td>0.24%</td>
+      <td>-13.77</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Philadelphia Eagles</td>
+      <td>1620.12</td>
+      <td>19</td>
+      <td>Chicago Bears</td>
+      <td>1482.32</td>
+      <td>9</td>
+      <td>63.33%</td>
+      <td>36.43%</td>
+      <td>0.24%</td>
+      <td>18.45</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Atlanta Falcons</td>
+      <td>1525.98</td>
+      <td>27</td>
+      <td>Carolina Panthers</td>
+      <td>1542.66</td>
+      <td>10</td>
+      <td>41.53%</td>
+      <td>58.23%</td>
+      <td>0.24%</td>
+      <td>38.40</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Cincinnati Bengals</td>
+      <td>1445.05</td>
+      <td>17</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1497.83</td>
+      <td>28</td>
+      <td>36.59%</td>
+      <td>63.17%</td>
+      <td>0.24%</td>
+      <td>-19.43</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Chicago Bears</td>
+      <td>1482.32</td>
+      <td>9</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1620.12</td>
+      <td>19</td>
+      <td>36.43%</td>
+      <td>63.33%</td>
+      <td>0.24%</td>
+      <td>-18.44</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>St. Louis Rams</td>
+      <td>1492.13</td>
+      <td>24</td>
+      <td>San Francisco 49ers</td>
+      <td>1447.27</td>
+      <td>14</td>
+      <td>50.31%</td>
+      <td>49.45%</td>
+      <td>0.24%</td>
+      <td>25.02</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Carolina Panthers</td>
+      <td>1542.66</td>
+      <td>10</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1525.98</td>
+      <td>27</td>
+      <td>58.23%</td>
+      <td>41.53%</td>
+      <td>0.24%</td>
+      <td>-38.40</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Buffalo Bills</td>
+      <td>1456.12</td>
+      <td>17</td>
+      <td>@ New England Patriots</td>
+      <td>1614.61</td>
+      <td>31</td>
+      <td>33.71%</td>
+      <td>66.04%</td>
+      <td>0.24%</td>
+      <td>-20.20</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1497.83</td>
+      <td>28</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1445.05</td>
+      <td>17</td>
+      <td>63.17%</td>
+      <td>36.59%</td>
+      <td>0.24%</td>
+      <td>19.43</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1516.44</td>
+      <td>17</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1610.27</td>
+      <td>24</td>
+      <td>42.46%</td>
+      <td>57.30%</td>
+      <td>0.24%</td>
+      <td>-17.98</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>San Francisco 49ers</td>
+      <td>1447.27</td>
+      <td>14</td>
+      <td>@ St. Louis Rams</td>
+      <td>1492.13</td>
+      <td>24</td>
+      <td>49.45%</td>
+      <td>50.31%</td>
+      <td>0.24%</td>
+      <td>-25.02</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Miami Dolphins</td>
+      <td>1476.53</td>
+      <td>9</td>
+      <td>@ New York Jets</td>
+      <td>1533.76</td>
+      <td>17</td>
+      <td>47.67%</td>
+      <td>52.09%</td>
+      <td>0.24%</td>
+      <td>-21.58</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Green Bay Packers</td>
+      <td>1538.32</td>
+      <td>7</td>
+      <td>@ New York Giants</td>
+      <td>1457.95</td>
+      <td>14</td>
+      <td>66.77%</td>
+      <td>32.99%</td>
+      <td>0.24%</td>
+      <td>-28.25</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Arizona Cardinals</td>
+      <td>1361.79</td>
+      <td>34</td>
+      <td>@ New Orleans Saints</td>
+      <td>1504.18</td>
+      <td>10</td>
+      <td>35.82%</td>
+      <td>63.94%</td>
+      <td>0.24%</td>
+      <td>50.09</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1455.95</td>
+      <td>13</td>
+      <td>@ Denver Broncos</td>
+      <td>1561.51</td>
+      <td>16</td>
+      <td>40.82%</td>
+      <td>58.94%</td>
+      <td>0.24%</td>
+      <td>-11.32</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Houston Texans</td>
+      <td>1401.26</td>
+      <td>30</td>
+      <td>@ Oakland Raiders</td>
+      <td>1477.52</td>
+      <td>17</td>
+      <td>44.95%</td>
+      <td>54.81%</td>
+      <td>0.24%</td>
+      <td>31.61</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>San Diego Chargers</td>
+      <td>1433.89</td>
+      <td>38</td>
+      <td>@ Tennessee Titans</td>
+      <td>1539.15</td>
+      <td>17</td>
+      <td>40.86%</td>
+      <td>58.90%</td>
+      <td>0.24%</td>
+      <td>43.16</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Cleveland Browns</td>
+      <td>1444.44</td>
+      <td>17</td>
+      <td>@ Washington Redskins</td>
+      <td>1438.33</td>
+      <td>13</td>
+      <td>56.74%</td>
+      <td>43.02%</td>
+      <td>0.24%</td>
+      <td>13.77</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Tennessee Titans</td>
+      <td>1539.15</td>
+      <td>17</td>
+      <td>San Diego Chargers</td>
+      <td>1433.89</td>
+      <td>38</td>
+      <td>58.90%</td>
+      <td>40.86%</td>
+      <td>0.24%</td>
+      <td>-43.16</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Oakland Raiders</td>
+      <td>1477.52</td>
+      <td>17</td>
+      <td>Houston Texans</td>
+      <td>1401.26</td>
+      <td>30</td>
+      <td>54.81%</td>
+      <td>44.95%</td>
+      <td>0.24%</td>
+      <td>-31.61</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Denver Broncos</td>
+      <td>1561.51</td>
+      <td>16</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1455.95</td>
+      <td>13</td>
+      <td>58.94%</td>
+      <td>40.82%</td>
+      <td>0.24%</td>
+      <td>11.31</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>New Orleans Saints</td>
+      <td>1504.18</td>
+      <td>10</td>
+      <td>Arizona Cardinals</td>
+      <td>1361.79</td>
+      <td>34</td>
+      <td>63.94%</td>
+      <td>35.82%</td>
+      <td>0.24%</td>
+      <td>-50.10</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>New York Giants</td>
+      <td>1457.95</td>
+      <td>14</td>
+      <td>Green Bay Packers</td>
+      <td>1538.32</td>
+      <td>7</td>
+      <td>32.99%</td>
+      <td>66.77%</td>
+      <td>0.24%</td>
+      <td>28.25</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>New York Jets</td>
+      <td>1533.76</td>
+      <td>17</td>
+      <td>Miami Dolphins</td>
+      <td>1476.53</td>
+      <td>9</td>
+      <td>52.09%</td>
+      <td>47.67%</td>
+      <td>0.24%</td>
+      <td>21.58</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Indianapolis Colts</td>
+      <td>1610.27</td>
+      <td>24</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1516.44</td>
+      <td>17</td>
+      <td>57.30%</td>
+      <td>42.46%</td>
+      <td>0.24%</td>
+      <td>17.98</td>
+    </tr>
+    <tr>
+      <td>2004-10-04</td>
+      <td>Kansas City Chiefs</td>
+      <td>1463.59</td>
+      <td>27</td>
+      <td>Baltimore Ravens</td>
+      <td>1561.83</td>
+      <td>24</td>
+      <td>30.76%</td>
+      <td>69.00%</td>
+      <td>0.24%</td>
+      <td>19.12</td>
+    </tr>
+    <tr>
+      <td>2004-10-04</td>
+      <td>Baltimore Ravens</td>
+      <td>1561.83</td>
+      <td>24</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1463.59</td>
+      <td>27</td>
+      <td>69.00%</td>
+      <td>30.76%</td>
+      <td>0.24%</td>
+      <td>-19.11</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>New York Giants</td>
+      <td>1486.20</td>
+      <td>26</td>
+      <td>Dallas Cowboys</td>
+      <td>1506.26</td>
+      <td>10</td>
+      <td>41.06%</td>
+      <td>58.70%</td>
+      <td>0.24%</td>
+      <td>37.55</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Baltimore Ravens</td>
+      <td>1542.72</td>
+      <td>17</td>
+      <td>Washington Redskins</td>
+      <td>1424.56</td>
+      <td>10</td>
+      <td>60.68%</td>
+      <td>39.08%</td>
+      <td>0.24%</td>
+      <td>16.55</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Seattle Seahawks</td>
+      <td>1592.15</td>
+      <td>27</td>
+      <td>@ St. Louis Rams</td>
+      <td>1517.15</td>
+      <td>33</td>
+      <td>66.08%</td>
+      <td>33.68%</td>
+      <td>0.24%</td>
+      <td>-25.88</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Washington Redskins</td>
+      <td>1424.56</td>
+      <td>10</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1542.72</td>
+      <td>17</td>
+      <td>39.08%</td>
+      <td>60.68%</td>
+      <td>0.24%</td>
+      <td>-16.55</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>San Francisco 49ers</td>
+      <td>1422.25</td>
+      <td>31</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1411.88</td>
+      <td>28</td>
+      <td>57.34%</td>
+      <td>42.42%</td>
+      <td>0.24%</td>
+      <td>11.76</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1517.26</td>
+      <td>34</td>
+      <td>@ Cleveland Browns</td>
+      <td>1458.21</td>
+      <td>23</td>
+      <td>64.00%</td>
+      <td>35.76%</td>
+      <td>0.24%</td>
+      <td>18.98</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>New York Jets</td>
+      <td>1555.34</td>
+      <td>16</td>
+      <td>@ Buffalo Bills</td>
+      <td>1435.92</td>
+      <td>14</td>
+      <td>71.53%</td>
+      <td>28.22%</td>
+      <td>0.24%</td>
+      <td>6.39</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>New England Patriots</td>
+      <td>1634.81</td>
+      <td>24</td>
+      <td>@ Miami Dolphins</td>
+      <td>1454.95</td>
+      <td>10</td>
+      <td>78.03%</td>
+      <td>21.73%</td>
+      <td>0.24%</td>
+      <td>13.03</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>New Orleans Saints</td>
+      <td>1454.08</td>
+      <td>17</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1444.63</td>
+      <td>20</td>
+      <td>57.21%</td>
+      <td>42.55%</td>
+      <td>0.24%</td>
+      <td>-15.85</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Houston Texans</td>
+      <td>1432.87</td>
+      <td>28</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1540.02</td>
+      <td>34</td>
+      <td>40.60%</td>
+      <td>59.16%</td>
+      <td>0.24%</td>
+      <td>-15.92</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>St. Louis Rams</td>
+      <td>1517.15</td>
+      <td>33</td>
+      <td>Seattle Seahawks</td>
+      <td>1592.15</td>
+      <td>27</td>
+      <td>33.68%</td>
+      <td>66.08%</td>
+      <td>0.24%</td>
+      <td>25.89</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Dallas Cowboys</td>
+      <td>1506.26</td>
+      <td>10</td>
+      <td>@ New York Giants</td>
+      <td>1486.20</td>
+      <td>26</td>
+      <td>58.70%</td>
+      <td>41.06%</td>
+      <td>0.24%</td>
+      <td>-37.55</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Indianapolis Colts</td>
+      <td>1628.25</td>
+      <td>35</td>
+      <td>@ Oakland Raiders</td>
+      <td>1445.91</td>
+      <td>14</td>
+      <td>78.27%</td>
+      <td>21.49%</td>
+      <td>0.24%</td>
+      <td>15.78</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Atlanta Falcons</td>
+      <td>1564.38</td>
+      <td>10</td>
+      <td>@ Detroit Lions</td>
+      <td>1460.77</td>
+      <td>17</td>
+      <td>69.65%</td>
+      <td>30.10%</td>
+      <td>0.24%</td>
+      <td>-29.47</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>San Diego Chargers</td>
+      <td>1477.05</td>
+      <td>34</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1498.46</td>
+      <td>21</td>
+      <td>52.82%</td>
+      <td>46.93%</td>
+      <td>0.24%</td>
+      <td>27.08</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Denver Broncos</td>
+      <td>1572.82</td>
+      <td>20</td>
+      <td>@ Carolina Panthers</td>
+      <td>1504.26</td>
+      <td>17</td>
+      <td>65.25%</td>
+      <td>34.51%</td>
+      <td>0.24%</td>
+      <td>9.57</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Cleveland Browns</td>
+      <td>1458.21</td>
+      <td>23</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1517.26</td>
+      <td>34</td>
+      <td>35.76%</td>
+      <td>64.00%</td>
+      <td>0.24%</td>
+      <td>-18.99</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Arizona Cardinals</td>
+      <td>1411.88</td>
+      <td>28</td>
+      <td>San Francisco 49ers</td>
+      <td>1422.25</td>
+      <td>31</td>
+      <td>42.42%</td>
+      <td>57.34%</td>
+      <td>0.24%</td>
+      <td>-11.75</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Buffalo Bills</td>
+      <td>1435.92</td>
+      <td>14</td>
+      <td>New York Jets</td>
+      <td>1555.34</td>
+      <td>16</td>
+      <td>28.22%</td>
+      <td>71.53%</td>
+      <td>0.24%</td>
+      <td>-6.39</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Miami Dolphins</td>
+      <td>1454.95</td>
+      <td>10</td>
+      <td>New England Patriots</td>
+      <td>1634.81</td>
+      <td>24</td>
+      <td>21.73%</td>
+      <td>78.03%</td>
+      <td>0.24%</td>
+      <td>-13.03</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Minnesota Vikings</td>
+      <td>1540.02</td>
+      <td>34</td>
+      <td>Houston Texans</td>
+      <td>1432.87</td>
+      <td>28</td>
+      <td>59.16%</td>
+      <td>40.60%</td>
+      <td>0.24%</td>
+      <td>15.92</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Carolina Panthers</td>
+      <td>1504.26</td>
+      <td>17</td>
+      <td>Denver Broncos</td>
+      <td>1572.82</td>
+      <td>20</td>
+      <td>34.51%</td>
+      <td>65.25%</td>
+      <td>0.24%</td>
+      <td>-9.57</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1444.63</td>
+      <td>20</td>
+      <td>New Orleans Saints</td>
+      <td>1454.08</td>
+      <td>17</td>
+      <td>42.55%</td>
+      <td>57.21%</td>
+      <td>0.24%</td>
+      <td>15.85</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Oakland Raiders</td>
+      <td>1445.91</td>
+      <td>14</td>
+      <td>Indianapolis Colts</td>
+      <td>1628.25</td>
+      <td>35</td>
+      <td>21.49%</td>
+      <td>78.27%</td>
+      <td>0.24%</td>
+      <td>-15.78</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Detroit Lions</td>
+      <td>1460.77</td>
+      <td>17</td>
+      <td>Atlanta Falcons</td>
+      <td>1564.38</td>
+      <td>10</td>
+      <td>30.10%</td>
+      <td>69.65%</td>
+      <td>0.24%</td>
+      <td>29.47</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1498.46</td>
+      <td>21</td>
+      <td>San Diego Chargers</td>
+      <td>1477.05</td>
+      <td>34</td>
+      <td>46.93%</td>
+      <td>52.82%</td>
+      <td>0.24%</td>
+      <td>-27.08</td>
+    </tr>
+    <tr>
+      <td>2004-10-11</td>
+      <td>Green Bay Packers</td>
+      <td>1510.07</td>
+      <td>27</td>
+      <td>@ Tennessee Titans</td>
+      <td>1495.99</td>
+      <td>48</td>
+      <td>57.86%</td>
+      <td>41.90%</td>
+      <td>0.24%</td>
+      <td>-42.41</td>
+    </tr>
+    <tr>
+      <td>2004-10-11</td>
+      <td>Tennessee Titans</td>
+      <td>1495.99</td>
+      <td>48</td>
+      <td>Green Bay Packers</td>
+      <td>1510.07</td>
+      <td>27</td>
+      <td>41.90%</td>
+      <td>57.86%</td>
+      <td>0.24%</td>
+      <td>42.41</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Miami Dolphins</td>
+      <td>1441.92</td>
+      <td>13</td>
+      <td>Buffalo Bills</td>
+      <td>1429.53</td>
+      <td>20</td>
+      <td>45.65%</td>
+      <td>54.11%</td>
+      <td>0.24%</td>
+      <td>-19.32</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Denver Broncos</td>
+      <td>1582.39</td>
+      <td>31</td>
+      <td>Oakland Raiders</td>
+      <td>1430.13</td>
+      <td>3</td>
+      <td>65.24%</td>
+      <td>34.52%</td>
+      <td>0.24%</td>
+      <td>29.25</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Carolina Panthers</td>
+      <td>1494.69</td>
+      <td>8</td>
+      <td>Philadelphia Eagles</td>
+      <td>1638.57</td>
+      <td>30</td>
+      <td>25.46%</td>
+      <td>74.30%</td>
+      <td>0.24%</td>
+      <td>-19.13</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>San Diego Chargers</td>
+      <td>1504.13</td>
+      <td>20</td>
+      <td>Atlanta Falcons</td>
+      <td>1534.91</td>
+      <td>21</td>
+      <td>39.58%</td>
+      <td>60.18%</td>
+      <td>0.24%</td>
+      <td>-6.33</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Washington Redskins</td>
+      <td>1408.01</td>
+      <td>13</td>
+      <td>Chicago Bears</td>
+      <td>1463.88</td>
+      <td>10</td>
+      <td>36.18%</td>
+      <td>63.58%</td>
+      <td>0.24%</td>
+      <td>17.61</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Kansas City Chiefs</td>
+      <td>1482.71</td>
+      <td>16</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1471.38</td>
+      <td>22</td>
+      <td>45.49%</td>
+      <td>54.27%</td>
+      <td>0.24%</td>
+      <td>-17.84</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1536.24</td>
+      <td>24</td>
+      <td>Dallas Cowboys</td>
+      <td>1468.71</td>
+      <td>20</td>
+      <td>53.56%</td>
+      <td>46.20%</td>
+      <td>0.24%</td>
+      <td>14.79</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Houston Texans</td>
+      <td>1416.95</td>
+      <td>20</td>
+      <td>Tennessee Titans</td>
+      <td>1538.40</td>
+      <td>10</td>
+      <td>27.99%</td>
+      <td>71.77%</td>
+      <td>0.24%</td>
+      <td>36.29</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>San Francisco 49ers</td>
+      <td>1434.01</td>
+      <td>14</td>
+      <td>New York Jets</td>
+      <td>1561.73</td>
+      <td>22</td>
+      <td>27.27%</td>
+      <td>72.49%</td>
+      <td>0.24%</td>
+      <td>-12.35</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Minnesota Vikings</td>
+      <td>1555.94</td>
+      <td>38</td>
+      <td>New Orleans Saints</td>
+      <td>1438.23</td>
+      <td>31</td>
+      <td>60.61%</td>
+      <td>39.14%</td>
+      <td>0.24%</td>
+      <td>16.57</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Seattle Seahawks</td>
+      <td>1566.27</td>
+      <td>20</td>
+      <td>New England Patriots</td>
+      <td>1647.84</td>
+      <td>30</td>
+      <td>32.84%</td>
+      <td>66.92%</td>
+      <td>0.24%</td>
+      <td>-16.63</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Green Bay Packers</td>
+      <td>1467.66</td>
+      <td>38</td>
+      <td>Detroit Lions</td>
+      <td>1490.24</td>
+      <td>10</td>
+      <td>40.71%</td>
+      <td>59.05%</td>
+      <td>0.24%</td>
+      <td>49.97</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Cincinnati Bengals</td>
+      <td>1425.62</td>
+      <td>17</td>
+      <td>Cleveland Browns</td>
+      <td>1439.22</td>
+      <td>34</td>
+      <td>41.96%</td>
+      <td>57.79%</td>
+      <td>0.24%</td>
+      <td>-27.69</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Dallas Cowboys</td>
+      <td>1468.71</td>
+      <td>20</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1536.24</td>
+      <td>24</td>
+      <td>46.20%</td>
+      <td>53.56%</td>
+      <td>0.24%</td>
+      <td>-14.78</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>New Orleans Saints</td>
+      <td>1438.23</td>
+      <td>31</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1555.94</td>
+      <td>38</td>
+      <td>39.14%</td>
+      <td>60.61%</td>
+      <td>0.24%</td>
+      <td>-16.58</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>New England Patriots</td>
+      <td>1647.84</td>
+      <td>30</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1566.27</td>
+      <td>20</td>
+      <td>66.92%</td>
+      <td>32.84%</td>
+      <td>0.24%</td>
+      <td>16.63</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Oakland Raiders</td>
+      <td>1430.13</td>
+      <td>3</td>
+      <td>@ Denver Broncos</td>
+      <td>1582.39</td>
+      <td>31</td>
+      <td>34.52%</td>
+      <td>65.24%</td>
+      <td>0.24%</td>
+      <td>-29.24</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Philadelphia Eagles</td>
+      <td>1638.57</td>
+      <td>30</td>
+      <td>@ Carolina Panthers</td>
+      <td>1494.69</td>
+      <td>8</td>
+      <td>74.30%</td>
+      <td>25.46%</td>
+      <td>0.24%</td>
+      <td>19.12</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Buffalo Bills</td>
+      <td>1429.53</td>
+      <td>20</td>
+      <td>@ Miami Dolphins</td>
+      <td>1441.92</td>
+      <td>13</td>
+      <td>54.11%</td>
+      <td>45.65%</td>
+      <td>0.24%</td>
+      <td>19.32</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Atlanta Falcons</td>
+      <td>1534.91</td>
+      <td>21</td>
+      <td>@ San Diego Chargers</td>
+      <td>1504.13</td>
+      <td>20</td>
+      <td>60.18%</td>
+      <td>39.58%</td>
+      <td>0.24%</td>
+      <td>6.33</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Cleveland Browns</td>
+      <td>1439.22</td>
+      <td>34</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1425.62</td>
+      <td>17</td>
+      <td>57.79%</td>
+      <td>41.96%</td>
+      <td>0.24%</td>
+      <td>27.69</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Detroit Lions</td>
+      <td>1490.24</td>
+      <td>10</td>
+      <td>@ Green Bay Packers</td>
+      <td>1467.66</td>
+      <td>38</td>
+      <td>59.05%</td>
+      <td>40.71%</td>
+      <td>0.24%</td>
+      <td>-49.97</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Chicago Bears</td>
+      <td>1463.88</td>
+      <td>10</td>
+      <td>@ Washington Redskins</td>
+      <td>1408.01</td>
+      <td>13</td>
+      <td>63.58%</td>
+      <td>36.18%</td>
+      <td>0.24%</td>
+      <td>-17.61</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1471.38</td>
+      <td>22</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1482.71</td>
+      <td>16</td>
+      <td>54.27%</td>
+      <td>45.49%</td>
+      <td>0.24%</td>
+      <td>17.83</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>New York Jets</td>
+      <td>1561.73</td>
+      <td>22</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1434.01</td>
+      <td>14</td>
+      <td>72.49%</td>
+      <td>27.27%</td>
+      <td>0.24%</td>
+      <td>12.35</td>
+    </tr>
+    <tr>
+      <td>2004-10-17</td>
+      <td>Tennessee Titans</td>
+      <td>1538.40</td>
+      <td>10</td>
+      <td>@ Houston Texans</td>
+      <td>1416.95</td>
+      <td>20</td>
+      <td>71.77%</td>
+      <td>27.99%</td>
+      <td>0.24%</td>
+      <td>-36.30</td>
+    </tr>
+    <tr>
+      <td>2004-10-18</td>
+      <td>St. Louis Rams</td>
+      <td>1543.04</td>
+      <td>28</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1460.48</td>
+      <td>21</td>
+      <td>67.05%</td>
+      <td>32.71%</td>
+      <td>0.24%</td>
+      <td>13.85</td>
+    </tr>
+    <tr>
+      <td>2004-10-18</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1460.48</td>
+      <td>21</td>
+      <td>St. Louis Rams</td>
+      <td>1543.04</td>
+      <td>28</td>
+      <td>32.71%</td>
+      <td>67.05%</td>
+      <td>0.24%</td>
+      <td>-13.86</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Philadelphia Eagles</td>
+      <td>1657.69</td>
+      <td>34</td>
+      <td>Cleveland Browns</td>
+      <td>1466.91</td>
+      <td>31</td>
+      <td>70.06%</td>
+      <td>29.69%</td>
+      <td>0.24%</td>
+      <td>8.24</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>New York Jets</td>
+      <td>1574.08</td>
+      <td>7</td>
+      <td>New England Patriots</td>
+      <td>1664.47</td>
+      <td>13</td>
+      <td>31.73%</td>
+      <td>68.03%</td>
+      <td>0.24%</td>
+      <td>-12.44</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Atlanta Falcons</td>
+      <td>1541.24</td>
+      <td>10</td>
+      <td>Kansas City Chiefs</td>
+      <td>1464.87</td>
+      <td>56</td>
+      <td>54.82%</td>
+      <td>44.93%</td>
+      <td>0.24%</td>
+      <td>-59.48</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Carolina Panthers</td>
+      <td>1475.56</td>
+      <td>6</td>
+      <td>@ San Diego Chargers</td>
+      <td>1497.80</td>
+      <td>17</td>
+      <td>52.70%</td>
+      <td>47.05%</td>
+      <td>0.24%</td>
+      <td>-27.96</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Seattle Seahawks</td>
+      <td>1549.64</td>
+      <td>17</td>
+      <td>Arizona Cardinals</td>
+      <td>1400.13</td>
+      <td>25</td>
+      <td>64.88%</td>
+      <td>34.88%</td>
+      <td>0.24%</td>
+      <td>-29.35</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Indianapolis Colts</td>
+      <td>1644.03</td>
+      <td>24</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1489.21</td>
+      <td>27</td>
+      <td>75.47%</td>
+      <td>24.28%</td>
+      <td>0.24%</td>
+      <td>-20.91</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>St. Louis Rams</td>
+      <td>1556.89</td>
+      <td>14</td>
+      <td>Miami Dolphins</td>
+      <td>1422.60</td>
+      <td>31</td>
+      <td>62.86%</td>
+      <td>36.89%</td>
+      <td>0.24%</td>
+      <td>-41.45</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Buffalo Bills</td>
+      <td>1448.85</td>
+      <td>6</td>
+      <td>Baltimore Ravens</td>
+      <td>1559.27</td>
+      <td>20</td>
+      <td>29.28%</td>
+      <td>70.47%</td>
+      <td>0.24%</td>
+      <td>-17.55</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Chicago Bears</td>
+      <td>1446.27</td>
+      <td>7</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1446.62</td>
+      <td>19</td>
+      <td>43.83%</td>
+      <td>55.93%</td>
+      <td>0.24%</td>
+      <td>-24.30</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>New Orleans Saints</td>
+      <td>1421.65</td>
+      <td>31</td>
+      <td>Oakland Raiders</td>
+      <td>1400.89</td>
+      <td>26</td>
+      <td>46.84%</td>
+      <td>52.91%</td>
+      <td>0.24%</td>
+      <td>18.93</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Green Bay Packers</td>
+      <td>1517.63</td>
+      <td>41</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1453.93</td>
+      <td>20</td>
+      <td>64.61%</td>
+      <td>35.14%</td>
+      <td>0.24%</td>
+      <td>25.79</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1489.21</td>
+      <td>27</td>
+      <td>Indianapolis Colts</td>
+      <td>1644.03</td>
+      <td>24</td>
+      <td>24.28%</td>
+      <td>75.47%</td>
+      <td>0.24%</td>
+      <td>20.91</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Tennessee Titans</td>
+      <td>1502.10</td>
+      <td>3</td>
+      <td>Minnesota Vikings</td>
+      <td>1572.51</td>
+      <td>20</td>
+      <td>34.27%</td>
+      <td>65.49%</td>
+      <td>0.24%</td>
+      <td>-22.62</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>San Diego Chargers</td>
+      <td>1497.80</td>
+      <td>17</td>
+      <td>Carolina Panthers</td>
+      <td>1475.56</td>
+      <td>6</td>
+      <td>47.05%</td>
+      <td>52.70%</td>
+      <td>0.24%</td>
+      <td>27.96</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Miami Dolphins</td>
+      <td>1422.60</td>
+      <td>31</td>
+      <td>@ St. Louis Rams</td>
+      <td>1556.89</td>
+      <td>14</td>
+      <td>36.89%</td>
+      <td>62.86%</td>
+      <td>0.24%</td>
+      <td>41.45</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Baltimore Ravens</td>
+      <td>1559.27</td>
+      <td>20</td>
+      <td>@ Buffalo Bills</td>
+      <td>1448.85</td>
+      <td>6</td>
+      <td>70.47%</td>
+      <td>29.28%</td>
+      <td>0.24%</td>
+      <td>17.55</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Arizona Cardinals</td>
+      <td>1400.13</td>
+      <td>25</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1549.64</td>
+      <td>17</td>
+      <td>34.88%</td>
+      <td>64.88%</td>
+      <td>0.24%</td>
+      <td>29.34</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Oakland Raiders</td>
+      <td>1400.89</td>
+      <td>26</td>
+      <td>@ New Orleans Saints</td>
+      <td>1421.65</td>
+      <td>31</td>
+      <td>52.91%</td>
+      <td>46.84%</td>
+      <td>0.24%</td>
+      <td>-18.93</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>New York Giants</td>
+      <td>1523.75</td>
+      <td>13</td>
+      <td>@ Detroit Lions</td>
+      <td>1440.27</td>
+      <td>28</td>
+      <td>67.16%</td>
+      <td>32.59%</td>
+      <td>0.24%</td>
+      <td>-41.60</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Minnesota Vikings</td>
+      <td>1572.51</td>
+      <td>20</td>
+      <td>@ Tennessee Titans</td>
+      <td>1502.10</td>
+      <td>3</td>
+      <td>65.49%</td>
+      <td>34.27%</td>
+      <td>0.24%</td>
+      <td>22.63</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Kansas City Chiefs</td>
+      <td>1464.87</td>
+      <td>56</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1541.24</td>
+      <td>10</td>
+      <td>44.93%</td>
+      <td>54.82%</td>
+      <td>0.24%</td>
+      <td>59.48</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>New England Patriots</td>
+      <td>1664.47</td>
+      <td>13</td>
+      <td>@ New York Jets</td>
+      <td>1574.08</td>
+      <td>7</td>
+      <td>68.03%</td>
+      <td>31.73%</td>
+      <td>0.24%</td>
+      <td>12.44</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Cleveland Browns</td>
+      <td>1466.91</td>
+      <td>31</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1657.69</td>
+      <td>34</td>
+      <td>29.69%</td>
+      <td>70.06%</td>
+      <td>0.24%</td>
+      <td>-8.23</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1446.62</td>
+      <td>19</td>
+      <td>@ Chicago Bears</td>
+      <td>1446.27</td>
+      <td>7</td>
+      <td>55.93%</td>
+      <td>43.83%</td>
+      <td>0.24%</td>
+      <td>24.30</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Detroit Lions</td>
+      <td>1440.27</td>
+      <td>28</td>
+      <td>New York Giants</td>
+      <td>1523.75</td>
+      <td>13</td>
+      <td>32.59%</td>
+      <td>67.16%</td>
+      <td>0.24%</td>
+      <td>41.60</td>
+    </tr>
+    <tr>
+      <td>2004-10-24</td>
+      <td>Dallas Cowboys</td>
+      <td>1453.93</td>
+      <td>20</td>
+      <td>Green Bay Packers</td>
+      <td>1517.63</td>
+      <td>41</td>
+      <td>35.14%</td>
+      <td>64.61%</td>
+      <td>0.24%</td>
+      <td>-25.79</td>
+    </tr>
+    <tr>
+      <td>2004-10-25</td>
+      <td>Cincinnati Bengals</td>
+      <td>1397.93</td>
+      <td>23</td>
+      <td>@ Denver Broncos</td>
+      <td>1611.64</td>
+      <td>10</td>
+      <td>27.01%</td>
+      <td>72.74%</td>
+      <td>0.24%</td>
+      <td>41.95</td>
+    </tr>
+    <tr>
+      <td>2004-10-25</td>
+      <td>Denver Broncos</td>
+      <td>1611.64</td>
+      <td>10</td>
+      <td>Cincinnati Bengals</td>
+      <td>1397.93</td>
+      <td>23</td>
+      <td>72.74%</td>
+      <td>27.01%</td>
+      <td>0.24%</td>
+      <td>-41.95</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Carolina Panthers</td>
+      <td>1447.60</td>
+      <td>17</td>
+      <td>Seattle Seahawks</td>
+      <td>1520.29</td>
+      <td>23</td>
+      <td>33.97%</td>
+      <td>65.78%</td>
+      <td>0.24%</td>
+      <td>-13.32</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Tennessee Titans</td>
+      <td>1479.48</td>
+      <td>27</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1439.88</td>
+      <td>20</td>
+      <td>61.39%</td>
+      <td>38.37%</td>
+      <td>0.24%</td>
+      <td>16.25</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>San Francisco 49ers</td>
+      <td>1421.66</td>
+      <td>13</td>
+      <td>Chicago Bears</td>
+      <td>1421.97</td>
+      <td>23</td>
+      <td>43.84%</td>
+      <td>55.92%</td>
+      <td>0.24%</td>
+      <td>-22.18</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>San Diego Chargers</td>
+      <td>1525.76</td>
+      <td>42</td>
+      <td>@ Oakland Raiders</td>
+      <td>1381.96</td>
+      <td>14</td>
+      <td>74.29%</td>
+      <td>25.47%</td>
+      <td>0.24%</td>
+      <td>21.59</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Seattle Seahawks</td>
+      <td>1520.29</td>
+      <td>23</td>
+      <td>@ Carolina Panthers</td>
+      <td>1447.60</td>
+      <td>17</td>
+      <td>65.78%</td>
+      <td>33.97%</td>
+      <td>0.24%</td>
+      <td>13.33</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Chicago Bears</td>
+      <td>1421.97</td>
+      <td>23</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1421.66</td>
+      <td>13</td>
+      <td>55.92%</td>
+      <td>43.84%</td>
+      <td>0.24%</td>
+      <td>22.19</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Oakland Raiders</td>
+      <td>1381.96</td>
+      <td>14</td>
+      <td>San Diego Chargers</td>
+      <td>1525.76</td>
+      <td>42</td>
+      <td>25.47%</td>
+      <td>74.29%</td>
+      <td>0.24%</td>
+      <td>-21.59</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Buffalo Bills</td>
+      <td>1431.30</td>
+      <td>38</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1429.47</td>
+      <td>14</td>
+      <td>56.14%</td>
+      <td>43.62%</td>
+      <td>0.24%</td>
+      <td>34.20</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Dallas Cowboys</td>
+      <td>1428.14</td>
+      <td>31</td>
+      <td>@ Detroit Lions</td>
+      <td>1481.87</td>
+      <td>21</td>
+      <td>48.18%</td>
+      <td>51.58%</td>
+      <td>0.24%</td>
+      <td>26.10</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Denver Broncos</td>
+      <td>1569.69</td>
+      <td>28</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1481.76</td>
+      <td>41</td>
+      <td>67.72%</td>
+      <td>32.04%</td>
+      <td>0.24%</td>
+      <td>-39.05</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Houston Texans</td>
+      <td>1453.24</td>
+      <td>20</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1510.12</td>
+      <td>6</td>
+      <td>47.72%</td>
+      <td>52.03%</td>
+      <td>0.24%</td>
+      <td>31.15</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Kansas City Chiefs</td>
+      <td>1524.35</td>
+      <td>45</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1623.12</td>
+      <td>35</td>
+      <td>41.77%</td>
+      <td>57.99%</td>
+      <td>0.24%</td>
+      <td>29.33</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1551.03</td>
+      <td>34</td>
+      <td>@ New England Patriots</td>
+      <td>1676.91</td>
+      <td>20</td>
+      <td>38.03%</td>
+      <td>61.73%</td>
+      <td>0.24%</td>
+      <td>36.94</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Philadelphia Eagles</td>
+      <td>1665.93</td>
+      <td>15</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1576.82</td>
+      <td>10</td>
+      <td>67.87%</td>
+      <td>31.89%</td>
+      <td>0.24%</td>
+      <td>11.42</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Washington Redskins</td>
+      <td>1425.62</td>
+      <td>14</td>
+      <td>@ Green Bay Packers</td>
+      <td>1543.42</td>
+      <td>28</td>
+      <td>39.13%</td>
+      <td>60.63%</td>
+      <td>0.24%</td>
+      <td>-23.44</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Arizona Cardinals</td>
+      <td>1429.47</td>
+      <td>14</td>
+      <td>Buffalo Bills</td>
+      <td>1431.30</td>
+      <td>38</td>
+      <td>43.62%</td>
+      <td>56.14%</td>
+      <td>0.24%</td>
+      <td>-34.20</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Green Bay Packers</td>
+      <td>1543.42</td>
+      <td>28</td>
+      <td>Washington Redskins</td>
+      <td>1425.62</td>
+      <td>14</td>
+      <td>60.63%</td>
+      <td>39.13%</td>
+      <td>0.24%</td>
+      <td>23.43</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Atlanta Falcons</td>
+      <td>1481.76</td>
+      <td>41</td>
+      <td>Denver Broncos</td>
+      <td>1569.69</td>
+      <td>28</td>
+      <td>32.04%</td>
+      <td>67.72%</td>
+      <td>0.24%</td>
+      <td>39.05</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Detroit Lions</td>
+      <td>1481.87</td>
+      <td>21</td>
+      <td>Dallas Cowboys</td>
+      <td>1428.14</td>
+      <td>31</td>
+      <td>51.58%</td>
+      <td>48.18%</td>
+      <td>0.24%</td>
+      <td>-26.10</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>New England Patriots</td>
+      <td>1676.91</td>
+      <td>20</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1551.03</td>
+      <td>34</td>
+      <td>61.73%</td>
+      <td>38.03%</td>
+      <td>0.24%</td>
+      <td>-36.94</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Baltimore Ravens</td>
+      <td>1576.82</td>
+      <td>10</td>
+      <td>Philadelphia Eagles</td>
+      <td>1665.93</td>
+      <td>15</td>
+      <td>31.89%</td>
+      <td>67.87%</td>
+      <td>0.24%</td>
+      <td>-11.42</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Minnesota Vikings</td>
+      <td>1595.14</td>
+      <td>13</td>
+      <td>@ New York Giants</td>
+      <td>1482.15</td>
+      <td>34</td>
+      <td>70.78%</td>
+      <td>28.98%</td>
+      <td>0.24%</td>
+      <td>-51.87</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>New York Giants</td>
+      <td>1482.15</td>
+      <td>34</td>
+      <td>Minnesota Vikings</td>
+      <td>1595.14</td>
+      <td>13</td>
+      <td>28.98%</td>
+      <td>70.78%</td>
+      <td>0.24%</td>
+      <td>51.87</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Cincinnati Bengals</td>
+      <td>1439.88</td>
+      <td>20</td>
+      <td>Tennessee Titans</td>
+      <td>1479.48</td>
+      <td>27</td>
+      <td>38.37%</td>
+      <td>61.39%</td>
+      <td>0.24%</td>
+      <td>-16.25</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1510.12</td>
+      <td>6</td>
+      <td>Houston Texans</td>
+      <td>1453.24</td>
+      <td>20</td>
+      <td>52.03%</td>
+      <td>47.72%</td>
+      <td>0.24%</td>
+      <td>-31.15</td>
+    </tr>
+    <tr>
+      <td>2004-10-31</td>
+      <td>Indianapolis Colts</td>
+      <td>1623.12</td>
+      <td>35</td>
+      <td>Kansas City Chiefs</td>
+      <td>1524.35</td>
+      <td>45</td>
+      <td>57.99%</td>
+      <td>41.77%</td>
+      <td>0.24%</td>
+      <td>-29.33</td>
+    </tr>
+    <tr>
+      <td>2004-11-01</td>
+      <td>Miami Dolphins</td>
+      <td>1464.05</td>
+      <td>14</td>
+      <td>New York Jets</td>
+      <td>1561.64</td>
+      <td>41</td>
+      <td>30.84%</td>
+      <td>68.92%</td>
+      <td>0.24%</td>
+      <td>-25.66</td>
+    </tr>
+    <tr>
+      <td>2004-11-01</td>
+      <td>New York Jets</td>
+      <td>1561.64</td>
+      <td>41</td>
+      <td>@ Miami Dolphins</td>
+      <td>1464.05</td>
+      <td>14</td>
+      <td>68.92%</td>
+      <td>30.84%</td>
+      <td>0.24%</td>
+      <td>25.66</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Miami Dolphins</td>
+      <td>1438.39</td>
+      <td>23</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1395.27</td>
+      <td>24</td>
+      <td>61.87%</td>
+      <td>37.89%</td>
+      <td>0.24%</td>
+      <td>-9.89</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Detroit Lions</td>
+      <td>1455.77</td>
+      <td>10</td>
+      <td>@ Washington Redskins</td>
+      <td>1402.18</td>
+      <td>17</td>
+      <td>63.28%</td>
+      <td>36.48%</td>
+      <td>0.24%</td>
+      <td>-26.77</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Denver Broncos</td>
+      <td>1530.64</td>
+      <td>31</td>
+      <td>@ Houston Texans</td>
+      <td>1484.39</td>
+      <td>13</td>
+      <td>62.29%</td>
+      <td>37.47%</td>
+      <td>0.24%</td>
+      <td>25.45</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Cincinnati Bengals</td>
+      <td>1423.63</td>
+      <td>26</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1454.24</td>
+      <td>3</td>
+      <td>51.50%</td>
+      <td>48.26%</td>
+      <td>0.24%</td>
+      <td>37.02</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1587.97</td>
+      <td>27</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1677.35</td>
+      <td>3</td>
+      <td>43.09%</td>
+      <td>56.67%</td>
+      <td>0.24%</td>
+      <td>44.40</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Carolina Panthers</td>
+      <td>1434.28</td>
+      <td>24</td>
+      <td>@ Oakland Raiders</td>
+      <td>1360.37</td>
+      <td>27</td>
+      <td>65.94%</td>
+      <td>33.82%</td>
+      <td>0.24%</td>
+      <td>-18.27</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Buffalo Bills</td>
+      <td>1465.50</td>
+      <td>22</td>
+      <td>@ New York Jets</td>
+      <td>1587.30</td>
+      <td>17</td>
+      <td>38.58%</td>
+      <td>61.17%</td>
+      <td>0.24%</td>
+      <td>21.88</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1470.92</td>
+      <td>34</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1553.68</td>
+      <td>31</td>
+      <td>44.03%</td>
+      <td>55.73%</td>
+      <td>0.24%</td>
+      <td>15.44</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Baltimore Ravens</td>
+      <td>1565.40</td>
+      <td>27</td>
+      <td>@ Cleveland Browns</td>
+      <td>1458.68</td>
+      <td>13</td>
+      <td>70.03%</td>
+      <td>29.73%</td>
+      <td>0.24%</td>
+      <td>17.82</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>New York Giants</td>
+      <td>1534.02</td>
+      <td>21</td>
+      <td>@ Chicago Bears</td>
+      <td>1444.16</td>
+      <td>28</td>
+      <td>67.96%</td>
+      <td>31.79%</td>
+      <td>0.24%</td>
+      <td>-28.75</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>St. Louis Rams</td>
+      <td>1515.44</td>
+      <td>22</td>
+      <td>@ New England Patriots</td>
+      <td>1639.97</td>
+      <td>40</td>
+      <td>38.21%</td>
+      <td>61.55%</td>
+      <td>0.24%</td>
+      <td>-25.95</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>San Diego Chargers</td>
+      <td>1547.35</td>
+      <td>43</td>
+      <td>@ New Orleans Saints</td>
+      <td>1440.58</td>
+      <td>17</td>
+      <td>70.04%</td>
+      <td>29.72%</td>
+      <td>0.24%</td>
+      <td>24.27</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>San Francisco 49ers</td>
+      <td>1399.48</td>
+      <td>27</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1533.62</td>
+      <td>42</td>
+      <td>36.91%</td>
+      <td>62.84%</td>
+      <td>0.24%</td>
+      <td>-22.89</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Cleveland Browns</td>
+      <td>1458.68</td>
+      <td>13</td>
+      <td>Baltimore Ravens</td>
+      <td>1565.40</td>
+      <td>27</td>
+      <td>29.73%</td>
+      <td>70.03%</td>
+      <td>0.24%</td>
+      <td>-17.82</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Arizona Cardinals</td>
+      <td>1395.27</td>
+      <td>24</td>
+      <td>Miami Dolphins</td>
+      <td>1438.39</td>
+      <td>23</td>
+      <td>37.89%</td>
+      <td>61.87%</td>
+      <td>0.24%</td>
+      <td>9.90</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Washington Redskins</td>
+      <td>1402.18</td>
+      <td>17</td>
+      <td>Detroit Lions</td>
+      <td>1455.77</td>
+      <td>10</td>
+      <td>36.48%</td>
+      <td>63.28%</td>
+      <td>0.24%</td>
+      <td>26.77</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Houston Texans</td>
+      <td>1484.39</td>
+      <td>13</td>
+      <td>Denver Broncos</td>
+      <td>1530.64</td>
+      <td>31</td>
+      <td>37.47%</td>
+      <td>62.29%</td>
+      <td>0.24%</td>
+      <td>-25.45</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Dallas Cowboys</td>
+      <td>1454.24</td>
+      <td>3</td>
+      <td>Cincinnati Bengals</td>
+      <td>1423.63</td>
+      <td>26</td>
+      <td>48.26%</td>
+      <td>51.50%</td>
+      <td>0.24%</td>
+      <td>-37.03</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Oakland Raiders</td>
+      <td>1360.37</td>
+      <td>27</td>
+      <td>Carolina Panthers</td>
+      <td>1434.28</td>
+      <td>24</td>
+      <td>33.82%</td>
+      <td>65.94%</td>
+      <td>0.24%</td>
+      <td>18.27</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>New York Jets</td>
+      <td>1587.30</td>
+      <td>17</td>
+      <td>Buffalo Bills</td>
+      <td>1465.50</td>
+      <td>22</td>
+      <td>61.17%</td>
+      <td>38.58%</td>
+      <td>0.24%</td>
+      <td>-21.88</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Kansas City Chiefs</td>
+      <td>1553.68</td>
+      <td>31</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1470.92</td>
+      <td>34</td>
+      <td>55.73%</td>
+      <td>44.03%</td>
+      <td>0.24%</td>
+      <td>-15.44</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Chicago Bears</td>
+      <td>1444.16</td>
+      <td>28</td>
+      <td>New York Giants</td>
+      <td>1534.02</td>
+      <td>21</td>
+      <td>31.79%</td>
+      <td>67.96%</td>
+      <td>0.24%</td>
+      <td>28.75</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>New England Patriots</td>
+      <td>1639.97</td>
+      <td>40</td>
+      <td>St. Louis Rams</td>
+      <td>1515.44</td>
+      <td>22</td>
+      <td>61.55%</td>
+      <td>38.21%</td>
+      <td>0.24%</td>
+      <td>25.95</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>New Orleans Saints</td>
+      <td>1440.58</td>
+      <td>17</td>
+      <td>San Diego Chargers</td>
+      <td>1547.35</td>
+      <td>43</td>
+      <td>29.72%</td>
+      <td>70.04%</td>
+      <td>0.24%</td>
+      <td>-24.27</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Philadelphia Eagles</td>
+      <td>1677.35</td>
+      <td>3</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1587.97</td>
+      <td>27</td>
+      <td>56.67%</td>
+      <td>43.09%</td>
+      <td>0.24%</td>
+      <td>-44.41</td>
+    </tr>
+    <tr>
+      <td>2004-11-07</td>
+      <td>Seattle Seahawks</td>
+      <td>1533.62</td>
+      <td>42</td>
+      <td>San Francisco 49ers</td>
+      <td>1399.48</td>
+      <td>27</td>
+      <td>62.84%</td>
+      <td>36.91%</td>
+      <td>0.24%</td>
+      <td>22.89</td>
+    </tr>
+    <tr>
+      <td>2004-11-08</td>
+      <td>Minnesota Vikings</td>
+      <td>1543.27</td>
+      <td>28</td>
+      <td>Indianapolis Colts</td>
+      <td>1593.79</td>
+      <td>31</td>
+      <td>36.89%</td>
+      <td>62.87%</td>
+      <td>0.24%</td>
+      <td>-10.23</td>
+    </tr>
+    <tr>
+      <td>2004-11-08</td>
+      <td>Indianapolis Colts</td>
+      <td>1593.79</td>
+      <td>31</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1543.27</td>
+      <td>28</td>
+      <td>62.87%</td>
+      <td>36.89%</td>
+      <td>0.24%</td>
+      <td>10.23</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>St. Louis Rams</td>
+      <td>1489.49</td>
+      <td>23</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1556.51</td>
+      <td>12</td>
+      <td>46.27%</td>
+      <td>53.49%</td>
+      <td>0.24%</td>
+      <td>28.38</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Atlanta Falcons</td>
+      <td>1520.81</td>
+      <td>24</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1486.36</td>
+      <td>14</td>
+      <td>60.69%</td>
+      <td>39.07%</td>
+      <td>0.24%</td>
+      <td>19.78</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Cincinnati Bengals</td>
+      <td>1460.65</td>
+      <td>17</td>
+      <td>Washington Redskins</td>
+      <td>1428.95</td>
+      <td>10</td>
+      <td>48.41%</td>
+      <td>51.34%</td>
+      <td>0.24%</td>
+      <td>21.74</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Cleveland Browns</td>
+      <td>1440.86</td>
+      <td>10</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1632.37</td>
+      <td>24</td>
+      <td>29.61%</td>
+      <td>70.15%</td>
+      <td>0.24%</td>
+      <td>-17.74</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Indianapolis Colts</td>
+      <td>1604.02</td>
+      <td>49</td>
+      <td>@ Houston Texans</td>
+      <td>1458.94</td>
+      <td>14</td>
+      <td>74.43%</td>
+      <td>25.33%</td>
+      <td>0.24%</td>
+      <td>24.00</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Washington Redskins</td>
+      <td>1428.95</td>
+      <td>10</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1460.65</td>
+      <td>17</td>
+      <td>51.34%</td>
+      <td>48.41%</td>
+      <td>0.24%</td>
+      <td>-21.73</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Green Bay Packers</td>
+      <td>1566.85</td>
+      <td>34</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1533.04</td>
+      <td>31</td>
+      <td>60.60%</td>
+      <td>39.16%</td>
+      <td>0.24%</td>
+      <td>10.86</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1632.37</td>
+      <td>24</td>
+      <td>Cleveland Browns</td>
+      <td>1440.86</td>
+      <td>10</td>
+      <td>70.15%</td>
+      <td>29.61%</td>
+      <td>0.24%</td>
+      <td>17.74</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Seattle Seahawks</td>
+      <td>1556.51</td>
+      <td>12</td>
+      <td>St. Louis Rams</td>
+      <td>1489.49</td>
+      <td>23</td>
+      <td>53.49%</td>
+      <td>46.27%</td>
+      <td>0.24%</td>
+      <td>-28.38</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1486.36</td>
+      <td>14</td>
+      <td>Atlanta Falcons</td>
+      <td>1520.81</td>
+      <td>24</td>
+      <td>39.07%</td>
+      <td>60.69%</td>
+      <td>0.24%</td>
+      <td>-19.78</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Houston Texans</td>
+      <td>1458.94</td>
+      <td>14</td>
+      <td>Indianapolis Colts</td>
+      <td>1604.02</td>
+      <td>49</td>
+      <td>25.33%</td>
+      <td>74.43%</td>
+      <td>0.24%</td>
+      <td>-24.00</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>New York Giants</td>
+      <td>1505.27</td>
+      <td>14</td>
+      <td>Arizona Cardinals</td>
+      <td>1405.17</td>
+      <td>17</td>
+      <td>58.17%</td>
+      <td>41.58%</td>
+      <td>0.24%</td>
+      <td>-16.12</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Minnesota Vikings</td>
+      <td>1533.04</td>
+      <td>31</td>
+      <td>Green Bay Packers</td>
+      <td>1566.85</td>
+      <td>34</td>
+      <td>39.16%</td>
+      <td>60.60%</td>
+      <td>0.24%</td>
+      <td>-10.86</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Detroit Lions</td>
+      <td>1429.00</td>
+      <td>17</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1478.97</td>
+      <td>23</td>
+      <td>36.97%</td>
+      <td>62.79%</td>
+      <td>0.24%</td>
+      <td>-14.50</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Kansas City Chiefs</td>
+      <td>1538.24</td>
+      <td>20</td>
+      <td>New Orleans Saints</td>
+      <td>1416.31</td>
+      <td>27</td>
+      <td>61.19%</td>
+      <td>38.57%</td>
+      <td>0.24%</td>
+      <td>-25.89</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Arizona Cardinals</td>
+      <td>1405.17</td>
+      <td>17</td>
+      <td>@ New York Giants</td>
+      <td>1505.27</td>
+      <td>14</td>
+      <td>41.58%</td>
+      <td>58.17%</td>
+      <td>0.24%</td>
+      <td>16.11</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Buffalo Bills</td>
+      <td>1487.38</td>
+      <td>6</td>
+      <td>New England Patriots</td>
+      <td>1665.92</td>
+      <td>29</td>
+      <td>21.86%</td>
+      <td>77.90%</td>
+      <td>0.24%</td>
+      <td>-16.80</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Chicago Bears</td>
+      <td>1472.91</td>
+      <td>19</td>
+      <td>Tennessee Titans</td>
+      <td>1495.73</td>
+      <td>17</td>
+      <td>40.68%</td>
+      <td>59.08%</td>
+      <td>0.24%</td>
+      <td>13.37</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>San Francisco 49ers</td>
+      <td>1376.59</td>
+      <td>27</td>
+      <td>@ Carolina Panthers</td>
+      <td>1416.01</td>
+      <td>37</td>
+      <td>50.23%</td>
+      <td>49.52%</td>
+      <td>0.24%</td>
+      <td>-25.42</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Tennessee Titans</td>
+      <td>1495.73</td>
+      <td>17</td>
+      <td>@ Chicago Bears</td>
+      <td>1472.91</td>
+      <td>19</td>
+      <td>59.08%</td>
+      <td>40.68%</td>
+      <td>0.24%</td>
+      <td>-13.36</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>New York Jets</td>
+      <td>1565.42</td>
+      <td>17</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1583.22</td>
+      <td>20</td>
+      <td>53.34%</td>
+      <td>46.42%</td>
+      <td>0.24%</td>
+      <td>-14.78</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>New England Patriots</td>
+      <td>1665.92</td>
+      <td>29</td>
+      <td>@ Buffalo Bills</td>
+      <td>1487.38</td>
+      <td>6</td>
+      <td>77.90%</td>
+      <td>21.86%</td>
+      <td>0.24%</td>
+      <td>16.80</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>New Orleans Saints</td>
+      <td>1416.31</td>
+      <td>27</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1538.24</td>
+      <td>20</td>
+      <td>38.57%</td>
+      <td>61.19%</td>
+      <td>0.24%</td>
+      <td>25.89</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1478.97</td>
+      <td>23</td>
+      <td>@ Detroit Lions</td>
+      <td>1429.00</td>
+      <td>17</td>
+      <td>62.79%</td>
+      <td>36.97%</td>
+      <td>0.24%</td>
+      <td>14.50</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Baltimore Ravens</td>
+      <td>1583.22</td>
+      <td>20</td>
+      <td>New York Jets</td>
+      <td>1565.42</td>
+      <td>17</td>
+      <td>46.42%</td>
+      <td>53.34%</td>
+      <td>0.24%</td>
+      <td>14.77</td>
+    </tr>
+    <tr>
+      <td>2004-11-14</td>
+      <td>Carolina Panthers</td>
+      <td>1416.01</td>
+      <td>37</td>
+      <td>San Francisco 49ers</td>
+      <td>1376.59</td>
+      <td>27</td>
+      <td>49.52%</td>
+      <td>50.23%</td>
+      <td>0.24%</td>
+      <td>25.42</td>
+    </tr>
+    <tr>
+      <td>2004-11-15</td>
+      <td>Dallas Cowboys</td>
+      <td>1417.21</td>
+      <td>21</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1632.94</td>
+      <td>49</td>
+      <td>26.78%</td>
+      <td>72.97%</td>
+      <td>0.24%</td>
+      <td>-22.70</td>
+    </tr>
+    <tr>
+      <td>2004-11-15</td>
+      <td>Philadelphia Eagles</td>
+      <td>1632.94</td>
+      <td>49</td>
+      <td>Dallas Cowboys</td>
+      <td>1417.21</td>
+      <td>21</td>
+      <td>72.97%</td>
+      <td>26.78%</td>
+      <td>0.24%</td>
+      <td>22.70</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1493.47</td>
+      <td>15</td>
+      <td>@ Tennessee Titans</td>
+      <td>1482.37</td>
+      <td>18</td>
+      <td>57.44%</td>
+      <td>42.31%</td>
+      <td>0.24%</td>
+      <td>-15.91</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Baltimore Ravens</td>
+      <td>1597.99</td>
+      <td>30</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1394.51</td>
+      <td>10</td>
+      <td>80.25%</td>
+      <td>19.51%</td>
+      <td>0.24%</td>
+      <td>13.98</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>San Diego Chargers</td>
+      <td>1571.62</td>
+      <td>23</td>
+      <td>Oakland Raiders</td>
+      <td>1378.64</td>
+      <td>17</td>
+      <td>70.33%</td>
+      <td>29.43%</td>
+      <td>0.24%</td>
+      <td>11.54</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>San Francisco 49ers</td>
+      <td>1351.17</td>
+      <td>3</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1466.58</td>
+      <td>35</td>
+      <td>28.69%</td>
+      <td>71.06%</td>
+      <td>0.24%</td>
+      <td>-25.99</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>St. Louis Rams</td>
+      <td>1517.87</td>
+      <td>17</td>
+      <td>Buffalo Bills</td>
+      <td>1470.58</td>
+      <td>37</td>
+      <td>50.65%</td>
+      <td>49.10%</td>
+      <td>0.24%</td>
+      <td>-36.24</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Tennessee Titans</td>
+      <td>1482.37</td>
+      <td>18</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1493.47</td>
+      <td>15</td>
+      <td>42.31%</td>
+      <td>57.44%</td>
+      <td>0.24%</td>
+      <td>15.91</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Arizona Cardinals</td>
+      <td>1421.28</td>
+      <td>10</td>
+      <td>Carolina Panthers</td>
+      <td>1441.43</td>
+      <td>35</td>
+      <td>41.05%</td>
+      <td>58.71%</td>
+      <td>0.24%</td>
+      <td>-32.85</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Indianapolis Colts</td>
+      <td>1628.02</td>
+      <td>41</td>
+      <td>Chicago Bears</td>
+      <td>1486.28</td>
+      <td>10</td>
+      <td>63.86%</td>
+      <td>35.90%</td>
+      <td>0.24%</td>
+      <td>32.01</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1650.11</td>
+      <td>19</td>
+      <td>Cincinnati Bengals</td>
+      <td>1482.39</td>
+      <td>14</td>
+      <td>67.22%</td>
+      <td>32.54%</td>
+      <td>0.24%</td>
+      <td>11.65</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>New York Jets</td>
+      <td>1550.64</td>
+      <td>10</td>
+      <td>Cleveland Browns</td>
+      <td>1423.12</td>
+      <td>7</td>
+      <td>61.95%</td>
+      <td>37.81%</td>
+      <td>0.24%</td>
+      <td>10.48</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Green Bay Packers</td>
+      <td>1577.71</td>
+      <td>16</td>
+      <td>Houston Texans</td>
+      <td>1434.94</td>
+      <td>13</td>
+      <td>63.99%</td>
+      <td>35.77%</td>
+      <td>0.24%</td>
+      <td>9.92</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Detroit Lions</td>
+      <td>1414.50</td>
+      <td>19</td>
+      <td>Minnesota Vikings</td>
+      <td>1522.18</td>
+      <td>22</td>
+      <td>29.61%</td>
+      <td>70.15%</td>
+      <td>0.24%</td>
+      <td>-8.21</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Denver Broncos</td>
+      <td>1556.09</td>
+      <td>34</td>
+      <td>New Orleans Saints</td>
+      <td>1442.20</td>
+      <td>13</td>
+      <td>60.09%</td>
+      <td>39.67%</td>
+      <td>0.24%</td>
+      <td>29.10</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Seattle Seahawks</td>
+      <td>1528.13</td>
+      <td>24</td>
+      <td>@ Miami Dolphins</td>
+      <td>1428.50</td>
+      <td>17</td>
+      <td>69.17%</td>
+      <td>30.59%</td>
+      <td>0.24%</td>
+      <td>12.96</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Washington Redskins</td>
+      <td>1407.22</td>
+      <td>6</td>
+      <td>Philadelphia Eagles</td>
+      <td>1655.64</td>
+      <td>28</td>
+      <td>15.76%</td>
+      <td>84.00%</td>
+      <td>0.24%</td>
+      <td>-11.85</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Atlanta Falcons</td>
+      <td>1540.59</td>
+      <td>14</td>
+      <td>New York Giants</td>
+      <td>1489.15</td>
+      <td>10</td>
+      <td>51.25%</td>
+      <td>48.50%</td>
+      <td>0.24%</td>
+      <td>15.52</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Miami Dolphins</td>
+      <td>1428.50</td>
+      <td>17</td>
+      <td>Seattle Seahawks</td>
+      <td>1528.13</td>
+      <td>24</td>
+      <td>30.59%</td>
+      <td>69.17%</td>
+      <td>0.24%</td>
+      <td>-12.96</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1466.58</td>
+      <td>35</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1351.17</td>
+      <td>3</td>
+      <td>71.06%</td>
+      <td>28.69%</td>
+      <td>0.24%</td>
+      <td>26.00</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Buffalo Bills</td>
+      <td>1470.58</td>
+      <td>37</td>
+      <td>@ St. Louis Rams</td>
+      <td>1517.87</td>
+      <td>17</td>
+      <td>49.10%</td>
+      <td>50.65%</td>
+      <td>0.24%</td>
+      <td>36.25</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Carolina Panthers</td>
+      <td>1441.43</td>
+      <td>35</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1421.28</td>
+      <td>10</td>
+      <td>58.71%</td>
+      <td>41.05%</td>
+      <td>0.24%</td>
+      <td>32.85</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Chicago Bears</td>
+      <td>1486.28</td>
+      <td>10</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1628.02</td>
+      <td>41</td>
+      <td>35.90%</td>
+      <td>63.86%</td>
+      <td>0.24%</td>
+      <td>-32.00</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Cincinnati Bengals</td>
+      <td>1482.39</td>
+      <td>14</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1650.11</td>
+      <td>19</td>
+      <td>32.54%</td>
+      <td>67.22%</td>
+      <td>0.24%</td>
+      <td>-11.65</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Cleveland Browns</td>
+      <td>1423.12</td>
+      <td>7</td>
+      <td>@ New York Jets</td>
+      <td>1550.64</td>
+      <td>10</td>
+      <td>37.81%</td>
+      <td>61.95%</td>
+      <td>0.24%</td>
+      <td>-10.48</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Houston Texans</td>
+      <td>1434.94</td>
+      <td>13</td>
+      <td>@ Green Bay Packers</td>
+      <td>1577.71</td>
+      <td>16</td>
+      <td>35.77%</td>
+      <td>63.99%</td>
+      <td>0.24%</td>
+      <td>-9.92</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Minnesota Vikings</td>
+      <td>1522.18</td>
+      <td>22</td>
+      <td>@ Detroit Lions</td>
+      <td>1414.50</td>
+      <td>19</td>
+      <td>70.15%</td>
+      <td>29.61%</td>
+      <td>0.24%</td>
+      <td>8.21</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>New Orleans Saints</td>
+      <td>1442.20</td>
+      <td>13</td>
+      <td>@ Denver Broncos</td>
+      <td>1556.09</td>
+      <td>34</td>
+      <td>39.67%</td>
+      <td>60.09%</td>
+      <td>0.24%</td>
+      <td>-29.10</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>New York Giants</td>
+      <td>1489.15</td>
+      <td>10</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1540.59</td>
+      <td>14</td>
+      <td>48.50%</td>
+      <td>51.25%</td>
+      <td>0.24%</td>
+      <td>-15.52</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Philadelphia Eagles</td>
+      <td>1655.64</td>
+      <td>28</td>
+      <td>@ Washington Redskins</td>
+      <td>1407.22</td>
+      <td>6</td>
+      <td>84.00%</td>
+      <td>15.76%</td>
+      <td>0.24%</td>
+      <td>11.85</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Dallas Cowboys</td>
+      <td>1394.51</td>
+      <td>10</td>
+      <td>Baltimore Ravens</td>
+      <td>1597.99</td>
+      <td>30</td>
+      <td>19.51%</td>
+      <td>80.25%</td>
+      <td>0.24%</td>
+      <td>-13.98</td>
+    </tr>
+    <tr>
+      <td>2004-11-21</td>
+      <td>Oakland Raiders</td>
+      <td>1378.64</td>
+      <td>17</td>
+      <td>@ San Diego Chargers</td>
+      <td>1571.62</td>
+      <td>23</td>
+      <td>29.43%</td>
+      <td>70.33%</td>
+      <td>0.24%</td>
+      <td>-11.55</td>
+    </tr>
+    <tr>
+      <td>2004-11-22</td>
+      <td>New England Patriots</td>
+      <td>1682.72</td>
+      <td>27</td>
+      <td>Kansas City Chiefs</td>
+      <td>1512.35</td>
+      <td>19</td>
+      <td>67.55%</td>
+      <td>32.20%</td>
+      <td>0.24%</td>
+      <td>14.58</td>
+    </tr>
+    <tr>
+      <td>2004-11-22</td>
+      <td>Kansas City Chiefs</td>
+      <td>1512.35</td>
+      <td>19</td>
+      <td>@ New England Patriots</td>
+      <td>1682.72</td>
+      <td>27</td>
+      <td>32.20%</td>
+      <td>67.55%</td>
+      <td>0.24%</td>
+      <td>-14.59</td>
+    </tr>
+    <tr>
+      <td>2004-11-25</td>
+      <td>Detroit Lions</td>
+      <td>1406.29</td>
+      <td>9</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1660.03</td>
+      <td>41</td>
+      <td>22.72%</td>
+      <td>77.04%</td>
+      <td>0.24%</td>
+      <td>-20.59</td>
+    </tr>
+    <tr>
+      <td>2004-11-25</td>
+      <td>Chicago Bears</td>
+      <td>1454.28</td>
+      <td>7</td>
+      <td>Dallas Cowboys</td>
+      <td>1380.53</td>
+      <td>21</td>
+      <td>54.45%</td>
+      <td>45.31%</td>
+      <td>0.24%</td>
+      <td>-32.59</td>
+    </tr>
+    <tr>
+      <td>2004-11-25</td>
+      <td>Indianapolis Colts</td>
+      <td>1660.03</td>
+      <td>41</td>
+      <td>Detroit Lions</td>
+      <td>1406.29</td>
+      <td>9</td>
+      <td>77.04%</td>
+      <td>22.72%</td>
+      <td>0.24%</td>
+      <td>20.58</td>
+    </tr>
+    <tr>
+      <td>2004-11-25</td>
+      <td>Dallas Cowboys</td>
+      <td>1380.53</td>
+      <td>21</td>
+      <td>@ Chicago Bears</td>
+      <td>1454.28</td>
+      <td>7</td>
+      <td>45.31%</td>
+      <td>54.45%</td>
+      <td>0.24%</td>
+      <td>32.59</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1492.58</td>
+      <td>14</td>
+      <td>Carolina Panthers</td>
+      <td>1474.28</td>
+      <td>21</td>
+      <td>46.49%</td>
+      <td>53.27%</td>
+      <td>0.24%</td>
+      <td>-19.68</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>San Diego Chargers</td>
+      <td>1583.16</td>
+      <td>34</td>
+      <td>Kansas City Chiefs</td>
+      <td>1497.76</td>
+      <td>31</td>
+      <td>56.11%</td>
+      <td>43.65%</td>
+      <td>0.24%</td>
+      <td>12.10</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Washington Redskins</td>
+      <td>1395.37</td>
+      <td>7</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1661.76</td>
+      <td>16</td>
+      <td>14.44%</td>
+      <td>85.32%</td>
+      <td>0.24%</td>
+      <td>-6.94</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Miami Dolphins</td>
+      <td>1415.54</td>
+      <td>24</td>
+      <td>San Francisco 49ers</td>
+      <td>1325.18</td>
+      <td>17</td>
+      <td>56.81%</td>
+      <td>42.95%</td>
+      <td>0.24%</td>
+      <td>18.19</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Philadelphia Eagles</td>
+      <td>1667.49</td>
+      <td>27</td>
+      <td>New York Giants</td>
+      <td>1473.63</td>
+      <td>6</td>
+      <td>70.43%</td>
+      <td>29.32%</td>
+      <td>0.24%</td>
+      <td>21.52</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Buffalo Bills</td>
+      <td>1506.83</td>
+      <td>38</td>
+      <td>Seattle Seahawks</td>
+      <td>1541.09</td>
+      <td>9</td>
+      <td>39.10%</td>
+      <td>60.66%</td>
+      <td>0.24%</td>
+      <td>52.24</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>New Orleans Saints</td>
+      <td>1413.10</td>
+      <td>21</td>
+      <td>Atlanta Falcons</td>
+      <td>1556.11</td>
+      <td>24</td>
+      <td>25.56%</td>
+      <td>74.20%</td>
+      <td>0.24%</td>
+      <td>-7.09</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Cincinnati Bengals</td>
+      <td>1470.74</td>
+      <td>58</td>
+      <td>@ Cleveland Browns</td>
+      <td>1412.64</td>
+      <td>48</td>
+      <td>63.87%</td>
+      <td>35.88%</td>
+      <td>0.24%</td>
+      <td>18.16</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Arizona Cardinals</td>
+      <td>1388.43</td>
+      <td>3</td>
+      <td>@ New York Jets</td>
+      <td>1561.12</td>
+      <td>13</td>
+      <td>31.91%</td>
+      <td>67.85%</td>
+      <td>0.24%</td>
+      <td>-16.16</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Denver Broncos</td>
+      <td>1585.19</td>
+      <td>24</td>
+      <td>@ Oakland Raiders</td>
+      <td>1367.09</td>
+      <td>25</td>
+      <td>81.54%</td>
+      <td>18.22%</td>
+      <td>0.24%</td>
+      <td>-13.04</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Houston Texans</td>
+      <td>1425.02</td>
+      <td>31</td>
+      <td>@ Tennessee Titans</td>
+      <td>1498.28</td>
+      <td>21</td>
+      <td>45.38%</td>
+      <td>54.38%</td>
+      <td>0.24%</td>
+      <td>27.51</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Minnesota Vikings</td>
+      <td>1530.39</td>
+      <td>27</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1477.56</td>
+      <td>16</td>
+      <td>63.17%</td>
+      <td>36.58%</td>
+      <td>0.24%</td>
+      <td>19.43</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>New England Patriots</td>
+      <td>1697.30</td>
+      <td>24</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1611.97</td>
+      <td>3</td>
+      <td>67.40%</td>
+      <td>32.36%</td>
+      <td>0.24%</td>
+      <td>23.75</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>New York Giants</td>
+      <td>1473.63</td>
+      <td>6</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1667.49</td>
+      <td>27</td>
+      <td>29.32%</td>
+      <td>70.43%</td>
+      <td>0.24%</td>
+      <td>-21.52</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Seattle Seahawks</td>
+      <td>1541.09</td>
+      <td>9</td>
+      <td>@ Buffalo Bills</td>
+      <td>1506.83</td>
+      <td>38</td>
+      <td>60.66%</td>
+      <td>39.10%</td>
+      <td>0.24%</td>
+      <td>-52.25</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>San Francisco 49ers</td>
+      <td>1325.18</td>
+      <td>17</td>
+      <td>@ Miami Dolphins</td>
+      <td>1415.54</td>
+      <td>24</td>
+      <td>42.95%</td>
+      <td>56.81%</td>
+      <td>0.24%</td>
+      <td>-18.19</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Kansas City Chiefs</td>
+      <td>1497.76</td>
+      <td>31</td>
+      <td>@ San Diego Chargers</td>
+      <td>1583.16</td>
+      <td>34</td>
+      <td>43.65%</td>
+      <td>56.11%</td>
+      <td>0.24%</td>
+      <td>-12.10</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1661.76</td>
+      <td>16</td>
+      <td>@ Washington Redskins</td>
+      <td>1395.37</td>
+      <td>7</td>
+      <td>85.32%</td>
+      <td>14.44%</td>
+      <td>0.24%</td>
+      <td>6.94</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Carolina Panthers</td>
+      <td>1474.28</td>
+      <td>21</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1492.58</td>
+      <td>14</td>
+      <td>53.27%</td>
+      <td>46.49%</td>
+      <td>0.24%</td>
+      <td>19.68</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Atlanta Falcons</td>
+      <td>1556.11</td>
+      <td>24</td>
+      <td>@ New Orleans Saints</td>
+      <td>1413.10</td>
+      <td>21</td>
+      <td>74.20%</td>
+      <td>25.56%</td>
+      <td>0.24%</td>
+      <td>7.09</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Oakland Raiders</td>
+      <td>1367.09</td>
+      <td>25</td>
+      <td>Denver Broncos</td>
+      <td>1585.19</td>
+      <td>24</td>
+      <td>18.22%</td>
+      <td>81.54%</td>
+      <td>0.24%</td>
+      <td>13.04</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>New York Jets</td>
+      <td>1561.12</td>
+      <td>13</td>
+      <td>Arizona Cardinals</td>
+      <td>1388.43</td>
+      <td>3</td>
+      <td>67.85%</td>
+      <td>31.91%</td>
+      <td>0.24%</td>
+      <td>16.16</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Cleveland Browns</td>
+      <td>1412.64</td>
+      <td>48</td>
+      <td>Cincinnati Bengals</td>
+      <td>1470.74</td>
+      <td>58</td>
+      <td>35.88%</td>
+      <td>63.87%</td>
+      <td>0.24%</td>
+      <td>-18.17</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1477.56</td>
+      <td>16</td>
+      <td>Minnesota Vikings</td>
+      <td>1530.39</td>
+      <td>27</td>
+      <td>36.58%</td>
+      <td>63.17%</td>
+      <td>0.24%</td>
+      <td>-19.43</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Tennessee Titans</td>
+      <td>1498.28</td>
+      <td>21</td>
+      <td>Houston Texans</td>
+      <td>1425.02</td>
+      <td>31</td>
+      <td>54.38%</td>
+      <td>45.38%</td>
+      <td>0.24%</td>
+      <td>-27.51</td>
+    </tr>
+    <tr>
+      <td>2004-11-28</td>
+      <td>Baltimore Ravens</td>
+      <td>1611.97</td>
+      <td>3</td>
+      <td>New England Patriots</td>
+      <td>1697.30</td>
+      <td>24</td>
+      <td>32.36%</td>
+      <td>67.40%</td>
+      <td>0.24%</td>
+      <td>-23.74</td>
+    </tr>
+    <tr>
+      <td>2004-11-29</td>
+      <td>St. Louis Rams</td>
+      <td>1481.63</td>
+      <td>17</td>
+      <td>Green Bay Packers</td>
+      <td>1587.63</td>
+      <td>45</td>
+      <td>29.81%</td>
+      <td>69.94%</td>
+      <td>0.24%</td>
+      <td>-25.27</td>
+    </tr>
+    <tr>
+      <td>2004-11-29</td>
+      <td>Green Bay Packers</td>
+      <td>1587.63</td>
+      <td>45</td>
+      <td>@ St. Louis Rams</td>
+      <td>1481.63</td>
+      <td>17</td>
+      <td>69.94%</td>
+      <td>29.81%</td>
+      <td>0.24%</td>
+      <td>25.26</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>New Orleans Saints</td>
+      <td>1406.01</td>
+      <td>21</td>
+      <td>@ Carolina Panthers</td>
+      <td>1493.96</td>
+      <td>32</td>
+      <td>43.29%</td>
+      <td>56.47%</td>
+      <td>0.24%</td>
+      <td>-22.97</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Miami Dolphins</td>
+      <td>1433.73</td>
+      <td>32</td>
+      <td>@ Buffalo Bills</td>
+      <td>1559.07</td>
+      <td>42</td>
+      <td>38.10%</td>
+      <td>61.66%</td>
+      <td>0.24%</td>
+      <td>-19.29</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1458.13</td>
+      <td>16</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1668.70</td>
+      <td>17</td>
+      <td>27.37%</td>
+      <td>72.39%</td>
+      <td>0.24%</td>
+      <td>-4.38</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Indianapolis Colts</td>
+      <td>1680.61</td>
+      <td>51</td>
+      <td>@ Tennessee Titans</td>
+      <td>1470.77</td>
+      <td>24</td>
+      <td>80.82%</td>
+      <td>18.94%</td>
+      <td>0.24%</td>
+      <td>15.77</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Philadelphia Eagles</td>
+      <td>1689.01</td>
+      <td>47</td>
+      <td>@ Green Bay Packers</td>
+      <td>1612.89</td>
+      <td>17</td>
+      <td>66.22%</td>
+      <td>33.53%</td>
+      <td>0.24%</td>
+      <td>29.41</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Cleveland Browns</td>
+      <td>1394.47</td>
+      <td>15</td>
+      <td>@ New England Patriots</td>
+      <td>1721.05</td>
+      <td>42</td>
+      <td>16.20%</td>
+      <td>83.56%</td>
+      <td>0.24%</td>
+      <td>-13.48</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Chicago Bears</td>
+      <td>1421.69</td>
+      <td>24</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1549.82</td>
+      <td>14</td>
+      <td>37.72%</td>
+      <td>62.03%</td>
+      <td>0.24%</td>
+      <td>31.37</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Washington Redskins</td>
+      <td>1388.43</td>
+      <td>31</td>
+      <td>@ New York Giants</td>
+      <td>1452.11</td>
+      <td>7</td>
+      <td>46.75%</td>
+      <td>53.01%</td>
+      <td>0.24%</td>
+      <td>41.54</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Oakland Raiders</td>
+      <td>1380.13</td>
+      <td>27</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1485.66</td>
+      <td>34</td>
+      <td>40.83%</td>
+      <td>58.93%</td>
+      <td>0.24%</td>
+      <td>-17.29</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Detroit Lions</td>
+      <td>1385.70</td>
+      <td>26</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1372.27</td>
+      <td>12</td>
+      <td>57.77%</td>
+      <td>41.99%</td>
+      <td>0.24%</td>
+      <td>25.15</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Baltimore Ravens</td>
+      <td>1588.23</td>
+      <td>26</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1488.90</td>
+      <td>27</td>
+      <td>69.13%</td>
+      <td>30.62%</td>
+      <td>0.24%</td>
+      <td>-11.06</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1472.90</td>
+      <td>27</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1563.20</td>
+      <td>0</td>
+      <td>42.96%</td>
+      <td>56.80%</td>
+      <td>0.24%</td>
+      <td>47.20</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>St. Louis Rams</td>
+      <td>1456.36</td>
+      <td>16</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1306.99</td>
+      <td>6</td>
+      <td>74.89%</td>
+      <td>24.87%</td>
+      <td>0.24%</td>
+      <td>12.60</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>New York Jets</td>
+      <td>1577.28</td>
+      <td>29</td>
+      <td>@ Houston Texans</td>
+      <td>1452.53</td>
+      <td>7</td>
+      <td>72.15%</td>
+      <td>27.61%</td>
+      <td>0.24%</td>
+      <td>20.74</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Carolina Panthers</td>
+      <td>1493.96</td>
+      <td>32</td>
+      <td>New Orleans Saints</td>
+      <td>1406.01</td>
+      <td>21</td>
+      <td>56.47%</td>
+      <td>43.29%</td>
+      <td>0.24%</td>
+      <td>22.98</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>San Francisco 49ers</td>
+      <td>1306.99</td>
+      <td>6</td>
+      <td>St. Louis Rams</td>
+      <td>1456.36</td>
+      <td>16</td>
+      <td>24.87%</td>
+      <td>74.89%</td>
+      <td>0.24%</td>
+      <td>-12.59</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Arizona Cardinals</td>
+      <td>1372.27</td>
+      <td>12</td>
+      <td>Detroit Lions</td>
+      <td>1385.70</td>
+      <td>26</td>
+      <td>41.99%</td>
+      <td>57.77%</td>
+      <td>0.24%</td>
+      <td>-25.14</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>New York Giants</td>
+      <td>1452.11</td>
+      <td>7</td>
+      <td>Washington Redskins</td>
+      <td>1388.43</td>
+      <td>31</td>
+      <td>53.01%</td>
+      <td>46.75%</td>
+      <td>0.24%</td>
+      <td>-41.54</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Minnesota Vikings</td>
+      <td>1549.82</td>
+      <td>14</td>
+      <td>Chicago Bears</td>
+      <td>1421.69</td>
+      <td>24</td>
+      <td>62.03%</td>
+      <td>37.72%</td>
+      <td>0.24%</td>
+      <td>-31.37</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>San Diego Chargers</td>
+      <td>1595.26</td>
+      <td>20</td>
+      <td>@ Denver Broncos</td>
+      <td>1572.15</td>
+      <td>17</td>
+      <td>59.12%</td>
+      <td>40.64%</td>
+      <td>0.24%</td>
+      <td>11.27</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>New England Patriots</td>
+      <td>1721.05</td>
+      <td>42</td>
+      <td>Cleveland Browns</td>
+      <td>1394.47</td>
+      <td>15</td>
+      <td>83.56%</td>
+      <td>16.20%</td>
+      <td>0.24%</td>
+      <td>13.49</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Tennessee Titans</td>
+      <td>1470.77</td>
+      <td>24</td>
+      <td>Indianapolis Colts</td>
+      <td>1680.61</td>
+      <td>51</td>
+      <td>18.94%</td>
+      <td>80.82%</td>
+      <td>0.24%</td>
+      <td>-15.77</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1668.70</td>
+      <td>17</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1458.13</td>
+      <td>16</td>
+      <td>72.39%</td>
+      <td>27.37%</td>
+      <td>0.24%</td>
+      <td>4.39</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Buffalo Bills</td>
+      <td>1559.07</td>
+      <td>42</td>
+      <td>Miami Dolphins</td>
+      <td>1433.73</td>
+      <td>32</td>
+      <td>61.66%</td>
+      <td>38.10%</td>
+      <td>0.24%</td>
+      <td>19.29</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Denver Broncos</td>
+      <td>1572.15</td>
+      <td>17</td>
+      <td>San Diego Chargers</td>
+      <td>1595.26</td>
+      <td>20</td>
+      <td>40.64%</td>
+      <td>59.12%</td>
+      <td>0.24%</td>
+      <td>-11.27</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Atlanta Falcons</td>
+      <td>1563.20</td>
+      <td>0</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1472.90</td>
+      <td>27</td>
+      <td>56.80%</td>
+      <td>42.96%</td>
+      <td>0.24%</td>
+      <td>-47.20</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Cincinnati Bengals</td>
+      <td>1488.90</td>
+      <td>27</td>
+      <td>Baltimore Ravens</td>
+      <td>1588.23</td>
+      <td>26</td>
+      <td>30.62%</td>
+      <td>69.13%</td>
+      <td>0.24%</td>
+      <td>11.06</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Kansas City Chiefs</td>
+      <td>1485.66</td>
+      <td>34</td>
+      <td>Oakland Raiders</td>
+      <td>1380.13</td>
+      <td>27</td>
+      <td>58.93%</td>
+      <td>40.83%</td>
+      <td>0.24%</td>
+      <td>17.29</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Green Bay Packers</td>
+      <td>1612.89</td>
+      <td>17</td>
+      <td>Philadelphia Eagles</td>
+      <td>1689.01</td>
+      <td>47</td>
+      <td>33.53%</td>
+      <td>66.22%</td>
+      <td>0.24%</td>
+      <td>-29.41</td>
+    </tr>
+    <tr>
+      <td>2004-12-05</td>
+      <td>Houston Texans</td>
+      <td>1452.53</td>
+      <td>7</td>
+      <td>New York Jets</td>
+      <td>1577.28</td>
+      <td>29</td>
+      <td>27.61%</td>
+      <td>72.15%</td>
+      <td>0.24%</td>
+      <td>-20.74</td>
+    </tr>
+    <tr>
+      <td>2004-12-06</td>
+      <td>Dallas Cowboys</td>
+      <td>1413.12</td>
+      <td>43</td>
+      <td>Seattle Seahawks</td>
+      <td>1488.84</td>
+      <td>39</td>
+      <td>33.58%</td>
+      <td>66.17%</td>
+      <td>0.24%</td>
+      <td>21.16</td>
+    </tr>
+    <tr>
+      <td>2004-12-06</td>
+      <td>Seattle Seahawks</td>
+      <td>1488.84</td>
+      <td>39</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1413.12</td>
+      <td>43</td>
+      <td>66.17%</td>
+      <td>33.58%</td>
+      <td>0.24%</td>
+      <td>-21.16</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Baltimore Ravens</td>
+      <td>1577.17</td>
+      <td>37</td>
+      <td>@ New York Giants</td>
+      <td>1410.57</td>
+      <td>14</td>
+      <td>76.70%</td>
+      <td>23.06%</td>
+      <td>0.24%</td>
+      <td>17.71</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Atlanta Falcons</td>
+      <td>1516.00</td>
+      <td>35</td>
+      <td>@ Oakland Raiders</td>
+      <td>1362.84</td>
+      <td>10</td>
+      <td>75.30%</td>
+      <td>24.46%</td>
+      <td>0.24%</td>
+      <td>19.59</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>St. Louis Rams</td>
+      <td>1468.96</td>
+      <td>7</td>
+      <td>Carolina Panthers</td>
+      <td>1516.94</td>
+      <td>20</td>
+      <td>37.23%</td>
+      <td>62.52%</td>
+      <td>0.24%</td>
+      <td>-21.50</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Oakland Raiders</td>
+      <td>1362.84</td>
+      <td>10</td>
+      <td>Atlanta Falcons</td>
+      <td>1516.00</td>
+      <td>35</td>
+      <td>24.46%</td>
+      <td>75.30%</td>
+      <td>0.24%</td>
+      <td>-19.59</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Cleveland Browns</td>
+      <td>1380.99</td>
+      <td>7</td>
+      <td>Buffalo Bills</td>
+      <td>1578.36</td>
+      <td>37</td>
+      <td>20.07%</td>
+      <td>79.69%</td>
+      <td>0.24%</td>
+      <td>-17.61</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>San Francisco 49ers</td>
+      <td>1294.40</td>
+      <td>31</td>
+      <td>Arizona Cardinals</td>
+      <td>1347.13</td>
+      <td>28</td>
+      <td>36.60%</td>
+      <td>63.16%</td>
+      <td>0.24%</td>
+      <td>17.49</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>New Orleans Saints</td>
+      <td>1383.04</td>
+      <td>27</td>
+      <td>Dallas Cowboys</td>
+      <td>1434.28</td>
+      <td>13</td>
+      <td>36.80%</td>
+      <td>62.96%</td>
+      <td>0.24%</td>
+      <td>37.67</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Miami Dolphins</td>
+      <td>1414.44</td>
+      <td>17</td>
+      <td>Denver Broncos</td>
+      <td>1560.88</td>
+      <td>20</td>
+      <td>25.18%</td>
+      <td>74.58%</td>
+      <td>0.24%</td>
+      <td>-6.99</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Detroit Lions</td>
+      <td>1410.85</td>
+      <td>13</td>
+      <td>Green Bay Packers</td>
+      <td>1583.48</td>
+      <td>16</td>
+      <td>22.45%</td>
+      <td>77.31%</td>
+      <td>0.24%</td>
+      <td>-6.23</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Indianapolis Colts</td>
+      <td>1696.38</td>
+      <td>23</td>
+      <td>Houston Texans</td>
+      <td>1431.79</td>
+      <td>14</td>
+      <td>78.12%</td>
+      <td>21.64%</td>
+      <td>0.24%</td>
+      <td>10.40</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Chicago Bears</td>
+      <td>1453.06</td>
+      <td>3</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1453.75</td>
+      <td>22</td>
+      <td>43.78%</td>
+      <td>55.97%</td>
+      <td>0.24%</td>
+      <td>-30.54</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Seattle Seahawks</td>
+      <td>1467.68</td>
+      <td>27</td>
+      <td>Minnesota Vikings</td>
+      <td>1518.45</td>
+      <td>23</td>
+      <td>36.86%</td>
+      <td>62.90%</td>
+      <td>0.24%</td>
+      <td>20.12</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Cincinnati Bengals</td>
+      <td>1499.96</td>
+      <td>28</td>
+      <td>New England Patriots</td>
+      <td>1734.54</td>
+      <td>35</td>
+      <td>16.85%</td>
+      <td>82.91%</td>
+      <td>0.24%</td>
+      <td>-7.14</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>New York Jets</td>
+      <td>1598.02</td>
+      <td>6</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1673.09</td>
+      <td>17</td>
+      <td>33.67%</td>
+      <td>66.09%</td>
+      <td>0.24%</td>
+      <td>-17.88</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>New York Giants</td>
+      <td>1410.57</td>
+      <td>14</td>
+      <td>Baltimore Ravens</td>
+      <td>1577.17</td>
+      <td>37</td>
+      <td>23.06%</td>
+      <td>76.70%</td>
+      <td>0.24%</td>
+      <td>-17.72</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Philadelphia Eagles</td>
+      <td>1718.42</td>
+      <td>17</td>
+      <td>Washington Redskins</td>
+      <td>1429.97</td>
+      <td>14</td>
+      <td>80.36%</td>
+      <td>19.40%</td>
+      <td>0.24%</td>
+      <td>5.38</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1520.10</td>
+      <td>24</td>
+      <td>San Diego Chargers</td>
+      <td>1606.53</td>
+      <td>31</td>
+      <td>32.22%</td>
+      <td>67.53%</td>
+      <td>0.24%</td>
+      <td>-13.65</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>San Diego Chargers</td>
+      <td>1606.53</td>
+      <td>31</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1520.10</td>
+      <td>24</td>
+      <td>67.53%</td>
+      <td>32.22%</td>
+      <td>0.24%</td>
+      <td>13.65</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Washington Redskins</td>
+      <td>1429.97</td>
+      <td>14</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1718.42</td>
+      <td>17</td>
+      <td>19.40%</td>
+      <td>80.36%</td>
+      <td>0.24%</td>
+      <td>-5.38</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1673.09</td>
+      <td>17</td>
+      <td>@ New York Jets</td>
+      <td>1598.02</td>
+      <td>6</td>
+      <td>66.09%</td>
+      <td>33.67%</td>
+      <td>0.24%</td>
+      <td>17.88</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>New England Patriots</td>
+      <td>1734.54</td>
+      <td>35</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1499.96</td>
+      <td>28</td>
+      <td>82.91%</td>
+      <td>16.85%</td>
+      <td>0.24%</td>
+      <td>7.14</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Minnesota Vikings</td>
+      <td>1518.45</td>
+      <td>23</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1467.68</td>
+      <td>27</td>
+      <td>62.90%</td>
+      <td>36.86%</td>
+      <td>0.24%</td>
+      <td>-20.12</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1453.75</td>
+      <td>22</td>
+      <td>@ Chicago Bears</td>
+      <td>1453.06</td>
+      <td>3</td>
+      <td>55.97%</td>
+      <td>43.78%</td>
+      <td>0.24%</td>
+      <td>30.54</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Houston Texans</td>
+      <td>1431.79</td>
+      <td>14</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1696.38</td>
+      <td>23</td>
+      <td>21.64%</td>
+      <td>78.12%</td>
+      <td>0.24%</td>
+      <td>-10.40</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Green Bay Packers</td>
+      <td>1583.48</td>
+      <td>16</td>
+      <td>@ Detroit Lions</td>
+      <td>1410.85</td>
+      <td>13</td>
+      <td>77.31%</td>
+      <td>22.45%</td>
+      <td>0.24%</td>
+      <td>6.23</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Denver Broncos</td>
+      <td>1560.88</td>
+      <td>20</td>
+      <td>@ Miami Dolphins</td>
+      <td>1414.44</td>
+      <td>17</td>
+      <td>74.58%</td>
+      <td>25.18%</td>
+      <td>0.24%</td>
+      <td>6.99</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Dallas Cowboys</td>
+      <td>1434.28</td>
+      <td>13</td>
+      <td>@ New Orleans Saints</td>
+      <td>1383.04</td>
+      <td>27</td>
+      <td>62.96%</td>
+      <td>36.80%</td>
+      <td>0.24%</td>
+      <td>-37.67</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Arizona Cardinals</td>
+      <td>1347.13</td>
+      <td>28</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1294.40</td>
+      <td>31</td>
+      <td>63.16%</td>
+      <td>36.60%</td>
+      <td>0.24%</td>
+      <td>-17.50</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Buffalo Bills</td>
+      <td>1578.36</td>
+      <td>37</td>
+      <td>@ Cleveland Browns</td>
+      <td>1380.99</td>
+      <td>7</td>
+      <td>79.69%</td>
+      <td>20.07%</td>
+      <td>0.24%</td>
+      <td>17.61</td>
+    </tr>
+    <tr>
+      <td>2004-12-12</td>
+      <td>Carolina Panthers</td>
+      <td>1516.94</td>
+      <td>20</td>
+      <td>@ St. Louis Rams</td>
+      <td>1468.96</td>
+      <td>7</td>
+      <td>62.52%</td>
+      <td>37.23%</td>
+      <td>0.24%</td>
+      <td>21.49</td>
+    </tr>
+    <tr>
+      <td>2004-12-13</td>
+      <td>Kansas City Chiefs</td>
+      <td>1502.95</td>
+      <td>49</td>
+      <td>Tennessee Titans</td>
+      <td>1455.00</td>
+      <td>38</td>
+      <td>50.75%</td>
+      <td>49.01%</td>
+      <td>0.24%</td>
+      <td>26.01</td>
+    </tr>
+    <tr>
+      <td>2004-12-13</td>
+      <td>Tennessee Titans</td>
+      <td>1455.00</td>
+      <td>38</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1502.95</td>
+      <td>49</td>
+      <td>49.01%</td>
+      <td>50.75%</td>
+      <td>0.24%</td>
+      <td>-26.00</td>
+    </tr>
+    <tr>
+      <td>2004-12-18</td>
+      <td>Washington Redskins</td>
+      <td>1424.59</td>
+      <td>26</td>
+      <td>San Francisco 49ers</td>
+      <td>1311.89</td>
+      <td>16</td>
+      <td>59.93%</td>
+      <td>39.83%</td>
+      <td>0.24%</td>
+      <td>20.16</td>
+    </tr>
+    <tr>
+      <td>2004-12-18</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1690.97</td>
+      <td>33</td>
+      <td>New York Giants</td>
+      <td>1392.85</td>
+      <td>30</td>
+      <td>81.21%</td>
+      <td>18.55%</td>
+      <td>0.24%</td>
+      <td>5.14</td>
+    </tr>
+    <tr>
+      <td>2004-12-18</td>
+      <td>New York Giants</td>
+      <td>1392.85</td>
+      <td>30</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1690.97</td>
+      <td>33</td>
+      <td>18.55%</td>
+      <td>81.21%</td>
+      <td>0.24%</td>
+      <td>-5.15</td>
+    </tr>
+    <tr>
+      <td>2004-12-18</td>
+      <td>Carolina Panthers</td>
+      <td>1538.43</td>
+      <td>31</td>
+      <td>Atlanta Falcons</td>
+      <td>1535.59</td>
+      <td>34</td>
+      <td>44.28%</td>
+      <td>55.47%</td>
+      <td>0.24%</td>
+      <td>-12.28</td>
+    </tr>
+    <tr>
+      <td>2004-12-18</td>
+      <td>Atlanta Falcons</td>
+      <td>1535.59</td>
+      <td>34</td>
+      <td>@ Carolina Panthers</td>
+      <td>1538.43</td>
+      <td>31</td>
+      <td>55.47%</td>
+      <td>44.28%</td>
+      <td>0.24%</td>
+      <td>12.27</td>
+    </tr>
+    <tr>
+      <td>2004-12-18</td>
+      <td>San Francisco 49ers</td>
+      <td>1311.89</td>
+      <td>16</td>
+      <td>@ Washington Redskins</td>
+      <td>1424.59</td>
+      <td>26</td>
+      <td>39.83%</td>
+      <td>59.93%</td>
+      <td>0.24%</td>
+      <td>-20.16</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>New York Jets</td>
+      <td>1580.14</td>
+      <td>37</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1487.80</td>
+      <td>14</td>
+      <td>68.27%</td>
+      <td>31.48%</td>
+      <td>0.24%</td>
+      <td>24.18</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Kansas City Chiefs</td>
+      <td>1528.96</td>
+      <td>45</td>
+      <td>@ Denver Broncos</td>
+      <td>1567.87</td>
+      <td>17</td>
+      <td>50.31%</td>
+      <td>49.45%</td>
+      <td>0.24%</td>
+      <td>41.86</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Green Bay Packers</td>
+      <td>1589.71</td>
+      <td>25</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1484.29</td>
+      <td>28</td>
+      <td>69.87%</td>
+      <td>29.88%</td>
+      <td>0.24%</td>
+      <td>-19.35</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Cleveland Browns</td>
+      <td>1363.38</td>
+      <td>0</td>
+      <td>@ San Diego Chargers</td>
+      <td>1620.18</td>
+      <td>21</td>
+      <td>22.41%</td>
+      <td>77.35%</td>
+      <td>0.24%</td>
+      <td>-16.45</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Oakland Raiders</td>
+      <td>1343.25</td>
+      <td>40</td>
+      <td>@ Tennessee Titans</td>
+      <td>1429.00</td>
+      <td>35</td>
+      <td>43.60%</td>
+      <td>56.15%</td>
+      <td>0.24%</td>
+      <td>20.09</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Detroit Lions</td>
+      <td>1404.62</td>
+      <td>27</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1498.33</td>
+      <td>28</td>
+      <td>42.48%</td>
+      <td>57.28%</td>
+      <td>0.24%</td>
+      <td>-6.80</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Arizona Cardinals</td>
+      <td>1329.63</td>
+      <td>31</td>
+      <td>@ St. Louis Rams</td>
+      <td>1447.46</td>
+      <td>7</td>
+      <td>39.13%</td>
+      <td>60.63%</td>
+      <td>0.24%</td>
+      <td>47.51</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Indianapolis Colts</td>
+      <td>1706.78</td>
+      <td>20</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1594.88</td>
+      <td>10</td>
+      <td>70.65%</td>
+      <td>29.11%</td>
+      <td>0.24%</td>
+      <td>14.74</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Buffalo Bills</td>
+      <td>1595.97</td>
+      <td>33</td>
+      <td>Cincinnati Bengals</td>
+      <td>1492.82</td>
+      <td>17</td>
+      <td>58.60%</td>
+      <td>41.16%</td>
+      <td>0.24%</td>
+      <td>26.35</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1506.45</td>
+      <td>17</td>
+      <td>@ New Orleans Saints</td>
+      <td>1420.71</td>
+      <td>21</td>
+      <td>67.45%</td>
+      <td>32.31%</td>
+      <td>0.24%</td>
+      <td>-21.57</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Cincinnati Bengals</td>
+      <td>1492.82</td>
+      <td>17</td>
+      <td>@ Buffalo Bills</td>
+      <td>1595.97</td>
+      <td>33</td>
+      <td>41.16%</td>
+      <td>58.60%</td>
+      <td>0.24%</td>
+      <td>-26.35</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Philadelphia Eagles</td>
+      <td>1723.80</td>
+      <td>12</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1396.61</td>
+      <td>7</td>
+      <td>89.13%</td>
+      <td>10.63%</td>
+      <td>0.24%</td>
+      <td>3.81</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>New Orleans Saints</td>
+      <td>1420.71</td>
+      <td>21</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1506.45</td>
+      <td>17</td>
+      <td>32.31%</td>
+      <td>67.45%</td>
+      <td>0.24%</td>
+      <td>21.57</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Minnesota Vikings</td>
+      <td>1498.33</td>
+      <td>28</td>
+      <td>Detroit Lions</td>
+      <td>1404.62</td>
+      <td>27</td>
+      <td>57.28%</td>
+      <td>42.48%</td>
+      <td>0.24%</td>
+      <td>6.80</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Houston Texans</td>
+      <td>1421.39</td>
+      <td>24</td>
+      <td>Chicago Bears</td>
+      <td>1422.52</td>
+      <td>5</td>
+      <td>43.72%</td>
+      <td>56.04%</td>
+      <td>0.24%</td>
+      <td>39.07</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Dallas Cowboys</td>
+      <td>1396.61</td>
+      <td>7</td>
+      <td>Philadelphia Eagles</td>
+      <td>1723.80</td>
+      <td>12</td>
+      <td>10.63%</td>
+      <td>89.13%</td>
+      <td>0.24%</td>
+      <td>-3.81</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Seattle Seahawks</td>
+      <td>1487.80</td>
+      <td>14</td>
+      <td>New York Jets</td>
+      <td>1580.14</td>
+      <td>37</td>
+      <td>31.48%</td>
+      <td>68.27%</td>
+      <td>0.24%</td>
+      <td>-24.18</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Denver Broncos</td>
+      <td>1567.87</td>
+      <td>17</td>
+      <td>Kansas City Chiefs</td>
+      <td>1528.96</td>
+      <td>45</td>
+      <td>49.45%</td>
+      <td>50.31%</td>
+      <td>0.24%</td>
+      <td>-41.87</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1484.29</td>
+      <td>28</td>
+      <td>Green Bay Packers</td>
+      <td>1589.71</td>
+      <td>25</td>
+      <td>29.88%</td>
+      <td>69.87%</td>
+      <td>0.24%</td>
+      <td>19.36</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>San Diego Chargers</td>
+      <td>1620.18</td>
+      <td>21</td>
+      <td>Cleveland Browns</td>
+      <td>1363.38</td>
+      <td>0</td>
+      <td>77.35%</td>
+      <td>22.41%</td>
+      <td>0.24%</td>
+      <td>16.45</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Tennessee Titans</td>
+      <td>1429.00</td>
+      <td>35</td>
+      <td>Oakland Raiders</td>
+      <td>1343.25</td>
+      <td>40</td>
+      <td>56.15%</td>
+      <td>43.60%</td>
+      <td>0.24%</td>
+      <td>-20.09</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Chicago Bears</td>
+      <td>1422.52</td>
+      <td>5</td>
+      <td>@ Houston Texans</td>
+      <td>1421.39</td>
+      <td>24</td>
+      <td>56.04%</td>
+      <td>43.72%</td>
+      <td>0.24%</td>
+      <td>-39.07</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>St. Louis Rams</td>
+      <td>1447.46</td>
+      <td>7</td>
+      <td>Arizona Cardinals</td>
+      <td>1329.63</td>
+      <td>31</td>
+      <td>60.63%</td>
+      <td>39.13%</td>
+      <td>0.24%</td>
+      <td>-47.50</td>
+    </tr>
+    <tr>
+      <td>2004-12-19</td>
+      <td>Baltimore Ravens</td>
+      <td>1594.88</td>
+      <td>10</td>
+      <td>Indianapolis Colts</td>
+      <td>1706.78</td>
+      <td>20</td>
+      <td>29.11%</td>
+      <td>70.65%</td>
+      <td>0.24%</td>
+      <td>-14.74</td>
+    </tr>
+    <tr>
+      <td>2004-12-20</td>
+      <td>New England Patriots</td>
+      <td>1741.68</td>
+      <td>28</td>
+      <td>Miami Dolphins</td>
+      <td>1407.45</td>
+      <td>29</td>
+      <td>84.15%</td>
+      <td>15.61%</td>
+      <td>0.24%</td>
+      <td>-13.46</td>
+    </tr>
+    <tr>
+      <td>2004-12-20</td>
+      <td>Miami Dolphins</td>
+      <td>1407.45</td>
+      <td>29</td>
+      <td>@ New England Patriots</td>
+      <td>1741.68</td>
+      <td>28</td>
+      <td>15.61%</td>
+      <td>84.15%</td>
+      <td>0.24%</td>
+      <td>13.46</td>
+    </tr>
+    <tr>
+      <td>2004-12-24</td>
+      <td>Minnesota Vikings</td>
+      <td>1505.13</td>
+      <td>31</td>
+      <td>@ Green Bay Packers</td>
+      <td>1570.36</td>
+      <td>34</td>
+      <td>46.53%</td>
+      <td>53.23%</td>
+      <td>0.24%</td>
+      <td>-12.90</td>
+    </tr>
+    <tr>
+      <td>2004-12-24</td>
+      <td>Green Bay Packers</td>
+      <td>1570.36</td>
+      <td>34</td>
+      <td>Minnesota Vikings</td>
+      <td>1505.13</td>
+      <td>31</td>
+      <td>53.23%</td>
+      <td>46.53%</td>
+      <td>0.24%</td>
+      <td>12.89</td>
+    </tr>
+    <tr>
+      <td>2004-12-25</td>
+      <td>Oakland Raiders</td>
+      <td>1363.34</td>
+      <td>30</td>
+      <td>Kansas City Chiefs</td>
+      <td>1570.82</td>
+      <td>31</td>
+      <td>19.15%</td>
+      <td>80.61%</td>
+      <td>0.24%</td>
+      <td>-3.07</td>
+    </tr>
+    <tr>
+      <td>2004-12-25</td>
+      <td>Tennessee Titans</td>
+      <td>1408.91</td>
+      <td>16</td>
+      <td>@ Denver Broncos</td>
+      <td>1526.00</td>
+      <td>37</td>
+      <td>39.23%</td>
+      <td>60.53%</td>
+      <td>0.24%</td>
+      <td>-28.77</td>
+    </tr>
+    <tr>
+      <td>2004-12-25</td>
+      <td>Kansas City Chiefs</td>
+      <td>1570.82</td>
+      <td>31</td>
+      <td>@ Oakland Raiders</td>
+      <td>1363.34</td>
+      <td>30</td>
+      <td>80.61%</td>
+      <td>19.15%</td>
+      <td>0.24%</td>
+      <td>3.07</td>
+    </tr>
+    <tr>
+      <td>2004-12-25</td>
+      <td>Denver Broncos</td>
+      <td>1526.00</td>
+      <td>37</td>
+      <td>Tennessee Titans</td>
+      <td>1408.91</td>
+      <td>16</td>
+      <td>60.53%</td>
+      <td>39.23%</td>
+      <td>0.24%</td>
+      <td>28.78</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>New England Patriots</td>
+      <td>1728.22</td>
+      <td>23</td>
+      <td>New York Jets</td>
+      <td>1604.32</td>
+      <td>7</td>
+      <td>61.46%</td>
+      <td>38.30%</td>
+      <td>0.24%</td>
+      <td>24.52</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Arizona Cardinals</td>
+      <td>1377.14</td>
+      <td>21</td>
+      <td>Seattle Seahawks</td>
+      <td>1463.62</td>
+      <td>24</td>
+      <td>32.22%</td>
+      <td>67.54%</td>
+      <td>0.24%</td>
+      <td>-8.94</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Carolina Panthers</td>
+      <td>1526.15</td>
+      <td>37</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1484.88</td>
+      <td>20</td>
+      <td>49.79%</td>
+      <td>49.97%</td>
+      <td>0.24%</td>
+      <td>32.96</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Buffalo Bills</td>
+      <td>1622.32</td>
+      <td>41</td>
+      <td>San Francisco 49ers</td>
+      <td>1291.73</td>
+      <td>7</td>
+      <td>83.87%</td>
+      <td>15.89%</td>
+      <td>0.24%</td>
+      <td>14.84</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>San Diego Chargers</td>
+      <td>1636.63</td>
+      <td>31</td>
+      <td>Indianapolis Colts</td>
+      <td>1721.52</td>
+      <td>34</td>
+      <td>32.42%</td>
+      <td>67.34%</td>
+      <td>0.24%</td>
+      <td>-8.99</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Baltimore Ravens</td>
+      <td>1580.14</td>
+      <td>7</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1696.11</td>
+      <td>20</td>
+      <td>28.63%</td>
+      <td>71.13%</td>
+      <td>0.24%</td>
+      <td>-16.53</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Houston Texans</td>
+      <td>1460.46</td>
+      <td>21</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1503.65</td>
+      <td>0</td>
+      <td>37.88%</td>
+      <td>61.88%</td>
+      <td>0.24%</td>
+      <td>45.35</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Chicago Bears</td>
+      <td>1383.45</td>
+      <td>13</td>
+      <td>Detroit Lions</td>
+      <td>1397.82</td>
+      <td>19</td>
+      <td>41.86%</td>
+      <td>57.90%</td>
+      <td>0.24%</td>
+      <td>-16.41</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>New York Giants</td>
+      <td>1387.70</td>
+      <td>22</td>
+      <td>Cincinnati Bengals</td>
+      <td>1466.47</td>
+      <td>23</td>
+      <td>33.19%</td>
+      <td>66.56%</td>
+      <td>0.24%</td>
+      <td>-5.31</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Indianapolis Colts</td>
+      <td>1721.52</td>
+      <td>34</td>
+      <td>@ San Diego Chargers</td>
+      <td>1636.63</td>
+      <td>31</td>
+      <td>67.34%</td>
+      <td>32.42%</td>
+      <td>0.24%</td>
+      <td>8.99</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>San Francisco 49ers</td>
+      <td>1291.73</td>
+      <td>7</td>
+      <td>@ Buffalo Bills</td>
+      <td>1622.32</td>
+      <td>41</td>
+      <td>15.89%</td>
+      <td>83.87%</td>
+      <td>0.24%</td>
+      <td>-14.84</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1484.88</td>
+      <td>20</td>
+      <td>@ Carolina Panthers</td>
+      <td>1526.15</td>
+      <td>37</td>
+      <td>49.97%</td>
+      <td>49.79%</td>
+      <td>0.24%</td>
+      <td>-32.96</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1503.65</td>
+      <td>0</td>
+      <td>@ Houston Texans</td>
+      <td>1460.46</td>
+      <td>21</td>
+      <td>61.88%</td>
+      <td>37.88%</td>
+      <td>0.24%</td>
+      <td>-45.35</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Seattle Seahawks</td>
+      <td>1463.62</td>
+      <td>24</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1377.14</td>
+      <td>21</td>
+      <td>67.54%</td>
+      <td>32.22%</td>
+      <td>0.24%</td>
+      <td>8.93</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1696.11</td>
+      <td>20</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1580.14</td>
+      <td>7</td>
+      <td>71.13%</td>
+      <td>28.63%</td>
+      <td>0.24%</td>
+      <td>16.53</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>New York Jets</td>
+      <td>1604.32</td>
+      <td>7</td>
+      <td>@ New England Patriots</td>
+      <td>1728.22</td>
+      <td>23</td>
+      <td>38.30%</td>
+      <td>61.46%</td>
+      <td>0.24%</td>
+      <td>-24.52</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Miami Dolphins</td>
+      <td>1420.91</td>
+      <td>10</td>
+      <td>@ Cleveland Browns</td>
+      <td>1346.93</td>
+      <td>7</td>
+      <td>65.95%</td>
+      <td>33.81%</td>
+      <td>0.24%</td>
+      <td>9.38</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Detroit Lions</td>
+      <td>1397.82</td>
+      <td>19</td>
+      <td>@ Chicago Bears</td>
+      <td>1383.45</td>
+      <td>13</td>
+      <td>57.90%</td>
+      <td>41.86%</td>
+      <td>0.24%</td>
+      <td>16.41</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Dallas Cowboys</td>
+      <td>1392.80</td>
+      <td>13</td>
+      <td>@ Washington Redskins</td>
+      <td>1444.75</td>
+      <td>10</td>
+      <td>48.43%</td>
+      <td>51.33%</td>
+      <td>0.24%</td>
+      <td>14.22</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Cincinnati Bengals</td>
+      <td>1466.47</td>
+      <td>23</td>
+      <td>@ New York Giants</td>
+      <td>1387.70</td>
+      <td>22</td>
+      <td>66.56%</td>
+      <td>33.19%</td>
+      <td>0.24%</td>
+      <td>5.31</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Cleveland Browns</td>
+      <td>1346.93</td>
+      <td>7</td>
+      <td>Miami Dolphins</td>
+      <td>1420.91</td>
+      <td>10</td>
+      <td>33.81%</td>
+      <td>65.95%</td>
+      <td>0.24%</td>
+      <td>-9.38</td>
+    </tr>
+    <tr>
+      <td>2004-12-26</td>
+      <td>Washington Redskins</td>
+      <td>1444.75</td>
+      <td>10</td>
+      <td>Dallas Cowboys</td>
+      <td>1392.80</td>
+      <td>13</td>
+      <td>51.33%</td>
+      <td>48.43%</td>
+      <td>0.24%</td>
+      <td>-14.22</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>New York Jets</td>
+      <td>1579.80</td>
+      <td>29</td>
+      <td>St. Louis Rams</td>
+      <td>1416.04</td>
+      <td>32</td>
+      <td>66.72%</td>
+      <td>33.04%</td>
+      <td>0.24%</td>
+      <td>-18.48</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Green Bay Packers</td>
+      <td>1583.25</td>
+      <td>31</td>
+      <td>Chicago Bears</td>
+      <td>1367.04</td>
+      <td>14</td>
+      <td>73.03%</td>
+      <td>26.73%</td>
+      <td>0.24%</td>
+      <td>17.65</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1451.92</td>
+      <td>7</td>
+      <td>Arizona Cardinals</td>
+      <td>1368.20</td>
+      <td>12</td>
+      <td>55.87%</td>
+      <td>43.89%</td>
+      <td>0.24%</td>
+      <td>-19.98</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Cleveland Browns</td>
+      <td>1337.55</td>
+      <td>22</td>
+      <td>Houston Texans</td>
+      <td>1505.81</td>
+      <td>14</td>
+      <td>22.89%</td>
+      <td>76.87%</td>
+      <td>0.24%</td>
+      <td>34.77</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Detroit Lions</td>
+      <td>1414.23</td>
+      <td>19</td>
+      <td>Tennessee Titans</td>
+      <td>1380.14</td>
+      <td>24</td>
+      <td>48.76%</td>
+      <td>51.00%</td>
+      <td>0.24%</td>
+      <td>-17.45</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1458.30</td>
+      <td>13</td>
+      <td>Oakland Raiders</td>
+      <td>1360.27</td>
+      <td>6</td>
+      <td>57.88%</td>
+      <td>41.87%</td>
+      <td>0.24%</td>
+      <td>17.73</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Miami Dolphins</td>
+      <td>1430.29</td>
+      <td>23</td>
+      <td>Baltimore Ravens</td>
+      <td>1563.61</td>
+      <td>30</td>
+      <td>26.63%</td>
+      <td>73.13%</td>
+      <td>0.24%</td>
+      <td>-11.29</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Minnesota Vikings</td>
+      <td>1492.23</td>
+      <td>18</td>
+      <td>Washington Redskins</td>
+      <td>1430.53</td>
+      <td>21</td>
+      <td>52.73%</td>
+      <td>47.03%</td>
+      <td>0.24%</td>
+      <td>-14.61</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Kansas City Chiefs</td>
+      <td>1573.89</td>
+      <td>17</td>
+      <td>San Diego Chargers</td>
+      <td>1627.64</td>
+      <td>24</td>
+      <td>36.46%</td>
+      <td>63.30%</td>
+      <td>0.24%</td>
+      <td>-15.44</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Dallas Cowboys</td>
+      <td>1407.02</td>
+      <td>24</td>
+      <td>New York Giants</td>
+      <td>1382.39</td>
+      <td>28</td>
+      <td>47.40%</td>
+      <td>52.36%</td>
+      <td>0.24%</td>
+      <td>-15.17</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Carolina Panthers</td>
+      <td>1559.11</td>
+      <td>18</td>
+      <td>@ New Orleans Saints</td>
+      <td>1453.61</td>
+      <td>21</td>
+      <td>69.88%</td>
+      <td>29.87%</td>
+      <td>0.24%</td>
+      <td>-19.35</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Buffalo Bills</td>
+      <td>1637.16</td>
+      <td>24</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1712.64</td>
+      <td>29</td>
+      <td>45.06%</td>
+      <td>54.70%</td>
+      <td>0.24%</td>
+      <td>-16.12</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>St. Louis Rams</td>
+      <td>1416.04</td>
+      <td>32</td>
+      <td>@ New York Jets</td>
+      <td>1579.80</td>
+      <td>29</td>
+      <td>33.04%</td>
+      <td>66.72%</td>
+      <td>0.24%</td>
+      <td>18.48</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Chicago Bears</td>
+      <td>1367.04</td>
+      <td>14</td>
+      <td>@ Green Bay Packers</td>
+      <td>1583.25</td>
+      <td>31</td>
+      <td>26.73%</td>
+      <td>73.03%</td>
+      <td>0.24%</td>
+      <td>-17.65</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Arizona Cardinals</td>
+      <td>1368.20</td>
+      <td>12</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1451.92</td>
+      <td>7</td>
+      <td>43.89%</td>
+      <td>55.87%</td>
+      <td>0.24%</td>
+      <td>19.99</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Houston Texans</td>
+      <td>1505.81</td>
+      <td>14</td>
+      <td>@ Cleveland Browns</td>
+      <td>1337.55</td>
+      <td>22</td>
+      <td>76.87%</td>
+      <td>22.89%</td>
+      <td>0.24%</td>
+      <td>-34.77</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>New York Giants</td>
+      <td>1382.39</td>
+      <td>28</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1407.02</td>
+      <td>24</td>
+      <td>52.36%</td>
+      <td>47.40%</td>
+      <td>0.24%</td>
+      <td>15.17</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Tennessee Titans</td>
+      <td>1380.14</td>
+      <td>24</td>
+      <td>@ Detroit Lions</td>
+      <td>1414.23</td>
+      <td>19</td>
+      <td>51.00%</td>
+      <td>48.76%</td>
+      <td>0.24%</td>
+      <td>17.44</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Oakland Raiders</td>
+      <td>1360.27</td>
+      <td>6</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1458.30</td>
+      <td>13</td>
+      <td>41.87%</td>
+      <td>57.88%</td>
+      <td>0.24%</td>
+      <td>-17.73</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Baltimore Ravens</td>
+      <td>1563.61</td>
+      <td>30</td>
+      <td>@ Miami Dolphins</td>
+      <td>1430.29</td>
+      <td>23</td>
+      <td>73.13%</td>
+      <td>26.63%</td>
+      <td>0.24%</td>
+      <td>11.29</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Washington Redskins</td>
+      <td>1430.53</td>
+      <td>21</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1492.23</td>
+      <td>18</td>
+      <td>47.03%</td>
+      <td>52.73%</td>
+      <td>0.24%</td>
+      <td>14.61</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>San Diego Chargers</td>
+      <td>1627.64</td>
+      <td>24</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1573.89</td>
+      <td>17</td>
+      <td>63.30%</td>
+      <td>36.46%</td>
+      <td>0.24%</td>
+      <td>15.44</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1712.64</td>
+      <td>29</td>
+      <td>Buffalo Bills</td>
+      <td>1637.16</td>
+      <td>24</td>
+      <td>54.70%</td>
+      <td>45.06%</td>
+      <td>0.24%</td>
+      <td>16.13</td>
+    </tr>
+    <tr>
+      <td>2005-01-02</td>
+      <td>New Orleans Saints</td>
+      <td>1453.61</td>
+      <td>21</td>
+      <td>Carolina Panthers</td>
+      <td>1559.11</td>
+      <td>18</td>
+      <td>29.87%</td>
+      <td>69.88%</td>
+      <td>0.24%</td>
+      <td>19.36</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

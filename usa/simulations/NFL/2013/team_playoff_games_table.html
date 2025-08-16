@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Carolina Panthers">Carolina Panthers</option><option value="Cincinnati Bengals">Cincinnati Bengals</option><option value="Denver Broncos">Denver Broncos</option><option value="Green Bay Packers">Green Bay Packers</option><option value="Indianapolis Colts">Indianapolis Colts</option><option value="Kansas City Chiefs">Kansas City Chiefs</option><option value="New England Patriots">New England Patriots</option><option value="New Orleans Saints">New Orleans Saints</option><option value="Philadelphia Eagles">Philadelphia Eagles</option><option value="San Diego Chargers">San Diego Chargers</option><option value="San Francisco 49ers">San Francisco 49ers</option><option value="Seattle Seahawks">Seattle Seahawks</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2014-01-04</td>
+      <td>Indianapolis Colts</td>
+      <td>1568.59</td>
+      <td>45</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1552.77</td>
+      <td>44</td>
+      <td>62.05%</td>
+      <td>37.95%</td>
+      <td>6.56</td>
+    </tr>
+    <tr>
+      <td>2014-01-04</td>
+      <td>Philadelphia Eagles</td>
+      <td>1580.80</td>
+      <td>24</td>
+      <td>@ New Orleans Saints</td>
+      <td>1622.56</td>
+      <td>26</td>
+      <td>54.00%</td>
+      <td>46.00%</td>
+      <td>-13.19</td>
+    </tr>
+    <tr>
+      <td>2014-01-04</td>
+      <td>Kansas City Chiefs</td>
+      <td>1552.77</td>
+      <td>44</td>
+      <td>Indianapolis Colts</td>
+      <td>1568.59</td>
+      <td>45</td>
+      <td>37.95%</td>
+      <td>62.05%</td>
+      <td>-6.56</td>
+    </tr>
+    <tr>
+      <td>2014-01-04</td>
+      <td>New Orleans Saints</td>
+      <td>1622.56</td>
+      <td>26</td>
+      <td>Philadelphia Eagles</td>
+      <td>1580.80</td>
+      <td>24</td>
+      <td>46.00%</td>
+      <td>54.00%</td>
+      <td>13.20</td>
+    </tr>
+    <tr>
+      <td>2014-01-05</td>
+      <td>Green Bay Packers</td>
+      <td>1480.13</td>
+      <td>20</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1709.14</td>
+      <td>23</td>
+      <td>28.54%</td>
+      <td>71.46%</td>
+      <td>-8.54</td>
+    </tr>
+    <tr>
+      <td>2014-01-05</td>
+      <td>Cincinnati Bengals</td>
+      <td>1635.65</td>
+      <td>10</td>
+      <td>@ San Diego Chargers</td>
+      <td>1557.59</td>
+      <td>27</td>
+      <td>70.05%</td>
+      <td>29.95%</td>
+      <td>-49.91</td>
+    </tr>
+    <tr>
+      <td>2014-01-05</td>
+      <td>San Francisco 49ers</td>
+      <td>1709.14</td>
+      <td>23</td>
+      <td>Green Bay Packers</td>
+      <td>1480.13</td>
+      <td>20</td>
+      <td>71.46%</td>
+      <td>28.54%</td>
+      <td>8.55</td>
+    </tr>
+    <tr>
+      <td>2014-01-05</td>
+      <td>San Diego Chargers</td>
+      <td>1557.59</td>
+      <td>27</td>
+      <td>Cincinnati Bengals</td>
+      <td>1635.65</td>
+      <td>10</td>
+      <td>29.95%</td>
+      <td>70.05%</td>
+      <td>49.91</td>
+    </tr>
+    <tr>
+      <td>2014-01-11</td>
+      <td>New England Patriots</td>
+      <td>1689.60</td>
+      <td>43</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1575.15</td>
+      <td>22</td>
+      <td>74.26%</td>
+      <td>25.74%</td>
+      <td>20.39</td>
+    </tr>
+    <tr>
+      <td>2014-01-11</td>
+      <td>Seattle Seahawks</td>
+      <td>1724.30</td>
+      <td>23</td>
+      <td>@ New Orleans Saints</td>
+      <td>1635.76</td>
+      <td>15</td>
+      <td>71.30%</td>
+      <td>28.70%</td>
+      <td>14.03</td>
+    </tr>
+    <tr>
+      <td>2014-01-11</td>
+      <td>New Orleans Saints</td>
+      <td>1635.76</td>
+      <td>15</td>
+      <td>Seattle Seahawks</td>
+      <td>1724.30</td>
+      <td>23</td>
+      <td>28.70%</td>
+      <td>71.30%</td>
+      <td>-14.03</td>
+    </tr>
+    <tr>
+      <td>2014-01-11</td>
+      <td>Indianapolis Colts</td>
+      <td>1575.15</td>
+      <td>22</td>
+      <td>New England Patriots</td>
+      <td>1689.60</td>
+      <td>43</td>
+      <td>25.74%</td>
+      <td>74.26%</td>
+      <td>-20.39</td>
+    </tr>
+    <tr>
+      <td>2014-01-12</td>
+      <td>Carolina Panthers</td>
+      <td>1650.58</td>
+      <td>10</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1717.69</td>
+      <td>23</td>
+      <td>50.36%</td>
+      <td>49.64%</td>
+      <td>-31.38</td>
+    </tr>
+    <tr>
+      <td>2014-01-12</td>
+      <td>Denver Broncos</td>
+      <td>1700.94</td>
+      <td>24</td>
+      <td>@ San Diego Chargers</td>
+      <td>1607.50</td>
+      <td>17</td>
+      <td>71.88%</td>
+      <td>28.12%</td>
+      <td>12.85</td>
+    </tr>
+    <tr>
+      <td>2014-01-12</td>
+      <td>San Francisco 49ers</td>
+      <td>1717.69</td>
+      <td>23</td>
+      <td>Carolina Panthers</td>
+      <td>1650.58</td>
+      <td>10</td>
+      <td>49.64%</td>
+      <td>50.36%</td>
+      <td>31.37</td>
+    </tr>
+    <tr>
+      <td>2014-01-12</td>
+      <td>San Diego Chargers</td>
+      <td>1607.50</td>
+      <td>17</td>
+      <td>Denver Broncos</td>
+      <td>1700.94</td>
+      <td>24</td>
+      <td>28.12%</td>
+      <td>71.88%</td>
+      <td>-12.86</td>
+    </tr>
+    <tr>
+      <td>2014-01-19</td>
+      <td>Seattle Seahawks</td>
+      <td>1738.33</td>
+      <td>23</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1749.06</td>
+      <td>17</td>
+      <td>58.39%</td>
+      <td>41.61%</td>
+      <td>17.61</td>
+    </tr>
+    <tr>
+      <td>2014-01-19</td>
+      <td>Denver Broncos</td>
+      <td>1713.79</td>
+      <td>26</td>
+      <td>@ New England Patriots</td>
+      <td>1709.99</td>
+      <td>16</td>
+      <td>60.41%</td>
+      <td>39.59%</td>
+      <td>21.64</td>
+    </tr>
+    <tr>
+      <td>2014-01-19</td>
+      <td>San Francisco 49ers</td>
+      <td>1749.06</td>
+      <td>17</td>
+      <td>Seattle Seahawks</td>
+      <td>1738.33</td>
+      <td>23</td>
+      <td>41.61%</td>
+      <td>58.39%</td>
+      <td>-17.61</td>
+    </tr>
+    <tr>
+      <td>2014-01-19</td>
+      <td>New England Patriots</td>
+      <td>1709.99</td>
+      <td>16</td>
+      <td>Denver Broncos</td>
+      <td>1713.79</td>
+      <td>26</td>
+      <td>39.59%</td>
+      <td>60.41%</td>
+      <td>-21.64</td>
+    </tr>
+    <tr>
+      <td>2014-02-02</td>
+      <td>Denver Broncos</td>
+      <td>1735.43</td>
+      <td>8</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1755.94</td>
+      <td>43</td>
+      <td>47.05%</td>
+      <td>52.95%</td>
+      <td>-48.10</td>
+    </tr>
+    <tr>
+      <td>2014-02-02</td>
+      <td>Seattle Seahawks</td>
+      <td>1755.94</td>
+      <td>43</td>
+      <td>Denver Broncos</td>
+      <td>1735.43</td>
+      <td>8</td>
+      <td>52.95%</td>
+      <td>47.05%</td>
+      <td>48.10</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

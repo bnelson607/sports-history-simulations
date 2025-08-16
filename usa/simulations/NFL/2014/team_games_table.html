@@ -1,0 +1,6702 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Arizona Cardinals">Arizona Cardinals</option><option value="Atlanta Falcons">Atlanta Falcons</option><option value="Baltimore Ravens">Baltimore Ravens</option><option value="Buffalo Bills">Buffalo Bills</option><option value="Carolina Panthers">Carolina Panthers</option><option value="Chicago Bears">Chicago Bears</option><option value="Cincinnati Bengals">Cincinnati Bengals</option><option value="Cleveland Browns">Cleveland Browns</option><option value="Dallas Cowboys">Dallas Cowboys</option><option value="Denver Broncos">Denver Broncos</option><option value="Detroit Lions">Detroit Lions</option><option value="Green Bay Packers">Green Bay Packers</option><option value="Houston Texans">Houston Texans</option><option value="Indianapolis Colts">Indianapolis Colts</option><option value="Jacksonville Jaguars">Jacksonville Jaguars</option><option value="Kansas City Chiefs">Kansas City Chiefs</option><option value="Miami Dolphins">Miami Dolphins</option><option value="Minnesota Vikings">Minnesota Vikings</option><option value="New England Patriots">New England Patriots</option><option value="New Orleans Saints">New Orleans Saints</option><option value="New York Giants">New York Giants</option><option value="New York Jets">New York Jets</option><option value="Oakland Raiders">Oakland Raiders</option><option value="Philadelphia Eagles">Philadelphia Eagles</option><option value="Pittsburgh Steelers">Pittsburgh Steelers</option><option value="San Diego Chargers">San Diego Chargers</option><option value="San Francisco 49ers">San Francisco 49ers</option><option value="Seattle Seahawks">Seattle Seahawks</option><option value="St. Louis Rams">St. Louis Rams</option><option value="Tampa Bay Buccaneers">Tampa Bay Buccaneers</option><option value="Tennessee Titans">Tennessee Titans</option><option value="Washington Redskins">Washington Redskins</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="3" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Tie Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2014-09-04</td>
+      <td>Seattle Seahawks</td>
+      <td>1663.32</td>
+      <td>36</td>
+      <td>@ Green Bay Packers</td>
+      <td>1483.95</td>
+      <td>16</td>
+      <td>79.17%</td>
+      <td>20.37%</td>
+      <td>0.45%</td>
+      <td>16.23</td>
+    </tr>
+    <tr>
+      <td>2014-09-04</td>
+      <td>Green Bay Packers</td>
+      <td>1483.95</td>
+      <td>16</td>
+      <td>Seattle Seahawks</td>
+      <td>1663.32</td>
+      <td>36</td>
+      <td>20.37%</td>
+      <td>79.17%</td>
+      <td>0.45%</td>
+      <td>-16.23</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Washington Redskins</td>
+      <td>1408.36</td>
+      <td>6</td>
+      <td>Houston Texans</td>
+      <td>1393.70</td>
+      <td>17</td>
+      <td>43.88%</td>
+      <td>55.67%</td>
+      <td>0.45%</td>
+      <td>-25.86</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Tennessee Titans</td>
+      <td>1472.04</td>
+      <td>26</td>
+      <td>Kansas City Chiefs</td>
+      <td>1524.65</td>
+      <td>10</td>
+      <td>34.67%</td>
+      <td>64.87%</td>
+      <td>0.45%</td>
+      <td>46.05</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>New England Patriots</td>
+      <td>1592.05</td>
+      <td>20</td>
+      <td>Miami Dolphins</td>
+      <td>1478.31</td>
+      <td>33</td>
+      <td>58.02%</td>
+      <td>41.52%</td>
+      <td>0.45%</td>
+      <td>-37.14</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Oakland Raiders</td>
+      <td>1391.36</td>
+      <td>14</td>
+      <td>New York Jets</td>
+      <td>1455.88</td>
+      <td>19</td>
+      <td>33.14%</td>
+      <td>66.41%</td>
+      <td>0.45%</td>
+      <td>-13.18</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>New Orleans Saints</td>
+      <td>1564.45</td>
+      <td>34</td>
+      <td>Atlanta Falcons</td>
+      <td>1451.35</td>
+      <td>37</td>
+      <td>57.93%</td>
+      <td>41.61%</td>
+      <td>0.45%</td>
+      <td>-17.81</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Minnesota Vikings</td>
+      <td>1464.92</td>
+      <td>34</td>
+      <td>St. Louis Rams</td>
+      <td>1511.62</td>
+      <td>6</td>
+      <td>35.45%</td>
+      <td>64.10%</td>
+      <td>0.45%</td>
+      <td>60.20</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Indianapolis Colts</td>
+      <td>1526.02</td>
+      <td>24</td>
+      <td>Denver Broncos</td>
+      <td>1593.31</td>
+      <td>31</td>
+      <td>32.79%</td>
+      <td>66.76%</td>
+      <td>0.45%</td>
+      <td>-15.43</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Carolina Panthers</td>
+      <td>1562.93</td>
+      <td>20</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1441.94</td>
+      <td>14</td>
+      <td>59.03%</td>
+      <td>40.51%</td>
+      <td>0.45%</td>
+      <td>17.64</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Cincinnati Bengals</td>
+      <td>1546.11</td>
+      <td>23</td>
+      <td>Baltimore Ravens</td>
+      <td>1499.56</td>
+      <td>16</td>
+      <td>48.44%</td>
+      <td>51.11%</td>
+      <td>0.45%</td>
+      <td>24.02</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Cleveland Browns</td>
+      <td>1409.50</td>
+      <td>27</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1528.20</td>
+      <td>30</td>
+      <td>26.62%</td>
+      <td>72.92%</td>
+      <td>0.45%</td>
+      <td>-8.21</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1373.22</td>
+      <td>17</td>
+      <td>Philadelphia Eagles</td>
+      <td>1534.21</td>
+      <td>34</td>
+      <td>22.14%</td>
+      <td>77.40%</td>
+      <td>0.45%</td>
+      <td>-16.26</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>San Francisco 49ers</td>
+      <td>1621.59</td>
+      <td>28</td>
+      <td>Dallas Cowboys</td>
+      <td>1495.90</td>
+      <td>17</td>
+      <td>59.68%</td>
+      <td>39.86%</td>
+      <td>0.45%</td>
+      <td>23.51</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Buffalo Bills</td>
+      <td>1465.49</td>
+      <td>23</td>
+      <td>Chicago Bears</td>
+      <td>1482.06</td>
+      <td>20</td>
+      <td>39.51%</td>
+      <td>60.04%</td>
+      <td>0.45%</td>
+      <td>18.46</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Denver Broncos</td>
+      <td>1593.31</td>
+      <td>31</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1526.02</td>
+      <td>24</td>
+      <td>66.76%</td>
+      <td>32.79%</td>
+      <td>0.45%</td>
+      <td>15.43</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Philadelphia Eagles</td>
+      <td>1534.21</td>
+      <td>34</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1373.22</td>
+      <td>17</td>
+      <td>77.40%</td>
+      <td>22.14%</td>
+      <td>0.45%</td>
+      <td>16.25</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1528.20</td>
+      <td>30</td>
+      <td>@ Cleveland Browns</td>
+      <td>1409.50</td>
+      <td>27</td>
+      <td>72.92%</td>
+      <td>26.62%</td>
+      <td>0.45%</td>
+      <td>8.20</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Baltimore Ravens</td>
+      <td>1499.56</td>
+      <td>16</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1546.11</td>
+      <td>23</td>
+      <td>51.11%</td>
+      <td>48.44%</td>
+      <td>0.45%</td>
+      <td>-24.01</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1441.94</td>
+      <td>14</td>
+      <td>@ Carolina Panthers</td>
+      <td>1562.93</td>
+      <td>20</td>
+      <td>40.51%</td>
+      <td>59.03%</td>
+      <td>0.45%</td>
+      <td>-17.64</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>St. Louis Rams</td>
+      <td>1511.62</td>
+      <td>6</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1464.92</td>
+      <td>34</td>
+      <td>64.10%</td>
+      <td>35.45%</td>
+      <td>0.45%</td>
+      <td>-60.19</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Atlanta Falcons</td>
+      <td>1451.35</td>
+      <td>37</td>
+      <td>@ New Orleans Saints</td>
+      <td>1564.45</td>
+      <td>34</td>
+      <td>41.61%</td>
+      <td>57.93%</td>
+      <td>0.45%</td>
+      <td>17.81</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Chicago Bears</td>
+      <td>1482.06</td>
+      <td>20</td>
+      <td>@ Buffalo Bills</td>
+      <td>1465.49</td>
+      <td>23</td>
+      <td>60.04%</td>
+      <td>39.51%</td>
+      <td>0.45%</td>
+      <td>-18.46</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Dallas Cowboys</td>
+      <td>1495.90</td>
+      <td>17</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1621.59</td>
+      <td>28</td>
+      <td>39.86%</td>
+      <td>59.68%</td>
+      <td>0.45%</td>
+      <td>-23.50</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Houston Texans</td>
+      <td>1393.70</td>
+      <td>17</td>
+      <td>@ Washington Redskins</td>
+      <td>1408.36</td>
+      <td>6</td>
+      <td>55.67%</td>
+      <td>43.88%</td>
+      <td>0.45%</td>
+      <td>25.86</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Kansas City Chiefs</td>
+      <td>1524.65</td>
+      <td>10</td>
+      <td>@ Tennessee Titans</td>
+      <td>1472.04</td>
+      <td>26</td>
+      <td>64.87%</td>
+      <td>34.67%</td>
+      <td>0.45%</td>
+      <td>-46.05</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>Miami Dolphins</td>
+      <td>1478.31</td>
+      <td>33</td>
+      <td>@ New England Patriots</td>
+      <td>1592.05</td>
+      <td>20</td>
+      <td>41.52%</td>
+      <td>58.02%</td>
+      <td>0.45%</td>
+      <td>37.14</td>
+    </tr>
+    <tr>
+      <td>2014-09-07</td>
+      <td>New York Jets</td>
+      <td>1455.88</td>
+      <td>19</td>
+      <td>@ Oakland Raiders</td>
+      <td>1391.36</td>
+      <td>14</td>
+      <td>66.41%</td>
+      <td>33.14%</td>
+      <td>0.45%</td>
+      <td>13.18</td>
+    </tr>
+    <tr>
+      <td>2014-09-08</td>
+      <td>San Diego Chargers</td>
+      <td>1550.49</td>
+      <td>17</td>
+      <td>Arizona Cardinals</td>
+      <td>1550.29</td>
+      <td>18</td>
+      <td>41.84%</td>
+      <td>57.71%</td>
+      <td>0.45%</td>
+      <td>-7.44</td>
+    </tr>
+    <tr>
+      <td>2014-09-08</td>
+      <td>New York Giants</td>
+      <td>1479.57</td>
+      <td>14</td>
+      <td>Detroit Lions</td>
+      <td>1483.67</td>
+      <td>35</td>
+      <td>41.24%</td>
+      <td>58.31%</td>
+      <td>0.45%</td>
+      <td>-33.59</td>
+    </tr>
+    <tr>
+      <td>2014-09-08</td>
+      <td>Arizona Cardinals</td>
+      <td>1550.29</td>
+      <td>18</td>
+      <td>@ San Diego Chargers</td>
+      <td>1550.49</td>
+      <td>17</td>
+      <td>57.71%</td>
+      <td>41.84%</td>
+      <td>0.45%</td>
+      <td>7.43</td>
+    </tr>
+    <tr>
+      <td>2014-09-08</td>
+      <td>Detroit Lions</td>
+      <td>1483.67</td>
+      <td>35</td>
+      <td>@ New York Giants</td>
+      <td>1479.57</td>
+      <td>14</td>
+      <td>58.31%</td>
+      <td>41.24%</td>
+      <td>0.45%</td>
+      <td>33.59</td>
+    </tr>
+    <tr>
+      <td>2014-09-11</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1536.40</td>
+      <td>6</td>
+      <td>Baltimore Ravens</td>
+      <td>1475.55</td>
+      <td>26</td>
+      <td>50.49%</td>
+      <td>49.05%</td>
+      <td>0.45%</td>
+      <td>-40.10</td>
+    </tr>
+    <tr>
+      <td>2014-09-11</td>
+      <td>Baltimore Ravens</td>
+      <td>1475.55</td>
+      <td>26</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1536.40</td>
+      <td>6</td>
+      <td>49.05%</td>
+      <td>50.49%</td>
+      <td>0.45%</td>
+      <td>40.10</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Detroit Lions</td>
+      <td>1517.26</td>
+      <td>7</td>
+      <td>Carolina Panthers</td>
+      <td>1580.57</td>
+      <td>24</td>
+      <td>33.29%</td>
+      <td>66.25%</td>
+      <td>0.45%</td>
+      <td>-24.42</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Atlanta Falcons</td>
+      <td>1469.16</td>
+      <td>10</td>
+      <td>Cincinnati Bengals</td>
+      <td>1570.13</td>
+      <td>24</td>
+      <td>28.66%</td>
+      <td>70.88%</td>
+      <td>0.45%</td>
+      <td>-19.08</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Oakland Raiders</td>
+      <td>1378.18</td>
+      <td>14</td>
+      <td>@ Houston Texans</td>
+      <td>1419.56</td>
+      <td>30</td>
+      <td>51.85%</td>
+      <td>47.69%</td>
+      <td>0.45%</td>
+      <td>-36.83</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1424.30</td>
+      <td>17</td>
+      <td>@ St. Louis Rams</td>
+      <td>1451.43</td>
+      <td>19</td>
+      <td>53.89%</td>
+      <td>45.65%</td>
+      <td>0.45%</td>
+      <td>-13.54</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Tennessee Titans</td>
+      <td>1518.09</td>
+      <td>10</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1472.40</td>
+      <td>26</td>
+      <td>63.96%</td>
+      <td>35.58%</td>
+      <td>0.45%</td>
+      <td>-45.41</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>San Diego Chargers</td>
+      <td>1543.05</td>
+      <td>30</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1679.55</td>
+      <td>21</td>
+      <td>38.38%</td>
+      <td>61.16%</td>
+      <td>0.45%</td>
+      <td>32.57</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>New York Giants</td>
+      <td>1445.98</td>
+      <td>14</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1557.72</td>
+      <td>25</td>
+      <td>41.80%</td>
+      <td>57.74%</td>
+      <td>0.45%</td>
+      <td>-24.64</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Minnesota Vikings</td>
+      <td>1525.12</td>
+      <td>7</td>
+      <td>@ New England Patriots</td>
+      <td>1554.91</td>
+      <td>30</td>
+      <td>53.51%</td>
+      <td>46.03%</td>
+      <td>0.45%</td>
+      <td>-45.57</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Green Bay Packers</td>
+      <td>1467.72</td>
+      <td>31</td>
+      <td>@ New York Jets</td>
+      <td>1469.06</td>
+      <td>24</td>
+      <td>57.55%</td>
+      <td>42.00%</td>
+      <td>0.45%</td>
+      <td>19.75</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>San Francisco 49ers</td>
+      <td>1645.10</td>
+      <td>20</td>
+      <td>@ Chicago Bears</td>
+      <td>1463.60</td>
+      <td>28</td>
+      <td>79.37%</td>
+      <td>20.18%</td>
+      <td>0.45%</td>
+      <td>-39.85</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1356.96</td>
+      <td>10</td>
+      <td>Washington Redskins</td>
+      <td>1382.50</td>
+      <td>41</td>
+      <td>38.28%</td>
+      <td>61.26%</td>
+      <td>0.45%</td>
+      <td>-37.90</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>New Orleans Saints</td>
+      <td>1546.64</td>
+      <td>24</td>
+      <td>Cleveland Browns</td>
+      <td>1401.29</td>
+      <td>26</td>
+      <td>62.36%</td>
+      <td>37.18%</td>
+      <td>0.45%</td>
+      <td>-15.66</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Kansas City Chiefs</td>
+      <td>1478.60</td>
+      <td>17</td>
+      <td>Denver Broncos</td>
+      <td>1608.74</td>
+      <td>24</td>
+      <td>25.36%</td>
+      <td>74.19%</td>
+      <td>0.45%</td>
+      <td>-11.95</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>New York Jets</td>
+      <td>1469.06</td>
+      <td>24</td>
+      <td>Green Bay Packers</td>
+      <td>1467.72</td>
+      <td>31</td>
+      <td>42.00%</td>
+      <td>57.55%</td>
+      <td>0.45%</td>
+      <td>-19.75</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>New England Patriots</td>
+      <td>1554.91</td>
+      <td>30</td>
+      <td>Minnesota Vikings</td>
+      <td>1525.12</td>
+      <td>7</td>
+      <td>46.03%</td>
+      <td>53.51%</td>
+      <td>0.45%</td>
+      <td>45.57</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Chicago Bears</td>
+      <td>1463.60</td>
+      <td>28</td>
+      <td>San Francisco 49ers</td>
+      <td>1645.10</td>
+      <td>20</td>
+      <td>20.18%</td>
+      <td>79.37%</td>
+      <td>0.45%</td>
+      <td>39.85</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Arizona Cardinals</td>
+      <td>1557.72</td>
+      <td>25</td>
+      <td>New York Giants</td>
+      <td>1445.98</td>
+      <td>14</td>
+      <td>57.74%</td>
+      <td>41.80%</td>
+      <td>0.45%</td>
+      <td>24.65</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Seattle Seahawks</td>
+      <td>1679.55</td>
+      <td>21</td>
+      <td>San Diego Chargers</td>
+      <td>1543.05</td>
+      <td>30</td>
+      <td>61.16%</td>
+      <td>38.38%</td>
+      <td>0.45%</td>
+      <td>-32.57</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Dallas Cowboys</td>
+      <td>1472.40</td>
+      <td>26</td>
+      <td>Tennessee Titans</td>
+      <td>1518.09</td>
+      <td>10</td>
+      <td>35.58%</td>
+      <td>63.96%</td>
+      <td>0.45%</td>
+      <td>45.41</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>St. Louis Rams</td>
+      <td>1451.43</td>
+      <td>19</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1424.30</td>
+      <td>17</td>
+      <td>45.65%</td>
+      <td>53.89%</td>
+      <td>0.45%</td>
+      <td>13.53</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Miami Dolphins</td>
+      <td>1515.45</td>
+      <td>10</td>
+      <td>Buffalo Bills</td>
+      <td>1483.95</td>
+      <td>29</td>
+      <td>46.28%</td>
+      <td>53.27%</td>
+      <td>0.45%</td>
+      <td>-35.84</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Denver Broncos</td>
+      <td>1608.74</td>
+      <td>24</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1478.60</td>
+      <td>17</td>
+      <td>74.19%</td>
+      <td>25.36%</td>
+      <td>0.45%</td>
+      <td>11.94</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Houston Texans</td>
+      <td>1419.56</td>
+      <td>30</td>
+      <td>Oakland Raiders</td>
+      <td>1378.18</td>
+      <td>14</td>
+      <td>47.69%</td>
+      <td>51.85%</td>
+      <td>0.45%</td>
+      <td>36.83</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Washington Redskins</td>
+      <td>1382.50</td>
+      <td>41</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1356.96</td>
+      <td>10</td>
+      <td>61.26%</td>
+      <td>38.28%</td>
+      <td>0.45%</td>
+      <td>37.90</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Cincinnati Bengals</td>
+      <td>1570.13</td>
+      <td>24</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1469.16</td>
+      <td>10</td>
+      <td>70.88%</td>
+      <td>28.66%</td>
+      <td>0.45%</td>
+      <td>19.08</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Carolina Panthers</td>
+      <td>1580.57</td>
+      <td>24</td>
+      <td>@ Detroit Lions</td>
+      <td>1517.26</td>
+      <td>7</td>
+      <td>66.25%</td>
+      <td>33.29%</td>
+      <td>0.45%</td>
+      <td>24.42</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Buffalo Bills</td>
+      <td>1483.95</td>
+      <td>29</td>
+      <td>@ Miami Dolphins</td>
+      <td>1515.45</td>
+      <td>10</td>
+      <td>53.27%</td>
+      <td>46.28%</td>
+      <td>0.45%</td>
+      <td>35.83</td>
+    </tr>
+    <tr>
+      <td>2014-09-14</td>
+      <td>Cleveland Browns</td>
+      <td>1401.29</td>
+      <td>26</td>
+      <td>@ New Orleans Saints</td>
+      <td>1546.64</td>
+      <td>24</td>
+      <td>37.18%</td>
+      <td>62.36%</td>
+      <td>0.45%</td>
+      <td>15.65</td>
+    </tr>
+    <tr>
+      <td>2014-09-15</td>
+      <td>Indianapolis Colts</td>
+      <td>1510.59</td>
+      <td>27</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1550.46</td>
+      <td>30</td>
+      <td>52.07%</td>
+      <td>47.48%</td>
+      <td>0.45%</td>
+      <td>-16.02</td>
+    </tr>
+    <tr>
+      <td>2014-09-15</td>
+      <td>Philadelphia Eagles</td>
+      <td>1550.46</td>
+      <td>30</td>
+      <td>Indianapolis Colts</td>
+      <td>1510.59</td>
+      <td>27</td>
+      <td>47.48%</td>
+      <td>52.07%</td>
+      <td>0.45%</td>
+      <td>16.02</td>
+    </tr>
+    <tr>
+      <td>2014-09-18</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1410.76</td>
+      <td>14</td>
+      <td>Atlanta Falcons</td>
+      <td>1450.08</td>
+      <td>56</td>
+      <td>36.43%</td>
+      <td>63.12%</td>
+      <td>0.45%</td>
+      <td>-41.98</td>
+    </tr>
+    <tr>
+      <td>2014-09-18</td>
+      <td>Atlanta Falcons</td>
+      <td>1450.08</td>
+      <td>56</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1410.76</td>
+      <td>14</td>
+      <td>63.12%</td>
+      <td>36.43%</td>
+      <td>0.45%</td>
+      <td>41.98</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Philadelphia Eagles</td>
+      <td>1566.48</td>
+      <td>37</td>
+      <td>@ Washington Redskins</td>
+      <td>1420.40</td>
+      <td>34</td>
+      <td>75.89%</td>
+      <td>23.66%</td>
+      <td>0.45%</td>
+      <td>7.29</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Kansas City Chiefs</td>
+      <td>1466.65</td>
+      <td>34</td>
+      <td>Miami Dolphins</td>
+      <td>1479.61</td>
+      <td>15</td>
+      <td>40.01%</td>
+      <td>59.54%</td>
+      <td>0.45%</td>
+      <td>46.07</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1496.30</td>
+      <td>37</td>
+      <td>Carolina Panthers</td>
+      <td>1604.99</td>
+      <td>19</td>
+      <td>27.76%</td>
+      <td>71.78%</td>
+      <td>0.45%</td>
+      <td>54.05</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Tennessee Titans</td>
+      <td>1472.68</td>
+      <td>7</td>
+      <td>Cincinnati Bengals</td>
+      <td>1589.21</td>
+      <td>33</td>
+      <td>26.87%</td>
+      <td>72.68%</td>
+      <td>0.45%</td>
+      <td>-24.38</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Baltimore Ravens</td>
+      <td>1515.65</td>
+      <td>23</td>
+      <td>Cleveland Browns</td>
+      <td>1416.94</td>
+      <td>21</td>
+      <td>55.91%</td>
+      <td>43.64%</td>
+      <td>0.45%</td>
+      <td>10.97</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>San Francisco 49ers</td>
+      <td>1605.25</td>
+      <td>14</td>
+      <td>Arizona Cardinals</td>
+      <td>1582.37</td>
+      <td>23</td>
+      <td>45.05%</td>
+      <td>54.50%</td>
+      <td>0.45%</td>
+      <td>-24.01</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Green Bay Packers</td>
+      <td>1487.47</td>
+      <td>7</td>
+      <td>Detroit Lions</td>
+      <td>1492.84</td>
+      <td>19</td>
+      <td>41.06%</td>
+      <td>58.48%</td>
+      <td>0.45%</td>
+      <td>-25.28</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Dallas Cowboys</td>
+      <td>1517.81</td>
+      <td>34</td>
+      <td>St. Louis Rams</td>
+      <td>1464.96</td>
+      <td>31</td>
+      <td>49.34%</td>
+      <td>50.20%</td>
+      <td>0.45%</td>
+      <td>15.44</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Indianapolis Colts</td>
+      <td>1494.57</td>
+      <td>44</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1319.06</td>
+      <td>17</td>
+      <td>66.32%</td>
+      <td>33.23%</td>
+      <td>0.45%</td>
+      <td>30.71</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Minnesota Vikings</td>
+      <td>1479.55</td>
+      <td>9</td>
+      <td>New Orleans Saints</td>
+      <td>1530.98</td>
+      <td>20</td>
+      <td>34.83%</td>
+      <td>64.72%</td>
+      <td>0.45%</td>
+      <td>-20.54</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Oakland Raiders</td>
+      <td>1341.35</td>
+      <td>9</td>
+      <td>New England Patriots</td>
+      <td>1600.48</td>
+      <td>16</td>
+      <td>13.92%</td>
+      <td>85.63%</td>
+      <td>0.45%</td>
+      <td>-6.56</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Houston Texans</td>
+      <td>1456.39</td>
+      <td>17</td>
+      <td>New York Giants</td>
+      <td>1421.34</td>
+      <td>30</td>
+      <td>46.79%</td>
+      <td>52.76%</td>
+      <td>0.45%</td>
+      <td>-29.97</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Washington Redskins</td>
+      <td>1420.40</td>
+      <td>34</td>
+      <td>Philadelphia Eagles</td>
+      <td>1566.48</td>
+      <td>37</td>
+      <td>23.66%</td>
+      <td>75.89%</td>
+      <td>0.45%</td>
+      <td>-7.30</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Denver Broncos</td>
+      <td>1620.68</td>
+      <td>20</td>
+      <td>Seattle Seahawks</td>
+      <td>1646.98</td>
+      <td>26</td>
+      <td>38.18%</td>
+      <td>61.37%</td>
+      <td>0.45%</td>
+      <td>-16.63</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Seattle Seahawks</td>
+      <td>1646.98</td>
+      <td>26</td>
+      <td>@ Denver Broncos</td>
+      <td>1620.68</td>
+      <td>20</td>
+      <td>61.37%</td>
+      <td>38.18%</td>
+      <td>0.45%</td>
+      <td>16.63</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>San Diego Chargers</td>
+      <td>1575.62</td>
+      <td>22</td>
+      <td>Buffalo Bills</td>
+      <td>1519.78</td>
+      <td>10</td>
+      <td>49.77%</td>
+      <td>49.77%</td>
+      <td>0.45%</td>
+      <td>30.62</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Miami Dolphins</td>
+      <td>1479.61</td>
+      <td>15</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1466.65</td>
+      <td>34</td>
+      <td>59.54%</td>
+      <td>40.01%</td>
+      <td>0.45%</td>
+      <td>-46.06</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Cincinnati Bengals</td>
+      <td>1589.21</td>
+      <td>33</td>
+      <td>@ Tennessee Titans</td>
+      <td>1472.68</td>
+      <td>7</td>
+      <td>72.68%</td>
+      <td>26.87%</td>
+      <td>0.45%</td>
+      <td>24.38</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Buffalo Bills</td>
+      <td>1519.78</td>
+      <td>10</td>
+      <td>@ San Diego Chargers</td>
+      <td>1575.62</td>
+      <td>22</td>
+      <td>49.77%</td>
+      <td>49.77%</td>
+      <td>0.45%</td>
+      <td>-30.62</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Cleveland Browns</td>
+      <td>1416.94</td>
+      <td>21</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1515.65</td>
+      <td>23</td>
+      <td>43.64%</td>
+      <td>55.91%</td>
+      <td>0.45%</td>
+      <td>-10.96</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Arizona Cardinals</td>
+      <td>1582.37</td>
+      <td>23</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1605.25</td>
+      <td>14</td>
+      <td>54.50%</td>
+      <td>45.05%</td>
+      <td>0.45%</td>
+      <td>24.01</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Detroit Lions</td>
+      <td>1492.84</td>
+      <td>19</td>
+      <td>@ Green Bay Packers</td>
+      <td>1487.47</td>
+      <td>7</td>
+      <td>58.48%</td>
+      <td>41.06%</td>
+      <td>0.45%</td>
+      <td>25.29</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>St. Louis Rams</td>
+      <td>1464.96</td>
+      <td>31</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1517.81</td>
+      <td>34</td>
+      <td>50.20%</td>
+      <td>49.34%</td>
+      <td>0.45%</td>
+      <td>-15.45</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1319.06</td>
+      <td>17</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1494.57</td>
+      <td>44</td>
+      <td>33.23%</td>
+      <td>66.32%</td>
+      <td>0.45%</td>
+      <td>-30.71</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>New Orleans Saints</td>
+      <td>1530.98</td>
+      <td>20</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1479.55</td>
+      <td>9</td>
+      <td>64.72%</td>
+      <td>34.83%</td>
+      <td>0.45%</td>
+      <td>20.55</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>New England Patriots</td>
+      <td>1600.48</td>
+      <td>16</td>
+      <td>@ Oakland Raiders</td>
+      <td>1341.35</td>
+      <td>9</td>
+      <td>85.63%</td>
+      <td>13.92%</td>
+      <td>0.45%</td>
+      <td>6.56</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>New York Giants</td>
+      <td>1421.34</td>
+      <td>30</td>
+      <td>@ Houston Texans</td>
+      <td>1456.39</td>
+      <td>17</td>
+      <td>52.76%</td>
+      <td>46.79%</td>
+      <td>0.45%</td>
+      <td>29.97</td>
+    </tr>
+    <tr>
+      <td>2014-09-21</td>
+      <td>Carolina Panthers</td>
+      <td>1604.99</td>
+      <td>19</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1496.30</td>
+      <td>37</td>
+      <td>71.78%</td>
+      <td>27.76%</td>
+      <td>0.45%</td>
+      <td>-54.05</td>
+    </tr>
+    <tr>
+      <td>2014-09-22</td>
+      <td>New York Jets</td>
+      <td>1449.31</td>
+      <td>19</td>
+      <td>@ Chicago Bears</td>
+      <td>1503.45</td>
+      <td>27</td>
+      <td>50.02%</td>
+      <td>49.53%</td>
+      <td>0.45%</td>
+      <td>-25.13</td>
+    </tr>
+    <tr>
+      <td>2014-09-22</td>
+      <td>Chicago Bears</td>
+      <td>1503.45</td>
+      <td>27</td>
+      <td>New York Jets</td>
+      <td>1449.31</td>
+      <td>19</td>
+      <td>49.53%</td>
+      <td>50.02%</td>
+      <td>0.45%</td>
+      <td>25.12</td>
+    </tr>
+    <tr>
+      <td>2014-09-25</td>
+      <td>New York Giants</td>
+      <td>1451.31</td>
+      <td>45</td>
+      <td>Washington Redskins</td>
+      <td>1413.10</td>
+      <td>14</td>
+      <td>47.24%</td>
+      <td>52.31%</td>
+      <td>0.45%</td>
+      <td>51.71</td>
+    </tr>
+    <tr>
+      <td>2014-09-25</td>
+      <td>Washington Redskins</td>
+      <td>1413.10</td>
+      <td>14</td>
+      <td>@ New York Giants</td>
+      <td>1451.31</td>
+      <td>45</td>
+      <td>52.31%</td>
+      <td>47.24%</td>
+      <td>0.45%</td>
+      <td>-51.71</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>New Orleans Saints</td>
+      <td>1551.53</td>
+      <td>17</td>
+      <td>Dallas Cowboys</td>
+      <td>1533.25</td>
+      <td>38</td>
+      <td>44.39%</td>
+      <td>55.16%</td>
+      <td>0.45%</td>
+      <td>-36.15</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Philadelphia Eagles</td>
+      <td>1573.77</td>
+      <td>21</td>
+      <td>San Francisco 49ers</td>
+      <td>1581.24</td>
+      <td>26</td>
+      <td>40.77%</td>
+      <td>58.78%</td>
+      <td>0.45%</td>
+      <td>-16.20</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Indianapolis Colts</td>
+      <td>1525.28</td>
+      <td>41</td>
+      <td>@ Tennessee Titans</td>
+      <td>1448.30</td>
+      <td>17</td>
+      <td>67.98%</td>
+      <td>31.57%</td>
+      <td>0.45%</td>
+      <td>27.52</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>San Francisco 49ers</td>
+      <td>1581.24</td>
+      <td>26</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1573.77</td>
+      <td>21</td>
+      <td>58.78%</td>
+      <td>40.77%</td>
+      <td>0.45%</td>
+      <td>16.20</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>New York Jets</td>
+      <td>1424.18</td>
+      <td>17</td>
+      <td>@ Detroit Lions</td>
+      <td>1518.13</td>
+      <td>24</td>
+      <td>44.31%</td>
+      <td>55.23%</td>
+      <td>0.45%</td>
+      <td>-20.83</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Dallas Cowboys</td>
+      <td>1533.25</td>
+      <td>38</td>
+      <td>@ New Orleans Saints</td>
+      <td>1551.53</td>
+      <td>17</td>
+      <td>55.16%</td>
+      <td>44.39%</td>
+      <td>0.45%</td>
+      <td>36.15</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Minnesota Vikings</td>
+      <td>1459.01</td>
+      <td>41</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1492.06</td>
+      <td>28</td>
+      <td>53.05%</td>
+      <td>46.50%</td>
+      <td>0.45%</td>
+      <td>29.78</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Baltimore Ravens</td>
+      <td>1526.62</td>
+      <td>38</td>
+      <td>@ Carolina Panthers</td>
+      <td>1550.94</td>
+      <td>10</td>
+      <td>54.29%</td>
+      <td>45.25%</td>
+      <td>0.45%</td>
+      <td>42.55</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Chicago Bears</td>
+      <td>1528.57</td>
+      <td>17</td>
+      <td>@ Green Bay Packers</td>
+      <td>1462.19</td>
+      <td>38</td>
+      <td>66.64%</td>
+      <td>32.90%</td>
+      <td>0.45%</td>
+      <td>-54.20</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Miami Dolphins</td>
+      <td>1433.55</td>
+      <td>38</td>
+      <td>@ Oakland Raiders</td>
+      <td>1334.79</td>
+      <td>14</td>
+      <td>63.60%</td>
+      <td>35.95%</td>
+      <td>0.45%</td>
+      <td>31.31</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Tennessee Titans</td>
+      <td>1448.30</td>
+      <td>17</td>
+      <td>Indianapolis Colts</td>
+      <td>1525.28</td>
+      <td>41</td>
+      <td>31.57%</td>
+      <td>67.98%</td>
+      <td>0.45%</td>
+      <td>-27.51</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>San Diego Chargers</td>
+      <td>1606.24</td>
+      <td>33</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1288.35</td>
+      <td>14</td>
+      <td>89.21%</td>
+      <td>10.34%</td>
+      <td>0.45%</td>
+      <td>8.03</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1368.78</td>
+      <td>27</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1550.35</td>
+      <td>24</td>
+      <td>20.17%</td>
+      <td>79.38%</td>
+      <td>0.45%</td>
+      <td>24.40</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Buffalo Bills</td>
+      <td>1489.16</td>
+      <td>17</td>
+      <td>Houston Texans</td>
+      <td>1426.42</td>
+      <td>23</td>
+      <td>50.76%</td>
+      <td>48.78%</td>
+      <td>0.45%</td>
+      <td>-22.08</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1288.35</td>
+      <td>14</td>
+      <td>San Diego Chargers</td>
+      <td>1606.24</td>
+      <td>33</td>
+      <td>10.34%</td>
+      <td>89.21%</td>
+      <td>0.45%</td>
+      <td>-8.03</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Oakland Raiders</td>
+      <td>1334.79</td>
+      <td>14</td>
+      <td>Miami Dolphins</td>
+      <td>1433.55</td>
+      <td>38</td>
+      <td>35.95%</td>
+      <td>63.60%</td>
+      <td>0.45%</td>
+      <td>-31.32</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Green Bay Packers</td>
+      <td>1462.19</td>
+      <td>38</td>
+      <td>Chicago Bears</td>
+      <td>1528.57</td>
+      <td>17</td>
+      <td>32.90%</td>
+      <td>66.64%</td>
+      <td>0.45%</td>
+      <td>54.20</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Carolina Panthers</td>
+      <td>1550.94</td>
+      <td>10</td>
+      <td>Baltimore Ravens</td>
+      <td>1526.62</td>
+      <td>38</td>
+      <td>45.25%</td>
+      <td>54.29%</td>
+      <td>0.45%</td>
+      <td>-42.54</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Atlanta Falcons</td>
+      <td>1492.06</td>
+      <td>28</td>
+      <td>Minnesota Vikings</td>
+      <td>1459.01</td>
+      <td>41</td>
+      <td>46.50%</td>
+      <td>53.05%</td>
+      <td>0.45%</td>
+      <td>-29.79</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Detroit Lions</td>
+      <td>1518.13</td>
+      <td>24</td>
+      <td>New York Jets</td>
+      <td>1424.18</td>
+      <td>17</td>
+      <td>55.23%</td>
+      <td>44.31%</td>
+      <td>0.45%</td>
+      <td>20.83</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Houston Texans</td>
+      <td>1426.42</td>
+      <td>23</td>
+      <td>@ Buffalo Bills</td>
+      <td>1489.16</td>
+      <td>17</td>
+      <td>48.78%</td>
+      <td>50.76%</td>
+      <td>0.45%</td>
+      <td>22.09</td>
+    </tr>
+    <tr>
+      <td>2014-09-28</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1550.35</td>
+      <td>24</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1368.78</td>
+      <td>27</td>
+      <td>79.38%</td>
+      <td>20.17%</td>
+      <td>0.45%</td>
+      <td>-24.41</td>
+    </tr>
+    <tr>
+      <td>2014-09-29</td>
+      <td>New England Patriots</td>
+      <td>1607.04</td>
+      <td>14</td>
+      <td>Kansas City Chiefs</td>
+      <td>1512.72</td>
+      <td>41</td>
+      <td>55.29%</td>
+      <td>44.26%</td>
+      <td>0.45%</td>
+      <td>-51.00</td>
+    </tr>
+    <tr>
+      <td>2014-09-29</td>
+      <td>Kansas City Chiefs</td>
+      <td>1512.72</td>
+      <td>41</td>
+      <td>@ New England Patriots</td>
+      <td>1607.04</td>
+      <td>14</td>
+      <td>44.26%</td>
+      <td>55.29%</td>
+      <td>0.45%</td>
+      <td>51.00</td>
+    </tr>
+    <tr>
+      <td>2014-10-02</td>
+      <td>Minnesota Vikings</td>
+      <td>1488.79</td>
+      <td>10</td>
+      <td>Green Bay Packers</td>
+      <td>1516.39</td>
+      <td>42</td>
+      <td>38.00%</td>
+      <td>61.54%</td>
+      <td>0.45%</td>
+      <td>-38.22</td>
+    </tr>
+    <tr>
+      <td>2014-10-02</td>
+      <td>Green Bay Packers</td>
+      <td>1516.39</td>
+      <td>42</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1488.79</td>
+      <td>10</td>
+      <td>61.54%</td>
+      <td>38.00%</td>
+      <td>0.45%</td>
+      <td>38.22</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Kansas City Chiefs</td>
+      <td>1563.72</td>
+      <td>17</td>
+      <td>San Francisco 49ers</td>
+      <td>1597.44</td>
+      <td>22</td>
+      <td>37.18%</td>
+      <td>62.37%</td>
+      <td>0.45%</td>
+      <td>-14.78</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>New York Jets</td>
+      <td>1403.35</td>
+      <td>0</td>
+      <td>San Diego Chargers</td>
+      <td>1614.27</td>
+      <td>31</td>
+      <td>17.58%</td>
+      <td>81.96%</td>
+      <td>0.45%</td>
+      <td>-17.44</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1525.94</td>
+      <td>17</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1280.32</td>
+      <td>9</td>
+      <td>74.60%</td>
+      <td>24.94%</td>
+      <td>0.45%</td>
+      <td>12.56</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>St. Louis Rams</td>
+      <td>1449.51</td>
+      <td>28</td>
+      <td>Philadelphia Eagles</td>
+      <td>1557.57</td>
+      <td>34</td>
+      <td>27.84%</td>
+      <td>71.71%</td>
+      <td>0.45%</td>
+      <td>-12.13</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Cincinnati Bengals</td>
+      <td>1613.59</td>
+      <td>17</td>
+      <td>New England Patriots</td>
+      <td>1556.04</td>
+      <td>43</td>
+      <td>50.02%</td>
+      <td>49.53%</td>
+      <td>0.45%</td>
+      <td>-45.29</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1393.18</td>
+      <td>31</td>
+      <td>New Orleans Saints</td>
+      <td>1515.38</td>
+      <td>37</td>
+      <td>26.23%</td>
+      <td>73.31%</td>
+      <td>0.45%</td>
+      <td>-11.43</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Buffalo Bills</td>
+      <td>1467.08</td>
+      <td>17</td>
+      <td>Detroit Lions</td>
+      <td>1538.96</td>
+      <td>14</td>
+      <td>32.21%</td>
+      <td>67.34%</td>
+      <td>0.45%</td>
+      <td>20.70</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Arizona Cardinals</td>
+      <td>1606.38</td>
+      <td>20</td>
+      <td>Denver Broncos</td>
+      <td>1604.05</td>
+      <td>41</td>
+      <td>42.14%</td>
+      <td>57.41%</td>
+      <td>0.45%</td>
+      <td>-34.32</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Houston Texans</td>
+      <td>1448.51</td>
+      <td>17</td>
+      <td>Dallas Cowboys</td>
+      <td>1569.40</td>
+      <td>20</td>
+      <td>26.38%</td>
+      <td>73.17%</td>
+      <td>0.45%</td>
+      <td>-8.13</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Baltimore Ravens</td>
+      <td>1569.17</td>
+      <td>13</td>
+      <td>Indianapolis Colts</td>
+      <td>1552.80</td>
+      <td>20</td>
+      <td>44.12%</td>
+      <td>55.43%</td>
+      <td>0.45%</td>
+      <td>-20.75</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Chicago Bears</td>
+      <td>1474.37</td>
+      <td>24</td>
+      <td>Carolina Panthers</td>
+      <td>1508.40</td>
+      <td>31</td>
+      <td>37.14%</td>
+      <td>62.41%</td>
+      <td>0.45%</td>
+      <td>-17.47</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Cleveland Browns</td>
+      <td>1405.98</td>
+      <td>29</td>
+      <td>Tennessee Titans</td>
+      <td>1420.79</td>
+      <td>28</td>
+      <td>39.75%</td>
+      <td>59.79%</td>
+      <td>0.45%</td>
+      <td>10.61</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Atlanta Falcons</td>
+      <td>1462.27</td>
+      <td>20</td>
+      <td>New York Giants</td>
+      <td>1503.02</td>
+      <td>30</td>
+      <td>36.24%</td>
+      <td>63.31%</td>
+      <td>0.45%</td>
+      <td>-20.38</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Denver Broncos</td>
+      <td>1604.05</td>
+      <td>41</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1606.38</td>
+      <td>20</td>
+      <td>57.41%</td>
+      <td>42.14%</td>
+      <td>0.45%</td>
+      <td>34.32</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>San Francisco 49ers</td>
+      <td>1597.44</td>
+      <td>22</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1563.72</td>
+      <td>17</td>
+      <td>62.37%</td>
+      <td>37.18%</td>
+      <td>0.45%</td>
+      <td>14.79</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>San Diego Chargers</td>
+      <td>1614.27</td>
+      <td>31</td>
+      <td>@ New York Jets</td>
+      <td>1403.35</td>
+      <td>0</td>
+      <td>81.96%</td>
+      <td>17.58%</td>
+      <td>0.45%</td>
+      <td>17.44</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1280.32</td>
+      <td>9</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1525.94</td>
+      <td>17</td>
+      <td>24.94%</td>
+      <td>74.60%</td>
+      <td>0.45%</td>
+      <td>-12.56</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Philadelphia Eagles</td>
+      <td>1557.57</td>
+      <td>34</td>
+      <td>@ St. Louis Rams</td>
+      <td>1449.51</td>
+      <td>28</td>
+      <td>71.71%</td>
+      <td>27.84%</td>
+      <td>0.45%</td>
+      <td>12.13</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Tennessee Titans</td>
+      <td>1420.79</td>
+      <td>28</td>
+      <td>@ Cleveland Browns</td>
+      <td>1405.98</td>
+      <td>29</td>
+      <td>59.79%</td>
+      <td>39.75%</td>
+      <td>0.45%</td>
+      <td>-10.62</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>New York Giants</td>
+      <td>1503.02</td>
+      <td>30</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1462.27</td>
+      <td>20</td>
+      <td>63.31%</td>
+      <td>36.24%</td>
+      <td>0.45%</td>
+      <td>20.38</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>New England Patriots</td>
+      <td>1556.04</td>
+      <td>43</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1613.59</td>
+      <td>17</td>
+      <td>49.53%</td>
+      <td>50.02%</td>
+      <td>0.45%</td>
+      <td>45.30</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>New Orleans Saints</td>
+      <td>1515.38</td>
+      <td>37</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1393.18</td>
+      <td>31</td>
+      <td>73.31%</td>
+      <td>26.23%</td>
+      <td>0.45%</td>
+      <td>11.44</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Detroit Lions</td>
+      <td>1538.96</td>
+      <td>14</td>
+      <td>@ Buffalo Bills</td>
+      <td>1467.08</td>
+      <td>17</td>
+      <td>67.34%</td>
+      <td>32.21%</td>
+      <td>0.45%</td>
+      <td>-20.70</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Dallas Cowboys</td>
+      <td>1569.40</td>
+      <td>20</td>
+      <td>@ Houston Texans</td>
+      <td>1448.51</td>
+      <td>17</td>
+      <td>73.17%</td>
+      <td>26.38%</td>
+      <td>0.45%</td>
+      <td>8.13</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Indianapolis Colts</td>
+      <td>1552.80</td>
+      <td>20</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1569.17</td>
+      <td>13</td>
+      <td>55.43%</td>
+      <td>44.12%</td>
+      <td>0.45%</td>
+      <td>20.74</td>
+    </tr>
+    <tr>
+      <td>2014-10-05</td>
+      <td>Carolina Panthers</td>
+      <td>1508.40</td>
+      <td>31</td>
+      <td>@ Chicago Bears</td>
+      <td>1474.37</td>
+      <td>24</td>
+      <td>62.41%</td>
+      <td>37.14%</td>
+      <td>0.45%</td>
+      <td>17.47</td>
+    </tr>
+    <tr>
+      <td>2014-10-06</td>
+      <td>Seattle Seahawks</td>
+      <td>1663.61</td>
+      <td>27</td>
+      <td>Washington Redskins</td>
+      <td>1361.39</td>
+      <td>17</td>
+      <td>80.20%</td>
+      <td>19.35%</td>
+      <td>0.45%</td>
+      <td>10.90</td>
+    </tr>
+    <tr>
+      <td>2014-10-06</td>
+      <td>Washington Redskins</td>
+      <td>1361.39</td>
+      <td>17</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1663.61</td>
+      <td>27</td>
+      <td>19.35%</td>
+      <td>80.20%</td>
+      <td>0.45%</td>
+      <td>-10.90</td>
+    </tr>
+    <tr>
+      <td>2014-10-09</td>
+      <td>Houston Texans</td>
+      <td>1440.38</td>
+      <td>28</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1573.54</td>
+      <td>33</td>
+      <td>38.84%</td>
+      <td>60.71%</td>
+      <td>0.45%</td>
+      <td>-15.44</td>
+    </tr>
+    <tr>
+      <td>2014-10-09</td>
+      <td>Indianapolis Colts</td>
+      <td>1573.54</td>
+      <td>33</td>
+      <td>Houston Texans</td>
+      <td>1440.38</td>
+      <td>28</td>
+      <td>60.71%</td>
+      <td>38.84%</td>
+      <td>0.45%</td>
+      <td>15.44</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1538.50</td>
+      <td>10</td>
+      <td>Cleveland Browns</td>
+      <td>1416.59</td>
+      <td>31</td>
+      <td>59.16%</td>
+      <td>40.38%</td>
+      <td>0.45%</td>
+      <td>-48.12</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>New England Patriots</td>
+      <td>1601.34</td>
+      <td>37</td>
+      <td>Buffalo Bills</td>
+      <td>1487.78</td>
+      <td>22</td>
+      <td>58.00%</td>
+      <td>41.55%</td>
+      <td>0.45%</td>
+      <td>28.60</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Baltimore Ravens</td>
+      <td>1548.42</td>
+      <td>48</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1381.75</td>
+      <td>17</td>
+      <td>65.18%</td>
+      <td>34.36%</td>
+      <td>0.45%</td>
+      <td>34.03</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Chicago Bears</td>
+      <td>1456.90</td>
+      <td>27</td>
+      <td>Atlanta Falcons</td>
+      <td>1441.89</td>
+      <td>13</td>
+      <td>43.93%</td>
+      <td>55.62%</td>
+      <td>0.45%</td>
+      <td>36.95</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>New York Giants</td>
+      <td>1523.40</td>
+      <td>0</td>
+      <td>Philadelphia Eagles</td>
+      <td>1569.70</td>
+      <td>27</td>
+      <td>35.50%</td>
+      <td>64.04%</td>
+      <td>0.45%</td>
+      <td>-32.81</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Cincinnati Bengals</td>
+      <td>1568.30</td>
+      <td>37</td>
+      <td>@ Carolina Panthers</td>
+      <td>1525.87</td>
+      <td>37</td>
+      <td>63.53%</td>
+      <td>36.01%</td>
+      <td>0.45%</td>
+      <td>-1.22</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Denver Broncos</td>
+      <td>1638.37</td>
+      <td>31</td>
+      <td>New York Jets</td>
+      <td>1385.91</td>
+      <td>17</td>
+      <td>75.33%</td>
+      <td>24.21%</td>
+      <td>0.45%</td>
+      <td>16.13</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Washington Redskins</td>
+      <td>1350.49</td>
+      <td>20</td>
+      <td>Arizona Cardinals</td>
+      <td>1572.06</td>
+      <td>30</td>
+      <td>16.71%</td>
+      <td>82.83%</td>
+      <td>0.45%</td>
+      <td>-9.42</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Green Bay Packers</td>
+      <td>1554.61</td>
+      <td>27</td>
+      <td>Miami Dolphins</td>
+      <td>1464.86</td>
+      <td>24</td>
+      <td>54.63%</td>
+      <td>44.91%</td>
+      <td>0.45%</td>
+      <td>13.82</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Dallas Cowboys</td>
+      <td>1577.53</td>
+      <td>30</td>
+      <td>Seattle Seahawks</td>
+      <td>1674.51</td>
+      <td>23</td>
+      <td>29.14%</td>
+      <td>70.41%</td>
+      <td>0.45%</td>
+      <td>33.06</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1267.76</td>
+      <td>14</td>
+      <td>Tennessee Titans</td>
+      <td>1410.17</td>
+      <td>16</td>
+      <td>24.04%</td>
+      <td>75.50%</td>
+      <td>0.45%</td>
+      <td>-6.05</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Carolina Panthers</td>
+      <td>1525.87</td>
+      <td>37</td>
+      <td>Cincinnati Bengals</td>
+      <td>1568.30</td>
+      <td>37</td>
+      <td>36.01%</td>
+      <td>63.53%</td>
+      <td>0.45%</td>
+      <td>1.21</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>San Diego Chargers</td>
+      <td>1631.71</td>
+      <td>31</td>
+      <td>Oakland Raiders</td>
+      <td>1303.47</td>
+      <td>28</td>
+      <td>82.43%</td>
+      <td>17.12%</td>
+      <td>0.45%</td>
+      <td>5.29</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Detroit Lions</td>
+      <td>1518.26</td>
+      <td>17</td>
+      <td>Minnesota Vikings</td>
+      <td>1450.57</td>
+      <td>3</td>
+      <td>51.48%</td>
+      <td>48.07%</td>
+      <td>0.45%</td>
+      <td>31.95</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Arizona Cardinals</td>
+      <td>1572.06</td>
+      <td>30</td>
+      <td>@ Washington Redskins</td>
+      <td>1350.49</td>
+      <td>20</td>
+      <td>82.83%</td>
+      <td>16.71%</td>
+      <td>0.45%</td>
+      <td>9.41</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Miami Dolphins</td>
+      <td>1464.86</td>
+      <td>24</td>
+      <td>@ Green Bay Packers</td>
+      <td>1554.61</td>
+      <td>27</td>
+      <td>44.91%</td>
+      <td>54.63%</td>
+      <td>0.45%</td>
+      <td>-13.82</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Minnesota Vikings</td>
+      <td>1450.57</td>
+      <td>3</td>
+      <td>@ Detroit Lions</td>
+      <td>1518.26</td>
+      <td>17</td>
+      <td>48.07%</td>
+      <td>51.48%</td>
+      <td>0.45%</td>
+      <td>-31.95</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Oakland Raiders</td>
+      <td>1303.47</td>
+      <td>28</td>
+      <td>@ San Diego Chargers</td>
+      <td>1631.71</td>
+      <td>31</td>
+      <td>17.12%</td>
+      <td>82.43%</td>
+      <td>0.45%</td>
+      <td>-5.28</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>New York Jets</td>
+      <td>1385.91</td>
+      <td>17</td>
+      <td>@ Denver Broncos</td>
+      <td>1638.37</td>
+      <td>31</td>
+      <td>24.21%</td>
+      <td>75.33%</td>
+      <td>0.45%</td>
+      <td>-16.13</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Tennessee Titans</td>
+      <td>1410.17</td>
+      <td>16</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1267.76</td>
+      <td>14</td>
+      <td>75.50%</td>
+      <td>24.04%</td>
+      <td>0.45%</td>
+      <td>6.06</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Philadelphia Eagles</td>
+      <td>1569.70</td>
+      <td>27</td>
+      <td>@ New York Giants</td>
+      <td>1523.40</td>
+      <td>0</td>
+      <td>64.04%</td>
+      <td>35.50%</td>
+      <td>0.45%</td>
+      <td>32.81</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1381.75</td>
+      <td>17</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1548.42</td>
+      <td>48</td>
+      <td>34.36%</td>
+      <td>65.18%</td>
+      <td>0.45%</td>
+      <td>-34.03</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Buffalo Bills</td>
+      <td>1487.78</td>
+      <td>22</td>
+      <td>@ New England Patriots</td>
+      <td>1601.34</td>
+      <td>37</td>
+      <td>41.55%</td>
+      <td>58.00%</td>
+      <td>0.45%</td>
+      <td>-28.60</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Cleveland Browns</td>
+      <td>1416.59</td>
+      <td>31</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1538.50</td>
+      <td>10</td>
+      <td>40.38%</td>
+      <td>59.16%</td>
+      <td>0.45%</td>
+      <td>48.12</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Atlanta Falcons</td>
+      <td>1441.89</td>
+      <td>13</td>
+      <td>@ Chicago Bears</td>
+      <td>1456.90</td>
+      <td>27</td>
+      <td>55.62%</td>
+      <td>43.93%</td>
+      <td>0.45%</td>
+      <td>-36.94</td>
+    </tr>
+    <tr>
+      <td>2014-10-12</td>
+      <td>Seattle Seahawks</td>
+      <td>1674.51</td>
+      <td>23</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1577.53</td>
+      <td>30</td>
+      <td>70.41%</td>
+      <td>29.14%</td>
+      <td>0.45%</td>
+      <td>-33.06</td>
+    </tr>
+    <tr>
+      <td>2014-10-13</td>
+      <td>San Francisco 49ers</td>
+      <td>1612.23</td>
+      <td>31</td>
+      <td>St. Louis Rams</td>
+      <td>1437.38</td>
+      <td>17</td>
+      <td>66.23%</td>
+      <td>33.31%</td>
+      <td>0.45%</td>
+      <td>22.17</td>
+    </tr>
+    <tr>
+      <td>2014-10-13</td>
+      <td>St. Louis Rams</td>
+      <td>1437.38</td>
+      <td>17</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1612.23</td>
+      <td>31</td>
+      <td>33.31%</td>
+      <td>66.23%</td>
+      <td>0.45%</td>
+      <td>-22.17</td>
+    </tr>
+    <tr>
+      <td>2014-10-16</td>
+      <td>New England Patriots</td>
+      <td>1629.94</td>
+      <td>27</td>
+      <td>@ New York Jets</td>
+      <td>1369.78</td>
+      <td>25</td>
+      <td>85.70%</td>
+      <td>13.85%</td>
+      <td>0.45%</td>
+      <td>3.49</td>
+    </tr>
+    <tr>
+      <td>2014-10-16</td>
+      <td>New York Jets</td>
+      <td>1369.78</td>
+      <td>25</td>
+      <td>New England Patriots</td>
+      <td>1629.94</td>
+      <td>27</td>
+      <td>13.85%</td>
+      <td>85.70%</td>
+      <td>0.45%</td>
+      <td>-3.49</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>New York Giants</td>
+      <td>1490.59</td>
+      <td>21</td>
+      <td>Dallas Cowboys</td>
+      <td>1610.59</td>
+      <td>31</td>
+      <td>26.48%</td>
+      <td>73.07%</td>
+      <td>0.45%</td>
+      <td>-14.90</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>San Francisco 49ers</td>
+      <td>1634.40</td>
+      <td>17</td>
+      <td>Denver Broncos</td>
+      <td>1654.50</td>
+      <td>42</td>
+      <td>39.02%</td>
+      <td>60.52%</td>
+      <td>0.45%</td>
+      <td>-34.69</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Carolina Panthers</td>
+      <td>1527.08</td>
+      <td>17</td>
+      <td>Green Bay Packers</td>
+      <td>1568.43</td>
+      <td>38</td>
+      <td>36.16%</td>
+      <td>63.39%</td>
+      <td>0.45%</td>
+      <td>-29.46</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Cleveland Browns</td>
+      <td>1464.71</td>
+      <td>6</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1261.71</td>
+      <td>24</td>
+      <td>69.73%</td>
+      <td>29.81%</td>
+      <td>0.45%</td>
+      <td>-52.50</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Kansas City Chiefs</td>
+      <td>1548.94</td>
+      <td>23</td>
+      <td>San Diego Chargers</td>
+      <td>1637.00</td>
+      <td>20</td>
+      <td>30.21%</td>
+      <td>69.34%</td>
+      <td>0.45%</td>
+      <td>21.31</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Tennessee Titans</td>
+      <td>1416.23</td>
+      <td>17</td>
+      <td>Washington Redskins</td>
+      <td>1341.07</td>
+      <td>19</td>
+      <td>52.55%</td>
+      <td>47.00%</td>
+      <td>0.45%</td>
+      <td>-13.20</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>New Orleans Saints</td>
+      <td>1526.82</td>
+      <td>23</td>
+      <td>Detroit Lions</td>
+      <td>1550.21</td>
+      <td>24</td>
+      <td>38.58%</td>
+      <td>60.97%</td>
+      <td>0.45%</td>
+      <td>-6.86</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Cincinnati Bengals</td>
+      <td>1567.08</td>
+      <td>0</td>
+      <td>Indianapolis Colts</td>
+      <td>1588.98</td>
+      <td>27</td>
+      <td>38.78%</td>
+      <td>60.77%</td>
+      <td>0.45%</td>
+      <td>-35.83</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Miami Dolphins</td>
+      <td>1451.04</td>
+      <td>27</td>
+      <td>Chicago Bears</td>
+      <td>1493.85</td>
+      <td>14</td>
+      <td>35.96%</td>
+      <td>63.58%</td>
+      <td>0.45%</td>
+      <td>40.69</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Atlanta Falcons</td>
+      <td>1404.95</td>
+      <td>7</td>
+      <td>Baltimore Ravens</td>
+      <td>1582.45</td>
+      <td>29</td>
+      <td>20.55%</td>
+      <td>79.00%</td>
+      <td>0.45%</td>
+      <td>-17.17</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Arizona Cardinals</td>
+      <td>1581.47</td>
+      <td>24</td>
+      <td>Oakland Raiders</td>
+      <td>1298.19</td>
+      <td>13</td>
+      <td>78.44%</td>
+      <td>21.11%</td>
+      <td>0.45%</td>
+      <td>12.47</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>St. Louis Rams</td>
+      <td>1415.21</td>
+      <td>28</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1641.45</td>
+      <td>26</td>
+      <td>27.09%</td>
+      <td>72.45%</td>
+      <td>0.45%</td>
+      <td>18.18</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Indianapolis Colts</td>
+      <td>1588.98</td>
+      <td>27</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1567.08</td>
+      <td>0</td>
+      <td>60.77%</td>
+      <td>38.78%</td>
+      <td>0.45%</td>
+      <td>35.82</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Oakland Raiders</td>
+      <td>1298.19</td>
+      <td>13</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1581.47</td>
+      <td>24</td>
+      <td>21.11%</td>
+      <td>78.44%</td>
+      <td>0.45%</td>
+      <td>-12.47</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Dallas Cowboys</td>
+      <td>1610.59</td>
+      <td>31</td>
+      <td>@ New York Giants</td>
+      <td>1490.59</td>
+      <td>21</td>
+      <td>73.07%</td>
+      <td>26.48%</td>
+      <td>0.45%</td>
+      <td>14.90</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Denver Broncos</td>
+      <td>1654.50</td>
+      <td>42</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1634.40</td>
+      <td>17</td>
+      <td>60.52%</td>
+      <td>39.02%</td>
+      <td>0.45%</td>
+      <td>34.69</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Green Bay Packers</td>
+      <td>1568.43</td>
+      <td>38</td>
+      <td>@ Carolina Panthers</td>
+      <td>1527.08</td>
+      <td>17</td>
+      <td>63.39%</td>
+      <td>36.16%</td>
+      <td>0.45%</td>
+      <td>29.47</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1261.71</td>
+      <td>24</td>
+      <td>@ Cleveland Browns</td>
+      <td>1464.71</td>
+      <td>6</td>
+      <td>29.81%</td>
+      <td>69.73%</td>
+      <td>0.45%</td>
+      <td>52.50</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>San Diego Chargers</td>
+      <td>1637.00</td>
+      <td>20</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1548.94</td>
+      <td>23</td>
+      <td>69.34%</td>
+      <td>30.21%</td>
+      <td>0.45%</td>
+      <td>-21.32</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Washington Redskins</td>
+      <td>1341.07</td>
+      <td>19</td>
+      <td>@ Tennessee Titans</td>
+      <td>1416.23</td>
+      <td>17</td>
+      <td>47.00%</td>
+      <td>52.55%</td>
+      <td>0.45%</td>
+      <td>13.20</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Detroit Lions</td>
+      <td>1550.21</td>
+      <td>24</td>
+      <td>@ New Orleans Saints</td>
+      <td>1526.82</td>
+      <td>23</td>
+      <td>60.97%</td>
+      <td>38.58%</td>
+      <td>0.45%</td>
+      <td>6.86</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Buffalo Bills</td>
+      <td>1459.18</td>
+      <td>17</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1418.62</td>
+      <td>16</td>
+      <td>63.28%</td>
+      <td>36.26%</td>
+      <td>0.45%</td>
+      <td>6.44</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Minnesota Vikings</td>
+      <td>1418.62</td>
+      <td>16</td>
+      <td>Buffalo Bills</td>
+      <td>1459.18</td>
+      <td>17</td>
+      <td>36.26%</td>
+      <td>63.28%</td>
+      <td>0.45%</td>
+      <td>-6.45</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Seattle Seahawks</td>
+      <td>1641.45</td>
+      <td>26</td>
+      <td>St. Louis Rams</td>
+      <td>1415.21</td>
+      <td>28</td>
+      <td>72.45%</td>
+      <td>27.09%</td>
+      <td>0.45%</td>
+      <td>-18.19</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Baltimore Ravens</td>
+      <td>1582.45</td>
+      <td>29</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1404.95</td>
+      <td>7</td>
+      <td>79.00%</td>
+      <td>20.55%</td>
+      <td>0.45%</td>
+      <td>17.17</td>
+    </tr>
+    <tr>
+      <td>2014-10-19</td>
+      <td>Chicago Bears</td>
+      <td>1493.85</td>
+      <td>14</td>
+      <td>@ Miami Dolphins</td>
+      <td>1451.04</td>
+      <td>27</td>
+      <td>63.58%</td>
+      <td>35.96%</td>
+      <td>0.45%</td>
+      <td>-40.69</td>
+    </tr>
+    <tr>
+      <td>2014-10-20</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1490.38</td>
+      <td>30</td>
+      <td>@ Houston Texans</td>
+      <td>1424.94</td>
+      <td>23</td>
+      <td>66.53%</td>
+      <td>33.02%</td>
+      <td>0.45%</td>
+      <td>15.54</td>
+    </tr>
+    <tr>
+      <td>2014-10-20</td>
+      <td>Houston Texans</td>
+      <td>1424.94</td>
+      <td>23</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1490.38</td>
+      <td>30</td>
+      <td>33.02%</td>
+      <td>66.53%</td>
+      <td>0.45%</td>
+      <td>-15.54</td>
+    </tr>
+    <tr>
+      <td>2014-10-23</td>
+      <td>Denver Broncos</td>
+      <td>1689.19</td>
+      <td>35</td>
+      <td>@ San Diego Chargers</td>
+      <td>1615.68</td>
+      <td>21</td>
+      <td>67.54%</td>
+      <td>32.00%</td>
+      <td>0.45%</td>
+      <td>21.30</td>
+    </tr>
+    <tr>
+      <td>2014-10-23</td>
+      <td>San Diego Chargers</td>
+      <td>1615.68</td>
+      <td>21</td>
+      <td>Denver Broncos</td>
+      <td>1689.19</td>
+      <td>35</td>
+      <td>32.00%</td>
+      <td>67.54%</td>
+      <td>0.45%</td>
+      <td>-21.30</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1505.92</td>
+      <td>51</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1624.80</td>
+      <td>34</td>
+      <td>40.81%</td>
+      <td>58.74%</td>
+      <td>0.45%</td>
+      <td>42.99</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Cincinnati Bengals</td>
+      <td>1531.25</td>
+      <td>27</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1599.62</td>
+      <td>24</td>
+      <td>47.97%</td>
+      <td>51.57%</td>
+      <td>0.45%</td>
+      <td>15.87</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Carolina Panthers</td>
+      <td>1497.62</td>
+      <td>9</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1623.26</td>
+      <td>13</td>
+      <td>39.87%</td>
+      <td>59.68%</td>
+      <td>0.45%</td>
+      <td>-14.18</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Detroit Lions</td>
+      <td>1557.07</td>
+      <td>22</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1387.78</td>
+      <td>21</td>
+      <td>72.33%</td>
+      <td>27.22%</td>
+      <td>0.45%</td>
+      <td>4.84</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Tennessee Titans</td>
+      <td>1403.03</td>
+      <td>16</td>
+      <td>@ Houston Texans</td>
+      <td>1409.40</td>
+      <td>30</td>
+      <td>56.84%</td>
+      <td>42.71%</td>
+      <td>0.45%</td>
+      <td>-37.75</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>New York Jets</td>
+      <td>1366.29</td>
+      <td>23</td>
+      <td>@ Buffalo Bills</td>
+      <td>1465.62</td>
+      <td>43</td>
+      <td>43.55%</td>
+      <td>56.00%</td>
+      <td>0.45%</td>
+      <td>-34.61</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1347.72</td>
+      <td>13</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1412.17</td>
+      <td>19</td>
+      <td>48.53%</td>
+      <td>51.01%</td>
+      <td>0.45%</td>
+      <td>-21.12</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Houston Texans</td>
+      <td>1409.40</td>
+      <td>30</td>
+      <td>Tennessee Titans</td>
+      <td>1403.03</td>
+      <td>16</td>
+      <td>42.71%</td>
+      <td>56.84%</td>
+      <td>0.45%</td>
+      <td>37.75</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Chicago Bears</td>
+      <td>1453.16</td>
+      <td>23</td>
+      <td>New England Patriots</td>
+      <td>1633.43</td>
+      <td>51</td>
+      <td>20.29%</td>
+      <td>79.26%</td>
+      <td>0.45%</td>
+      <td>-19.12</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Kansas City Chiefs</td>
+      <td>1570.25</td>
+      <td>34</td>
+      <td>@ St. Louis Rams</td>
+      <td>1433.39</td>
+      <td>7</td>
+      <td>74.91%</td>
+      <td>24.63%</td>
+      <td>0.45%</td>
+      <td>22.79</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>New England Patriots</td>
+      <td>1633.43</td>
+      <td>51</td>
+      <td>@ Chicago Bears</td>
+      <td>1453.16</td>
+      <td>23</td>
+      <td>79.26%</td>
+      <td>20.29%</td>
+      <td>0.45%</td>
+      <td>19.12</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>New Orleans Saints</td>
+      <td>1519.96</td>
+      <td>44</td>
+      <td>@ Green Bay Packers</td>
+      <td>1597.90</td>
+      <td>23</td>
+      <td>46.60%</td>
+      <td>52.95%</td>
+      <td>0.45%</td>
+      <td>43.08</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>St. Louis Rams</td>
+      <td>1433.39</td>
+      <td>7</td>
+      <td>Kansas City Chiefs</td>
+      <td>1570.25</td>
+      <td>34</td>
+      <td>24.63%</td>
+      <td>74.91%</td>
+      <td>0.45%</td>
+      <td>-22.78</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Indianapolis Colts</td>
+      <td>1624.80</td>
+      <td>34</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1505.92</td>
+      <td>51</td>
+      <td>58.74%</td>
+      <td>40.81%</td>
+      <td>0.45%</td>
+      <td>-42.99</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Minnesota Vikings</td>
+      <td>1412.17</td>
+      <td>19</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1347.72</td>
+      <td>13</td>
+      <td>51.01%</td>
+      <td>48.53%</td>
+      <td>0.45%</td>
+      <td>21.12</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Cleveland Browns</td>
+      <td>1412.21</td>
+      <td>23</td>
+      <td>@ Oakland Raiders</td>
+      <td>1285.72</td>
+      <td>13</td>
+      <td>73.79%</td>
+      <td>25.76%</td>
+      <td>0.45%</td>
+      <td>14.50</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Atlanta Falcons</td>
+      <td>1387.78</td>
+      <td>21</td>
+      <td>Detroit Lions</td>
+      <td>1557.07</td>
+      <td>22</td>
+      <td>27.22%</td>
+      <td>72.33%</td>
+      <td>0.45%</td>
+      <td>-4.84</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Arizona Cardinals</td>
+      <td>1593.94</td>
+      <td>24</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1602.51</td>
+      <td>20</td>
+      <td>56.53%</td>
+      <td>43.02%</td>
+      <td>0.45%</td>
+      <td>15.29</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Baltimore Ravens</td>
+      <td>1599.62</td>
+      <td>24</td>
+      <td>Cincinnati Bengals</td>
+      <td>1531.25</td>
+      <td>27</td>
+      <td>51.57%</td>
+      <td>47.97%</td>
+      <td>0.45%</td>
+      <td>-15.87</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1314.21</td>
+      <td>13</td>
+      <td>@ Miami Dolphins</td>
+      <td>1491.73</td>
+      <td>27</td>
+      <td>32.97%</td>
+      <td>66.57%</td>
+      <td>0.45%</td>
+      <td>-21.94</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Oakland Raiders</td>
+      <td>1285.72</td>
+      <td>13</td>
+      <td>Cleveland Browns</td>
+      <td>1412.21</td>
+      <td>23</td>
+      <td>25.76%</td>
+      <td>73.79%</td>
+      <td>0.45%</td>
+      <td>-14.50</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Philadelphia Eagles</td>
+      <td>1602.51</td>
+      <td>20</td>
+      <td>Arizona Cardinals</td>
+      <td>1593.94</td>
+      <td>24</td>
+      <td>43.02%</td>
+      <td>56.53%</td>
+      <td>0.45%</td>
+      <td>-15.29</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Seattle Seahawks</td>
+      <td>1623.26</td>
+      <td>13</td>
+      <td>Carolina Panthers</td>
+      <td>1497.62</td>
+      <td>9</td>
+      <td>59.68%</td>
+      <td>39.87%</td>
+      <td>0.45%</td>
+      <td>14.18</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Green Bay Packers</td>
+      <td>1597.90</td>
+      <td>23</td>
+      <td>New Orleans Saints</td>
+      <td>1519.96</td>
+      <td>44</td>
+      <td>52.95%</td>
+      <td>46.60%</td>
+      <td>0.45%</td>
+      <td>-43.08</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Miami Dolphins</td>
+      <td>1491.73</td>
+      <td>27</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1314.21</td>
+      <td>13</td>
+      <td>66.57%</td>
+      <td>32.97%</td>
+      <td>0.45%</td>
+      <td>21.94</td>
+    </tr>
+    <tr>
+      <td>2014-10-26</td>
+      <td>Buffalo Bills</td>
+      <td>1465.62</td>
+      <td>43</td>
+      <td>New York Jets</td>
+      <td>1366.29</td>
+      <td>23</td>
+      <td>56.00%</td>
+      <td>43.55%</td>
+      <td>0.45%</td>
+      <td>34.61</td>
+    </tr>
+    <tr>
+      <td>2014-10-27</td>
+      <td>Dallas Cowboys</td>
+      <td>1625.49</td>
+      <td>17</td>
+      <td>@ Washington Redskins</td>
+      <td>1354.27</td>
+      <td>20</td>
+      <td>86.44%</td>
+      <td>13.10%</td>
+      <td>0.45%</td>
+      <td>-26.57</td>
+    </tr>
+    <tr>
+      <td>2014-10-27</td>
+      <td>Washington Redskins</td>
+      <td>1354.27</td>
+      <td>20</td>
+      <td>Dallas Cowboys</td>
+      <td>1625.49</td>
+      <td>17</td>
+      <td>13.10%</td>
+      <td>86.44%</td>
+      <td>0.45%</td>
+      <td>26.58</td>
+    </tr>
+    <tr>
+      <td>2014-10-30</td>
+      <td>New Orleans Saints</td>
+      <td>1563.04</td>
+      <td>28</td>
+      <td>Carolina Panthers</td>
+      <td>1483.44</td>
+      <td>10</td>
+      <td>53.19%</td>
+      <td>46.36%</td>
+      <td>0.45%</td>
+      <td>34.95</td>
+    </tr>
+    <tr>
+      <td>2014-10-30</td>
+      <td>Carolina Panthers</td>
+      <td>1483.44</td>
+      <td>10</td>
+      <td>@ New Orleans Saints</td>
+      <td>1563.04</td>
+      <td>28</td>
+      <td>46.36%</td>
+      <td>53.19%</td>
+      <td>0.45%</td>
+      <td>-34.94</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>New England Patriots</td>
+      <td>1652.55</td>
+      <td>43</td>
+      <td>@ Denver Broncos</td>
+      <td>1710.49</td>
+      <td>21</td>
+      <td>49.47%</td>
+      <td>50.08%</td>
+      <td>0.45%</td>
+      <td>41.71</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Seattle Seahawks</td>
+      <td>1637.44</td>
+      <td>30</td>
+      <td>@ Oakland Raiders</td>
+      <td>1271.22</td>
+      <td>24</td>
+      <td>91.52%</td>
+      <td>8.03%</td>
+      <td>0.45%</td>
+      <td>3.50</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1548.91</td>
+      <td>43</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1583.75</td>
+      <td>23</td>
+      <td>52.79%</td>
+      <td>46.76%</td>
+      <td>0.45%</td>
+      <td>37.15</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Minnesota Vikings</td>
+      <td>1433.29</td>
+      <td>29</td>
+      <td>@ Washington Redskins</td>
+      <td>1380.85</td>
+      <td>26</td>
+      <td>64.85%</td>
+      <td>34.70%</td>
+      <td>0.45%</td>
+      <td>10.69</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Kansas City Chiefs</td>
+      <td>1593.04</td>
+      <td>24</td>
+      <td>@ New York Jets</td>
+      <td>1331.68</td>
+      <td>10</td>
+      <td>85.78%</td>
+      <td>13.76%</td>
+      <td>0.45%</td>
+      <td>9.17</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Houston Texans</td>
+      <td>1447.15</td>
+      <td>21</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1587.22</td>
+      <td>31</td>
+      <td>37.90%</td>
+      <td>61.65%</td>
+      <td>0.45%</td>
+      <td>-21.31</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>St. Louis Rams</td>
+      <td>1410.61</td>
+      <td>13</td>
+      <td>San Francisco 49ers</td>
+      <td>1599.71</td>
+      <td>10</td>
+      <td>19.48%</td>
+      <td>80.06%</td>
+      <td>0.45%</td>
+      <td>24.61</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Dallas Cowboys</td>
+      <td>1598.92</td>
+      <td>17</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1609.23</td>
+      <td>28</td>
+      <td>56.28%</td>
+      <td>43.26%</td>
+      <td>0.45%</td>
+      <td>-33.14</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Miami Dolphins</td>
+      <td>1513.67</td>
+      <td>37</td>
+      <td>@ San Diego Chargers</td>
+      <td>1594.38</td>
+      <td>0</td>
+      <td>46.20%</td>
+      <td>53.34%</td>
+      <td>0.45%</td>
+      <td>57.62</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Cincinnati Bengals</td>
+      <td>1547.12</td>
+      <td>33</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1292.27</td>
+      <td>23</td>
+      <td>85.33%</td>
+      <td>14.21%</td>
+      <td>0.45%</td>
+      <td>8.01</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Denver Broncos</td>
+      <td>1710.49</td>
+      <td>21</td>
+      <td>New England Patriots</td>
+      <td>1652.55</td>
+      <td>43</td>
+      <td>50.08%</td>
+      <td>49.47%</td>
+      <td>0.45%</td>
+      <td>-41.71</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Oakland Raiders</td>
+      <td>1271.22</td>
+      <td>24</td>
+      <td>Seattle Seahawks</td>
+      <td>1637.44</td>
+      <td>30</td>
+      <td>8.03%</td>
+      <td>91.52%</td>
+      <td>0.45%</td>
+      <td>-3.50</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Baltimore Ravens</td>
+      <td>1583.75</td>
+      <td>23</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1548.91</td>
+      <td>43</td>
+      <td>46.76%</td>
+      <td>52.79%</td>
+      <td>0.45%</td>
+      <td>-37.14</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Washington Redskins</td>
+      <td>1380.85</td>
+      <td>26</td>
+      <td>Minnesota Vikings</td>
+      <td>1433.29</td>
+      <td>29</td>
+      <td>34.70%</td>
+      <td>64.85%</td>
+      <td>0.45%</td>
+      <td>-10.69</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Cleveland Browns</td>
+      <td>1426.71</td>
+      <td>22</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1326.60</td>
+      <td>17</td>
+      <td>70.78%</td>
+      <td>28.77%</td>
+      <td>0.45%</td>
+      <td>11.44</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Philadelphia Eagles</td>
+      <td>1587.22</td>
+      <td>31</td>
+      <td>Houston Texans</td>
+      <td>1447.15</td>
+      <td>21</td>
+      <td>61.65%</td>
+      <td>37.90%</td>
+      <td>0.45%</td>
+      <td>21.31</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>New York Jets</td>
+      <td>1331.68</td>
+      <td>10</td>
+      <td>Kansas City Chiefs</td>
+      <td>1593.04</td>
+      <td>24</td>
+      <td>13.76%</td>
+      <td>85.78%</td>
+      <td>0.45%</td>
+      <td>-9.18</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1326.60</td>
+      <td>17</td>
+      <td>Cleveland Browns</td>
+      <td>1426.71</td>
+      <td>22</td>
+      <td>28.77%</td>
+      <td>70.78%</td>
+      <td>0.45%</td>
+      <td>-11.44</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>San Diego Chargers</td>
+      <td>1594.38</td>
+      <td>0</td>
+      <td>Miami Dolphins</td>
+      <td>1513.67</td>
+      <td>37</td>
+      <td>53.34%</td>
+      <td>46.20%</td>
+      <td>0.45%</td>
+      <td>-57.61</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>San Francisco 49ers</td>
+      <td>1599.71</td>
+      <td>10</td>
+      <td>@ St. Louis Rams</td>
+      <td>1410.61</td>
+      <td>13</td>
+      <td>80.06%</td>
+      <td>19.48%</td>
+      <td>0.45%</td>
+      <td>-24.62</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Arizona Cardinals</td>
+      <td>1609.23</td>
+      <td>28</td>
+      <td>Dallas Cowboys</td>
+      <td>1598.92</td>
+      <td>17</td>
+      <td>43.26%</td>
+      <td>56.28%</td>
+      <td>0.45%</td>
+      <td>33.14</td>
+    </tr>
+    <tr>
+      <td>2014-11-02</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1292.27</td>
+      <td>23</td>
+      <td>Cincinnati Bengals</td>
+      <td>1547.12</td>
+      <td>33</td>
+      <td>14.21%</td>
+      <td>85.33%</td>
+      <td>0.45%</td>
+      <td>-8.01</td>
+    </tr>
+    <tr>
+      <td>2014-11-03</td>
+      <td>Indianapolis Colts</td>
+      <td>1581.81</td>
+      <td>40</td>
+      <td>New York Giants</td>
+      <td>1475.69</td>
+      <td>24</td>
+      <td>56.95%</td>
+      <td>42.59%</td>
+      <td>0.45%</td>
+      <td>30.28</td>
+    </tr>
+    <tr>
+      <td>2014-11-03</td>
+      <td>New York Giants</td>
+      <td>1475.69</td>
+      <td>24</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1581.81</td>
+      <td>40</td>
+      <td>42.59%</td>
+      <td>56.95%</td>
+      <td>0.45%</td>
+      <td>-30.28</td>
+    </tr>
+    <tr>
+      <td>2014-11-06</td>
+      <td>Cleveland Browns</td>
+      <td>1438.15</td>
+      <td>24</td>
+      <td>Cincinnati Bengals</td>
+      <td>1555.13</td>
+      <td>3</td>
+      <td>26.82%</td>
+      <td>72.73%</td>
+      <td>0.45%</td>
+      <td>59.15</td>
+    </tr>
+    <tr>
+      <td>2014-11-06</td>
+      <td>Cincinnati Bengals</td>
+      <td>1555.13</td>
+      <td>3</td>
+      <td>@ Cleveland Browns</td>
+      <td>1438.15</td>
+      <td>24</td>
+      <td>72.73%</td>
+      <td>26.82%</td>
+      <td>0.45%</td>
+      <td>-59.15</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Oakland Raiders</td>
+      <td>1267.72</td>
+      <td>17</td>
+      <td>@ Denver Broncos</td>
+      <td>1668.78</td>
+      <td>41</td>
+      <td>11.96%</td>
+      <td>87.59%</td>
+      <td>0.45%</td>
+      <td>-10.45</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1315.16</td>
+      <td>17</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1382.94</td>
+      <td>27</td>
+      <td>48.05%</td>
+      <td>51.49%</td>
+      <td>0.45%</td>
+      <td>-27.00</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Arizona Cardinals</td>
+      <td>1642.37</td>
+      <td>31</td>
+      <td>@ St. Louis Rams</td>
+      <td>1435.22</td>
+      <td>14</td>
+      <td>81.64%</td>
+      <td>17.90%</td>
+      <td>0.45%</td>
+      <td>13.15</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Baltimore Ravens</td>
+      <td>1546.61</td>
+      <td>21</td>
+      <td>@ Tennessee Titans</td>
+      <td>1365.28</td>
+      <td>7</td>
+      <td>79.35%</td>
+      <td>20.19%</td>
+      <td>0.45%</td>
+      <td>13.45</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>New York Jets</td>
+      <td>1322.50</td>
+      <td>20</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1586.06</td>
+      <td>13</td>
+      <td>23.06%</td>
+      <td>76.48%</td>
+      <td>0.45%</td>
+      <td>35.92</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Seattle Seahawks</td>
+      <td>1640.94</td>
+      <td>38</td>
+      <td>@ New York Giants</td>
+      <td>1445.41</td>
+      <td>17</td>
+      <td>80.64%</td>
+      <td>18.91%</td>
+      <td>0.45%</td>
+      <td>15.43</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Green Bay Packers</td>
+      <td>1554.82</td>
+      <td>55</td>
+      <td>@ Chicago Bears</td>
+      <td>1434.04</td>
+      <td>14</td>
+      <td>73.16%</td>
+      <td>26.39%</td>
+      <td>0.45%</td>
+      <td>30.07</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Buffalo Bills</td>
+      <td>1500.23</td>
+      <td>13</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1602.21</td>
+      <td>17</td>
+      <td>43.18%</td>
+      <td>56.37%</td>
+      <td>0.45%</td>
+      <td>-15.34</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Dallas Cowboys</td>
+      <td>1565.78</td>
+      <td>31</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1284.26</td>
+      <td>17</td>
+      <td>83.16%</td>
+      <td>16.39%</td>
+      <td>0.45%</td>
+      <td>10.92</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>New Orleans Saints</td>
+      <td>1597.99</td>
+      <td>24</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1575.09</td>
+      <td>27</td>
+      <td>60.90%</td>
+      <td>38.64%</td>
+      <td>0.45%</td>
+      <td>-18.73</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>New York Giants</td>
+      <td>1445.41</td>
+      <td>17</td>
+      <td>Seattle Seahawks</td>
+      <td>1640.94</td>
+      <td>38</td>
+      <td>18.91%</td>
+      <td>80.64%</td>
+      <td>0.45%</td>
+      <td>-15.43</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Detroit Lions</td>
+      <td>1561.91</td>
+      <td>20</td>
+      <td>@ Miami Dolphins</td>
+      <td>1571.29</td>
+      <td>16</td>
+      <td>56.42%</td>
+      <td>43.13%</td>
+      <td>0.45%</td>
+      <td>15.33</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Kansas City Chiefs</td>
+      <td>1602.21</td>
+      <td>17</td>
+      <td>Buffalo Bills</td>
+      <td>1500.23</td>
+      <td>13</td>
+      <td>56.37%</td>
+      <td>43.18%</td>
+      <td>0.45%</td>
+      <td>15.35</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>St. Louis Rams</td>
+      <td>1435.22</td>
+      <td>14</td>
+      <td>Arizona Cardinals</td>
+      <td>1642.37</td>
+      <td>31</td>
+      <td>17.90%</td>
+      <td>81.64%</td>
+      <td>0.45%</td>
+      <td>-13.14</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1284.26</td>
+      <td>17</td>
+      <td>Dallas Cowboys</td>
+      <td>1565.78</td>
+      <td>31</td>
+      <td>16.39%</td>
+      <td>83.16%</td>
+      <td>0.45%</td>
+      <td>-10.92</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Tennessee Titans</td>
+      <td>1365.28</td>
+      <td>7</td>
+      <td>Baltimore Ravens</td>
+      <td>1546.61</td>
+      <td>21</td>
+      <td>20.19%</td>
+      <td>79.35%</td>
+      <td>0.45%</td>
+      <td>-13.46</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Miami Dolphins</td>
+      <td>1571.29</td>
+      <td>16</td>
+      <td>Detroit Lions</td>
+      <td>1561.91</td>
+      <td>20</td>
+      <td>43.13%</td>
+      <td>56.42%</td>
+      <td>0.45%</td>
+      <td>-15.33</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>San Francisco 49ers</td>
+      <td>1575.09</td>
+      <td>27</td>
+      <td>New Orleans Saints</td>
+      <td>1597.99</td>
+      <td>24</td>
+      <td>38.64%</td>
+      <td>60.90%</td>
+      <td>0.45%</td>
+      <td>18.73</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1586.06</td>
+      <td>13</td>
+      <td>New York Jets</td>
+      <td>1322.50</td>
+      <td>20</td>
+      <td>76.48%</td>
+      <td>23.06%</td>
+      <td>0.45%</td>
+      <td>-35.91</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Atlanta Falcons</td>
+      <td>1382.94</td>
+      <td>27</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1315.16</td>
+      <td>17</td>
+      <td>51.49%</td>
+      <td>48.05%</td>
+      <td>0.45%</td>
+      <td>26.99</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Chicago Bears</td>
+      <td>1434.04</td>
+      <td>14</td>
+      <td>Green Bay Packers</td>
+      <td>1554.82</td>
+      <td>55</td>
+      <td>26.39%</td>
+      <td>73.16%</td>
+      <td>0.45%</td>
+      <td>-30.08</td>
+    </tr>
+    <tr>
+      <td>2014-11-09</td>
+      <td>Denver Broncos</td>
+      <td>1668.78</td>
+      <td>41</td>
+      <td>Oakland Raiders</td>
+      <td>1267.72</td>
+      <td>17</td>
+      <td>87.59%</td>
+      <td>11.96%</td>
+      <td>0.45%</td>
+      <td>10.44</td>
+    </tr>
+    <tr>
+      <td>2014-11-10</td>
+      <td>Carolina Panthers</td>
+      <td>1448.50</td>
+      <td>21</td>
+      <td>Philadelphia Eagles</td>
+      <td>1608.53</td>
+      <td>45</td>
+      <td>22.24%</td>
+      <td>77.31%</td>
+      <td>0.45%</td>
+      <td>-19.40</td>
+    </tr>
+    <tr>
+      <td>2014-11-10</td>
+      <td>Philadelphia Eagles</td>
+      <td>1608.53</td>
+      <td>45</td>
+      <td>@ Carolina Panthers</td>
+      <td>1448.50</td>
+      <td>21</td>
+      <td>77.31%</td>
+      <td>22.24%</td>
+      <td>0.45%</td>
+      <td>19.40</td>
+    </tr>
+    <tr>
+      <td>2014-11-13</td>
+      <td>Miami Dolphins</td>
+      <td>1555.96</td>
+      <td>22</td>
+      <td>@ Buffalo Bills</td>
+      <td>1484.89</td>
+      <td>9</td>
+      <td>67.24%</td>
+      <td>32.31%</td>
+      <td>0.45%</td>
+      <td>20.72</td>
+    </tr>
+    <tr>
+      <td>2014-11-13</td>
+      <td>Buffalo Bills</td>
+      <td>1484.89</td>
+      <td>9</td>
+      <td>Miami Dolphins</td>
+      <td>1555.96</td>
+      <td>22</td>
+      <td>32.31%</td>
+      <td>67.24%</td>
+      <td>0.45%</td>
+      <td>-20.72</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>New Orleans Saints</td>
+      <td>1579.26</td>
+      <td>10</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1495.98</td>
+      <td>27</td>
+      <td>68.76%</td>
+      <td>30.79%</td>
+      <td>0.45%</td>
+      <td>-50.31</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Cleveland Browns</td>
+      <td>1497.30</td>
+      <td>7</td>
+      <td>@ Houston Texans</td>
+      <td>1425.84</td>
+      <td>23</td>
+      <td>67.29%</td>
+      <td>32.26%</td>
+      <td>0.45%</td>
+      <td>-47.77</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Arizona Cardinals</td>
+      <td>1655.52</td>
+      <td>14</td>
+      <td>@ Detroit Lions</td>
+      <td>1577.24</td>
+      <td>6</td>
+      <td>68.14%</td>
+      <td>31.41%</td>
+      <td>0.45%</td>
+      <td>15.80</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Carolina Panthers</td>
+      <td>1429.10</td>
+      <td>17</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1409.93</td>
+      <td>19</td>
+      <td>60.39%</td>
+      <td>39.15%</td>
+      <td>0.45%</td>
+      <td>-15.16</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Chicago Bears</td>
+      <td>1403.96</td>
+      <td>21</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1443.98</td>
+      <td>13</td>
+      <td>52.05%</td>
+      <td>47.50%</td>
+      <td>0.45%</td>
+      <td>23.87</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>San Diego Chargers</td>
+      <td>1536.77</td>
+      <td>13</td>
+      <td>@ Oakland Raiders</td>
+      <td>1257.27</td>
+      <td>6</td>
+      <td>86.97%</td>
+      <td>12.57%</td>
+      <td>0.45%</td>
+      <td>5.93</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Indianapolis Colts</td>
+      <td>1612.09</td>
+      <td>20</td>
+      <td>@ New England Patriots</td>
+      <td>1694.26</td>
+      <td>42</td>
+      <td>45.99%</td>
+      <td>53.55%</td>
+      <td>0.45%</td>
+      <td>-38.33</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Denver Broncos</td>
+      <td>1679.22</td>
+      <td>7</td>
+      <td>St. Louis Rams</td>
+      <td>1422.08</td>
+      <td>22</td>
+      <td>75.82%</td>
+      <td>23.72%</td>
+      <td>0.45%</td>
+      <td>-52.12</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Kansas City Chiefs</td>
+      <td>1617.56</td>
+      <td>24</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1656.37</td>
+      <td>20</td>
+      <td>52.22%</td>
+      <td>47.33%</td>
+      <td>0.45%</td>
+      <td>16.81</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>New York Giants</td>
+      <td>1429.98</td>
+      <td>10</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1593.82</td>
+      <td>16</td>
+      <td>34.73%</td>
+      <td>64.81%</td>
+      <td>0.45%</td>
+      <td>-15.13</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Washington Redskins</td>
+      <td>1370.16</td>
+      <td>7</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1288.16</td>
+      <td>27</td>
+      <td>68.60%</td>
+      <td>30.95%</td>
+      <td>0.45%</td>
+      <td>-54.45</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>St. Louis Rams</td>
+      <td>1422.08</td>
+      <td>22</td>
+      <td>@ Denver Broncos</td>
+      <td>1679.22</td>
+      <td>7</td>
+      <td>23.72%</td>
+      <td>75.82%</td>
+      <td>0.45%</td>
+      <td>52.11</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>San Francisco 49ers</td>
+      <td>1593.82</td>
+      <td>16</td>
+      <td>New York Giants</td>
+      <td>1429.98</td>
+      <td>10</td>
+      <td>64.81%</td>
+      <td>34.73%</td>
+      <td>0.45%</td>
+      <td>15.13</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Seattle Seahawks</td>
+      <td>1656.37</td>
+      <td>20</td>
+      <td>Kansas City Chiefs</td>
+      <td>1617.56</td>
+      <td>24</td>
+      <td>47.33%</td>
+      <td>52.22%</td>
+      <td>0.45%</td>
+      <td>-16.81</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Philadelphia Eagles</td>
+      <td>1627.93</td>
+      <td>20</td>
+      <td>Green Bay Packers</td>
+      <td>1584.89</td>
+      <td>53</td>
+      <td>47.93%</td>
+      <td>51.61%</td>
+      <td>0.45%</td>
+      <td>-48.91</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>New England Patriots</td>
+      <td>1694.26</td>
+      <td>42</td>
+      <td>Indianapolis Colts</td>
+      <td>1612.09</td>
+      <td>20</td>
+      <td>53.55%</td>
+      <td>45.99%</td>
+      <td>0.45%</td>
+      <td>38.33</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Houston Texans</td>
+      <td>1425.84</td>
+      <td>23</td>
+      <td>Cleveland Browns</td>
+      <td>1497.30</td>
+      <td>7</td>
+      <td>32.26%</td>
+      <td>67.29%</td>
+      <td>0.45%</td>
+      <td>47.77</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Minnesota Vikings</td>
+      <td>1443.98</td>
+      <td>13</td>
+      <td>Chicago Bears</td>
+      <td>1403.96</td>
+      <td>21</td>
+      <td>47.50%</td>
+      <td>52.05%</td>
+      <td>0.45%</td>
+      <td>-23.87</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Atlanta Falcons</td>
+      <td>1409.93</td>
+      <td>19</td>
+      <td>Carolina Panthers</td>
+      <td>1429.10</td>
+      <td>17</td>
+      <td>39.15%</td>
+      <td>60.39%</td>
+      <td>0.45%</td>
+      <td>15.16</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Detroit Lions</td>
+      <td>1577.24</td>
+      <td>6</td>
+      <td>Arizona Cardinals</td>
+      <td>1655.52</td>
+      <td>14</td>
+      <td>31.41%</td>
+      <td>68.14%</td>
+      <td>0.45%</td>
+      <td>-15.80</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Oakland Raiders</td>
+      <td>1257.27</td>
+      <td>6</td>
+      <td>San Diego Chargers</td>
+      <td>1536.77</td>
+      <td>13</td>
+      <td>12.57%</td>
+      <td>86.97%</td>
+      <td>0.45%</td>
+      <td>-5.92</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Cincinnati Bengals</td>
+      <td>1495.98</td>
+      <td>27</td>
+      <td>New Orleans Saints</td>
+      <td>1579.26</td>
+      <td>10</td>
+      <td>30.79%</td>
+      <td>68.76%</td>
+      <td>0.45%</td>
+      <td>50.31</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Green Bay Packers</td>
+      <td>1584.89</td>
+      <td>53</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1627.93</td>
+      <td>20</td>
+      <td>51.61%</td>
+      <td>47.93%</td>
+      <td>0.45%</td>
+      <td>48.91</td>
+    </tr>
+    <tr>
+      <td>2014-11-16</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1288.16</td>
+      <td>27</td>
+      <td>Washington Redskins</td>
+      <td>1370.16</td>
+      <td>7</td>
+      <td>30.95%</td>
+      <td>68.60%</td>
+      <td>0.45%</td>
+      <td>54.44</td>
+    </tr>
+    <tr>
+      <td>2014-11-17</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1550.15</td>
+      <td>27</td>
+      <td>Tennessee Titans</td>
+      <td>1351.82</td>
+      <td>24</td>
+      <td>69.17%</td>
+      <td>30.38%</td>
+      <td>0.45%</td>
+      <td>9.36</td>
+    </tr>
+    <tr>
+      <td>2014-11-17</td>
+      <td>Tennessee Titans</td>
+      <td>1351.82</td>
+      <td>24</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1550.15</td>
+      <td>27</td>
+      <td>30.38%</td>
+      <td>69.17%</td>
+      <td>0.45%</td>
+      <td>-9.36</td>
+    </tr>
+    <tr>
+      <td>2014-11-20</td>
+      <td>Kansas City Chiefs</td>
+      <td>1634.37</td>
+      <td>20</td>
+      <td>Oakland Raiders</td>
+      <td>1251.35</td>
+      <td>24</td>
+      <td>86.45%</td>
+      <td>13.10%</td>
+      <td>0.45%</td>
+      <td>-30.69</td>
+    </tr>
+    <tr>
+      <td>2014-11-20</td>
+      <td>Oakland Raiders</td>
+      <td>1251.35</td>
+      <td>24</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1634.37</td>
+      <td>20</td>
+      <td>13.10%</td>
+      <td>86.45%</td>
+      <td>0.45%</td>
+      <td>30.69</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Cleveland Browns</td>
+      <td>1449.53</td>
+      <td>26</td>
+      <td>Atlanta Falcons</td>
+      <td>1425.09</td>
+      <td>24</td>
+      <td>45.27%</td>
+      <td>54.28%</td>
+      <td>0.45%</td>
+      <td>13.63</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1273.34</td>
+      <td>3</td>
+      <td>Indianapolis Colts</td>
+      <td>1573.76</td>
+      <td>23</td>
+      <td>11.30%</td>
+      <td>88.24%</td>
+      <td>0.45%</td>
+      <td>-9.01</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Chicago Bears</td>
+      <td>1427.83</td>
+      <td>21</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1342.60</td>
+      <td>13</td>
+      <td>68.99%</td>
+      <td>30.55%</td>
+      <td>0.45%</td>
+      <td>15.37</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>New England Patriots</td>
+      <td>1732.59</td>
+      <td>34</td>
+      <td>@ Detroit Lions</td>
+      <td>1561.44</td>
+      <td>9</td>
+      <td>78.39%</td>
+      <td>21.15%</td>
+      <td>0.45%</td>
+      <td>18.83</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Houston Texans</td>
+      <td>1473.61</td>
+      <td>13</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1546.29</td>
+      <td>22</td>
+      <td>47.35%</td>
+      <td>52.19%</td>
+      <td>0.45%</td>
+      <td>-25.24</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>San Diego Chargers</td>
+      <td>1542.70</td>
+      <td>27</td>
+      <td>@ St. Louis Rams</td>
+      <td>1474.19</td>
+      <td>24</td>
+      <td>66.91%</td>
+      <td>32.63%</td>
+      <td>0.45%</td>
+      <td>10.05</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>San Francisco 49ers</td>
+      <td>1608.95</td>
+      <td>17</td>
+      <td>@ Washington Redskins</td>
+      <td>1315.71</td>
+      <td>13</td>
+      <td>87.82%</td>
+      <td>11.73%</td>
+      <td>0.45%</td>
+      <td>4.18</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Minnesota Vikings</td>
+      <td>1420.11</td>
+      <td>21</td>
+      <td>@ Green Bay Packers</td>
+      <td>1633.80</td>
+      <td>24</td>
+      <td>28.54%</td>
+      <td>71.00%</td>
+      <td>0.45%</td>
+      <td>-8.80</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Denver Broncos</td>
+      <td>1627.10</td>
+      <td>39</td>
+      <td>@ Miami Dolphins</td>
+      <td>1576.68</td>
+      <td>36</td>
+      <td>64.59%</td>
+      <td>34.96%</td>
+      <td>0.45%</td>
+      <td>10.77</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>New York Giants</td>
+      <td>1414.85</td>
+      <td>28</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1576.70</td>
+      <td>31</td>
+      <td>34.99%</td>
+      <td>64.55%</td>
+      <td>0.45%</td>
+      <td>-10.78</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Philadelphia Eagles</td>
+      <td>1579.02</td>
+      <td>43</td>
+      <td>@ Tennessee Titans</td>
+      <td>1342.46</td>
+      <td>24</td>
+      <td>84.00%</td>
+      <td>15.55%</td>
+      <td>0.45%</td>
+      <td>12.07</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Seattle Seahawks</td>
+      <td>1639.56</td>
+      <td>19</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1671.32</td>
+      <td>3</td>
+      <td>53.23%</td>
+      <td>46.31%</td>
+      <td>0.45%</td>
+      <td>32.91</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Atlanta Falcons</td>
+      <td>1425.09</td>
+      <td>24</td>
+      <td>@ Cleveland Browns</td>
+      <td>1449.53</td>
+      <td>26</td>
+      <td>54.28%</td>
+      <td>45.27%</td>
+      <td>0.45%</td>
+      <td>-13.62</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Indianapolis Colts</td>
+      <td>1573.76</td>
+      <td>23</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1273.34</td>
+      <td>3</td>
+      <td>88.24%</td>
+      <td>11.30%</td>
+      <td>0.45%</td>
+      <td>9.01</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Washington Redskins</td>
+      <td>1315.71</td>
+      <td>13</td>
+      <td>San Francisco 49ers</td>
+      <td>1608.95</td>
+      <td>17</td>
+      <td>11.73%</td>
+      <td>87.82%</td>
+      <td>0.45%</td>
+      <td>-4.18</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1342.60</td>
+      <td>13</td>
+      <td>Chicago Bears</td>
+      <td>1427.83</td>
+      <td>21</td>
+      <td>30.55%</td>
+      <td>68.99%</td>
+      <td>0.45%</td>
+      <td>-15.37</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Detroit Lions</td>
+      <td>1561.44</td>
+      <td>9</td>
+      <td>New England Patriots</td>
+      <td>1732.59</td>
+      <td>34</td>
+      <td>21.15%</td>
+      <td>78.39%</td>
+      <td>0.45%</td>
+      <td>-18.84</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Cincinnati Bengals</td>
+      <td>1546.29</td>
+      <td>22</td>
+      <td>Houston Texans</td>
+      <td>1473.61</td>
+      <td>13</td>
+      <td>52.19%</td>
+      <td>47.35%</td>
+      <td>0.45%</td>
+      <td>25.24</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>St. Louis Rams</td>
+      <td>1474.19</td>
+      <td>24</td>
+      <td>San Diego Chargers</td>
+      <td>1542.70</td>
+      <td>27</td>
+      <td>32.63%</td>
+      <td>66.91%</td>
+      <td>0.45%</td>
+      <td>-10.05</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Green Bay Packers</td>
+      <td>1633.80</td>
+      <td>24</td>
+      <td>Minnesota Vikings</td>
+      <td>1420.11</td>
+      <td>21</td>
+      <td>71.00%</td>
+      <td>28.54%</td>
+      <td>0.45%</td>
+      <td>8.80</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Miami Dolphins</td>
+      <td>1576.68</td>
+      <td>36</td>
+      <td>Denver Broncos</td>
+      <td>1627.10</td>
+      <td>39</td>
+      <td>34.96%</td>
+      <td>64.59%</td>
+      <td>0.45%</td>
+      <td>-10.77</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Dallas Cowboys</td>
+      <td>1576.70</td>
+      <td>31</td>
+      <td>New York Giants</td>
+      <td>1414.85</td>
+      <td>28</td>
+      <td>64.55%</td>
+      <td>34.99%</td>
+      <td>0.45%</td>
+      <td>10.78</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Arizona Cardinals</td>
+      <td>1671.32</td>
+      <td>3</td>
+      <td>Seattle Seahawks</td>
+      <td>1639.56</td>
+      <td>19</td>
+      <td>46.31%</td>
+      <td>53.23%</td>
+      <td>0.45%</td>
+      <td>-32.91</td>
+    </tr>
+    <tr>
+      <td>2014-11-23</td>
+      <td>Tennessee Titans</td>
+      <td>1342.46</td>
+      <td>24</td>
+      <td>Philadelphia Eagles</td>
+      <td>1579.02</td>
+      <td>43</td>
+      <td>15.55%</td>
+      <td>84.00%</td>
+      <td>0.45%</td>
+      <td>-12.08</td>
+    </tr>
+    <tr>
+      <td>2014-11-24</td>
+      <td>New York Jets</td>
+      <td>1358.42</td>
+      <td>3</td>
+      <td>Buffalo Bills</td>
+      <td>1464.17</td>
+      <td>38</td>
+      <td>28.10%</td>
+      <td>71.44%</td>
+      <td>0.45%</td>
+      <td>-29.59</td>
+    </tr>
+    <tr>
+      <td>2014-11-24</td>
+      <td>Buffalo Bills</td>
+      <td>1464.17</td>
+      <td>38</td>
+      <td>@ New York Jets</td>
+      <td>1358.42</td>
+      <td>3</td>
+      <td>71.44%</td>
+      <td>28.10%</td>
+      <td>0.45%</td>
+      <td>29.59</td>
+    </tr>
+    <tr>
+      <td>2014-11-24</td>
+      <td>New Orleans Saints</td>
+      <td>1528.95</td>
+      <td>27</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1560.06</td>
+      <td>34</td>
+      <td>53.32%</td>
+      <td>46.22%</td>
+      <td>0.45%</td>
+      <td>-25.05</td>
+    </tr>
+    <tr>
+      <td>2014-11-24</td>
+      <td>Baltimore Ravens</td>
+      <td>1560.06</td>
+      <td>34</td>
+      <td>New Orleans Saints</td>
+      <td>1528.95</td>
+      <td>27</td>
+      <td>46.22%</td>
+      <td>53.32%</td>
+      <td>0.45%</td>
+      <td>25.05</td>
+    </tr>
+    <tr>
+      <td>2014-11-27</td>
+      <td>Seattle Seahawks</td>
+      <td>1672.47</td>
+      <td>19</td>
+      <td>San Francisco 49ers</td>
+      <td>1613.13</td>
+      <td>3</td>
+      <td>50.28%</td>
+      <td>49.27%</td>
+      <td>0.45%</td>
+      <td>35.01</td>
+    </tr>
+    <tr>
+      <td>2014-11-27</td>
+      <td>Detroit Lions</td>
+      <td>1542.60</td>
+      <td>34</td>
+      <td>@ Chicago Bears</td>
+      <td>1443.20</td>
+      <td>17</td>
+      <td>70.70%</td>
+      <td>28.85%</td>
+      <td>0.45%</td>
+      <td>21.17</td>
+    </tr>
+    <tr>
+      <td>2014-11-27</td>
+      <td>San Francisco 49ers</td>
+      <td>1613.13</td>
+      <td>3</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1672.47</td>
+      <td>19</td>
+      <td>49.27%</td>
+      <td>50.28%</td>
+      <td>0.45%</td>
+      <td>-35.01</td>
+    </tr>
+    <tr>
+      <td>2014-11-27</td>
+      <td>Dallas Cowboys</td>
+      <td>1587.48</td>
+      <td>10</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1591.09</td>
+      <td>33</td>
+      <td>57.23%</td>
+      <td>42.32%</td>
+      <td>0.45%</td>
+      <td>-48.72</td>
+    </tr>
+    <tr>
+      <td>2014-11-27</td>
+      <td>Philadelphia Eagles</td>
+      <td>1591.09</td>
+      <td>33</td>
+      <td>Dallas Cowboys</td>
+      <td>1587.48</td>
+      <td>10</td>
+      <td>42.32%</td>
+      <td>57.23%</td>
+      <td>0.45%</td>
+      <td>48.72</td>
+    </tr>
+    <tr>
+      <td>2014-11-27</td>
+      <td>Chicago Bears</td>
+      <td>1443.20</td>
+      <td>17</td>
+      <td>Detroit Lions</td>
+      <td>1542.60</td>
+      <td>34</td>
+      <td>28.85%</td>
+      <td>70.70%</td>
+      <td>0.45%</td>
+      <td>-21.16</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Carolina Panthers</td>
+      <td>1413.94</td>
+      <td>13</td>
+      <td>Minnesota Vikings</td>
+      <td>1411.31</td>
+      <td>31</td>
+      <td>42.18%</td>
+      <td>57.37%</td>
+      <td>0.45%</td>
+      <td>-31.80</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Indianapolis Colts</td>
+      <td>1582.77</td>
+      <td>49</td>
+      <td>@ Washington Redskins</td>
+      <td>1311.53</td>
+      <td>27</td>
+      <td>86.44%</td>
+      <td>13.10%</td>
+      <td>0.45%</td>
+      <td>10.96</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Green Bay Packers</td>
+      <td>1642.60</td>
+      <td>26</td>
+      <td>@ New England Patriots</td>
+      <td>1751.42</td>
+      <td>21</td>
+      <td>42.21%</td>
+      <td>57.33%</td>
+      <td>0.45%</td>
+      <td>22.76</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Houston Texans</td>
+      <td>1448.37</td>
+      <td>45</td>
+      <td>@ Tennessee Titans</td>
+      <td>1330.38</td>
+      <td>21</td>
+      <td>72.84%</td>
+      <td>26.70%</td>
+      <td>0.45%</td>
+      <td>23.29</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1264.33</td>
+      <td>25</td>
+      <td>@ New York Giants</td>
+      <td>1404.07</td>
+      <td>24</td>
+      <td>37.94%</td>
+      <td>61.61%</td>
+      <td>0.45%</td>
+      <td>10.93</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Kansas City Chiefs</td>
+      <td>1603.68</td>
+      <td>16</td>
+      <td>@ Denver Broncos</td>
+      <td>1637.87</td>
+      <td>29</td>
+      <td>52.88%</td>
+      <td>46.66%</td>
+      <td>0.45%</td>
+      <td>-33.86</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1559.51</td>
+      <td>32</td>
+      <td>@ New Orleans Saints</td>
+      <td>1503.90</td>
+      <td>35</td>
+      <td>65.26%</td>
+      <td>34.28%</td>
+      <td>0.45%</td>
+      <td>-20.06</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1327.23</td>
+      <td>13</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1571.53</td>
+      <td>14</td>
+      <td>25.09%</td>
+      <td>74.46%</td>
+      <td>0.45%</td>
+      <td>-4.47</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Baltimore Ravens</td>
+      <td>1585.11</td>
+      <td>33</td>
+      <td>@ San Diego Chargers</td>
+      <td>1552.75</td>
+      <td>34</td>
+      <td>62.19%</td>
+      <td>37.36%</td>
+      <td>0.45%</td>
+      <td>-11.04</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>St. Louis Rams</td>
+      <td>1464.14</td>
+      <td>52</td>
+      <td>@ Oakland Raiders</td>
+      <td>1282.04</td>
+      <td>0</td>
+      <td>79.43%</td>
+      <td>20.12%</td>
+      <td>0.45%</td>
+      <td>25.84</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Minnesota Vikings</td>
+      <td>1411.31</td>
+      <td>31</td>
+      <td>@ Carolina Panthers</td>
+      <td>1413.94</td>
+      <td>13</td>
+      <td>57.37%</td>
+      <td>42.18%</td>
+      <td>0.45%</td>
+      <td>31.81</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Atlanta Falcons</td>
+      <td>1411.47</td>
+      <td>29</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1638.41</td>
+      <td>18</td>
+      <td>27.01%</td>
+      <td>72.53%</td>
+      <td>0.45%</td>
+      <td>42.69</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Buffalo Bills</td>
+      <td>1493.76</td>
+      <td>26</td>
+      <td>@ Cleveland Browns</td>
+      <td>1463.16</td>
+      <td>10</td>
+      <td>61.95%</td>
+      <td>37.60%</td>
+      <td>0.45%</td>
+      <td>26.74</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>San Diego Chargers</td>
+      <td>1552.75</td>
+      <td>34</td>
+      <td>Baltimore Ravens</td>
+      <td>1585.11</td>
+      <td>33</td>
+      <td>37.36%</td>
+      <td>62.19%</td>
+      <td>0.45%</td>
+      <td>11.04</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Cincinnati Bengals</td>
+      <td>1571.53</td>
+      <td>14</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1327.23</td>
+      <td>13</td>
+      <td>74.46%</td>
+      <td>25.09%</td>
+      <td>0.45%</td>
+      <td>4.46</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>New Orleans Saints</td>
+      <td>1503.90</td>
+      <td>35</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1559.51</td>
+      <td>32</td>
+      <td>34.28%</td>
+      <td>65.26%</td>
+      <td>0.45%</td>
+      <td>20.06</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Denver Broncos</td>
+      <td>1637.87</td>
+      <td>29</td>
+      <td>Kansas City Chiefs</td>
+      <td>1603.68</td>
+      <td>16</td>
+      <td>46.66%</td>
+      <td>52.88%</td>
+      <td>0.45%</td>
+      <td>33.86</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>New York Giants</td>
+      <td>1404.07</td>
+      <td>24</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1264.33</td>
+      <td>25</td>
+      <td>61.61%</td>
+      <td>37.94%</td>
+      <td>0.45%</td>
+      <td>-10.93</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Tennessee Titans</td>
+      <td>1330.38</td>
+      <td>21</td>
+      <td>Houston Texans</td>
+      <td>1448.37</td>
+      <td>45</td>
+      <td>26.70%</td>
+      <td>72.84%</td>
+      <td>0.45%</td>
+      <td>-23.28</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>New England Patriots</td>
+      <td>1751.42</td>
+      <td>21</td>
+      <td>Green Bay Packers</td>
+      <td>1642.60</td>
+      <td>26</td>
+      <td>57.33%</td>
+      <td>42.21%</td>
+      <td>0.45%</td>
+      <td>-22.76</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Washington Redskins</td>
+      <td>1311.53</td>
+      <td>27</td>
+      <td>Indianapolis Colts</td>
+      <td>1582.77</td>
+      <td>49</td>
+      <td>13.10%</td>
+      <td>86.44%</td>
+      <td>0.45%</td>
+      <td>-10.95</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Cleveland Browns</td>
+      <td>1463.16</td>
+      <td>10</td>
+      <td>Buffalo Bills</td>
+      <td>1493.76</td>
+      <td>26</td>
+      <td>37.60%</td>
+      <td>61.95%</td>
+      <td>0.45%</td>
+      <td>-26.74</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Arizona Cardinals</td>
+      <td>1638.41</td>
+      <td>18</td>
+      <td>Atlanta Falcons</td>
+      <td>1411.47</td>
+      <td>29</td>
+      <td>72.53%</td>
+      <td>27.01%</td>
+      <td>0.45%</td>
+      <td>-42.70</td>
+    </tr>
+    <tr>
+      <td>2014-11-30</td>
+      <td>Oakland Raiders</td>
+      <td>1282.04</td>
+      <td>0</td>
+      <td>St. Louis Rams</td>
+      <td>1464.14</td>
+      <td>52</td>
+      <td>20.12%</td>
+      <td>79.43%</td>
+      <td>0.45%</td>
+      <td>-25.84</td>
+    </tr>
+    <tr>
+      <td>2014-12-01</td>
+      <td>Miami Dolphins</td>
+      <td>1565.91</td>
+      <td>16</td>
+      <td>New York Jets</td>
+      <td>1328.83</td>
+      <td>13</td>
+      <td>73.67%</td>
+      <td>25.88%</td>
+      <td>0.45%</td>
+      <td>7.98</td>
+    </tr>
+    <tr>
+      <td>2014-12-01</td>
+      <td>New York Jets</td>
+      <td>1328.83</td>
+      <td>13</td>
+      <td>@ Miami Dolphins</td>
+      <td>1565.91</td>
+      <td>16</td>
+      <td>25.88%</td>
+      <td>73.67%</td>
+      <td>0.45%</td>
+      <td>-7.98</td>
+    </tr>
+    <tr>
+      <td>2014-12-04</td>
+      <td>Chicago Bears</td>
+      <td>1422.04</td>
+      <td>28</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1538.76</td>
+      <td>41</td>
+      <td>41.11%</td>
+      <td>58.44%</td>
+      <td>0.45%</td>
+      <td>-26.35</td>
+    </tr>
+    <tr>
+      <td>2014-12-04</td>
+      <td>Dallas Cowboys</td>
+      <td>1538.76</td>
+      <td>41</td>
+      <td>Chicago Bears</td>
+      <td>1422.04</td>
+      <td>28</td>
+      <td>58.44%</td>
+      <td>41.11%</td>
+      <td>0.45%</td>
+      <td>26.34</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Cincinnati Bengals</td>
+      <td>1575.99</td>
+      <td>21</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1539.45</td>
+      <td>42</td>
+      <td>62.75%</td>
+      <td>36.80%</td>
+      <td>0.45%</td>
+      <td>-51.03</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Arizona Cardinals</td>
+      <td>1595.71</td>
+      <td>17</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1569.82</td>
+      <td>14</td>
+      <td>61.31%</td>
+      <td>38.24%</td>
+      <td>0.45%</td>
+      <td>11.78</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Indianapolis Colts</td>
+      <td>1593.73</td>
+      <td>25</td>
+      <td>Cleveland Browns</td>
+      <td>1436.42</td>
+      <td>24</td>
+      <td>63.95%</td>
+      <td>35.59%</td>
+      <td>0.45%</td>
+      <td>6.33</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Kansas City Chiefs</td>
+      <td>1569.82</td>
+      <td>14</td>
+      <td>Arizona Cardinals</td>
+      <td>1595.71</td>
+      <td>17</td>
+      <td>38.24%</td>
+      <td>61.31%</td>
+      <td>0.45%</td>
+      <td>-11.77</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Buffalo Bills</td>
+      <td>1520.50</td>
+      <td>17</td>
+      <td>Denver Broncos</td>
+      <td>1671.73</td>
+      <td>24</td>
+      <td>23.13%</td>
+      <td>76.42%</td>
+      <td>0.45%</td>
+      <td>-10.90</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>San Francisco 49ers</td>
+      <td>1578.12</td>
+      <td>13</td>
+      <td>Oakland Raiders</td>
+      <td>1256.20</td>
+      <td>24</td>
+      <td>81.90%</td>
+      <td>17.64%</td>
+      <td>0.45%</td>
+      <td>-48.21</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Seattle Seahawks</td>
+      <td>1707.48</td>
+      <td>24</td>
+      <td>Philadelphia Eagles</td>
+      <td>1639.81</td>
+      <td>14</td>
+      <td>51.47%</td>
+      <td>48.07%</td>
+      <td>0.45%</td>
+      <td>27.00</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>New York Giants</td>
+      <td>1393.14</td>
+      <td>36</td>
+      <td>Tennessee Titans</td>
+      <td>1307.10</td>
+      <td>7</td>
+      <td>54.11%</td>
+      <td>45.44%</td>
+      <td>0.45%</td>
+      <td>43.47</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Carolina Panthers</td>
+      <td>1382.14</td>
+      <td>41</td>
+      <td>New Orleans Saints</td>
+      <td>1523.96</td>
+      <td>10</td>
+      <td>24.10%</td>
+      <td>75.44%</td>
+      <td>0.45%</td>
+      <td>74.54</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>New England Patriots</td>
+      <td>1728.66</td>
+      <td>23</td>
+      <td>San Diego Chargers</td>
+      <td>1563.79</td>
+      <td>14</td>
+      <td>64.95%</td>
+      <td>34.60%</td>
+      <td>0.45%</td>
+      <td>18.46</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>St. Louis Rams</td>
+      <td>1489.98</td>
+      <td>24</td>
+      <td>Washington Redskins</td>
+      <td>1300.58</td>
+      <td>0</td>
+      <td>68.07%</td>
+      <td>31.48%</td>
+      <td>0.45%</td>
+      <td>27.43</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Baltimore Ravens</td>
+      <td>1574.07</td>
+      <td>28</td>
+      <td>Miami Dolphins</td>
+      <td>1573.89</td>
+      <td>13</td>
+      <td>41.84%</td>
+      <td>57.71%</td>
+      <td>0.45%</td>
+      <td>39.68</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Houston Texans</td>
+      <td>1471.66</td>
+      <td>27</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1275.26</td>
+      <td>13</td>
+      <td>68.93%</td>
+      <td>30.61%</td>
+      <td>0.45%</td>
+      <td>20.38</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Cleveland Browns</td>
+      <td>1436.42</td>
+      <td>24</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1593.73</td>
+      <td>25</td>
+      <td>35.59%</td>
+      <td>63.95%</td>
+      <td>0.45%</td>
+      <td>-6.33</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>New York Jets</td>
+      <td>1320.85</td>
+      <td>24</td>
+      <td>Minnesota Vikings</td>
+      <td>1443.12</td>
+      <td>30</td>
+      <td>26.22%</td>
+      <td>73.32%</td>
+      <td>0.45%</td>
+      <td>-11.43</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1322.76</td>
+      <td>17</td>
+      <td>Detroit Lions</td>
+      <td>1563.77</td>
+      <td>34</td>
+      <td>15.21%</td>
+      <td>84.33%</td>
+      <td>0.45%</td>
+      <td>-11.17</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Detroit Lions</td>
+      <td>1563.77</td>
+      <td>34</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1322.76</td>
+      <td>17</td>
+      <td>84.33%</td>
+      <td>15.21%</td>
+      <td>0.45%</td>
+      <td>11.18</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Minnesota Vikings</td>
+      <td>1443.12</td>
+      <td>30</td>
+      <td>@ New York Jets</td>
+      <td>1320.85</td>
+      <td>24</td>
+      <td>73.32%</td>
+      <td>26.22%</td>
+      <td>0.45%</td>
+      <td>11.43</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1275.26</td>
+      <td>13</td>
+      <td>@ Houston Texans</td>
+      <td>1471.66</td>
+      <td>27</td>
+      <td>30.61%</td>
+      <td>68.93%</td>
+      <td>0.45%</td>
+      <td>-20.38</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Miami Dolphins</td>
+      <td>1573.89</td>
+      <td>13</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1574.07</td>
+      <td>28</td>
+      <td>57.71%</td>
+      <td>41.84%</td>
+      <td>0.45%</td>
+      <td>-39.68</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Washington Redskins</td>
+      <td>1300.58</td>
+      <td>0</td>
+      <td>@ St. Louis Rams</td>
+      <td>1489.98</td>
+      <td>24</td>
+      <td>31.48%</td>
+      <td>68.07%</td>
+      <td>0.45%</td>
+      <td>-27.43</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>San Diego Chargers</td>
+      <td>1563.79</td>
+      <td>14</td>
+      <td>@ New England Patriots</td>
+      <td>1728.66</td>
+      <td>23</td>
+      <td>34.60%</td>
+      <td>64.95%</td>
+      <td>0.45%</td>
+      <td>-18.46</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>New Orleans Saints</td>
+      <td>1523.96</td>
+      <td>10</td>
+      <td>@ Carolina Panthers</td>
+      <td>1382.14</td>
+      <td>41</td>
+      <td>75.44%</td>
+      <td>24.10%</td>
+      <td>0.45%</td>
+      <td>-74.54</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Tennessee Titans</td>
+      <td>1307.10</td>
+      <td>7</td>
+      <td>@ New York Giants</td>
+      <td>1393.14</td>
+      <td>36</td>
+      <td>45.44%</td>
+      <td>54.11%</td>
+      <td>0.45%</td>
+      <td>-43.48</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Philadelphia Eagles</td>
+      <td>1639.81</td>
+      <td>14</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1707.48</td>
+      <td>24</td>
+      <td>48.07%</td>
+      <td>51.47%</td>
+      <td>0.45%</td>
+      <td>-27.00</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Oakland Raiders</td>
+      <td>1256.20</td>
+      <td>24</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1578.12</td>
+      <td>13</td>
+      <td>17.64%</td>
+      <td>81.90%</td>
+      <td>0.45%</td>
+      <td>48.22</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Denver Broncos</td>
+      <td>1671.73</td>
+      <td>24</td>
+      <td>@ Buffalo Bills</td>
+      <td>1520.50</td>
+      <td>17</td>
+      <td>76.42%</td>
+      <td>23.13%</td>
+      <td>0.45%</td>
+      <td>10.89</td>
+    </tr>
+    <tr>
+      <td>2014-12-07</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1539.45</td>
+      <td>42</td>
+      <td>Cincinnati Bengals</td>
+      <td>1575.99</td>
+      <td>21</td>
+      <td>36.80%</td>
+      <td>62.75%</td>
+      <td>0.45%</td>
+      <td>51.03</td>
+    </tr>
+    <tr>
+      <td>2014-12-08</td>
+      <td>Atlanta Falcons</td>
+      <td>1454.16</td>
+      <td>37</td>
+      <td>Green Bay Packers</td>
+      <td>1665.36</td>
+      <td>43</td>
+      <td>17.56%</td>
+      <td>81.98%</td>
+      <td>0.45%</td>
+      <td>-7.66</td>
+    </tr>
+    <tr>
+      <td>2014-12-08</td>
+      <td>Green Bay Packers</td>
+      <td>1665.36</td>
+      <td>43</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1454.16</td>
+      <td>37</td>
+      <td>81.98%</td>
+      <td>17.56%</td>
+      <td>0.45%</td>
+      <td>7.66</td>
+    </tr>
+    <tr>
+      <td>2014-12-11</td>
+      <td>Arizona Cardinals</td>
+      <td>1607.49</td>
+      <td>12</td>
+      <td>St. Louis Rams</td>
+      <td>1517.41</td>
+      <td>6</td>
+      <td>54.68%</td>
+      <td>44.86%</td>
+      <td>0.45%</td>
+      <td>19.53</td>
+    </tr>
+    <tr>
+      <td>2014-12-11</td>
+      <td>St. Louis Rams</td>
+      <td>1517.41</td>
+      <td>6</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1607.49</td>
+      <td>12</td>
+      <td>44.86%</td>
+      <td>54.68%</td>
+      <td>0.45%</td>
+      <td>-19.53</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Denver Broncos</td>
+      <td>1682.62</td>
+      <td>22</td>
+      <td>San Diego Chargers</td>
+      <td>1545.33</td>
+      <td>10</td>
+      <td>61.27%</td>
+      <td>38.27%</td>
+      <td>0.45%</td>
+      <td>23.57</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Atlanta Falcons</td>
+      <td>1446.50</td>
+      <td>20</td>
+      <td>@ Pittsburgh Steelers</td>
+      <td>1590.48</td>
+      <td>27</td>
+      <td>37.37%</td>
+      <td>62.18%</td>
+      <td>0.45%</td>
+      <td>-17.58</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Buffalo Bills</td>
+      <td>1509.60</td>
+      <td>21</td>
+      <td>@ Green Bay Packers</td>
+      <td>1673.02</td>
+      <td>13</td>
+      <td>34.79%</td>
+      <td>64.76%</td>
+      <td>0.45%</td>
+      <td>32.51</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Carolina Panthers</td>
+      <td>1456.68</td>
+      <td>19</td>
+      <td>@ Tampa Bay Buccaneers</td>
+      <td>1311.59</td>
+      <td>17</td>
+      <td>75.78%</td>
+      <td>23.76%</td>
+      <td>0.45%</td>
+      <td>5.98</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Cleveland Browns</td>
+      <td>1430.09</td>
+      <td>0</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1524.96</td>
+      <td>30</td>
+      <td>44.18%</td>
+      <td>55.36%</td>
+      <td>0.45%</td>
+      <td>-43.00</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Indianapolis Colts</td>
+      <td>1600.06</td>
+      <td>17</td>
+      <td>@ Houston Texans</td>
+      <td>1492.04</td>
+      <td>10</td>
+      <td>71.70%</td>
+      <td>27.84%</td>
+      <td>0.45%</td>
+      <td>13.10</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>New England Patriots</td>
+      <td>1747.12</td>
+      <td>41</td>
+      <td>@ Miami Dolphins</td>
+      <td>1534.21</td>
+      <td>13</td>
+      <td>82.13%</td>
+      <td>17.42%</td>
+      <td>0.45%</td>
+      <td>16.42</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Baltimore Ravens</td>
+      <td>1613.75</td>
+      <td>20</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1254.88</td>
+      <td>12</td>
+      <td>91.20%</td>
+      <td>8.34%</td>
+      <td>0.45%</td>
+      <td>4.21</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Tennessee Titans</td>
+      <td>1263.62</td>
+      <td>11</td>
+      <td>@ New York Jets</td>
+      <td>1309.42</td>
+      <td>16</td>
+      <td>51.22%</td>
+      <td>48.33%</td>
+      <td>0.45%</td>
+      <td>-20.33</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Oakland Raiders</td>
+      <td>1304.42</td>
+      <td>13</td>
+      <td>Kansas City Chiefs</td>
+      <td>1558.05</td>
+      <td>31</td>
+      <td>14.30%</td>
+      <td>85.25%</td>
+      <td>0.45%</td>
+      <td>-10.81</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Philadelphia Eagles</td>
+      <td>1612.81</td>
+      <td>27</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1565.10</td>
+      <td>38</td>
+      <td>64.23%</td>
+      <td>35.32%</td>
+      <td>0.45%</td>
+      <td>-37.81</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>New York Giants</td>
+      <td>1436.61</td>
+      <td>24</td>
+      <td>@ Washington Redskins</td>
+      <td>1273.15</td>
+      <td>13</td>
+      <td>77.65%</td>
+      <td>21.90%</td>
+      <td>0.45%</td>
+      <td>12.94</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>San Diego Chargers</td>
+      <td>1545.33</td>
+      <td>10</td>
+      <td>@ Denver Broncos</td>
+      <td>1682.62</td>
+      <td>22</td>
+      <td>38.27%</td>
+      <td>61.27%</td>
+      <td>0.45%</td>
+      <td>-23.58</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Seattle Seahawks</td>
+      <td>1734.48</td>
+      <td>17</td>
+      <td>@ San Francisco 49ers</td>
+      <td>1529.91</td>
+      <td>7</td>
+      <td>81.42%</td>
+      <td>18.12%</td>
+      <td>0.45%</td>
+      <td>10.21</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Kansas City Chiefs</td>
+      <td>1558.05</td>
+      <td>31</td>
+      <td>@ Oakland Raiders</td>
+      <td>1304.42</td>
+      <td>13</td>
+      <td>85.25%</td>
+      <td>14.30%</td>
+      <td>0.45%</td>
+      <td>10.81</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Detroit Lions</td>
+      <td>1574.95</td>
+      <td>16</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1454.55</td>
+      <td>14</td>
+      <td>73.11%</td>
+      <td>26.43%</td>
+      <td>0.45%</td>
+      <td>6.65</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Minnesota Vikings</td>
+      <td>1454.55</td>
+      <td>14</td>
+      <td>Detroit Lions</td>
+      <td>1574.95</td>
+      <td>16</td>
+      <td>26.43%</td>
+      <td>73.11%</td>
+      <td>0.45%</td>
+      <td>-6.65</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>San Francisco 49ers</td>
+      <td>1529.91</td>
+      <td>7</td>
+      <td>Seattle Seahawks</td>
+      <td>1734.48</td>
+      <td>17</td>
+      <td>18.12%</td>
+      <td>81.42%</td>
+      <td>0.45%</td>
+      <td>-10.21</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Dallas Cowboys</td>
+      <td>1565.10</td>
+      <td>38</td>
+      <td>Philadelphia Eagles</td>
+      <td>1612.81</td>
+      <td>27</td>
+      <td>35.32%</td>
+      <td>64.23%</td>
+      <td>0.45%</td>
+      <td>37.81</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Washington Redskins</td>
+      <td>1273.15</td>
+      <td>13</td>
+      <td>New York Giants</td>
+      <td>1436.61</td>
+      <td>24</td>
+      <td>21.90%</td>
+      <td>77.65%</td>
+      <td>0.45%</td>
+      <td>-12.93</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1254.88</td>
+      <td>12</td>
+      <td>Baltimore Ravens</td>
+      <td>1613.75</td>
+      <td>20</td>
+      <td>8.34%</td>
+      <td>91.20%</td>
+      <td>0.45%</td>
+      <td>-4.21</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Green Bay Packers</td>
+      <td>1673.02</td>
+      <td>13</td>
+      <td>Buffalo Bills</td>
+      <td>1509.60</td>
+      <td>21</td>
+      <td>64.76%</td>
+      <td>34.79%</td>
+      <td>0.45%</td>
+      <td>-32.51</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1590.48</td>
+      <td>27</td>
+      <td>Atlanta Falcons</td>
+      <td>1446.50</td>
+      <td>20</td>
+      <td>62.18%</td>
+      <td>37.37%</td>
+      <td>0.45%</td>
+      <td>17.58</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Cincinnati Bengals</td>
+      <td>1524.96</td>
+      <td>30</td>
+      <td>Cleveland Browns</td>
+      <td>1430.09</td>
+      <td>0</td>
+      <td>55.36%</td>
+      <td>44.18%</td>
+      <td>0.45%</td>
+      <td>43.00</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Houston Texans</td>
+      <td>1492.04</td>
+      <td>10</td>
+      <td>Indianapolis Colts</td>
+      <td>1600.06</td>
+      <td>17</td>
+      <td>27.84%</td>
+      <td>71.70%</td>
+      <td>0.45%</td>
+      <td>-13.11</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Miami Dolphins</td>
+      <td>1534.21</td>
+      <td>13</td>
+      <td>New England Patriots</td>
+      <td>1747.12</td>
+      <td>41</td>
+      <td>17.42%</td>
+      <td>82.13%</td>
+      <td>0.45%</td>
+      <td>-16.42</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1311.59</td>
+      <td>17</td>
+      <td>Carolina Panthers</td>
+      <td>1456.68</td>
+      <td>19</td>
+      <td>23.76%</td>
+      <td>75.78%</td>
+      <td>0.45%</td>
+      <td>-5.99</td>
+    </tr>
+    <tr>
+      <td>2014-12-14</td>
+      <td>New York Jets</td>
+      <td>1309.42</td>
+      <td>16</td>
+      <td>Tennessee Titans</td>
+      <td>1263.62</td>
+      <td>11</td>
+      <td>48.33%</td>
+      <td>51.22%</td>
+      <td>0.45%</td>
+      <td>20.33</td>
+    </tr>
+    <tr>
+      <td>2014-12-15</td>
+      <td>Chicago Bears</td>
+      <td>1395.69</td>
+      <td>15</td>
+      <td>@ New Orleans Saints</td>
+      <td>1449.42</td>
+      <td>31</td>
+      <td>50.08%</td>
+      <td>49.47%</td>
+      <td>0.45%</td>
+      <td>-35.57</td>
+    </tr>
+    <tr>
+      <td>2014-12-15</td>
+      <td>New Orleans Saints</td>
+      <td>1449.42</td>
+      <td>31</td>
+      <td>Chicago Bears</td>
+      <td>1395.69</td>
+      <td>15</td>
+      <td>49.47%</td>
+      <td>50.08%</td>
+      <td>0.45%</td>
+      <td>35.57</td>
+    </tr>
+    <tr>
+      <td>2014-12-18</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1250.67</td>
+      <td>21</td>
+      <td>@ Tennessee Titans</td>
+      <td>1243.29</td>
+      <td>13</td>
+      <td>58.77%</td>
+      <td>40.78%</td>
+      <td>0.45%</td>
+      <td>20.50</td>
+    </tr>
+    <tr>
+      <td>2014-12-18</td>
+      <td>Tennessee Titans</td>
+      <td>1243.29</td>
+      <td>13</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1250.67</td>
+      <td>21</td>
+      <td>40.78%</td>
+      <td>58.77%</td>
+      <td>0.45%</td>
+      <td>-20.51</td>
+    </tr>
+    <tr>
+      <td>2014-12-20</td>
+      <td>Philadelphia Eagles</td>
+      <td>1575.00</td>
+      <td>24</td>
+      <td>Washington Redskins</td>
+      <td>1260.22</td>
+      <td>27</td>
+      <td>81.30%</td>
+      <td>18.25%</td>
+      <td>0.45%</td>
+      <td>-24.99</td>
+    </tr>
+    <tr>
+      <td>2014-12-20</td>
+      <td>Washington Redskins</td>
+      <td>1260.22</td>
+      <td>27</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1575.00</td>
+      <td>24</td>
+      <td>18.25%</td>
+      <td>81.30%</td>
+      <td>0.45%</td>
+      <td>24.99</td>
+    </tr>
+    <tr>
+      <td>2014-12-20</td>
+      <td>San Diego Chargers</td>
+      <td>1521.75</td>
+      <td>38</td>
+      <td>San Francisco 49ers</td>
+      <td>1519.70</td>
+      <td>35</td>
+      <td>42.10%</td>
+      <td>57.45%</td>
+      <td>0.45%</td>
+      <td>17.67</td>
+    </tr>
+    <tr>
+      <td>2014-12-20</td>
+      <td>San Francisco 49ers</td>
+      <td>1519.70</td>
+      <td>35</td>
+      <td>@ San Diego Chargers</td>
+      <td>1521.75</td>
+      <td>38</td>
+      <td>57.45%</td>
+      <td>42.10%</td>
+      <td>0.45%</td>
+      <td>-17.66</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Buffalo Bills</td>
+      <td>1542.11</td>
+      <td>24</td>
+      <td>Oakland Raiders</td>
+      <td>1293.61</td>
+      <td>26</td>
+      <td>74.91%</td>
+      <td>24.64%</td>
+      <td>0.45%</td>
+      <td>-18.80</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Baltimore Ravens</td>
+      <td>1617.96</td>
+      <td>13</td>
+      <td>Houston Texans</td>
+      <td>1478.93</td>
+      <td>25</td>
+      <td>61.51%</td>
+      <td>38.04%</td>
+      <td>0.45%</td>
+      <td>-37.82</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>New England Patriots</td>
+      <td>1763.54</td>
+      <td>17</td>
+      <td>New York Jets</td>
+      <td>1329.75</td>
+      <td>16</td>
+      <td>89.43%</td>
+      <td>10.11%</td>
+      <td>0.45%</td>
+      <td>1.81</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>New York Giants</td>
+      <td>1449.55</td>
+      <td>37</td>
+      <td>St. Louis Rams</td>
+      <td>1497.88</td>
+      <td>27</td>
+      <td>35.23%</td>
+      <td>64.31%</td>
+      <td>0.45%</td>
+      <td>36.09</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Green Bay Packers</td>
+      <td>1640.51</td>
+      <td>20</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1305.60</td>
+      <td>3</td>
+      <td>82.96%</td>
+      <td>16.58%</td>
+      <td>0.45%</td>
+      <td>12.18</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Cleveland Browns</td>
+      <td>1387.09</td>
+      <td>13</td>
+      <td>Carolina Panthers</td>
+      <td>1462.66</td>
+      <td>17</td>
+      <td>31.74%</td>
+      <td>67.80%</td>
+      <td>0.45%</td>
+      <td>-11.30</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Detroit Lions</td>
+      <td>1581.60</td>
+      <td>20</td>
+      <td>Chicago Bears</td>
+      <td>1360.12</td>
+      <td>14</td>
+      <td>71.91%</td>
+      <td>27.64%</td>
+      <td>0.45%</td>
+      <td>12.05</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Minnesota Vikings</td>
+      <td>1447.90</td>
+      <td>35</td>
+      <td>Miami Dolphins</td>
+      <td>1517.79</td>
+      <td>37</td>
+      <td>32.46%</td>
+      <td>67.09%</td>
+      <td>0.45%</td>
+      <td>-8.17</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Kansas City Chiefs</td>
+      <td>1568.86</td>
+      <td>12</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1608.06</td>
+      <td>20</td>
+      <td>36.44%</td>
+      <td>63.10%</td>
+      <td>0.45%</td>
+      <td>-18.33</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Seattle Seahawks</td>
+      <td>1744.69</td>
+      <td>35</td>
+      <td>Arizona Cardinals</td>
+      <td>1627.02</td>
+      <td>6</td>
+      <td>58.57%</td>
+      <td>40.97%</td>
+      <td>0.45%</td>
+      <td>39.22</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Chicago Bears</td>
+      <td>1360.12</td>
+      <td>14</td>
+      <td>@ Detroit Lions</td>
+      <td>1581.60</td>
+      <td>20</td>
+      <td>27.64%</td>
+      <td>71.91%</td>
+      <td>0.45%</td>
+      <td>-12.05</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Carolina Panthers</td>
+      <td>1462.66</td>
+      <td>17</td>
+      <td>@ Cleveland Browns</td>
+      <td>1387.09</td>
+      <td>13</td>
+      <td>67.80%</td>
+      <td>31.74%</td>
+      <td>0.45%</td>
+      <td>11.30</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1305.60</td>
+      <td>3</td>
+      <td>@ Green Bay Packers</td>
+      <td>1640.51</td>
+      <td>20</td>
+      <td>16.58%</td>
+      <td>82.96%</td>
+      <td>0.45%</td>
+      <td>-12.17</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>St. Louis Rams</td>
+      <td>1497.88</td>
+      <td>27</td>
+      <td>@ New York Giants</td>
+      <td>1449.55</td>
+      <td>37</td>
+      <td>64.31%</td>
+      <td>35.23%</td>
+      <td>0.45%</td>
+      <td>-36.09</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1608.06</td>
+      <td>20</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1568.86</td>
+      <td>12</td>
+      <td>63.10%</td>
+      <td>36.44%</td>
+      <td>0.45%</td>
+      <td>18.33</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>New York Jets</td>
+      <td>1329.75</td>
+      <td>16</td>
+      <td>@ New England Patriots</td>
+      <td>1763.54</td>
+      <td>17</td>
+      <td>10.11%</td>
+      <td>89.43%</td>
+      <td>0.45%</td>
+      <td>-1.80</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Indianapolis Colts</td>
+      <td>1613.16</td>
+      <td>7</td>
+      <td>Dallas Cowboys</td>
+      <td>1602.91</td>
+      <td>42</td>
+      <td>43.25%</td>
+      <td>56.29%</td>
+      <td>0.45%</td>
+      <td>-45.47</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Oakland Raiders</td>
+      <td>1293.61</td>
+      <td>26</td>
+      <td>@ Buffalo Bills</td>
+      <td>1542.11</td>
+      <td>24</td>
+      <td>24.64%</td>
+      <td>74.91%</td>
+      <td>0.45%</td>
+      <td>18.80</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Houston Texans</td>
+      <td>1478.93</td>
+      <td>25</td>
+      <td>@ Baltimore Ravens</td>
+      <td>1617.96</td>
+      <td>13</td>
+      <td>38.04%</td>
+      <td>61.51%</td>
+      <td>0.45%</td>
+      <td>37.82</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Miami Dolphins</td>
+      <td>1517.79</td>
+      <td>37</td>
+      <td>@ Minnesota Vikings</td>
+      <td>1447.90</td>
+      <td>35</td>
+      <td>67.09%</td>
+      <td>32.46%</td>
+      <td>0.45%</td>
+      <td>8.17</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Dallas Cowboys</td>
+      <td>1602.91</td>
+      <td>42</td>
+      <td>@ Indianapolis Colts</td>
+      <td>1613.16</td>
+      <td>7</td>
+      <td>56.29%</td>
+      <td>43.25%</td>
+      <td>0.45%</td>
+      <td>45.48</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Arizona Cardinals</td>
+      <td>1627.02</td>
+      <td>6</td>
+      <td>@ Seattle Seahawks</td>
+      <td>1744.69</td>
+      <td>35</td>
+      <td>40.97%</td>
+      <td>58.57%</td>
+      <td>0.45%</td>
+      <td>-39.23</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>Atlanta Falcons</td>
+      <td>1428.92</td>
+      <td>30</td>
+      <td>New Orleans Saints</td>
+      <td>1484.99</td>
+      <td>14</td>
+      <td>34.22%</td>
+      <td>65.32%</td>
+      <td>0.45%</td>
+      <td>46.37</td>
+    </tr>
+    <tr>
+      <td>2014-12-21</td>
+      <td>New Orleans Saints</td>
+      <td>1484.99</td>
+      <td>14</td>
+      <td>@ Atlanta Falcons</td>
+      <td>1428.92</td>
+      <td>30</td>
+      <td>65.32%</td>
+      <td>34.22%</td>
+      <td>0.45%</td>
+      <td>-46.37</td>
+    </tr>
+    <tr>
+      <td>2014-12-22</td>
+      <td>Denver Broncos</td>
+      <td>1706.19</td>
+      <td>28</td>
+      <td>Cincinnati Bengals</td>
+      <td>1567.96</td>
+      <td>37</td>
+      <td>61.40%</td>
+      <td>38.14%</td>
+      <td>0.45%</td>
+      <td>-32.69</td>
+    </tr>
+    <tr>
+      <td>2014-12-22</td>
+      <td>Cincinnati Bengals</td>
+      <td>1567.96</td>
+      <td>37</td>
+      <td>@ Denver Broncos</td>
+      <td>1706.19</td>
+      <td>28</td>
+      <td>38.14%</td>
+      <td>61.40%</td>
+      <td>0.45%</td>
+      <td>32.69</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Detroit Lions</td>
+      <td>1593.65</td>
+      <td>20</td>
+      <td>Green Bay Packers</td>
+      <td>1652.69</td>
+      <td>30</td>
+      <td>33.84%</td>
+      <td>65.71%</td>
+      <td>0.45%</td>
+      <td>-19.04</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Jacksonville Jaguars</td>
+      <td>1271.17</td>
+      <td>17</td>
+      <td>Houston Texans</td>
+      <td>1516.75</td>
+      <td>23</td>
+      <td>14.88%</td>
+      <td>84.67%</td>
+      <td>0.45%</td>
+      <td>-6.49</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>New York Jets</td>
+      <td>1327.95</td>
+      <td>37</td>
+      <td>Miami Dolphins</td>
+      <td>1525.96</td>
+      <td>24</td>
+      <td>18.69%</td>
+      <td>80.86%</td>
+      <td>0.45%</td>
+      <td>51.75</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Chicago Bears</td>
+      <td>1348.07</td>
+      <td>9</td>
+      <td>Minnesota Vikings</td>
+      <td>1439.73</td>
+      <td>13</td>
+      <td>29.77%</td>
+      <td>69.77%</td>
+      <td>0.45%</td>
+      <td>-10.59</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Cincinnati Bengals</td>
+      <td>1600.65</td>
+      <td>17</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1626.39</td>
+      <td>27</td>
+      <td>38.26%</td>
+      <td>61.29%</td>
+      <td>0.45%</td>
+      <td>-21.51</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Cleveland Browns</td>
+      <td>1375.79</td>
+      <td>10</td>
+      <td>Baltimore Ravens</td>
+      <td>1580.14</td>
+      <td>20</td>
+      <td>18.14%</td>
+      <td>81.40%</td>
+      <td>0.45%</td>
+      <td>-10.21</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Arizona Cardinals</td>
+      <td>1587.79</td>
+      <td>17</td>
+      <td>San Francisco 49ers</td>
+      <td>1502.04</td>
+      <td>20</td>
+      <td>54.07%</td>
+      <td>45.48%</td>
+      <td>0.45%</td>
+      <td>-16.62</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>New Orleans Saints</td>
+      <td>1438.62</td>
+      <td>23</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1293.43</td>
+      <td>20</td>
+      <td>62.34%</td>
+      <td>37.20%</td>
+      <td>0.45%</td>
+      <td>11.46</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>St. Louis Rams</td>
+      <td>1461.79</td>
+      <td>6</td>
+      <td>Seattle Seahawks</td>
+      <td>1783.91</td>
+      <td>20</td>
+      <td>10.11%</td>
+      <td>89.43%</td>
+      <td>0.45%</td>
+      <td>-6.74</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Dallas Cowboys</td>
+      <td>1648.39</td>
+      <td>44</td>
+      <td>Washington Redskins</td>
+      <td>1285.21</td>
+      <td>17</td>
+      <td>85.09%</td>
+      <td>14.45%</td>
+      <td>0.45%</td>
+      <td>13.38</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>San Diego Chargers</td>
+      <td>1539.42</td>
+      <td>7</td>
+      <td>Kansas City Chiefs</td>
+      <td>1550.53</td>
+      <td>19</td>
+      <td>40.26%</td>
+      <td>59.28%</td>
+      <td>0.45%</td>
+      <td>-24.80</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Philadelphia Eagles</td>
+      <td>1550.01</td>
+      <td>34</td>
+      <td>New York Giants</td>
+      <td>1485.64</td>
+      <td>26</td>
+      <td>51.00%</td>
+      <td>48.55%</td>
+      <td>0.45%</td>
+      <td>24.39</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Atlanta Falcons</td>
+      <td>1475.29</td>
+      <td>3</td>
+      <td>@ Carolina Panthers</td>
+      <td>1473.96</td>
+      <td>34</td>
+      <td>57.92%</td>
+      <td>41.62%</td>
+      <td>0.45%</td>
+      <td>-57.25</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Denver Broncos</td>
+      <td>1673.50</td>
+      <td>47</td>
+      <td>@ Oakland Raiders</td>
+      <td>1312.41</td>
+      <td>14</td>
+      <td>91.30%</td>
+      <td>8.25%</td>
+      <td>0.45%</td>
+      <td>8.45</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Kansas City Chiefs</td>
+      <td>1550.53</td>
+      <td>19</td>
+      <td>@ San Diego Chargers</td>
+      <td>1539.42</td>
+      <td>7</td>
+      <td>59.28%</td>
+      <td>40.26%</td>
+      <td>0.45%</td>
+      <td>24.79</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Green Bay Packers</td>
+      <td>1652.69</td>
+      <td>30</td>
+      <td>@ Detroit Lions</td>
+      <td>1593.65</td>
+      <td>20</td>
+      <td>65.71%</td>
+      <td>33.84%</td>
+      <td>0.45%</td>
+      <td>19.04</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Houston Texans</td>
+      <td>1516.75</td>
+      <td>23</td>
+      <td>@ Jacksonville Jaguars</td>
+      <td>1271.17</td>
+      <td>17</td>
+      <td>84.67%</td>
+      <td>14.88%</td>
+      <td>0.45%</td>
+      <td>6.49</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Miami Dolphins</td>
+      <td>1525.96</td>
+      <td>24</td>
+      <td>@ New York Jets</td>
+      <td>1327.95</td>
+      <td>37</td>
+      <td>80.86%</td>
+      <td>18.69%</td>
+      <td>0.45%</td>
+      <td>-51.75</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Minnesota Vikings</td>
+      <td>1439.73</td>
+      <td>13</td>
+      <td>@ Chicago Bears</td>
+      <td>1348.07</td>
+      <td>9</td>
+      <td>69.77%</td>
+      <td>29.77%</td>
+      <td>0.45%</td>
+      <td>10.60</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>New York Giants</td>
+      <td>1485.64</td>
+      <td>26</td>
+      <td>@ Philadelphia Eagles</td>
+      <td>1550.01</td>
+      <td>34</td>
+      <td>48.55%</td>
+      <td>51.00%</td>
+      <td>0.45%</td>
+      <td>-24.39</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Pittsburgh Steelers</td>
+      <td>1626.39</td>
+      <td>27</td>
+      <td>@ Cincinnati Bengals</td>
+      <td>1600.65</td>
+      <td>17</td>
+      <td>61.29%</td>
+      <td>38.26%</td>
+      <td>0.45%</td>
+      <td>21.51</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Baltimore Ravens</td>
+      <td>1580.14</td>
+      <td>20</td>
+      <td>@ Cleveland Browns</td>
+      <td>1375.79</td>
+      <td>10</td>
+      <td>81.40%</td>
+      <td>18.14%</td>
+      <td>0.45%</td>
+      <td>10.22</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>San Francisco 49ers</td>
+      <td>1502.04</td>
+      <td>20</td>
+      <td>@ Arizona Cardinals</td>
+      <td>1587.79</td>
+      <td>17</td>
+      <td>45.48%</td>
+      <td>54.07%</td>
+      <td>0.45%</td>
+      <td>16.63</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Tampa Bay Buccaneers</td>
+      <td>1293.43</td>
+      <td>20</td>
+      <td>@ New Orleans Saints</td>
+      <td>1438.62</td>
+      <td>23</td>
+      <td>37.20%</td>
+      <td>62.34%</td>
+      <td>0.45%</td>
+      <td>-11.46</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Seattle Seahawks</td>
+      <td>1783.91</td>
+      <td>20</td>
+      <td>@ St. Louis Rams</td>
+      <td>1461.79</td>
+      <td>6</td>
+      <td>89.43%</td>
+      <td>10.11%</td>
+      <td>0.45%</td>
+      <td>6.74</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Washington Redskins</td>
+      <td>1285.21</td>
+      <td>17</td>
+      <td>@ Dallas Cowboys</td>
+      <td>1648.39</td>
+      <td>44</td>
+      <td>14.45%</td>
+      <td>85.09%</td>
+      <td>0.45%</td>
+      <td>-13.38</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Oakland Raiders</td>
+      <td>1312.41</td>
+      <td>14</td>
+      <td>Denver Broncos</td>
+      <td>1673.50</td>
+      <td>47</td>
+      <td>8.25%</td>
+      <td>91.30%</td>
+      <td>0.45%</td>
+      <td>-8.45</td>
+    </tr>
+    <tr>
+      <td>2014-12-28</td>
+      <td>Carolina Panthers</td>
+      <td>1473.96</td>
+      <td>34</td>
+      <td>Atlanta Falcons</td>
+      <td>1475.29</td>
+      <td>3</td>
+      <td>41.62%</td>
+      <td>57.92%</td>
+      <td>0.45%</td>
+      <td>57.24</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
