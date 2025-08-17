@@ -127,20 +127,29 @@ h3 {
 }
 
 .review-table {
-  border-left: 4px solid #A4161A;  /* red vertical bar */
-  padding-left: 1rem;              /* spacing inside bar */
-  font-family: 'Inter', sans-serif;
-  border-collapse: collapse;
+    width: 100%;                    /* table fills container */
+    border-left: 4px solid #A4161A; /* red vertical bar */
+    padding-left: 1rem;             /* spacing inside bar */
+    font-family: 'Inter', sans-serif;
+    border-collapse: collapse;      /* removes spacing between cells */
 }
 
 .review-table td {
-  padding: 4px 8px;
+    padding: 4px 8px;       /* spacing inside cells */
+    border: none;           /* no visible borders */
+    text-align: left;       /* left-justify all text */
 }
 
+/* First column (labels) */
 .review-table td:first-child {
-  font-weight: bold;
-  text-align: right;               /* aligns labels/colons */
-  white-space: nowrap;              /* prevent wrapping of labels */
+    font-weight: bold;
+    width: 30%;            /* fixed proportion of table width */
+}
+
+/* Second column (values) */
+.review-table td:last-child {
+    width: 70%;             /* fills remaining space */
+    padding-left: 2ch;      /* visual indent from label column */
 }
 
 /*-----------------------------------
@@ -836,29 +845,6 @@ iframe {
     flex: 1 1 45%;                    /* each container ~half of wrapper width */
     min-width: 250px;                 /* prevents table from getting too narrow */
     box-sizing: border-box;
-}
-
-.review-table {
-    width: 100%;             /* table fills container */
-    border-collapse: collapse;
-}
-
-.review-table td {
-    padding: 4px 8px;       /* spacing inside cells */
-    border: none;           /* no visible borders */
-}
-
-/* First column (labels) */
-.review-table td:first-child {
-    font-weight: bold;
-    text-align: right;
-    width: 30%;            /* fixed proportion of table width */
-}
-
-/* Second column (values) */
-.review-table td:last-child {
-    width: 70%;             /* fills remaining space */
-    padding-left: 2ch;      /* visual indent */
 }
 
 /* For narrow screens below 700px */
