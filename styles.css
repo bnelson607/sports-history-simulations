@@ -813,7 +813,7 @@ iframe {
   border-left: 4px solid #A4161A;  /* red vertical bar */
   padding-left: 1rem;
   border-collapse: collapse;
-  flex: 1 1 50%;                   /* ensure they sit side by side */
+  flex: 1 1 45%;                   /* ensure they sit side by side */
   max-width: none;                  /* override max-width if needed */
   border: none;                     /* remove gray border from old CSS */
 }
@@ -831,31 +831,35 @@ iframe {
 
 /* Container for each table: red bar on left */
 .review-table-container {
-  border-left: 4px solid #A4161A;  /* red vertical bar */
-  padding-left: 1rem;
-  flex: 1 1 50%;                    /* take half width */
-  min-width: 250px;                  /* prevents table from getting too small */
-  box-sizing: border-box;
+    border-left: 4px solid #A4161A;  /* red vertical bar on the side */
+    padding-left: 1rem;              /* spacing between bar and table */
+    flex: 1 1 45%;                    /* each container ~half of wrapper width */
+    min-width: 250px;                 /* prevents table from getting too narrow */
+    box-sizing: border-box;
 }
 
-/* Table itself: no borders, normal width */
 .review-table {
-  width: 100%;
-  border-collapse: collapse;
+    width: 100%;             /* table fills container */
+    border-collapse: collapse;
 }
 
 .review-table td {
-  padding: 4px 8px;
-  border: none;
+    padding: 4px 8px;       /* spacing inside cells */
+    border: none;           /* no visible borders */
 }
 
-/* Left column: bold and right-aligned */
+/* First column (labels) */
 .review-table td:first-child {
-  font-weight: bold;
-  text-align: right;
-  white-space: nowrap; /* prevents wrapping label text */
+    font-weight: bold;
+    text-align: right;
+    width: 30%;            /* fixed proportion of table width */
 }
 
+/* Second column (values) */
+.review-table td:last-child {
+    width: 70%;             /* fills remaining space */
+    padding-left: 2ch;      /* visual indent */
+}
 
 /* For narrow screens below 700px */
 @media (max-width: 700px) {
