@@ -852,21 +852,28 @@ iframe {
 
 /* For narrow screens below 700px */
 @media (max-width: 700px) {
-  /* Stack image and table vertically, full width */
-  .side-by-side-flex-wrapper img,
-  .side-by-side-flex-wrapper table {
-    flex: 1 1 100%;           /* Full width on mobile */
-  }
+    /* Stack images and tables vertically, full width */
+    .side-by-side-flex-wrapper img,
+    .side-by-side-flex-wrapper table,
+    .side-by-side-flex-wrapper .review-table-container {
+        flex: 1 1 100%;           /* Full width on mobile */
+        min-width: 0;             /* Allow shrinking to fit screen */
+    }
 
-  /* Reduce gap to save space */
-  .side-by-side-flex-wrapper {
-    gap: 10px;
-  }
+    /* Reduce gap between stacked items */
+    .side-by-side-flex-wrapper {
+        gap: 10px;
+        flex-direction: column;   /* stack vertically */
+    }
 
-  /* Slightly smaller font for tables on small screens */
-  table {
-    font-size: 14px;
-  }
+    /* Slightly smaller font for tables on small screens */
+    table {
+        font-size: 14px;
+        display: block;           /* enable horizontal scrolling */
+        overflow-x: auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
 }
 
 /*-----------------------------------------------------------------------------------
