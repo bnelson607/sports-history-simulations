@@ -808,11 +808,26 @@ iframe {
   border: 1px solid #ccc;     /* Light border for clarity */
 }
 
-/* .side-by-side-flex-wrapper .season-in-review { */
-/*   flex: 1 1 0;         /* Equal-width flexible boxes */ */
-/*   min-width: 300px;    /* Ensures they stack if the screen is too narrow */ */
-/*   margin-bottom: 0.5rem; /* Add spacing below each section */ */
-/* } */
+/* Make sure review tables have the red bar, padding, and no visible borders */
+.side-by-side-flex-wrapper .review-table {
+  border-left: 4px solid #A4161A;  /* red vertical bar */
+  padding-left: 1rem;
+  border-collapse: collapse;
+  flex: 1 1 50%;                   /* ensure they sit side by side */
+  max-width: none;                  /* override max-width if needed */
+  border: none;                     /* remove gray border from old CSS */
+}
+
+.side-by-side-flex-wrapper .review-table td {
+  padding: 4px 8px;
+  border: none;
+}
+
+.side-by-side-flex-wrapper .review-table td:first-child {
+  font-weight: bold;
+  text-align: right;
+  white-space: nowrap;
+}
 
 /* For narrow screens below 700px */
 @media (max-width: 700px) {
