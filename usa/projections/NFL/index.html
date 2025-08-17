@@ -40,7 +40,7 @@
             <details class="plot-section" data-expanded="false">
                 <summary>Season Summary</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How many games do we expected each team to win at the end of the season?</i>
+                    <i>How many games does the simulation expect each team to win at the end of the season?</i>
                 </div>
                 <iframe data-src="regular_season_summary.html" class="extra-padding"></iframe>
             </details>
@@ -342,7 +342,7 @@
             <details>
                 <summary>Playoff Seed Wins</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How many wins does the simulation believe are needed to earn each seed?</i>
+                    <i>How many wins does the simulation believe each seed will have?</i>
                 </div>
                 <div class="tab-buttons">
                     <button onclick="showTab('playoff_seed_wins', 'playoff_seed_wins_afc')" class="active">AFC</button>
@@ -460,6 +460,25 @@
         <div id="site-footer"></div>
         
             
+        <!-- Load JavaScript -->
         <script src="/sports-history-simulations/scripts/main.js"></script>
+        
+        <!-- Custom script for cache busting -->
+        <script>
+          document.querySelectorAll('iframe[data-src]').forEach(iframe => {
+            const url = new URL(iframe.getAttribute('data-src'), window.location.href);
+            url.searchParams.set('v', new Date().toISOString().slice(0,10).replace(/-/g, ''));
+            iframe.setAttribute('data-src', url.toString());
+          });
+        </script>
+
+         <!-- Original custom script for cache busting -->
+<!--         <script>
+          document.querySelectorAll('iframe').forEach(iframe => {
+            const url = new URL(iframe.src);
+            url.searchParams.set('v', new Date().toISOString().slice(0,10).replace(/-/g, ''));
+            iframe.src = url.toString();
+          });
+        </script> -->
     </body>
 </html>
