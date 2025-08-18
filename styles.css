@@ -856,27 +856,24 @@ iframe {
 
 /* For narrow screens below 700px */
 @media (max-width: 700px) {
-    /* Stack images and tables vertically, full width */
-    .side-by-side-flex-wrapper img,
-    .side-by-side-flex-wrapper table,
-    .side-by-side-flex-wrapper .review-table-container {
-        flex: 1 1 100%;           /* Full width on mobile */
-        min-width: 0;             /* Allow shrinking to fit screen */
-    }
-
-    /* Reduce gap between stacked items */
+    /* Stack tables vertically, full width */
     .side-by-side-flex-wrapper {
+        flex-direction: column;
         gap: 10px;
-        flex-direction: column;   /* stack vertically */
     }
 
-    /* Slightly smaller font for tables on small screens */
-    table {
-        font-size: 14px;
-        display: block;           /* enable horizontal scrolling */
+    .review-table-container {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+
+    /* Make review tables scroll horizontally if too wide */
+    .review-table {
+        display: block;       /* allow horizontal scroll */
         overflow-x: auto;
         width: 100%;
         box-sizing: border-box;
+        font-size: 14px;     /* slightly smaller font */
     }
 }
 
