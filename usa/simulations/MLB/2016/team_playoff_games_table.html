@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Baltimore Orioles">Baltimore Orioles</option><option value="Boston Red Sox">Boston Red Sox</option><option value="Chicago Cubs">Chicago Cubs</option><option value="Cleveland Indians">Cleveland Indians</option><option value="Los Angeles Dodgers">Los Angeles Dodgers</option><option value="New York Mets">New York Mets</option><option value="San Francisco Giants">San Francisco Giants</option><option value="Texas Rangers">Texas Rangers</option><option value="Toronto Blue Jays">Toronto Blue Jays</option><option value="Washington Nationals">Washington Nationals</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2016-10-04</td>
+      <td>Toronto Blue Jays</td>
+      <td>1547.27</td>
+      <td>5</td>
+      <td>Baltimore Orioles</td>
+      <td>1524.75</td>
+      <td>2</td>
+      <td>56.26%</td>
+      <td>43.74%</td>
+      <td>1.66</td>
+    </tr>
+    <tr>
+      <td>2016-10-04</td>
+      <td>Baltimore Orioles</td>
+      <td>1524.75</td>
+      <td>2</td>
+      <td>@ Toronto Blue Jays</td>
+      <td>1547.27</td>
+      <td>5</td>
+      <td>43.74%</td>
+      <td>56.26%</td>
+      <td>-1.66</td>
+    </tr>
+    <tr>
+      <td>2016-10-05</td>
+      <td>New York Mets</td>
+      <td>1519.22</td>
+      <td>0</td>
+      <td>San Francisco Giants</td>
+      <td>1522.75</td>
+      <td>3</td>
+      <td>52.54%</td>
+      <td>47.46%</td>
+      <td>-2.83</td>
+    </tr>
+    <tr>
+      <td>2016-10-05</td>
+      <td>San Francisco Giants</td>
+      <td>1522.75</td>
+      <td>3</td>
+      <td>@ New York Mets</td>
+      <td>1519.22</td>
+      <td>0</td>
+      <td>47.46%</td>
+      <td>52.54%</td>
+      <td>2.82</td>
+    </tr>
+    <tr>
+      <td>2016-10-06</td>
+      <td>Cleveland Indians</td>
+      <td>1539.72</td>
+      <td>5</td>
+      <td>Boston Red Sox</td>
+      <td>1566.77</td>
+      <td>4</td>
+      <td>49.16%</td>
+      <td>50.84%</td>
+      <td>1.57</td>
+    </tr>
+    <tr>
+      <td>2016-10-06</td>
+      <td>Texas Rangers</td>
+      <td>1518.74</td>
+      <td>1</td>
+      <td>Toronto Blue Jays</td>
+      <td>1548.93</td>
+      <td>10</td>
+      <td>48.71%</td>
+      <td>51.29%</td>
+      <td>-4.53</td>
+    </tr>
+    <tr>
+      <td>2016-10-06</td>
+      <td>Boston Red Sox</td>
+      <td>1566.77</td>
+      <td>4</td>
+      <td>@ Cleveland Indians</td>
+      <td>1539.72</td>
+      <td>5</td>
+      <td>50.84%</td>
+      <td>49.16%</td>
+      <td>-1.57</td>
+    </tr>
+    <tr>
+      <td>2016-10-06</td>
+      <td>Toronto Blue Jays</td>
+      <td>1548.93</td>
+      <td>10</td>
+      <td>@ Texas Rangers</td>
+      <td>1518.74</td>
+      <td>1</td>
+      <td>51.29%</td>
+      <td>48.71%</td>
+      <td>4.53</td>
+    </tr>
+    <tr>
+      <td>2016-10-07</td>
+      <td>Boston Red Sox</td>
+      <td>1565.20</td>
+      <td>0</td>
+      <td>@ Cleveland Indians</td>
+      <td>1541.29</td>
+      <td>6</td>
+      <td>50.39%</td>
+      <td>49.61%</td>
+      <td>-3.83</td>
+    </tr>
+    <tr>
+      <td>2016-10-07</td>
+      <td>Toronto Blue Jays</td>
+      <td>1553.46</td>
+      <td>5</td>
+      <td>@ Texas Rangers</td>
+      <td>1514.21</td>
+      <td>3</td>
+      <td>52.59%</td>
+      <td>47.41%</td>
+      <td>2.08</td>
+    </tr>
+    <tr>
+      <td>2016-10-07</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1532.97</td>
+      <td>4</td>
+      <td>@ Washington Nationals</td>
+      <td>1541.95</td>
+      <td>3</td>
+      <td>45.67%</td>
+      <td>54.33%</td>
+      <td>1.69</td>
+    </tr>
+    <tr>
+      <td>2016-10-07</td>
+      <td>San Francisco Giants</td>
+      <td>1525.57</td>
+      <td>0</td>
+      <td>@ Chicago Cubs</td>
+      <td>1584.47</td>
+      <td>1</td>
+      <td>38.67%</td>
+      <td>61.33%</td>
+      <td>-1.20</td>
+    </tr>
+    <tr>
+      <td>2016-10-07</td>
+      <td>Chicago Cubs</td>
+      <td>1584.47</td>
+      <td>1</td>
+      <td>San Francisco Giants</td>
+      <td>1525.57</td>
+      <td>0</td>
+      <td>61.33%</td>
+      <td>38.67%</td>
+      <td>1.20</td>
+    </tr>
+    <tr>
+      <td>2016-10-07</td>
+      <td>Cleveland Indians</td>
+      <td>1541.29</td>
+      <td>6</td>
+      <td>Boston Red Sox</td>
+      <td>1565.20</td>
+      <td>0</td>
+      <td>49.61%</td>
+      <td>50.39%</td>
+      <td>3.83</td>
+    </tr>
+    <tr>
+      <td>2016-10-07</td>
+      <td>Texas Rangers</td>
+      <td>1514.21</td>
+      <td>3</td>
+      <td>Toronto Blue Jays</td>
+      <td>1553.46</td>
+      <td>5</td>
+      <td>47.41%</td>
+      <td>52.59%</td>
+      <td>-2.08</td>
+    </tr>
+    <tr>
+      <td>2016-10-07</td>
+      <td>Washington Nationals</td>
+      <td>1541.95</td>
+      <td>3</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1532.97</td>
+      <td>4</td>
+      <td>54.33%</td>
+      <td>45.67%</td>
+      <td>-1.68</td>
+    </tr>
+    <tr>
+      <td>2016-10-08</td>
+      <td>Chicago Cubs</td>
+      <td>1585.67</td>
+      <td>5</td>
+      <td>San Francisco Giants</td>
+      <td>1524.37</td>
+      <td>2</td>
+      <td>61.66%</td>
+      <td>38.34%</td>
+      <td>2.06</td>
+    </tr>
+    <tr>
+      <td>2016-10-08</td>
+      <td>San Francisco Giants</td>
+      <td>1524.37</td>
+      <td>2</td>
+      <td>@ Chicago Cubs</td>
+      <td>1585.67</td>
+      <td>5</td>
+      <td>38.34%</td>
+      <td>61.66%</td>
+      <td>-2.06</td>
+    </tr>
+    <tr>
+      <td>2016-10-09</td>
+      <td>Toronto Blue Jays</td>
+      <td>1555.54</td>
+      <td>7</td>
+      <td>Texas Rangers</td>
+      <td>1512.13</td>
+      <td>6</td>
+      <td>59.19%</td>
+      <td>40.81%</td>
+      <td>0.89</td>
+    </tr>
+    <tr>
+      <td>2016-10-09</td>
+      <td>Washington Nationals</td>
+      <td>1540.27</td>
+      <td>5</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1534.66</td>
+      <td>2</td>
+      <td>53.85%</td>
+      <td>46.15%</td>
+      <td>2.47</td>
+    </tr>
+    <tr>
+      <td>2016-10-09</td>
+      <td>Texas Rangers</td>
+      <td>1512.13</td>
+      <td>6</td>
+      <td>@ Toronto Blue Jays</td>
+      <td>1555.54</td>
+      <td>7</td>
+      <td>40.81%</td>
+      <td>59.19%</td>
+      <td>-0.89</td>
+    </tr>
+    <tr>
+      <td>2016-10-09</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1534.66</td>
+      <td>2</td>
+      <td>@ Washington Nationals</td>
+      <td>1540.27</td>
+      <td>5</td>
+      <td>46.15%</td>
+      <td>53.85%</td>
+      <td>-2.48</td>
+    </tr>
+    <tr>
+      <td>2016-10-10</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1532.18</td>
+      <td>3</td>
+      <td>Washington Nationals</td>
+      <td>1542.74</td>
+      <td>8</td>
+      <td>51.53%</td>
+      <td>48.47%</td>
+      <td>-3.57</td>
+    </tr>
+    <tr>
+      <td>2016-10-10</td>
+      <td>Cleveland Indians</td>
+      <td>1545.12</td>
+      <td>4</td>
+      <td>@ Boston Red Sox</td>
+      <td>1561.37</td>
+      <td>3</td>
+      <td>44.63%</td>
+      <td>55.37%</td>
+      <td>1.71</td>
+    </tr>
+    <tr>
+      <td>2016-10-10</td>
+      <td>Washington Nationals</td>
+      <td>1542.74</td>
+      <td>8</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1532.18</td>
+      <td>3</td>
+      <td>48.47%</td>
+      <td>51.53%</td>
+      <td>3.58</td>
+    </tr>
+    <tr>
+      <td>2016-10-10</td>
+      <td>Chicago Cubs</td>
+      <td>1587.73</td>
+      <td>5</td>
+      <td>@ San Francisco Giants</td>
+      <td>1522.31</td>
+      <td>6</td>
+      <td>56.33%</td>
+      <td>43.67%</td>
+      <td>-1.24</td>
+    </tr>
+    <tr>
+      <td>2016-10-10</td>
+      <td>San Francisco Giants</td>
+      <td>1522.31</td>
+      <td>6</td>
+      <td>Chicago Cubs</td>
+      <td>1587.73</td>
+      <td>5</td>
+      <td>43.67%</td>
+      <td>56.33%</td>
+      <td>1.24</td>
+    </tr>
+    <tr>
+      <td>2016-10-10</td>
+      <td>Boston Red Sox</td>
+      <td>1561.37</td>
+      <td>3</td>
+      <td>Cleveland Indians</td>
+      <td>1545.12</td>
+      <td>4</td>
+      <td>55.37%</td>
+      <td>44.63%</td>
+      <td>-1.71</td>
+    </tr>
+    <tr>
+      <td>2016-10-11</td>
+      <td>Washington Nationals</td>
+      <td>1546.32</td>
+      <td>5</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1528.61</td>
+      <td>6</td>
+      <td>49.49%</td>
+      <td>50.51%</td>
+      <td>-1.54</td>
+    </tr>
+    <tr>
+      <td>2016-10-11</td>
+      <td>Chicago Cubs</td>
+      <td>1586.49</td>
+      <td>6</td>
+      <td>@ San Francisco Giants</td>
+      <td>1523.55</td>
+      <td>5</td>
+      <td>55.98%</td>
+      <td>44.02%</td>
+      <td>1.37</td>
+    </tr>
+    <tr>
+      <td>2016-10-11</td>
+      <td>San Francisco Giants</td>
+      <td>1523.55</td>
+      <td>5</td>
+      <td>Chicago Cubs</td>
+      <td>1586.49</td>
+      <td>6</td>
+      <td>44.02%</td>
+      <td>55.98%</td>
+      <td>-1.37</td>
+    </tr>
+    <tr>
+      <td>2016-10-11</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1528.61</td>
+      <td>6</td>
+      <td>Washington Nationals</td>
+      <td>1546.32</td>
+      <td>5</td>
+      <td>50.51%</td>
+      <td>49.49%</td>
+      <td>1.53</td>
+    </tr>
+    <tr>
+      <td>2016-10-13</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1530.14</td>
+      <td>4</td>
+      <td>@ Washington Nationals</td>
+      <td>1544.78</td>
+      <td>3</td>
+      <td>44.86%</td>
+      <td>55.14%</td>
+      <td>1.71</td>
+    </tr>
+    <tr>
+      <td>2016-10-13</td>
+      <td>Washington Nationals</td>
+      <td>1544.78</td>
+      <td>3</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1530.14</td>
+      <td>4</td>
+      <td>55.14%</td>
+      <td>44.86%</td>
+      <td>-1.71</td>
+    </tr>
+    <tr>
+      <td>2016-10-14</td>
+      <td>Toronto Blue Jays</td>
+      <td>1556.43</td>
+      <td>0</td>
+      <td>@ Cleveland Indians</td>
+      <td>1546.83</td>
+      <td>2</td>
+      <td>48.33%</td>
+      <td>51.67%</td>
+      <td>-2.11</td>
+    </tr>
+    <tr>
+      <td>2016-10-14</td>
+      <td>Cleveland Indians</td>
+      <td>1546.83</td>
+      <td>2</td>
+      <td>Toronto Blue Jays</td>
+      <td>1556.43</td>
+      <td>0</td>
+      <td>51.67%</td>
+      <td>48.33%</td>
+      <td>2.12</td>
+    </tr>
+    <tr>
+      <td>2016-10-15</td>
+      <td>Toronto Blue Jays</td>
+      <td>1554.32</td>
+      <td>1</td>
+      <td>@ Cleveland Indians</td>
+      <td>1548.95</td>
+      <td>2</td>
+      <td>47.72%</td>
+      <td>52.28%</td>
+      <td>-1.48</td>
+    </tr>
+    <tr>
+      <td>2016-10-15</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1531.85</td>
+      <td>4</td>
+      <td>@ Chicago Cubs</td>
+      <td>1587.86</td>
+      <td>8</td>
+      <td>39.07%</td>
+      <td>60.93%</td>
+      <td>-2.42</td>
+    </tr>
+    <tr>
+      <td>2016-10-15</td>
+      <td>Chicago Cubs</td>
+      <td>1587.86</td>
+      <td>8</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1531.85</td>
+      <td>4</td>
+      <td>60.93%</td>
+      <td>39.07%</td>
+      <td>2.42</td>
+    </tr>
+    <tr>
+      <td>2016-10-15</td>
+      <td>Cleveland Indians</td>
+      <td>1548.95</td>
+      <td>2</td>
+      <td>Toronto Blue Jays</td>
+      <td>1554.32</td>
+      <td>1</td>
+      <td>52.28%</td>
+      <td>47.72%</td>
+      <td>1.48</td>
+    </tr>
+    <tr>
+      <td>2016-10-16</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1529.43</td>
+      <td>1</td>
+      <td>@ Chicago Cubs</td>
+      <td>1590.28</td>
+      <td>0</td>
+      <td>38.40%</td>
+      <td>61.60%</td>
+      <td>1.91</td>
+    </tr>
+    <tr>
+      <td>2016-10-16</td>
+      <td>Chicago Cubs</td>
+      <td>1590.28</td>
+      <td>0</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1529.43</td>
+      <td>1</td>
+      <td>61.60%</td>
+      <td>38.40%</td>
+      <td>-1.91</td>
+    </tr>
+    <tr>
+      <td>2016-10-17</td>
+      <td>Toronto Blue Jays</td>
+      <td>1552.84</td>
+      <td>2</td>
+      <td>Cleveland Indians</td>
+      <td>1550.43</td>
+      <td>4</td>
+      <td>53.39%</td>
+      <td>46.61%</td>
+      <td>-2.34</td>
+    </tr>
+    <tr>
+      <td>2016-10-17</td>
+      <td>Cleveland Indians</td>
+      <td>1550.43</td>
+      <td>4</td>
+      <td>@ Toronto Blue Jays</td>
+      <td>1552.84</td>
+      <td>2</td>
+      <td>46.61%</td>
+      <td>53.39%</td>
+      <td>2.34</td>
+    </tr>
+    <tr>
+      <td>2016-10-18</td>
+      <td>Chicago Cubs</td>
+      <td>1588.37</td>
+      <td>0</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1531.34</td>
+      <td>6</td>
+      <td>55.14%</td>
+      <td>44.86%</td>
+      <td>-4.19</td>
+    </tr>
+    <tr>
+      <td>2016-10-18</td>
+      <td>Cleveland Indians</td>
+      <td>1552.77</td>
+      <td>1</td>
+      <td>@ Toronto Blue Jays</td>
+      <td>1550.50</td>
+      <td>5</td>
+      <td>47.28%</td>
+      <td>52.72%</td>
+      <td>-2.93</td>
+    </tr>
+    <tr>
+      <td>2016-10-18</td>
+      <td>Toronto Blue Jays</td>
+      <td>1550.50</td>
+      <td>5</td>
+      <td>Cleveland Indians</td>
+      <td>1552.77</td>
+      <td>1</td>
+      <td>52.72%</td>
+      <td>47.28%</td>
+      <td>2.93</td>
+    </tr>
+    <tr>
+      <td>2016-10-18</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1531.34</td>
+      <td>6</td>
+      <td>Chicago Cubs</td>
+      <td>1588.37</td>
+      <td>0</td>
+      <td>44.86%</td>
+      <td>55.14%</td>
+      <td>4.19</td>
+    </tr>
+    <tr>
+      <td>2016-10-19</td>
+      <td>Chicago Cubs</td>
+      <td>1584.18</td>
+      <td>10</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1535.53</td>
+      <td>2</td>
+      <td>53.94%</td>
+      <td>46.06%</td>
+      <td>4.04</td>
+    </tr>
+    <tr>
+      <td>2016-10-19</td>
+      <td>Cleveland Indians</td>
+      <td>1549.84</td>
+      <td>3</td>
+      <td>@ Toronto Blue Jays</td>
+      <td>1553.43</td>
+      <td>0</td>
+      <td>46.44%</td>
+      <td>53.56%</td>
+      <td>2.88</td>
+    </tr>
+    <tr>
+      <td>2016-10-19</td>
+      <td>Toronto Blue Jays</td>
+      <td>1553.43</td>
+      <td>0</td>
+      <td>Cleveland Indians</td>
+      <td>1549.84</td>
+      <td>3</td>
+      <td>53.56%</td>
+      <td>46.44%</td>
+      <td>-2.88</td>
+    </tr>
+    <tr>
+      <td>2016-10-19</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1535.53</td>
+      <td>2</td>
+      <td>Chicago Cubs</td>
+      <td>1584.18</td>
+      <td>10</td>
+      <td>46.06%</td>
+      <td>53.94%</td>
+      <td>-4.04</td>
+    </tr>
+    <tr>
+      <td>2016-10-20</td>
+      <td>Chicago Cubs</td>
+      <td>1588.22</td>
+      <td>8</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1531.49</td>
+      <td>4</td>
+      <td>55.09%</td>
+      <td>44.91%</td>
+      <td>2.79</td>
+    </tr>
+    <tr>
+      <td>2016-10-20</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1531.49</td>
+      <td>4</td>
+      <td>Chicago Cubs</td>
+      <td>1588.22</td>
+      <td>8</td>
+      <td>44.91%</td>
+      <td>55.09%</td>
+      <td>-2.79</td>
+    </tr>
+    <tr>
+      <td>2016-10-22</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1528.70</td>
+      <td>0</td>
+      <td>@ Chicago Cubs</td>
+      <td>1591.01</td>
+      <td>5</td>
+      <td>38.21%</td>
+      <td>61.79%</td>
+      <td>-2.64</td>
+    </tr>
+    <tr>
+      <td>2016-10-22</td>
+      <td>Chicago Cubs</td>
+      <td>1591.01</td>
+      <td>5</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1528.70</td>
+      <td>0</td>
+      <td>61.79%</td>
+      <td>38.21%</td>
+      <td>2.65</td>
+    </tr>
+    <tr>
+      <td>2016-10-25</td>
+      <td>Chicago Cubs</td>
+      <td>1593.66</td>
+      <td>0</td>
+      <td>@ Cleveland Indians</td>
+      <td>1552.72</td>
+      <td>6</td>
+      <td>52.83%</td>
+      <td>47.17%</td>
+      <td>-4.02</td>
+    </tr>
+    <tr>
+      <td>2016-10-25</td>
+      <td>Cleveland Indians</td>
+      <td>1552.72</td>
+      <td>6</td>
+      <td>Chicago Cubs</td>
+      <td>1593.66</td>
+      <td>0</td>
+      <td>47.17%</td>
+      <td>52.83%</td>
+      <td>4.01</td>
+    </tr>
+    <tr>
+      <td>2016-10-26</td>
+      <td>Cleveland Indians</td>
+      <td>1556.73</td>
+      <td>1</td>
+      <td>Chicago Cubs</td>
+      <td>1589.64</td>
+      <td>5</td>
+      <td>48.32%</td>
+      <td>51.68%</td>
+      <td>-3.00</td>
+    </tr>
+    <tr>
+      <td>2016-10-26</td>
+      <td>Chicago Cubs</td>
+      <td>1589.64</td>
+      <td>5</td>
+      <td>@ Cleveland Indians</td>
+      <td>1556.73</td>
+      <td>1</td>
+      <td>51.68%</td>
+      <td>48.32%</td>
+      <td>3.00</td>
+    </tr>
+    <tr>
+      <td>2016-10-28</td>
+      <td>Cleveland Indians</td>
+      <td>1553.73</td>
+      <td>1</td>
+      <td>@ Chicago Cubs</td>
+      <td>1592.64</td>
+      <td>0</td>
+      <td>41.43%</td>
+      <td>58.57%</td>
+      <td>1.82</td>
+    </tr>
+    <tr>
+      <td>2016-10-28</td>
+      <td>Chicago Cubs</td>
+      <td>1592.64</td>
+      <td>0</td>
+      <td>Cleveland Indians</td>
+      <td>1553.73</td>
+      <td>1</td>
+      <td>58.57%</td>
+      <td>41.43%</td>
+      <td>-1.82</td>
+    </tr>
+    <tr>
+      <td>2016-10-29</td>
+      <td>Cleveland Indians</td>
+      <td>1555.55</td>
+      <td>7</td>
+      <td>@ Chicago Cubs</td>
+      <td>1590.82</td>
+      <td>2</td>
+      <td>41.94%</td>
+      <td>58.06%</td>
+      <td>4.02</td>
+    </tr>
+    <tr>
+      <td>2016-10-29</td>
+      <td>Chicago Cubs</td>
+      <td>1590.82</td>
+      <td>2</td>
+      <td>Cleveland Indians</td>
+      <td>1555.55</td>
+      <td>7</td>
+      <td>58.06%</td>
+      <td>41.94%</td>
+      <td>-4.02</td>
+    </tr>
+    <tr>
+      <td>2016-10-30</td>
+      <td>Cleveland Indians</td>
+      <td>1559.57</td>
+      <td>2</td>
+      <td>@ Chicago Cubs</td>
+      <td>1586.80</td>
+      <td>3</td>
+      <td>43.07%</td>
+      <td>56.93%</td>
+      <td>-1.33</td>
+    </tr>
+    <tr>
+      <td>2016-10-30</td>
+      <td>Chicago Cubs</td>
+      <td>1586.80</td>
+      <td>3</td>
+      <td>Cleveland Indians</td>
+      <td>1559.57</td>
+      <td>2</td>
+      <td>56.93%</td>
+      <td>43.07%</td>
+      <td>1.33</td>
+    </tr>
+    <tr>
+      <td>2016-11-01</td>
+      <td>Chicago Cubs</td>
+      <td>1588.13</td>
+      <td>9</td>
+      <td>@ Cleveland Indians</td>
+      <td>1558.24</td>
+      <td>3</td>
+      <td>51.25%</td>
+      <td>48.75%</td>
+      <td>3.71</td>
+    </tr>
+    <tr>
+      <td>2016-11-01</td>
+      <td>Cleveland Indians</td>
+      <td>1558.24</td>
+      <td>3</td>
+      <td>Chicago Cubs</td>
+      <td>1588.13</td>
+      <td>9</td>
+      <td>48.75%</td>
+      <td>51.25%</td>
+      <td>-3.70</td>
+    </tr>
+    <tr>
+      <td>2016-11-02</td>
+      <td>Cleveland Indians</td>
+      <td>1554.54</td>
+      <td>7</td>
+      <td>Chicago Cubs</td>
+      <td>1591.84</td>
+      <td>8</td>
+      <td>47.69%</td>
+      <td>52.31%</td>
+      <td>-1.05</td>
+    </tr>
+    <tr>
+      <td>2016-11-02</td>
+      <td>Chicago Cubs</td>
+      <td>1591.84</td>
+      <td>8</td>
+      <td>@ Cleveland Indians</td>
+      <td>1554.54</td>
+      <td>7</td>
+      <td>52.31%</td>
+      <td>47.69%</td>
+      <td>1.04</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Atlanta Braves">Atlanta Braves</option><option value="Boston Red Sox">Boston Red Sox</option><option value="Chicago White Sox">Chicago White Sox</option><option value="Houston Astros">Houston Astros</option><option value="Los Angeles Dodgers">Los Angeles Dodgers</option><option value="Milwaukee Brewers">Milwaukee Brewers</option><option value="New York Yankees">New York Yankees</option><option value="San Francisco Giants">San Francisco Giants</option><option value="St. Louis Cardinals">St. Louis Cardinals</option><option value="Tampa Bay Rays">Tampa Bay Rays</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2021-10-05</td>
+      <td>Boston Red Sox</td>
+      <td>1523.21</td>
+      <td>6</td>
+      <td>New York Yankees</td>
+      <td>1542.71</td>
+      <td>2</td>
+      <td>51.05%</td>
+      <td>48.95%</td>
+      <td>2.70</td>
+    </tr>
+    <tr>
+      <td>2021-10-05</td>
+      <td>New York Yankees</td>
+      <td>1542.71</td>
+      <td>2</td>
+      <td>@ Boston Red Sox</td>
+      <td>1523.21</td>
+      <td>6</td>
+      <td>48.95%</td>
+      <td>51.05%</td>
+      <td>-2.70</td>
+    </tr>
+    <tr>
+      <td>2021-10-06</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1631.52</td>
+      <td>3</td>
+      <td>St. Louis Cardinals</td>
+      <td>1529.93</td>
+      <td>1</td>
+      <td>67.68%</td>
+      <td>32.32%</td>
+      <td>1.26</td>
+    </tr>
+    <tr>
+      <td>2021-10-06</td>
+      <td>St. Louis Cardinals</td>
+      <td>1529.93</td>
+      <td>1</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1631.52</td>
+      <td>3</td>
+      <td>32.32%</td>
+      <td>67.68%</td>
+      <td>-1.27</td>
+    </tr>
+    <tr>
+      <td>2021-10-07</td>
+      <td>Houston Astros</td>
+      <td>1557.20</td>
+      <td>6</td>
+      <td>Chicago White Sox</td>
+      <td>1544.75</td>
+      <td>1</td>
+      <td>55.62%</td>
+      <td>44.38%</td>
+      <td>2.74</td>
+    </tr>
+    <tr>
+      <td>2021-10-07</td>
+      <td>Tampa Bay Rays</td>
+      <td>1593.53</td>
+      <td>5</td>
+      <td>Boston Red Sox</td>
+      <td>1525.91</td>
+      <td>0</td>
+      <td>63.26%</td>
+      <td>36.74%</td>
+      <td>2.27</td>
+    </tr>
+    <tr>
+      <td>2021-10-07</td>
+      <td>Boston Red Sox</td>
+      <td>1525.91</td>
+      <td>0</td>
+      <td>@ Tampa Bay Rays</td>
+      <td>1593.53</td>
+      <td>5</td>
+      <td>36.74%</td>
+      <td>63.26%</td>
+      <td>-2.26</td>
+    </tr>
+    <tr>
+      <td>2021-10-07</td>
+      <td>Chicago White Sox</td>
+      <td>1544.75</td>
+      <td>1</td>
+      <td>@ Houston Astros</td>
+      <td>1557.20</td>
+      <td>6</td>
+      <td>44.38%</td>
+      <td>55.62%</td>
+      <td>-2.74</td>
+    </tr>
+    <tr>
+      <td>2021-10-08</td>
+      <td>Chicago White Sox</td>
+      <td>1542.01</td>
+      <td>4</td>
+      <td>@ Houston Astros</td>
+      <td>1559.94</td>
+      <td>9</td>
+      <td>43.60%</td>
+      <td>56.40%</td>
+      <td>-2.69</td>
+    </tr>
+    <tr>
+      <td>2021-10-08</td>
+      <td>Boston Red Sox</td>
+      <td>1523.65</td>
+      <td>14</td>
+      <td>@ Tampa Bay Rays</td>
+      <td>1595.80</td>
+      <td>6</td>
+      <td>36.13%</td>
+      <td>63.87%</td>
+      <td>4.98</td>
+    </tr>
+    <tr>
+      <td>2021-10-08</td>
+      <td>Atlanta Braves</td>
+      <td>1562.09</td>
+      <td>1</td>
+      <td>@ Milwaukee Brewers</td>
+      <td>1537.48</td>
+      <td>2</td>
+      <td>49.69%</td>
+      <td>50.31%</td>
+      <td>-1.38</td>
+    </tr>
+    <tr>
+      <td>2021-10-08</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1632.78</td>
+      <td>0</td>
+      <td>@ San Francisco Giants</td>
+      <td>1590.23</td>
+      <td>4</td>
+      <td>52.27%</td>
+      <td>47.73%</td>
+      <td>-2.88</td>
+    </tr>
+    <tr>
+      <td>2021-10-08</td>
+      <td>Houston Astros</td>
+      <td>1559.94</td>
+      <td>9</td>
+      <td>Chicago White Sox</td>
+      <td>1542.01</td>
+      <td>4</td>
+      <td>56.40%</td>
+      <td>43.60%</td>
+      <td>2.69</td>
+    </tr>
+    <tr>
+      <td>2021-10-08</td>
+      <td>Milwaukee Brewers</td>
+      <td>1537.48</td>
+      <td>2</td>
+      <td>Atlanta Braves</td>
+      <td>1562.09</td>
+      <td>1</td>
+      <td>50.31%</td>
+      <td>49.69%</td>
+      <td>1.37</td>
+    </tr>
+    <tr>
+      <td>2021-10-08</td>
+      <td>San Francisco Giants</td>
+      <td>1590.23</td>
+      <td>4</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1632.78</td>
+      <td>0</td>
+      <td>47.73%</td>
+      <td>52.27%</td>
+      <td>2.88</td>
+    </tr>
+    <tr>
+      <td>2021-10-08</td>
+      <td>Tampa Bay Rays</td>
+      <td>1595.80</td>
+      <td>6</td>
+      <td>Boston Red Sox</td>
+      <td>1523.65</td>
+      <td>14</td>
+      <td>63.87%</td>
+      <td>36.13%</td>
+      <td>-4.99</td>
+    </tr>
+    <tr>
+      <td>2021-10-09</td>
+      <td>San Francisco Giants</td>
+      <td>1593.11</td>
+      <td>2</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1629.90</td>
+      <td>9</td>
+      <td>48.56%</td>
+      <td>51.44%</td>
+      <td>-3.54</td>
+    </tr>
+    <tr>
+      <td>2021-10-09</td>
+      <td>Milwaukee Brewers</td>
+      <td>1538.85</td>
+      <td>0</td>
+      <td>Atlanta Braves</td>
+      <td>1560.71</td>
+      <td>3</td>
+      <td>50.71%</td>
+      <td>49.29%</td>
+      <td>-2.42</td>
+    </tr>
+    <tr>
+      <td>2021-10-09</td>
+      <td>Atlanta Braves</td>
+      <td>1560.71</td>
+      <td>3</td>
+      <td>@ Milwaukee Brewers</td>
+      <td>1538.85</td>
+      <td>0</td>
+      <td>49.29%</td>
+      <td>50.71%</td>
+      <td>2.43</td>
+    </tr>
+    <tr>
+      <td>2021-10-09</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1629.90</td>
+      <td>9</td>
+      <td>@ San Francisco Giants</td>
+      <td>1593.11</td>
+      <td>2</td>
+      <td>51.44%</td>
+      <td>48.56%</td>
+      <td>3.55</td>
+    </tr>
+    <tr>
+      <td>2021-10-10</td>
+      <td>Chicago White Sox</td>
+      <td>1539.32</td>
+      <td>12</td>
+      <td>Houston Astros</td>
+      <td>1562.63</td>
+      <td>6</td>
+      <td>50.50%</td>
+      <td>49.50%</td>
+      <td>3.35</td>
+    </tr>
+    <tr>
+      <td>2021-10-10</td>
+      <td>Houston Astros</td>
+      <td>1562.63</td>
+      <td>6</td>
+      <td>@ Chicago White Sox</td>
+      <td>1539.32</td>
+      <td>12</td>
+      <td>49.50%</td>
+      <td>50.50%</td>
+      <td>-3.34</td>
+    </tr>
+    <tr>
+      <td>2021-10-10</td>
+      <td>Boston Red Sox</td>
+      <td>1528.63</td>
+      <td>6</td>
+      <td>Tampa Bay Rays</td>
+      <td>1590.81</td>
+      <td>4</td>
+      <td>44.92%</td>
+      <td>55.08%</td>
+      <td>1.52</td>
+    </tr>
+    <tr>
+      <td>2021-10-10</td>
+      <td>Tampa Bay Rays</td>
+      <td>1590.81</td>
+      <td>4</td>
+      <td>@ Boston Red Sox</td>
+      <td>1528.63</td>
+      <td>6</td>
+      <td>55.08%</td>
+      <td>44.92%</td>
+      <td>-1.52</td>
+    </tr>
+    <tr>
+      <td>2021-10-11</td>
+      <td>Milwaukee Brewers</td>
+      <td>1536.43</td>
+      <td>0</td>
+      <td>@ Atlanta Braves</td>
+      <td>1563.14</td>
+      <td>3</td>
+      <td>42.36%</td>
+      <td>57.64%</td>
+      <td>-2.03</td>
+    </tr>
+    <tr>
+      <td>2021-10-11</td>
+      <td>Atlanta Braves</td>
+      <td>1563.14</td>
+      <td>3</td>
+      <td>Milwaukee Brewers</td>
+      <td>1536.43</td>
+      <td>0</td>
+      <td>57.64%</td>
+      <td>42.36%</td>
+      <td>2.02</td>
+    </tr>
+    <tr>
+      <td>2021-10-11</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1633.45</td>
+      <td>0</td>
+      <td>San Francisco Giants</td>
+      <td>1589.57</td>
+      <td>1</td>
+      <td>60.03%</td>
+      <td>39.97%</td>
+      <td>-1.66</td>
+    </tr>
+    <tr>
+      <td>2021-10-11</td>
+      <td>Boston Red Sox</td>
+      <td>1530.15</td>
+      <td>6</td>
+      <td>Tampa Bay Rays</td>
+      <td>1589.29</td>
+      <td>5</td>
+      <td>45.36%</td>
+      <td>54.64%</td>
+      <td>1.51</td>
+    </tr>
+    <tr>
+      <td>2021-10-11</td>
+      <td>San Francisco Giants</td>
+      <td>1589.57</td>
+      <td>1</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1633.45</td>
+      <td>0</td>
+      <td>39.97%</td>
+      <td>60.03%</td>
+      <td>1.65</td>
+    </tr>
+    <tr>
+      <td>2021-10-11</td>
+      <td>Tampa Bay Rays</td>
+      <td>1589.29</td>
+      <td>5</td>
+      <td>@ Boston Red Sox</td>
+      <td>1530.15</td>
+      <td>6</td>
+      <td>54.64%</td>
+      <td>45.36%</td>
+      <td>-1.50</td>
+    </tr>
+    <tr>
+      <td>2021-10-12</td>
+      <td>Milwaukee Brewers</td>
+      <td>1534.40</td>
+      <td>4</td>
+      <td>@ Atlanta Braves</td>
+      <td>1565.16</td>
+      <td>5</td>
+      <td>41.79%</td>
+      <td>58.21%</td>
+      <td>-1.15</td>
+    </tr>
+    <tr>
+      <td>2021-10-12</td>
+      <td>Houston Astros</td>
+      <td>1559.29</td>
+      <td>10</td>
+      <td>@ Chicago White Sox</td>
+      <td>1542.67</td>
+      <td>1</td>
+      <td>48.54%</td>
+      <td>51.46%</td>
+      <td>4.26</td>
+    </tr>
+    <tr>
+      <td>2021-10-12</td>
+      <td>San Francisco Giants</td>
+      <td>1591.22</td>
+      <td>2</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1631.79</td>
+      <td>7</td>
+      <td>40.43%</td>
+      <td>59.57%</td>
+      <td>-2.49</td>
+    </tr>
+    <tr>
+      <td>2021-10-12</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1631.79</td>
+      <td>7</td>
+      <td>San Francisco Giants</td>
+      <td>1591.22</td>
+      <td>2</td>
+      <td>59.57%</td>
+      <td>40.43%</td>
+      <td>2.49</td>
+    </tr>
+    <tr>
+      <td>2021-10-12</td>
+      <td>Chicago White Sox</td>
+      <td>1542.67</td>
+      <td>1</td>
+      <td>Houston Astros</td>
+      <td>1559.29</td>
+      <td>10</td>
+      <td>51.46%</td>
+      <td>48.54%</td>
+      <td>-4.27</td>
+    </tr>
+    <tr>
+      <td>2021-10-12</td>
+      <td>Atlanta Braves</td>
+      <td>1565.16</td>
+      <td>5</td>
+      <td>Milwaukee Brewers</td>
+      <td>1534.40</td>
+      <td>4</td>
+      <td>58.21%</td>
+      <td>41.79%</td>
+      <td>1.16</td>
+    </tr>
+    <tr>
+      <td>2021-10-14</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1634.28</td>
+      <td>2</td>
+      <td>@ San Francisco Giants</td>
+      <td>1588.73</td>
+      <td>1</td>
+      <td>52.70%</td>
+      <td>47.30%</td>
+      <td>1.31</td>
+    </tr>
+    <tr>
+      <td>2021-10-14</td>
+      <td>San Francisco Giants</td>
+      <td>1588.73</td>
+      <td>1</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1634.28</td>
+      <td>2</td>
+      <td>47.30%</td>
+      <td>52.70%</td>
+      <td>-1.31</td>
+    </tr>
+    <tr>
+      <td>2021-10-15</td>
+      <td>Boston Red Sox</td>
+      <td>1531.66</td>
+      <td>4</td>
+      <td>@ Houston Astros</td>
+      <td>1563.55</td>
+      <td>5</td>
+      <td>41.64%</td>
+      <td>58.36%</td>
+      <td>-1.15</td>
+    </tr>
+    <tr>
+      <td>2021-10-15</td>
+      <td>Houston Astros</td>
+      <td>1563.55</td>
+      <td>5</td>
+      <td>Boston Red Sox</td>
+      <td>1531.66</td>
+      <td>4</td>
+      <td>58.36%</td>
+      <td>41.64%</td>
+      <td>1.15</td>
+    </tr>
+    <tr>
+      <td>2021-10-16</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1635.59</td>
+      <td>2</td>
+      <td>@ Atlanta Braves</td>
+      <td>1566.32</td>
+      <td>3</td>
+      <td>56.08%</td>
+      <td>43.92%</td>
+      <td>-1.55</td>
+    </tr>
+    <tr>
+      <td>2021-10-16</td>
+      <td>Atlanta Braves</td>
+      <td>1566.32</td>
+      <td>3</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1635.59</td>
+      <td>2</td>
+      <td>43.92%</td>
+      <td>56.08%</td>
+      <td>1.55</td>
+    </tr>
+    <tr>
+      <td>2021-10-16</td>
+      <td>Boston Red Sox</td>
+      <td>1530.51</td>
+      <td>9</td>
+      <td>@ Houston Astros</td>
+      <td>1564.70</td>
+      <td>5</td>
+      <td>41.32%</td>
+      <td>58.68%</td>
+      <td>3.24</td>
+    </tr>
+    <tr>
+      <td>2021-10-16</td>
+      <td>Houston Astros</td>
+      <td>1564.70</td>
+      <td>5</td>
+      <td>Boston Red Sox</td>
+      <td>1530.51</td>
+      <td>9</td>
+      <td>58.68%</td>
+      <td>41.32%</td>
+      <td>-3.24</td>
+    </tr>
+    <tr>
+      <td>2021-10-17</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1634.04</td>
+      <td>4</td>
+      <td>@ Atlanta Braves</td>
+      <td>1567.87</td>
+      <td>5</td>
+      <td>55.65%</td>
+      <td>44.35%</td>
+      <td>-1.53</td>
+    </tr>
+    <tr>
+      <td>2021-10-17</td>
+      <td>Atlanta Braves</td>
+      <td>1567.87</td>
+      <td>5</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1634.04</td>
+      <td>4</td>
+      <td>44.35%</td>
+      <td>55.65%</td>
+      <td>1.53</td>
+    </tr>
+    <tr>
+      <td>2021-10-18</td>
+      <td>Boston Red Sox</td>
+      <td>1533.75</td>
+      <td>12</td>
+      <td>Houston Astros</td>
+      <td>1561.46</td>
+      <td>3</td>
+      <td>49.87%</td>
+      <td>50.13%</td>
+      <td>4.15</td>
+    </tr>
+    <tr>
+      <td>2021-10-18</td>
+      <td>Houston Astros</td>
+      <td>1561.46</td>
+      <td>3</td>
+      <td>@ Boston Red Sox</td>
+      <td>1533.75</td>
+      <td>12</td>
+      <td>50.13%</td>
+      <td>49.87%</td>
+      <td>-4.15</td>
+    </tr>
+    <tr>
+      <td>2021-10-19</td>
+      <td>Houston Astros</td>
+      <td>1557.31</td>
+      <td>9</td>
+      <td>@ Boston Red Sox</td>
+      <td>1537.90</td>
+      <td>2</td>
+      <td>48.94%</td>
+      <td>51.06%</td>
+      <td>3.73</td>
+    </tr>
+    <tr>
+      <td>2021-10-19</td>
+      <td>Atlanta Braves</td>
+      <td>1569.40</td>
+      <td>5</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1632.51</td>
+      <td>6</td>
+      <td>37.35%</td>
+      <td>62.65%</td>
+      <td>-1.03</td>
+    </tr>
+    <tr>
+      <td>2021-10-19</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1632.51</td>
+      <td>6</td>
+      <td>Atlanta Braves</td>
+      <td>1569.40</td>
+      <td>5</td>
+      <td>62.65%</td>
+      <td>37.35%</td>
+      <td>1.03</td>
+    </tr>
+    <tr>
+      <td>2021-10-19</td>
+      <td>Boston Red Sox</td>
+      <td>1537.90</td>
+      <td>2</td>
+      <td>Houston Astros</td>
+      <td>1557.31</td>
+      <td>9</td>
+      <td>51.06%</td>
+      <td>48.94%</td>
+      <td>-3.73</td>
+    </tr>
+    <tr>
+      <td>2021-10-20</td>
+      <td>Houston Astros</td>
+      <td>1561.04</td>
+      <td>9</td>
+      <td>@ Boston Red Sox</td>
+      <td>1534.17</td>
+      <td>1</td>
+      <td>50.01%</td>
+      <td>49.99%</td>
+      <td>3.90</td>
+    </tr>
+    <tr>
+      <td>2021-10-20</td>
+      <td>Atlanta Braves</td>
+      <td>1568.37</td>
+      <td>9</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1633.54</td>
+      <td>2</td>
+      <td>37.07%</td>
+      <td>62.93%</td>
+      <td>4.60</td>
+    </tr>
+    <tr>
+      <td>2021-10-20</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1633.54</td>
+      <td>2</td>
+      <td>Atlanta Braves</td>
+      <td>1568.37</td>
+      <td>9</td>
+      <td>62.93%</td>
+      <td>37.07%</td>
+      <td>-4.60</td>
+    </tr>
+    <tr>
+      <td>2021-10-20</td>
+      <td>Boston Red Sox</td>
+      <td>1534.17</td>
+      <td>1</td>
+      <td>Houston Astros</td>
+      <td>1561.04</td>
+      <td>9</td>
+      <td>49.99%</td>
+      <td>50.01%</td>
+      <td>-3.90</td>
+    </tr>
+    <tr>
+      <td>2021-10-21</td>
+      <td>Atlanta Braves</td>
+      <td>1572.97</td>
+      <td>2</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1628.94</td>
+      <td>11</td>
+      <td>38.31%</td>
+      <td>61.69%</td>
+      <td>-3.18</td>
+    </tr>
+    <tr>
+      <td>2021-10-21</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1628.94</td>
+      <td>11</td>
+      <td>Atlanta Braves</td>
+      <td>1572.97</td>
+      <td>2</td>
+      <td>61.69%</td>
+      <td>38.31%</td>
+      <td>3.17</td>
+    </tr>
+    <tr>
+      <td>2021-10-22</td>
+      <td>Boston Red Sox</td>
+      <td>1530.27</td>
+      <td>0</td>
+      <td>@ Houston Astros</td>
+      <td>1564.94</td>
+      <td>5</td>
+      <td>41.25%</td>
+      <td>58.75%</td>
+      <td>-2.55</td>
+    </tr>
+    <tr>
+      <td>2021-10-22</td>
+      <td>Houston Astros</td>
+      <td>1564.94</td>
+      <td>5</td>
+      <td>Boston Red Sox</td>
+      <td>1530.27</td>
+      <td>0</td>
+      <td>58.75%</td>
+      <td>41.25%</td>
+      <td>2.54</td>
+    </tr>
+    <tr>
+      <td>2021-10-23</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1632.11</td>
+      <td>2</td>
+      <td>@ Atlanta Braves</td>
+      <td>1569.79</td>
+      <td>4</td>
+      <td>55.10%</td>
+      <td>44.90%</td>
+      <td>-2.15</td>
+    </tr>
+    <tr>
+      <td>2021-10-23</td>
+      <td>Atlanta Braves</td>
+      <td>1569.79</td>
+      <td>4</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1632.11</td>
+      <td>2</td>
+      <td>44.90%</td>
+      <td>55.10%</td>
+      <td>2.15</td>
+    </tr>
+    <tr>
+      <td>2021-10-26</td>
+      <td>Houston Astros</td>
+      <td>1567.48</td>
+      <td>2</td>
+      <td>Atlanta Braves</td>
+      <td>1571.94</td>
+      <td>6</td>
+      <td>53.21%</td>
+      <td>46.79%</td>
+      <td>-2.93</td>
+    </tr>
+    <tr>
+      <td>2021-10-26</td>
+      <td>Atlanta Braves</td>
+      <td>1571.94</td>
+      <td>6</td>
+      <td>@ Houston Astros</td>
+      <td>1567.48</td>
+      <td>2</td>
+      <td>46.79%</td>
+      <td>53.21%</td>
+      <td>2.94</td>
+    </tr>
+    <tr>
+      <td>2021-10-27</td>
+      <td>Atlanta Braves</td>
+      <td>1574.88</td>
+      <td>2</td>
+      <td>@ Houston Astros</td>
+      <td>1564.55</td>
+      <td>7</td>
+      <td>47.64%</td>
+      <td>52.36%</td>
+      <td>-2.94</td>
+    </tr>
+    <tr>
+      <td>2021-10-27</td>
+      <td>Houston Astros</td>
+      <td>1564.55</td>
+      <td>7</td>
+      <td>Atlanta Braves</td>
+      <td>1574.88</td>
+      <td>2</td>
+      <td>52.36%</td>
+      <td>47.64%</td>
+      <td>2.94</td>
+    </tr>
+    <tr>
+      <td>2021-10-29</td>
+      <td>Houston Astros</td>
+      <td>1567.49</td>
+      <td>0</td>
+      <td>@ Atlanta Braves</td>
+      <td>1571.94</td>
+      <td>2</td>
+      <td>45.52%</td>
+      <td>54.48%</td>
+      <td>-1.78</td>
+    </tr>
+    <tr>
+      <td>2021-10-29</td>
+      <td>Atlanta Braves</td>
+      <td>1571.94</td>
+      <td>2</td>
+      <td>Houston Astros</td>
+      <td>1567.49</td>
+      <td>0</td>
+      <td>54.48%</td>
+      <td>45.52%</td>
+      <td>1.78</td>
+    </tr>
+    <tr>
+      <td>2021-10-30</td>
+      <td>Houston Astros</td>
+      <td>1565.71</td>
+      <td>2</td>
+      <td>@ Atlanta Braves</td>
+      <td>1573.72</td>
+      <td>3</td>
+      <td>45.01%</td>
+      <td>54.99%</td>
+      <td>-1.24</td>
+    </tr>
+    <tr>
+      <td>2021-10-30</td>
+      <td>Atlanta Braves</td>
+      <td>1573.72</td>
+      <td>3</td>
+      <td>Houston Astros</td>
+      <td>1565.71</td>
+      <td>2</td>
+      <td>54.99%</td>
+      <td>45.01%</td>
+      <td>1.24</td>
+    </tr>
+    <tr>
+      <td>2021-10-31</td>
+      <td>Houston Astros</td>
+      <td>1564.47</td>
+      <td>9</td>
+      <td>@ Atlanta Braves</td>
+      <td>1574.96</td>
+      <td>5</td>
+      <td>44.66%</td>
+      <td>55.34%</td>
+      <td>3.05</td>
+    </tr>
+    <tr>
+      <td>2021-10-31</td>
+      <td>Atlanta Braves</td>
+      <td>1574.96</td>
+      <td>5</td>
+      <td>Houston Astros</td>
+      <td>1564.47</td>
+      <td>9</td>
+      <td>55.34%</td>
+      <td>44.66%</td>
+      <td>-3.05</td>
+    </tr>
+    <tr>
+      <td>2021-11-02</td>
+      <td>Houston Astros</td>
+      <td>1567.52</td>
+      <td>0</td>
+      <td>Atlanta Braves</td>
+      <td>1571.91</td>
+      <td>7</td>
+      <td>53.22%</td>
+      <td>46.78%</td>
+      <td>-3.88</td>
+    </tr>
+    <tr>
+      <td>2021-11-02</td>
+      <td>Atlanta Braves</td>
+      <td>1571.91</td>
+      <td>7</td>
+      <td>@ Houston Astros</td>
+      <td>1567.52</td>
+      <td>0</td>
+      <td>46.78%</td>
+      <td>53.22%</td>
+      <td>3.88</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

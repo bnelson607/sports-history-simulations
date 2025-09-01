@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Atlanta Braves">Atlanta Braves</option><option value="Chicago Cubs">Chicago Cubs</option><option value="Chicago White Sox">Chicago White Sox</option><option value="Cincinnati Reds">Cincinnati Reds</option><option value="Cleveland Indians">Cleveland Indians</option><option value="Houston Astros">Houston Astros</option><option value="Los Angeles Dodgers">Los Angeles Dodgers</option><option value="Miami Marlins">Miami Marlins</option><option value="Milwaukee Brewers">Milwaukee Brewers</option><option value="Minnesota Twins">Minnesota Twins</option><option value="New York Yankees">New York Yankees</option><option value="Oakland Athletics">Oakland Athletics</option><option value="San Diego Padres">San Diego Padres</option><option value="St. Louis Cardinals">St. Louis Cardinals</option><option value="Tampa Bay Rays">Tampa Bay Rays</option><option value="Toronto Blue Jays">Toronto Blue Jays</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2020-09-29</td>
+      <td>Cleveland Indians</td>
+      <td>1520.99</td>
+      <td>3</td>
+      <td>New York Yankees</td>
+      <td>1556.11</td>
+      <td>12</td>
+      <td>50.42%</td>
+      <td>49.58%</td>
+      <td>-11.30</td>
+    </tr>
+    <tr>
+      <td>2020-09-29</td>
+      <td>Toronto Blue Jays</td>
+      <td>1506.07</td>
+      <td>1</td>
+      <td>@ Tampa Bay Rays</td>
+      <td>1591.40</td>
+      <td>3</td>
+      <td>32.95%</td>
+      <td>67.05%</td>
+      <td>-3.48</td>
+    </tr>
+    <tr>
+      <td>2020-09-29</td>
+      <td>New York Yankees</td>
+      <td>1556.11</td>
+      <td>12</td>
+      <td>@ Cleveland Indians</td>
+      <td>1520.99</td>
+      <td>3</td>
+      <td>49.58%</td>
+      <td>50.42%</td>
+      <td>11.30</td>
+    </tr>
+    <tr>
+      <td>2020-09-29</td>
+      <td>Chicago White Sox</td>
+      <td>1526.40</td>
+      <td>4</td>
+      <td>@ Oakland Athletics</td>
+      <td>1544.26</td>
+      <td>1</td>
+      <td>42.02%</td>
+      <td>57.98%</td>
+      <td>7.50</td>
+    </tr>
+    <tr>
+      <td>2020-09-29</td>
+      <td>Houston Astros</td>
+      <td>1504.40</td>
+      <td>4</td>
+      <td>@ Minnesota Twins</td>
+      <td>1559.06</td>
+      <td>1</td>
+      <td>36.96%</td>
+      <td>63.04%</td>
+      <td>8.16</td>
+    </tr>
+    <tr>
+      <td>2020-09-29</td>
+      <td>Oakland Athletics</td>
+      <td>1544.26</td>
+      <td>1</td>
+      <td>Chicago White Sox</td>
+      <td>1526.40</td>
+      <td>4</td>
+      <td>57.98%</td>
+      <td>42.02%</td>
+      <td>-7.50</td>
+    </tr>
+    <tr>
+      <td>2020-09-29</td>
+      <td>Tampa Bay Rays</td>
+      <td>1591.40</td>
+      <td>3</td>
+      <td>Toronto Blue Jays</td>
+      <td>1506.07</td>
+      <td>1</td>
+      <td>67.05%</td>
+      <td>32.95%</td>
+      <td>3.48</td>
+    </tr>
+    <tr>
+      <td>2020-09-29</td>
+      <td>Minnesota Twins</td>
+      <td>1559.06</td>
+      <td>1</td>
+      <td>Houston Astros</td>
+      <td>1504.40</td>
+      <td>4</td>
+      <td>63.04%</td>
+      <td>36.96%</td>
+      <td>-8.16</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>Milwaukee Brewers</td>
+      <td>1488.17</td>
+      <td>2</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1639.72</td>
+      <td>4</td>
+      <td>25.13%</td>
+      <td>74.87%</td>
+      <td>-2.65</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>Houston Astros</td>
+      <td>1512.56</td>
+      <td>3</td>
+      <td>@ Minnesota Twins</td>
+      <td>1550.90</td>
+      <td>1</td>
+      <td>39.18%</td>
+      <td>60.82%</td>
+      <td>6.42</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>Chicago White Sox</td>
+      <td>1533.90</td>
+      <td>3</td>
+      <td>@ Oakland Athletics</td>
+      <td>1536.76</td>
+      <td>5</td>
+      <td>44.14%</td>
+      <td>55.86%</td>
+      <td>-4.66</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>St. Louis Cardinals</td>
+      <td>1502.55</td>
+      <td>7</td>
+      <td>@ San Diego Padres</td>
+      <td>1571.51</td>
+      <td>4</td>
+      <td>35.07%</td>
+      <td>64.93%</td>
+      <td>8.40</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>Toronto Blue Jays</td>
+      <td>1502.59</td>
+      <td>2</td>
+      <td>@ Tampa Bay Rays</td>
+      <td>1594.88</td>
+      <td>8</td>
+      <td>32.07%</td>
+      <td>67.93%</td>
+      <td>-5.87</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>Atlanta Braves</td>
+      <td>1540.62</td>
+      <td>1</td>
+      <td>Cincinnati Reds</td>
+      <td>1515.97</td>
+      <td>0</td>
+      <td>58.93%</td>
+      <td>41.07%</td>
+      <td>2.17</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>Cincinnati Reds</td>
+      <td>1515.97</td>
+      <td>0</td>
+      <td>@ Atlanta Braves</td>
+      <td>1540.62</td>
+      <td>1</td>
+      <td>41.07%</td>
+      <td>58.93%</td>
+      <td>-2.17</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>New York Yankees</td>
+      <td>1567.41</td>
+      <td>10</td>
+      <td>@ Cleveland Indians</td>
+      <td>1509.69</td>
+      <td>9</td>
+      <td>52.82%</td>
+      <td>47.18%</td>
+      <td>3.52</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>Chicago Cubs</td>
+      <td>1518.77</td>
+      <td>1</td>
+      <td>Miami Marlins</td>
+      <td>1453.89</td>
+      <td>5</td>
+      <td>64.40%</td>
+      <td>35.60%</td>
+      <td>-9.62</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>Miami Marlins</td>
+      <td>1453.89</td>
+      <td>5</td>
+      <td>@ Chicago Cubs</td>
+      <td>1518.77</td>
+      <td>1</td>
+      <td>35.60%</td>
+      <td>64.40%</td>
+      <td>9.62</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>Cleveland Indians</td>
+      <td>1509.69</td>
+      <td>9</td>
+      <td>New York Yankees</td>
+      <td>1567.41</td>
+      <td>10</td>
+      <td>47.18%</td>
+      <td>52.82%</td>
+      <td>-3.53</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1639.72</td>
+      <td>4</td>
+      <td>Milwaukee Brewers</td>
+      <td>1488.17</td>
+      <td>2</td>
+      <td>74.87%</td>
+      <td>25.13%</td>
+      <td>2.65</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>Minnesota Twins</td>
+      <td>1550.90</td>
+      <td>1</td>
+      <td>Houston Astros</td>
+      <td>1512.56</td>
+      <td>3</td>
+      <td>60.82%</td>
+      <td>39.18%</td>
+      <td>-6.42</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>Oakland Athletics</td>
+      <td>1536.76</td>
+      <td>5</td>
+      <td>Chicago White Sox</td>
+      <td>1533.90</td>
+      <td>3</td>
+      <td>55.86%</td>
+      <td>44.14%</td>
+      <td>4.66</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>Tampa Bay Rays</td>
+      <td>1594.88</td>
+      <td>8</td>
+      <td>Toronto Blue Jays</td>
+      <td>1502.59</td>
+      <td>2</td>
+      <td>67.93%</td>
+      <td>32.07%</td>
+      <td>5.87</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>San Diego Padres</td>
+      <td>1571.51</td>
+      <td>4</td>
+      <td>St. Louis Cardinals</td>
+      <td>1502.55</td>
+      <td>7</td>
+      <td>64.93%</td>
+      <td>35.07%</td>
+      <td>-8.41</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Cincinnati Reds</td>
+      <td>1513.80</td>
+      <td>0</td>
+      <td>@ Atlanta Braves</td>
+      <td>1542.79</td>
+      <td>5</td>
+      <td>40.47%</td>
+      <td>59.53%</td>
+      <td>-6.76</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Milwaukee Brewers</td>
+      <td>1485.52</td>
+      <td>0</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1642.37</td>
+      <td>3</td>
+      <td>24.56%</td>
+      <td>75.44%</td>
+      <td>-3.18</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Chicago White Sox</td>
+      <td>1529.24</td>
+      <td>4</td>
+      <td>@ Oakland Athletics</td>
+      <td>1541.42</td>
+      <td>6</td>
+      <td>42.82%</td>
+      <td>57.18%</td>
+      <td>-4.52</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>St. Louis Cardinals</td>
+      <td>1510.95</td>
+      <td>9</td>
+      <td>@ San Diego Padres</td>
+      <td>1563.10</td>
+      <td>11</td>
+      <td>37.30%</td>
+      <td>62.70%</td>
+      <td>-3.94</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Atlanta Braves</td>
+      <td>1542.79</td>
+      <td>5</td>
+      <td>Cincinnati Reds</td>
+      <td>1513.80</td>
+      <td>0</td>
+      <td>59.53%</td>
+      <td>40.47%</td>
+      <td>6.76</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1642.37</td>
+      <td>3</td>
+      <td>Milwaukee Brewers</td>
+      <td>1485.52</td>
+      <td>0</td>
+      <td>75.44%</td>
+      <td>24.56%</td>
+      <td>3.18</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Oakland Athletics</td>
+      <td>1541.42</td>
+      <td>6</td>
+      <td>Chicago White Sox</td>
+      <td>1529.24</td>
+      <td>4</td>
+      <td>57.18%</td>
+      <td>42.82%</td>
+      <td>4.52</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>San Diego Padres</td>
+      <td>1563.10</td>
+      <td>11</td>
+      <td>St. Louis Cardinals</td>
+      <td>1510.95</td>
+      <td>9</td>
+      <td>62.70%</td>
+      <td>37.30%</td>
+      <td>3.94</td>
+    </tr>
+    <tr>
+      <td>2020-10-02</td>
+      <td>Miami Marlins</td>
+      <td>1463.51</td>
+      <td>2</td>
+      <td>@ Chicago Cubs</td>
+      <td>1509.15</td>
+      <td>0</td>
+      <td>38.18%</td>
+      <td>61.82%</td>
+      <td>6.53</td>
+    </tr>
+    <tr>
+      <td>2020-10-02</td>
+      <td>St. Louis Cardinals</td>
+      <td>1507.01</td>
+      <td>0</td>
+      <td>@ San Diego Padres</td>
+      <td>1567.04</td>
+      <td>4</td>
+      <td>36.25%</td>
+      <td>63.75%</td>
+      <td>-5.41</td>
+    </tr>
+    <tr>
+      <td>2020-10-02</td>
+      <td>Chicago Cubs</td>
+      <td>1509.15</td>
+      <td>0</td>
+      <td>Miami Marlins</td>
+      <td>1463.51</td>
+      <td>2</td>
+      <td>61.82%</td>
+      <td>38.18%</td>
+      <td>-6.53</td>
+    </tr>
+    <tr>
+      <td>2020-10-02</td>
+      <td>San Diego Padres</td>
+      <td>1567.04</td>
+      <td>4</td>
+      <td>St. Louis Cardinals</td>
+      <td>1507.01</td>
+      <td>0</td>
+      <td>63.75%</td>
+      <td>36.25%</td>
+      <td>5.42</td>
+    </tr>
+    <tr>
+      <td>2020-10-05</td>
+      <td>Houston Astros</td>
+      <td>1518.98</td>
+      <td>10</td>
+      <td>@ Oakland Athletics</td>
+      <td>1545.94</td>
+      <td>5</td>
+      <td>46.13%</td>
+      <td>53.87%</td>
+      <td>9.00</td>
+    </tr>
+    <tr>
+      <td>2020-10-05</td>
+      <td>Oakland Athletics</td>
+      <td>1545.94</td>
+      <td>5</td>
+      <td>Houston Astros</td>
+      <td>1518.98</td>
+      <td>10</td>
+      <td>53.87%</td>
+      <td>46.13%</td>
+      <td>-9.00</td>
+    </tr>
+    <tr>
+      <td>2020-10-05</td>
+      <td>New York Yankees</td>
+      <td>1570.93</td>
+      <td>9</td>
+      <td>@ Tampa Bay Rays</td>
+      <td>1600.75</td>
+      <td>3</td>
+      <td>45.72%</td>
+      <td>54.28%</td>
+      <td>9.93</td>
+    </tr>
+    <tr>
+      <td>2020-10-05</td>
+      <td>Tampa Bay Rays</td>
+      <td>1600.75</td>
+      <td>3</td>
+      <td>New York Yankees</td>
+      <td>1570.93</td>
+      <td>9</td>
+      <td>54.28%</td>
+      <td>45.72%</td>
+      <td>-9.93</td>
+    </tr>
+    <tr>
+      <td>2020-10-06</td>
+      <td>Miami Marlins</td>
+      <td>1470.04</td>
+      <td>5</td>
+      <td>@ Atlanta Braves</td>
+      <td>1549.55</td>
+      <td>9</td>
+      <td>38.75%</td>
+      <td>61.25%</td>
+      <td>-5.79</td>
+    </tr>
+    <tr>
+      <td>2020-10-06</td>
+      <td>New York Yankees</td>
+      <td>1580.86</td>
+      <td>5</td>
+      <td>@ Tampa Bay Rays</td>
+      <td>1590.82</td>
+      <td>7</td>
+      <td>48.57%</td>
+      <td>51.43%</td>
+      <td>-5.13</td>
+    </tr>
+    <tr>
+      <td>2020-10-06</td>
+      <td>Houston Astros</td>
+      <td>1527.98</td>
+      <td>5</td>
+      <td>@ Oakland Athletics</td>
+      <td>1536.94</td>
+      <td>2</td>
+      <td>48.71%</td>
+      <td>51.29%</td>
+      <td>6.64</td>
+    </tr>
+    <tr>
+      <td>2020-10-06</td>
+      <td>Tampa Bay Rays</td>
+      <td>1590.82</td>
+      <td>7</td>
+      <td>New York Yankees</td>
+      <td>1580.86</td>
+      <td>5</td>
+      <td>51.43%</td>
+      <td>48.57%</td>
+      <td>5.13</td>
+    </tr>
+    <tr>
+      <td>2020-10-06</td>
+      <td>Atlanta Braves</td>
+      <td>1549.55</td>
+      <td>9</td>
+      <td>Miami Marlins</td>
+      <td>1470.04</td>
+      <td>5</td>
+      <td>61.25%</td>
+      <td>38.75%</td>
+      <td>5.79</td>
+    </tr>
+    <tr>
+      <td>2020-10-06</td>
+      <td>San Diego Padres</td>
+      <td>1572.46</td>
+      <td>1</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1645.55</td>
+      <td>5</td>
+      <td>39.63%</td>
+      <td>60.37%</td>
+      <td>-5.92</td>
+    </tr>
+    <tr>
+      <td>2020-10-06</td>
+      <td>Oakland Athletics</td>
+      <td>1536.94</td>
+      <td>2</td>
+      <td>Houston Astros</td>
+      <td>1527.98</td>
+      <td>5</td>
+      <td>51.29%</td>
+      <td>48.71%</td>
+      <td>-6.63</td>
+    </tr>
+    <tr>
+      <td>2020-10-06</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1645.55</td>
+      <td>5</td>
+      <td>San Diego Padres</td>
+      <td>1572.46</td>
+      <td>1</td>
+      <td>60.37%</td>
+      <td>39.63%</td>
+      <td>5.92</td>
+    </tr>
+    <tr>
+      <td>2020-10-07</td>
+      <td>Houston Astros</td>
+      <td>1534.62</td>
+      <td>7</td>
+      <td>Oakland Athletics</td>
+      <td>1530.31</td>
+      <td>9</td>
+      <td>50.62%</td>
+      <td>49.38%</td>
+      <td>-5.35</td>
+    </tr>
+    <tr>
+      <td>2020-10-07</td>
+      <td>Atlanta Braves</td>
+      <td>1555.34</td>
+      <td>2</td>
+      <td>Miami Marlins</td>
+      <td>1464.25</td>
+      <td>0</td>
+      <td>62.82%</td>
+      <td>37.18%</td>
+      <td>3.93</td>
+    </tr>
+    <tr>
+      <td>2020-10-07</td>
+      <td>New York Yankees</td>
+      <td>1575.73</td>
+      <td>4</td>
+      <td>Tampa Bay Rays</td>
+      <td>1595.95</td>
+      <td>8</td>
+      <td>47.09%</td>
+      <td>52.91%</td>
+      <td>-7.03</td>
+    </tr>
+    <tr>
+      <td>2020-10-07</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1651.47</td>
+      <td>6</td>
+      <td>San Diego Padres</td>
+      <td>1566.54</td>
+      <td>5</td>
+      <td>61.99%</td>
+      <td>38.01%</td>
+      <td>2.84</td>
+    </tr>
+    <tr>
+      <td>2020-10-07</td>
+      <td>Oakland Athletics</td>
+      <td>1530.31</td>
+      <td>9</td>
+      <td>@ Houston Astros</td>
+      <td>1534.62</td>
+      <td>7</td>
+      <td>49.38%</td>
+      <td>50.62%</td>
+      <td>5.34</td>
+    </tr>
+    <tr>
+      <td>2020-10-07</td>
+      <td>San Diego Padres</td>
+      <td>1566.54</td>
+      <td>5</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1651.47</td>
+      <td>6</td>
+      <td>38.01%</td>
+      <td>61.99%</td>
+      <td>-2.84</td>
+    </tr>
+    <tr>
+      <td>2020-10-07</td>
+      <td>Tampa Bay Rays</td>
+      <td>1595.95</td>
+      <td>8</td>
+      <td>@ New York Yankees</td>
+      <td>1575.73</td>
+      <td>4</td>
+      <td>52.91%</td>
+      <td>47.09%</td>
+      <td>7.03</td>
+    </tr>
+    <tr>
+      <td>2020-10-07</td>
+      <td>Miami Marlins</td>
+      <td>1464.25</td>
+      <td>0</td>
+      <td>@ Atlanta Braves</td>
+      <td>1555.34</td>
+      <td>2</td>
+      <td>37.18%</td>
+      <td>62.82%</td>
+      <td>-3.93</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Oakland Athletics</td>
+      <td>1535.65</td>
+      <td>11</td>
+      <td>@ Houston Astros</td>
+      <td>1529.27</td>
+      <td>6</td>
+      <td>50.92%</td>
+      <td>49.08%</td>
+      <td>8.20</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Atlanta Braves</td>
+      <td>1559.27</td>
+      <td>7</td>
+      <td>@ Miami Marlins</td>
+      <td>1460.32</td>
+      <td>0</td>
+      <td>63.87%</td>
+      <td>36.13%</td>
+      <td>7.14</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Tampa Bay Rays</td>
+      <td>1602.98</td>
+      <td>1</td>
+      <td>@ New York Yankees</td>
+      <td>1568.70</td>
+      <td>5</td>
+      <td>54.92%</td>
+      <td>45.08%</td>
+      <td>-8.20</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>San Diego Padres</td>
+      <td>1563.70</td>
+      <td>3</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1654.31</td>
+      <td>12</td>
+      <td>37.25%</td>
+      <td>62.75%</td>
+      <td>-8.35</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>New York Yankees</td>
+      <td>1568.70</td>
+      <td>5</td>
+      <td>Tampa Bay Rays</td>
+      <td>1602.98</td>
+      <td>1</td>
+      <td>45.08%</td>
+      <td>54.92%</td>
+      <td>8.20</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Miami Marlins</td>
+      <td>1460.32</td>
+      <td>0</td>
+      <td>Atlanta Braves</td>
+      <td>1559.27</td>
+      <td>7</td>
+      <td>36.13%</td>
+      <td>63.87%</td>
+      <td>-7.14</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Houston Astros</td>
+      <td>1529.27</td>
+      <td>6</td>
+      <td>Oakland Athletics</td>
+      <td>1535.65</td>
+      <td>11</td>
+      <td>49.08%</td>
+      <td>50.92%</td>
+      <td>-8.20</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1654.31</td>
+      <td>12</td>
+      <td>@ San Diego Padres</td>
+      <td>1563.70</td>
+      <td>3</td>
+      <td>62.75%</td>
+      <td>37.25%</td>
+      <td>8.35</td>
+    </tr>
+    <tr>
+      <td>2020-10-09</td>
+      <td>New York Yankees</td>
+      <td>1576.90</td>
+      <td>1</td>
+      <td>@ Tampa Bay Rays</td>
+      <td>1594.78</td>
+      <td>2</td>
+      <td>47.43%</td>
+      <td>52.57%</td>
+      <td>-3.54</td>
+    </tr>
+    <tr>
+      <td>2020-10-09</td>
+      <td>Tampa Bay Rays</td>
+      <td>1594.78</td>
+      <td>2</td>
+      <td>New York Yankees</td>
+      <td>1576.90</td>
+      <td>1</td>
+      <td>52.57%</td>
+      <td>47.43%</td>
+      <td>3.54</td>
+    </tr>
+    <tr>
+      <td>2020-10-11</td>
+      <td>Houston Astros</td>
+      <td>1521.07</td>
+      <td>1</td>
+      <td>@ Tampa Bay Rays</td>
+      <td>1598.32</td>
+      <td>2</td>
+      <td>39.06%</td>
+      <td>60.94%</td>
+      <td>-2.91</td>
+    </tr>
+    <tr>
+      <td>2020-10-11</td>
+      <td>Tampa Bay Rays</td>
+      <td>1598.32</td>
+      <td>2</td>
+      <td>Houston Astros</td>
+      <td>1521.07</td>
+      <td>1</td>
+      <td>60.94%</td>
+      <td>39.06%</td>
+      <td>2.92</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1662.66</td>
+      <td>1</td>
+      <td>Atlanta Braves</td>
+      <td>1566.41</td>
+      <td>5</td>
+      <td>63.51%</td>
+      <td>36.49%</td>
+      <td>-9.49</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>Houston Astros</td>
+      <td>1518.16</td>
+      <td>2</td>
+      <td>@ Tampa Bay Rays</td>
+      <td>1601.24</td>
+      <td>4</td>
+      <td>38.27%</td>
+      <td>61.73%</td>
+      <td>-4.05</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>Atlanta Braves</td>
+      <td>1566.41</td>
+      <td>5</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1662.66</td>
+      <td>1</td>
+      <td>36.49%</td>
+      <td>63.51%</td>
+      <td>9.49</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>Tampa Bay Rays</td>
+      <td>1601.24</td>
+      <td>4</td>
+      <td>Houston Astros</td>
+      <td>1518.16</td>
+      <td>2</td>
+      <td>61.73%</td>
+      <td>38.27%</td>
+      <td>4.04</td>
+    </tr>
+    <tr>
+      <td>2020-10-13</td>
+      <td>Houston Astros</td>
+      <td>1514.11</td>
+      <td>2</td>
+      <td>Tampa Bay Rays</td>
+      <td>1605.28</td>
+      <td>5</td>
+      <td>37.17%</td>
+      <td>62.83%</td>
+      <td>-4.81</td>
+    </tr>
+    <tr>
+      <td>2020-10-13</td>
+      <td>Tampa Bay Rays</td>
+      <td>1605.28</td>
+      <td>5</td>
+      <td>@ Houston Astros</td>
+      <td>1514.11</td>
+      <td>2</td>
+      <td>62.83%</td>
+      <td>37.17%</td>
+      <td>4.81</td>
+    </tr>
+    <tr>
+      <td>2020-10-13</td>
+      <td>Atlanta Braves</td>
+      <td>1575.90</td>
+      <td>7</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1653.17</td>
+      <td>8</td>
+      <td>39.06%</td>
+      <td>60.94%</td>
+      <td>-2.92</td>
+    </tr>
+    <tr>
+      <td>2020-10-13</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1653.17</td>
+      <td>8</td>
+      <td>Atlanta Braves</td>
+      <td>1575.90</td>
+      <td>7</td>
+      <td>60.94%</td>
+      <td>39.06%</td>
+      <td>2.92</td>
+    </tr>
+    <tr>
+      <td>2020-10-14</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1656.09</td>
+      <td>15</td>
+      <td>@ Atlanta Braves</td>
+      <td>1572.98</td>
+      <td>3</td>
+      <td>61.74%</td>
+      <td>38.26%</td>
+      <td>9.90</td>
+    </tr>
+    <tr>
+      <td>2020-10-14</td>
+      <td>Houston Astros</td>
+      <td>1509.30</td>
+      <td>4</td>
+      <td>Tampa Bay Rays</td>
+      <td>1610.09</td>
+      <td>3</td>
+      <td>35.89%</td>
+      <td>64.11%</td>
+      <td>4.79</td>
+    </tr>
+    <tr>
+      <td>2020-10-14</td>
+      <td>Atlanta Braves</td>
+      <td>1572.98</td>
+      <td>3</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1656.09</td>
+      <td>15</td>
+      <td>38.26%</td>
+      <td>61.74%</td>
+      <td>-9.90</td>
+    </tr>
+    <tr>
+      <td>2020-10-14</td>
+      <td>Tampa Bay Rays</td>
+      <td>1610.09</td>
+      <td>3</td>
+      <td>@ Houston Astros</td>
+      <td>1509.30</td>
+      <td>4</td>
+      <td>64.11%</td>
+      <td>35.89%</td>
+      <td>-4.79</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1665.99</td>
+      <td>2</td>
+      <td>@ Atlanta Braves</td>
+      <td>1563.08</td>
+      <td>10</td>
+      <td>64.39%</td>
+      <td>35.61%</td>
+      <td>-13.60</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Tampa Bay Rays</td>
+      <td>1605.30</td>
+      <td>3</td>
+      <td>@ Houston Astros</td>
+      <td>1514.09</td>
+      <td>4</td>
+      <td>62.83%</td>
+      <td>37.17%</td>
+      <td>-4.69</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Houston Astros</td>
+      <td>1514.09</td>
+      <td>4</td>
+      <td>Tampa Bay Rays</td>
+      <td>1605.30</td>
+      <td>3</td>
+      <td>37.17%</td>
+      <td>62.83%</td>
+      <td>4.70</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Atlanta Braves</td>
+      <td>1563.08</td>
+      <td>10</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1665.99</td>
+      <td>2</td>
+      <td>35.61%</td>
+      <td>64.39%</td>
+      <td>13.60</td>
+    </tr>
+    <tr>
+      <td>2020-10-16</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1652.39</td>
+      <td>7</td>
+      <td>@ Atlanta Braves</td>
+      <td>1576.68</td>
+      <td>3</td>
+      <td>60.73%</td>
+      <td>39.27%</td>
+      <td>5.86</td>
+    </tr>
+    <tr>
+      <td>2020-10-16</td>
+      <td>Houston Astros</td>
+      <td>1518.79</td>
+      <td>7</td>
+      <td>@ Tampa Bay Rays</td>
+      <td>1600.61</td>
+      <td>4</td>
+      <td>38.44%</td>
+      <td>61.56%</td>
+      <td>7.96</td>
+    </tr>
+    <tr>
+      <td>2020-10-16</td>
+      <td>Tampa Bay Rays</td>
+      <td>1600.61</td>
+      <td>4</td>
+      <td>Houston Astros</td>
+      <td>1518.79</td>
+      <td>7</td>
+      <td>61.56%</td>
+      <td>38.44%</td>
+      <td>-7.97</td>
+    </tr>
+    <tr>
+      <td>2020-10-16</td>
+      <td>Atlanta Braves</td>
+      <td>1576.68</td>
+      <td>3</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1652.39</td>
+      <td>7</td>
+      <td>39.27%</td>
+      <td>60.73%</td>
+      <td>-5.86</td>
+    </tr>
+    <tr>
+      <td>2020-10-17</td>
+      <td>Houston Astros</td>
+      <td>1526.75</td>
+      <td>2</td>
+      <td>@ Tampa Bay Rays</td>
+      <td>1592.64</td>
+      <td>4</td>
+      <td>40.63%</td>
+      <td>59.37%</td>
+      <td>-4.29</td>
+    </tr>
+    <tr>
+      <td>2020-10-17</td>
+      <td>Atlanta Braves</td>
+      <td>1570.82</td>
+      <td>1</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1658.25</td>
+      <td>3</td>
+      <td>37.68%</td>
+      <td>62.32%</td>
+      <td>-3.98</td>
+    </tr>
+    <tr>
+      <td>2020-10-17</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1658.25</td>
+      <td>3</td>
+      <td>Atlanta Braves</td>
+      <td>1570.82</td>
+      <td>1</td>
+      <td>62.32%</td>
+      <td>37.68%</td>
+      <td>3.98</td>
+    </tr>
+    <tr>
+      <td>2020-10-17</td>
+      <td>Tampa Bay Rays</td>
+      <td>1592.64</td>
+      <td>4</td>
+      <td>Houston Astros</td>
+      <td>1526.75</td>
+      <td>2</td>
+      <td>59.37%</td>
+      <td>40.63%</td>
+      <td>4.30</td>
+    </tr>
+    <tr>
+      <td>2020-10-18</td>
+      <td>Atlanta Braves</td>
+      <td>1566.84</td>
+      <td>3</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1662.23</td>
+      <td>4</td>
+      <td>36.61%</td>
+      <td>63.39%</td>
+      <td>-2.74</td>
+    </tr>
+    <tr>
+      <td>2020-10-18</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1662.23</td>
+      <td>4</td>
+      <td>Atlanta Braves</td>
+      <td>1566.84</td>
+      <td>3</td>
+      <td>63.39%</td>
+      <td>36.61%</td>
+      <td>2.74</td>
+    </tr>
+    <tr>
+      <td>2020-10-20</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1664.97</td>
+      <td>8</td>
+      <td>Tampa Bay Rays</td>
+      <td>1596.94</td>
+      <td>3</td>
+      <td>59.67%</td>
+      <td>40.33%</td>
+      <td>6.74</td>
+    </tr>
+    <tr>
+      <td>2020-10-20</td>
+      <td>Tampa Bay Rays</td>
+      <td>1596.94</td>
+      <td>3</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1664.97</td>
+      <td>8</td>
+      <td>40.33%</td>
+      <td>59.67%</td>
+      <td>-6.74</td>
+    </tr>
+    <tr>
+      <td>2020-10-21</td>
+      <td>Tampa Bay Rays</td>
+      <td>1590.20</td>
+      <td>6</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1671.71</td>
+      <td>4</td>
+      <td>38.48%</td>
+      <td>61.52%</td>
+      <td>6.50</td>
+    </tr>
+    <tr>
+      <td>2020-10-21</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1671.71</td>
+      <td>4</td>
+      <td>Tampa Bay Rays</td>
+      <td>1590.20</td>
+      <td>6</td>
+      <td>61.52%</td>
+      <td>38.48%</td>
+      <td>-6.50</td>
+    </tr>
+    <tr>
+      <td>2020-10-23</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1665.21</td>
+      <td>6</td>
+      <td>@ Tampa Bay Rays</td>
+      <td>1596.70</td>
+      <td>2</td>
+      <td>59.73%</td>
+      <td>40.27%</td>
+      <td>6.01</td>
+    </tr>
+    <tr>
+      <td>2020-10-23</td>
+      <td>Tampa Bay Rays</td>
+      <td>1596.70</td>
+      <td>2</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1665.21</td>
+      <td>6</td>
+      <td>40.27%</td>
+      <td>59.73%</td>
+      <td>-6.02</td>
+    </tr>
+    <tr>
+      <td>2020-10-24</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1671.22</td>
+      <td>7</td>
+      <td>@ Tampa Bay Rays</td>
+      <td>1590.68</td>
+      <td>8</td>
+      <td>61.39%</td>
+      <td>38.61%</td>
+      <td>-4.58</td>
+    </tr>
+    <tr>
+      <td>2020-10-24</td>
+      <td>Tampa Bay Rays</td>
+      <td>1590.68</td>
+      <td>8</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1671.22</td>
+      <td>7</td>
+      <td>38.61%</td>
+      <td>61.39%</td>
+      <td>4.59</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1666.64</td>
+      <td>4</td>
+      <td>@ Tampa Bay Rays</td>
+      <td>1595.27</td>
+      <td>2</td>
+      <td>60.13%</td>
+      <td>39.87%</td>
+      <td>4.21</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>Tampa Bay Rays</td>
+      <td>1595.27</td>
+      <td>2</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1666.64</td>
+      <td>4</td>
+      <td>39.87%</td>
+      <td>60.13%</td>
+      <td>-4.21</td>
+    </tr>
+    <tr>
+      <td>2020-10-27</td>
+      <td>Los Angeles Dodgers</td>
+      <td>1670.85</td>
+      <td>3</td>
+      <td>Tampa Bay Rays</td>
+      <td>1591.06</td>
+      <td>1</td>
+      <td>61.29%</td>
+      <td>38.71%</td>
+      <td>4.09</td>
+    </tr>
+    <tr>
+      <td>2020-10-27</td>
+      <td>Tampa Bay Rays</td>
+      <td>1591.06</td>
+      <td>1</td>
+      <td>@ Los Angeles Dodgers</td>
+      <td>1670.85</td>
+      <td>3</td>
+      <td>38.71%</td>
+      <td>61.29%</td>
+      <td>-4.09</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

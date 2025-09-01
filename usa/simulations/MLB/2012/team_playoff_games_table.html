@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Atlanta Braves">Atlanta Braves</option><option value="Baltimore Orioles">Baltimore Orioles</option><option value="Cincinnati Reds">Cincinnati Reds</option><option value="Detroit Tigers">Detroit Tigers</option><option value="New York Yankees">New York Yankees</option><option value="Oakland Athletics">Oakland Athletics</option><option value="San Francisco Giants">San Francisco Giants</option><option value="St. Louis Cardinals">St. Louis Cardinals</option><option value="Texas Rangers">Texas Rangers</option><option value="Washington Nationals">Washington Nationals</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2012-10-05</td>
+      <td>Atlanta Braves</td>
+      <td>1544.23</td>
+      <td>3</td>
+      <td>St. Louis Cardinals</td>
+      <td>1536.91</td>
+      <td>6</td>
+      <td>54.34%</td>
+      <td>45.66%</td>
+      <td>-2.59</td>
+    </tr>
+    <tr>
+      <td>2012-10-05</td>
+      <td>Texas Rangers</td>
+      <td>1544.97</td>
+      <td>1</td>
+      <td>Baltimore Orioles</td>
+      <td>1519.37</td>
+      <td>5</td>
+      <td>56.94%</td>
+      <td>43.06%</td>
+      <td>-3.13</td>
+    </tr>
+    <tr>
+      <td>2012-10-05</td>
+      <td>Baltimore Orioles</td>
+      <td>1519.37</td>
+      <td>5</td>
+      <td>@ Texas Rangers</td>
+      <td>1544.97</td>
+      <td>1</td>
+      <td>43.06%</td>
+      <td>56.94%</td>
+      <td>3.13</td>
+    </tr>
+    <tr>
+      <td>2012-10-05</td>
+      <td>St. Louis Cardinals</td>
+      <td>1536.91</td>
+      <td>6</td>
+      <td>@ Atlanta Braves</td>
+      <td>1544.23</td>
+      <td>3</td>
+      <td>45.66%</td>
+      <td>54.34%</td>
+      <td>2.59</td>
+    </tr>
+    <tr>
+      <td>2012-10-06</td>
+      <td>Detroit Tigers</td>
+      <td>1535.64</td>
+      <td>3</td>
+      <td>Oakland Athletics</td>
+      <td>1551.84</td>
+      <td>1</td>
+      <td>50.97%</td>
+      <td>49.03%</td>
+      <td>1.91</td>
+    </tr>
+    <tr>
+      <td>2012-10-06</td>
+      <td>San Francisco Giants</td>
+      <td>1536.84</td>
+      <td>2</td>
+      <td>Cincinnati Reds</td>
+      <td>1531.21</td>
+      <td>5</td>
+      <td>54.10%</td>
+      <td>45.90%</td>
+      <td>-2.57</td>
+    </tr>
+    <tr>
+      <td>2012-10-06</td>
+      <td>Cincinnati Reds</td>
+      <td>1531.21</td>
+      <td>5</td>
+      <td>@ San Francisco Giants</td>
+      <td>1536.84</td>
+      <td>2</td>
+      <td>45.90%</td>
+      <td>54.10%</td>
+      <td>2.57</td>
+    </tr>
+    <tr>
+      <td>2012-10-06</td>
+      <td>Oakland Athletics</td>
+      <td>1551.84</td>
+      <td>1</td>
+      <td>@ Detroit Tigers</td>
+      <td>1535.64</td>
+      <td>3</td>
+      <td>49.03%</td>
+      <td>50.97%</td>
+      <td>-1.90</td>
+    </tr>
+    <tr>
+      <td>2012-10-07</td>
+      <td>New York Yankees</td>
+      <td>1570.94</td>
+      <td>7</td>
+      <td>@ Baltimore Orioles</td>
+      <td>1522.50</td>
+      <td>2</td>
+      <td>53.66%</td>
+      <td>46.34%</td>
+      <td>2.85</td>
+    </tr>
+    <tr>
+      <td>2012-10-07</td>
+      <td>Washington Nationals</td>
+      <td>1550.55</td>
+      <td>3</td>
+      <td>@ St. Louis Cardinals</td>
+      <td>1539.50</td>
+      <td>2</td>
+      <td>48.29%</td>
+      <td>51.71%</td>
+      <td>1.42</td>
+    </tr>
+    <tr>
+      <td>2012-10-07</td>
+      <td>Oakland Athletics</td>
+      <td>1549.94</td>
+      <td>4</td>
+      <td>@ Detroit Tigers</td>
+      <td>1537.55</td>
+      <td>5</td>
+      <td>48.48%</td>
+      <td>51.52%</td>
+      <td>-1.34</td>
+    </tr>
+    <tr>
+      <td>2012-10-07</td>
+      <td>Cincinnati Reds</td>
+      <td>1533.78</td>
+      <td>9</td>
+      <td>@ San Francisco Giants</td>
+      <td>1534.27</td>
+      <td>0</td>
+      <td>46.64%</td>
+      <td>53.36%</td>
+      <td>4.41</td>
+    </tr>
+    <tr>
+      <td>2012-10-07</td>
+      <td>Baltimore Orioles</td>
+      <td>1522.50</td>
+      <td>2</td>
+      <td>New York Yankees</td>
+      <td>1570.94</td>
+      <td>7</td>
+      <td>46.34%</td>
+      <td>53.66%</td>
+      <td>-2.85</td>
+    </tr>
+    <tr>
+      <td>2012-10-07</td>
+      <td>Detroit Tigers</td>
+      <td>1537.55</td>
+      <td>5</td>
+      <td>Oakland Athletics</td>
+      <td>1549.94</td>
+      <td>4</td>
+      <td>51.52%</td>
+      <td>48.48%</td>
+      <td>1.33</td>
+    </tr>
+    <tr>
+      <td>2012-10-07</td>
+      <td>San Francisco Giants</td>
+      <td>1534.27</td>
+      <td>0</td>
+      <td>Cincinnati Reds</td>
+      <td>1533.78</td>
+      <td>9</td>
+      <td>53.36%</td>
+      <td>46.64%</td>
+      <td>-4.41</td>
+    </tr>
+    <tr>
+      <td>2012-10-07</td>
+      <td>St. Louis Cardinals</td>
+      <td>1539.50</td>
+      <td>2</td>
+      <td>Washington Nationals</td>
+      <td>1550.55</td>
+      <td>3</td>
+      <td>51.71%</td>
+      <td>48.29%</td>
+      <td>-1.42</td>
+    </tr>
+    <tr>
+      <td>2012-10-08</td>
+      <td>Baltimore Orioles</td>
+      <td>1519.65</td>
+      <td>3</td>
+      <td>New York Yankees</td>
+      <td>1573.79</td>
+      <td>2</td>
+      <td>45.52%</td>
+      <td>54.48%</td>
+      <td>1.50</td>
+    </tr>
+    <tr>
+      <td>2012-10-08</td>
+      <td>St. Louis Cardinals</td>
+      <td>1538.08</td>
+      <td>12</td>
+      <td>Washington Nationals</td>
+      <td>1551.97</td>
+      <td>4</td>
+      <td>51.30%</td>
+      <td>48.70%</td>
+      <td>3.79</td>
+    </tr>
+    <tr>
+      <td>2012-10-08</td>
+      <td>New York Yankees</td>
+      <td>1573.79</td>
+      <td>2</td>
+      <td>@ Baltimore Orioles</td>
+      <td>1519.65</td>
+      <td>3</td>
+      <td>54.48%</td>
+      <td>45.52%</td>
+      <td>-1.50</td>
+    </tr>
+    <tr>
+      <td>2012-10-08</td>
+      <td>Washington Nationals</td>
+      <td>1551.97</td>
+      <td>4</td>
+      <td>@ St. Louis Cardinals</td>
+      <td>1538.08</td>
+      <td>12</td>
+      <td>48.70%</td>
+      <td>51.30%</td>
+      <td>-3.79</td>
+    </tr>
+    <tr>
+      <td>2012-10-09</td>
+      <td>Cincinnati Reds</td>
+      <td>1538.19</td>
+      <td>1</td>
+      <td>San Francisco Giants</td>
+      <td>1529.86</td>
+      <td>2</td>
+      <td>54.49%</td>
+      <td>45.51%</td>
+      <td>-1.06</td>
+    </tr>
+    <tr>
+      <td>2012-10-09</td>
+      <td>San Francisco Giants</td>
+      <td>1529.86</td>
+      <td>2</td>
+      <td>@ Cincinnati Reds</td>
+      <td>1538.19</td>
+      <td>1</td>
+      <td>45.51%</td>
+      <td>54.49%</td>
+      <td>1.06</td>
+    </tr>
+    <tr>
+      <td>2012-10-09</td>
+      <td>Detroit Tigers</td>
+      <td>1538.88</td>
+      <td>0</td>
+      <td>@ Oakland Athletics</td>
+      <td>1548.60</td>
+      <td>2</td>
+      <td>45.31%</td>
+      <td>54.69%</td>
+      <td>-1.76</td>
+    </tr>
+    <tr>
+      <td>2012-10-09</td>
+      <td>Oakland Athletics</td>
+      <td>1548.60</td>
+      <td>2</td>
+      <td>Detroit Tigers</td>
+      <td>1538.88</td>
+      <td>0</td>
+      <td>54.69%</td>
+      <td>45.31%</td>
+      <td>1.77</td>
+    </tr>
+    <tr>
+      <td>2012-10-10</td>
+      <td>Cincinnati Reds</td>
+      <td>1537.13</td>
+      <td>3</td>
+      <td>San Francisco Giants</td>
+      <td>1530.92</td>
+      <td>8</td>
+      <td>54.18%</td>
+      <td>45.82%</td>
+      <td>-3.33</td>
+    </tr>
+    <tr>
+      <td>2012-10-10</td>
+      <td>San Francisco Giants</td>
+      <td>1530.92</td>
+      <td>8</td>
+      <td>@ Cincinnati Reds</td>
+      <td>1537.13</td>
+      <td>3</td>
+      <td>45.82%</td>
+      <td>54.18%</td>
+      <td>3.34</td>
+    </tr>
+    <tr>
+      <td>2012-10-10</td>
+      <td>Baltimore Orioles</td>
+      <td>1521.15</td>
+      <td>2</td>
+      <td>@ New York Yankees</td>
+      <td>1572.29</td>
+      <td>3</td>
+      <td>39.50%</td>
+      <td>60.50%</td>
+      <td>-0.77</td>
+    </tr>
+    <tr>
+      <td>2012-10-10</td>
+      <td>Detroit Tigers</td>
+      <td>1537.12</td>
+      <td>3</td>
+      <td>@ Oakland Athletics</td>
+      <td>1550.37</td>
+      <td>4</td>
+      <td>44.81%</td>
+      <td>55.19%</td>
+      <td>-1.24</td>
+    </tr>
+    <tr>
+      <td>2012-10-10</td>
+      <td>St. Louis Cardinals</td>
+      <td>1541.87</td>
+      <td>8</td>
+      <td>@ Washington Nationals</td>
+      <td>1548.18</td>
+      <td>0</td>
+      <td>45.80%</td>
+      <td>54.20%</td>
+      <td>4.21</td>
+    </tr>
+    <tr>
+      <td>2012-10-10</td>
+      <td>Washington Nationals</td>
+      <td>1548.18</td>
+      <td>0</td>
+      <td>St. Louis Cardinals</td>
+      <td>1541.87</td>
+      <td>8</td>
+      <td>54.20%</td>
+      <td>45.80%</td>
+      <td>-4.21</td>
+    </tr>
+    <tr>
+      <td>2012-10-10</td>
+      <td>Oakland Athletics</td>
+      <td>1550.37</td>
+      <td>4</td>
+      <td>Detroit Tigers</td>
+      <td>1537.12</td>
+      <td>3</td>
+      <td>55.19%</td>
+      <td>44.81%</td>
+      <td>1.23</td>
+    </tr>
+    <tr>
+      <td>2012-10-10</td>
+      <td>New York Yankees</td>
+      <td>1572.29</td>
+      <td>3</td>
+      <td>Baltimore Orioles</td>
+      <td>1521.15</td>
+      <td>2</td>
+      <td>60.50%</td>
+      <td>39.50%</td>
+      <td>0.77</td>
+    </tr>
+    <tr>
+      <td>2012-10-11</td>
+      <td>Baltimore Orioles</td>
+      <td>1520.38</td>
+      <td>2</td>
+      <td>@ New York Yankees</td>
+      <td>1573.06</td>
+      <td>1</td>
+      <td>39.29%</td>
+      <td>60.71%</td>
+      <td>1.18</td>
+    </tr>
+    <tr>
+      <td>2012-10-11</td>
+      <td>Detroit Tigers</td>
+      <td>1535.88</td>
+      <td>6</td>
+      <td>@ Oakland Athletics</td>
+      <td>1551.60</td>
+      <td>0</td>
+      <td>44.46%</td>
+      <td>55.54%</td>
+      <td>3.75</td>
+    </tr>
+    <tr>
+      <td>2012-10-11</td>
+      <td>St. Louis Cardinals</td>
+      <td>1546.08</td>
+      <td>1</td>
+      <td>@ Washington Nationals</td>
+      <td>1543.97</td>
+      <td>2</td>
+      <td>47.01%</td>
+      <td>52.99%</td>
+      <td>-1.29</td>
+    </tr>
+    <tr>
+      <td>2012-10-11</td>
+      <td>Washington Nationals</td>
+      <td>1543.97</td>
+      <td>2</td>
+      <td>St. Louis Cardinals</td>
+      <td>1546.08</td>
+      <td>1</td>
+      <td>52.99%</td>
+      <td>47.01%</td>
+      <td>1.29</td>
+    </tr>
+    <tr>
+      <td>2012-10-11</td>
+      <td>Oakland Athletics</td>
+      <td>1551.60</td>
+      <td>0</td>
+      <td>Detroit Tigers</td>
+      <td>1535.88</td>
+      <td>6</td>
+      <td>55.54%</td>
+      <td>44.46%</td>
+      <td>-3.74</td>
+    </tr>
+    <tr>
+      <td>2012-10-11</td>
+      <td>New York Yankees</td>
+      <td>1573.06</td>
+      <td>1</td>
+      <td>Baltimore Orioles</td>
+      <td>1520.38</td>
+      <td>2</td>
+      <td>60.71%</td>
+      <td>39.29%</td>
+      <td>-1.18</td>
+    </tr>
+    <tr>
+      <td>2012-10-11</td>
+      <td>Cincinnati Reds</td>
+      <td>1533.80</td>
+      <td>4</td>
+      <td>San Francisco Giants</td>
+      <td>1534.26</td>
+      <td>6</td>
+      <td>53.23%</td>
+      <td>46.77%</td>
+      <td>-2.07</td>
+    </tr>
+    <tr>
+      <td>2012-10-11</td>
+      <td>San Francisco Giants</td>
+      <td>1534.26</td>
+      <td>6</td>
+      <td>@ Cincinnati Reds</td>
+      <td>1533.80</td>
+      <td>4</td>
+      <td>46.77%</td>
+      <td>53.23%</td>
+      <td>2.07</td>
+    </tr>
+    <tr>
+      <td>2012-10-12</td>
+      <td>St. Louis Cardinals</td>
+      <td>1544.79</td>
+      <td>9</td>
+      <td>@ Washington Nationals</td>
+      <td>1545.26</td>
+      <td>7</td>
+      <td>46.64%</td>
+      <td>53.36%</td>
+      <td>2.07</td>
+    </tr>
+    <tr>
+      <td>2012-10-12</td>
+      <td>Baltimore Orioles</td>
+      <td>1521.56</td>
+      <td>1</td>
+      <td>@ New York Yankees</td>
+      <td>1571.88</td>
+      <td>3</td>
+      <td>39.61%</td>
+      <td>60.39%</td>
+      <td>-1.54</td>
+    </tr>
+    <tr>
+      <td>2012-10-12</td>
+      <td>New York Yankees</td>
+      <td>1571.88</td>
+      <td>3</td>
+      <td>Baltimore Orioles</td>
+      <td>1521.56</td>
+      <td>1</td>
+      <td>60.39%</td>
+      <td>39.61%</td>
+      <td>1.54</td>
+    </tr>
+    <tr>
+      <td>2012-10-12</td>
+      <td>Washington Nationals</td>
+      <td>1545.26</td>
+      <td>7</td>
+      <td>St. Louis Cardinals</td>
+      <td>1544.79</td>
+      <td>9</td>
+      <td>53.36%</td>
+      <td>46.64%</td>
+      <td>-2.08</td>
+    </tr>
+    <tr>
+      <td>2012-10-13</td>
+      <td>Detroit Tigers</td>
+      <td>1539.63</td>
+      <td>6</td>
+      <td>@ New York Yankees</td>
+      <td>1573.42</td>
+      <td>4</td>
+      <td>41.91%</td>
+      <td>58.09%</td>
+      <td>1.59</td>
+    </tr>
+    <tr>
+      <td>2012-10-13</td>
+      <td>New York Yankees</td>
+      <td>1573.42</td>
+      <td>4</td>
+      <td>Detroit Tigers</td>
+      <td>1539.63</td>
+      <td>6</td>
+      <td>58.09%</td>
+      <td>41.91%</td>
+      <td>-1.60</td>
+    </tr>
+    <tr>
+      <td>2012-10-14</td>
+      <td>St. Louis Cardinals</td>
+      <td>1546.86</td>
+      <td>6</td>
+      <td>@ San Francisco Giants</td>
+      <td>1536.33</td>
+      <td>4</td>
+      <td>48.22%</td>
+      <td>51.78%</td>
+      <td>2.02</td>
+    </tr>
+    <tr>
+      <td>2012-10-14</td>
+      <td>San Francisco Giants</td>
+      <td>1536.33</td>
+      <td>4</td>
+      <td>St. Louis Cardinals</td>
+      <td>1546.86</td>
+      <td>6</td>
+      <td>51.78%</td>
+      <td>48.22%</td>
+      <td>-2.02</td>
+    </tr>
+    <tr>
+      <td>2012-10-14</td>
+      <td>New York Yankees</td>
+      <td>1571.82</td>
+      <td>0</td>
+      <td>Detroit Tigers</td>
+      <td>1541.22</td>
+      <td>3</td>
+      <td>57.64%</td>
+      <td>42.36%</td>
+      <td>-2.75</td>
+    </tr>
+    <tr>
+      <td>2012-10-14</td>
+      <td>Detroit Tigers</td>
+      <td>1541.22</td>
+      <td>3</td>
+      <td>@ New York Yankees</td>
+      <td>1571.82</td>
+      <td>0</td>
+      <td>42.36%</td>
+      <td>57.64%</td>
+      <td>2.75</td>
+    </tr>
+    <tr>
+      <td>2012-10-15</td>
+      <td>St. Louis Cardinals</td>
+      <td>1548.88</td>
+      <td>1</td>
+      <td>@ San Francisco Giants</td>
+      <td>1534.31</td>
+      <td>7</td>
+      <td>48.80%</td>
+      <td>51.20%</td>
+      <td>-3.29</td>
+    </tr>
+    <tr>
+      <td>2012-10-15</td>
+      <td>San Francisco Giants</td>
+      <td>1534.31</td>
+      <td>7</td>
+      <td>St. Louis Cardinals</td>
+      <td>1548.88</td>
+      <td>1</td>
+      <td>51.20%</td>
+      <td>48.80%</td>
+      <td>3.29</td>
+    </tr>
+    <tr>
+      <td>2012-10-16</td>
+      <td>New York Yankees</td>
+      <td>1569.07</td>
+      <td>1</td>
+      <td>@ Detroit Tigers</td>
+      <td>1543.97</td>
+      <td>2</td>
+      <td>50.31%</td>
+      <td>49.69%</td>
+      <td>-1.38</td>
+    </tr>
+    <tr>
+      <td>2012-10-16</td>
+      <td>Detroit Tigers</td>
+      <td>1543.97</td>
+      <td>2</td>
+      <td>New York Yankees</td>
+      <td>1569.07</td>
+      <td>1</td>
+      <td>49.69%</td>
+      <td>50.31%</td>
+      <td>1.38</td>
+    </tr>
+    <tr>
+      <td>2012-10-17</td>
+      <td>San Francisco Giants</td>
+      <td>1537.60</td>
+      <td>1</td>
+      <td>@ St. Louis Cardinals</td>
+      <td>1545.59</td>
+      <td>3</td>
+      <td>45.56%</td>
+      <td>54.44%</td>
+      <td>-1.77</td>
+    </tr>
+    <tr>
+      <td>2012-10-17</td>
+      <td>St. Louis Cardinals</td>
+      <td>1545.59</td>
+      <td>3</td>
+      <td>San Francisco Giants</td>
+      <td>1537.60</td>
+      <td>1</td>
+      <td>54.44%</td>
+      <td>45.56%</td>
+      <td>1.77</td>
+    </tr>
+    <tr>
+      <td>2012-10-18</td>
+      <td>San Francisco Giants</td>
+      <td>1535.83</td>
+      <td>3</td>
+      <td>@ St. Louis Cardinals</td>
+      <td>1547.36</td>
+      <td>8</td>
+      <td>45.06%</td>
+      <td>54.94%</td>
+      <td>-2.77</td>
+    </tr>
+    <tr>
+      <td>2012-10-18</td>
+      <td>New York Yankees</td>
+      <td>1567.69</td>
+      <td>1</td>
+      <td>@ Detroit Tigers</td>
+      <td>1545.35</td>
+      <td>8</td>
+      <td>49.91%</td>
+      <td>50.09%</td>
+      <td>-3.63</td>
+    </tr>
+    <tr>
+      <td>2012-10-18</td>
+      <td>Detroit Tigers</td>
+      <td>1545.35</td>
+      <td>8</td>
+      <td>New York Yankees</td>
+      <td>1567.69</td>
+      <td>1</td>
+      <td>50.09%</td>
+      <td>49.91%</td>
+      <td>3.63</td>
+    </tr>
+    <tr>
+      <td>2012-10-18</td>
+      <td>St. Louis Cardinals</td>
+      <td>1547.36</td>
+      <td>8</td>
+      <td>San Francisco Giants</td>
+      <td>1535.83</td>
+      <td>3</td>
+      <td>54.94%</td>
+      <td>45.06%</td>
+      <td>2.77</td>
+    </tr>
+    <tr>
+      <td>2012-10-19</td>
+      <td>San Francisco Giants</td>
+      <td>1533.06</td>
+      <td>5</td>
+      <td>@ St. Louis Cardinals</td>
+      <td>1550.13</td>
+      <td>0</td>
+      <td>44.27%</td>
+      <td>55.73%</td>
+      <td>3.42</td>
+    </tr>
+    <tr>
+      <td>2012-10-19</td>
+      <td>St. Louis Cardinals</td>
+      <td>1550.13</td>
+      <td>0</td>
+      <td>San Francisco Giants</td>
+      <td>1533.06</td>
+      <td>5</td>
+      <td>55.73%</td>
+      <td>44.27%</td>
+      <td>-3.42</td>
+    </tr>
+    <tr>
+      <td>2012-10-21</td>
+      <td>San Francisco Giants</td>
+      <td>1536.48</td>
+      <td>6</td>
+      <td>St. Louis Cardinals</td>
+      <td>1546.71</td>
+      <td>1</td>
+      <td>51.83%</td>
+      <td>48.17%</td>
+      <td>2.97</td>
+    </tr>
+    <tr>
+      <td>2012-10-21</td>
+      <td>St. Louis Cardinals</td>
+      <td>1546.71</td>
+      <td>1</td>
+      <td>@ San Francisco Giants</td>
+      <td>1536.48</td>
+      <td>6</td>
+      <td>48.17%</td>
+      <td>51.83%</td>
+      <td>-2.97</td>
+    </tr>
+    <tr>
+      <td>2012-10-22</td>
+      <td>St. Louis Cardinals</td>
+      <td>1543.74</td>
+      <td>0</td>
+      <td>@ San Francisco Giants</td>
+      <td>1539.45</td>
+      <td>9</td>
+      <td>47.32%</td>
+      <td>52.68%</td>
+      <td>-3.90</td>
+    </tr>
+    <tr>
+      <td>2012-10-22</td>
+      <td>San Francisco Giants</td>
+      <td>1539.45</td>
+      <td>9</td>
+      <td>St. Louis Cardinals</td>
+      <td>1543.74</td>
+      <td>0</td>
+      <td>52.68%</td>
+      <td>47.32%</td>
+      <td>3.90</td>
+    </tr>
+    <tr>
+      <td>2012-10-24</td>
+      <td>Detroit Tigers</td>
+      <td>1548.98</td>
+      <td>3</td>
+      <td>@ San Francisco Giants</td>
+      <td>1543.35</td>
+      <td>8</td>
+      <td>47.51%</td>
+      <td>52.49%</td>
+      <td>-2.92</td>
+    </tr>
+    <tr>
+      <td>2012-10-24</td>
+      <td>San Francisco Giants</td>
+      <td>1543.35</td>
+      <td>8</td>
+      <td>Detroit Tigers</td>
+      <td>1548.98</td>
+      <td>3</td>
+      <td>52.49%</td>
+      <td>47.51%</td>
+      <td>2.92</td>
+    </tr>
+    <tr>
+      <td>2012-10-25</td>
+      <td>Detroit Tigers</td>
+      <td>1546.06</td>
+      <td>0</td>
+      <td>@ San Francisco Giants</td>
+      <td>1546.27</td>
+      <td>2</td>
+      <td>46.67%</td>
+      <td>53.33%</td>
+      <td>-1.81</td>
+    </tr>
+    <tr>
+      <td>2012-10-25</td>
+      <td>San Francisco Giants</td>
+      <td>1546.27</td>
+      <td>2</td>
+      <td>Detroit Tigers</td>
+      <td>1546.06</td>
+      <td>0</td>
+      <td>53.33%</td>
+      <td>46.67%</td>
+      <td>1.82</td>
+    </tr>
+    <tr>
+      <td>2012-10-27</td>
+      <td>San Francisco Giants</td>
+      <td>1548.09</td>
+      <td>2</td>
+      <td>@ Detroit Tigers</td>
+      <td>1544.25</td>
+      <td>0</td>
+      <td>47.26%</td>
+      <td>52.74%</td>
+      <td>2.05</td>
+    </tr>
+    <tr>
+      <td>2012-10-27</td>
+      <td>Detroit Tigers</td>
+      <td>1544.25</td>
+      <td>0</td>
+      <td>San Francisco Giants</td>
+      <td>1548.09</td>
+      <td>2</td>
+      <td>52.74%</td>
+      <td>47.26%</td>
+      <td>-2.05</td>
+    </tr>
+    <tr>
+      <td>2012-10-28</td>
+      <td>Detroit Tigers</td>
+      <td>1542.20</td>
+      <td>3</td>
+      <td>San Francisco Giants</td>
+      <td>1550.14</td>
+      <td>4</td>
+      <td>52.16%</td>
+      <td>47.84%</td>
+      <td>-1.02</td>
+    </tr>
+    <tr>
+      <td>2012-10-28</td>
+      <td>San Francisco Giants</td>
+      <td>1550.14</td>
+      <td>4</td>
+      <td>@ Detroit Tigers</td>
+      <td>1542.20</td>
+      <td>3</td>
+      <td>47.84%</td>
+      <td>52.16%</td>
+      <td>1.01</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
