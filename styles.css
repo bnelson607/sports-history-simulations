@@ -151,15 +151,45 @@ h3 {
 }
 
 /* Optional: control column widths */
-/* .review-table td:first-child {
+.review-table td:first-child {
     font-weight: bold;
     width: 50%;
-} */
+}
 
-/* .review-table td:last-child {
+.review-table td:last-child {
     width: 50%;
     padding-left: 2ch;
-} */
+}
+
+/* Standings table customizations */
+.standings-table {
+    table-layout: fixed;  
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    border-collapse: collapse;        /* collapse cell borders */
+    border: 1px solid #ccc;           /* gray border around table */
+    max-width: none;
+    padding-left: 1rem;               /* space for red bar in first column */
+    border-left: 4px solid #A4161A;   /* red vertical bar in first column */
+}
+
+.standings-table th,
+.standings-table td {
+    padding: 4px 8px;
+    border: 1px solid #ccc;           /* gray borders between cells */
+    text-align: left;
+}
+
+/* Optional: control column widths */
+.standings-table th:nth-child(1),
+.standings-table td:nth-child(1) { width: 50%; }
+
+.standings-table th:nth-child(2),
+.standings-table td:nth-child(2) { width: 35%; text-align: center; }
+
+.standings-table th:nth-child(3),
+.standings-table td:nth-child(3) { width: 15%; text-align: center; }
+
 
 
 /*-----------------------------------
@@ -849,6 +879,19 @@ iframe {
 
 /* Container for each table*/
 .review-table-container {
+    padding-left: 1rem;              /* spacing between bar and table */
+    flex: 1 1 45%;                    /* each container ~half of wrapper width */
+    min-width: 250px;                 /* prevents table from getting too narrow */
+    box-sizing: border-box;
+}
+
+.standings-section-container {
+    border-left: 4px solid #A4161A;  /* red vertical bar for heading + tables */
+    padding-left: 1rem;              /* spacing between bar and content */
+}
+
+/* Container for each table in the standings */
+.standings-table-container {
     padding-left: 1rem;              /* spacing between bar and table */
     flex: 1 1 23%;                    /* each container ~half of wrapper width */
     min-width: 250px;                 /* prevents table from getting too narrow */
