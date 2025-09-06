@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th colspan="3" halign="left"></th>
+      <th colspan="4" halign="left">Winning Team</th>
+      <th colspan="4" halign="left">Losing Team</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <th>Date</th>
+      <th>Elo Change</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Tie Pct.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2019-04-06</td>
+      <td>10.85</td>
+      <td>Buffalo Sabres</td>
+      <td>1387.61</td>
+      <td>7</td>
+      <td>29.11%</td>
+      <td>Detroit Red Wings (H)</td>
+      <td>1437.11</td>
+      <td>1</td>
+      <td>49.34%</td>
+      <td>21.55%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2018-10-27</td>
+      <td>10.30</td>
+      <td>Arizona Coyotes (H)</td>
+      <td>1473.58</td>
+      <td>7</td>
+      <td>31.85%</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1551.49</td>
+      <td>1</td>
+      <td>46.40%</td>
+      <td>21.75%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2019-02-20</td>
+      <td>10.24</td>
+      <td>Colorado Avalanche (H)</td>
+      <td>1475.52</td>
+      <td>7</td>
+      <td>32.18%</td>
+      <td>Winnipeg Jets</td>
+      <td>1550.86</td>
+      <td>1</td>
+      <td>46.05%</td>
+      <td>21.77%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2019-03-08</td>
+      <td>10.18</td>
+      <td>Winnipeg Jets</td>
+      <td>1541.82</td>
+      <td>8</td>
+      <td>36.43%</td>
+      <td>Carolina Hurricanes (H)</td>
+      <td>1534.93</td>
+      <td>1</td>
+      <td>41.65%</td>
+      <td>21.92%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2019-02-23</td>
+      <td>10.12</td>
+      <td>Colorado Avalanche</td>
+      <td>1491.02</td>
+      <td>5</td>
+      <td>28.01%</td>
+      <td>Nashville Predators (H)</td>
+      <td>1549.87</td>
+      <td>0</td>
+      <td>50.55%</td>
+      <td>21.45%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2019-03-08</td>
+      <td>10.04</td>
+      <td>Anaheim Ducks (H)</td>
+      <td>1428.40</td>
+      <td>8</td>
+      <td>33.20%</td>
+      <td>Montreal Canadiens</td>
+      <td>1495.92</td>
+      <td>2</td>
+      <td>44.98%</td>
+      <td>21.82%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2019-03-16</td>
+      <td>9.88</td>
+      <td>Ottawa Senators (H)</td>
+      <td>1405.93</td>
+      <td>6</td>
+      <td>23.31%</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1558.70</td>
+      <td>2</td>
+      <td>55.87%</td>
+      <td>20.82%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2018-10-11</td>
+      <td>9.82</td>
+      <td>New Jersey Devils (H)</td>
+      <td>1502.39</td>
+      <td>6</td>
+      <td>34.33%</td>
+      <td>Washington Capitals</td>
+      <td>1561.40</td>
+      <td>0</td>
+      <td>43.81%</td>
+      <td>21.86%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2018-10-25</td>
+      <td>9.78</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1533.41</td>
+      <td>9</td>
+      <td>41.71%</td>
+      <td>Calgary Flames (H)</td>
+      <td>1489.35</td>
+      <td>1</td>
+      <td>36.37%</td>
+      <td>21.92%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2019-03-02</td>
+      <td>9.63</td>
+      <td>Edmonton Oilers</td>
+      <td>1438.82</td>
+      <td>4</td>
+      <td>24.65%</td>
+      <td>Columbus Blue Jackets (H)</td>
+      <td>1527.97</td>
+      <td>0</td>
+      <td>54.32%</td>
+      <td>21.03%</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2018-10-09</td>
+      <td>9.58</td>
+      <td>San Jose Sharks</td>
+      <td>1507.05</td>
+      <td>8</td>
+      <td>35.62%</td>
+      <td>Philadelphia Flyers (H)</td>
+      <td>1506.01</td>
+      <td>2</td>
+      <td>42.48%</td>
+      <td>21.90%</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>2018-12-09</td>
+      <td>9.47</td>
+      <td>Vancouver Canucks</td>
+      <td>1451.27</td>
+      <td>6</td>
+      <td>31.48%</td>
+      <td>St. Louis Blues (H)</td>
+      <td>1481.54</td>
+      <td>1</td>
+      <td>46.79%</td>
+      <td>21.73%</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2018-10-18</td>
+      <td>9.42</td>
+      <td>New York Islanders</td>
+      <td>1471.42</td>
+      <td>7</td>
+      <td>31.80%</td>
+      <td>Los Angeles Kings (H)</td>
+      <td>1499.22</td>
+      <td>2</td>
+      <td>46.46%</td>
+      <td>21.75%</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2018-12-29</td>
+      <td>9.39</td>
+      <td>New York Islanders</td>
+      <td>1500.45</td>
+      <td>4</td>
+      <td>26.01%</td>
+      <td>Toronto Maple Leafs (H)</td>
+      <td>1576.91</td>
+      <td>0</td>
+      <td>52.76%</td>
+      <td>21.22%</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2019-03-25</td>
+      <td>9.25</td>
+      <td>Los Angeles Kings</td>
+      <td>1428.09</td>
+      <td>3</td>
+      <td>19.10%</td>
+      <td>Calgary Flames (H)</td>
+      <td>1576.17</td>
+      <td>0</td>
+      <td>60.99%</td>
+      <td>19.91%</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>2018-10-06</td>
+      <td>9.21</td>
+      <td>Montreal Canadiens</td>
+      <td>1464.52</td>
+      <td>5</td>
+      <td>27.03%</td>
+      <td>Pittsburgh Penguins (H)</td>
+      <td>1531.84</td>
+      <td>1</td>
+      <td>51.62%</td>
+      <td>21.34%</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>2018-11-03</td>
+      <td>9.14</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1526.16</td>
+      <td>5</td>
+      <td>33.33%</td>
+      <td>Pittsburgh Penguins (H)</td>
+      <td>1542.16</td>
+      <td>0</td>
+      <td>44.85%</td>
+      <td>21.82%</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>2018-10-27</td>
+      <td>9.11</td>
+      <td>New York Islanders</td>
+      <td>1472.97</td>
+      <td>6</td>
+      <td>33.51%</td>
+      <td>Philadelphia Flyers (H)</td>
+      <td>1487.64</td>
+      <td>1</td>
+      <td>44.66%</td>
+      <td>21.83%</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>2019-03-11</td>
+      <td>9.11</td>
+      <td>Chicago Blackhawks (H)</td>
+      <td>1455.77</td>
+      <td>7</td>
+      <td>38.17%</td>
+      <td>Arizona Coyotes</td>
+      <td>1487.04</td>
+      <td>1</td>
+      <td>39.89%</td>
+      <td>21.94%</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>2018-11-03</td>
+      <td>9.09</td>
+      <td>Buffalo Sabres (H)</td>
+      <td>1450.04</td>
+      <td>9</td>
+      <td>42.00%</td>
+      <td>Ottawa Senators</td>
+      <td>1454.46</td>
+      <td>2</td>
+      <td>36.09%</td>
+      <td>21.91%</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>2019-04-05</td>
+      <td>9.07</td>
+      <td>Chicago Blackhawks (H)</td>
+      <td>1462.47</td>
+      <td>6</td>
+      <td>33.74%</td>
+      <td>Dallas Stars</td>
+      <td>1525.87</td>
+      <td>1</td>
+      <td>44.41%</td>
+      <td>21.84%</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>2019-03-07</td>
+      <td>9.06</td>
+      <td>Minnesota Wild</td>
+      <td>1494.29</td>
+      <td>3</td>
+      <td>20.26%</td>
+      <td>Tampa Bay Lightning (H)</td>
+      <td>1628.92</td>
+      <td>0</td>
+      <td>59.54%</td>
+      <td>20.20%</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>2019-02-05</td>
+      <td>8.90</td>
+      <td>Carolina Hurricanes</td>
+      <td>1488.86</td>
+      <td>4</td>
+      <td>28.90%</td>
+      <td>Pittsburgh Penguins (H)</td>
+      <td>1540.14</td>
+      <td>0</td>
+      <td>49.57%</td>
+      <td>21.53%</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>2018-10-20</td>
+      <td>8.86</td>
+      <td>Buffalo Sabres</td>
+      <td>1440.49</td>
+      <td>5</td>
+      <td>29.13%</td>
+      <td>Los Angeles Kings (H)</td>
+      <td>1489.80</td>
+      <td>1</td>
+      <td>49.31%</td>
+      <td>21.55%</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>2018-11-23</td>
+      <td>8.85</td>
+      <td>St. Louis Blues (H)</td>
+      <td>1483.04</td>
+      <td>6</td>
+      <td>29.14%</td>
+      <td>Nashville Predators</td>
+      <td>1582.87</td>
+      <td>2</td>
+      <td>49.31%</td>
+      <td>21.55%</td>
+    </tr>
+  </tbody>
+</table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th colspan="3" halign="left"></th>
+      <th colspan="4" halign="left">Winning Team</th>
+      <th colspan="4" halign="left">Losing Team</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <th>Date</th>
+      <th>Elo Change</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Tie Pct.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2015-02-06</td>
+      <td>11.28</td>
+      <td>Columbus Blue Jackets (H)</td>
+      <td>1453.65</td>
+      <td>7</td>
+      <td>26.35%</td>
+      <td>St. Louis Blues</td>
+      <td>1568.49</td>
+      <td>1</td>
+      <td>49.16%</td>
+      <td>24.49%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2014-11-16</td>
+      <td>10.26</td>
+      <td>Florida Panthers</td>
+      <td>1437.51</td>
+      <td>6</td>
+      <td>20.90%</td>
+      <td>Anaheim Ducks (H)</td>
+      <td>1549.16</td>
+      <td>2</td>
+      <td>55.86%</td>
+      <td>23.24%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2014-11-14</td>
+      <td>9.90</td>
+      <td>Arizona Coyotes</td>
+      <td>1455.70</td>
+      <td>5</td>
+      <td>28.35%</td>
+      <td>Vancouver Canucks (H)</td>
+      <td>1495.37</td>
+      <td>0</td>
+      <td>46.89%</td>
+      <td>24.77%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2014-12-23</td>
+      <td>9.78</td>
+      <td>Winnipeg Jets</td>
+      <td>1498.29</td>
+      <td>5</td>
+      <td>23.32%</td>
+      <td>Chicago Blackhawks (H)</td>
+      <td>1584.28</td>
+      <td>1</td>
+      <td>52.79%</td>
+      <td>23.89%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2014-11-18</td>
+      <td>9.70</td>
+      <td>Nashville Predators</td>
+      <td>1519.21</td>
+      <td>9</td>
+      <td>37.85%</td>
+      <td>Toronto Maple Leafs (H)</td>
+      <td>1486.93</td>
+      <td>2</td>
+      <td>36.88%</td>
+      <td>25.26%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2015-03-27</td>
+      <td>9.57</td>
+      <td>Edmonton Oilers (H)</td>
+      <td>1374.33</td>
+      <td>4</td>
+      <td>24.36%</td>
+      <td>Dallas Stars</td>
+      <td>1507.71</td>
+      <td>0</td>
+      <td>51.51%</td>
+      <td>24.13%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2014-11-15</td>
+      <td>9.35</td>
+      <td>Buffalo Sabres (H)</td>
+      <td>1374.34</td>
+      <td>6</td>
+      <td>25.57%</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1496.28</td>
+      <td>2</td>
+      <td>50.07%</td>
+      <td>24.36%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2014-11-12</td>
+      <td>9.32</td>
+      <td>Toronto Maple Leafs (H)</td>
+      <td>1490.37</td>
+      <td>6</td>
+      <td>31.46%</td>
+      <td>Boston Bruins</td>
+      <td>1562.56</td>
+      <td>1</td>
+      <td>43.47%</td>
+      <td>25.07%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2014-12-23</td>
+      <td>9.31</td>
+      <td>Colorado Avalanche (H)</td>
+      <td>1472.39</td>
+      <td>5</td>
+      <td>31.46%</td>
+      <td>St. Louis Blues</td>
+      <td>1544.60</td>
+      <td>0</td>
+      <td>43.48%</td>
+      <td>25.07%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2014-10-11</td>
+      <td>9.23</td>
+      <td>Washington Capitals</td>
+      <td>1502.32</td>
+      <td>4</td>
+      <td>26.26%</td>
+      <td>Boston Bruins (H)</td>
+      <td>1560.22</td>
+      <td>0</td>
+      <td>49.27%</td>
+      <td>24.47%</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2015-03-19</td>
+      <td>9.22</td>
+      <td>Columbus Blue Jackets</td>
+      <td>1448.31</td>
+      <td>6</td>
+      <td>26.27%</td>
+      <td>Vancouver Canucks (H)</td>
+      <td>1506.09</td>
+      <td>2</td>
+      <td>49.25%</td>
+      <td>24.48%</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>2015-01-09</td>
+      <td>9.13</td>
+      <td>Edmonton Oilers (H)</td>
+      <td>1389.04</td>
+      <td>5</td>
+      <td>19.52%</td>
+      <td>Chicago Blackhawks</td>
+      <td>1574.57</td>
+      <td>2</td>
+      <td>57.71%</td>
+      <td>22.78%</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2015-01-03</td>
+      <td>9.10</td>
+      <td>St. Louis Blues</td>
+      <td>1528.90</td>
+      <td>7</td>
+      <td>32.62%</td>
+      <td>San Jose Sharks (H)</td>
+      <td>1534.39</td>
+      <td>2</td>
+      <td>42.24%</td>
+      <td>25.14%</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2015-03-30</td>
+      <td>8.95</td>
+      <td>Edmonton Oilers</td>
+      <td>1383.90</td>
+      <td>4</td>
+      <td>20.55%</td>
+      <td>Colorado Avalanche (H)</td>
+      <td>1499.57</td>
+      <td>1</td>
+      <td>56.32%</td>
+      <td>23.13%</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2014-10-13</td>
+      <td>8.94</td>
+      <td>Tampa Bay Lightning (H)</td>
+      <td>1500.88</td>
+      <td>7</td>
+      <td>38.13%</td>
+      <td>Montreal Canadiens</td>
+      <td>1524.47</td>
+      <td>1</td>
+      <td>36.61%</td>
+      <td>25.26%</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>2015-03-14</td>
+      <td>8.92</td>
+      <td>Philadelphia Flyers (H)</td>
+      <td>1478.50</td>
+      <td>7</td>
+      <td>33.65%</td>
+      <td>Detroit Red Wings</td>
+      <td>1534.05</td>
+      <td>2</td>
+      <td>41.16%</td>
+      <td>25.19%</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>2014-11-02</td>
+      <td>8.91</td>
+      <td>Calgary Flames</td>
+      <td>1478.79</td>
+      <td>6</td>
+      <td>28.07%</td>
+      <td>Montreal Canadiens (H)</td>
+      <td>1520.78</td>
+      <td>2</td>
+      <td>47.19%</td>
+      <td>24.73%</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>2014-11-11</td>
+      <td>8.90</td>
+      <td>New York Rangers (H)</td>
+      <td>1511.61</td>
+      <td>5</td>
+      <td>33.78%</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1566.22</td>
+      <td>0</td>
+      <td>41.03%</td>
+      <td>25.19%</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>2015-02-10</td>
+      <td>8.88</td>
+      <td>Florida Panthers (H)</td>
+      <td>1449.25</td>
+      <td>6</td>
+      <td>28.18%</td>
+      <td>Anaheim Ducks</td>
+      <td>1548.07</td>
+      <td>2</td>
+      <td>47.07%</td>
+      <td>24.75%</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>2015-02-07</td>
+      <td>8.87</td>
+      <td>Vancouver Canucks (H)</td>
+      <td>1489.41</td>
+      <td>5</td>
+      <td>33.96%</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1542.68</td>
+      <td>0</td>
+      <td>40.84%</td>
+      <td>25.20%</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>2015-02-26</td>
+      <td>8.86</td>
+      <td>Buffalo Sabres (H)</td>
+      <td>1343.69</td>
+      <td>6</td>
+      <td>21.01%</td>
+      <td>Vancouver Canucks</td>
+      <td>1511.90</td>
+      <td>3</td>
+      <td>55.72%</td>
+      <td>23.27%</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>2015-04-08</td>
+      <td>8.83</td>
+      <td>Dallas Stars</td>
+      <td>1502.15</td>
+      <td>4</td>
+      <td>28.50%</td>
+      <td>Anaheim Ducks (H)</td>
+      <td>1540.56</td>
+      <td>0</td>
+      <td>46.72%</td>
+      <td>24.79%</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>2015-02-22</td>
+      <td>8.70</td>
+      <td>Vancouver Canucks</td>
+      <td>1498.83</td>
+      <td>4</td>
+      <td>29.23%</td>
+      <td>New York Islanders (H)</td>
+      <td>1531.14</td>
+      <td>0</td>
+      <td>45.90%</td>
+      <td>24.87%</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>2015-01-03</td>
+      <td>8.61</td>
+      <td>Dallas Stars (H)</td>
+      <td>1492.59</td>
+      <td>7</td>
+      <td>39.96%</td>
+      <td>Minnesota Wild</td>
+      <td>1503.34</td>
+      <td>1</td>
+      <td>34.81%</td>
+      <td>25.23%</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>2014-10-08</td>
+      <td>8.58</td>
+      <td>San Jose Sharks</td>
+      <td>1524.37</td>
+      <td>4</td>
+      <td>29.95%</td>
+      <td>Los Angeles Kings (H)</td>
+      <td>1550.75</td>
+      <td>0</td>
+      <td>45.10%</td>
+      <td>24.94%</td>
+    </tr>
+  </tbody>
+</table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Anaheim Ducks">Anaheim Ducks</option><option value="Boston Bruins">Boston Bruins</option><option value="Colorado Avalanche">Colorado Avalanche</option><option value="Columbus Blue Jackets">Columbus Blue Jackets</option><option value="Los Angeles Kings">Los Angeles Kings</option><option value="Minnesota Wild">Minnesota Wild</option><option value="Nashville Predators">Nashville Predators</option><option value="New Jersey Devils">New Jersey Devils</option><option value="Philadelphia Flyers">Philadelphia Flyers</option><option value="Pittsburgh Penguins">Pittsburgh Penguins</option><option value="San Jose Sharks">San Jose Sharks</option><option value="Tampa Bay Lightning">Tampa Bay Lightning</option><option value="Toronto Maple Leafs">Toronto Maple Leafs</option><option value="Vegas Golden Knights">Vegas Golden Knights</option><option value="Washington Capitals">Washington Capitals</option><option value="Winnipeg Jets">Winnipeg Jets</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2018-04-11</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1555.72</td>
+      <td>7</td>
+      <td>Philadelphia Flyers</td>
+      <td>1525.80</td>
+      <td>0</td>
+      <td>59.41%</td>
+      <td>40.59%</td>
+      <td>8.95</td>
+    </tr>
+    <tr>
+      <td>2018-04-11</td>
+      <td>Winnipeg Jets</td>
+      <td>1586.59</td>
+      <td>3</td>
+      <td>Minnesota Wild</td>
+      <td>1548.95</td>
+      <td>2</td>
+      <td>60.48%</td>
+      <td>39.52%</td>
+      <td>3.30</td>
+    </tr>
+    <tr>
+      <td>2018-04-11</td>
+      <td>Vegas Golden Knights</td>
+      <td>1523.72</td>
+      <td>1</td>
+      <td>Los Angeles Kings</td>
+      <td>1532.61</td>
+      <td>0</td>
+      <td>53.93%</td>
+      <td>46.07%</td>
+      <td>3.85</td>
+    </tr>
+    <tr>
+      <td>2018-04-11</td>
+      <td>Los Angeles Kings</td>
+      <td>1532.61</td>
+      <td>0</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1523.72</td>
+      <td>1</td>
+      <td>46.07%</td>
+      <td>53.93%</td>
+      <td>-3.84</td>
+    </tr>
+    <tr>
+      <td>2018-04-11</td>
+      <td>Minnesota Wild</td>
+      <td>1548.95</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1586.59</td>
+      <td>3</td>
+      <td>39.52%</td>
+      <td>60.48%</td>
+      <td>-3.30</td>
+    </tr>
+    <tr>
+      <td>2018-04-11</td>
+      <td>Philadelphia Flyers</td>
+      <td>1525.80</td>
+      <td>0</td>
+      <td>@ Pittsburgh Penguins</td>
+      <td>1555.72</td>
+      <td>7</td>
+      <td>40.59%</td>
+      <td>59.41%</td>
+      <td>-8.95</td>
+    </tr>
+    <tr>
+      <td>2018-04-12</td>
+      <td>Colorado Avalanche</td>
+      <td>1506.87</td>
+      <td>2</td>
+      <td>@ Nashville Predators</td>
+      <td>1604.99</td>
+      <td>5</td>
+      <td>31.57%</td>
+      <td>68.43%</td>
+      <td>-4.56</td>
+    </tr>
+    <tr>
+      <td>2018-04-12</td>
+      <td>Columbus Blue Jackets</td>
+      <td>1528.43</td>
+      <td>4</td>
+      <td>@ Washington Capitals</td>
+      <td>1558.81</td>
+      <td>3</td>
+      <td>40.52%</td>
+      <td>59.48%</td>
+      <td>3.51</td>
+    </tr>
+    <tr>
+      <td>2018-04-12</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1553.97</td>
+      <td>1</td>
+      <td>@ Boston Bruins</td>
+      <td>1574.82</td>
+      <td>5</td>
+      <td>41.85%</td>
+      <td>58.15%</td>
+      <td>-6.98</td>
+    </tr>
+    <tr>
+      <td>2018-04-12</td>
+      <td>New Jersey Devils</td>
+      <td>1503.15</td>
+      <td>2</td>
+      <td>@ Tampa Bay Lightning</td>
+      <td>1560.83</td>
+      <td>5</td>
+      <td>36.80%</td>
+      <td>63.20%</td>
+      <td>-5.32</td>
+    </tr>
+    <tr>
+      <td>2018-04-12</td>
+      <td>San Jose Sharks</td>
+      <td>1528.46</td>
+      <td>3</td>
+      <td>@ Anaheim Ducks</td>
+      <td>1554.86</td>
+      <td>0</td>
+      <td>41.08%</td>
+      <td>58.92%</td>
+      <td>8.51</td>
+    </tr>
+    <tr>
+      <td>2018-04-12</td>
+      <td>Boston Bruins</td>
+      <td>1574.82</td>
+      <td>5</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1553.97</td>
+      <td>1</td>
+      <td>58.15%</td>
+      <td>41.85%</td>
+      <td>6.98</td>
+    </tr>
+    <tr>
+      <td>2018-04-12</td>
+      <td>Anaheim Ducks</td>
+      <td>1554.86</td>
+      <td>0</td>
+      <td>San Jose Sharks</td>
+      <td>1528.46</td>
+      <td>3</td>
+      <td>58.92%</td>
+      <td>41.08%</td>
+      <td>-8.51</td>
+    </tr>
+    <tr>
+      <td>2018-04-12</td>
+      <td>Nashville Predators</td>
+      <td>1604.99</td>
+      <td>5</td>
+      <td>Colorado Avalanche</td>
+      <td>1506.87</td>
+      <td>2</td>
+      <td>68.43%</td>
+      <td>31.57%</td>
+      <td>4.56</td>
+    </tr>
+    <tr>
+      <td>2018-04-12</td>
+      <td>Washington Capitals</td>
+      <td>1558.81</td>
+      <td>3</td>
+      <td>Columbus Blue Jackets</td>
+      <td>1528.43</td>
+      <td>4</td>
+      <td>59.48%</td>
+      <td>40.52%</td>
+      <td>-3.51</td>
+    </tr>
+    <tr>
+      <td>2018-04-12</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1560.83</td>
+      <td>5</td>
+      <td>New Jersey Devils</td>
+      <td>1503.15</td>
+      <td>2</td>
+      <td>63.20%</td>
+      <td>36.80%</td>
+      <td>5.31</td>
+    </tr>
+    <tr>
+      <td>2018-04-13</td>
+      <td>Minnesota Wild</td>
+      <td>1545.65</td>
+      <td>1</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1589.89</td>
+      <td>4</td>
+      <td>38.62%</td>
+      <td>61.38%</td>
+      <td>-5.58</td>
+    </tr>
+    <tr>
+      <td>2018-04-13</td>
+      <td>Los Angeles Kings</td>
+      <td>1528.77</td>
+      <td>1</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1527.57</td>
+      <td>2</td>
+      <td>44.97%</td>
+      <td>55.03%</td>
+      <td>-3.75</td>
+    </tr>
+    <tr>
+      <td>2018-04-13</td>
+      <td>Philadelphia Flyers</td>
+      <td>1516.85</td>
+      <td>5</td>
+      <td>@ Pittsburgh Penguins</td>
+      <td>1564.67</td>
+      <td>1</td>
+      <td>38.13%</td>
+      <td>61.87%</td>
+      <td>10.32</td>
+    </tr>
+    <tr>
+      <td>2018-04-13</td>
+      <td>Winnipeg Jets</td>
+      <td>1589.89</td>
+      <td>4</td>
+      <td>Minnesota Wild</td>
+      <td>1545.65</td>
+      <td>1</td>
+      <td>61.38%</td>
+      <td>38.62%</td>
+      <td>5.58</td>
+    </tr>
+    <tr>
+      <td>2018-04-13</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1564.67</td>
+      <td>1</td>
+      <td>Philadelphia Flyers</td>
+      <td>1516.85</td>
+      <td>5</td>
+      <td>61.87%</td>
+      <td>38.13%</td>
+      <td>-10.32</td>
+    </tr>
+    <tr>
+      <td>2018-04-13</td>
+      <td>Vegas Golden Knights</td>
+      <td>1527.57</td>
+      <td>2</td>
+      <td>Los Angeles Kings</td>
+      <td>1528.77</td>
+      <td>1</td>
+      <td>55.03%</td>
+      <td>44.97%</td>
+      <td>3.75</td>
+    </tr>
+    <tr>
+      <td>2018-04-14</td>
+      <td>Colorado Avalanche</td>
+      <td>1502.31</td>
+      <td>4</td>
+      <td>@ Nashville Predators</td>
+      <td>1609.55</td>
+      <td>5</td>
+      <td>30.45%</td>
+      <td>69.55%</td>
+      <td>-2.54</td>
+    </tr>
+    <tr>
+      <td>2018-04-14</td>
+      <td>New Jersey Devils</td>
+      <td>1497.83</td>
+      <td>3</td>
+      <td>@ Tampa Bay Lightning</td>
+      <td>1566.14</td>
+      <td>5</td>
+      <td>35.39%</td>
+      <td>64.61%</td>
+      <td>-4.17</td>
+    </tr>
+    <tr>
+      <td>2018-04-14</td>
+      <td>Nashville Predators</td>
+      <td>1609.55</td>
+      <td>5</td>
+      <td>Colorado Avalanche</td>
+      <td>1502.31</td>
+      <td>4</td>
+      <td>69.55%</td>
+      <td>30.45%</td>
+      <td>2.54</td>
+    </tr>
+    <tr>
+      <td>2018-04-14</td>
+      <td>San Jose Sharks</td>
+      <td>1536.97</td>
+      <td>3</td>
+      <td>@ Anaheim Ducks</td>
+      <td>1546.35</td>
+      <td>2</td>
+      <td>43.47%</td>
+      <td>56.53%</td>
+      <td>4.71</td>
+    </tr>
+    <tr>
+      <td>2018-04-14</td>
+      <td>Boston Bruins</td>
+      <td>1581.80</td>
+      <td>7</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1546.99</td>
+      <td>3</td>
+      <td>60.09%</td>
+      <td>39.91%</td>
+      <td>6.66</td>
+    </tr>
+    <tr>
+      <td>2018-04-14</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1566.14</td>
+      <td>5</td>
+      <td>New Jersey Devils</td>
+      <td>1497.83</td>
+      <td>3</td>
+      <td>64.61%</td>
+      <td>35.39%</td>
+      <td>4.18</td>
+    </tr>
+    <tr>
+      <td>2018-04-14</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1546.99</td>
+      <td>3</td>
+      <td>@ Boston Bruins</td>
+      <td>1581.80</td>
+      <td>7</td>
+      <td>39.91%</td>
+      <td>60.09%</td>
+      <td>-6.66</td>
+    </tr>
+    <tr>
+      <td>2018-04-14</td>
+      <td>Anaheim Ducks</td>
+      <td>1546.35</td>
+      <td>2</td>
+      <td>San Jose Sharks</td>
+      <td>1536.97</td>
+      <td>3</td>
+      <td>56.53%</td>
+      <td>43.47%</td>
+      <td>-4.71</td>
+    </tr>
+    <tr>
+      <td>2018-04-15</td>
+      <td>Winnipeg Jets</td>
+      <td>1595.47</td>
+      <td>2</td>
+      <td>@ Minnesota Wild</td>
+      <td>1540.07</td>
+      <td>6</td>
+      <td>52.75%</td>
+      <td>47.25%</td>
+      <td>-8.80</td>
+    </tr>
+    <tr>
+      <td>2018-04-15</td>
+      <td>Columbus Blue Jackets</td>
+      <td>1531.94</td>
+      <td>5</td>
+      <td>@ Washington Capitals</td>
+      <td>1555.30</td>
+      <td>4</td>
+      <td>41.50%</td>
+      <td>58.50%</td>
+      <td>3.45</td>
+    </tr>
+    <tr>
+      <td>2018-04-15</td>
+      <td>Los Angeles Kings</td>
+      <td>1525.02</td>
+      <td>2</td>
+      <td>Vegas Golden Knights</td>
+      <td>1531.32</td>
+      <td>3</td>
+      <td>54.30%</td>
+      <td>45.70%</td>
+      <td>-4.53</td>
+    </tr>
+    <tr>
+      <td>2018-04-15</td>
+      <td>Washington Capitals</td>
+      <td>1555.30</td>
+      <td>4</td>
+      <td>Columbus Blue Jackets</td>
+      <td>1531.94</td>
+      <td>5</td>
+      <td>58.50%</td>
+      <td>41.50%</td>
+      <td>-3.45</td>
+    </tr>
+    <tr>
+      <td>2018-04-15</td>
+      <td>Minnesota Wild</td>
+      <td>1540.07</td>
+      <td>6</td>
+      <td>Winnipeg Jets</td>
+      <td>1595.47</td>
+      <td>2</td>
+      <td>47.25%</td>
+      <td>52.75%</td>
+      <td>8.80</td>
+    </tr>
+    <tr>
+      <td>2018-04-15</td>
+      <td>Philadelphia Flyers</td>
+      <td>1527.17</td>
+      <td>1</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1554.35</td>
+      <td>5</td>
+      <td>51.31%</td>
+      <td>48.69%</td>
+      <td>-8.56</td>
+    </tr>
+    <tr>
+      <td>2018-04-15</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1554.35</td>
+      <td>5</td>
+      <td>@ Philadelphia Flyers</td>
+      <td>1527.17</td>
+      <td>1</td>
+      <td>48.69%</td>
+      <td>51.31%</td>
+      <td>8.56</td>
+    </tr>
+    <tr>
+      <td>2018-04-15</td>
+      <td>Vegas Golden Knights</td>
+      <td>1531.32</td>
+      <td>3</td>
+      <td>@ Los Angeles Kings</td>
+      <td>1525.02</td>
+      <td>2</td>
+      <td>45.70%</td>
+      <td>54.30%</td>
+      <td>4.53</td>
+    </tr>
+    <tr>
+      <td>2018-04-16</td>
+      <td>Anaheim Ducks</td>
+      <td>1541.64</td>
+      <td>1</td>
+      <td>@ San Jose Sharks</td>
+      <td>1541.68</td>
+      <td>8</td>
+      <td>44.79%</td>
+      <td>55.21%</td>
+      <td>-9.89</td>
+    </tr>
+    <tr>
+      <td>2018-04-16</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1570.32</td>
+      <td>2</td>
+      <td>@ New Jersey Devils</td>
+      <td>1493.66</td>
+      <td>5</td>
+      <td>55.79%</td>
+      <td>44.21%</td>
+      <td>-8.06</td>
+    </tr>
+    <tr>
+      <td>2018-04-16</td>
+      <td>Nashville Predators</td>
+      <td>1612.09</td>
+      <td>3</td>
+      <td>@ Colorado Avalanche</td>
+      <td>1499.77</td>
+      <td>5</td>
+      <td>60.77%</td>
+      <td>39.23%</td>
+      <td>-7.16</td>
+    </tr>
+    <tr>
+      <td>2018-04-16</td>
+      <td>Boston Bruins</td>
+      <td>1588.46</td>
+      <td>2</td>
+      <td>@ Toronto Maple Leafs</td>
+      <td>1540.33</td>
+      <td>4</td>
+      <td>51.71%</td>
+      <td>48.29%</td>
+      <td>-6.10</td>
+    </tr>
+    <tr>
+      <td>2018-04-16</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1540.33</td>
+      <td>4</td>
+      <td>Boston Bruins</td>
+      <td>1588.46</td>
+      <td>2</td>
+      <td>48.29%</td>
+      <td>51.71%</td>
+      <td>6.10</td>
+    </tr>
+    <tr>
+      <td>2018-04-16</td>
+      <td>New Jersey Devils</td>
+      <td>1493.66</td>
+      <td>5</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1570.32</td>
+      <td>2</td>
+      <td>44.21%</td>
+      <td>55.79%</td>
+      <td>8.06</td>
+    </tr>
+    <tr>
+      <td>2018-04-16</td>
+      <td>Colorado Avalanche</td>
+      <td>1499.77</td>
+      <td>5</td>
+      <td>Nashville Predators</td>
+      <td>1612.09</td>
+      <td>3</td>
+      <td>39.23%</td>
+      <td>60.77%</td>
+      <td>7.17</td>
+    </tr>
+    <tr>
+      <td>2018-04-16</td>
+      <td>San Jose Sharks</td>
+      <td>1541.68</td>
+      <td>8</td>
+      <td>Anaheim Ducks</td>
+      <td>1541.64</td>
+      <td>1</td>
+      <td>55.21%</td>
+      <td>44.79%</td>
+      <td>9.89</td>
+    </tr>
+    <tr>
+      <td>2018-04-17</td>
+      <td>Washington Capitals</td>
+      <td>1551.85</td>
+      <td>3</td>
+      <td>@ Columbus Blue Jackets</td>
+      <td>1535.39</td>
+      <td>2</td>
+      <td>47.15%</td>
+      <td>52.85%</td>
+      <td>4.41</td>
+    </tr>
+    <tr>
+      <td>2018-04-17</td>
+      <td>Winnipeg Jets</td>
+      <td>1586.67</td>
+      <td>2</td>
+      <td>@ Minnesota Wild</td>
+      <td>1548.87</td>
+      <td>0</td>
+      <td>50.22%</td>
+      <td>49.78%</td>
+      <td>5.87</td>
+    </tr>
+    <tr>
+      <td>2018-04-17</td>
+      <td>Los Angeles Kings</td>
+      <td>1520.49</td>
+      <td>0</td>
+      <td>Vegas Golden Knights</td>
+      <td>1535.85</td>
+      <td>1</td>
+      <td>53.01%</td>
+      <td>46.99%</td>
+      <td>-4.42</td>
+    </tr>
+    <tr>
+      <td>2018-04-17</td>
+      <td>Vegas Golden Knights</td>
+      <td>1535.85</td>
+      <td>1</td>
+      <td>@ Los Angeles Kings</td>
+      <td>1520.49</td>
+      <td>0</td>
+      <td>46.99%</td>
+      <td>53.01%</td>
+      <td>4.42</td>
+    </tr>
+    <tr>
+      <td>2018-04-17</td>
+      <td>Columbus Blue Jackets</td>
+      <td>1535.39</td>
+      <td>2</td>
+      <td>Washington Capitals</td>
+      <td>1551.85</td>
+      <td>3</td>
+      <td>52.85%</td>
+      <td>47.15%</td>
+      <td>-4.41</td>
+    </tr>
+    <tr>
+      <td>2018-04-17</td>
+      <td>Minnesota Wild</td>
+      <td>1548.87</td>
+      <td>0</td>
+      <td>Winnipeg Jets</td>
+      <td>1586.67</td>
+      <td>2</td>
+      <td>49.78%</td>
+      <td>50.22%</td>
+      <td>-5.87</td>
+    </tr>
+    <tr>
+      <td>2018-04-18</td>
+      <td>Philadelphia Flyers</td>
+      <td>1518.61</td>
+      <td>0</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1562.91</td>
+      <td>5</td>
+      <td>48.84%</td>
+      <td>51.16%</td>
+      <td>-9.11</td>
+    </tr>
+    <tr>
+      <td>2018-04-18</td>
+      <td>New Jersey Devils</td>
+      <td>1501.72</td>
+      <td>1</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1562.26</td>
+      <td>3</td>
+      <td>46.51%</td>
+      <td>53.49%</td>
+      <td>-5.49</td>
+    </tr>
+    <tr>
+      <td>2018-04-18</td>
+      <td>Colorado Avalanche</td>
+      <td>1506.94</td>
+      <td>2</td>
+      <td>Nashville Predators</td>
+      <td>1604.93</td>
+      <td>3</td>
+      <td>41.21%</td>
+      <td>58.79%</td>
+      <td>-3.44</td>
+    </tr>
+    <tr>
+      <td>2018-04-18</td>
+      <td>San Jose Sharks</td>
+      <td>1551.57</td>
+      <td>2</td>
+      <td>Anaheim Ducks</td>
+      <td>1531.75</td>
+      <td>1</td>
+      <td>58.00%</td>
+      <td>42.00%</td>
+      <td>3.50</td>
+    </tr>
+    <tr>
+      <td>2018-04-18</td>
+      <td>Anaheim Ducks</td>
+      <td>1531.75</td>
+      <td>1</td>
+      <td>@ San Jose Sharks</td>
+      <td>1551.57</td>
+      <td>2</td>
+      <td>42.00%</td>
+      <td>58.00%</td>
+      <td>-3.50</td>
+    </tr>
+    <tr>
+      <td>2018-04-18</td>
+      <td>Nashville Predators</td>
+      <td>1604.93</td>
+      <td>3</td>
+      <td>@ Colorado Avalanche</td>
+      <td>1506.94</td>
+      <td>2</td>
+      <td>58.79%</td>
+      <td>41.21%</td>
+      <td>3.43</td>
+    </tr>
+    <tr>
+      <td>2018-04-18</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1562.26</td>
+      <td>3</td>
+      <td>@ New Jersey Devils</td>
+      <td>1501.72</td>
+      <td>1</td>
+      <td>53.49%</td>
+      <td>46.51%</td>
+      <td>5.48</td>
+    </tr>
+    <tr>
+      <td>2018-04-18</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1562.91</td>
+      <td>5</td>
+      <td>@ Philadelphia Flyers</td>
+      <td>1518.61</td>
+      <td>0</td>
+      <td>51.16%</td>
+      <td>48.84%</td>
+      <td>9.11</td>
+    </tr>
+    <tr>
+      <td>2018-04-19</td>
+      <td>Boston Bruins</td>
+      <td>1582.36</td>
+      <td>3</td>
+      <td>@ Toronto Maple Leafs</td>
+      <td>1546.43</td>
+      <td>1</td>
+      <td>49.95%</td>
+      <td>50.05%</td>
+      <td>5.91</td>
+    </tr>
+    <tr>
+      <td>2018-04-19</td>
+      <td>Washington Capitals</td>
+      <td>1556.26</td>
+      <td>4</td>
+      <td>@ Columbus Blue Jackets</td>
+      <td>1530.98</td>
+      <td>1</td>
+      <td>48.42%</td>
+      <td>51.58%</td>
+      <td>7.45</td>
+    </tr>
+    <tr>
+      <td>2018-04-19</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1546.43</td>
+      <td>1</td>
+      <td>Boston Bruins</td>
+      <td>1582.36</td>
+      <td>3</td>
+      <td>50.05%</td>
+      <td>49.95%</td>
+      <td>-5.90</td>
+    </tr>
+    <tr>
+      <td>2018-04-19</td>
+      <td>Columbus Blue Jackets</td>
+      <td>1530.98</td>
+      <td>1</td>
+      <td>Washington Capitals</td>
+      <td>1556.26</td>
+      <td>4</td>
+      <td>51.58%</td>
+      <td>48.42%</td>
+      <td>-7.45</td>
+    </tr>
+    <tr>
+      <td>2018-04-20</td>
+      <td>Winnipeg Jets</td>
+      <td>1592.54</td>
+      <td>5</td>
+      <td>Minnesota Wild</td>
+      <td>1543.00</td>
+      <td>0</td>
+      <td>62.10%</td>
+      <td>37.90%</td>
+      <td>7.07</td>
+    </tr>
+    <tr>
+      <td>2018-04-20</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1572.02</td>
+      <td>2</td>
+      <td>Philadelphia Flyers</td>
+      <td>1509.50</td>
+      <td>4</td>
+      <td>63.85%</td>
+      <td>36.15%</td>
+      <td>-7.53</td>
+    </tr>
+    <tr>
+      <td>2018-04-20</td>
+      <td>Minnesota Wild</td>
+      <td>1543.00</td>
+      <td>0</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1592.54</td>
+      <td>5</td>
+      <td>37.90%</td>
+      <td>62.10%</td>
+      <td>-7.07</td>
+    </tr>
+    <tr>
+      <td>2018-04-20</td>
+      <td>Philadelphia Flyers</td>
+      <td>1509.50</td>
+      <td>4</td>
+      <td>@ Pittsburgh Penguins</td>
+      <td>1572.02</td>
+      <td>2</td>
+      <td>36.15%</td>
+      <td>63.85%</td>
+      <td>7.53</td>
+    </tr>
+    <tr>
+      <td>2018-04-20</td>
+      <td>Nashville Predators</td>
+      <td>1608.36</td>
+      <td>1</td>
+      <td>Colorado Avalanche</td>
+      <td>1503.50</td>
+      <td>2</td>
+      <td>69.26%</td>
+      <td>30.74%</td>
+      <td>-5.77</td>
+    </tr>
+    <tr>
+      <td>2018-04-20</td>
+      <td>Colorado Avalanche</td>
+      <td>1503.50</td>
+      <td>2</td>
+      <td>@ Nashville Predators</td>
+      <td>1608.36</td>
+      <td>1</td>
+      <td>30.74%</td>
+      <td>69.26%</td>
+      <td>5.78</td>
+    </tr>
+    <tr>
+      <td>2018-04-21</td>
+      <td>Washington Capitals</td>
+      <td>1563.71</td>
+      <td>4</td>
+      <td>Columbus Blue Jackets</td>
+      <td>1523.53</td>
+      <td>3</td>
+      <td>60.83%</td>
+      <td>39.17%</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <td>2018-04-21</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1540.53</td>
+      <td>4</td>
+      <td>@ Boston Bruins</td>
+      <td>1588.27</td>
+      <td>3</td>
+      <td>38.14%</td>
+      <td>61.86%</td>
+      <td>5.16</td>
+    </tr>
+    <tr>
+      <td>2018-04-21</td>
+      <td>Columbus Blue Jackets</td>
+      <td>1523.53</td>
+      <td>3</td>
+      <td>@ Washington Capitals</td>
+      <td>1563.71</td>
+      <td>4</td>
+      <td>39.17%</td>
+      <td>60.83%</td>
+      <td>-2.31</td>
+    </tr>
+    <tr>
+      <td>2018-04-21</td>
+      <td>Boston Bruins</td>
+      <td>1588.27</td>
+      <td>3</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1540.53</td>
+      <td>4</td>
+      <td>61.86%</td>
+      <td>38.14%</td>
+      <td>-5.16</td>
+    </tr>
+    <tr>
+      <td>2018-04-21</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1567.74</td>
+      <td>3</td>
+      <td>New Jersey Devils</td>
+      <td>1496.23</td>
+      <td>1</td>
+      <td>65.03%</td>
+      <td>34.97%</td>
+      <td>4.13</td>
+    </tr>
+    <tr>
+      <td>2018-04-21</td>
+      <td>New Jersey Devils</td>
+      <td>1496.23</td>
+      <td>1</td>
+      <td>@ Tampa Bay Lightning</td>
+      <td>1567.74</td>
+      <td>3</td>
+      <td>34.97%</td>
+      <td>65.03%</td>
+      <td>-4.12</td>
+    </tr>
+    <tr>
+      <td>2018-04-22</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1564.49</td>
+      <td>8</td>
+      <td>@ Philadelphia Flyers</td>
+      <td>1517.03</td>
+      <td>5</td>
+      <td>51.61%</td>
+      <td>48.39%</td>
+      <td>6.99</td>
+    </tr>
+    <tr>
+      <td>2018-04-22</td>
+      <td>Nashville Predators</td>
+      <td>1602.59</td>
+      <td>5</td>
+      <td>@ Colorado Avalanche</td>
+      <td>1509.28</td>
+      <td>0</td>
+      <td>58.14%</td>
+      <td>41.86%</td>
+      <td>7.80</td>
+    </tr>
+    <tr>
+      <td>2018-04-22</td>
+      <td>Philadelphia Flyers</td>
+      <td>1517.03</td>
+      <td>5</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1564.49</td>
+      <td>8</td>
+      <td>48.39%</td>
+      <td>51.61%</td>
+      <td>-6.99</td>
+    </tr>
+    <tr>
+      <td>2018-04-22</td>
+      <td>Colorado Avalanche</td>
+      <td>1509.28</td>
+      <td>0</td>
+      <td>Nashville Predators</td>
+      <td>1602.59</td>
+      <td>5</td>
+      <td>41.86%</td>
+      <td>58.14%</td>
+      <td>-7.81</td>
+    </tr>
+    <tr>
+      <td>2018-04-23</td>
+      <td>Columbus Blue Jackets</td>
+      <td>1521.22</td>
+      <td>3</td>
+      <td>Washington Capitals</td>
+      <td>1566.02</td>
+      <td>6</td>
+      <td>48.77%</td>
+      <td>51.23%</td>
+      <td>-7.05</td>
+    </tr>
+    <tr>
+      <td>2018-04-23</td>
+      <td>Boston Bruins</td>
+      <td>1583.11</td>
+      <td>1</td>
+      <td>@ Toronto Maple Leafs</td>
+      <td>1545.69</td>
+      <td>3</td>
+      <td>50.17%</td>
+      <td>49.83%</td>
+      <td>-5.92</td>
+    </tr>
+    <tr>
+      <td>2018-04-23</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1545.69</td>
+      <td>3</td>
+      <td>Boston Bruins</td>
+      <td>1583.11</td>
+      <td>1</td>
+      <td>49.83%</td>
+      <td>50.17%</td>
+      <td>5.92</td>
+    </tr>
+    <tr>
+      <td>2018-04-23</td>
+      <td>Washington Capitals</td>
+      <td>1566.02</td>
+      <td>6</td>
+      <td>@ Columbus Blue Jackets</td>
+      <td>1521.22</td>
+      <td>3</td>
+      <td>51.23%</td>
+      <td>48.77%</td>
+      <td>7.04</td>
+    </tr>
+    <tr>
+      <td>2018-04-25</td>
+      <td>Boston Bruins</td>
+      <td>1577.19</td>
+      <td>7</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1551.61</td>
+      <td>4</td>
+      <td>58.81%</td>
+      <td>41.19%</td>
+      <td>5.95</td>
+    </tr>
+    <tr>
+      <td>2018-04-25</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1551.61</td>
+      <td>4</td>
+      <td>@ Boston Bruins</td>
+      <td>1577.19</td>
+      <td>7</td>
+      <td>41.19%</td>
+      <td>58.81%</td>
+      <td>-5.95</td>
+    </tr>
+    <tr>
+      <td>2018-04-26</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1571.48</td>
+      <td>3</td>
+      <td>@ Washington Capitals</td>
+      <td>1573.06</td>
+      <td>2</td>
+      <td>44.57%</td>
+      <td>55.43%</td>
+      <td>4.62</td>
+    </tr>
+    <tr>
+      <td>2018-04-26</td>
+      <td>San Jose Sharks</td>
+      <td>1555.07</td>
+      <td>0</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1540.27</td>
+      <td>7</td>
+      <td>46.91%</td>
+      <td>53.09%</td>
+      <td>-10.35</td>
+    </tr>
+    <tr>
+      <td>2018-04-26</td>
+      <td>Washington Capitals</td>
+      <td>1573.06</td>
+      <td>2</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1571.48</td>
+      <td>3</td>
+      <td>55.43%</td>
+      <td>44.57%</td>
+      <td>-4.62</td>
+    </tr>
+    <tr>
+      <td>2018-04-26</td>
+      <td>Vegas Golden Knights</td>
+      <td>1540.27</td>
+      <td>7</td>
+      <td>San Jose Sharks</td>
+      <td>1555.07</td>
+      <td>0</td>
+      <td>53.09%</td>
+      <td>46.91%</td>
+      <td>10.35</td>
+    </tr>
+    <tr>
+      <td>2018-04-27</td>
+      <td>Winnipeg Jets</td>
+      <td>1599.61</td>
+      <td>4</td>
+      <td>@ Nashville Predators</td>
+      <td>1610.39</td>
+      <td>1</td>
+      <td>43.27%</td>
+      <td>56.73%</td>
+      <td>8.19</td>
+    </tr>
+    <tr>
+      <td>2018-04-27</td>
+      <td>Nashville Predators</td>
+      <td>1610.39</td>
+      <td>1</td>
+      <td>Winnipeg Jets</td>
+      <td>1599.61</td>
+      <td>4</td>
+      <td>56.73%</td>
+      <td>43.27%</td>
+      <td>-8.19</td>
+    </tr>
+    <tr>
+      <td>2018-04-28</td>
+      <td>Boston Bruins</td>
+      <td>1583.14</td>
+      <td>6</td>
+      <td>@ Tampa Bay Lightning</td>
+      <td>1571.87</td>
+      <td>2</td>
+      <td>46.41%</td>
+      <td>53.59%</td>
+      <td>8.94</td>
+    </tr>
+    <tr>
+      <td>2018-04-28</td>
+      <td>San Jose Sharks</td>
+      <td>1544.72</td>
+      <td>4</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1550.62</td>
+      <td>3</td>
+      <td>43.96%</td>
+      <td>56.04%</td>
+      <td>4.67</td>
+    </tr>
+    <tr>
+      <td>2018-04-28</td>
+      <td>Vegas Golden Knights</td>
+      <td>1550.62</td>
+      <td>3</td>
+      <td>San Jose Sharks</td>
+      <td>1544.72</td>
+      <td>4</td>
+      <td>56.04%</td>
+      <td>43.96%</td>
+      <td>-4.68</td>
+    </tr>
+    <tr>
+      <td>2018-04-28</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1571.87</td>
+      <td>2</td>
+      <td>Boston Bruins</td>
+      <td>1583.14</td>
+      <td>6</td>
+      <td>53.59%</td>
+      <td>46.41%</td>
+      <td>-8.94</td>
+    </tr>
+    <tr>
+      <td>2018-04-29</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1576.10</td>
+      <td>1</td>
+      <td>@ Washington Capitals</td>
+      <td>1568.44</td>
+      <td>4</td>
+      <td>45.89%</td>
+      <td>54.11%</td>
+      <td>-6.63</td>
+    </tr>
+    <tr>
+      <td>2018-04-29</td>
+      <td>Winnipeg Jets</td>
+      <td>1607.80</td>
+      <td>4</td>
+      <td>@ Nashville Predators</td>
+      <td>1602.20</td>
+      <td>5</td>
+      <td>45.60%</td>
+      <td>54.40%</td>
+      <td>-3.80</td>
+    </tr>
+    <tr>
+      <td>2018-04-29</td>
+      <td>Nashville Predators</td>
+      <td>1602.20</td>
+      <td>5</td>
+      <td>Winnipeg Jets</td>
+      <td>1607.80</td>
+      <td>4</td>
+      <td>54.40%</td>
+      <td>45.60%</td>
+      <td>3.80</td>
+    </tr>
+    <tr>
+      <td>2018-04-29</td>
+      <td>Washington Capitals</td>
+      <td>1568.44</td>
+      <td>4</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1576.10</td>
+      <td>1</td>
+      <td>54.11%</td>
+      <td>45.89%</td>
+      <td>6.63</td>
+    </tr>
+    <tr>
+      <td>2018-04-30</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1562.93</td>
+      <td>4</td>
+      <td>Boston Bruins</td>
+      <td>1592.08</td>
+      <td>2</td>
+      <td>51.02%</td>
+      <td>48.98%</td>
+      <td>5.78</td>
+    </tr>
+    <tr>
+      <td>2018-04-30</td>
+      <td>Boston Bruins</td>
+      <td>1592.08</td>
+      <td>2</td>
+      <td>@ Tampa Bay Lightning</td>
+      <td>1562.93</td>
+      <td>4</td>
+      <td>48.98%</td>
+      <td>51.02%</td>
+      <td>-5.78</td>
+    </tr>
+    <tr>
+      <td>2018-04-30</td>
+      <td>Vegas Golden Knights</td>
+      <td>1545.94</td>
+      <td>4</td>
+      <td>@ San Jose Sharks</td>
+      <td>1549.39</td>
+      <td>3</td>
+      <td>44.31%</td>
+      <td>55.69%</td>
+      <td>3.29</td>
+    </tr>
+    <tr>
+      <td>2018-04-30</td>
+      <td>San Jose Sharks</td>
+      <td>1549.39</td>
+      <td>3</td>
+      <td>Vegas Golden Knights</td>
+      <td>1545.94</td>
+      <td>4</td>
+      <td>55.69%</td>
+      <td>44.31%</td>
+      <td>-3.28</td>
+    </tr>
+    <tr>
+      <td>2018-05-01</td>
+      <td>Nashville Predators</td>
+      <td>1606.00</td>
+      <td>4</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1604.00</td>
+      <td>7</td>
+      <td>45.08%</td>
+      <td>54.92%</td>
+      <td>-6.51</td>
+    </tr>
+    <tr>
+      <td>2018-05-01</td>
+      <td>Washington Capitals</td>
+      <td>1575.07</td>
+      <td>4</td>
+      <td>@ Pittsburgh Penguins</td>
+      <td>1569.47</td>
+      <td>3</td>
+      <td>45.60%</td>
+      <td>54.40%</td>
+      <td>4.54</td>
+    </tr>
+    <tr>
+      <td>2018-05-01</td>
+      <td>Winnipeg Jets</td>
+      <td>1604.00</td>
+      <td>7</td>
+      <td>Nashville Predators</td>
+      <td>1606.00</td>
+      <td>4</td>
+      <td>54.92%</td>
+      <td>45.08%</td>
+      <td>6.51</td>
+    </tr>
+    <tr>
+      <td>2018-05-01</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1569.47</td>
+      <td>3</td>
+      <td>Washington Capitals</td>
+      <td>1575.07</td>
+      <td>4</td>
+      <td>54.40%</td>
+      <td>45.60%</td>
+      <td>-4.53</td>
+    </tr>
+    <tr>
+      <td>2018-05-02</td>
+      <td>Vegas Golden Knights</td>
+      <td>1549.23</td>
+      <td>0</td>
+      <td>@ San Jose Sharks</td>
+      <td>1546.11</td>
+      <td>4</td>
+      <td>45.24%</td>
+      <td>54.76%</td>
+      <td>-7.55</td>
+    </tr>
+    <tr>
+      <td>2018-05-02</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1568.71</td>
+      <td>4</td>
+      <td>@ Boston Bruins</td>
+      <td>1586.30</td>
+      <td>1</td>
+      <td>42.31%</td>
+      <td>57.69%</td>
+      <td>8.33</td>
+    </tr>
+    <tr>
+      <td>2018-05-02</td>
+      <td>San Jose Sharks</td>
+      <td>1546.11</td>
+      <td>4</td>
+      <td>Vegas Golden Knights</td>
+      <td>1549.23</td>
+      <td>0</td>
+      <td>54.76%</td>
+      <td>45.24%</td>
+      <td>7.54</td>
+    </tr>
+    <tr>
+      <td>2018-05-02</td>
+      <td>Boston Bruins</td>
+      <td>1586.30</td>
+      <td>1</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1568.71</td>
+      <td>4</td>
+      <td>57.69%</td>
+      <td>42.31%</td>
+      <td>-8.33</td>
+    </tr>
+    <tr>
+      <td>2018-05-03</td>
+      <td>Washington Capitals</td>
+      <td>1579.61</td>
+      <td>1</td>
+      <td>@ Pittsburgh Penguins</td>
+      <td>1564.94</td>
+      <td>3</td>
+      <td>46.90%</td>
+      <td>53.10%</td>
+      <td>-5.53</td>
+    </tr>
+    <tr>
+      <td>2018-05-03</td>
+      <td>Nashville Predators</td>
+      <td>1599.49</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1610.51</td>
+      <td>1</td>
+      <td>43.24%</td>
+      <td>56.76%</td>
+      <td>4.73</td>
+    </tr>
+    <tr>
+      <td>2018-05-03</td>
+      <td>Winnipeg Jets</td>
+      <td>1610.51</td>
+      <td>1</td>
+      <td>Nashville Predators</td>
+      <td>1599.49</td>
+      <td>2</td>
+      <td>56.76%</td>
+      <td>43.24%</td>
+      <td>-4.73</td>
+    </tr>
+    <tr>
+      <td>2018-05-03</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1564.94</td>
+      <td>3</td>
+      <td>Washington Capitals</td>
+      <td>1579.61</td>
+      <td>1</td>
+      <td>53.10%</td>
+      <td>46.90%</td>
+      <td>5.53</td>
+    </tr>
+    <tr>
+      <td>2018-05-04</td>
+      <td>San Jose Sharks</td>
+      <td>1553.65</td>
+      <td>3</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1541.68</td>
+      <td>5</td>
+      <td>46.51%</td>
+      <td>53.49%</td>
+      <td>-5.48</td>
+    </tr>
+    <tr>
+      <td>2018-05-04</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1577.04</td>
+      <td>4</td>
+      <td>@ Boston Bruins</td>
+      <td>1577.97</td>
+      <td>3</td>
+      <td>44.67%</td>
+      <td>55.33%</td>
+      <td>3.26</td>
+    </tr>
+    <tr>
+      <td>2018-05-04</td>
+      <td>Vegas Golden Knights</td>
+      <td>1541.68</td>
+      <td>5</td>
+      <td>San Jose Sharks</td>
+      <td>1553.65</td>
+      <td>3</td>
+      <td>53.49%</td>
+      <td>46.51%</td>
+      <td>5.49</td>
+    </tr>
+    <tr>
+      <td>2018-05-04</td>
+      <td>Boston Bruins</td>
+      <td>1577.97</td>
+      <td>3</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1577.04</td>
+      <td>4</td>
+      <td>55.33%</td>
+      <td>44.67%</td>
+      <td>-3.26</td>
+    </tr>
+    <tr>
+      <td>2018-05-05</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1570.47</td>
+      <td>3</td>
+      <td>@ Washington Capitals</td>
+      <td>1574.08</td>
+      <td>6</td>
+      <td>44.29%</td>
+      <td>55.71%</td>
+      <td>-6.40</td>
+    </tr>
+    <tr>
+      <td>2018-05-05</td>
+      <td>Nashville Predators</td>
+      <td>1604.22</td>
+      <td>2</td>
+      <td>Winnipeg Jets</td>
+      <td>1605.78</td>
+      <td>6</td>
+      <td>54.98%</td>
+      <td>45.02%</td>
+      <td>-9.17</td>
+    </tr>
+    <tr>
+      <td>2018-05-05</td>
+      <td>Washington Capitals</td>
+      <td>1574.08</td>
+      <td>6</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1570.47</td>
+      <td>3</td>
+      <td>55.71%</td>
+      <td>44.29%</td>
+      <td>6.39</td>
+    </tr>
+    <tr>
+      <td>2018-05-05</td>
+      <td>Winnipeg Jets</td>
+      <td>1605.78</td>
+      <td>6</td>
+      <td>@ Nashville Predators</td>
+      <td>1604.22</td>
+      <td>2</td>
+      <td>45.02%</td>
+      <td>54.98%</td>
+      <td>9.17</td>
+    </tr>
+    <tr>
+      <td>2018-05-06</td>
+      <td>Vegas Golden Knights</td>
+      <td>1547.17</td>
+      <td>3</td>
+      <td>@ San Jose Sharks</td>
+      <td>1548.17</td>
+      <td>0</td>
+      <td>44.66%</td>
+      <td>55.34%</td>
+      <td>7.99</td>
+    </tr>
+    <tr>
+      <td>2018-05-06</td>
+      <td>Boston Bruins</td>
+      <td>1574.71</td>
+      <td>1</td>
+      <td>@ Tampa Bay Lightning</td>
+      <td>1580.30</td>
+      <td>3</td>
+      <td>44.00%</td>
+      <td>56.00%</td>
+      <td>-5.19</td>
+    </tr>
+    <tr>
+      <td>2018-05-06</td>
+      <td>San Jose Sharks</td>
+      <td>1548.17</td>
+      <td>0</td>
+      <td>Vegas Golden Knights</td>
+      <td>1547.17</td>
+      <td>3</td>
+      <td>55.34%</td>
+      <td>44.66%</td>
+      <td>-8.00</td>
+    </tr>
+    <tr>
+      <td>2018-05-06</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1580.30</td>
+      <td>3</td>
+      <td>Boston Bruins</td>
+      <td>1574.71</td>
+      <td>1</td>
+      <td>56.00%</td>
+      <td>44.00%</td>
+      <td>5.19</td>
+    </tr>
+    <tr>
+      <td>2018-05-07</td>
+      <td>Nashville Predators</td>
+      <td>1595.05</td>
+      <td>4</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1614.95</td>
+      <td>0</td>
+      <td>41.99%</td>
+      <td>58.01%</td>
+      <td>9.68</td>
+    </tr>
+    <tr>
+      <td>2018-05-07</td>
+      <td>Winnipeg Jets</td>
+      <td>1614.95</td>
+      <td>0</td>
+      <td>Nashville Predators</td>
+      <td>1595.05</td>
+      <td>4</td>
+      <td>58.01%</td>
+      <td>41.99%</td>
+      <td>-9.68</td>
+    </tr>
+    <tr>
+      <td>2018-05-07</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1564.07</td>
+      <td>1</td>
+      <td>Washington Capitals</td>
+      <td>1580.47</td>
+      <td>2</td>
+      <td>52.86%</td>
+      <td>47.14%</td>
+      <td>-3.12</td>
+    </tr>
+    <tr>
+      <td>2018-05-07</td>
+      <td>Washington Capitals</td>
+      <td>1580.47</td>
+      <td>2</td>
+      <td>@ Pittsburgh Penguins</td>
+      <td>1564.07</td>
+      <td>1</td>
+      <td>47.14%</td>
+      <td>52.86%</td>
+      <td>3.12</td>
+    </tr>
+    <tr>
+      <td>2018-05-10</td>
+      <td>Nashville Predators</td>
+      <td>1604.73</td>
+      <td>1</td>
+      <td>Winnipeg Jets</td>
+      <td>1605.27</td>
+      <td>5</td>
+      <td>55.12%</td>
+      <td>44.88%</td>
+      <td>-9.20</td>
+    </tr>
+    <tr>
+      <td>2018-05-10</td>
+      <td>Winnipeg Jets</td>
+      <td>1605.27</td>
+      <td>5</td>
+      <td>@ Nashville Predators</td>
+      <td>1604.73</td>
+      <td>1</td>
+      <td>44.88%</td>
+      <td>55.12%</td>
+      <td>9.19</td>
+    </tr>
+    <tr>
+      <td>2018-05-11</td>
+      <td>Washington Capitals</td>
+      <td>1583.59</td>
+      <td>4</td>
+      <td>@ Tampa Bay Lightning</td>
+      <td>1585.49</td>
+      <td>2</td>
+      <td>44.53%</td>
+      <td>55.47%</td>
+      <td>6.54</td>
+    </tr>
+    <tr>
+      <td>2018-05-11</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1585.49</td>
+      <td>2</td>
+      <td>Washington Capitals</td>
+      <td>1583.59</td>
+      <td>4</td>
+      <td>55.47%</td>
+      <td>44.53%</td>
+      <td>-6.54</td>
+    </tr>
+    <tr>
+      <td>2018-05-12</td>
+      <td>Vegas Golden Knights</td>
+      <td>1555.16</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1614.46</td>
+      <td>4</td>
+      <td>36.58%</td>
+      <td>63.42%</td>
+      <td>-4.31</td>
+    </tr>
+    <tr>
+      <td>2018-05-12</td>
+      <td>Winnipeg Jets</td>
+      <td>1614.46</td>
+      <td>4</td>
+      <td>Vegas Golden Knights</td>
+      <td>1555.16</td>
+      <td>2</td>
+      <td>63.42%</td>
+      <td>36.58%</td>
+      <td>4.32</td>
+    </tr>
+    <tr>
+      <td>2018-05-13</td>
+      <td>Washington Capitals</td>
+      <td>1590.13</td>
+      <td>6</td>
+      <td>@ Tampa Bay Lightning</td>
+      <td>1578.95</td>
+      <td>2</td>
+      <td>46.40%</td>
+      <td>53.60%</td>
+      <td>8.95</td>
+    </tr>
+    <tr>
+      <td>2018-05-13</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1578.95</td>
+      <td>2</td>
+      <td>Washington Capitals</td>
+      <td>1590.13</td>
+      <td>6</td>
+      <td>53.60%</td>
+      <td>46.40%</td>
+      <td>-8.94</td>
+    </tr>
+    <tr>
+      <td>2018-05-14</td>
+      <td>Winnipeg Jets</td>
+      <td>1618.78</td>
+      <td>1</td>
+      <td>Vegas Golden Knights</td>
+      <td>1550.85</td>
+      <td>3</td>
+      <td>64.56%</td>
+      <td>35.44%</td>
+      <td>-7.62</td>
+    </tr>
+    <tr>
+      <td>2018-05-14</td>
+      <td>Vegas Golden Knights</td>
+      <td>1550.85</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1618.78</td>
+      <td>1</td>
+      <td>35.44%</td>
+      <td>64.56%</td>
+      <td>7.61</td>
+    </tr>
+    <tr>
+      <td>2018-05-15</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1570.01</td>
+      <td>4</td>
+      <td>@ Washington Capitals</td>
+      <td>1599.08</td>
+      <td>2</td>
+      <td>40.71%</td>
+      <td>59.29%</td>
+      <td>6.99</td>
+    </tr>
+    <tr>
+      <td>2018-05-15</td>
+      <td>Washington Capitals</td>
+      <td>1599.08</td>
+      <td>2</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1570.01</td>
+      <td>4</td>
+      <td>59.29%</td>
+      <td>40.71%</td>
+      <td>-7.00</td>
+    </tr>
+    <tr>
+      <td>2018-05-16</td>
+      <td>Winnipeg Jets</td>
+      <td>1611.16</td>
+      <td>2</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1558.46</td>
+      <td>4</td>
+      <td>52.36%</td>
+      <td>47.64%</td>
+      <td>-6.17</td>
+    </tr>
+    <tr>
+      <td>2018-05-16</td>
+      <td>Vegas Golden Knights</td>
+      <td>1558.46</td>
+      <td>4</td>
+      <td>Winnipeg Jets</td>
+      <td>1611.16</td>
+      <td>2</td>
+      <td>47.64%</td>
+      <td>52.36%</td>
+      <td>6.18</td>
+    </tr>
+    <tr>
+      <td>2018-05-17</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1577.00</td>
+      <td>4</td>
+      <td>@ Washington Capitals</td>
+      <td>1592.08</td>
+      <td>2</td>
+      <td>42.66%</td>
+      <td>57.34%</td>
+      <td>6.76</td>
+    </tr>
+    <tr>
+      <td>2018-05-17</td>
+      <td>Washington Capitals</td>
+      <td>1592.08</td>
+      <td>2</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1577.00</td>
+      <td>4</td>
+      <td>57.34%</td>
+      <td>42.66%</td>
+      <td>-6.76</td>
+    </tr>
+    <tr>
+      <td>2018-05-18</td>
+      <td>Winnipeg Jets</td>
+      <td>1604.99</td>
+      <td>2</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1564.64</td>
+      <td>3</td>
+      <td>50.59%</td>
+      <td>49.41%</td>
+      <td>-4.22</td>
+    </tr>
+    <tr>
+      <td>2018-05-18</td>
+      <td>Vegas Golden Knights</td>
+      <td>1564.64</td>
+      <td>3</td>
+      <td>Winnipeg Jets</td>
+      <td>1604.99</td>
+      <td>2</td>
+      <td>49.41%</td>
+      <td>50.59%</td>
+      <td>4.22</td>
+    </tr>
+    <tr>
+      <td>2018-05-19</td>
+      <td>Washington Capitals</td>
+      <td>1585.32</td>
+      <td>2</td>
+      <td>@ Tampa Bay Lightning</td>
+      <td>1583.76</td>
+      <td>3</td>
+      <td>45.02%</td>
+      <td>54.98%</td>
+      <td>-3.76</td>
+    </tr>
+    <tr>
+      <td>2018-05-19</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1583.76</td>
+      <td>3</td>
+      <td>Washington Capitals</td>
+      <td>1585.32</td>
+      <td>2</td>
+      <td>54.98%</td>
+      <td>45.02%</td>
+      <td>3.76</td>
+    </tr>
+    <tr>
+      <td>2018-05-20</td>
+      <td>Vegas Golden Knights</td>
+      <td>1568.86</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1600.77</td>
+      <td>1</td>
+      <td>40.31%</td>
+      <td>59.69%</td>
+      <td>4.98</td>
+    </tr>
+    <tr>
+      <td>2018-05-20</td>
+      <td>Winnipeg Jets</td>
+      <td>1600.77</td>
+      <td>1</td>
+      <td>Vegas Golden Knights</td>
+      <td>1568.86</td>
+      <td>2</td>
+      <td>59.69%</td>
+      <td>40.31%</td>
+      <td>-4.98</td>
+    </tr>
+    <tr>
+      <td>2018-05-21</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1587.52</td>
+      <td>0</td>
+      <td>@ Washington Capitals</td>
+      <td>1581.56</td>
+      <td>3</td>
+      <td>45.65%</td>
+      <td>54.35%</td>
+      <td>-6.59</td>
+    </tr>
+    <tr>
+      <td>2018-05-21</td>
+      <td>Washington Capitals</td>
+      <td>1581.56</td>
+      <td>3</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1587.52</td>
+      <td>0</td>
+      <td>54.35%</td>
+      <td>45.65%</td>
+      <td>6.60</td>
+    </tr>
+    <tr>
+      <td>2018-05-23</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1580.93</td>
+      <td>0</td>
+      <td>Washington Capitals</td>
+      <td>1588.16</td>
+      <td>4</td>
+      <td>54.17%</td>
+      <td>45.83%</td>
+      <td>-9.04</td>
+    </tr>
+    <tr>
+      <td>2018-05-23</td>
+      <td>Washington Capitals</td>
+      <td>1588.16</td>
+      <td>4</td>
+      <td>@ Tampa Bay Lightning</td>
+      <td>1580.93</td>
+      <td>0</td>
+      <td>45.83%</td>
+      <td>54.17%</td>
+      <td>9.03</td>
+    </tr>
+    <tr>
+      <td>2018-05-28</td>
+      <td>Washington Capitals</td>
+      <td>1597.19</td>
+      <td>4</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1573.84</td>
+      <td>6</td>
+      <td>48.14%</td>
+      <td>51.86%</td>
+      <td>-5.67</td>
+    </tr>
+    <tr>
+      <td>2018-05-28</td>
+      <td>Vegas Golden Knights</td>
+      <td>1573.84</td>
+      <td>6</td>
+      <td>Washington Capitals</td>
+      <td>1597.19</td>
+      <td>4</td>
+      <td>51.86%</td>
+      <td>48.14%</td>
+      <td>5.67</td>
+    </tr>
+    <tr>
+      <td>2018-05-30</td>
+      <td>Washington Capitals</td>
+      <td>1591.52</td>
+      <td>3</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1579.51</td>
+      <td>2</td>
+      <td>46.51%</td>
+      <td>53.49%</td>
+      <td>4.46</td>
+    </tr>
+    <tr>
+      <td>2018-05-30</td>
+      <td>Vegas Golden Knights</td>
+      <td>1579.51</td>
+      <td>2</td>
+      <td>Washington Capitals</td>
+      <td>1591.52</td>
+      <td>3</td>
+      <td>53.49%</td>
+      <td>46.51%</td>
+      <td>-4.46</td>
+    </tr>
+    <tr>
+      <td>2018-06-02</td>
+      <td>Vegas Golden Knights</td>
+      <td>1575.05</td>
+      <td>1</td>
+      <td>@ Washington Capitals</td>
+      <td>1595.98</td>
+      <td>3</td>
+      <td>41.84%</td>
+      <td>58.16%</td>
+      <td>-4.93</td>
+    </tr>
+    <tr>
+      <td>2018-06-02</td>
+      <td>Washington Capitals</td>
+      <td>1595.98</td>
+      <td>3</td>
+      <td>Vegas Golden Knights</td>
+      <td>1575.05</td>
+      <td>1</td>
+      <td>58.16%</td>
+      <td>41.84%</td>
+      <td>4.93</td>
+    </tr>
+    <tr>
+      <td>2018-06-04</td>
+      <td>Vegas Golden Knights</td>
+      <td>1570.12</td>
+      <td>2</td>
+      <td>@ Washington Capitals</td>
+      <td>1600.91</td>
+      <td>6</td>
+      <td>40.47%</td>
+      <td>59.53%</td>
+      <td>-6.75</td>
+    </tr>
+    <tr>
+      <td>2018-06-04</td>
+      <td>Washington Capitals</td>
+      <td>1600.91</td>
+      <td>6</td>
+      <td>Vegas Golden Knights</td>
+      <td>1570.12</td>
+      <td>2</td>
+      <td>59.53%</td>
+      <td>40.47%</td>
+      <td>6.75</td>
+    </tr>
+    <tr>
+      <td>2018-06-07</td>
+      <td>Vegas Golden Knights</td>
+      <td>1563.37</td>
+      <td>3</td>
+      <td>Washington Capitals</td>
+      <td>1607.66</td>
+      <td>4</td>
+      <td>48.85%</td>
+      <td>51.15%</td>
+      <td>-4.08</td>
+    </tr>
+    <tr>
+      <td>2018-06-07</td>
+      <td>Washington Capitals</td>
+      <td>1607.66</td>
+      <td>4</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1563.37</td>
+      <td>3</td>
+      <td>51.15%</td>
+      <td>48.85%</td>
+      <td>4.08</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

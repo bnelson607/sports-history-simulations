@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th colspan="3" halign="left"></th>
+      <th colspan="4" halign="left">Winning Team</th>
+      <th colspan="4" halign="left">Losing Team</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <th>Date</th>
+      <th>Elo Change</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Tie Pct.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2022-04-29</td>
+      <td>16.83</td>
+      <td>Montreal Canadiens (H)</td>
+      <td>1364.94</td>
+      <td>10</td>
+      <td>14.50%</td>
+      <td>Florida Panthers</td>
+      <td>1623.74</td>
+      <td>2</td>
+      <td>66.67%</td>
+      <td>18.83%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2022-01-13</td>
+      <td>13.74</td>
+      <td>Columbus Blue Jackets</td>
+      <td>1431.90</td>
+      <td>6</td>
+      <td>17.66%</td>
+      <td>Carolina Hurricanes (H)</td>
+      <td>1595.41</td>
+      <td>0</td>
+      <td>62.27%</td>
+      <td>20.07%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2021-12-14</td>
+      <td>13.20</td>
+      <td>Ottawa Senators</td>
+      <td>1434.56</td>
+      <td>8</td>
+      <td>19.78%</td>
+      <td>Florida Panthers (H)</td>
+      <td>1572.21</td>
+      <td>2</td>
+      <td>59.54%</td>
+      <td>20.68%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2022-02-24</td>
+      <td>12.38</td>
+      <td>New Jersey Devils</td>
+      <td>1419.17</td>
+      <td>6</td>
+      <td>18.36%</td>
+      <td>Pittsburgh Penguins (H)</td>
+      <td>1573.85</td>
+      <td>1</td>
+      <td>61.36%</td>
+      <td>20.29%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2022-03-28</td>
+      <td>11.89</td>
+      <td>Seattle Kraken</td>
+      <td>1376.09</td>
+      <td>6</td>
+      <td>20.53%</td>
+      <td>Los Angeles Kings (H)</td>
+      <td>1505.18</td>
+      <td>1</td>
+      <td>58.60%</td>
+      <td>20.87%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2022-03-02</td>
+      <td>11.82</td>
+      <td>Buffalo Sabres</td>
+      <td>1380.79</td>
+      <td>5</td>
+      <td>14.89%</td>
+      <td>Toronto Maple Leafs (H)</td>
+      <td>1583.18</td>
+      <td>1</td>
+      <td>66.11%</td>
+      <td>19.01%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2022-02-24</td>
+      <td>10.95</td>
+      <td>Vancouver Canucks (H)</td>
+      <td>1476.72</td>
+      <td>7</td>
+      <td>29.71%</td>
+      <td>Calgary Flames</td>
+      <td>1569.24</td>
+      <td>1</td>
+      <td>48.03%</td>
+      <td>22.26%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2022-03-08</td>
+      <td>10.87</td>
+      <td>Arizona Coyotes</td>
+      <td>1408.26</td>
+      <td>9</td>
+      <td>34.06%</td>
+      <td>Detroit Red Wings (H)</td>
+      <td>1416.36</td>
+      <td>2</td>
+      <td>43.42%</td>
+      <td>22.52%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2021-12-11</td>
+      <td>10.43</td>
+      <td>Ottawa Senators (H)</td>
+      <td>1424.13</td>
+      <td>4</td>
+      <td>21.52%</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1592.71</td>
+      <td>0</td>
+      <td>57.38%</td>
+      <td>21.10%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2022-04-14</td>
+      <td>10.37</td>
+      <td>Detroit Red Wings</td>
+      <td>1387.44</td>
+      <td>3</td>
+      <td>14.15%</td>
+      <td>Carolina Hurricanes (H)</td>
+      <td>1601.28</td>
+      <td>0</td>
+      <td>67.18%</td>
+      <td>18.67%</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2022-04-14</td>
+      <td>10.27</td>
+      <td>Vegas Golden Knights</td>
+      <td>1534.91</td>
+      <td>6</td>
+      <td>28.25%</td>
+      <td>Calgary Flames (H)</td>
+      <td>1589.21</td>
+      <td>1</td>
+      <td>49.62%</td>
+      <td>22.13%</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>2022-01-21</td>
+      <td>10.03</td>
+      <td>Anaheim Ducks (H)</td>
+      <td>1445.60</td>
+      <td>5</td>
+      <td>23.59%</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1592.94</td>
+      <td>1</td>
+      <td>54.91%</td>
+      <td>21.50%</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2022-04-12</td>
+      <td>9.88</td>
+      <td>Buffalo Sabres</td>
+      <td>1412.21</td>
+      <td>5</td>
+      <td>16.78%</td>
+      <td>Toronto Maple Leafs (H)</td>
+      <td>1587.43</td>
+      <td>2</td>
+      <td>63.46%</td>
+      <td>19.76%</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2021-10-19</td>
+      <td>9.87</td>
+      <td>San Jose Sharks</td>
+      <td>1448.14</td>
+      <td>5</td>
+      <td>30.35%</td>
+      <td>Montreal Canadiens (H)</td>
+      <td>1485.08</td>
+      <td>0</td>
+      <td>47.34%</td>
+      <td>22.31%</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2021-12-05</td>
+      <td>9.83</td>
+      <td>Los Angeles Kings</td>
+      <td>1459.26</td>
+      <td>5</td>
+      <td>24.69%</td>
+      <td>Edmonton Oilers (H)</td>
+      <td>1545.51</td>
+      <td>1</td>
+      <td>53.63%</td>
+      <td>21.68%</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>2021-11-27</td>
+      <td>9.80</td>
+      <td>Seattle Kraken</td>
+      <td>1409.10</td>
+      <td>4</td>
+      <td>17.21%</td>
+      <td>Florida Panthers (H)</td>
+      <td>1578.52</td>
+      <td>1</td>
+      <td>62.88%</td>
+      <td>19.91%</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>2022-03-12</td>
+      <td>9.80</td>
+      <td>San Jose Sharks (H)</td>
+      <td>1424.73</td>
+      <td>5</td>
+      <td>30.73%</td>
+      <td>Los Angeles Kings</td>
+      <td>1509.00</td>
+      <td>0</td>
+      <td>46.93%</td>
+      <td>22.34%</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>2022-01-24</td>
+      <td>9.79</td>
+      <td>Calgary Flames (H)</td>
+      <td>1511.29</td>
+      <td>7</td>
+      <td>35.48%</td>
+      <td>St. Louis Blues</td>
+      <td>1559.39</td>
+      <td>1</td>
+      <td>41.96%</td>
+      <td>22.56%</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>2022-04-21</td>
+      <td>9.75</td>
+      <td>Tampa Bay Lightning (H)</td>
+      <td>1573.37</td>
+      <td>8</td>
+      <td>39.59%</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1592.34</td>
+      <td>1</td>
+      <td>37.81%</td>
+      <td>22.60%</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>2022-02-21</td>
+      <td>9.73</td>
+      <td>Montreal Canadiens (H)</td>
+      <td>1366.92</td>
+      <td>5</td>
+      <td>17.55%</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1582.24</td>
+      <td>2</td>
+      <td>62.42%</td>
+      <td>20.03%</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>2021-11-09</td>
+      <td>9.69</td>
+      <td>New Jersey Devils (H)</td>
+      <td>1448.87</td>
+      <td>7</td>
+      <td>25.43%</td>
+      <td>Florida Panthers</td>
+      <td>1578.58</td>
+      <td>3</td>
+      <td>52.78%</td>
+      <td>21.79%</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>2022-02-09</td>
+      <td>9.67</td>
+      <td>Calgary Flames (H)</td>
+      <td>1531.84</td>
+      <td>6</td>
+      <td>36.10%</td>
+      <td>Vegas Golden Knights</td>
+      <td>1575.40</td>
+      <td>0</td>
+      <td>41.32%</td>
+      <td>22.58%</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>2021-11-08</td>
+      <td>9.66</td>
+      <td>Los Angeles Kings</td>
+      <td>1459.21</td>
+      <td>5</td>
+      <td>25.59%</td>
+      <td>Toronto Maple Leafs (H)</td>
+      <td>1537.03</td>
+      <td>1</td>
+      <td>52.59%</td>
+      <td>21.81%</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>2022-03-24</td>
+      <td>9.60</td>
+      <td>Philadelphia Flyers</td>
+      <td>1400.11</td>
+      <td>5</td>
+      <td>18.25%</td>
+      <td>St. Louis Blues (H)</td>
+      <td>1556.15</td>
+      <td>2</td>
+      <td>61.50%</td>
+      <td>20.25%</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>2022-01-13</td>
+      <td>9.59</td>
+      <td>Buffalo Sabres</td>
+      <td>1392.75</td>
+      <td>4</td>
+      <td>18.36%</td>
+      <td>Nashville Predators (H)</td>
+      <td>1547.39</td>
+      <td>1</td>
+      <td>61.35%</td>
+      <td>20.29%</td>
+    </tr>
+  </tbody>
+</table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+        });
+    </script>
+</body>
+</html>

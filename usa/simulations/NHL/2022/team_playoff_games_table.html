@@ -1,0 +1,2209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Boston Bruins">Boston Bruins</option><option value="Carolina Hurricanes">Carolina Hurricanes</option><option value="Colorado Avalanche">Colorado Avalanche</option><option value="Dallas Stars">Dallas Stars</option><option value="Edmonton Oilers">Edmonton Oilers</option><option value="Florida Panthers">Florida Panthers</option><option value="Los Angeles Kings">Los Angeles Kings</option><option value="Minnesota Wild">Minnesota Wild</option><option value="New Jersey Devils">New Jersey Devils</option><option value="New York Islanders">New York Islanders</option><option value="New York Rangers">New York Rangers</option><option value="Seattle Kraken">Seattle Kraken</option><option value="Tampa Bay Lightning">Tampa Bay Lightning</option><option value="Toronto Maple Leafs">Toronto Maple Leafs</option><option value="Vegas Golden Knights">Vegas Golden Knights</option><option value="Winnipeg Jets">Winnipeg Jets</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2023-04-17</td>
+      <td>Carolina Hurricanes</td>
+      <td>1582.95</td>
+      <td>2</td>
+      <td>New York Islanders</td>
+      <td>1528.28</td>
+      <td>1</td>
+      <td>60.68%</td>
+      <td>39.32%</td>
+      <td>2.91</td>
+    </tr>
+    <tr>
+      <td>2023-04-17</td>
+      <td>Boston Bruins</td>
+      <td>1672.24</td>
+      <td>3</td>
+      <td>Florida Panthers</td>
+      <td>1534.95</td>
+      <td>1</td>
+      <td>71.29%</td>
+      <td>28.71%</td>
+      <td>3.02</td>
+    </tr>
+    <tr>
+      <td>2023-04-17</td>
+      <td>Dallas Stars</td>
+      <td>1564.65</td>
+      <td>2</td>
+      <td>Minnesota Wild</td>
+      <td>1544.58</td>
+      <td>3</td>
+      <td>55.84%</td>
+      <td>44.16%</td>
+      <td>-4.14</td>
+    </tr>
+    <tr>
+      <td>2023-04-17</td>
+      <td>Edmonton Oilers</td>
+      <td>1610.36</td>
+      <td>3</td>
+      <td>Los Angeles Kings</td>
+      <td>1545.26</td>
+      <td>4</td>
+      <td>62.10%</td>
+      <td>37.90%</td>
+      <td>-4.61</td>
+    </tr>
+    <tr>
+      <td>2023-04-17</td>
+      <td>Florida Panthers</td>
+      <td>1534.95</td>
+      <td>1</td>
+      <td>@ Boston Bruins</td>
+      <td>1672.24</td>
+      <td>3</td>
+      <td>28.71%</td>
+      <td>71.29%</td>
+      <td>-3.01</td>
+    </tr>
+    <tr>
+      <td>2023-04-17</td>
+      <td>New York Islanders</td>
+      <td>1528.28</td>
+      <td>1</td>
+      <td>@ Carolina Hurricanes</td>
+      <td>1582.95</td>
+      <td>2</td>
+      <td>39.32%</td>
+      <td>60.68%</td>
+      <td>-2.92</td>
+    </tr>
+    <tr>
+      <td>2023-04-17</td>
+      <td>Los Angeles Kings</td>
+      <td>1545.26</td>
+      <td>4</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1610.36</td>
+      <td>3</td>
+      <td>37.90%</td>
+      <td>62.10%</td>
+      <td>4.61</td>
+    </tr>
+    <tr>
+      <td>2023-04-17</td>
+      <td>Minnesota Wild</td>
+      <td>1544.58</td>
+      <td>3</td>
+      <td>@ Dallas Stars</td>
+      <td>1564.65</td>
+      <td>2</td>
+      <td>44.16%</td>
+      <td>55.84%</td>
+      <td>4.14</td>
+    </tr>
+    <tr>
+      <td>2023-04-18</td>
+      <td>New Jersey Devils</td>
+      <td>1557.44</td>
+      <td>1</td>
+      <td>New York Rangers</td>
+      <td>1582.71</td>
+      <td>5</td>
+      <td>49.34%</td>
+      <td>50.66%</td>
+      <td>-7.32</td>
+    </tr>
+    <tr>
+      <td>2023-04-18</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1584.11</td>
+      <td>3</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1541.84</td>
+      <td>7</td>
+      <td>58.97%</td>
+      <td>41.03%</td>
+      <td>-8.75</td>
+    </tr>
+    <tr>
+      <td>2023-04-18</td>
+      <td>Vegas Golden Knights</td>
+      <td>1569.35</td>
+      <td>1</td>
+      <td>Winnipeg Jets</td>
+      <td>1515.16</td>
+      <td>5</td>
+      <td>60.62%</td>
+      <td>39.38%</td>
+      <td>-9.00</td>
+    </tr>
+    <tr>
+      <td>2023-04-18</td>
+      <td>Colorado Avalanche</td>
+      <td>1593.63</td>
+      <td>1</td>
+      <td>Seattle Kraken</td>
+      <td>1520.70</td>
+      <td>3</td>
+      <td>63.16%</td>
+      <td>36.84%</td>
+      <td>-6.63</td>
+    </tr>
+    <tr>
+      <td>2023-04-18</td>
+      <td>Seattle Kraken</td>
+      <td>1520.70</td>
+      <td>3</td>
+      <td>@ Colorado Avalanche</td>
+      <td>1593.63</td>
+      <td>1</td>
+      <td>36.84%</td>
+      <td>63.16%</td>
+      <td>6.62</td>
+    </tr>
+    <tr>
+      <td>2023-04-18</td>
+      <td>Winnipeg Jets</td>
+      <td>1515.16</td>
+      <td>5</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1569.35</td>
+      <td>1</td>
+      <td>39.38%</td>
+      <td>60.62%</td>
+      <td>8.99</td>
+    </tr>
+    <tr>
+      <td>2023-04-18</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1541.84</td>
+      <td>7</td>
+      <td>@ Toronto Maple Leafs</td>
+      <td>1584.11</td>
+      <td>3</td>
+      <td>41.03%</td>
+      <td>58.97%</td>
+      <td>8.75</td>
+    </tr>
+    <tr>
+      <td>2023-04-18</td>
+      <td>New York Rangers</td>
+      <td>1582.71</td>
+      <td>5</td>
+      <td>@ New Jersey Devils</td>
+      <td>1557.44</td>
+      <td>1</td>
+      <td>50.66%</td>
+      <td>49.34%</td>
+      <td>7.33</td>
+    </tr>
+    <tr>
+      <td>2023-04-19</td>
+      <td>Los Angeles Kings</td>
+      <td>1549.87</td>
+      <td>2</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1605.75</td>
+      <td>4</td>
+      <td>39.15%</td>
+      <td>60.85%</td>
+      <td>-4.11</td>
+    </tr>
+    <tr>
+      <td>2023-04-19</td>
+      <td>Minnesota Wild</td>
+      <td>1548.72</td>
+      <td>3</td>
+      <td>@ Dallas Stars</td>
+      <td>1560.51</td>
+      <td>7</td>
+      <td>45.34%</td>
+      <td>54.66%</td>
+      <td>-6.73</td>
+    </tr>
+    <tr>
+      <td>2023-04-19</td>
+      <td>Carolina Hurricanes</td>
+      <td>1588.72</td>
+      <td>6</td>
+      <td>@ Boston Bruins</td>
+      <td>1675.26</td>
+      <td>3</td>
+      <td>35.04%</td>
+      <td>64.96%</td>
+      <td>8.35</td>
+    </tr>
+    <tr>
+      <td>2023-04-19</td>
+      <td>New York Islanders</td>
+      <td>1525.36</td>
+      <td>3</td>
+      <td>@ Carolina Hurricanes</td>
+      <td>1585.86</td>
+      <td>4</td>
+      <td>38.52%</td>
+      <td>61.48%</td>
+      <td>-2.86</td>
+    </tr>
+    <tr>
+      <td>2023-04-19</td>
+      <td>Carolina Hurricanes</td>
+      <td>1585.86</td>
+      <td>4</td>
+      <td>New York Islanders</td>
+      <td>1525.36</td>
+      <td>3</td>
+      <td>61.48%</td>
+      <td>38.52%</td>
+      <td>2.86</td>
+    </tr>
+    <tr>
+      <td>2023-04-19</td>
+      <td>Edmonton Oilers</td>
+      <td>1605.75</td>
+      <td>4</td>
+      <td>Los Angeles Kings</td>
+      <td>1549.87</td>
+      <td>2</td>
+      <td>60.85%</td>
+      <td>39.15%</td>
+      <td>4.11</td>
+    </tr>
+    <tr>
+      <td>2023-04-19</td>
+      <td>Dallas Stars</td>
+      <td>1560.51</td>
+      <td>7</td>
+      <td>Minnesota Wild</td>
+      <td>1548.72</td>
+      <td>3</td>
+      <td>54.66%</td>
+      <td>45.34%</td>
+      <td>6.72</td>
+    </tr>
+    <tr>
+      <td>2023-04-19</td>
+      <td>Boston Bruins</td>
+      <td>1675.26</td>
+      <td>3</td>
+      <td>Carolina Hurricanes</td>
+      <td>1588.72</td>
+      <td>6</td>
+      <td>64.96%</td>
+      <td>35.04%</td>
+      <td>-8.35</td>
+    </tr>
+    <tr>
+      <td>2023-04-20</td>
+      <td>Vegas Golden Knights</td>
+      <td>1560.35</td>
+      <td>5</td>
+      <td>Winnipeg Jets</td>
+      <td>1524.15</td>
+      <td>2</td>
+      <td>58.12%</td>
+      <td>41.88%</td>
+      <td>5.39</td>
+    </tr>
+    <tr>
+      <td>2023-04-20</td>
+      <td>Colorado Avalanche</td>
+      <td>1587.00</td>
+      <td>3</td>
+      <td>Seattle Kraken</td>
+      <td>1527.32</td>
+      <td>2</td>
+      <td>61.37%</td>
+      <td>38.63%</td>
+      <td>2.87</td>
+    </tr>
+    <tr>
+      <td>2023-04-20</td>
+      <td>New Jersey Devils</td>
+      <td>1550.12</td>
+      <td>1</td>
+      <td>New York Rangers</td>
+      <td>1590.04</td>
+      <td>5</td>
+      <td>47.24%</td>
+      <td>52.76%</td>
+      <td>-7.01</td>
+    </tr>
+    <tr>
+      <td>2023-04-20</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1575.36</td>
+      <td>7</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1550.59</td>
+      <td>2</td>
+      <td>56.51%</td>
+      <td>43.49%</td>
+      <td>7.21</td>
+    </tr>
+    <tr>
+      <td>2023-04-20</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1550.59</td>
+      <td>2</td>
+      <td>@ Toronto Maple Leafs</td>
+      <td>1575.36</td>
+      <td>7</td>
+      <td>43.49%</td>
+      <td>56.51%</td>
+      <td>-7.22</td>
+    </tr>
+    <tr>
+      <td>2023-04-20</td>
+      <td>New York Rangers</td>
+      <td>1590.04</td>
+      <td>5</td>
+      <td>@ New Jersey Devils</td>
+      <td>1550.12</td>
+      <td>1</td>
+      <td>52.76%</td>
+      <td>47.24%</td>
+      <td>7.01</td>
+    </tr>
+    <tr>
+      <td>2023-04-20</td>
+      <td>Seattle Kraken</td>
+      <td>1527.32</td>
+      <td>2</td>
+      <td>@ Colorado Avalanche</td>
+      <td>1587.00</td>
+      <td>3</td>
+      <td>38.63%</td>
+      <td>61.37%</td>
+      <td>-2.86</td>
+    </tr>
+    <tr>
+      <td>2023-04-20</td>
+      <td>Winnipeg Jets</td>
+      <td>1524.15</td>
+      <td>2</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1560.35</td>
+      <td>5</td>
+      <td>41.88%</td>
+      <td>58.12%</td>
+      <td>-5.38</td>
+    </tr>
+    <tr>
+      <td>2023-04-21</td>
+      <td>Florida Panthers</td>
+      <td>1531.94</td>
+      <td>2</td>
+      <td>Boston Bruins</td>
+      <td>1666.91</td>
+      <td>4</td>
+      <td>34.12%</td>
+      <td>65.88%</td>
+      <td>-3.58</td>
+    </tr>
+    <tr>
+      <td>2023-04-21</td>
+      <td>Dallas Stars</td>
+      <td>1567.23</td>
+      <td>1</td>
+      <td>@ Minnesota Wild</td>
+      <td>1541.99</td>
+      <td>5</td>
+      <td>50.65%</td>
+      <td>49.35%</td>
+      <td>-7.51</td>
+    </tr>
+    <tr>
+      <td>2023-04-21</td>
+      <td>Boston Bruins</td>
+      <td>1666.91</td>
+      <td>4</td>
+      <td>@ Florida Panthers</td>
+      <td>1531.94</td>
+      <td>2</td>
+      <td>65.88%</td>
+      <td>34.12%</td>
+      <td>3.58</td>
+    </tr>
+    <tr>
+      <td>2023-04-21</td>
+      <td>Minnesota Wild</td>
+      <td>1541.99</td>
+      <td>5</td>
+      <td>Dallas Stars</td>
+      <td>1567.23</td>
+      <td>1</td>
+      <td>49.35%</td>
+      <td>50.65%</td>
+      <td>7.52</td>
+    </tr>
+    <tr>
+      <td>2023-04-21</td>
+      <td>Edmonton Oilers</td>
+      <td>1609.86</td>
+      <td>2</td>
+      <td>@ Los Angeles Kings</td>
+      <td>1545.76</td>
+      <td>3</td>
+      <td>56.21%</td>
+      <td>43.79%</td>
+      <td>-4.17</td>
+    </tr>
+    <tr>
+      <td>2023-04-21</td>
+      <td>New York Islanders</td>
+      <td>1522.50</td>
+      <td>5</td>
+      <td>Carolina Hurricanes</td>
+      <td>1597.07</td>
+      <td>1</td>
+      <td>42.31%</td>
+      <td>57.69%</td>
+      <td>8.56</td>
+    </tr>
+    <tr>
+      <td>2023-04-21</td>
+      <td>Carolina Hurricanes</td>
+      <td>1597.07</td>
+      <td>1</td>
+      <td>@ New York Islanders</td>
+      <td>1522.50</td>
+      <td>5</td>
+      <td>57.69%</td>
+      <td>42.31%</td>
+      <td>-8.56</td>
+    </tr>
+    <tr>
+      <td>2023-04-21</td>
+      <td>Los Angeles Kings</td>
+      <td>1545.76</td>
+      <td>3</td>
+      <td>Edmonton Oilers</td>
+      <td>1609.86</td>
+      <td>2</td>
+      <td>43.79%</td>
+      <td>56.21%</td>
+      <td>4.17</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>New Jersey Devils</td>
+      <td>1543.11</td>
+      <td>2</td>
+      <td>@ New York Rangers</td>
+      <td>1597.05</td>
+      <td>1</td>
+      <td>39.42%</td>
+      <td>60.58%</td>
+      <td>4.49</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1582.57</td>
+      <td>4</td>
+      <td>@ Tampa Bay Lightning</td>
+      <td>1543.37</td>
+      <td>3</td>
+      <td>52.66%</td>
+      <td>47.34%</td>
+      <td>3.52</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>Colorado Avalanche</td>
+      <td>1589.87</td>
+      <td>6</td>
+      <td>@ Seattle Kraken</td>
+      <td>1524.46</td>
+      <td>4</td>
+      <td>56.40%</td>
+      <td>43.60%</td>
+      <td>4.57</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>Seattle Kraken</td>
+      <td>1524.46</td>
+      <td>4</td>
+      <td>Colorado Avalanche</td>
+      <td>1589.87</td>
+      <td>6</td>
+      <td>43.60%</td>
+      <td>56.40%</td>
+      <td>-4.58</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>New York Rangers</td>
+      <td>1597.05</td>
+      <td>1</td>
+      <td>New Jersey Devils</td>
+      <td>1543.11</td>
+      <td>2</td>
+      <td>60.58%</td>
+      <td>39.42%</td>
+      <td>-4.50</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1543.37</td>
+      <td>3</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1582.57</td>
+      <td>4</td>
+      <td>47.34%</td>
+      <td>52.66%</td>
+      <td>-3.51</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>Winnipeg Jets</td>
+      <td>1518.77</td>
+      <td>4</td>
+      <td>Vegas Golden Knights</td>
+      <td>1565.74</td>
+      <td>5</td>
+      <td>46.23%</td>
+      <td>53.77%</td>
+      <td>-3.43</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>Vegas Golden Knights</td>
+      <td>1565.74</td>
+      <td>5</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1518.77</td>
+      <td>4</td>
+      <td>53.77%</td>
+      <td>46.23%</td>
+      <td>3.43</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>Edmonton Oilers</td>
+      <td>1605.69</td>
+      <td>5</td>
+      <td>@ Los Angeles Kings</td>
+      <td>1549.93</td>
+      <td>4</td>
+      <td>55.03%</td>
+      <td>44.97%</td>
+      <td>3.34</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>Dallas Stars</td>
+      <td>1559.72</td>
+      <td>3</td>
+      <td>@ Minnesota Wild</td>
+      <td>1549.51</td>
+      <td>2</td>
+      <td>48.49%</td>
+      <td>51.51%</td>
+      <td>3.82</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>Carolina Hurricanes</td>
+      <td>1588.51</td>
+      <td>5</td>
+      <td>@ New York Islanders</td>
+      <td>1531.06</td>
+      <td>2</td>
+      <td>55.27%</td>
+      <td>44.73%</td>
+      <td>5.75</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>Boston Bruins</td>
+      <td>1670.49</td>
+      <td>6</td>
+      <td>@ Florida Panthers</td>
+      <td>1528.36</td>
+      <td>2</td>
+      <td>66.80%</td>
+      <td>33.20%</td>
+      <td>4.92</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>New York Islanders</td>
+      <td>1531.06</td>
+      <td>2</td>
+      <td>Carolina Hurricanes</td>
+      <td>1588.51</td>
+      <td>5</td>
+      <td>44.73%</td>
+      <td>55.27%</td>
+      <td>-5.75</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>Florida Panthers</td>
+      <td>1528.36</td>
+      <td>2</td>
+      <td>Boston Bruins</td>
+      <td>1670.49</td>
+      <td>6</td>
+      <td>33.20%</td>
+      <td>66.80%</td>
+      <td>-4.93</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>Minnesota Wild</td>
+      <td>1549.51</td>
+      <td>2</td>
+      <td>Dallas Stars</td>
+      <td>1559.72</td>
+      <td>3</td>
+      <td>51.51%</td>
+      <td>48.49%</td>
+      <td>-3.82</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>Los Angeles Kings</td>
+      <td>1549.93</td>
+      <td>4</td>
+      <td>Edmonton Oilers</td>
+      <td>1605.69</td>
+      <td>5</td>
+      <td>44.97%</td>
+      <td>55.03%</td>
+      <td>-3.34</td>
+    </tr>
+    <tr>
+      <td>2023-04-24</td>
+      <td>Colorado Avalanche</td>
+      <td>1594.44</td>
+      <td>2</td>
+      <td>@ Seattle Kraken</td>
+      <td>1519.88</td>
+      <td>3</td>
+      <td>57.69%</td>
+      <td>42.31%</td>
+      <td>-4.28</td>
+    </tr>
+    <tr>
+      <td>2023-04-24</td>
+      <td>Vegas Golden Knights</td>
+      <td>1569.17</td>
+      <td>4</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1515.34</td>
+      <td>2</td>
+      <td>54.75%</td>
+      <td>45.25%</td>
+      <td>4.74</td>
+    </tr>
+    <tr>
+      <td>2023-04-24</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1586.09</td>
+      <td>5</td>
+      <td>@ Tampa Bay Lightning</td>
+      <td>1539.86</td>
+      <td>4</td>
+      <td>53.67%</td>
+      <td>46.33%</td>
+      <td>3.43</td>
+    </tr>
+    <tr>
+      <td>2023-04-24</td>
+      <td>New Jersey Devils</td>
+      <td>1547.60</td>
+      <td>3</td>
+      <td>@ New York Rangers</td>
+      <td>1592.55</td>
+      <td>1</td>
+      <td>40.66%</td>
+      <td>59.34%</td>
+      <td>6.23</td>
+    </tr>
+    <tr>
+      <td>2023-04-24</td>
+      <td>Winnipeg Jets</td>
+      <td>1515.34</td>
+      <td>2</td>
+      <td>Vegas Golden Knights</td>
+      <td>1569.17</td>
+      <td>4</td>
+      <td>45.25%</td>
+      <td>54.75%</td>
+      <td>-4.75</td>
+    </tr>
+    <tr>
+      <td>2023-04-24</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1539.86</td>
+      <td>4</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1586.09</td>
+      <td>5</td>
+      <td>46.33%</td>
+      <td>53.67%</td>
+      <td>-3.44</td>
+    </tr>
+    <tr>
+      <td>2023-04-24</td>
+      <td>New York Rangers</td>
+      <td>1592.55</td>
+      <td>1</td>
+      <td>New Jersey Devils</td>
+      <td>1547.60</td>
+      <td>3</td>
+      <td>59.34%</td>
+      <td>40.66%</td>
+      <td>-6.23</td>
+    </tr>
+    <tr>
+      <td>2023-04-24</td>
+      <td>Seattle Kraken</td>
+      <td>1519.88</td>
+      <td>3</td>
+      <td>Colorado Avalanche</td>
+      <td>1594.44</td>
+      <td>2</td>
+      <td>42.31%</td>
+      <td>57.69%</td>
+      <td>4.28</td>
+    </tr>
+    <tr>
+      <td>2023-04-25</td>
+      <td>Edmonton Oilers</td>
+      <td>1609.03</td>
+      <td>6</td>
+      <td>Los Angeles Kings</td>
+      <td>1546.59</td>
+      <td>3</td>
+      <td>61.74%</td>
+      <td>38.26%</td>
+      <td>4.91</td>
+    </tr>
+    <tr>
+      <td>2023-04-25</td>
+      <td>New York Islanders</td>
+      <td>1525.31</td>
+      <td>2</td>
+      <td>@ Carolina Hurricanes</td>
+      <td>1594.26</td>
+      <td>3</td>
+      <td>37.38%</td>
+      <td>62.62%</td>
+      <td>-2.77</td>
+    </tr>
+    <tr>
+      <td>2023-04-25</td>
+      <td>Minnesota Wild</td>
+      <td>1545.69</td>
+      <td>0</td>
+      <td>@ Dallas Stars</td>
+      <td>1563.54</td>
+      <td>4</td>
+      <td>44.47%</td>
+      <td>55.53%</td>
+      <td>-6.60</td>
+    </tr>
+    <tr>
+      <td>2023-04-25</td>
+      <td>Los Angeles Kings</td>
+      <td>1546.59</td>
+      <td>3</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1609.03</td>
+      <td>6</td>
+      <td>38.26%</td>
+      <td>61.74%</td>
+      <td>-4.92</td>
+    </tr>
+    <tr>
+      <td>2023-04-25</td>
+      <td>Dallas Stars</td>
+      <td>1563.54</td>
+      <td>4</td>
+      <td>Minnesota Wild</td>
+      <td>1545.69</td>
+      <td>0</td>
+      <td>55.53%</td>
+      <td>44.47%</td>
+      <td>6.60</td>
+    </tr>
+    <tr>
+      <td>2023-04-25</td>
+      <td>Carolina Hurricanes</td>
+      <td>1594.26</td>
+      <td>3</td>
+      <td>New York Islanders</td>
+      <td>1525.31</td>
+      <td>2</td>
+      <td>62.62%</td>
+      <td>37.38%</td>
+      <td>2.77</td>
+    </tr>
+    <tr>
+      <td>2023-04-26</td>
+      <td>Seattle Kraken</td>
+      <td>1524.16</td>
+      <td>3</td>
+      <td>@ Colorado Avalanche</td>
+      <td>1590.16</td>
+      <td>2</td>
+      <td>37.77%</td>
+      <td>62.23%</td>
+      <td>4.62</td>
+    </tr>
+    <tr>
+      <td>2023-04-26</td>
+      <td>Boston Bruins</td>
+      <td>1675.41</td>
+      <td>3</td>
+      <td>Florida Panthers</td>
+      <td>1523.43</td>
+      <td>4</td>
+      <td>72.99%</td>
+      <td>27.01%</td>
+      <td>-5.41</td>
+    </tr>
+    <tr>
+      <td>2023-04-26</td>
+      <td>Colorado Avalanche</td>
+      <td>1590.16</td>
+      <td>2</td>
+      <td>Seattle Kraken</td>
+      <td>1524.16</td>
+      <td>3</td>
+      <td>62.23%</td>
+      <td>37.77%</td>
+      <td>-4.62</td>
+    </tr>
+    <tr>
+      <td>2023-04-26</td>
+      <td>Florida Panthers</td>
+      <td>1523.43</td>
+      <td>4</td>
+      <td>@ Boston Bruins</td>
+      <td>1675.41</td>
+      <td>3</td>
+      <td>27.01%</td>
+      <td>72.99%</td>
+      <td>5.41</td>
+    </tr>
+    <tr>
+      <td>2023-04-27</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1589.52</td>
+      <td>2</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1536.42</td>
+      <td>4</td>
+      <td>60.47%</td>
+      <td>39.53%</td>
+      <td>-6.34</td>
+    </tr>
+    <tr>
+      <td>2023-04-27</td>
+      <td>Winnipeg Jets</td>
+      <td>1510.59</td>
+      <td>1</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1573.91</td>
+      <td>4</td>
+      <td>38.14%</td>
+      <td>61.86%</td>
+      <td>-4.90</td>
+    </tr>
+    <tr>
+      <td>2023-04-27</td>
+      <td>New York Rangers</td>
+      <td>1586.32</td>
+      <td>0</td>
+      <td>@ New Jersey Devils</td>
+      <td>1553.83</td>
+      <td>4</td>
+      <td>51.70%</td>
+      <td>48.30%</td>
+      <td>-7.67</td>
+    </tr>
+    <tr>
+      <td>2023-04-27</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1536.42</td>
+      <td>4</td>
+      <td>@ Toronto Maple Leafs</td>
+      <td>1589.52</td>
+      <td>2</td>
+      <td>39.53%</td>
+      <td>60.47%</td>
+      <td>6.35</td>
+    </tr>
+    <tr>
+      <td>2023-04-27</td>
+      <td>New Jersey Devils</td>
+      <td>1553.83</td>
+      <td>4</td>
+      <td>New York Rangers</td>
+      <td>1586.32</td>
+      <td>0</td>
+      <td>48.30%</td>
+      <td>51.70%</td>
+      <td>7.67</td>
+    </tr>
+    <tr>
+      <td>2023-04-27</td>
+      <td>Vegas Golden Knights</td>
+      <td>1573.91</td>
+      <td>4</td>
+      <td>Winnipeg Jets</td>
+      <td>1510.59</td>
+      <td>1</td>
+      <td>61.86%</td>
+      <td>38.14%</td>
+      <td>4.91</td>
+    </tr>
+    <tr>
+      <td>2023-04-28</td>
+      <td>New York Islanders</td>
+      <td>1522.54</td>
+      <td>1</td>
+      <td>Carolina Hurricanes</td>
+      <td>1597.03</td>
+      <td>2</td>
+      <td>42.32%</td>
+      <td>57.68%</td>
+      <td>-3.14</td>
+    </tr>
+    <tr>
+      <td>2023-04-28</td>
+      <td>Florida Panthers</td>
+      <td>1528.84</td>
+      <td>7</td>
+      <td>Boston Bruins</td>
+      <td>1670.00</td>
+      <td>5</td>
+      <td>33.33%</td>
+      <td>66.67%</td>
+      <td>7.00</td>
+    </tr>
+    <tr>
+      <td>2023-04-28</td>
+      <td>Minnesota Wild</td>
+      <td>1539.09</td>
+      <td>1</td>
+      <td>Dallas Stars</td>
+      <td>1570.14</td>
+      <td>4</td>
+      <td>48.51%</td>
+      <td>51.49%</td>
+      <td>-6.24</td>
+    </tr>
+    <tr>
+      <td>2023-04-28</td>
+      <td>Seattle Kraken</td>
+      <td>1528.78</td>
+      <td>1</td>
+      <td>Colorado Avalanche</td>
+      <td>1585.54</td>
+      <td>4</td>
+      <td>44.83%</td>
+      <td>55.17%</td>
+      <td>-5.76</td>
+    </tr>
+    <tr>
+      <td>2023-04-28</td>
+      <td>Colorado Avalanche</td>
+      <td>1585.54</td>
+      <td>4</td>
+      <td>@ Seattle Kraken</td>
+      <td>1528.78</td>
+      <td>1</td>
+      <td>55.17%</td>
+      <td>44.83%</td>
+      <td>5.77</td>
+    </tr>
+    <tr>
+      <td>2023-04-28</td>
+      <td>Dallas Stars</td>
+      <td>1570.14</td>
+      <td>4</td>
+      <td>@ Minnesota Wild</td>
+      <td>1539.09</td>
+      <td>1</td>
+      <td>51.49%</td>
+      <td>48.51%</td>
+      <td>6.23</td>
+    </tr>
+    <tr>
+      <td>2023-04-28</td>
+      <td>Boston Bruins</td>
+      <td>1670.00</td>
+      <td>5</td>
+      <td>@ Florida Panthers</td>
+      <td>1528.84</td>
+      <td>7</td>
+      <td>66.67%</td>
+      <td>33.33%</td>
+      <td>-7.00</td>
+    </tr>
+    <tr>
+      <td>2023-04-28</td>
+      <td>Carolina Hurricanes</td>
+      <td>1597.03</td>
+      <td>2</td>
+      <td>@ New York Islanders</td>
+      <td>1522.54</td>
+      <td>1</td>
+      <td>57.68%</td>
+      <td>42.32%</td>
+      <td>3.14</td>
+    </tr>
+    <tr>
+      <td>2023-04-29</td>
+      <td>Los Angeles Kings</td>
+      <td>1541.67</td>
+      <td>4</td>
+      <td>Edmonton Oilers</td>
+      <td>1613.94</td>
+      <td>5</td>
+      <td>42.63%</td>
+      <td>57.37%</td>
+      <td>-3.16</td>
+    </tr>
+    <tr>
+      <td>2023-04-29</td>
+      <td>New York Rangers</td>
+      <td>1578.65</td>
+      <td>5</td>
+      <td>New Jersey Devils</td>
+      <td>1561.50</td>
+      <td>2</td>
+      <td>55.43%</td>
+      <td>44.57%</td>
+      <td>5.73</td>
+    </tr>
+    <tr>
+      <td>2023-04-29</td>
+      <td>Tampa Bay Lightning</td>
+      <td>1542.77</td>
+      <td>1</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1583.18</td>
+      <td>2</td>
+      <td>47.17%</td>
+      <td>52.83%</td>
+      <td>-3.50</td>
+    </tr>
+    <tr>
+      <td>2023-04-29</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1583.18</td>
+      <td>2</td>
+      <td>@ Tampa Bay Lightning</td>
+      <td>1542.77</td>
+      <td>1</td>
+      <td>52.83%</td>
+      <td>47.17%</td>
+      <td>3.50</td>
+    </tr>
+    <tr>
+      <td>2023-04-29</td>
+      <td>Edmonton Oilers</td>
+      <td>1613.94</td>
+      <td>5</td>
+      <td>@ Los Angeles Kings</td>
+      <td>1541.67</td>
+      <td>4</td>
+      <td>57.37%</td>
+      <td>42.63%</td>
+      <td>3.17</td>
+    </tr>
+    <tr>
+      <td>2023-04-29</td>
+      <td>New Jersey Devils</td>
+      <td>1561.50</td>
+      <td>2</td>
+      <td>@ New York Rangers</td>
+      <td>1578.65</td>
+      <td>5</td>
+      <td>44.57%</td>
+      <td>55.43%</td>
+      <td>-5.73</td>
+    </tr>
+    <tr>
+      <td>2023-04-30</td>
+      <td>Seattle Kraken</td>
+      <td>1523.02</td>
+      <td>2</td>
+      <td>@ Colorado Avalanche</td>
+      <td>1591.31</td>
+      <td>1</td>
+      <td>37.47%</td>
+      <td>62.53%</td>
+      <td>4.64</td>
+    </tr>
+    <tr>
+      <td>2023-04-30</td>
+      <td>Colorado Avalanche</td>
+      <td>1591.31</td>
+      <td>1</td>
+      <td>Seattle Kraken</td>
+      <td>1523.02</td>
+      <td>2</td>
+      <td>62.53%</td>
+      <td>37.47%</td>
+      <td>-4.64</td>
+    </tr>
+    <tr>
+      <td>2023-04-30</td>
+      <td>Boston Bruins</td>
+      <td>1663.00</td>
+      <td>3</td>
+      <td>Florida Panthers</td>
+      <td>1535.84</td>
+      <td>4</td>
+      <td>70.08%</td>
+      <td>29.92%</td>
+      <td>-5.20</td>
+    </tr>
+    <tr>
+      <td>2023-04-30</td>
+      <td>Florida Panthers</td>
+      <td>1535.84</td>
+      <td>4</td>
+      <td>@ Boston Bruins</td>
+      <td>1663.00</td>
+      <td>3</td>
+      <td>29.92%</td>
+      <td>70.08%</td>
+      <td>5.20</td>
+    </tr>
+    <tr>
+      <td>2023-05-01</td>
+      <td>New Jersey Devils</td>
+      <td>1555.77</td>
+      <td>4</td>
+      <td>New York Rangers</td>
+      <td>1584.38</td>
+      <td>0</td>
+      <td>48.86%</td>
+      <td>51.14%</td>
+      <td>7.59</td>
+    </tr>
+    <tr>
+      <td>2023-05-01</td>
+      <td>New York Rangers</td>
+      <td>1584.38</td>
+      <td>0</td>
+      <td>@ New Jersey Devils</td>
+      <td>1555.77</td>
+      <td>4</td>
+      <td>51.14%</td>
+      <td>48.86%</td>
+      <td>-7.59</td>
+    </tr>
+    <tr>
+      <td>2023-05-02</td>
+      <td>Dallas Stars</td>
+      <td>1576.37</td>
+      <td>4</td>
+      <td>Seattle Kraken</td>
+      <td>1527.66</td>
+      <td>5</td>
+      <td>59.86%</td>
+      <td>40.14%</td>
+      <td>-4.44</td>
+    </tr>
+    <tr>
+      <td>2023-05-02</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1586.68</td>
+      <td>2</td>
+      <td>Florida Panthers</td>
+      <td>1541.04</td>
+      <td>4</td>
+      <td>59.43%</td>
+      <td>40.57%</td>
+      <td>-6.24</td>
+    </tr>
+    <tr>
+      <td>2023-05-02</td>
+      <td>Seattle Kraken</td>
+      <td>1527.66</td>
+      <td>5</td>
+      <td>@ Dallas Stars</td>
+      <td>1576.37</td>
+      <td>4</td>
+      <td>40.14%</td>
+      <td>59.86%</td>
+      <td>4.44</td>
+    </tr>
+    <tr>
+      <td>2023-05-02</td>
+      <td>Florida Panthers</td>
+      <td>1541.04</td>
+      <td>4</td>
+      <td>@ Toronto Maple Leafs</td>
+      <td>1586.68</td>
+      <td>2</td>
+      <td>40.57%</td>
+      <td>59.43%</td>
+      <td>6.24</td>
+    </tr>
+    <tr>
+      <td>2023-05-03</td>
+      <td>Carolina Hurricanes</td>
+      <td>1600.17</td>
+      <td>5</td>
+      <td>New Jersey Devils</td>
+      <td>1563.36</td>
+      <td>1</td>
+      <td>58.20%</td>
+      <td>41.80%</td>
+      <td>6.21</td>
+    </tr>
+    <tr>
+      <td>2023-05-03</td>
+      <td>New Jersey Devils</td>
+      <td>1563.36</td>
+      <td>1</td>
+      <td>@ Carolina Hurricanes</td>
+      <td>1600.17</td>
+      <td>5</td>
+      <td>41.80%</td>
+      <td>58.20%</td>
+      <td>-6.20</td>
+    </tr>
+    <tr>
+      <td>2023-05-03</td>
+      <td>Edmonton Oilers</td>
+      <td>1617.11</td>
+      <td>4</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1578.82</td>
+      <td>6</td>
+      <td>52.53%</td>
+      <td>47.47%</td>
+      <td>-5.51</td>
+    </tr>
+    <tr>
+      <td>2023-05-03</td>
+      <td>Vegas Golden Knights</td>
+      <td>1578.82</td>
+      <td>6</td>
+      <td>Edmonton Oilers</td>
+      <td>1617.11</td>
+      <td>4</td>
+      <td>47.47%</td>
+      <td>52.53%</td>
+      <td>5.51</td>
+    </tr>
+    <tr>
+      <td>2023-05-04</td>
+      <td>Florida Panthers</td>
+      <td>1547.28</td>
+      <td>3</td>
+      <td>@ Toronto Maple Leafs</td>
+      <td>1580.44</td>
+      <td>2</td>
+      <td>42.31%</td>
+      <td>57.69%</td>
+      <td>4.28</td>
+    </tr>
+    <tr>
+      <td>2023-05-04</td>
+      <td>Seattle Kraken</td>
+      <td>1532.10</td>
+      <td>2</td>
+      <td>@ Dallas Stars</td>
+      <td>1571.93</td>
+      <td>4</td>
+      <td>41.37%</td>
+      <td>58.63%</td>
+      <td>-4.34</td>
+    </tr>
+    <tr>
+      <td>2023-05-04</td>
+      <td>Dallas Stars</td>
+      <td>1571.93</td>
+      <td>4</td>
+      <td>Seattle Kraken</td>
+      <td>1532.10</td>
+      <td>2</td>
+      <td>58.63%</td>
+      <td>41.37%</td>
+      <td>4.34</td>
+    </tr>
+    <tr>
+      <td>2023-05-04</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1580.44</td>
+      <td>2</td>
+      <td>Florida Panthers</td>
+      <td>1547.28</td>
+      <td>3</td>
+      <td>57.69%</td>
+      <td>42.31%</td>
+      <td>-4.28</td>
+    </tr>
+    <tr>
+      <td>2023-05-05</td>
+      <td>New Jersey Devils</td>
+      <td>1557.16</td>
+      <td>1</td>
+      <td>@ Carolina Hurricanes</td>
+      <td>1606.38</td>
+      <td>6</td>
+      <td>40.07%</td>
+      <td>59.93%</td>
+      <td>-6.65</td>
+    </tr>
+    <tr>
+      <td>2023-05-05</td>
+      <td>Carolina Hurricanes</td>
+      <td>1606.38</td>
+      <td>6</td>
+      <td>New Jersey Devils</td>
+      <td>1557.16</td>
+      <td>1</td>
+      <td>59.93%</td>
+      <td>40.07%</td>
+      <td>6.64</td>
+    </tr>
+    <tr>
+      <td>2023-05-06</td>
+      <td>Edmonton Oilers</td>
+      <td>1611.60</td>
+      <td>5</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1584.33</td>
+      <td>1</td>
+      <td>50.94%</td>
+      <td>49.06%</td>
+      <td>7.28</td>
+    </tr>
+    <tr>
+      <td>2023-05-06</td>
+      <td>Vegas Golden Knights</td>
+      <td>1584.33</td>
+      <td>1</td>
+      <td>Edmonton Oilers</td>
+      <td>1611.60</td>
+      <td>5</td>
+      <td>49.06%</td>
+      <td>50.94%</td>
+      <td>-7.28</td>
+    </tr>
+    <tr>
+      <td>2023-05-07</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1576.16</td>
+      <td>2</td>
+      <td>@ Florida Panthers</td>
+      <td>1551.56</td>
+      <td>3</td>
+      <td>50.56%</td>
+      <td>49.44%</td>
+      <td>-3.75</td>
+    </tr>
+    <tr>
+      <td>2023-05-07</td>
+      <td>Carolina Hurricanes</td>
+      <td>1613.02</td>
+      <td>4</td>
+      <td>@ New Jersey Devils</td>
+      <td>1550.51</td>
+      <td>8</td>
+      <td>55.99%</td>
+      <td>44.01%</td>
+      <td>-8.30</td>
+    </tr>
+    <tr>
+      <td>2023-05-07</td>
+      <td>Seattle Kraken</td>
+      <td>1527.76</td>
+      <td>7</td>
+      <td>Dallas Stars</td>
+      <td>1576.27</td>
+      <td>2</td>
+      <td>46.01%</td>
+      <td>53.99%</td>
+      <td>8.96</td>
+    </tr>
+    <tr>
+      <td>2023-05-07</td>
+      <td>Florida Panthers</td>
+      <td>1551.56</td>
+      <td>3</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1576.16</td>
+      <td>2</td>
+      <td>49.44%</td>
+      <td>50.56%</td>
+      <td>3.75</td>
+    </tr>
+    <tr>
+      <td>2023-05-07</td>
+      <td>New Jersey Devils</td>
+      <td>1550.51</td>
+      <td>8</td>
+      <td>Carolina Hurricanes</td>
+      <td>1613.02</td>
+      <td>4</td>
+      <td>44.01%</td>
+      <td>55.99%</td>
+      <td>8.31</td>
+    </tr>
+    <tr>
+      <td>2023-05-07</td>
+      <td>Dallas Stars</td>
+      <td>1576.27</td>
+      <td>2</td>
+      <td>@ Seattle Kraken</td>
+      <td>1527.76</td>
+      <td>7</td>
+      <td>53.99%</td>
+      <td>46.01%</td>
+      <td>-8.95</td>
+    </tr>
+    <tr>
+      <td>2023-05-08</td>
+      <td>Vegas Golden Knights</td>
+      <td>1577.05</td>
+      <td>5</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1618.88</td>
+      <td>1</td>
+      <td>41.10%</td>
+      <td>58.90%</td>
+      <td>8.74</td>
+    </tr>
+    <tr>
+      <td>2023-05-08</td>
+      <td>Edmonton Oilers</td>
+      <td>1618.88</td>
+      <td>1</td>
+      <td>Vegas Golden Knights</td>
+      <td>1577.05</td>
+      <td>5</td>
+      <td>58.90%</td>
+      <td>41.10%</td>
+      <td>-8.75</td>
+    </tr>
+    <tr>
+      <td>2023-05-09</td>
+      <td>New Jersey Devils</td>
+      <td>1558.82</td>
+      <td>1</td>
+      <td>Carolina Hurricanes</td>
+      <td>1604.72</td>
+      <td>6</td>
+      <td>46.38%</td>
+      <td>53.62%</td>
+      <td>-7.70</td>
+    </tr>
+    <tr>
+      <td>2023-05-09</td>
+      <td>Carolina Hurricanes</td>
+      <td>1604.72</td>
+      <td>6</td>
+      <td>@ New Jersey Devils</td>
+      <td>1558.82</td>
+      <td>1</td>
+      <td>53.62%</td>
+      <td>46.38%</td>
+      <td>7.69</td>
+    </tr>
+    <tr>
+      <td>2023-05-09</td>
+      <td>Seattle Kraken</td>
+      <td>1536.72</td>
+      <td>3</td>
+      <td>Dallas Stars</td>
+      <td>1567.32</td>
+      <td>6</td>
+      <td>48.58%</td>
+      <td>51.42%</td>
+      <td>-6.25</td>
+    </tr>
+    <tr>
+      <td>2023-05-09</td>
+      <td>Dallas Stars</td>
+      <td>1567.32</td>
+      <td>6</td>
+      <td>@ Seattle Kraken</td>
+      <td>1536.72</td>
+      <td>3</td>
+      <td>51.42%</td>
+      <td>48.58%</td>
+      <td>6.24</td>
+    </tr>
+    <tr>
+      <td>2023-05-10</td>
+      <td>Vegas Golden Knights</td>
+      <td>1585.79</td>
+      <td>1</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1610.13</td>
+      <td>4</td>
+      <td>43.55%</td>
+      <td>56.45%</td>
+      <td>-5.60</td>
+    </tr>
+    <tr>
+      <td>2023-05-10</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1572.41</td>
+      <td>2</td>
+      <td>@ Florida Panthers</td>
+      <td>1555.31</td>
+      <td>1</td>
+      <td>49.48%</td>
+      <td>50.52%</td>
+      <td>3.75</td>
+    </tr>
+    <tr>
+      <td>2023-05-10</td>
+      <td>Edmonton Oilers</td>
+      <td>1610.13</td>
+      <td>4</td>
+      <td>Vegas Golden Knights</td>
+      <td>1585.79</td>
+      <td>1</td>
+      <td>56.45%</td>
+      <td>43.55%</td>
+      <td>5.60</td>
+    </tr>
+    <tr>
+      <td>2023-05-10</td>
+      <td>Florida Panthers</td>
+      <td>1555.31</td>
+      <td>1</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1572.41</td>
+      <td>2</td>
+      <td>50.52%</td>
+      <td>49.48%</td>
+      <td>-3.75</td>
+    </tr>
+    <tr>
+      <td>2023-05-11</td>
+      <td>Seattle Kraken</td>
+      <td>1530.47</td>
+      <td>2</td>
+      <td>@ Dallas Stars</td>
+      <td>1573.56</td>
+      <td>5</td>
+      <td>40.92%</td>
+      <td>59.08%</td>
+      <td>-5.26</td>
+    </tr>
+    <tr>
+      <td>2023-05-11</td>
+      <td>Dallas Stars</td>
+      <td>1573.56</td>
+      <td>5</td>
+      <td>Seattle Kraken</td>
+      <td>1530.47</td>
+      <td>2</td>
+      <td>59.08%</td>
+      <td>40.92%</td>
+      <td>5.26</td>
+    </tr>
+    <tr>
+      <td>2023-05-11</td>
+      <td>Carolina Hurricanes</td>
+      <td>1612.41</td>
+      <td>3</td>
+      <td>New Jersey Devils</td>
+      <td>1551.12</td>
+      <td>2</td>
+      <td>61.59%</td>
+      <td>38.41%</td>
+      <td>2.85</td>
+    </tr>
+    <tr>
+      <td>2023-05-11</td>
+      <td>New Jersey Devils</td>
+      <td>1551.12</td>
+      <td>2</td>
+      <td>@ Carolina Hurricanes</td>
+      <td>1612.41</td>
+      <td>3</td>
+      <td>38.41%</td>
+      <td>61.59%</td>
+      <td>-2.85</td>
+    </tr>
+    <tr>
+      <td>2023-05-12</td>
+      <td>Florida Panthers</td>
+      <td>1551.56</td>
+      <td>3</td>
+      <td>@ Toronto Maple Leafs</td>
+      <td>1576.16</td>
+      <td>2</td>
+      <td>43.52%</td>
+      <td>56.48%</td>
+      <td>4.19</td>
+    </tr>
+    <tr>
+      <td>2023-05-12</td>
+      <td>Edmonton Oilers</td>
+      <td>1615.73</td>
+      <td>3</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1580.19</td>
+      <td>4</td>
+      <td>52.13%</td>
+      <td>47.87%</td>
+      <td>-3.87</td>
+    </tr>
+    <tr>
+      <td>2023-05-12</td>
+      <td>Vegas Golden Knights</td>
+      <td>1580.19</td>
+      <td>4</td>
+      <td>Edmonton Oilers</td>
+      <td>1615.73</td>
+      <td>3</td>
+      <td>47.87%</td>
+      <td>52.13%</td>
+      <td>3.87</td>
+    </tr>
+    <tr>
+      <td>2023-05-12</td>
+      <td>Toronto Maple Leafs</td>
+      <td>1576.16</td>
+      <td>2</td>
+      <td>Florida Panthers</td>
+      <td>1551.56</td>
+      <td>3</td>
+      <td>56.48%</td>
+      <td>43.52%</td>
+      <td>-4.19</td>
+    </tr>
+    <tr>
+      <td>2023-05-13</td>
+      <td>Seattle Kraken</td>
+      <td>1525.21</td>
+      <td>6</td>
+      <td>Dallas Stars</td>
+      <td>1578.82</td>
+      <td>3</td>
+      <td>45.28%</td>
+      <td>54.72%</td>
+      <td>7.04</td>
+    </tr>
+    <tr>
+      <td>2023-05-13</td>
+      <td>Dallas Stars</td>
+      <td>1578.82</td>
+      <td>3</td>
+      <td>@ Seattle Kraken</td>
+      <td>1525.21</td>
+      <td>6</td>
+      <td>54.72%</td>
+      <td>45.28%</td>
+      <td>-7.03</td>
+    </tr>
+    <tr>
+      <td>2023-05-14</td>
+      <td>Vegas Golden Knights</td>
+      <td>1584.06</td>
+      <td>5</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1611.86</td>
+      <td>2</td>
+      <td>43.06%</td>
+      <td>56.94%</td>
+      <td>7.32</td>
+    </tr>
+    <tr>
+      <td>2023-05-14</td>
+      <td>Edmonton Oilers</td>
+      <td>1611.86</td>
+      <td>2</td>
+      <td>Vegas Golden Knights</td>
+      <td>1584.06</td>
+      <td>5</td>
+      <td>56.94%</td>
+      <td>43.06%</td>
+      <td>-7.31</td>
+    </tr>
+    <tr>
+      <td>2023-05-15</td>
+      <td>Seattle Kraken</td>
+      <td>1532.25</td>
+      <td>1</td>
+      <td>@ Dallas Stars</td>
+      <td>1571.79</td>
+      <td>2</td>
+      <td>41.42%</td>
+      <td>58.58%</td>
+      <td>-3.08</td>
+    </tr>
+    <tr>
+      <td>2023-05-15</td>
+      <td>Dallas Stars</td>
+      <td>1571.79</td>
+      <td>2</td>
+      <td>Seattle Kraken</td>
+      <td>1532.25</td>
+      <td>1</td>
+      <td>58.58%</td>
+      <td>41.42%</td>
+      <td>3.07</td>
+    </tr>
+    <tr>
+      <td>2023-05-18</td>
+      <td>Florida Panthers</td>
+      <td>1555.75</td>
+      <td>3</td>
+      <td>@ Carolina Hurricanes</td>
+      <td>1615.26</td>
+      <td>2</td>
+      <td>38.66%</td>
+      <td>61.34%</td>
+      <td>4.55</td>
+    </tr>
+    <tr>
+      <td>2023-05-18</td>
+      <td>Carolina Hurricanes</td>
+      <td>1615.26</td>
+      <td>2</td>
+      <td>Florida Panthers</td>
+      <td>1555.75</td>
+      <td>3</td>
+      <td>61.34%</td>
+      <td>38.66%</td>
+      <td>-4.55</td>
+    </tr>
+    <tr>
+      <td>2023-05-19</td>
+      <td>Vegas Golden Knights</td>
+      <td>1591.38</td>
+      <td>4</td>
+      <td>Dallas Stars</td>
+      <td>1574.86</td>
+      <td>3</td>
+      <td>55.34%</td>
+      <td>44.66%</td>
+      <td>3.31</td>
+    </tr>
+    <tr>
+      <td>2023-05-19</td>
+      <td>Dallas Stars</td>
+      <td>1574.86</td>
+      <td>3</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1591.38</td>
+      <td>4</td>
+      <td>44.66%</td>
+      <td>55.34%</td>
+      <td>-3.32</td>
+    </tr>
+    <tr>
+      <td>2023-05-20</td>
+      <td>Florida Panthers</td>
+      <td>1560.30</td>
+      <td>2</td>
+      <td>@ Carolina Hurricanes</td>
+      <td>1610.71</td>
+      <td>1</td>
+      <td>39.91%</td>
+      <td>60.09%</td>
+      <td>4.46</td>
+    </tr>
+    <tr>
+      <td>2023-05-20</td>
+      <td>Carolina Hurricanes</td>
+      <td>1610.71</td>
+      <td>1</td>
+      <td>Florida Panthers</td>
+      <td>1560.30</td>
+      <td>2</td>
+      <td>60.09%</td>
+      <td>39.91%</td>
+      <td>-4.46</td>
+    </tr>
+    <tr>
+      <td>2023-05-21</td>
+      <td>Dallas Stars</td>
+      <td>1571.54</td>
+      <td>2</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1594.69</td>
+      <td>3</td>
+      <td>43.72%</td>
+      <td>56.28%</td>
+      <td>-3.24</td>
+    </tr>
+    <tr>
+      <td>2023-05-21</td>
+      <td>Vegas Golden Knights</td>
+      <td>1594.69</td>
+      <td>3</td>
+      <td>Dallas Stars</td>
+      <td>1571.54</td>
+      <td>2</td>
+      <td>56.28%</td>
+      <td>43.72%</td>
+      <td>3.25</td>
+    </tr>
+    <tr>
+      <td>2023-05-22</td>
+      <td>Carolina Hurricanes</td>
+      <td>1606.25</td>
+      <td>0</td>
+      <td>@ Florida Panthers</td>
+      <td>1564.76</td>
+      <td>1</td>
+      <td>52.99%</td>
+      <td>47.01%</td>
+      <td>-3.93</td>
+    </tr>
+    <tr>
+      <td>2023-05-22</td>
+      <td>Florida Panthers</td>
+      <td>1564.76</td>
+      <td>1</td>
+      <td>Carolina Hurricanes</td>
+      <td>1606.25</td>
+      <td>0</td>
+      <td>47.01%</td>
+      <td>52.99%</td>
+      <td>3.93</td>
+    </tr>
+    <tr>
+      <td>2023-05-23</td>
+      <td>Vegas Golden Knights</td>
+      <td>1597.94</td>
+      <td>4</td>
+      <td>@ Dallas Stars</td>
+      <td>1568.30</td>
+      <td>0</td>
+      <td>51.28%</td>
+      <td>48.72%</td>
+      <td>7.22</td>
+    </tr>
+    <tr>
+      <td>2023-05-23</td>
+      <td>Dallas Stars</td>
+      <td>1568.30</td>
+      <td>0</td>
+      <td>Vegas Golden Knights</td>
+      <td>1597.94</td>
+      <td>4</td>
+      <td>48.72%</td>
+      <td>51.28%</td>
+      <td>-7.23</td>
+    </tr>
+    <tr>
+      <td>2023-05-24</td>
+      <td>Carolina Hurricanes</td>
+      <td>1602.32</td>
+      <td>3</td>
+      <td>@ Florida Panthers</td>
+      <td>1568.69</td>
+      <td>4</td>
+      <td>51.86%</td>
+      <td>48.14%</td>
+      <td>-3.85</td>
+    </tr>
+    <tr>
+      <td>2023-05-24</td>
+      <td>Florida Panthers</td>
+      <td>1568.69</td>
+      <td>4</td>
+      <td>Carolina Hurricanes</td>
+      <td>1602.32</td>
+      <td>3</td>
+      <td>48.14%</td>
+      <td>51.86%</td>
+      <td>3.85</td>
+    </tr>
+    <tr>
+      <td>2023-05-25</td>
+      <td>Vegas Golden Knights</td>
+      <td>1605.16</td>
+      <td>2</td>
+      <td>@ Dallas Stars</td>
+      <td>1561.07</td>
+      <td>3</td>
+      <td>53.36%</td>
+      <td>46.64%</td>
+      <td>-3.95</td>
+    </tr>
+    <tr>
+      <td>2023-05-25</td>
+      <td>Dallas Stars</td>
+      <td>1561.07</td>
+      <td>3</td>
+      <td>Vegas Golden Knights</td>
+      <td>1605.16</td>
+      <td>2</td>
+      <td>46.64%</td>
+      <td>53.36%</td>
+      <td>3.96</td>
+    </tr>
+    <tr>
+      <td>2023-05-27</td>
+      <td>Dallas Stars</td>
+      <td>1565.03</td>
+      <td>4</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1601.21</td>
+      <td>2</td>
+      <td>41.89%</td>
+      <td>58.11%</td>
+      <td>6.10</td>
+    </tr>
+    <tr>
+      <td>2023-05-27</td>
+      <td>Vegas Golden Knights</td>
+      <td>1601.21</td>
+      <td>2</td>
+      <td>Dallas Stars</td>
+      <td>1565.03</td>
+      <td>4</td>
+      <td>58.11%</td>
+      <td>41.89%</td>
+      <td>-6.10</td>
+    </tr>
+    <tr>
+      <td>2023-05-29</td>
+      <td>Dallas Stars</td>
+      <td>1571.13</td>
+      <td>0</td>
+      <td>Vegas Golden Knights</td>
+      <td>1595.11</td>
+      <td>6</td>
+      <td>49.53%</td>
+      <td>50.47%</td>
+      <td>-9.00</td>
+    </tr>
+    <tr>
+      <td>2023-05-29</td>
+      <td>Vegas Golden Knights</td>
+      <td>1595.11</td>
+      <td>6</td>
+      <td>@ Dallas Stars</td>
+      <td>1571.13</td>
+      <td>0</td>
+      <td>50.47%</td>
+      <td>49.53%</td>
+      <td>9.00</td>
+    </tr>
+    <tr>
+      <td>2023-06-03</td>
+      <td>Florida Panthers</td>
+      <td>1572.54</td>
+      <td>2</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1604.11</td>
+      <td>5</td>
+      <td>42.53%</td>
+      <td>57.47%</td>
+      <td>-5.46</td>
+    </tr>
+    <tr>
+      <td>2023-06-03</td>
+      <td>Vegas Golden Knights</td>
+      <td>1604.11</td>
+      <td>5</td>
+      <td>Florida Panthers</td>
+      <td>1572.54</td>
+      <td>2</td>
+      <td>57.47%</td>
+      <td>42.53%</td>
+      <td>5.47</td>
+    </tr>
+    <tr>
+      <td>2023-06-05</td>
+      <td>Florida Panthers</td>
+      <td>1567.08</td>
+      <td>2</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1609.58</td>
+      <td>7</td>
+      <td>41.00%</td>
+      <td>59.00%</td>
+      <td>-6.81</td>
+    </tr>
+    <tr>
+      <td>2023-06-05</td>
+      <td>Vegas Golden Knights</td>
+      <td>1609.58</td>
+      <td>7</td>
+      <td>Florida Panthers</td>
+      <td>1567.08</td>
+      <td>2</td>
+      <td>59.00%</td>
+      <td>41.00%</td>
+      <td>6.80</td>
+    </tr>
+    <tr>
+      <td>2023-06-08</td>
+      <td>Vegas Golden Knights</td>
+      <td>1616.38</td>
+      <td>2</td>
+      <td>@ Florida Panthers</td>
+      <td>1560.27</td>
+      <td>3</td>
+      <td>55.08%</td>
+      <td>44.92%</td>
+      <td>-4.09</td>
+    </tr>
+    <tr>
+      <td>2023-06-08</td>
+      <td>Florida Panthers</td>
+      <td>1560.27</td>
+      <td>3</td>
+      <td>Vegas Golden Knights</td>
+      <td>1616.38</td>
+      <td>2</td>
+      <td>44.92%</td>
+      <td>55.08%</td>
+      <td>4.09</td>
+    </tr>
+    <tr>
+      <td>2023-06-10</td>
+      <td>Vegas Golden Knights</td>
+      <td>1612.29</td>
+      <td>3</td>
+      <td>@ Florida Panthers</td>
+      <td>1564.36</td>
+      <td>2</td>
+      <td>53.91%</td>
+      <td>46.09%</td>
+      <td>3.42</td>
+    </tr>
+    <tr>
+      <td>2023-06-10</td>
+      <td>Florida Panthers</td>
+      <td>1564.36</td>
+      <td>2</td>
+      <td>Vegas Golden Knights</td>
+      <td>1612.29</td>
+      <td>3</td>
+      <td>46.09%</td>
+      <td>53.91%</td>
+      <td>-3.42</td>
+    </tr>
+    <tr>
+      <td>2023-06-13</td>
+      <td>Vegas Golden Knights</td>
+      <td>1615.71</td>
+      <td>9</td>
+      <td>Florida Panthers</td>
+      <td>1560.94</td>
+      <td>3</td>
+      <td>60.70%</td>
+      <td>39.30%</td>
+      <td>7.15</td>
+    </tr>
+    <tr>
+      <td>2023-06-13</td>
+      <td>Florida Panthers</td>
+      <td>1560.94</td>
+      <td>3</td>
+      <td>@ Vegas Golden Knights</td>
+      <td>1615.71</td>
+      <td>9</td>
+      <td>39.30%</td>
+      <td>60.70%</td>
+      <td>-7.14</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
