@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th colspan="3" halign="left"></th>
+      <th colspan="4" halign="left">Winning Team</th>
+      <th colspan="4" halign="left">Losing Team</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <th>Date</th>
+      <th>Elo Change</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Tie Pct.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2024-11-30</td>
+      <td>11.15</td>
+      <td>Utah Hockey Club</td>
+      <td>1459.81</td>
+      <td>6</td>
+      <td>24.34%</td>
+      <td>Vegas Golden Knights (H)</td>
+      <td>1542.26</td>
+      <td>0</td>
+      <td>56.56%</td>
+      <td>19.10%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2025-04-12</td>
+      <td>10.64</td>
+      <td>Columbus Blue Jackets (H)</td>
+      <td>1454.66</td>
+      <td>7</td>
+      <td>31.05%</td>
+      <td>Washington Capitals</td>
+      <td>1563.48</td>
+      <td>0</td>
+      <td>49.21%</td>
+      <td>19.73%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2024-10-30</td>
+      <td>10.15</td>
+      <td>New Jersey Devils</td>
+      <td>1496.27</td>
+      <td>6</td>
+      <td>29.52%</td>
+      <td>Vancouver Canucks (H)</td>
+      <td>1532.60</td>
+      <td>0</td>
+      <td>50.85%</td>
+      <td>19.63%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2024-11-07</td>
+      <td>10.14</td>
+      <td>Buffalo Sabres</td>
+      <td>1491.98</td>
+      <td>6</td>
+      <td>24.52%</td>
+      <td>New York Rangers (H)</td>
+      <td>1572.65</td>
+      <td>1</td>
+      <td>56.35%</td>
+      <td>19.13%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2025-03-04</td>
+      <td>10.00</td>
+      <td>Anaheim Ducks</td>
+      <td>1427.39</td>
+      <td>6</td>
+      <td>19.15%</td>
+      <td>Edmonton Oilers (H)</td>
+      <td>1564.88</td>
+      <td>2</td>
+      <td>62.65%</td>
+      <td>18.20%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2024-10-09</td>
+      <td>9.98</td>
+      <td>Winnipeg Jets</td>
+      <td>1530.91</td>
+      <td>6</td>
+      <td>30.43%</td>
+      <td>Edmonton Oilers (H)</td>
+      <td>1559.73</td>
+      <td>0</td>
+      <td>49.87%</td>
+      <td>19.69%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2025-04-08</td>
+      <td>9.92</td>
+      <td>Boston Bruins</td>
+      <td>1453.22</td>
+      <td>7</td>
+      <td>25.80%</td>
+      <td>New Jersey Devils (H)</td>
+      <td>1521.99</td>
+      <td>2</td>
+      <td>54.92%</td>
+      <td>19.28%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2024-12-28</td>
+      <td>9.86</td>
+      <td>Montreal Canadiens</td>
+      <td>1440.05</td>
+      <td>4</td>
+      <td>19.94%</td>
+      <td>Florida Panthers (H)</td>
+      <td>1568.38</td>
+      <td>0</td>
+      <td>61.69%</td>
+      <td>18.37%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2024-12-23</td>
+      <td>9.86</td>
+      <td>Buffalo Sabres</td>
+      <td>1451.18</td>
+      <td>7</td>
+      <td>31.03%</td>
+      <td>New York Islanders (H)</td>
+      <td>1475.16</td>
+      <td>1</td>
+      <td>49.23%</td>
+      <td>19.73%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2025-03-04</td>
+      <td>9.74</td>
+      <td>San Jose Sharks</td>
+      <td>1347.99</td>
+      <td>6</td>
+      <td>20.63%</td>
+      <td>Buffalo Sabres (H)</td>
+      <td>1468.57</td>
+      <td>2</td>
+      <td>60.86%</td>
+      <td>18.51%</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2025-04-10</td>
+      <td>9.68</td>
+      <td>New York Rangers</td>
+      <td>1492.08</td>
+      <td>9</td>
+      <td>36.02%</td>
+      <td>New York Islanders (H)</td>
+      <td>1477.94</td>
+      <td>2</td>
+      <td>44.04%</td>
+      <td>19.94%</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>2024-11-25</td>
+      <td>9.66</td>
+      <td>San Jose Sharks (H)</td>
+      <td>1381.83</td>
+      <td>7</td>
+      <td>27.21%</td>
+      <td>Los Angeles Kings</td>
+      <td>1522.91</td>
+      <td>2</td>
+      <td>53.36%</td>
+      <td>19.43%</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2024-11-09</td>
+      <td>9.56</td>
+      <td>Washington Capitals</td>
+      <td>1502.06</td>
+      <td>8</td>
+      <td>36.71%</td>
+      <td>St. Louis Blues (H)</td>
+      <td>1482.90</td>
+      <td>1</td>
+      <td>43.33%</td>
+      <td>19.96%</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2025-01-09</td>
+      <td>9.46</td>
+      <td>New York Islanders</td>
+      <td>1464.36</td>
+      <td>4</td>
+      <td>22.27%</td>
+      <td>Vegas Golden Knights (H)</td>
+      <td>1567.45</td>
+      <td>0</td>
+      <td>58.93%</td>
+      <td>18.80%</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2025-04-17</td>
+      <td>9.27</td>
+      <td>Calgary Flames</td>
+      <td>1483.21</td>
+      <td>5</td>
+      <td>23.38%</td>
+      <td>Los Angeles Kings (H)</td>
+      <td>1575.07</td>
+      <td>1</td>
+      <td>57.65%</td>
+      <td>18.97%</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>2025-03-08</td>
+      <td>9.22</td>
+      <td>Boston Bruins</td>
+      <td>1483.96</td>
+      <td>4</td>
+      <td>23.65%</td>
+      <td>Tampa Bay Lightning (H)</td>
+      <td>1573.11</td>
+      <td>0</td>
+      <td>57.34%</td>
+      <td>19.01%</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>2024-12-12</td>
+      <td>9.21</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1469.29</td>
+      <td>9</td>
+      <td>38.60%</td>
+      <td>Montreal Canadiens (H)</td>
+      <td>1436.60</td>
+      <td>2</td>
+      <td>41.41%</td>
+      <td>19.98%</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>2025-04-02</td>
+      <td>9.17</td>
+      <td>Seattle Kraken</td>
+      <td>1459.55</td>
+      <td>5</td>
+      <td>30.05%</td>
+      <td>Vancouver Canucks (H)</td>
+      <td>1491.46</td>
+      <td>0</td>
+      <td>50.28%</td>
+      <td>19.67%</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>2025-01-20</td>
+      <td>9.17</td>
+      <td>Pittsburgh Penguins</td>
+      <td>1463.71</td>
+      <td>5</td>
+      <td>23.96%</td>
+      <td>Los Angeles Kings (H)</td>
+      <td>1549.84</td>
+      <td>1</td>
+      <td>56.99%</td>
+      <td>19.05%</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>2025-01-22</td>
+      <td>9.10</td>
+      <td>Columbus Blue Jackets</td>
+      <td>1459.01</td>
+      <td>5</td>
+      <td>24.35%</td>
+      <td>Toronto Maple Leafs (H)</td>
+      <td>1541.38</td>
+      <td>1</td>
+      <td>56.55%</td>
+      <td>19.10%</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>2024-11-18</td>
+      <td>9.01</td>
+      <td>Columbus Blue Jackets</td>
+      <td>1436.83</td>
+      <td>5</td>
+      <td>24.93%</td>
+      <td>Boston Bruins (H)</td>
+      <td>1513.61</td>
+      <td>1</td>
+      <td>55.89%</td>
+      <td>19.18%</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>2024-12-12</td>
+      <td>9.01</td>
+      <td>Edmonton Oilers</td>
+      <td>1555.07</td>
+      <td>7</td>
+      <td>35.80%</td>
+      <td>Minnesota Wild (H)</td>
+      <td>1542.57</td>
+      <td>1</td>
+      <td>44.27%</td>
+      <td>19.94%</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>2024-11-27</td>
+      <td>9.00</td>
+      <td>Chicago Blackhawks (H)</td>
+      <td>1405.07</td>
+      <td>6</td>
+      <td>24.93%</td>
+      <td>Dallas Stars</td>
+      <td>1566.94</td>
+      <td>2</td>
+      <td>55.90%</td>
+      <td>19.18%</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>2025-04-16</td>
+      <td>8.88</td>
+      <td>Nashville Predators (H)</td>
+      <td>1423.84</td>
+      <td>5</td>
+      <td>25.73%</td>
+      <td>Dallas Stars</td>
+      <td>1578.26</td>
+      <td>1</td>
+      <td>55.00%</td>
+      <td>19.28%</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>2025-01-28</td>
+      <td>8.87</td>
+      <td>Chicago Blackhawks</td>
+      <td>1385.86</td>
+      <td>4</td>
+      <td>17.79%</td>
+      <td>Tampa Bay Lightning (H)</td>
+      <td>1539.99</td>
+      <td>1</td>
+      <td>64.34%</td>
+      <td>17.87%</td>
+    </tr>
+  </tbody>
+</table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+        });
+    </script>
+</body>
+</html>
