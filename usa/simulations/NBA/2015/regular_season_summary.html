@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .filter-controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .filter-controls select {
+            margin: 0 10px;
+            padding: 4px;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- Use CDN version of Tablesort for local compatibility -->
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls" id="filterControls" style="display: none;">
+        <label for="regionFilter" id="regionLabel">Filter by Division or Conference:
+            <select id="regionFilter">
+                <option value="">All</option>
+            </select>
+        </label>
+    </div>
+
+    <table class="dataframe sortable">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Team</th>
+      <th>Conference</th>
+      <th>Division</th>
+      <th>Elo</th>
+      <th>Actual</th>
+      <th>Avg. Wins</th>
+      <th>Luck</th>
+      <th>Percentile</th>
+      <th>Min</th>
+      <th>Q1</th>
+      <th>Median</th>
+      <th>Q3</th>
+      <th>Max</th>
+      <th>Playoffs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Golden State Warriors</td>
+      <td>Western</td>
+      <td>Pacific</td>
+      <td>1793</td>
+      <td>73</td>
+      <td>64.77</td>
+      <td>8.23</td>
+      <td>99.52%</td>
+      <td>49</td>
+      <td>61.92</td>
+      <td>64.35</td>
+      <td>66.72</td>
+      <td>78</td>
+      <td>100.00%</td>
+    </tr>
+    <tr>
+      <td>San Antonio Spurs</td>
+      <td>Western</td>
+      <td>Southwest</td>
+      <td>1749</td>
+      <td>67</td>
+      <td>61.17</td>
+      <td>5.83</td>
+      <td>95.70%</td>
+      <td>44</td>
+      <td>58.16</td>
+      <td>60.73</td>
+      <td>63.28</td>
+      <td>77</td>
+      <td>100.00%</td>
+    </tr>
+    <tr>
+      <td>Oklahoma City Thunder</td>
+      <td>Western</td>
+      <td>Northwest</td>
+      <td>1658</td>
+      <td>55</td>
+      <td>52.25</td>
+      <td>2.75</td>
+      <td>78.42%</td>
+      <td>35</td>
+      <td>49.01</td>
+      <td>51.79</td>
+      <td>54.57</td>
+      <td>69</td>
+      <td>99.60%</td>
+    </tr>
+    <tr>
+      <td>Cleveland Cavaliers</td>
+      <td>Eastern</td>
+      <td>Central</td>
+      <td>1646</td>
+      <td>57</td>
+      <td>56.03</td>
+      <td>0.97</td>
+      <td>63.99%</td>
+      <td>39</td>
+      <td>52.83</td>
+      <td>55.58</td>
+      <td>58.28</td>
+      <td>73</td>
+      <td>99.98%</td>
+    </tr>
+    <tr>
+      <td>Los Angeles Clippers</td>
+      <td>Western</td>
+      <td>Pacific</td>
+      <td>1628</td>
+      <td>53</td>
+      <td>52.30</td>
+      <td>0.70</td>
+      <td>61.15%</td>
+      <td>32</td>
+      <td>49.04</td>
+      <td>51.82</td>
+      <td>54.61</td>
+      <td>71</td>
+      <td>99.62%</td>
+    </tr>
+    <tr>
+      <td>Toronto Raptors</td>
+      <td>Eastern</td>
+      <td>Atlantic</td>
+      <td>1618</td>
+      <td>56</td>
+      <td>49.64</td>
+      <td>6.36</td>
+      <td>95.07%</td>
+      <td>31</td>
+      <td>46.29</td>
+      <td>49.19</td>
+      <td>52.01</td>
+      <td>67</td>
+      <td>98.31%</td>
+    </tr>
+    <tr>
+      <td>Atlanta Hawks</td>
+      <td>Eastern</td>
+      <td>Southeast</td>
+      <td>1596</td>
+      <td>48</td>
+      <td>48.23</td>
+      <td>-0.23</td>
+      <td>52.31%</td>
+      <td>30</td>
+      <td>44.88</td>
+      <td>47.75</td>
+      <td>50.62</td>
+      <td>66</td>
+      <td>96.35%</td>
+    </tr>
+    <tr>
+      <td>Portland Trail Blazers</td>
+      <td>Western</td>
+      <td>Northwest</td>
+      <td>1568</td>
+      <td>44</td>
+      <td>43.14</td>
+      <td>0.86</td>
+      <td>62.35%</td>
+      <td>22</td>
+      <td>39.73</td>
+      <td>42.64</td>
+      <td>45.55</td>
+      <td>62</td>
+      <td>73.96%</td>
+    </tr>
+    <tr>
+      <td>Boston Celtics</td>
+      <td>Eastern</td>
+      <td>Atlantic</td>
+      <td>1563</td>
+      <td>48</td>
+      <td>45.63</td>
+      <td>2.37</td>
+      <td>74.72%</td>
+      <td>25</td>
+      <td>42.23</td>
+      <td>45.15</td>
+      <td>48.04</td>
+      <td>64</td>
+      <td>89.01%</td>
+    </tr>
+    <tr>
+      <td>Miami Heat</td>
+      <td>Eastern</td>
+      <td>Southeast</td>
+      <td>1556</td>
+      <td>48</td>
+      <td>42.77</td>
+      <td>5.23</td>
+      <td>91.07%</td>
+      <td>23</td>
+      <td>39.37</td>
+      <td>42.28</td>
+      <td>45.18</td>
+      <td>62</td>
+      <td>72.05%</td>
+    </tr>
+    <tr>
+      <td>Charlotte Hornets</td>
+      <td>Eastern</td>
+      <td>Southeast</td>
+      <td>1551</td>
+      <td>48</td>
+      <td>41.16</td>
+      <td>6.84</td>
+      <td>95.78%</td>
+      <td>24</td>
+      <td>37.77</td>
+      <td>40.66</td>
+      <td>43.55</td>
+      <td>60</td>
+      <td>57.87%</td>
+    </tr>
+    <tr>
+      <td>Houston Rockets</td>
+      <td>Western</td>
+      <td>Southwest</td>
+      <td>1537</td>
+      <td>41</td>
+      <td>43.32</td>
+      <td>-2.32</td>
+      <td>33.34%</td>
+      <td>25</td>
+      <td>39.96</td>
+      <td>42.82</td>
+      <td>45.69</td>
+      <td>61</td>
+      <td>75.43%</td>
+    </tr>
+    <tr>
+      <td>Indiana Pacers</td>
+      <td>Eastern</td>
+      <td>Central</td>
+      <td>1531</td>
+      <td>45</td>
+      <td>44.64</td>
+      <td>0.36</td>
+      <td>57.84%</td>
+      <td>25</td>
+      <td>41.24</td>
+      <td>44.15</td>
+      <td>47.05</td>
+      <td>61</td>
+      <td>84.43%</td>
+    </tr>
+    <tr>
+      <td>Utah Jazz</td>
+      <td>Western</td>
+      <td>Northwest</td>
+      <td>1527</td>
+      <td>40</td>
+      <td>42.33</td>
+      <td>-2.33</td>
+      <td>33.50%</td>
+      <td>21</td>
+      <td>38.93</td>
+      <td>41.83</td>
+      <td>44.72</td>
+      <td>61</td>
+      <td>67.05%</td>
+    </tr>
+    <tr>
+      <td>Dallas Mavericks</td>
+      <td>Western</td>
+      <td>Southwest</td>
+      <td>1521</td>
+      <td>42</td>
+      <td>42.90</td>
+      <td>-0.90</td>
+      <td>46.19%</td>
+      <td>23</td>
+      <td>39.51</td>
+      <td>42.41</td>
+      <td>45.28</td>
+      <td>62</td>
+      <td>72.17%</td>
+    </tr>
+    <tr>
+      <td>Washington Wizards</td>
+      <td>Eastern</td>
+      <td>Southeast</td>
+      <td>1517</td>
+      <td>41</td>
+      <td>41.27</td>
+      <td>-0.27</td>
+      <td>52.31%</td>
+      <td>21</td>
+      <td>37.87</td>
+      <td>40.75</td>
+      <td>43.69</td>
+      <td>60</td>
+      <td>58.80%</td>
+    </tr>
+    <tr>
+      <td>Detroit Pistons</td>
+      <td>Eastern</td>
+      <td>Central</td>
+      <td>1503</td>
+      <td>44</td>
+      <td>40.15</td>
+      <td>3.85</td>
+      <td>84.38%</td>
+      <td>20</td>
+      <td>36.72</td>
+      <td>39.65</td>
+      <td>42.56</td>
+      <td>61</td>
+      <td>48.17%</td>
+    </tr>
+    <tr>
+      <td>Memphis Grizzlies</td>
+      <td>Western</td>
+      <td>Southwest</td>
+      <td>1480</td>
+      <td>42</td>
+      <td>44.71</td>
+      <td>-2.71</td>
+      <td>30.05%</td>
+      <td>27</td>
+      <td>41.34</td>
+      <td>44.22</td>
+      <td>47.11</td>
+      <td>63</td>
+      <td>84.30%</td>
+    </tr>
+    <tr>
+      <td>Chicago Bulls</td>
+      <td>Eastern</td>
+      <td>Central</td>
+      <td>1470</td>
+      <td>42</td>
+      <td>44.06</td>
+      <td>-2.06</td>
+      <td>35.60%</td>
+      <td>26</td>
+      <td>40.69</td>
+      <td>43.58</td>
+      <td>46.46</td>
+      <td>64</td>
+      <td>81.33%</td>
+    </tr>
+    <tr>
+      <td>Orlando Magic</td>
+      <td>Eastern</td>
+      <td>Southeast</td>
+      <td>1425</td>
+      <td>35</td>
+      <td>32.98</td>
+      <td>2.02</td>
+      <td>72.69%</td>
+      <td>16</td>
+      <td>29.62</td>
+      <td>32.45</td>
+      <td>35.32</td>
+      <td>51</td>
+      <td>4.58%</td>
+    </tr>
+    <tr>
+      <td>Denver Nuggets</td>
+      <td>Western</td>
+      <td>Northwest</td>
+      <td>1422</td>
+      <td>33</td>
+      <td>33.13</td>
+      <td>-0.13</td>
+      <td>53.69%</td>
+      <td>17</td>
+      <td>29.76</td>
+      <td>32.61</td>
+      <td>35.47</td>
+      <td>53</td>
+      <td>4.41%</td>
+    </tr>
+    <tr>
+      <td>Sacramento Kings</td>
+      <td>Western</td>
+      <td>Pacific</td>
+      <td>1420</td>
+      <td>33</td>
+      <td>33.67</td>
+      <td>-0.67</td>
+      <td>48.78%</td>
+      <td>16</td>
+      <td>30.29</td>
+      <td>33.13</td>
+      <td>35.98</td>
+      <td>50</td>
+      <td>5.72%</td>
+    </tr>
+    <tr>
+      <td>Milwaukee Bucks</td>
+      <td>Eastern</td>
+      <td>Central</td>
+      <td>1403</td>
+      <td>33</td>
+      <td>34.02</td>
+      <td>-1.02</td>
+      <td>45.40%</td>
+      <td>16</td>
+      <td>30.64</td>
+      <td>33.49</td>
+      <td>36.38</td>
+      <td>53</td>
+      <td>7.35%</td>
+    </tr>
+    <tr>
+      <td>New Orleans Pelicans</td>
+      <td>Western</td>
+      <td>Southwest</td>
+      <td>1403</td>
+      <td>30</td>
+      <td>36.22</td>
+      <td>-6.22</td>
+      <td>8.85%</td>
+      <td>15</td>
+      <td>32.83</td>
+      <td>35.69</td>
+      <td>38.59</td>
+      <td>56</td>
+      <td>15.56%</td>
+    </tr>
+    <tr>
+      <td>New York Knicks</td>
+      <td>Eastern</td>
+      <td>Atlantic</td>
+      <td>1383</td>
+      <td>32</td>
+      <td>30.33</td>
+      <td>1.67</td>
+      <td>70.00%</td>
+      <td>13</td>
+      <td>27.00</td>
+      <td>29.79</td>
+      <td>32.65</td>
+      <td>50</td>
+      <td>1.21%</td>
+    </tr>
+    <tr>
+      <td>Minnesota Timberwolves</td>
+      <td>Western</td>
+      <td>Northwest</td>
+      <td>1375</td>
+      <td>29</td>
+      <td>26.73</td>
+      <td>2.27</td>
+      <td>75.62%</td>
+      <td>10</td>
+      <td>23.46</td>
+      <td>26.20</td>
+      <td>28.93</td>
+      <td>44</td>
+      <td>0.11%</td>
+    </tr>
+    <tr>
+      <td>Phoenix Suns</td>
+      <td>Western</td>
+      <td>Pacific</td>
+      <td>1349</td>
+      <td>23</td>
+      <td>31.72</td>
+      <td>-8.72</td>
+      <td>2.12%</td>
+      <td>15</td>
+      <td>28.40</td>
+      <td>31.21</td>
+      <td>33.97</td>
+      <td>51</td>
+      <td>2.06%</td>
+    </tr>
+    <tr>
+      <td>Brooklyn Nets</td>
+      <td>Eastern</td>
+      <td>Atlantic</td>
+      <td>1307</td>
+      <td>21</td>
+      <td>29.28</td>
+      <td>-8.28</td>
+      <td>2.80%</td>
+      <td>11</td>
+      <td>25.96</td>
+      <td>28.75</td>
+      <td>31.58</td>
+      <td>46</td>
+      <td>0.56%</td>
+    </tr>
+    <tr>
+      <td>Los Angeles Lakers</td>
+      <td>Western</td>
+      <td>Pacific</td>
+      <td>1277</td>
+      <td>17</td>
+      <td>22.01</td>
+      <td>-5.01</td>
+      <td>11.75%</td>
+      <td>6</td>
+      <td>18.90</td>
+      <td>21.44</td>
+      <td>24.05</td>
+      <td>39</td>
+      <td>0.00%</td>
+    </tr>
+    <tr>
+      <td>Philadelphia 76ers</td>
+      <td>Eastern</td>
+      <td>Atlantic</td>
+      <td>1224</td>
+      <td>10</td>
+      <td>19.42</td>
+      <td>-9.42</td>
+      <td>0.57%</td>
+      <td>5</td>
+      <td>16.35</td>
+      <td>18.82</td>
+      <td>21.39</td>
+      <td>36</td>
+      <td>0.00%</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const table = document.querySelector('table.sortable');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+
+            const divColIndex = headers.indexOf("Division");
+            const confColIndex = headers.indexOf("Conference");
+
+            const regionFilter = document.getElementById("regionFilter");
+            const regionLabel = document.getElementById("regionLabel");
+            const filterControls = document.getElementById("filterControls");
+
+            const divisionSet = new Set();
+            const conferenceSet = new Set();
+
+            rows.forEach(row => {
+                if (divColIndex !== -1) {
+                    const divVal = row.cells[divColIndex].textContent.trim();
+                    if (divVal) divisionSet.add(divVal);
+                }
+                if (confColIndex !== -1) {
+                    const confVal = row.cells[confColIndex].textContent.trim();
+                    if (confVal) conferenceSet.add(confVal);
+                }
+            });
+
+            const sortedDivisions = Array.from(divisionSet).sort();
+            const sortedConfs = Array.from(conferenceSet).sort();
+
+            sortedDivisions.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                regionFilter.appendChild(opt);
+            });
+
+            sortedConfs.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                regionFilter.appendChild(opt);
+            });
+
+            if (sortedDivisions.length > 0 || sortedConfs.length > 0) {
+                regionLabel.style.display = "inline-block";
+                filterControls.style.display = "block";
+            }
+
+            regionFilter.addEventListener("change", function () {
+                const selected = regionFilter.value;
+
+                rows.forEach(row => {
+                    const divVal = divColIndex !== -1 ? row.cells[divColIndex].textContent.trim() : "";
+                    const confVal = confColIndex !== -1 ? row.cells[confColIndex].textContent.trim() : "";
+
+                    const matches = !selected || divVal === selected || confVal === selected;
+                    row.style.display = matches ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

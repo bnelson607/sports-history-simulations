@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Atlanta Hawks">Atlanta Hawks</option><option value="Boston Celtics">Boston Celtics</option><option value="Brooklyn Nets">Brooklyn Nets</option><option value="Chicago Bulls">Chicago Bulls</option><option value="Cleveland Cavaliers">Cleveland Cavaliers</option><option value="Denver Nuggets">Denver Nuggets</option><option value="Golden State Warriors">Golden State Warriors</option><option value="Los Angeles Clippers">Los Angeles Clippers</option><option value="Los Angeles Lakers">Los Angeles Lakers</option><option value="Memphis Grizzlies">Memphis Grizzlies</option><option value="Miami Heat">Miami Heat</option><option value="Milwaukee Bucks">Milwaukee Bucks</option><option value="Minnesota Timberwolves">Minnesota Timberwolves</option><option value="New Orleans Pelicans">New Orleans Pelicans</option><option value="New York Knicks">New York Knicks</option><option value="Oklahoma City Thunder">Oklahoma City Thunder</option><option value="Philadelphia 76ers">Philadelphia 76ers</option><option value="Phoenix Suns">Phoenix Suns</option><option value="Sacramento Kings">Sacramento Kings</option><option value="Toronto Raptors">Toronto Raptors</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2023-04-11</td>
+      <td>Miami Heat</td>
+      <td>1535.29</td>
+      <td>105</td>
+      <td>Atlanta Hawks</td>
+      <td>1508.53</td>
+      <td>116</td>
+      <td>61.75%</td>
+      <td>38.25%</td>
+      <td>-7.13</td>
+    </tr>
+    <tr>
+      <td>2023-04-11</td>
+      <td>Atlanta Hawks</td>
+      <td>1508.53</td>
+      <td>116</td>
+      <td>@ Miami Heat</td>
+      <td>1535.29</td>
+      <td>105</td>
+      <td>38.25%</td>
+      <td>61.75%</td>
+      <td>7.13</td>
+    </tr>
+    <tr>
+      <td>2023-04-11</td>
+      <td>Minnesota Timberwolves</td>
+      <td>1519.23</td>
+      <td>102</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1525.95</td>
+      <td>108</td>
+      <td>41.01%</td>
+      <td>58.99%</td>
+      <td>-2.47</td>
+    </tr>
+    <tr>
+      <td>2023-04-11</td>
+      <td>Los Angeles Lakers</td>
+      <td>1525.95</td>
+      <td>108</td>
+      <td>Minnesota Timberwolves</td>
+      <td>1519.23</td>
+      <td>102</td>
+      <td>58.99%</td>
+      <td>41.01%</td>
+      <td>2.47</td>
+    </tr>
+    <tr>
+      <td>2023-04-12</td>
+      <td>New Orleans Pelicans</td>
+      <td>1517.75</td>
+      <td>118</td>
+      <td>Oklahoma City Thunder</td>
+      <td>1484.87</td>
+      <td>123</td>
+      <td>62.58%</td>
+      <td>37.42%</td>
+      <td>-4.87</td>
+    </tr>
+    <tr>
+      <td>2023-04-12</td>
+      <td>Toronto Raptors</td>
+      <td>1537.31</td>
+      <td>105</td>
+      <td>Chicago Bulls</td>
+      <td>1514.15</td>
+      <td>109</td>
+      <td>61.26%</td>
+      <td>38.74%</td>
+      <td>-4.26</td>
+    </tr>
+    <tr>
+      <td>2023-04-12</td>
+      <td>Chicago Bulls</td>
+      <td>1514.15</td>
+      <td>109</td>
+      <td>@ Toronto Raptors</td>
+      <td>1537.31</td>
+      <td>105</td>
+      <td>38.74%</td>
+      <td>61.26%</td>
+      <td>4.27</td>
+    </tr>
+    <tr>
+      <td>2023-04-12</td>
+      <td>Oklahoma City Thunder</td>
+      <td>1484.87</td>
+      <td>123</td>
+      <td>@ New Orleans Pelicans</td>
+      <td>1517.75</td>
+      <td>118</td>
+      <td>37.42%</td>
+      <td>62.58%</td>
+      <td>4.87</td>
+    </tr>
+    <tr>
+      <td>2023-04-14</td>
+      <td>Oklahoma City Thunder</td>
+      <td>1489.74</td>
+      <td>95</td>
+      <td>@ Minnesota Timberwolves</td>
+      <td>1516.76</td>
+      <td>120</td>
+      <td>38.22%</td>
+      <td>61.78%</td>
+      <td>-6.65</td>
+    </tr>
+    <tr>
+      <td>2023-04-14</td>
+      <td>Chicago Bulls</td>
+      <td>1518.42</td>
+      <td>91</td>
+      <td>@ Miami Heat</td>
+      <td>1528.16</td>
+      <td>102</td>
+      <td>40.59%</td>
+      <td>59.41%</td>
+      <td>-4.69</td>
+    </tr>
+    <tr>
+      <td>2023-04-14</td>
+      <td>Minnesota Timberwolves</td>
+      <td>1516.76</td>
+      <td>120</td>
+      <td>Oklahoma City Thunder</td>
+      <td>1489.74</td>
+      <td>95</td>
+      <td>61.78%</td>
+      <td>38.22%</td>
+      <td>6.65</td>
+    </tr>
+    <tr>
+      <td>2023-04-14</td>
+      <td>Miami Heat</td>
+      <td>1528.16</td>
+      <td>102</td>
+      <td>Chicago Bulls</td>
+      <td>1518.42</td>
+      <td>91</td>
+      <td>59.41%</td>
+      <td>40.59%</td>
+      <td>4.69</td>
+    </tr>
+    <tr>
+      <td>2023-04-15</td>
+      <td>Golden State Warriors</td>
+      <td>1567.85</td>
+      <td>123</td>
+      <td>@ Sacramento Kings</td>
+      <td>1526.09</td>
+      <td>126</td>
+      <td>47.89%</td>
+      <td>52.11%</td>
+      <td>-2.88</td>
+    </tr>
+    <tr>
+      <td>2023-04-15</td>
+      <td>Brooklyn Nets</td>
+      <td>1517.60</td>
+      <td>101</td>
+      <td>@ Philadelphia 76ers</td>
+      <td>1609.18</td>
+      <td>121</td>
+      <td>29.90%</td>
+      <td>70.10%</td>
+      <td>-4.65</td>
+    </tr>
+    <tr>
+      <td>2023-04-15</td>
+      <td>Sacramento Kings</td>
+      <td>1526.09</td>
+      <td>126</td>
+      <td>Golden State Warriors</td>
+      <td>1567.85</td>
+      <td>123</td>
+      <td>52.11%</td>
+      <td>47.89%</td>
+      <td>2.88</td>
+    </tr>
+    <tr>
+      <td>2023-04-15</td>
+      <td>Philadelphia 76ers</td>
+      <td>1609.18</td>
+      <td>121</td>
+      <td>Brooklyn Nets</td>
+      <td>1517.60</td>
+      <td>101</td>
+      <td>70.10%</td>
+      <td>29.90%</td>
+      <td>4.66</td>
+    </tr>
+    <tr>
+      <td>2023-04-15</td>
+      <td>Boston Celtics</td>
+      <td>1653.03</td>
+      <td>112</td>
+      <td>Atlanta Hawks</td>
+      <td>1515.66</td>
+      <td>99</td>
+      <td>75.32%</td>
+      <td>24.68%</td>
+      <td>3.09</td>
+    </tr>
+    <tr>
+      <td>2023-04-15</td>
+      <td>New York Knicks</td>
+      <td>1559.82</td>
+      <td>101</td>
+      <td>@ Cleveland Cavaliers</td>
+      <td>1577.65</td>
+      <td>97</td>
+      <td>39.47%</td>
+      <td>60.53%</td>
+      <td>4.22</td>
+    </tr>
+    <tr>
+      <td>2023-04-15</td>
+      <td>Cleveland Cavaliers</td>
+      <td>1577.65</td>
+      <td>97</td>
+      <td>New York Knicks</td>
+      <td>1559.82</td>
+      <td>101</td>
+      <td>60.53%</td>
+      <td>39.47%</td>
+      <td>-4.21</td>
+    </tr>
+    <tr>
+      <td>2023-04-15</td>
+      <td>Atlanta Hawks</td>
+      <td>1515.66</td>
+      <td>99</td>
+      <td>@ Boston Celtics</td>
+      <td>1653.03</td>
+      <td>112</td>
+      <td>24.68%</td>
+      <td>75.32%</td>
+      <td>-3.10</td>
+    </tr>
+    <tr>
+      <td>2023-04-16</td>
+      <td>Memphis Grizzlies</td>
+      <td>1589.58</td>
+      <td>112</td>
+      <td>Los Angeles Lakers</td>
+      <td>1528.42</td>
+      <td>128</td>
+      <td>66.30%</td>
+      <td>33.70%</td>
+      <td>-9.23</td>
+    </tr>
+    <tr>
+      <td>2023-04-16</td>
+      <td>Los Angeles Clippers</td>
+      <td>1532.45</td>
+      <td>115</td>
+      <td>@ Phoenix Suns</td>
+      <td>1564.17</td>
+      <td>110</td>
+      <td>37.58%</td>
+      <td>62.42%</td>
+      <td>4.86</td>
+    </tr>
+    <tr>
+      <td>2023-04-16</td>
+      <td>Miami Heat</td>
+      <td>1532.85</td>
+      <td>130</td>
+      <td>@ Milwaukee Bucks</td>
+      <td>1609.22</td>
+      <td>117</td>
+      <td>31.77%</td>
+      <td>68.23%</td>
+      <td>8.56</td>
+    </tr>
+    <tr>
+      <td>2023-04-16</td>
+      <td>Los Angeles Lakers</td>
+      <td>1528.42</td>
+      <td>128</td>
+      <td>@ Memphis Grizzlies</td>
+      <td>1589.58</td>
+      <td>112</td>
+      <td>33.70%</td>
+      <td>66.30%</td>
+      <td>9.23</td>
+    </tr>
+    <tr>
+      <td>2023-04-16</td>
+      <td>Denver Nuggets</td>
+      <td>1570.11</td>
+      <td>109</td>
+      <td>Minnesota Timberwolves</td>
+      <td>1523.41</td>
+      <td>80</td>
+      <td>64.42%</td>
+      <td>35.58%</td>
+      <td>6.67</td>
+    </tr>
+    <tr>
+      <td>2023-04-16</td>
+      <td>Phoenix Suns</td>
+      <td>1564.17</td>
+      <td>110</td>
+      <td>Los Angeles Clippers</td>
+      <td>1532.45</td>
+      <td>115</td>
+      <td>62.42%</td>
+      <td>37.58%</td>
+      <td>-4.86</td>
+    </tr>
+    <tr>
+      <td>2023-04-16</td>
+      <td>Milwaukee Bucks</td>
+      <td>1609.22</td>
+      <td>117</td>
+      <td>Miami Heat</td>
+      <td>1532.85</td>
+      <td>130</td>
+      <td>68.23%</td>
+      <td>31.77%</td>
+      <td>-8.56</td>
+    </tr>
+    <tr>
+      <td>2023-04-16</td>
+      <td>Minnesota Timberwolves</td>
+      <td>1523.41</td>
+      <td>80</td>
+      <td>@ Denver Nuggets</td>
+      <td>1570.11</td>
+      <td>109</td>
+      <td>35.58%</td>
+      <td>64.42%</td>
+      <td>-6.67</td>
+    </tr>
+    <tr>
+      <td>2023-04-17</td>
+      <td>Philadelphia 76ers</td>
+      <td>1613.84</td>
+      <td>96</td>
+      <td>Brooklyn Nets</td>
+      <td>1512.95</td>
+      <td>84</td>
+      <td>71.21%</td>
+      <td>28.79%</td>
+      <td>3.47</td>
+    </tr>
+    <tr>
+      <td>2023-04-17</td>
+      <td>Brooklyn Nets</td>
+      <td>1512.95</td>
+      <td>84</td>
+      <td>@ Philadelphia 76ers</td>
+      <td>1613.84</td>
+      <td>96</td>
+      <td>28.79%</td>
+      <td>71.21%</td>
+      <td>-3.47</td>
+    </tr>
+    <tr>
+      <td>2023-04-17</td>
+      <td>Golden State Warriors</td>
+      <td>1564.97</td>
+      <td>106</td>
+      <td>@ Sacramento Kings</td>
+      <td>1528.97</td>
+      <td>114</td>
+      <td>47.06%</td>
+      <td>52.94%</td>
+      <td>-4.64</td>
+    </tr>
+    <tr>
+      <td>2023-04-17</td>
+      <td>Sacramento Kings</td>
+      <td>1528.97</td>
+      <td>114</td>
+      <td>Golden State Warriors</td>
+      <td>1564.97</td>
+      <td>106</td>
+      <td>52.94%</td>
+      <td>47.06%</td>
+      <td>4.64</td>
+    </tr>
+    <tr>
+      <td>2023-04-18</td>
+      <td>Boston Celtics</td>
+      <td>1656.12</td>
+      <td>119</td>
+      <td>Atlanta Hawks</td>
+      <td>1512.56</td>
+      <td>106</td>
+      <td>75.97%</td>
+      <td>24.03%</td>
+      <td>3.02</td>
+    </tr>
+    <tr>
+      <td>2023-04-18</td>
+      <td>Cleveland Cavaliers</td>
+      <td>1573.44</td>
+      <td>107</td>
+      <td>New York Knicks</td>
+      <td>1564.04</td>
+      <td>90</td>
+      <td>59.36%</td>
+      <td>40.64%</td>
+      <td>5.83</td>
+    </tr>
+    <tr>
+      <td>2023-04-18</td>
+      <td>Phoenix Suns</td>
+      <td>1559.31</td>
+      <td>123</td>
+      <td>Los Angeles Clippers</td>
+      <td>1537.31</td>
+      <td>109</td>
+      <td>61.10%</td>
+      <td>38.90%</td>
+      <td>5.07</td>
+    </tr>
+    <tr>
+      <td>2023-04-18</td>
+      <td>Los Angeles Clippers</td>
+      <td>1537.31</td>
+      <td>109</td>
+      <td>@ Phoenix Suns</td>
+      <td>1559.31</td>
+      <td>123</td>
+      <td>38.90%</td>
+      <td>61.10%</td>
+      <td>-5.07</td>
+    </tr>
+    <tr>
+      <td>2023-04-18</td>
+      <td>New York Knicks</td>
+      <td>1564.04</td>
+      <td>90</td>
+      <td>@ Cleveland Cavaliers</td>
+      <td>1573.44</td>
+      <td>107</td>
+      <td>40.64%</td>
+      <td>59.36%</td>
+      <td>-5.83</td>
+    </tr>
+    <tr>
+      <td>2023-04-18</td>
+      <td>Atlanta Hawks</td>
+      <td>1512.56</td>
+      <td>106</td>
+      <td>@ Boston Celtics</td>
+      <td>1656.12</td>
+      <td>119</td>
+      <td>24.03%</td>
+      <td>75.97%</td>
+      <td>-3.01</td>
+    </tr>
+    <tr>
+      <td>2023-04-19</td>
+      <td>Milwaukee Bucks</td>
+      <td>1600.66</td>
+      <td>138</td>
+      <td>Miami Heat</td>
+      <td>1541.41</td>
+      <td>122</td>
+      <td>66.06%</td>
+      <td>33.94%</td>
+      <td>4.72</td>
+    </tr>
+    <tr>
+      <td>2023-04-19</td>
+      <td>Miami Heat</td>
+      <td>1541.41</td>
+      <td>122</td>
+      <td>@ Milwaukee Bucks</td>
+      <td>1600.66</td>
+      <td>138</td>
+      <td>33.94%</td>
+      <td>66.06%</td>
+      <td>-4.73</td>
+    </tr>
+    <tr>
+      <td>2023-04-19</td>
+      <td>Minnesota Timberwolves</td>
+      <td>1516.74</td>
+      <td>113</td>
+      <td>@ Denver Nuggets</td>
+      <td>1576.78</td>
+      <td>122</td>
+      <td>33.84%</td>
+      <td>66.16%</td>
+      <td>-3.53</td>
+    </tr>
+    <tr>
+      <td>2023-04-19</td>
+      <td>Denver Nuggets</td>
+      <td>1576.78</td>
+      <td>122</td>
+      <td>Minnesota Timberwolves</td>
+      <td>1516.74</td>
+      <td>113</td>
+      <td>66.16%</td>
+      <td>33.84%</td>
+      <td>3.53</td>
+    </tr>
+    <tr>
+      <td>2023-04-19</td>
+      <td>Memphis Grizzlies</td>
+      <td>1580.35</td>
+      <td>103</td>
+      <td>Los Angeles Lakers</td>
+      <td>1537.65</td>
+      <td>93</td>
+      <td>63.89%</td>
+      <td>36.11%</td>
+      <td>3.98</td>
+    </tr>
+    <tr>
+      <td>2023-04-19</td>
+      <td>Los Angeles Lakers</td>
+      <td>1537.65</td>
+      <td>93</td>
+      <td>@ Memphis Grizzlies</td>
+      <td>1580.35</td>
+      <td>103</td>
+      <td>36.11%</td>
+      <td>63.89%</td>
+      <td>-3.97</td>
+    </tr>
+    <tr>
+      <td>2023-04-20</td>
+      <td>Phoenix Suns</td>
+      <td>1564.38</td>
+      <td>129</td>
+      <td>@ Los Angeles Clippers</td>
+      <td>1532.24</td>
+      <td>124</td>
+      <td>46.51%</td>
+      <td>53.49%</td>
+      <td>4.16</td>
+    </tr>
+    <tr>
+      <td>2023-04-20</td>
+      <td>Sacramento Kings</td>
+      <td>1533.61</td>
+      <td>97</td>
+      <td>@ Golden State Warriors</td>
+      <td>1560.33</td>
+      <td>114</td>
+      <td>38.26%</td>
+      <td>61.74%</td>
+      <td>-5.49</td>
+    </tr>
+    <tr>
+      <td>2023-04-20</td>
+      <td>Golden State Warriors</td>
+      <td>1560.33</td>
+      <td>114</td>
+      <td>Sacramento Kings</td>
+      <td>1533.61</td>
+      <td>97</td>
+      <td>61.74%</td>
+      <td>38.26%</td>
+      <td>5.49</td>
+    </tr>
+    <tr>
+      <td>2023-04-20</td>
+      <td>Brooklyn Nets</td>
+      <td>1509.48</td>
+      <td>97</td>
+      <td>Philadelphia 76ers</td>
+      <td>1617.31</td>
+      <td>102</td>
+      <td>42.66%</td>
+      <td>57.34%</td>
+      <td>-3.32</td>
+    </tr>
+    <tr>
+      <td>2023-04-20</td>
+      <td>Philadelphia 76ers</td>
+      <td>1617.31</td>
+      <td>102</td>
+      <td>@ Brooklyn Nets</td>
+      <td>1509.48</td>
+      <td>97</td>
+      <td>57.34%</td>
+      <td>42.66%</td>
+      <td>3.32</td>
+    </tr>
+    <tr>
+      <td>2023-04-20</td>
+      <td>Los Angeles Clippers</td>
+      <td>1532.24</td>
+      <td>124</td>
+      <td>Phoenix Suns</td>
+      <td>1564.38</td>
+      <td>129</td>
+      <td>53.49%</td>
+      <td>46.51%</td>
+      <td>-4.16</td>
+    </tr>
+    <tr>
+      <td>2023-04-21</td>
+      <td>Boston Celtics</td>
+      <td>1659.14</td>
+      <td>122</td>
+      <td>@ Atlanta Hawks</td>
+      <td>1509.55</td>
+      <td>130</td>
+      <td>63.10%</td>
+      <td>36.90%</td>
+      <td>-6.21</td>
+    </tr>
+    <tr>
+      <td>2023-04-21</td>
+      <td>Cleveland Cavaliers</td>
+      <td>1579.27</td>
+      <td>79</td>
+      <td>@ New York Knicks</td>
+      <td>1558.21</td>
+      <td>99</td>
+      <td>44.93%</td>
+      <td>55.07%</td>
+      <td>-6.99</td>
+    </tr>
+    <tr>
+      <td>2023-04-21</td>
+      <td>Denver Nuggets</td>
+      <td>1580.31</td>
+      <td>120</td>
+      <td>@ Minnesota Timberwolves</td>
+      <td>1513.21</td>
+      <td>111</td>
+      <td>51.54%</td>
+      <td>48.46%</td>
+      <td>5.06</td>
+    </tr>
+    <tr>
+      <td>2023-04-21</td>
+      <td>Atlanta Hawks</td>
+      <td>1509.55</td>
+      <td>130</td>
+      <td>Boston Celtics</td>
+      <td>1659.14</td>
+      <td>122</td>
+      <td>36.90%</td>
+      <td>63.10%</td>
+      <td>6.21</td>
+    </tr>
+    <tr>
+      <td>2023-04-21</td>
+      <td>New York Knicks</td>
+      <td>1558.21</td>
+      <td>99</td>
+      <td>Cleveland Cavaliers</td>
+      <td>1579.27</td>
+      <td>79</td>
+      <td>55.07%</td>
+      <td>44.93%</td>
+      <td>6.99</td>
+    </tr>
+    <tr>
+      <td>2023-04-21</td>
+      <td>Minnesota Timberwolves</td>
+      <td>1513.21</td>
+      <td>111</td>
+      <td>Denver Nuggets</td>
+      <td>1580.31</td>
+      <td>120</td>
+      <td>48.46%</td>
+      <td>51.54%</td>
+      <td>-5.06</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>Brooklyn Nets</td>
+      <td>1506.16</td>
+      <td>88</td>
+      <td>Philadelphia 76ers</td>
+      <td>1620.63</td>
+      <td>96</td>
+      <td>41.72%</td>
+      <td>58.28%</td>
+      <td>-4.11</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>Philadelphia 76ers</td>
+      <td>1620.63</td>
+      <td>96</td>
+      <td>@ Brooklyn Nets</td>
+      <td>1506.16</td>
+      <td>88</td>
+      <td>58.28%</td>
+      <td>41.72%</td>
+      <td>4.10</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>Los Angeles Clippers</td>
+      <td>1528.08</td>
+      <td>100</td>
+      <td>Phoenix Suns</td>
+      <td>1568.54</td>
+      <td>112</td>
+      <td>52.29%</td>
+      <td>47.71%</td>
+      <td>-6.31</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>Miami Heat</td>
+      <td>1536.68</td>
+      <td>121</td>
+      <td>Milwaukee Bucks</td>
+      <td>1605.38</td>
+      <td>99</td>
+      <td>48.23%</td>
+      <td>51.77%</td>
+      <td>8.45</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>Los Angeles Lakers</td>
+      <td>1533.68</td>
+      <td>111</td>
+      <td>Memphis Grizzlies</td>
+      <td>1584.33</td>
+      <td>101</td>
+      <td>50.83%</td>
+      <td>49.17%</td>
+      <td>5.41</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>Phoenix Suns</td>
+      <td>1568.54</td>
+      <td>112</td>
+      <td>@ Los Angeles Clippers</td>
+      <td>1528.08</td>
+      <td>100</td>
+      <td>47.71%</td>
+      <td>52.29%</td>
+      <td>6.31</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>Milwaukee Bucks</td>
+      <td>1605.38</td>
+      <td>99</td>
+      <td>@ Miami Heat</td>
+      <td>1536.68</td>
+      <td>121</td>
+      <td>51.77%</td>
+      <td>48.23%</td>
+      <td>-8.45</td>
+    </tr>
+    <tr>
+      <td>2023-04-22</td>
+      <td>Memphis Grizzlies</td>
+      <td>1584.33</td>
+      <td>101</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1533.68</td>
+      <td>111</td>
+      <td>49.17%</td>
+      <td>50.83%</td>
+      <td>-5.42</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>Cleveland Cavaliers</td>
+      <td>1572.28</td>
+      <td>93</td>
+      <td>@ New York Knicks</td>
+      <td>1565.20</td>
+      <td>102</td>
+      <td>42.95%</td>
+      <td>57.05%</td>
+      <td>-4.48</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>Sacramento Kings</td>
+      <td>1528.12</td>
+      <td>125</td>
+      <td>@ Golden State Warriors</td>
+      <td>1565.82</td>
+      <td>126</td>
+      <td>36.78%</td>
+      <td>63.22%</td>
+      <td>-1.28</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>Boston Celtics</td>
+      <td>1652.93</td>
+      <td>129</td>
+      <td>@ Atlanta Hawks</td>
+      <td>1515.76</td>
+      <td>121</td>
+      <td>61.42%</td>
+      <td>38.58%</td>
+      <td>3.79</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>Denver Nuggets</td>
+      <td>1585.37</td>
+      <td>108</td>
+      <td>@ Minnesota Timberwolves</td>
+      <td>1508.15</td>
+      <td>114</td>
+      <td>52.99%</td>
+      <td>47.01%</td>
+      <td>-3.20</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>Atlanta Hawks</td>
+      <td>1515.76</td>
+      <td>121</td>
+      <td>Boston Celtics</td>
+      <td>1652.93</td>
+      <td>129</td>
+      <td>38.58%</td>
+      <td>61.42%</td>
+      <td>-3.80</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>Minnesota Timberwolves</td>
+      <td>1508.15</td>
+      <td>114</td>
+      <td>Denver Nuggets</td>
+      <td>1585.37</td>
+      <td>108</td>
+      <td>47.01%</td>
+      <td>52.99%</td>
+      <td>3.19</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>Golden State Warriors</td>
+      <td>1565.82</td>
+      <td>126</td>
+      <td>Sacramento Kings</td>
+      <td>1528.12</td>
+      <td>125</td>
+      <td>63.22%</td>
+      <td>36.78%</td>
+      <td>1.28</td>
+    </tr>
+    <tr>
+      <td>2023-04-23</td>
+      <td>New York Knicks</td>
+      <td>1565.20</td>
+      <td>102</td>
+      <td>Cleveland Cavaliers</td>
+      <td>1572.28</td>
+      <td>93</td>
+      <td>57.05%</td>
+      <td>42.95%</td>
+      <td>4.48</td>
+    </tr>
+    <tr>
+      <td>2023-04-24</td>
+      <td>Los Angeles Lakers</td>
+      <td>1539.09</td>
+      <td>117</td>
+      <td>Memphis Grizzlies</td>
+      <td>1578.91</td>
+      <td>111</td>
+      <td>52.39%</td>
+      <td>47.61%</td>
+      <td>2.87</td>
+    </tr>
+    <tr>
+      <td>2023-04-24</td>
+      <td>Milwaukee Bucks</td>
+      <td>1596.93</td>
+      <td>114</td>
+      <td>@ Miami Heat</td>
+      <td>1545.13</td>
+      <td>119</td>
+      <td>49.33%</td>
+      <td>50.67%</td>
+      <td>-3.84</td>
+    </tr>
+    <tr>
+      <td>2023-04-24</td>
+      <td>Memphis Grizzlies</td>
+      <td>1578.91</td>
+      <td>111</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1539.09</td>
+      <td>117</td>
+      <td>47.61%</td>
+      <td>52.39%</td>
+      <td>-2.87</td>
+    </tr>
+    <tr>
+      <td>2023-04-24</td>
+      <td>Miami Heat</td>
+      <td>1545.13</td>
+      <td>119</td>
+      <td>Milwaukee Bucks</td>
+      <td>1596.93</td>
+      <td>114</td>
+      <td>50.67%</td>
+      <td>49.33%</td>
+      <td>3.84</td>
+    </tr>
+    <tr>
+      <td>2023-04-25</td>
+      <td>Boston Celtics</td>
+      <td>1656.72</td>
+      <td>117</td>
+      <td>Atlanta Hawks</td>
+      <td>1511.96</td>
+      <td>119</td>
+      <td>76.10%</td>
+      <td>23.90%</td>
+      <td>-3.74</td>
+    </tr>
+    <tr>
+      <td>2023-04-25</td>
+      <td>Denver Nuggets</td>
+      <td>1582.17</td>
+      <td>112</td>
+      <td>Minnesota Timberwolves</td>
+      <td>1511.34</td>
+      <td>109</td>
+      <td>67.54%</td>
+      <td>32.46%</td>
+      <td>1.96</td>
+    </tr>
+    <tr>
+      <td>2023-04-25</td>
+      <td>Phoenix Suns</td>
+      <td>1574.85</td>
+      <td>136</td>
+      <td>Los Angeles Clippers</td>
+      <td>1521.77</td>
+      <td>130</td>
+      <td>65.26%</td>
+      <td>34.74%</td>
+      <td>2.96</td>
+    </tr>
+    <tr>
+      <td>2023-04-25</td>
+      <td>Atlanta Hawks</td>
+      <td>1511.96</td>
+      <td>119</td>
+      <td>@ Boston Celtics</td>
+      <td>1656.72</td>
+      <td>117</td>
+      <td>23.90%</td>
+      <td>76.10%</td>
+      <td>3.74</td>
+    </tr>
+    <tr>
+      <td>2023-04-25</td>
+      <td>Los Angeles Clippers</td>
+      <td>1521.77</td>
+      <td>130</td>
+      <td>@ Phoenix Suns</td>
+      <td>1574.85</td>
+      <td>136</td>
+      <td>34.74%</td>
+      <td>65.26%</td>
+      <td>-2.96</td>
+    </tr>
+    <tr>
+      <td>2023-04-25</td>
+      <td>Minnesota Timberwolves</td>
+      <td>1511.34</td>
+      <td>109</td>
+      <td>@ Denver Nuggets</td>
+      <td>1582.17</td>
+      <td>112</td>
+      <td>32.46%</td>
+      <td>67.54%</td>
+      <td>-1.95</td>
+    </tr>
+    <tr>
+      <td>2023-04-26</td>
+      <td>New York Knicks</td>
+      <td>1569.68</td>
+      <td>106</td>
+      <td>@ Cleveland Cavaliers</td>
+      <td>1567.80</td>
+      <td>95</td>
+      <td>42.22%</td>
+      <td>57.78%</td>
+      <td>6.67</td>
+    </tr>
+    <tr>
+      <td>2023-04-26</td>
+      <td>Golden State Warriors</td>
+      <td>1567.10</td>
+      <td>123</td>
+      <td>@ Sacramento Kings</td>
+      <td>1526.84</td>
+      <td>116</td>
+      <td>47.68%</td>
+      <td>52.32%</td>
+      <td>4.82</td>
+    </tr>
+    <tr>
+      <td>2023-04-26</td>
+      <td>Miami Heat</td>
+      <td>1548.97</td>
+      <td>128</td>
+      <td>@ Milwaukee Bucks</td>
+      <td>1593.09</td>
+      <td>126</td>
+      <td>35.92%</td>
+      <td>64.08%</td>
+      <td>2.23</td>
+    </tr>
+    <tr>
+      <td>2023-04-26</td>
+      <td>Cleveland Cavaliers</td>
+      <td>1567.80</td>
+      <td>95</td>
+      <td>New York Knicks</td>
+      <td>1569.68</td>
+      <td>106</td>
+      <td>57.78%</td>
+      <td>42.22%</td>
+      <td>-6.67</td>
+    </tr>
+    <tr>
+      <td>2023-04-26</td>
+      <td>Memphis Grizzlies</td>
+      <td>1576.04</td>
+      <td>116</td>
+      <td>Los Angeles Lakers</td>
+      <td>1541.96</td>
+      <td>99</td>
+      <td>62.74%</td>
+      <td>37.26%</td>
+      <td>5.35</td>
+    </tr>
+    <tr>
+      <td>2023-04-26</td>
+      <td>Milwaukee Bucks</td>
+      <td>1593.09</td>
+      <td>126</td>
+      <td>Miami Heat</td>
+      <td>1548.97</td>
+      <td>128</td>
+      <td>64.08%</td>
+      <td>35.92%</td>
+      <td>-2.23</td>
+    </tr>
+    <tr>
+      <td>2023-04-26</td>
+      <td>Los Angeles Lakers</td>
+      <td>1541.96</td>
+      <td>99</td>
+      <td>@ Memphis Grizzlies</td>
+      <td>1576.04</td>
+      <td>116</td>
+      <td>37.26%</td>
+      <td>62.74%</td>
+      <td>-5.35</td>
+    </tr>
+    <tr>
+      <td>2023-04-26</td>
+      <td>Sacramento Kings</td>
+      <td>1526.84</td>
+      <td>116</td>
+      <td>Golden State Warriors</td>
+      <td>1567.10</td>
+      <td>123</td>
+      <td>52.32%</td>
+      <td>47.68%</td>
+      <td>-4.82</td>
+    </tr>
+    <tr>
+      <td>2023-04-27</td>
+      <td>Boston Celtics</td>
+      <td>1652.98</td>
+      <td>128</td>
+      <td>@ Atlanta Hawks</td>
+      <td>1515.70</td>
+      <td>120</td>
+      <td>61.43%</td>
+      <td>38.57%</td>
+      <td>3.80</td>
+    </tr>
+    <tr>
+      <td>2023-04-27</td>
+      <td>Atlanta Hawks</td>
+      <td>1515.70</td>
+      <td>120</td>
+      <td>Boston Celtics</td>
+      <td>1652.98</td>
+      <td>128</td>
+      <td>38.57%</td>
+      <td>61.43%</td>
+      <td>-3.79</td>
+    </tr>
+    <tr>
+      <td>2023-04-28</td>
+      <td>Golden State Warriors</td>
+      <td>1571.92</td>
+      <td>99</td>
+      <td>Sacramento Kings</td>
+      <td>1522.02</td>
+      <td>118</td>
+      <td>64.84%</td>
+      <td>35.16%</td>
+      <td>-9.84</td>
+    </tr>
+    <tr>
+      <td>2023-04-28</td>
+      <td>Sacramento Kings</td>
+      <td>1522.02</td>
+      <td>118</td>
+      <td>@ Golden State Warriors</td>
+      <td>1571.92</td>
+      <td>99</td>
+      <td>35.16%</td>
+      <td>64.84%</td>
+      <td>9.84</td>
+    </tr>
+    <tr>
+      <td>2023-04-28</td>
+      <td>Memphis Grizzlies</td>
+      <td>1581.39</td>
+      <td>85</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1536.61</td>
+      <td>125</td>
+      <td>48.33%</td>
+      <td>51.67%</td>
+      <td>-10.64</td>
+    </tr>
+    <tr>
+      <td>2023-04-28</td>
+      <td>Los Angeles Lakers</td>
+      <td>1536.61</td>
+      <td>125</td>
+      <td>Memphis Grizzlies</td>
+      <td>1581.39</td>
+      <td>85</td>
+      <td>51.67%</td>
+      <td>48.33%</td>
+      <td>10.64</td>
+    </tr>
+    <tr>
+      <td>2023-04-29</td>
+      <td>Phoenix Suns</td>
+      <td>1577.81</td>
+      <td>107</td>
+      <td>@ Denver Nuggets</td>
+      <td>1584.13</td>
+      <td>125</td>
+      <td>41.07%</td>
+      <td>58.93%</td>
+      <td>-6.07</td>
+    </tr>
+    <tr>
+      <td>2023-04-29</td>
+      <td>Denver Nuggets</td>
+      <td>1584.13</td>
+      <td>125</td>
+      <td>Phoenix Suns</td>
+      <td>1577.81</td>
+      <td>107</td>
+      <td>58.93%</td>
+      <td>41.07%</td>
+      <td>6.06</td>
+    </tr>
+    <tr>
+      <td>2023-04-30</td>
+      <td>New York Knicks</td>
+      <td>1576.35</td>
+      <td>101</td>
+      <td>Miami Heat</td>
+      <td>1551.20</td>
+      <td>108</td>
+      <td>61.53%</td>
+      <td>38.47%</td>
+      <td>-5.66</td>
+    </tr>
+    <tr>
+      <td>2023-04-30</td>
+      <td>Sacramento Kings</td>
+      <td>1531.86</td>
+      <td>100</td>
+      <td>Golden State Warriors</td>
+      <td>1562.08</td>
+      <td>120</td>
+      <td>53.76%</td>
+      <td>46.24%</td>
+      <td>-8.37</td>
+    </tr>
+    <tr>
+      <td>2023-04-30</td>
+      <td>Golden State Warriors</td>
+      <td>1562.08</td>
+      <td>120</td>
+      <td>@ Sacramento Kings</td>
+      <td>1531.86</td>
+      <td>100</td>
+      <td>46.24%</td>
+      <td>53.76%</td>
+      <td>8.37</td>
+    </tr>
+    <tr>
+      <td>2023-04-30</td>
+      <td>Miami Heat</td>
+      <td>1551.20</td>
+      <td>108</td>
+      <td>@ New York Knicks</td>
+      <td>1576.35</td>
+      <td>101</td>
+      <td>38.47%</td>
+      <td>61.53%</td>
+      <td>5.67</td>
+    </tr>
+    <tr>
+      <td>2023-05-01</td>
+      <td>Boston Celtics</td>
+      <td>1656.78</td>
+      <td>115</td>
+      <td>Philadelphia 76ers</td>
+      <td>1624.73</td>
+      <td>119</td>
+      <td>62.46%</td>
+      <td>37.54%</td>
+      <td>-4.35</td>
+    </tr>
+    <tr>
+      <td>2023-05-01</td>
+      <td>Phoenix Suns</td>
+      <td>1571.74</td>
+      <td>87</td>
+      <td>@ Denver Nuggets</td>
+      <td>1590.19</td>
+      <td>97</td>
+      <td>39.39%</td>
+      <td>60.61%</td>
+      <td>-4.33</td>
+    </tr>
+    <tr>
+      <td>2023-05-01</td>
+      <td>Denver Nuggets</td>
+      <td>1590.19</td>
+      <td>97</td>
+      <td>Phoenix Suns</td>
+      <td>1571.74</td>
+      <td>87</td>
+      <td>60.61%</td>
+      <td>39.39%</td>
+      <td>4.34</td>
+    </tr>
+    <tr>
+      <td>2023-05-01</td>
+      <td>Philadelphia 76ers</td>
+      <td>1624.73</td>
+      <td>119</td>
+      <td>@ Boston Celtics</td>
+      <td>1656.78</td>
+      <td>115</td>
+      <td>37.54%</td>
+      <td>62.46%</td>
+      <td>4.35</td>
+    </tr>
+    <tr>
+      <td>2023-05-02</td>
+      <td>New York Knicks</td>
+      <td>1570.69</td>
+      <td>111</td>
+      <td>Miami Heat</td>
+      <td>1556.87</td>
+      <td>105</td>
+      <td>59.97%</td>
+      <td>40.03%</td>
+      <td>3.41</td>
+    </tr>
+    <tr>
+      <td>2023-05-02</td>
+      <td>Miami Heat</td>
+      <td>1556.87</td>
+      <td>105</td>
+      <td>@ New York Knicks</td>
+      <td>1570.69</td>
+      <td>111</td>
+      <td>40.03%</td>
+      <td>59.97%</td>
+      <td>-3.42</td>
+    </tr>
+    <tr>
+      <td>2023-05-02</td>
+      <td>Los Angeles Lakers</td>
+      <td>1547.25</td>
+      <td>117</td>
+      <td>@ Golden State Warriors</td>
+      <td>1570.45</td>
+      <td>112</td>
+      <td>38.74%</td>
+      <td>61.26%</td>
+      <td>4.76</td>
+    </tr>
+    <tr>
+      <td>2023-05-02</td>
+      <td>Golden State Warriors</td>
+      <td>1570.45</td>
+      <td>112</td>
+      <td>Los Angeles Lakers</td>
+      <td>1547.25</td>
+      <td>117</td>
+      <td>61.26%</td>
+      <td>38.74%</td>
+      <td>-4.77</td>
+    </tr>
+    <tr>
+      <td>2023-05-03</td>
+      <td>Philadelphia 76ers</td>
+      <td>1629.08</td>
+      <td>87</td>
+      <td>@ Boston Celtics</td>
+      <td>1652.43</td>
+      <td>121</td>
+      <td>38.72%</td>
+      <td>61.28%</td>
+      <td>-7.85</td>
+    </tr>
+    <tr>
+      <td>2023-05-03</td>
+      <td>Boston Celtics</td>
+      <td>1652.43</td>
+      <td>121</td>
+      <td>Philadelphia 76ers</td>
+      <td>1629.08</td>
+      <td>87</td>
+      <td>61.28%</td>
+      <td>38.72%</td>
+      <td>7.86</td>
+    </tr>
+    <tr>
+      <td>2023-05-04</td>
+      <td>Los Angeles Lakers</td>
+      <td>1552.01</td>
+      <td>100</td>
+      <td>@ Golden State Warriors</td>
+      <td>1565.68</td>
+      <td>127</td>
+      <td>40.05%</td>
+      <td>59.95%</td>
+      <td>-7.24</td>
+    </tr>
+    <tr>
+      <td>2023-05-04</td>
+      <td>Golden State Warriors</td>
+      <td>1565.68</td>
+      <td>127</td>
+      <td>Los Angeles Lakers</td>
+      <td>1552.01</td>
+      <td>100</td>
+      <td>59.95%</td>
+      <td>40.05%</td>
+      <td>7.25</td>
+    </tr>
+    <tr>
+      <td>2023-05-05</td>
+      <td>Boston Celtics</td>
+      <td>1660.29</td>
+      <td>114</td>
+      <td>@ Philadelphia 76ers</td>
+      <td>1621.23</td>
+      <td>102</td>
+      <td>47.50%</td>
+      <td>52.50%</td>
+      <td>6.32</td>
+    </tr>
+    <tr>
+      <td>2023-05-05</td>
+      <td>Philadelphia 76ers</td>
+      <td>1621.23</td>
+      <td>102</td>
+      <td>Boston Celtics</td>
+      <td>1660.29</td>
+      <td>114</td>
+      <td>52.50%</td>
+      <td>47.50%</td>
+      <td>-6.33</td>
+    </tr>
+    <tr>
+      <td>2023-05-05</td>
+      <td>Denver Nuggets</td>
+      <td>1594.53</td>
+      <td>114</td>
+      <td>@ Phoenix Suns</td>
+      <td>1567.41</td>
+      <td>121</td>
+      <td>45.79%</td>
+      <td>54.21%</td>
+      <td>-4.22</td>
+    </tr>
+    <tr>
+      <td>2023-05-05</td>
+      <td>Phoenix Suns</td>
+      <td>1567.41</td>
+      <td>121</td>
+      <td>Denver Nuggets</td>
+      <td>1594.53</td>
+      <td>114</td>
+      <td>54.21%</td>
+      <td>45.79%</td>
+      <td>4.22</td>
+    </tr>
+    <tr>
+      <td>2023-05-06</td>
+      <td>New York Knicks</td>
+      <td>1574.10</td>
+      <td>86</td>
+      <td>@ Miami Heat</td>
+      <td>1553.45</td>
+      <td>105</td>
+      <td>44.87%</td>
+      <td>55.13%</td>
+      <td>-6.81</td>
+    </tr>
+    <tr>
+      <td>2023-05-06</td>
+      <td>Los Angeles Lakers</td>
+      <td>1544.77</td>
+      <td>127</td>
+      <td>Golden State Warriors</td>
+      <td>1572.93</td>
+      <td>97</td>
+      <td>54.06%</td>
+      <td>45.94%</td>
+      <td>8.76</td>
+    </tr>
+    <tr>
+      <td>2023-05-06</td>
+      <td>Golden State Warriors</td>
+      <td>1572.93</td>
+      <td>97</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1544.77</td>
+      <td>127</td>
+      <td>45.94%</td>
+      <td>54.06%</td>
+      <td>-8.76</td>
+    </tr>
+    <tr>
+      <td>2023-05-06</td>
+      <td>Miami Heat</td>
+      <td>1553.45</td>
+      <td>105</td>
+      <td>New York Knicks</td>
+      <td>1574.10</td>
+      <td>86</td>
+      <td>55.13%</td>
+      <td>44.87%</td>
+      <td>6.81</td>
+    </tr>
+    <tr>
+      <td>2023-05-07</td>
+      <td>Phoenix Suns</td>
+      <td>1571.63</td>
+      <td>129</td>
+      <td>Denver Nuggets</td>
+      <td>1590.31</td>
+      <td>124</td>
+      <td>55.41%</td>
+      <td>44.59%</td>
+      <td>3.47</td>
+    </tr>
+    <tr>
+      <td>2023-05-07</td>
+      <td>Philadelphia 76ers</td>
+      <td>1614.90</td>
+      <td>116</td>
+      <td>Boston Celtics</td>
+      <td>1666.61</td>
+      <td>115</td>
+      <td>50.68%</td>
+      <td>49.32%</td>
+      <td>1.21</td>
+    </tr>
+    <tr>
+      <td>2023-05-07</td>
+      <td>Boston Celtics</td>
+      <td>1666.61</td>
+      <td>115</td>
+      <td>@ Philadelphia 76ers</td>
+      <td>1614.90</td>
+      <td>116</td>
+      <td>49.32%</td>
+      <td>50.68%</td>
+      <td>-1.21</td>
+    </tr>
+    <tr>
+      <td>2023-05-07</td>
+      <td>Denver Nuggets</td>
+      <td>1590.31</td>
+      <td>124</td>
+      <td>@ Phoenix Suns</td>
+      <td>1571.63</td>
+      <td>129</td>
+      <td>44.59%</td>
+      <td>55.41%</td>
+      <td>-3.47</td>
+    </tr>
+    <tr>
+      <td>2023-05-08</td>
+      <td>Miami Heat</td>
+      <td>1560.26</td>
+      <td>109</td>
+      <td>New York Knicks</td>
+      <td>1567.29</td>
+      <td>101</td>
+      <td>57.06%</td>
+      <td>42.94%</td>
+      <td>4.23</td>
+    </tr>
+    <tr>
+      <td>2023-05-08</td>
+      <td>Los Angeles Lakers</td>
+      <td>1553.53</td>
+      <td>104</td>
+      <td>Golden State Warriors</td>
+      <td>1564.17</td>
+      <td>101</td>
+      <td>56.55%</td>
+      <td>43.45%</td>
+      <td>2.62</td>
+    </tr>
+    <tr>
+      <td>2023-05-08</td>
+      <td>New York Knicks</td>
+      <td>1567.29</td>
+      <td>101</td>
+      <td>@ Miami Heat</td>
+      <td>1560.26</td>
+      <td>109</td>
+      <td>42.94%</td>
+      <td>57.06%</td>
+      <td>-4.22</td>
+    </tr>
+    <tr>
+      <td>2023-05-08</td>
+      <td>Golden State Warriors</td>
+      <td>1564.17</td>
+      <td>101</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1553.53</td>
+      <td>104</td>
+      <td>43.45%</td>
+      <td>56.55%</td>
+      <td>-2.62</td>
+    </tr>
+    <tr>
+      <td>2023-05-09</td>
+      <td>Phoenix Suns</td>
+      <td>1575.10</td>
+      <td>102</td>
+      <td>@ Denver Nuggets</td>
+      <td>1586.84</td>
+      <td>118</td>
+      <td>40.31%</td>
+      <td>59.69%</td>
+      <td>-5.62</td>
+    </tr>
+    <tr>
+      <td>2023-05-09</td>
+      <td>Philadelphia 76ers</td>
+      <td>1616.11</td>
+      <td>115</td>
+      <td>@ Boston Celtics</td>
+      <td>1665.40</td>
+      <td>103</td>
+      <td>35.24%</td>
+      <td>64.76%</td>
+      <td>7.81</td>
+    </tr>
+    <tr>
+      <td>2023-05-09</td>
+      <td>Denver Nuggets</td>
+      <td>1586.84</td>
+      <td>118</td>
+      <td>Phoenix Suns</td>
+      <td>1575.10</td>
+      <td>102</td>
+      <td>59.69%</td>
+      <td>40.31%</td>
+      <td>5.62</td>
+    </tr>
+    <tr>
+      <td>2023-05-09</td>
+      <td>Boston Celtics</td>
+      <td>1665.40</td>
+      <td>103</td>
+      <td>Philadelphia 76ers</td>
+      <td>1616.11</td>
+      <td>115</td>
+      <td>64.76%</td>
+      <td>35.24%</td>
+      <td>-7.81</td>
+    </tr>
+    <tr>
+      <td>2023-05-10</td>
+      <td>Los Angeles Lakers</td>
+      <td>1556.15</td>
+      <td>106</td>
+      <td>@ Golden State Warriors</td>
+      <td>1561.55</td>
+      <td>121</td>
+      <td>41.20%</td>
+      <td>58.80%</td>
+      <td>-5.55</td>
+    </tr>
+    <tr>
+      <td>2023-05-10</td>
+      <td>Miami Heat</td>
+      <td>1564.49</td>
+      <td>103</td>
+      <td>@ New York Knicks</td>
+      <td>1563.07</td>
+      <td>112</td>
+      <td>42.15%</td>
+      <td>57.85%</td>
+      <td>-4.40</td>
+    </tr>
+    <tr>
+      <td>2023-05-10</td>
+      <td>Golden State Warriors</td>
+      <td>1561.55</td>
+      <td>121</td>
+      <td>Los Angeles Lakers</td>
+      <td>1556.15</td>
+      <td>106</td>
+      <td>58.80%</td>
+      <td>41.20%</td>
+      <td>5.55</td>
+    </tr>
+    <tr>
+      <td>2023-05-10</td>
+      <td>New York Knicks</td>
+      <td>1563.07</td>
+      <td>112</td>
+      <td>Miami Heat</td>
+      <td>1564.49</td>
+      <td>103</td>
+      <td>57.85%</td>
+      <td>42.15%</td>
+      <td>4.40</td>
+    </tr>
+    <tr>
+      <td>2023-05-11</td>
+      <td>Denver Nuggets</td>
+      <td>1592.46</td>
+      <td>125</td>
+      <td>@ Phoenix Suns</td>
+      <td>1569.48</td>
+      <td>100</td>
+      <td>45.20%</td>
+      <td>54.80%</td>
+      <td>9.53</td>
+    </tr>
+    <tr>
+      <td>2023-05-11</td>
+      <td>Boston Celtics</td>
+      <td>1657.59</td>
+      <td>95</td>
+      <td>@ Philadelphia 76ers</td>
+      <td>1623.92</td>
+      <td>86</td>
+      <td>46.73%</td>
+      <td>53.27%</td>
+      <td>5.56</td>
+    </tr>
+    <tr>
+      <td>2023-05-11</td>
+      <td>Phoenix Suns</td>
+      <td>1569.48</td>
+      <td>100</td>
+      <td>Denver Nuggets</td>
+      <td>1592.46</td>
+      <td>125</td>
+      <td>54.80%</td>
+      <td>45.20%</td>
+      <td>-9.53</td>
+    </tr>
+    <tr>
+      <td>2023-05-11</td>
+      <td>Philadelphia 76ers</td>
+      <td>1623.92</td>
+      <td>86</td>
+      <td>Boston Celtics</td>
+      <td>1657.59</td>
+      <td>95</td>
+      <td>53.27%</td>
+      <td>46.73%</td>
+      <td>-5.56</td>
+    </tr>
+    <tr>
+      <td>2023-05-12</td>
+      <td>Los Angeles Lakers</td>
+      <td>1550.60</td>
+      <td>122</td>
+      <td>Golden State Warriors</td>
+      <td>1567.10</td>
+      <td>101</td>
+      <td>55.72%</td>
+      <td>44.28%</td>
+      <td>7.06</td>
+    </tr>
+    <tr>
+      <td>2023-05-12</td>
+      <td>Golden State Warriors</td>
+      <td>1567.10</td>
+      <td>101</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1550.60</td>
+      <td>122</td>
+      <td>44.28%</td>
+      <td>55.72%</td>
+      <td>-7.06</td>
+    </tr>
+    <tr>
+      <td>2023-05-12</td>
+      <td>New York Knicks</td>
+      <td>1567.47</td>
+      <td>92</td>
+      <td>@ Miami Heat</td>
+      <td>1560.09</td>
+      <td>96</td>
+      <td>42.99%</td>
+      <td>57.01%</td>
+      <td>-3.00</td>
+    </tr>
+    <tr>
+      <td>2023-05-12</td>
+      <td>Miami Heat</td>
+      <td>1560.09</td>
+      <td>96</td>
+      <td>New York Knicks</td>
+      <td>1567.47</td>
+      <td>92</td>
+      <td>57.01%</td>
+      <td>42.99%</td>
+      <td>2.99</td>
+    </tr>
+    <tr>
+      <td>2023-05-14</td>
+      <td>Boston Celtics</td>
+      <td>1663.15</td>
+      <td>112</td>
+      <td>Philadelphia 76ers</td>
+      <td>1618.36</td>
+      <td>88</td>
+      <td>64.17%</td>
+      <td>35.83%</td>
+      <td>6.11</td>
+    </tr>
+    <tr>
+      <td>2023-05-14</td>
+      <td>Philadelphia 76ers</td>
+      <td>1618.36</td>
+      <td>88</td>
+      <td>@ Boston Celtics</td>
+      <td>1663.15</td>
+      <td>112</td>
+      <td>35.83%</td>
+      <td>64.17%</td>
+      <td>-6.11</td>
+    </tr>
+    <tr>
+      <td>2023-05-16</td>
+      <td>Los Angeles Lakers</td>
+      <td>1557.66</td>
+      <td>126</td>
+      <td>@ Denver Nuggets</td>
+      <td>1601.99</td>
+      <td>132</td>
+      <td>35.89%</td>
+      <td>64.11%</td>
+      <td>-3.06</td>
+    </tr>
+    <tr>
+      <td>2023-05-16</td>
+      <td>Denver Nuggets</td>
+      <td>1601.99</td>
+      <td>132</td>
+      <td>Los Angeles Lakers</td>
+      <td>1557.66</td>
+      <td>126</td>
+      <td>64.11%</td>
+      <td>35.89%</td>
+      <td>3.06</td>
+    </tr>
+    <tr>
+      <td>2023-05-17</td>
+      <td>Miami Heat</td>
+      <td>1563.08</td>
+      <td>123</td>
+      <td>@ Boston Celtics</td>
+      <td>1669.26</td>
+      <td>116</td>
+      <td>28.17%</td>
+      <td>71.83%</td>
+      <td>6.61</td>
+    </tr>
+    <tr>
+      <td>2023-05-17</td>
+      <td>Boston Celtics</td>
+      <td>1669.26</td>
+      <td>116</td>
+      <td>Miami Heat</td>
+      <td>1563.08</td>
+      <td>123</td>
+      <td>71.83%</td>
+      <td>28.17%</td>
+      <td>-6.61</td>
+    </tr>
+    <tr>
+      <td>2023-05-18</td>
+      <td>Denver Nuggets</td>
+      <td>1605.05</td>
+      <td>108</td>
+      <td>Los Angeles Lakers</td>
+      <td>1554.60</td>
+      <td>103</td>
+      <td>64.91%</td>
+      <td>35.09%</td>
+      <td>2.73</td>
+    </tr>
+    <tr>
+      <td>2023-05-18</td>
+      <td>Los Angeles Lakers</td>
+      <td>1554.60</td>
+      <td>103</td>
+      <td>@ Denver Nuggets</td>
+      <td>1605.05</td>
+      <td>108</td>
+      <td>35.09%</td>
+      <td>64.91%</td>
+      <td>-2.73</td>
+    </tr>
+    <tr>
+      <td>2023-05-19</td>
+      <td>Miami Heat</td>
+      <td>1569.69</td>
+      <td>111</td>
+      <td>@ Boston Celtics</td>
+      <td>1662.65</td>
+      <td>105</td>
+      <td>29.74%</td>
+      <td>70.26%</td>
+      <td>5.99</td>
+    </tr>
+    <tr>
+      <td>2023-05-19</td>
+      <td>Boston Celtics</td>
+      <td>1662.65</td>
+      <td>105</td>
+      <td>Miami Heat</td>
+      <td>1569.69</td>
+      <td>111</td>
+      <td>70.26%</td>
+      <td>29.74%</td>
+      <td>-5.99</td>
+    </tr>
+    <tr>
+      <td>2023-05-20</td>
+      <td>Denver Nuggets</td>
+      <td>1607.78</td>
+      <td>119</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1551.87</td>
+      <td>108</td>
+      <td>49.93%</td>
+      <td>50.07%</td>
+      <td>5.78</td>
+    </tr>
+    <tr>
+      <td>2023-05-20</td>
+      <td>Los Angeles Lakers</td>
+      <td>1551.87</td>
+      <td>108</td>
+      <td>Denver Nuggets</td>
+      <td>1607.78</td>
+      <td>119</td>
+      <td>50.07%</td>
+      <td>49.93%</td>
+      <td>-5.78</td>
+    </tr>
+    <tr>
+      <td>2023-05-21</td>
+      <td>Boston Celtics</td>
+      <td>1656.66</td>
+      <td>102</td>
+      <td>@ Miami Heat</td>
+      <td>1575.68</td>
+      <td>128</td>
+      <td>53.53%</td>
+      <td>46.47%</td>
+      <td>-9.50</td>
+    </tr>
+    <tr>
+      <td>2023-05-21</td>
+      <td>Miami Heat</td>
+      <td>1575.68</td>
+      <td>128</td>
+      <td>Boston Celtics</td>
+      <td>1656.66</td>
+      <td>102</td>
+      <td>46.47%</td>
+      <td>53.53%</td>
+      <td>9.50</td>
+    </tr>
+    <tr>
+      <td>2023-05-22</td>
+      <td>Denver Nuggets</td>
+      <td>1613.56</td>
+      <td>113</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1546.09</td>
+      <td>111</td>
+      <td>51.59%</td>
+      <td>48.41%</td>
+      <td>2.38</td>
+    </tr>
+    <tr>
+      <td>2023-05-22</td>
+      <td>Los Angeles Lakers</td>
+      <td>1546.09</td>
+      <td>111</td>
+      <td>Denver Nuggets</td>
+      <td>1613.56</td>
+      <td>113</td>
+      <td>48.41%</td>
+      <td>51.59%</td>
+      <td>-2.38</td>
+    </tr>
+    <tr>
+      <td>2023-05-23</td>
+      <td>Boston Celtics</td>
+      <td>1647.16</td>
+      <td>116</td>
+      <td>@ Miami Heat</td>
+      <td>1585.18</td>
+      <td>99</td>
+      <td>50.80%</td>
+      <td>49.20%</td>
+      <td>7.06</td>
+    </tr>
+    <tr>
+      <td>2023-05-23</td>
+      <td>Miami Heat</td>
+      <td>1585.18</td>
+      <td>99</td>
+      <td>Boston Celtics</td>
+      <td>1647.16</td>
+      <td>116</td>
+      <td>49.20%</td>
+      <td>50.80%</td>
+      <td>-7.06</td>
+    </tr>
+    <tr>
+      <td>2023-05-25</td>
+      <td>Miami Heat</td>
+      <td>1578.12</td>
+      <td>97</td>
+      <td>@ Boston Celtics</td>
+      <td>1654.22</td>
+      <td>110</td>
+      <td>31.80%</td>
+      <td>68.20%</td>
+      <td>-3.99</td>
+    </tr>
+    <tr>
+      <td>2023-05-25</td>
+      <td>Boston Celtics</td>
+      <td>1654.22</td>
+      <td>110</td>
+      <td>Miami Heat</td>
+      <td>1578.12</td>
+      <td>97</td>
+      <td>68.20%</td>
+      <td>31.80%</td>
+      <td>3.99</td>
+    </tr>
+    <tr>
+      <td>2023-05-27</td>
+      <td>Boston Celtics</td>
+      <td>1658.21</td>
+      <td>104</td>
+      <td>@ Miami Heat</td>
+      <td>1574.13</td>
+      <td>103</td>
+      <td>53.97%</td>
+      <td>46.03%</td>
+      <td>1.60</td>
+    </tr>
+    <tr>
+      <td>2023-05-27</td>
+      <td>Miami Heat</td>
+      <td>1574.13</td>
+      <td>103</td>
+      <td>Boston Celtics</td>
+      <td>1658.21</td>
+      <td>104</td>
+      <td>46.03%</td>
+      <td>53.97%</td>
+      <td>-1.60</td>
+    </tr>
+    <tr>
+      <td>2023-05-29</td>
+      <td>Boston Celtics</td>
+      <td>1659.81</td>
+      <td>84</td>
+      <td>Miami Heat</td>
+      <td>1572.53</td>
+      <td>103</td>
+      <td>69.58%</td>
+      <td>30.42%</td>
+      <td>-10.55</td>
+    </tr>
+    <tr>
+      <td>2023-05-29</td>
+      <td>Miami Heat</td>
+      <td>1572.53</td>
+      <td>103</td>
+      <td>@ Boston Celtics</td>
+      <td>1659.81</td>
+      <td>84</td>
+      <td>30.42%</td>
+      <td>69.58%</td>
+      <td>10.55</td>
+    </tr>
+    <tr>
+      <td>2023-06-01</td>
+      <td>Miami Heat</td>
+      <td>1583.08</td>
+      <td>93</td>
+      <td>@ Denver Nuggets</td>
+      <td>1615.94</td>
+      <td>104</td>
+      <td>37.43%</td>
+      <td>62.57%</td>
+      <td>-4.32</td>
+    </tr>
+    <tr>
+      <td>2023-06-01</td>
+      <td>Denver Nuggets</td>
+      <td>1615.94</td>
+      <td>104</td>
+      <td>Miami Heat</td>
+      <td>1583.08</td>
+      <td>93</td>
+      <td>62.57%</td>
+      <td>37.43%</td>
+      <td>4.32</td>
+    </tr>
+    <tr>
+      <td>2023-06-04</td>
+      <td>Miami Heat</td>
+      <td>1578.76</td>
+      <td>111</td>
+      <td>@ Denver Nuggets</td>
+      <td>1620.26</td>
+      <td>108</td>
+      <td>36.27%</td>
+      <td>63.73%</td>
+      <td>3.84</td>
+    </tr>
+    <tr>
+      <td>2023-06-04</td>
+      <td>Denver Nuggets</td>
+      <td>1620.26</td>
+      <td>108</td>
+      <td>Miami Heat</td>
+      <td>1578.76</td>
+      <td>111</td>
+      <td>63.73%</td>
+      <td>36.27%</td>
+      <td>-3.84</td>
+    </tr>
+    <tr>
+      <td>2023-06-07</td>
+      <td>Denver Nuggets</td>
+      <td>1616.42</td>
+      <td>109</td>
+      <td>@ Miami Heat</td>
+      <td>1582.60</td>
+      <td>94</td>
+      <td>46.75%</td>
+      <td>53.25%</td>
+      <td>7.18</td>
+    </tr>
+    <tr>
+      <td>2023-06-07</td>
+      <td>Miami Heat</td>
+      <td>1582.60</td>
+      <td>94</td>
+      <td>Denver Nuggets</td>
+      <td>1616.42</td>
+      <td>109</td>
+      <td>53.25%</td>
+      <td>46.75%</td>
+      <td>-7.17</td>
+    </tr>
+    <tr>
+      <td>2023-06-09</td>
+      <td>Denver Nuggets</td>
+      <td>1623.60</td>
+      <td>108</td>
+      <td>@ Miami Heat</td>
+      <td>1575.43</td>
+      <td>95</td>
+      <td>48.81%</td>
+      <td>51.19%</td>
+      <td>6.42</td>
+    </tr>
+    <tr>
+      <td>2023-06-09</td>
+      <td>Miami Heat</td>
+      <td>1575.43</td>
+      <td>95</td>
+      <td>Denver Nuggets</td>
+      <td>1623.60</td>
+      <td>108</td>
+      <td>51.19%</td>
+      <td>48.81%</td>
+      <td>-6.43</td>
+    </tr>
+    <tr>
+      <td>2023-06-12</td>
+      <td>Denver Nuggets</td>
+      <td>1630.02</td>
+      <td>94</td>
+      <td>Miami Heat</td>
+      <td>1569.00</td>
+      <td>89</td>
+      <td>66.28%</td>
+      <td>33.72%</td>
+      <td>2.62</td>
+    </tr>
+    <tr>
+      <td>2023-06-12</td>
+      <td>Miami Heat</td>
+      <td>1569.00</td>
+      <td>89</td>
+      <td>@ Denver Nuggets</td>
+      <td>1630.02</td>
+      <td>94</td>
+      <td>33.72%</td>
+      <td>66.28%</td>
+      <td>-2.62</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

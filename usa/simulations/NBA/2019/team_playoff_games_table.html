@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Boston Celtics">Boston Celtics</option><option value="Brooklyn Nets">Brooklyn Nets</option><option value="Dallas Mavericks">Dallas Mavericks</option><option value="Denver Nuggets">Denver Nuggets</option><option value="Houston Rockets">Houston Rockets</option><option value="Indiana Pacers">Indiana Pacers</option><option value="Los Angeles Clippers">Los Angeles Clippers</option><option value="Los Angeles Lakers">Los Angeles Lakers</option><option value="Miami Heat">Miami Heat</option><option value="Milwaukee Bucks">Milwaukee Bucks</option><option value="Oklahoma City Thunder">Oklahoma City Thunder</option><option value="Orlando Magic">Orlando Magic</option><option value="Philadelphia 76ers">Philadelphia 76ers</option><option value="Portland Trail Blazers">Portland Trail Blazers</option><option value="Toronto Raptors">Toronto Raptors</option><option value="Utah Jazz">Utah Jazz</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2020-08-17</td>
+      <td>Boston Celtics</td>
+      <td>1629.81</td>
+      <td>109</td>
+      <td>Philadelphia 76ers</td>
+      <td>1561.15</td>
+      <td>101</td>
+      <td>59.75%</td>
+      <td>40.25%</td>
+      <td>4.51</td>
+    </tr>
+    <tr>
+      <td>2020-08-17</td>
+      <td>Denver Nuggets</td>
+      <td>1563.95</td>
+      <td>135</td>
+      <td>Utah Jazz</td>
+      <td>1566.14</td>
+      <td>125</td>
+      <td>49.68%</td>
+      <td>50.32%</td>
+      <td>4.45</td>
+    </tr>
+    <tr>
+      <td>2020-08-17</td>
+      <td>Los Angeles Clippers</td>
+      <td>1621.90</td>
+      <td>118</td>
+      <td>Dallas Mavericks</td>
+      <td>1552.41</td>
+      <td>110</td>
+      <td>59.87%</td>
+      <td>40.13%</td>
+      <td>4.49</td>
+    </tr>
+    <tr>
+      <td>2020-08-17</td>
+      <td>Toronto Raptors</td>
+      <td>1671.84</td>
+      <td>134</td>
+      <td>Brooklyn Nets</td>
+      <td>1489.43</td>
+      <td>110</td>
+      <td>74.08%</td>
+      <td>25.92%</td>
+      <td>5.03</td>
+    </tr>
+    <tr>
+      <td>2020-08-17</td>
+      <td>Brooklyn Nets</td>
+      <td>1489.43</td>
+      <td>110</td>
+      <td>@ Toronto Raptors</td>
+      <td>1671.84</td>
+      <td>134</td>
+      <td>25.92%</td>
+      <td>74.08%</td>
+      <td>-5.03</td>
+    </tr>
+    <tr>
+      <td>2020-08-17</td>
+      <td>Dallas Mavericks</td>
+      <td>1552.41</td>
+      <td>110</td>
+      <td>@ Los Angeles Clippers</td>
+      <td>1621.90</td>
+      <td>118</td>
+      <td>40.13%</td>
+      <td>59.87%</td>
+      <td>-4.49</td>
+    </tr>
+    <tr>
+      <td>2020-08-17</td>
+      <td>Utah Jazz</td>
+      <td>1566.14</td>
+      <td>125</td>
+      <td>@ Denver Nuggets</td>
+      <td>1563.95</td>
+      <td>135</td>
+      <td>50.32%</td>
+      <td>49.68%</td>
+      <td>-4.46</td>
+    </tr>
+    <tr>
+      <td>2020-08-17</td>
+      <td>Philadelphia 76ers</td>
+      <td>1561.15</td>
+      <td>101</td>
+      <td>@ Boston Celtics</td>
+      <td>1629.81</td>
+      <td>109</td>
+      <td>40.25%</td>
+      <td>59.75%</td>
+      <td>-4.51</td>
+    </tr>
+    <tr>
+      <td>2020-08-18</td>
+      <td>Portland Trail Blazers</td>
+      <td>1513.77</td>
+      <td>100</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1604.34</td>
+      <td>93</td>
+      <td>37.25%</td>
+      <td>62.75%</td>
+      <td>6.58</td>
+    </tr>
+    <tr>
+      <td>2020-08-18</td>
+      <td>Miami Heat</td>
+      <td>1547.46</td>
+      <td>113</td>
+      <td>@ Indiana Pacers</td>
+      <td>1564.81</td>
+      <td>101</td>
+      <td>47.51%</td>
+      <td>52.49%</td>
+      <td>7.20</td>
+    </tr>
+    <tr>
+      <td>2020-08-18</td>
+      <td>Oklahoma City Thunder</td>
+      <td>1572.92</td>
+      <td>108</td>
+      <td>@ Houston Rockets</td>
+      <td>1570.80</td>
+      <td>123</td>
+      <td>50.30%</td>
+      <td>49.70%</td>
+      <td>-7.72</td>
+    </tr>
+    <tr>
+      <td>2020-08-18</td>
+      <td>Orlando Magic</td>
+      <td>1481.31</td>
+      <td>122</td>
+      <td>@ Milwaukee Bucks</td>
+      <td>1674.44</td>
+      <td>110</td>
+      <td>24.76%</td>
+      <td>75.24%</td>
+      <td>10.33</td>
+    </tr>
+    <tr>
+      <td>2020-08-18</td>
+      <td>Indiana Pacers</td>
+      <td>1564.81</td>
+      <td>101</td>
+      <td>Miami Heat</td>
+      <td>1547.46</td>
+      <td>113</td>
+      <td>52.49%</td>
+      <td>47.51%</td>
+      <td>-7.20</td>
+    </tr>
+    <tr>
+      <td>2020-08-18</td>
+      <td>Milwaukee Bucks</td>
+      <td>1674.44</td>
+      <td>110</td>
+      <td>Orlando Magic</td>
+      <td>1481.31</td>
+      <td>122</td>
+      <td>75.24%</td>
+      <td>24.76%</td>
+      <td>-10.32</td>
+    </tr>
+    <tr>
+      <td>2020-08-18</td>
+      <td>Los Angeles Lakers</td>
+      <td>1604.34</td>
+      <td>93</td>
+      <td>Portland Trail Blazers</td>
+      <td>1513.77</td>
+      <td>100</td>
+      <td>62.75%</td>
+      <td>37.25%</td>
+      <td>-6.57</td>
+    </tr>
+    <tr>
+      <td>2020-08-18</td>
+      <td>Houston Rockets</td>
+      <td>1570.80</td>
+      <td>123</td>
+      <td>Oklahoma City Thunder</td>
+      <td>1572.92</td>
+      <td>108</td>
+      <td>49.70%</td>
+      <td>50.30%</td>
+      <td>7.72</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Utah Jazz</td>
+      <td>1561.68</td>
+      <td>124</td>
+      <td>@ Denver Nuggets</td>
+      <td>1568.40</td>
+      <td>105</td>
+      <td>49.03%</td>
+      <td>50.97%</td>
+      <td>8.80</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Dallas Mavericks</td>
+      <td>1547.92</td>
+      <td>127</td>
+      <td>@ Los Angeles Clippers</td>
+      <td>1626.39</td>
+      <td>114</td>
+      <td>38.90%</td>
+      <td>61.10%</td>
+      <td>8.72</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Philadelphia 76ers</td>
+      <td>1556.64</td>
+      <td>101</td>
+      <td>@ Boston Celtics</td>
+      <td>1634.32</td>
+      <td>128</td>
+      <td>39.00%</td>
+      <td>61.00%</td>
+      <td>-8.02</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Los Angeles Clippers</td>
+      <td>1626.39</td>
+      <td>114</td>
+      <td>Dallas Mavericks</td>
+      <td>1547.92</td>
+      <td>127</td>
+      <td>61.10%</td>
+      <td>38.90%</td>
+      <td>-8.72</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Denver Nuggets</td>
+      <td>1568.40</td>
+      <td>105</td>
+      <td>Utah Jazz</td>
+      <td>1561.68</td>
+      <td>124</td>
+      <td>50.97%</td>
+      <td>49.03%</td>
+      <td>-8.80</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Boston Celtics</td>
+      <td>1634.32</td>
+      <td>128</td>
+      <td>Philadelphia 76ers</td>
+      <td>1556.64</td>
+      <td>101</td>
+      <td>61.00%</td>
+      <td>39.00%</td>
+      <td>8.03</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Toronto Raptors</td>
+      <td>1676.87</td>
+      <td>104</td>
+      <td>Brooklyn Nets</td>
+      <td>1484.40</td>
+      <td>99</td>
+      <td>75.17%</td>
+      <td>24.83%</td>
+      <td>2.19</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Brooklyn Nets</td>
+      <td>1484.40</td>
+      <td>99</td>
+      <td>@ Toronto Raptors</td>
+      <td>1676.87</td>
+      <td>104</td>
+      <td>24.83%</td>
+      <td>75.17%</td>
+      <td>-2.20</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Oklahoma City Thunder</td>
+      <td>1565.20</td>
+      <td>98</td>
+      <td>@ Houston Rockets</td>
+      <td>1578.52</td>
+      <td>111</td>
+      <td>48.08%</td>
+      <td>51.92%</td>
+      <td>-6.86</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Houston Rockets</td>
+      <td>1578.52</td>
+      <td>111</td>
+      <td>Oklahoma City Thunder</td>
+      <td>1565.20</td>
+      <td>98</td>
+      <td>51.92%</td>
+      <td>48.08%</td>
+      <td>6.86</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Portland Trail Blazers</td>
+      <td>1520.35</td>
+      <td>88</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1597.77</td>
+      <td>111</td>
+      <td>39.04%</td>
+      <td>60.96%</td>
+      <td>-7.42</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Orlando Magic</td>
+      <td>1491.64</td>
+      <td>96</td>
+      <td>@ Milwaukee Bucks</td>
+      <td>1664.12</td>
+      <td>111</td>
+      <td>27.03%</td>
+      <td>72.97%</td>
+      <td>-4.15</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Los Angeles Lakers</td>
+      <td>1597.77</td>
+      <td>111</td>
+      <td>Portland Trail Blazers</td>
+      <td>1520.35</td>
+      <td>88</td>
+      <td>60.96%</td>
+      <td>39.04%</td>
+      <td>7.41</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Indiana Pacers</td>
+      <td>1557.61</td>
+      <td>100</td>
+      <td>Miami Heat</td>
+      <td>1554.66</td>
+      <td>109</td>
+      <td>50.42%</td>
+      <td>49.58%</td>
+      <td>-5.99</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Miami Heat</td>
+      <td>1554.66</td>
+      <td>109</td>
+      <td>@ Indiana Pacers</td>
+      <td>1557.61</td>
+      <td>100</td>
+      <td>49.58%</td>
+      <td>50.42%</td>
+      <td>5.99</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Milwaukee Bucks</td>
+      <td>1664.12</td>
+      <td>111</td>
+      <td>Orlando Magic</td>
+      <td>1491.64</td>
+      <td>96</td>
+      <td>72.97%</td>
+      <td>27.03%</td>
+      <td>4.14</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Los Angeles Clippers</td>
+      <td>1617.67</td>
+      <td>130</td>
+      <td>@ Dallas Mavericks</td>
+      <td>1556.64</td>
+      <td>122</td>
+      <td>58.69%</td>
+      <td>41.31%</td>
+      <td>4.62</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Boston Celtics</td>
+      <td>1642.35</td>
+      <td>102</td>
+      <td>@ Philadelphia 76ers</td>
+      <td>1548.62</td>
+      <td>94</td>
+      <td>63.17%</td>
+      <td>36.83%</td>
+      <td>4.12</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Utah Jazz</td>
+      <td>1570.48</td>
+      <td>124</td>
+      <td>Denver Nuggets</td>
+      <td>1559.60</td>
+      <td>87</td>
+      <td>51.56%</td>
+      <td>48.44%</td>
+      <td>11.67</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Philadelphia 76ers</td>
+      <td>1548.62</td>
+      <td>94</td>
+      <td>Boston Celtics</td>
+      <td>1642.35</td>
+      <td>102</td>
+      <td>36.83%</td>
+      <td>63.17%</td>
+      <td>-4.13</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Dallas Mavericks</td>
+      <td>1556.64</td>
+      <td>122</td>
+      <td>Los Angeles Clippers</td>
+      <td>1617.67</td>
+      <td>130</td>
+      <td>41.31%</td>
+      <td>58.69%</td>
+      <td>-4.62</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Brooklyn Nets</td>
+      <td>1482.20</td>
+      <td>92</td>
+      <td>Toronto Raptors</td>
+      <td>1679.06</td>
+      <td>117</td>
+      <td>24.36%</td>
+      <td>75.64%</td>
+      <td>-4.82</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Toronto Raptors</td>
+      <td>1679.06</td>
+      <td>117</td>
+      <td>@ Brooklyn Nets</td>
+      <td>1482.20</td>
+      <td>92</td>
+      <td>75.64%</td>
+      <td>24.36%</td>
+      <td>4.83</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Denver Nuggets</td>
+      <td>1559.60</td>
+      <td>87</td>
+      <td>@ Utah Jazz</td>
+      <td>1570.48</td>
+      <td>124</td>
+      <td>48.44%</td>
+      <td>51.56%</td>
+      <td>-11.66</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Los Angeles Lakers</td>
+      <td>1605.18</td>
+      <td>116</td>
+      <td>@ Portland Trail Blazers</td>
+      <td>1512.93</td>
+      <td>108</td>
+      <td>62.97%</td>
+      <td>37.03%</td>
+      <td>4.15</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Houston Rockets</td>
+      <td>1585.38</td>
+      <td>107</td>
+      <td>@ Oklahoma City Thunder</td>
+      <td>1558.34</td>
+      <td>119</td>
+      <td>53.88%</td>
+      <td>46.12%</td>
+      <td>-5.22</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Milwaukee Bucks</td>
+      <td>1668.26</td>
+      <td>121</td>
+      <td>@ Orlando Magic</td>
+      <td>1487.49</td>
+      <td>107</td>
+      <td>73.90%</td>
+      <td>26.10%</td>
+      <td>3.87</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Indiana Pacers</td>
+      <td>1551.62</td>
+      <td>115</td>
+      <td>@ Miami Heat</td>
+      <td>1560.65</td>
+      <td>124</td>
+      <td>48.70%</td>
+      <td>51.30%</td>
+      <td>-5.79</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Miami Heat</td>
+      <td>1560.65</td>
+      <td>124</td>
+      <td>Indiana Pacers</td>
+      <td>1551.62</td>
+      <td>115</td>
+      <td>51.30%</td>
+      <td>48.70%</td>
+      <td>5.78</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Oklahoma City Thunder</td>
+      <td>1558.34</td>
+      <td>119</td>
+      <td>Houston Rockets</td>
+      <td>1585.38</td>
+      <td>107</td>
+      <td>46.12%</td>
+      <td>53.88%</td>
+      <td>5.22</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Orlando Magic</td>
+      <td>1487.49</td>
+      <td>107</td>
+      <td>Milwaukee Bucks</td>
+      <td>1668.26</td>
+      <td>121</td>
+      <td>26.10%</td>
+      <td>73.90%</td>
+      <td>-3.87</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Portland Trail Blazers</td>
+      <td>1512.93</td>
+      <td>108</td>
+      <td>Los Angeles Lakers</td>
+      <td>1605.18</td>
+      <td>116</td>
+      <td>37.03%</td>
+      <td>62.97%</td>
+      <td>-4.15</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Brooklyn Nets</td>
+      <td>1477.38</td>
+      <td>122</td>
+      <td>Toronto Raptors</td>
+      <td>1683.89</td>
+      <td>150</td>
+      <td>23.35%</td>
+      <td>76.65%</td>
+      <td>-4.89</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Dallas Mavericks</td>
+      <td>1552.02</td>
+      <td>135</td>
+      <td>Los Angeles Clippers</td>
+      <td>1622.29</td>
+      <td>133</td>
+      <td>40.02%</td>
+      <td>59.98%</td>
+      <td>2.37</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Philadelphia 76ers</td>
+      <td>1544.49</td>
+      <td>106</td>
+      <td>Boston Celtics</td>
+      <td>1646.47</td>
+      <td>110</td>
+      <td>35.73%</td>
+      <td>64.27%</td>
+      <td>-2.83</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Utah Jazz</td>
+      <td>1582.15</td>
+      <td>129</td>
+      <td>Denver Nuggets</td>
+      <td>1547.94</td>
+      <td>127</td>
+      <td>54.91%</td>
+      <td>45.09%</td>
+      <td>2.52</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Denver Nuggets</td>
+      <td>1547.94</td>
+      <td>127</td>
+      <td>@ Utah Jazz</td>
+      <td>1582.15</td>
+      <td>129</td>
+      <td>45.09%</td>
+      <td>54.91%</td>
+      <td>-2.53</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Boston Celtics</td>
+      <td>1646.47</td>
+      <td>110</td>
+      <td>@ Philadelphia 76ers</td>
+      <td>1544.49</td>
+      <td>106</td>
+      <td>64.27%</td>
+      <td>35.73%</td>
+      <td>2.83</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Los Angeles Clippers</td>
+      <td>1622.29</td>
+      <td>133</td>
+      <td>@ Dallas Mavericks</td>
+      <td>1552.02</td>
+      <td>135</td>
+      <td>59.98%</td>
+      <td>40.02%</td>
+      <td>-2.37</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Toronto Raptors</td>
+      <td>1683.89</td>
+      <td>150</td>
+      <td>@ Brooklyn Nets</td>
+      <td>1477.38</td>
+      <td>122</td>
+      <td>76.65%</td>
+      <td>23.35%</td>
+      <td>4.89</td>
+    </tr>
+    <tr>
+      <td>2020-08-24</td>
+      <td>Milwaukee Bucks</td>
+      <td>1672.13</td>
+      <td>121</td>
+      <td>@ Orlando Magic</td>
+      <td>1483.62</td>
+      <td>106</td>
+      <td>74.75%</td>
+      <td>25.25%</td>
+      <td>3.87</td>
+    </tr>
+    <tr>
+      <td>2020-08-24</td>
+      <td>Los Angeles Lakers</td>
+      <td>1609.33</td>
+      <td>135</td>
+      <td>@ Portland Trail Blazers</td>
+      <td>1508.78</td>
+      <td>115</td>
+      <td>64.08%</td>
+      <td>35.92%</td>
+      <td>6.36</td>
+    </tr>
+    <tr>
+      <td>2020-08-24</td>
+      <td>Houston Rockets</td>
+      <td>1580.16</td>
+      <td>114</td>
+      <td>@ Oklahoma City Thunder</td>
+      <td>1563.56</td>
+      <td>117</td>
+      <td>52.39%</td>
+      <td>47.61%</td>
+      <td>-3.60</td>
+    </tr>
+    <tr>
+      <td>2020-08-24</td>
+      <td>Indiana Pacers</td>
+      <td>1545.83</td>
+      <td>87</td>
+      <td>@ Miami Heat</td>
+      <td>1566.43</td>
+      <td>99</td>
+      <td>47.04%</td>
+      <td>52.96%</td>
+      <td>-6.45</td>
+    </tr>
+    <tr>
+      <td>2020-08-24</td>
+      <td>Orlando Magic</td>
+      <td>1483.62</td>
+      <td>106</td>
+      <td>Milwaukee Bucks</td>
+      <td>1672.13</td>
+      <td>121</td>
+      <td>25.25%</td>
+      <td>74.75%</td>
+      <td>-3.87</td>
+    </tr>
+    <tr>
+      <td>2020-08-24</td>
+      <td>Portland Trail Blazers</td>
+      <td>1508.78</td>
+      <td>115</td>
+      <td>Los Angeles Lakers</td>
+      <td>1609.33</td>
+      <td>135</td>
+      <td>35.92%</td>
+      <td>64.08%</td>
+      <td>-6.36</td>
+    </tr>
+    <tr>
+      <td>2020-08-24</td>
+      <td>Oklahoma City Thunder</td>
+      <td>1563.56</td>
+      <td>117</td>
+      <td>Houston Rockets</td>
+      <td>1580.16</td>
+      <td>114</td>
+      <td>47.61%</td>
+      <td>52.39%</td>
+      <td>3.60</td>
+    </tr>
+    <tr>
+      <td>2020-08-24</td>
+      <td>Miami Heat</td>
+      <td>1566.43</td>
+      <td>99</td>
+      <td>Indiana Pacers</td>
+      <td>1545.83</td>
+      <td>87</td>
+      <td>52.96%</td>
+      <td>47.04%</td>
+      <td>6.46</td>
+    </tr>
+    <tr>
+      <td>2020-08-25</td>
+      <td>Los Angeles Clippers</td>
+      <td>1619.92</td>
+      <td>154</td>
+      <td>Dallas Mavericks</td>
+      <td>1554.39</td>
+      <td>111</td>
+      <td>59.32%</td>
+      <td>40.68%</td>
+      <td>10.56</td>
+    </tr>
+    <tr>
+      <td>2020-08-25</td>
+      <td>Utah Jazz</td>
+      <td>1584.67</td>
+      <td>107</td>
+      <td>@ Denver Nuggets</td>
+      <td>1545.41</td>
+      <td>117</td>
+      <td>55.63%</td>
+      <td>44.37%</td>
+      <td>-6.97</td>
+    </tr>
+    <tr>
+      <td>2020-08-25</td>
+      <td>Denver Nuggets</td>
+      <td>1545.41</td>
+      <td>117</td>
+      <td>Utah Jazz</td>
+      <td>1584.67</td>
+      <td>107</td>
+      <td>44.37%</td>
+      <td>55.63%</td>
+      <td>6.97</td>
+    </tr>
+    <tr>
+      <td>2020-08-25</td>
+      <td>Dallas Mavericks</td>
+      <td>1554.39</td>
+      <td>111</td>
+      <td>@ Los Angeles Clippers</td>
+      <td>1619.92</td>
+      <td>154</td>
+      <td>40.68%</td>
+      <td>59.32%</td>
+      <td>-10.56</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Milwaukee Bucks</td>
+      <td>1676.00</td>
+      <td>118</td>
+      <td>Orlando Magic</td>
+      <td>1479.75</td>
+      <td>104</td>
+      <td>75.58%</td>
+      <td>24.42%</td>
+      <td>3.62</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Houston Rockets</td>
+      <td>1576.56</td>
+      <td>114</td>
+      <td>Oklahoma City Thunder</td>
+      <td>1567.16</td>
+      <td>80</td>
+      <td>51.35%</td>
+      <td>48.65%</td>
+      <td>11.24</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Portland Trail Blazers</td>
+      <td>1502.42</td>
+      <td>122</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1615.69</td>
+      <td>131</td>
+      <td>34.25%</td>
+      <td>65.75%</td>
+      <td>-4.07</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Orlando Magic</td>
+      <td>1479.75</td>
+      <td>104</td>
+      <td>@ Milwaukee Bucks</td>
+      <td>1676.00</td>
+      <td>118</td>
+      <td>24.42%</td>
+      <td>75.58%</td>
+      <td>-3.62</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Los Angeles Lakers</td>
+      <td>1615.69</td>
+      <td>131</td>
+      <td>Portland Trail Blazers</td>
+      <td>1502.42</td>
+      <td>122</td>
+      <td>65.75%</td>
+      <td>34.25%</td>
+      <td>4.07</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Oklahoma City Thunder</td>
+      <td>1567.16</td>
+      <td>80</td>
+      <td>@ Houston Rockets</td>
+      <td>1576.56</td>
+      <td>114</td>
+      <td>48.65%</td>
+      <td>51.35%</td>
+      <td>-11.24</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Dallas Mavericks</td>
+      <td>1543.83</td>
+      <td>97</td>
+      <td>Los Angeles Clippers</td>
+      <td>1630.48</td>
+      <td>111</td>
+      <td>37.78%</td>
+      <td>62.22%</td>
+      <td>-5.60</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Toronto Raptors</td>
+      <td>1688.78</td>
+      <td>94</td>
+      <td>Boston Celtics</td>
+      <td>1649.30</td>
+      <td>112</td>
+      <td>55.66%</td>
+      <td>44.34%</td>
+      <td>-9.35</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Utah Jazz</td>
+      <td>1577.70</td>
+      <td>107</td>
+      <td>Denver Nuggets</td>
+      <td>1552.38</td>
+      <td>119</td>
+      <td>53.64%</td>
+      <td>46.36%</td>
+      <td>-7.35</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Los Angeles Clippers</td>
+      <td>1630.48</td>
+      <td>111</td>
+      <td>@ Dallas Mavericks</td>
+      <td>1543.83</td>
+      <td>97</td>
+      <td>62.22%</td>
+      <td>37.78%</td>
+      <td>5.60</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Denver Nuggets</td>
+      <td>1552.38</td>
+      <td>119</td>
+      <td>@ Utah Jazz</td>
+      <td>1577.70</td>
+      <td>107</td>
+      <td>46.36%</td>
+      <td>53.64%</td>
+      <td>7.35</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Boston Celtics</td>
+      <td>1649.30</td>
+      <td>112</td>
+      <td>@ Toronto Raptors</td>
+      <td>1688.78</td>
+      <td>94</td>
+      <td>44.34%</td>
+      <td>55.66%</td>
+      <td>9.35</td>
+    </tr>
+    <tr>
+      <td>2020-08-31</td>
+      <td>Miami Heat</td>
+      <td>1572.89</td>
+      <td>115</td>
+      <td>@ Milwaukee Bucks</td>
+      <td>1679.62</td>
+      <td>104</td>
+      <td>35.11%</td>
+      <td>64.89%</td>
+      <td>8.52</td>
+    </tr>
+    <tr>
+      <td>2020-08-31</td>
+      <td>Oklahoma City Thunder</td>
+      <td>1555.92</td>
+      <td>104</td>
+      <td>Houston Rockets</td>
+      <td>1587.80</td>
+      <td>100</td>
+      <td>45.43%</td>
+      <td>54.57%</td>
+      <td>4.33</td>
+    </tr>
+    <tr>
+      <td>2020-08-31</td>
+      <td>Milwaukee Bucks</td>
+      <td>1679.62</td>
+      <td>104</td>
+      <td>Miami Heat</td>
+      <td>1572.89</td>
+      <td>115</td>
+      <td>64.89%</td>
+      <td>35.11%</td>
+      <td>-8.52</td>
+    </tr>
+    <tr>
+      <td>2020-08-31</td>
+      <td>Houston Rockets</td>
+      <td>1587.80</td>
+      <td>100</td>
+      <td>@ Oklahoma City Thunder</td>
+      <td>1555.92</td>
+      <td>104</td>
+      <td>54.57%</td>
+      <td>45.43%</td>
+      <td>-4.33</td>
+    </tr>
+    <tr>
+      <td>2020-09-01</td>
+      <td>Boston Celtics</td>
+      <td>1658.65</td>
+      <td>102</td>
+      <td>@ Toronto Raptors</td>
+      <td>1679.43</td>
+      <td>99</td>
+      <td>47.01%</td>
+      <td>52.99%</td>
+      <td>3.64</td>
+    </tr>
+    <tr>
+      <td>2020-09-01</td>
+      <td>Toronto Raptors</td>
+      <td>1679.43</td>
+      <td>99</td>
+      <td>Boston Celtics</td>
+      <td>1658.65</td>
+      <td>102</td>
+      <td>52.99%</td>
+      <td>47.01%</td>
+      <td>-3.64</td>
+    </tr>
+    <tr>
+      <td>2020-09-01</td>
+      <td>Denver Nuggets</td>
+      <td>1559.73</td>
+      <td>80</td>
+      <td>Utah Jazz</td>
+      <td>1570.35</td>
+      <td>78</td>
+      <td>48.47%</td>
+      <td>51.53%</td>
+      <td>2.89</td>
+    </tr>
+    <tr>
+      <td>2020-09-01</td>
+      <td>Utah Jazz</td>
+      <td>1570.35</td>
+      <td>78</td>
+      <td>@ Denver Nuggets</td>
+      <td>1559.73</td>
+      <td>80</td>
+      <td>51.53%</td>
+      <td>48.47%</td>
+      <td>-2.89</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Houston Rockets</td>
+      <td>1583.47</td>
+      <td>104</td>
+      <td>Oklahoma City Thunder</td>
+      <td>1560.25</td>
+      <td>102</td>
+      <td>53.34%</td>
+      <td>46.66%</td>
+      <td>2.62</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Oklahoma City Thunder</td>
+      <td>1560.25</td>
+      <td>102</td>
+      <td>@ Houston Rockets</td>
+      <td>1583.47</td>
+      <td>104</td>
+      <td>46.66%</td>
+      <td>53.34%</td>
+      <td>-2.62</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Miami Heat</td>
+      <td>1581.41</td>
+      <td>116</td>
+      <td>@ Milwaukee Bucks</td>
+      <td>1671.10</td>
+      <td>114</td>
+      <td>37.37%</td>
+      <td>62.63%</td>
+      <td>3.51</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Milwaukee Bucks</td>
+      <td>1671.10</td>
+      <td>114</td>
+      <td>Miami Heat</td>
+      <td>1581.41</td>
+      <td>116</td>
+      <td>62.63%</td>
+      <td>37.37%</td>
+      <td>-3.51</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Toronto Raptors</td>
+      <td>1675.79</td>
+      <td>104</td>
+      <td>@ Boston Celtics</td>
+      <td>1662.29</td>
+      <td>103</td>
+      <td>51.94%</td>
+      <td>48.06%</td>
+      <td>1.91</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Denver Nuggets</td>
+      <td>1562.62</td>
+      <td>97</td>
+      <td>@ Los Angeles Clippers</td>
+      <td>1636.08</td>
+      <td>120</td>
+      <td>39.58%</td>
+      <td>60.42%</td>
+      <td>-7.52</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Los Angeles Clippers</td>
+      <td>1636.08</td>
+      <td>120</td>
+      <td>Denver Nuggets</td>
+      <td>1562.62</td>
+      <td>97</td>
+      <td>60.42%</td>
+      <td>39.58%</td>
+      <td>7.52</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Boston Celtics</td>
+      <td>1662.29</td>
+      <td>103</td>
+      <td>Toronto Raptors</td>
+      <td>1675.79</td>
+      <td>104</td>
+      <td>48.06%</td>
+      <td>51.94%</td>
+      <td>-1.91</td>
+    </tr>
+    <tr>
+      <td>2020-09-04</td>
+      <td>Houston Rockets</td>
+      <td>1586.09</td>
+      <td>112</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1619.76</td>
+      <td>97</td>
+      <td>45.17%</td>
+      <td>54.83%</td>
+      <td>8.41</td>
+    </tr>
+    <tr>
+      <td>2020-09-04</td>
+      <td>Milwaukee Bucks</td>
+      <td>1667.59</td>
+      <td>100</td>
+      <td>@ Miami Heat</td>
+      <td>1584.92</td>
+      <td>115</td>
+      <td>61.68%</td>
+      <td>38.32%</td>
+      <td>-9.46</td>
+    </tr>
+    <tr>
+      <td>2020-09-04</td>
+      <td>Miami Heat</td>
+      <td>1584.92</td>
+      <td>115</td>
+      <td>Milwaukee Bucks</td>
+      <td>1667.59</td>
+      <td>100</td>
+      <td>38.32%</td>
+      <td>61.68%</td>
+      <td>9.46</td>
+    </tr>
+    <tr>
+      <td>2020-09-04</td>
+      <td>Los Angeles Lakers</td>
+      <td>1619.76</td>
+      <td>97</td>
+      <td>Houston Rockets</td>
+      <td>1586.09</td>
+      <td>112</td>
+      <td>54.83%</td>
+      <td>45.17%</td>
+      <td>-8.41</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>Toronto Raptors</td>
+      <td>1677.70</td>
+      <td>100</td>
+      <td>@ Boston Celtics</td>
+      <td>1660.38</td>
+      <td>93</td>
+      <td>52.49%</td>
+      <td>47.51%</td>
+      <td>4.98</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>Boston Celtics</td>
+      <td>1660.38</td>
+      <td>93</td>
+      <td>Toronto Raptors</td>
+      <td>1677.70</td>
+      <td>100</td>
+      <td>47.51%</td>
+      <td>52.49%</td>
+      <td>-4.97</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>Denver Nuggets</td>
+      <td>1555.10</td>
+      <td>110</td>
+      <td>@ Los Angeles Clippers</td>
+      <td>1643.60</td>
+      <td>101</td>
+      <td>37.53%</td>
+      <td>62.47%</td>
+      <td>7.42</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>Los Angeles Clippers</td>
+      <td>1643.60</td>
+      <td>101</td>
+      <td>Denver Nuggets</td>
+      <td>1555.10</td>
+      <td>110</td>
+      <td>62.47%</td>
+      <td>37.53%</td>
+      <td>-7.42</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Houston Rockets</td>
+      <td>1594.50</td>
+      <td>109</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1611.35</td>
+      <td>117</td>
+      <td>47.58%</td>
+      <td>52.42%</td>
+      <td>-5.33</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Miami Heat</td>
+      <td>1594.38</td>
+      <td>115</td>
+      <td>Milwaukee Bucks</td>
+      <td>1658.13</td>
+      <td>118</td>
+      <td>40.93%</td>
+      <td>59.07%</td>
+      <td>-1.99</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Milwaukee Bucks</td>
+      <td>1658.13</td>
+      <td>118</td>
+      <td>@ Miami Heat</td>
+      <td>1594.38</td>
+      <td>115</td>
+      <td>59.07%</td>
+      <td>40.93%</td>
+      <td>1.99</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Los Angeles Lakers</td>
+      <td>1611.35</td>
+      <td>117</td>
+      <td>Houston Rockets</td>
+      <td>1594.50</td>
+      <td>109</td>
+      <td>52.42%</td>
+      <td>47.58%</td>
+      <td>5.33</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Toronto Raptors</td>
+      <td>1682.68</td>
+      <td>89</td>
+      <td>Boston Celtics</td>
+      <td>1655.41</td>
+      <td>111</td>
+      <td>53.92%</td>
+      <td>46.08%</td>
+      <td>-10.02</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Denver Nuggets</td>
+      <td>1562.52</td>
+      <td>107</td>
+      <td>Los Angeles Clippers</td>
+      <td>1636.18</td>
+      <td>113</td>
+      <td>39.56%</td>
+      <td>60.44%</td>
+      <td>-3.83</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Los Angeles Clippers</td>
+      <td>1636.18</td>
+      <td>113</td>
+      <td>@ Denver Nuggets</td>
+      <td>1562.52</td>
+      <td>107</td>
+      <td>60.44%</td>
+      <td>39.56%</td>
+      <td>3.83</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Boston Celtics</td>
+      <td>1655.41</td>
+      <td>111</td>
+      <td>@ Toronto Raptors</td>
+      <td>1682.68</td>
+      <td>89</td>
+      <td>46.08%</td>
+      <td>53.92%</td>
+      <td>10.01</td>
+    </tr>
+    <tr>
+      <td>2020-09-08</td>
+      <td>Los Angeles Lakers</td>
+      <td>1616.68</td>
+      <td>112</td>
+      <td>@ Houston Rockets</td>
+      <td>1589.17</td>
+      <td>102</td>
+      <td>53.95%</td>
+      <td>46.05%</td>
+      <td>5.77</td>
+    </tr>
+    <tr>
+      <td>2020-09-08</td>
+      <td>Miami Heat</td>
+      <td>1592.39</td>
+      <td>103</td>
+      <td>@ Milwaukee Bucks</td>
+      <td>1660.12</td>
+      <td>94</td>
+      <td>40.38%</td>
+      <td>59.62%</td>
+      <td>7.09</td>
+    </tr>
+    <tr>
+      <td>2020-09-08</td>
+      <td>Milwaukee Bucks</td>
+      <td>1660.12</td>
+      <td>94</td>
+      <td>Miami Heat</td>
+      <td>1592.39</td>
+      <td>103</td>
+      <td>59.62%</td>
+      <td>40.38%</td>
+      <td>-7.09</td>
+    </tr>
+    <tr>
+      <td>2020-09-08</td>
+      <td>Houston Rockets</td>
+      <td>1589.17</td>
+      <td>102</td>
+      <td>Los Angeles Lakers</td>
+      <td>1616.68</td>
+      <td>112</td>
+      <td>46.05%</td>
+      <td>53.95%</td>
+      <td>-5.77</td>
+    </tr>
+    <tr>
+      <td>2020-09-09</td>
+      <td>Los Angeles Clippers</td>
+      <td>1640.01</td>
+      <td>96</td>
+      <td>@ Denver Nuggets</td>
+      <td>1558.69</td>
+      <td>85</td>
+      <td>61.49%</td>
+      <td>38.51%</td>
+      <td>5.06</td>
+    </tr>
+    <tr>
+      <td>2020-09-09</td>
+      <td>Denver Nuggets</td>
+      <td>1558.69</td>
+      <td>85</td>
+      <td>Los Angeles Clippers</td>
+      <td>1640.01</td>
+      <td>96</td>
+      <td>38.51%</td>
+      <td>61.49%</td>
+      <td>-5.06</td>
+    </tr>
+    <tr>
+      <td>2020-09-09</td>
+      <td>Boston Celtics</td>
+      <td>1665.42</td>
+      <td>122</td>
+      <td>Toronto Raptors</td>
+      <td>1672.66</td>
+      <td>125</td>
+      <td>48.96%</td>
+      <td>51.04%</td>
+      <td>-2.37</td>
+    </tr>
+    <tr>
+      <td>2020-09-09</td>
+      <td>Toronto Raptors</td>
+      <td>1672.66</td>
+      <td>125</td>
+      <td>@ Boston Celtics</td>
+      <td>1665.42</td>
+      <td>122</td>
+      <td>51.04%</td>
+      <td>48.96%</td>
+      <td>2.38</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Los Angeles Lakers</td>
+      <td>1622.45</td>
+      <td>110</td>
+      <td>@ Houston Rockets</td>
+      <td>1583.40</td>
+      <td>100</td>
+      <td>55.60%</td>
+      <td>44.40%</td>
+      <td>5.56</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Houston Rockets</td>
+      <td>1583.40</td>
+      <td>100</td>
+      <td>Los Angeles Lakers</td>
+      <td>1622.45</td>
+      <td>110</td>
+      <td>44.40%</td>
+      <td>55.60%</td>
+      <td>-5.56</td>
+    </tr>
+    <tr>
+      <td>2020-09-11</td>
+      <td>Boston Celtics</td>
+      <td>1663.05</td>
+      <td>92</td>
+      <td>@ Toronto Raptors</td>
+      <td>1675.04</td>
+      <td>87</td>
+      <td>48.28%</td>
+      <td>51.72%</td>
+      <td>4.58</td>
+    </tr>
+    <tr>
+      <td>2020-09-11</td>
+      <td>Denver Nuggets</td>
+      <td>1553.63</td>
+      <td>111</td>
+      <td>@ Los Angeles Clippers</td>
+      <td>1645.07</td>
+      <td>105</td>
+      <td>37.14%</td>
+      <td>62.86%</td>
+      <td>6.10</td>
+    </tr>
+    <tr>
+      <td>2020-09-11</td>
+      <td>Toronto Raptors</td>
+      <td>1675.04</td>
+      <td>87</td>
+      <td>Boston Celtics</td>
+      <td>1663.05</td>
+      <td>92</td>
+      <td>51.72%</td>
+      <td>48.28%</td>
+      <td>-4.59</td>
+    </tr>
+    <tr>
+      <td>2020-09-11</td>
+      <td>Los Angeles Clippers</td>
+      <td>1645.07</td>
+      <td>105</td>
+      <td>Denver Nuggets</td>
+      <td>1553.63</td>
+      <td>111</td>
+      <td>62.86%</td>
+      <td>37.14%</td>
+      <td>-6.10</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>Los Angeles Lakers</td>
+      <td>1628.01</td>
+      <td>119</td>
+      <td>Houston Rockets</td>
+      <td>1577.84</td>
+      <td>96</td>
+      <td>57.17%</td>
+      <td>42.83%</td>
+      <td>8.13</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>Houston Rockets</td>
+      <td>1577.84</td>
+      <td>96</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1628.01</td>
+      <td>119</td>
+      <td>42.83%</td>
+      <td>57.17%</td>
+      <td>-8.13</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Los Angeles Clippers</td>
+      <td>1638.97</td>
+      <td>98</td>
+      <td>@ Denver Nuggets</td>
+      <td>1559.73</td>
+      <td>111</td>
+      <td>61.21%</td>
+      <td>38.79%</td>
+      <td>-8.74</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Denver Nuggets</td>
+      <td>1559.73</td>
+      <td>111</td>
+      <td>Los Angeles Clippers</td>
+      <td>1638.97</td>
+      <td>98</td>
+      <td>38.79%</td>
+      <td>61.21%</td>
+      <td>8.74</td>
+    </tr>
+    <tr>
+      <td>2020-09-15</td>
+      <td>Boston Celtics</td>
+      <td>1667.63</td>
+      <td>114</td>
+      <td>Miami Heat</td>
+      <td>1599.48</td>
+      <td>117</td>
+      <td>59.68%</td>
+      <td>40.32%</td>
+      <td>-2.90</td>
+    </tr>
+    <tr>
+      <td>2020-09-15</td>
+      <td>Denver Nuggets</td>
+      <td>1568.47</td>
+      <td>104</td>
+      <td>@ Los Angeles Clippers</td>
+      <td>1630.23</td>
+      <td>89</td>
+      <td>41.20%</td>
+      <td>58.80%</td>
+      <td>9.01</td>
+    </tr>
+    <tr>
+      <td>2020-09-15</td>
+      <td>Miami Heat</td>
+      <td>1599.48</td>
+      <td>117</td>
+      <td>@ Boston Celtics</td>
+      <td>1667.63</td>
+      <td>114</td>
+      <td>40.32%</td>
+      <td>59.68%</td>
+      <td>2.89</td>
+    </tr>
+    <tr>
+      <td>2020-09-15</td>
+      <td>Los Angeles Clippers</td>
+      <td>1630.23</td>
+      <td>89</td>
+      <td>Denver Nuggets</td>
+      <td>1568.47</td>
+      <td>104</td>
+      <td>58.80%</td>
+      <td>41.20%</td>
+      <td>-9.01</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Miami Heat</td>
+      <td>1602.37</td>
+      <td>106</td>
+      <td>@ Boston Celtics</td>
+      <td>1664.73</td>
+      <td>101</td>
+      <td>41.12%</td>
+      <td>58.88%</td>
+      <td>5.21</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Boston Celtics</td>
+      <td>1664.73</td>
+      <td>101</td>
+      <td>Miami Heat</td>
+      <td>1602.37</td>
+      <td>106</td>
+      <td>58.88%</td>
+      <td>41.12%</td>
+      <td>-5.21</td>
+    </tr>
+    <tr>
+      <td>2020-09-18</td>
+      <td>Denver Nuggets</td>
+      <td>1577.48</td>
+      <td>114</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1636.14</td>
+      <td>126</td>
+      <td>41.64%</td>
+      <td>58.36%</td>
+      <td>-5.71</td>
+    </tr>
+    <tr>
+      <td>2020-09-18</td>
+      <td>Los Angeles Lakers</td>
+      <td>1636.14</td>
+      <td>126</td>
+      <td>Denver Nuggets</td>
+      <td>1577.48</td>
+      <td>114</td>
+      <td>58.36%</td>
+      <td>41.64%</td>
+      <td>5.71</td>
+    </tr>
+    <tr>
+      <td>2020-09-19</td>
+      <td>Miami Heat</td>
+      <td>1607.58</td>
+      <td>106</td>
+      <td>Boston Celtics</td>
+      <td>1659.52</td>
+      <td>117</td>
+      <td>42.58%</td>
+      <td>57.42%</td>
+      <td>-5.59</td>
+    </tr>
+    <tr>
+      <td>2020-09-19</td>
+      <td>Boston Celtics</td>
+      <td>1659.52</td>
+      <td>117</td>
+      <td>@ Miami Heat</td>
+      <td>1607.58</td>
+      <td>106</td>
+      <td>57.42%</td>
+      <td>42.58%</td>
+      <td>5.59</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Denver Nuggets</td>
+      <td>1571.77</td>
+      <td>103</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1641.85</td>
+      <td>105</td>
+      <td>40.05%</td>
+      <td>59.95%</td>
+      <td>-2.24</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Los Angeles Lakers</td>
+      <td>1641.85</td>
+      <td>105</td>
+      <td>Denver Nuggets</td>
+      <td>1571.77</td>
+      <td>103</td>
+      <td>59.95%</td>
+      <td>40.05%</td>
+      <td>2.25</td>
+    </tr>
+    <tr>
+      <td>2020-09-22</td>
+      <td>Los Angeles Lakers</td>
+      <td>1644.10</td>
+      <td>106</td>
+      <td>@ Denver Nuggets</td>
+      <td>1569.53</td>
+      <td>114</td>
+      <td>60.57%</td>
+      <td>39.43%</td>
+      <td>-6.79</td>
+    </tr>
+    <tr>
+      <td>2020-09-22</td>
+      <td>Denver Nuggets</td>
+      <td>1569.53</td>
+      <td>114</td>
+      <td>Los Angeles Lakers</td>
+      <td>1644.10</td>
+      <td>106</td>
+      <td>39.43%</td>
+      <td>60.57%</td>
+      <td>6.78</td>
+    </tr>
+    <tr>
+      <td>2020-09-23</td>
+      <td>Boston Celtics</td>
+      <td>1665.11</td>
+      <td>109</td>
+      <td>@ Miami Heat</td>
+      <td>1601.99</td>
+      <td>112</td>
+      <td>58.99%</td>
+      <td>41.01%</td>
+      <td>-4.04</td>
+    </tr>
+    <tr>
+      <td>2020-09-23</td>
+      <td>Miami Heat</td>
+      <td>1601.99</td>
+      <td>112</td>
+      <td>Boston Celtics</td>
+      <td>1665.11</td>
+      <td>109</td>
+      <td>41.01%</td>
+      <td>58.99%</td>
+      <td>4.05</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Los Angeles Lakers</td>
+      <td>1637.31</td>
+      <td>114</td>
+      <td>@ Denver Nuggets</td>
+      <td>1576.31</td>
+      <td>108</td>
+      <td>58.69%</td>
+      <td>41.31%</td>
+      <td>4.01</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Denver Nuggets</td>
+      <td>1576.31</td>
+      <td>108</td>
+      <td>Los Angeles Lakers</td>
+      <td>1637.31</td>
+      <td>114</td>
+      <td>41.31%</td>
+      <td>58.69%</td>
+      <td>-4.00</td>
+    </tr>
+    <tr>
+      <td>2020-09-25</td>
+      <td>Miami Heat</td>
+      <td>1606.04</td>
+      <td>108</td>
+      <td>@ Boston Celtics</td>
+      <td>1661.07</td>
+      <td>121</td>
+      <td>42.15%</td>
+      <td>57.85%</td>
+      <td>-6.02</td>
+    </tr>
+    <tr>
+      <td>2020-09-25</td>
+      <td>Boston Celtics</td>
+      <td>1661.07</td>
+      <td>121</td>
+      <td>Miami Heat</td>
+      <td>1606.04</td>
+      <td>108</td>
+      <td>57.85%</td>
+      <td>42.15%</td>
+      <td>6.01</td>
+    </tr>
+    <tr>
+      <td>2020-09-26</td>
+      <td>Denver Nuggets</td>
+      <td>1572.31</td>
+      <td>107</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1641.32</td>
+      <td>117</td>
+      <td>40.20%</td>
+      <td>59.80%</td>
+      <td>-5.04</td>
+    </tr>
+    <tr>
+      <td>2020-09-26</td>
+      <td>Los Angeles Lakers</td>
+      <td>1641.32</td>
+      <td>117</td>
+      <td>Denver Nuggets</td>
+      <td>1572.31</td>
+      <td>107</td>
+      <td>59.80%</td>
+      <td>40.20%</td>
+      <td>5.03</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Boston Celtics</td>
+      <td>1667.08</td>
+      <td>113</td>
+      <td>@ Miami Heat</td>
+      <td>1600.02</td>
+      <td>125</td>
+      <td>59.53%</td>
+      <td>40.47%</td>
+      <td>-8.16</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Miami Heat</td>
+      <td>1600.02</td>
+      <td>125</td>
+      <td>Boston Celtics</td>
+      <td>1667.08</td>
+      <td>113</td>
+      <td>40.47%</td>
+      <td>59.53%</td>
+      <td>8.17</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>Los Angeles Lakers</td>
+      <td>1646.35</td>
+      <td>116</td>
+      <td>Miami Heat</td>
+      <td>1608.19</td>
+      <td>98</td>
+      <td>55.47%</td>
+      <td>44.53%</td>
+      <td>7.48</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>Miami Heat</td>
+      <td>1608.19</td>
+      <td>98</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1646.35</td>
+      <td>116</td>
+      <td>44.53%</td>
+      <td>55.47%</td>
+      <td>-7.49</td>
+    </tr>
+    <tr>
+      <td>2020-10-02</td>
+      <td>Miami Heat</td>
+      <td>1600.70</td>
+      <td>114</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1653.83</td>
+      <td>124</td>
+      <td>42.41%</td>
+      <td>57.59%</td>
+      <td>-5.31</td>
+    </tr>
+    <tr>
+      <td>2020-10-02</td>
+      <td>Los Angeles Lakers</td>
+      <td>1653.83</td>
+      <td>124</td>
+      <td>Miami Heat</td>
+      <td>1600.70</td>
+      <td>114</td>
+      <td>57.59%</td>
+      <td>42.41%</td>
+      <td>5.32</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Los Angeles Lakers</td>
+      <td>1659.15</td>
+      <td>104</td>
+      <td>@ Miami Heat</td>
+      <td>1595.39</td>
+      <td>115</td>
+      <td>59.07%</td>
+      <td>40.93%</td>
+      <td>-7.76</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Miami Heat</td>
+      <td>1595.39</td>
+      <td>115</td>
+      <td>Los Angeles Lakers</td>
+      <td>1659.15</td>
+      <td>104</td>
+      <td>40.93%</td>
+      <td>59.07%</td>
+      <td>7.76</td>
+    </tr>
+    <tr>
+      <td>2020-10-06</td>
+      <td>Los Angeles Lakers</td>
+      <td>1651.39</td>
+      <td>102</td>
+      <td>@ Miami Heat</td>
+      <td>1603.15</td>
+      <td>96</td>
+      <td>56.90%</td>
+      <td>43.10%</td>
+      <td>4.18</td>
+    </tr>
+    <tr>
+      <td>2020-10-06</td>
+      <td>Miami Heat</td>
+      <td>1603.15</td>
+      <td>96</td>
+      <td>Los Angeles Lakers</td>
+      <td>1651.39</td>
+      <td>102</td>
+      <td>43.10%</td>
+      <td>56.90%</td>
+      <td>-4.18</td>
+    </tr>
+    <tr>
+      <td>2020-10-09</td>
+      <td>Miami Heat</td>
+      <td>1598.97</td>
+      <td>111</td>
+      <td>@ Los Angeles Lakers</td>
+      <td>1655.57</td>
+      <td>108</td>
+      <td>41.93%</td>
+      <td>58.07%</td>
+      <td>3.98</td>
+    </tr>
+    <tr>
+      <td>2020-10-09</td>
+      <td>Los Angeles Lakers</td>
+      <td>1655.57</td>
+      <td>108</td>
+      <td>Miami Heat</td>
+      <td>1598.97</td>
+      <td>111</td>
+      <td>58.07%</td>
+      <td>41.93%</td>
+      <td>-3.99</td>
+    </tr>
+    <tr>
+      <td>2020-10-11</td>
+      <td>Miami Heat</td>
+      <td>1602.95</td>
+      <td>93</td>
+      <td>Los Angeles Lakers</td>
+      <td>1651.58</td>
+      <td>106</td>
+      <td>43.05%</td>
+      <td>56.95%</td>
+      <td>-6.14</td>
+    </tr>
+    <tr>
+      <td>2020-10-11</td>
+      <td>Los Angeles Lakers</td>
+      <td>1651.58</td>
+      <td>106</td>
+      <td>@ Miami Heat</td>
+      <td>1602.95</td>
+      <td>93</td>
+      <td>56.95%</td>
+      <td>43.05%</td>
+      <td>6.15</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
