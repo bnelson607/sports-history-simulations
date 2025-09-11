@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Boston Patriots">Boston Patriots</option><option value="Buffalo Bills">Buffalo Bills</option><option value="Denver Broncos">Denver Broncos</option><option value="Houston Oilers">Houston Oilers</option><option value="Kansas City Chiefs">Kansas City Chiefs</option><option value="Miami Dolphins">Miami Dolphins</option><option value="New York Jets">New York Jets</option><option value="Oakland Raiders">Oakland Raiders</option><option value="San Diego Chargers">San Diego Chargers</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="3" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Tie Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1967-09-03</td>
+      <td>Denver Broncos</td>
+      <td>1402.47</td>
+      <td>26</td>
+      <td>Boston Patriots</td>
+      <td>1534.11</td>
+      <td>21</td>
+      <td>35.13%</td>
+      <td>60.98%</td>
+      <td>3.89%</td>
+      <td>26.19</td>
+    </tr>
+    <tr>
+      <td>1967-09-03</td>
+      <td>Boston Patriots</td>
+      <td>1534.11</td>
+      <td>21</td>
+      <td>@ Denver Broncos</td>
+      <td>1402.47</td>
+      <td>26</td>
+      <td>60.98%</td>
+      <td>35.13%</td>
+      <td>3.89%</td>
+      <td>-26.18</td>
+    </tr>
+    <tr>
+      <td>1967-09-09</td>
+      <td>San Diego Chargers</td>
+      <td>1535.22</td>
+      <td>28</td>
+      <td>Boston Patriots</td>
+      <td>1507.93</td>
+      <td>14</td>
+      <td>57.38%</td>
+      <td>38.73%</td>
+      <td>3.89%</td>
+      <td>28.22</td>
+    </tr>
+    <tr>
+      <td>1967-09-09</td>
+      <td>Houston Oilers</td>
+      <td>1437.84</td>
+      <td>20</td>
+      <td>Kansas City Chiefs</td>
+      <td>1606.60</td>
+      <td>25</td>
+      <td>30.42%</td>
+      <td>65.69%</td>
+      <td>3.88%</td>
+      <td>-13.34</td>
+    </tr>
+    <tr>
+      <td>1967-09-09</td>
+      <td>Kansas City Chiefs</td>
+      <td>1606.60</td>
+      <td>25</td>
+      <td>@ Houston Oilers</td>
+      <td>1437.84</td>
+      <td>20</td>
+      <td>65.69%</td>
+      <td>30.42%</td>
+      <td>3.88%</td>
+      <td>13.34</td>
+    </tr>
+    <tr>
+      <td>1967-09-09</td>
+      <td>Boston Patriots</td>
+      <td>1507.93</td>
+      <td>14</td>
+      <td>@ San Diego Chargers</td>
+      <td>1535.22</td>
+      <td>28</td>
+      <td>38.73%</td>
+      <td>57.38%</td>
+      <td>3.89%</td>
+      <td>-28.22</td>
+    </tr>
+    <tr>
+      <td>1967-09-10</td>
+      <td>New York Jets</td>
+      <td>1495.72</td>
+      <td>17</td>
+      <td>@ Buffalo Bills</td>
+      <td>1573.91</td>
+      <td>20</td>
+      <td>32.04%</td>
+      <td>64.08%</td>
+      <td>3.89%</td>
+      <td>-10.86</td>
+    </tr>
+    <tr>
+      <td>1967-09-10</td>
+      <td>Oakland Raiders</td>
+      <td>1543.52</td>
+      <td>51</td>
+      <td>Denver Broncos</td>
+      <td>1428.66</td>
+      <td>0</td>
+      <td>68.50%</td>
+      <td>27.62%</td>
+      <td>3.88%</td>
+      <td>38.76</td>
+    </tr>
+    <tr>
+      <td>1967-09-10</td>
+      <td>Buffalo Bills</td>
+      <td>1573.91</td>
+      <td>20</td>
+      <td>New York Jets</td>
+      <td>1495.72</td>
+      <td>17</td>
+      <td>64.08%</td>
+      <td>32.04%</td>
+      <td>3.89%</td>
+      <td>10.86</td>
+    </tr>
+    <tr>
+      <td>1967-09-10</td>
+      <td>Denver Broncos</td>
+      <td>1428.66</td>
+      <td>0</td>
+      <td>@ Oakland Raiders</td>
+      <td>1543.52</td>
+      <td>51</td>
+      <td>27.62%</td>
+      <td>68.50%</td>
+      <td>3.88%</td>
+      <td>-38.77</td>
+    </tr>
+    <tr>
+      <td>1967-09-17</td>
+      <td>Houston Oilers</td>
+      <td>1424.50</td>
+      <td>20</td>
+      <td>@ Buffalo Bills</td>
+      <td>1584.77</td>
+      <td>3</td>
+      <td>22.71%</td>
+      <td>73.42%</td>
+      <td>3.88%</td>
+      <td>58.09</td>
+    </tr>
+    <tr>
+      <td>1967-09-17</td>
+      <td>Boston Patriots</td>
+      <td>1479.71</td>
+      <td>7</td>
+      <td>@ Oakland Raiders</td>
+      <td>1582.28</td>
+      <td>35</td>
+      <td>29.06%</td>
+      <td>67.06%</td>
+      <td>3.88%</td>
+      <td>-30.18</td>
+    </tr>
+    <tr>
+      <td>1967-09-17</td>
+      <td>Denver Broncos</td>
+      <td>1389.89</td>
+      <td>21</td>
+      <td>@ Miami Dolphins</td>
+      <td>1370.61</td>
+      <td>35</td>
+      <td>45.26%</td>
+      <td>50.85%</td>
+      <td>3.89%</td>
+      <td>-32.79</td>
+    </tr>
+    <tr>
+      <td>1967-09-17</td>
+      <td>Miami Dolphins</td>
+      <td>1370.61</td>
+      <td>35</td>
+      <td>Denver Broncos</td>
+      <td>1389.89</td>
+      <td>21</td>
+      <td>50.85%</td>
+      <td>45.26%</td>
+      <td>3.89%</td>
+      <td>32.79</td>
+    </tr>
+    <tr>
+      <td>1967-09-17</td>
+      <td>Oakland Raiders</td>
+      <td>1582.28</td>
+      <td>35</td>
+      <td>Boston Patriots</td>
+      <td>1479.71</td>
+      <td>7</td>
+      <td>67.06%</td>
+      <td>29.06%</td>
+      <td>3.88%</td>
+      <td>30.18</td>
+    </tr>
+    <tr>
+      <td>1967-09-17</td>
+      <td>Buffalo Bills</td>
+      <td>1584.77</td>
+      <td>3</td>
+      <td>Houston Oilers</td>
+      <td>1424.50</td>
+      <td>20</td>
+      <td>73.42%</td>
+      <td>22.71%</td>
+      <td>3.88%</td>
+      <td>-58.09</td>
+    </tr>
+    <tr>
+      <td>1967-09-24</td>
+      <td>Kansas City Chiefs</td>
+      <td>1619.94</td>
+      <td>24</td>
+      <td>@ Miami Dolphins</td>
+      <td>1403.40</td>
+      <td>0</td>
+      <td>71.19%</td>
+      <td>24.93%</td>
+      <td>3.88%</td>
+      <td>24.05</td>
+    </tr>
+    <tr>
+      <td>1967-09-24</td>
+      <td>Boston Patriots</td>
+      <td>1449.53</td>
+      <td>23</td>
+      <td>@ Buffalo Bills</td>
+      <td>1526.68</td>
+      <td>0</td>
+      <td>32.17%</td>
+      <td>63.94%</td>
+      <td>3.89%</td>
+      <td>58.86</td>
+    </tr>
+    <tr>
+      <td>1967-09-24</td>
+      <td>San Diego Chargers</td>
+      <td>1563.44</td>
+      <td>13</td>
+      <td>Houston Oilers</td>
+      <td>1482.59</td>
+      <td>3</td>
+      <td>64.41%</td>
+      <td>31.71%</td>
+      <td>3.89%</td>
+      <td>19.63</td>
+    </tr>
+    <tr>
+      <td>1967-09-24</td>
+      <td>Denver Broncos</td>
+      <td>1357.10</td>
+      <td>24</td>
+      <td>New York Jets</td>
+      <td>1484.86</td>
+      <td>38</td>
+      <td>35.64%</td>
+      <td>60.47%</td>
+      <td>3.89%</td>
+      <td>-26.03</td>
+    </tr>
+    <tr>
+      <td>1967-09-24</td>
+      <td>Miami Dolphins</td>
+      <td>1403.40</td>
+      <td>0</td>
+      <td>Kansas City Chiefs</td>
+      <td>1619.94</td>
+      <td>24</td>
+      <td>24.93%</td>
+      <td>71.19%</td>
+      <td>3.88%</td>
+      <td>-24.05</td>
+    </tr>
+    <tr>
+      <td>1967-09-24</td>
+      <td>Buffalo Bills</td>
+      <td>1526.68</td>
+      <td>0</td>
+      <td>Boston Patriots</td>
+      <td>1449.53</td>
+      <td>23</td>
+      <td>63.94%</td>
+      <td>32.17%</td>
+      <td>3.89%</td>
+      <td>-58.86</td>
+    </tr>
+    <tr>
+      <td>1967-09-24</td>
+      <td>New York Jets</td>
+      <td>1484.86</td>
+      <td>38</td>
+      <td>@ Denver Broncos</td>
+      <td>1357.10</td>
+      <td>24</td>
+      <td>60.47%</td>
+      <td>35.64%</td>
+      <td>3.89%</td>
+      <td>26.03</td>
+    </tr>
+    <tr>
+      <td>1967-09-24</td>
+      <td>Houston Oilers</td>
+      <td>1482.59</td>
+      <td>3</td>
+      <td>@ San Diego Chargers</td>
+      <td>1563.44</td>
+      <td>13</td>
+      <td>31.71%</td>
+      <td>64.41%</td>
+      <td>3.89%</td>
+      <td>-19.63</td>
+    </tr>
+    <tr>
+      <td>1967-10-01</td>
+      <td>Buffalo Bills</td>
+      <td>1467.82</td>
+      <td>17</td>
+      <td>San Diego Chargers</td>
+      <td>1583.07</td>
+      <td>37</td>
+      <td>37.31%</td>
+      <td>58.80%</td>
+      <td>3.89%</td>
+      <td>-32.52</td>
+    </tr>
+    <tr>
+      <td>1967-10-01</td>
+      <td>San Diego Chargers</td>
+      <td>1583.07</td>
+      <td>37</td>
+      <td>@ Buffalo Bills</td>
+      <td>1467.82</td>
+      <td>17</td>
+      <td>58.80%</td>
+      <td>37.31%</td>
+      <td>3.89%</td>
+      <td>32.53</td>
+    </tr>
+    <tr>
+      <td>1967-10-01</td>
+      <td>Denver Broncos</td>
+      <td>1331.07</td>
+      <td>6</td>
+      <td>@ Houston Oilers</td>
+      <td>1462.96</td>
+      <td>10</td>
+      <td>25.70%</td>
+      <td>70.42%</td>
+      <td>3.88%</td>
+      <td>-10.12</td>
+    </tr>
+    <tr>
+      <td>1967-10-01</td>
+      <td>Kansas City Chiefs</td>
+      <td>1643.99</td>
+      <td>21</td>
+      <td>@ Oakland Raiders</td>
+      <td>1612.46</td>
+      <td>23</td>
+      <td>47.02%</td>
+      <td>49.09%</td>
+      <td>3.89%</td>
+      <td>-12.86</td>
+    </tr>
+    <tr>
+      <td>1967-10-01</td>
+      <td>New York Jets</td>
+      <td>1510.89</td>
+      <td>29</td>
+      <td>Miami Dolphins</td>
+      <td>1379.35</td>
+      <td>7</td>
+      <td>70.38%</td>
+      <td>25.74%</td>
+      <td>3.88%</td>
+      <td>23.76</td>
+    </tr>
+    <tr>
+      <td>1967-10-01</td>
+      <td>Houston Oilers</td>
+      <td>1462.96</td>
+      <td>10</td>
+      <td>Denver Broncos</td>
+      <td>1331.07</td>
+      <td>6</td>
+      <td>70.42%</td>
+      <td>25.70%</td>
+      <td>3.88%</td>
+      <td>10.12</td>
+    </tr>
+    <tr>
+      <td>1967-10-01</td>
+      <td>Oakland Raiders</td>
+      <td>1612.46</td>
+      <td>23</td>
+      <td>Kansas City Chiefs</td>
+      <td>1643.99</td>
+      <td>21</td>
+      <td>49.09%</td>
+      <td>47.02%</td>
+      <td>3.89%</td>
+      <td>12.86</td>
+    </tr>
+    <tr>
+      <td>1967-10-01</td>
+      <td>Miami Dolphins</td>
+      <td>1379.35</td>
+      <td>7</td>
+      <td>@ New York Jets</td>
+      <td>1510.89</td>
+      <td>29</td>
+      <td>25.74%</td>
+      <td>70.38%</td>
+      <td>3.88%</td>
+      <td>-23.76</td>
+    </tr>
+    <tr>
+      <td>1967-10-07</td>
+      <td>New York Jets</td>
+      <td>1534.65</td>
+      <td>27</td>
+      <td>Oakland Raiders</td>
+      <td>1625.32</td>
+      <td>14</td>
+      <td>40.68%</td>
+      <td>55.43%</td>
+      <td>3.89%</td>
+      <td>38.44</td>
+    </tr>
+    <tr>
+      <td>1967-10-07</td>
+      <td>Oakland Raiders</td>
+      <td>1625.32</td>
+      <td>14</td>
+      <td>@ New York Jets</td>
+      <td>1534.65</td>
+      <td>27</td>
+      <td>55.43%</td>
+      <td>40.68%</td>
+      <td>3.89%</td>
+      <td>-38.45</td>
+    </tr>
+    <tr>
+      <td>1967-10-08</td>
+      <td>San Diego Chargers</td>
+      <td>1615.60</td>
+      <td>31</td>
+      <td>Boston Patriots</td>
+      <td>1508.39</td>
+      <td>31</td>
+      <td>67.60%</td>
+      <td>28.51%</td>
+      <td>3.88%</td>
+      <td>-1.84</td>
+    </tr>
+    <tr>
+      <td>1967-10-08</td>
+      <td>Buffalo Bills</td>
+      <td>1435.30</td>
+      <td>17</td>
+      <td>@ Denver Broncos</td>
+      <td>1320.95</td>
+      <td>16</td>
+      <td>58.68%</td>
+      <td>37.44%</td>
+      <td>3.89%</td>
+      <td>7.29</td>
+    </tr>
+    <tr>
+      <td>1967-10-08</td>
+      <td>Denver Broncos</td>
+      <td>1320.95</td>
+      <td>16</td>
+      <td>Buffalo Bills</td>
+      <td>1435.30</td>
+      <td>17</td>
+      <td>37.44%</td>
+      <td>58.68%</td>
+      <td>3.89%</td>
+      <td>-7.30</td>
+    </tr>
+    <tr>
+      <td>1967-10-08</td>
+      <td>Miami Dolphins</td>
+      <td>1355.59</td>
+      <td>0</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1631.13</td>
+      <td>41</td>
+      <td>13.14%</td>
+      <td>83.01%</td>
+      <td>3.85%</td>
+      <td>-16.73</td>
+    </tr>
+    <tr>
+      <td>1967-10-08</td>
+      <td>Boston Patriots</td>
+      <td>1508.39</td>
+      <td>31</td>
+      <td>@ San Diego Chargers</td>
+      <td>1615.60</td>
+      <td>31</td>
+      <td>28.51%</td>
+      <td>67.60%</td>
+      <td>3.88%</td>
+      <td>1.84</td>
+    </tr>
+    <tr>
+      <td>1967-10-08</td>
+      <td>Kansas City Chiefs</td>
+      <td>1631.13</td>
+      <td>41</td>
+      <td>Miami Dolphins</td>
+      <td>1355.59</td>
+      <td>0</td>
+      <td>83.01%</td>
+      <td>13.14%</td>
+      <td>3.85%</td>
+      <td>16.74</td>
+    </tr>
+    <tr>
+      <td>1967-10-15</td>
+      <td>Boston Patriots</td>
+      <td>1510.23</td>
+      <td>41</td>
+      <td>Miami Dolphins</td>
+      <td>1338.86</td>
+      <td>10</td>
+      <td>74.52%</td>
+      <td>21.61%</td>
+      <td>3.87%</td>
+      <td>23.76</td>
+    </tr>
+    <tr>
+      <td>1967-10-15</td>
+      <td>New York Jets</td>
+      <td>1573.09</td>
+      <td>28</td>
+      <td>Houston Oilers</td>
+      <td>1473.08</td>
+      <td>28</td>
+      <td>66.75%</td>
+      <td>29.36%</td>
+      <td>3.88%</td>
+      <td>-1.76</td>
+    </tr>
+    <tr>
+      <td>1967-10-15</td>
+      <td>Buffalo Bills</td>
+      <td>1442.59</td>
+      <td>20</td>
+      <td>Oakland Raiders</td>
+      <td>1586.87</td>
+      <td>24</td>
+      <td>33.49%</td>
+      <td>62.62%</td>
+      <td>3.89%</td>
+      <td>-13.09</td>
+    </tr>
+    <tr>
+      <td>1967-10-15</td>
+      <td>Oakland Raiders</td>
+      <td>1586.87</td>
+      <td>24</td>
+      <td>@ Buffalo Bills</td>
+      <td>1442.59</td>
+      <td>20</td>
+      <td>62.62%</td>
+      <td>33.49%</td>
+      <td>3.89%</td>
+      <td>13.10</td>
+    </tr>
+    <tr>
+      <td>1967-10-15</td>
+      <td>Kansas City Chiefs</td>
+      <td>1647.87</td>
+      <td>31</td>
+      <td>@ San Diego Chargers</td>
+      <td>1613.76</td>
+      <td>45</td>
+      <td>47.39%</td>
+      <td>48.72%</td>
+      <td>3.89%</td>
+      <td>-34.28</td>
+    </tr>
+    <tr>
+      <td>1967-10-15</td>
+      <td>Houston Oilers</td>
+      <td>1473.08</td>
+      <td>28</td>
+      <td>@ New York Jets</td>
+      <td>1573.09</td>
+      <td>28</td>
+      <td>29.36%</td>
+      <td>66.75%</td>
+      <td>3.88%</td>
+      <td>1.76</td>
+    </tr>
+    <tr>
+      <td>1967-10-15</td>
+      <td>Miami Dolphins</td>
+      <td>1338.86</td>
+      <td>10</td>
+      <td>@ Boston Patriots</td>
+      <td>1510.23</td>
+      <td>41</td>
+      <td>21.61%</td>
+      <td>74.52%</td>
+      <td>3.87%</td>
+      <td>-23.76</td>
+    </tr>
+    <tr>
+      <td>1967-10-15</td>
+      <td>San Diego Chargers</td>
+      <td>1613.76</td>
+      <td>45</td>
+      <td>Kansas City Chiefs</td>
+      <td>1647.87</td>
+      <td>31</td>
+      <td>48.72%</td>
+      <td>47.39%</td>
+      <td>3.89%</td>
+      <td>34.27</td>
+    </tr>
+    <tr>
+      <td>1967-10-22</td>
+      <td>Miami Dolphins</td>
+      <td>1315.10</td>
+      <td>14</td>
+      <td>New York Jets</td>
+      <td>1571.33</td>
+      <td>33</td>
+      <td>20.90%</td>
+      <td>75.23%</td>
+      <td>3.87%</td>
+      <td>-18.00</td>
+    </tr>
+    <tr>
+      <td>1967-10-22</td>
+      <td>San Diego Chargers</td>
+      <td>1648.03</td>
+      <td>38</td>
+      <td>@ Denver Broncos</td>
+      <td>1313.65</td>
+      <td>21</td>
+      <td>81.73%</td>
+      <td>14.42%</td>
+      <td>3.86%</td>
+      <td>11.81</td>
+    </tr>
+    <tr>
+      <td>1967-10-22</td>
+      <td>Houston Oilers</td>
+      <td>1474.84</td>
+      <td>24</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1613.59</td>
+      <td>19</td>
+      <td>24.96%</td>
+      <td>71.16%</td>
+      <td>3.88%</td>
+      <td>30.53</td>
+    </tr>
+    <tr>
+      <td>1967-10-22</td>
+      <td>Kansas City Chiefs</td>
+      <td>1613.59</td>
+      <td>19</td>
+      <td>Houston Oilers</td>
+      <td>1474.84</td>
+      <td>24</td>
+      <td>71.16%</td>
+      <td>24.96%</td>
+      <td>3.88%</td>
+      <td>-30.53</td>
+    </tr>
+    <tr>
+      <td>1967-10-22</td>
+      <td>Denver Broncos</td>
+      <td>1313.65</td>
+      <td>21</td>
+      <td>San Diego Chargers</td>
+      <td>1648.03</td>
+      <td>38</td>
+      <td>14.42%</td>
+      <td>81.73%</td>
+      <td>3.86%</td>
+      <td>-11.81</td>
+    </tr>
+    <tr>
+      <td>1967-10-22</td>
+      <td>Boston Patriots</td>
+      <td>1533.99</td>
+      <td>14</td>
+      <td>Oakland Raiders</td>
+      <td>1599.97</td>
+      <td>48</td>
+      <td>44.16%</td>
+      <td>51.95%</td>
+      <td>3.89%</td>
+      <td>-49.91</td>
+    </tr>
+    <tr>
+      <td>1967-10-22</td>
+      <td>Oakland Raiders</td>
+      <td>1599.97</td>
+      <td>48</td>
+      <td>@ Boston Patriots</td>
+      <td>1533.99</td>
+      <td>14</td>
+      <td>51.95%</td>
+      <td>44.16%</td>
+      <td>3.89%</td>
+      <td>49.91</td>
+    </tr>
+    <tr>
+      <td>1967-10-22</td>
+      <td>New York Jets</td>
+      <td>1571.33</td>
+      <td>33</td>
+      <td>@ Miami Dolphins</td>
+      <td>1315.10</td>
+      <td>14</td>
+      <td>75.23%</td>
+      <td>20.90%</td>
+      <td>3.87%</td>
+      <td>18.00</td>
+    </tr>
+    <tr>
+      <td>1967-10-29</td>
+      <td>Denver Broncos</td>
+      <td>1301.84</td>
+      <td>9</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1583.06</td>
+      <td>52</td>
+      <td>12.77%</td>
+      <td>83.38%</td>
+      <td>3.85%</td>
+      <td>-16.66</td>
+    </tr>
+    <tr>
+      <td>1967-10-29</td>
+      <td>San Diego Chargers</td>
+      <td>1659.84</td>
+      <td>10</td>
+      <td>@ Oakland Raiders</td>
+      <td>1649.88</td>
+      <td>51</td>
+      <td>43.93%</td>
+      <td>52.18%</td>
+      <td>3.89%</td>
+      <td>-54.53</td>
+    </tr>
+    <tr>
+      <td>1967-10-29</td>
+      <td>Boston Patriots</td>
+      <td>1484.08</td>
+      <td>23</td>
+      <td>@ New York Jets</td>
+      <td>1589.33</td>
+      <td>30</td>
+      <td>28.74%</td>
+      <td>67.37%</td>
+      <td>3.88%</td>
+      <td>-14.93</td>
+    </tr>
+    <tr>
+      <td>1967-10-29</td>
+      <td>New York Jets</td>
+      <td>1589.33</td>
+      <td>30</td>
+      <td>Boston Patriots</td>
+      <td>1484.08</td>
+      <td>23</td>
+      <td>67.37%</td>
+      <td>28.74%</td>
+      <td>3.88%</td>
+      <td>14.93</td>
+    </tr>
+    <tr>
+      <td>1967-10-29</td>
+      <td>Oakland Raiders</td>
+      <td>1649.88</td>
+      <td>51</td>
+      <td>San Diego Chargers</td>
+      <td>1659.84</td>
+      <td>10</td>
+      <td>52.18%</td>
+      <td>43.93%</td>
+      <td>3.89%</td>
+      <td>54.54</td>
+    </tr>
+    <tr>
+      <td>1967-10-29</td>
+      <td>Houston Oilers</td>
+      <td>1505.37</td>
+      <td>10</td>
+      <td>Buffalo Bills</td>
+      <td>1429.50</td>
+      <td>3</td>
+      <td>63.78%</td>
+      <td>32.33%</td>
+      <td>3.89%</td>
+      <td>16.74</td>
+    </tr>
+    <tr>
+      <td>1967-10-29</td>
+      <td>Buffalo Bills</td>
+      <td>1429.50</td>
+      <td>3</td>
+      <td>@ Houston Oilers</td>
+      <td>1505.37</td>
+      <td>10</td>
+      <td>32.33%</td>
+      <td>63.78%</td>
+      <td>3.89%</td>
+      <td>-16.75</td>
+    </tr>
+    <tr>
+      <td>1967-10-29</td>
+      <td>Kansas City Chiefs</td>
+      <td>1583.06</td>
+      <td>52</td>
+      <td>Denver Broncos</td>
+      <td>1301.84</td>
+      <td>9</td>
+      <td>83.38%</td>
+      <td>12.77%</td>
+      <td>3.85%</td>
+      <td>16.66</td>
+    </tr>
+    <tr>
+      <td>1967-11-05</td>
+      <td>Houston Oilers</td>
+      <td>1522.11</td>
+      <td>7</td>
+      <td>@ Boston Patriots</td>
+      <td>1469.15</td>
+      <td>18</td>
+      <td>50.09%</td>
+      <td>46.02%</td>
+      <td>3.89%</td>
+      <td>-32.05</td>
+    </tr>
+    <tr>
+      <td>1967-11-05</td>
+      <td>New York Jets</td>
+      <td>1604.26</td>
+      <td>18</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1599.72</td>
+      <td>42</td>
+      <td>43.17%</td>
+      <td>52.94%</td>
+      <td>3.89%</td>
+      <td>-41.02</td>
+    </tr>
+    <tr>
+      <td>1967-11-05</td>
+      <td>Miami Dolphins</td>
+      <td>1297.10</td>
+      <td>13</td>
+      <td>@ Buffalo Bills</td>
+      <td>1412.75</td>
+      <td>35</td>
+      <td>27.53%</td>
+      <td>68.59%</td>
+      <td>3.88%</td>
+      <td>-25.38</td>
+    </tr>
+    <tr>
+      <td>1967-11-05</td>
+      <td>Buffalo Bills</td>
+      <td>1412.75</td>
+      <td>35</td>
+      <td>Miami Dolphins</td>
+      <td>1297.10</td>
+      <td>13</td>
+      <td>68.59%</td>
+      <td>27.53%</td>
+      <td>3.88%</td>
+      <td>25.38</td>
+    </tr>
+    <tr>
+      <td>1967-11-05</td>
+      <td>Boston Patriots</td>
+      <td>1469.15</td>
+      <td>18</td>
+      <td>Houston Oilers</td>
+      <td>1522.11</td>
+      <td>7</td>
+      <td>46.02%</td>
+      <td>50.09%</td>
+      <td>3.89%</td>
+      <td>32.06</td>
+    </tr>
+    <tr>
+      <td>1967-11-05</td>
+      <td>Denver Broncos</td>
+      <td>1285.18</td>
+      <td>17</td>
+      <td>Oakland Raiders</td>
+      <td>1704.42</td>
+      <td>21</td>
+      <td>9.37%</td>
+      <td>86.80%</td>
+      <td>3.83%</td>
+      <td>-3.74</td>
+    </tr>
+    <tr>
+      <td>1967-11-05</td>
+      <td>Oakland Raiders</td>
+      <td>1704.42</td>
+      <td>21</td>
+      <td>@ Denver Broncos</td>
+      <td>1285.18</td>
+      <td>17</td>
+      <td>86.80%</td>
+      <td>9.37%</td>
+      <td>3.83%</td>
+      <td>3.73</td>
+    </tr>
+    <tr>
+      <td>1967-11-05</td>
+      <td>Kansas City Chiefs</td>
+      <td>1599.72</td>
+      <td>42</td>
+      <td>New York Jets</td>
+      <td>1604.26</td>
+      <td>18</td>
+      <td>52.94%</td>
+      <td>43.17%</td>
+      <td>3.89%</td>
+      <td>41.02</td>
+    </tr>
+    <tr>
+      <td>1967-11-12</td>
+      <td>New York Jets</td>
+      <td>1563.24</td>
+      <td>20</td>
+      <td>Buffalo Bills</td>
+      <td>1438.13</td>
+      <td>10</td>
+      <td>69.66%</td>
+      <td>26.46%</td>
+      <td>3.88%</td>
+      <td>16.46</td>
+    </tr>
+    <tr>
+      <td>1967-11-12</td>
+      <td>San Diego Chargers</td>
+      <td>1605.31</td>
+      <td>24</td>
+      <td>Miami Dolphins</td>
+      <td>1271.72</td>
+      <td>0</td>
+      <td>86.39%</td>
+      <td>9.77%</td>
+      <td>3.84%</td>
+      <td>9.54</td>
+    </tr>
+    <tr>
+      <td>1967-11-12</td>
+      <td>Denver Broncos</td>
+      <td>1281.44</td>
+      <td>18</td>
+      <td>Houston Oilers</td>
+      <td>1490.06</td>
+      <td>20</td>
+      <td>25.79%</td>
+      <td>70.33%</td>
+      <td>3.88%</td>
+      <td>-7.18</td>
+    </tr>
+    <tr>
+      <td>1967-11-12</td>
+      <td>Houston Oilers</td>
+      <td>1490.06</td>
+      <td>20</td>
+      <td>@ Denver Broncos</td>
+      <td>1281.44</td>
+      <td>18</td>
+      <td>70.33%</td>
+      <td>25.79%</td>
+      <td>3.88%</td>
+      <td>7.18</td>
+    </tr>
+    <tr>
+      <td>1967-11-12</td>
+      <td>Miami Dolphins</td>
+      <td>1271.72</td>
+      <td>0</td>
+      <td>@ San Diego Chargers</td>
+      <td>1605.31</td>
+      <td>24</td>
+      <td>9.77%</td>
+      <td>86.39%</td>
+      <td>3.84%</td>
+      <td>-9.54</td>
+    </tr>
+    <tr>
+      <td>1967-11-12</td>
+      <td>Boston Patriots</td>
+      <td>1501.21</td>
+      <td>10</td>
+      <td>Kansas City Chiefs</td>
+      <td>1640.74</td>
+      <td>33</td>
+      <td>34.10%</td>
+      <td>62.01%</td>
+      <td>3.89%</td>
+      <td>-31.97</td>
+    </tr>
+    <tr>
+      <td>1967-11-12</td>
+      <td>Buffalo Bills</td>
+      <td>1438.13</td>
+      <td>10</td>
+      <td>@ New York Jets</td>
+      <td>1563.24</td>
+      <td>20</td>
+      <td>26.46%</td>
+      <td>69.66%</td>
+      <td>3.88%</td>
+      <td>-16.46</td>
+    </tr>
+    <tr>
+      <td>1967-11-12</td>
+      <td>Kansas City Chiefs</td>
+      <td>1640.74</td>
+      <td>33</td>
+      <td>@ Boston Patriots</td>
+      <td>1501.21</td>
+      <td>10</td>
+      <td>62.01%</td>
+      <td>34.10%</td>
+      <td>3.89%</td>
+      <td>31.96</td>
+    </tr>
+    <tr>
+      <td>1967-11-19</td>
+      <td>Oakland Raiders</td>
+      <td>1708.15</td>
+      <td>31</td>
+      <td>Miami Dolphins</td>
+      <td>1262.18</td>
+      <td>17</td>
+      <td>90.83%</td>
+      <td>5.37%</td>
+      <td>3.80%</td>
+      <td>4.02</td>
+    </tr>
+    <tr>
+      <td>1967-11-19</td>
+      <td>Boston Patriots</td>
+      <td>1469.24</td>
+      <td>24</td>
+      <td>New York Jets</td>
+      <td>1579.70</td>
+      <td>29</td>
+      <td>37.96%</td>
+      <td>58.15%</td>
+      <td>3.89%</td>
+      <td>-16.54</td>
+    </tr>
+    <tr>
+      <td>1967-11-19</td>
+      <td>Buffalo Bills</td>
+      <td>1421.67</td>
+      <td>20</td>
+      <td>Denver Broncos</td>
+      <td>1274.26</td>
+      <td>21</td>
+      <td>72.09%</td>
+      <td>24.04%</td>
+      <td>3.88%</td>
+      <td>-13.83</td>
+    </tr>
+    <tr>
+      <td>1967-11-19</td>
+      <td>New York Jets</td>
+      <td>1579.70</td>
+      <td>29</td>
+      <td>@ Boston Patriots</td>
+      <td>1469.24</td>
+      <td>24</td>
+      <td>58.15%</td>
+      <td>37.96%</td>
+      <td>3.89%</td>
+      <td>16.53</td>
+    </tr>
+    <tr>
+      <td>1967-11-19</td>
+      <td>Miami Dolphins</td>
+      <td>1262.18</td>
+      <td>17</td>
+      <td>@ Oakland Raiders</td>
+      <td>1708.15</td>
+      <td>31</td>
+      <td>5.37%</td>
+      <td>90.83%</td>
+      <td>3.80%</td>
+      <td>-4.02</td>
+    </tr>
+    <tr>
+      <td>1967-11-19</td>
+      <td>San Diego Chargers</td>
+      <td>1614.85</td>
+      <td>17</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1672.70</td>
+      <td>16</td>
+      <td>34.64%</td>
+      <td>61.47%</td>
+      <td>3.89%</td>
+      <td>11.81</td>
+    </tr>
+    <tr>
+      <td>1967-11-19</td>
+      <td>Denver Broncos</td>
+      <td>1274.26</td>
+      <td>21</td>
+      <td>@ Buffalo Bills</td>
+      <td>1421.67</td>
+      <td>20</td>
+      <td>24.04%</td>
+      <td>72.09%</td>
+      <td>3.88%</td>
+      <td>13.84</td>
+    </tr>
+    <tr>
+      <td>1967-11-19</td>
+      <td>Kansas City Chiefs</td>
+      <td>1672.70</td>
+      <td>16</td>
+      <td>San Diego Chargers</td>
+      <td>1614.85</td>
+      <td>17</td>
+      <td>61.47%</td>
+      <td>34.64%</td>
+      <td>3.89%</td>
+      <td>-11.80</td>
+    </tr>
+    <tr>
+      <td>1967-11-23</td>
+      <td>San Diego Chargers</td>
+      <td>1626.66</td>
+      <td>24</td>
+      <td>Denver Broncos</td>
+      <td>1288.10</td>
+      <td>20</td>
+      <td>86.64%</td>
+      <td>9.52%</td>
+      <td>3.83%</td>
+      <td>3.79</td>
+    </tr>
+    <tr>
+      <td>1967-11-23</td>
+      <td>Oakland Raiders</td>
+      <td>1712.17</td>
+      <td>44</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1660.90</td>
+      <td>22</td>
+      <td>49.85%</td>
+      <td>46.26%</td>
+      <td>3.89%</td>
+      <td>41.99</td>
+    </tr>
+    <tr>
+      <td>1967-11-23</td>
+      <td>Denver Broncos</td>
+      <td>1288.10</td>
+      <td>20</td>
+      <td>@ San Diego Chargers</td>
+      <td>1626.66</td>
+      <td>24</td>
+      <td>9.52%</td>
+      <td>86.64%</td>
+      <td>3.83%</td>
+      <td>-3.80</td>
+    </tr>
+    <tr>
+      <td>1967-11-23</td>
+      <td>Kansas City Chiefs</td>
+      <td>1660.90</td>
+      <td>22</td>
+      <td>Oakland Raiders</td>
+      <td>1712.17</td>
+      <td>44</td>
+      <td>46.26%</td>
+      <td>49.85%</td>
+      <td>3.89%</td>
+      <td>-41.98</td>
+    </tr>
+    <tr>
+      <td>1967-11-26</td>
+      <td>Houston Oilers</td>
+      <td>1497.24</td>
+      <td>27</td>
+      <td>Boston Patriots</td>
+      <td>1452.70</td>
+      <td>6</td>
+      <td>59.71%</td>
+      <td>36.40%</td>
+      <td>3.89%</td>
+      <td>32.54</td>
+    </tr>
+    <tr>
+      <td>1967-11-26</td>
+      <td>Buffalo Bills</td>
+      <td>1407.84</td>
+      <td>14</td>
+      <td>@ Miami Dolphins</td>
+      <td>1258.16</td>
+      <td>17</td>
+      <td>63.31%</td>
+      <td>32.80%</td>
+      <td>3.89%</td>
+      <td>-21.05</td>
+    </tr>
+    <tr>
+      <td>1967-11-26</td>
+      <td>Boston Patriots</td>
+      <td>1452.70</td>
+      <td>6</td>
+      <td>@ Houston Oilers</td>
+      <td>1497.24</td>
+      <td>27</td>
+      <td>36.40%</td>
+      <td>59.71%</td>
+      <td>3.89%</td>
+      <td>-32.53</td>
+    </tr>
+    <tr>
+      <td>1967-11-26</td>
+      <td>Miami Dolphins</td>
+      <td>1258.16</td>
+      <td>17</td>
+      <td>Buffalo Bills</td>
+      <td>1407.84</td>
+      <td>14</td>
+      <td>32.80%</td>
+      <td>63.31%</td>
+      <td>3.89%</td>
+      <td>21.04</td>
+    </tr>
+    <tr>
+      <td>1967-12-03</td>
+      <td>Oakland Raiders</td>
+      <td>1754.16</td>
+      <td>41</td>
+      <td>@ San Diego Chargers</td>
+      <td>1630.45</td>
+      <td>21</td>
+      <td>59.93%</td>
+      <td>36.18%</td>
+      <td>3.89%</td>
+      <td>31.56</td>
+    </tr>
+    <tr>
+      <td>1967-12-03</td>
+      <td>Denver Broncos</td>
+      <td>1284.30</td>
+      <td>33</td>
+      <td>@ New York Jets</td>
+      <td>1596.23</td>
+      <td>24</td>
+      <td>10.93%</td>
+      <td>85.23%</td>
+      <td>3.84%</td>
+      <td>49.18</td>
+    </tr>
+    <tr>
+      <td>1967-12-03</td>
+      <td>Miami Dolphins</td>
+      <td>1279.20</td>
+      <td>14</td>
+      <td>@ Houston Oilers</td>
+      <td>1529.78</td>
+      <td>17</td>
+      <td>14.87%</td>
+      <td>81.27%</td>
+      <td>3.86%</td>
+      <td>-5.11</td>
+    </tr>
+    <tr>
+      <td>1967-12-03</td>
+      <td>Kansas City Chiefs</td>
+      <td>1618.92</td>
+      <td>23</td>
+      <td>Buffalo Bills</td>
+      <td>1386.79</td>
+      <td>13</td>
+      <td>79.87%</td>
+      <td>16.27%</td>
+      <td>3.86%</td>
+      <td>10.20</td>
+    </tr>
+    <tr>
+      <td>1967-12-03</td>
+      <td>New York Jets</td>
+      <td>1596.23</td>
+      <td>24</td>
+      <td>Denver Broncos</td>
+      <td>1284.30</td>
+      <td>33</td>
+      <td>85.23%</td>
+      <td>10.93%</td>
+      <td>3.84%</td>
+      <td>-49.18</td>
+    </tr>
+    <tr>
+      <td>1967-12-03</td>
+      <td>Houston Oilers</td>
+      <td>1529.78</td>
+      <td>17</td>
+      <td>Miami Dolphins</td>
+      <td>1279.20</td>
+      <td>14</td>
+      <td>81.27%</td>
+      <td>14.87%</td>
+      <td>3.86%</td>
+      <td>5.11</td>
+    </tr>
+    <tr>
+      <td>1967-12-03</td>
+      <td>San Diego Chargers</td>
+      <td>1630.45</td>
+      <td>21</td>
+      <td>Oakland Raiders</td>
+      <td>1754.16</td>
+      <td>41</td>
+      <td>36.18%</td>
+      <td>59.93%</td>
+      <td>3.89%</td>
+      <td>-31.56</td>
+    </tr>
+    <tr>
+      <td>1967-12-03</td>
+      <td>Buffalo Bills</td>
+      <td>1386.79</td>
+      <td>13</td>
+      <td>@ Kansas City Chiefs</td>
+      <td>1618.92</td>
+      <td>23</td>
+      <td>16.27%</td>
+      <td>79.87%</td>
+      <td>3.86%</td>
+      <td>-10.20</td>
+    </tr>
+    <tr>
+      <td>1967-12-09</td>
+      <td>Buffalo Bills</td>
+      <td>1376.59</td>
+      <td>44</td>
+      <td>@ Boston Patriots</td>
+      <td>1420.17</td>
+      <td>16</td>
+      <td>36.53%</td>
+      <td>59.58%</td>
+      <td>3.89%</td>
+      <td>60.56</td>
+    </tr>
+    <tr>
+      <td>1967-12-09</td>
+      <td>Boston Patriots</td>
+      <td>1420.17</td>
+      <td>16</td>
+      <td>Buffalo Bills</td>
+      <td>1376.59</td>
+      <td>44</td>
+      <td>59.58%</td>
+      <td>36.53%</td>
+      <td>3.89%</td>
+      <td>-60.57</td>
+    </tr>
+    <tr>
+      <td>1967-12-10</td>
+      <td>San Diego Chargers</td>
+      <td>1598.89</td>
+      <td>24</td>
+      <td>@ Miami Dolphins</td>
+      <td>1274.09</td>
+      <td>41</td>
+      <td>81.03%</td>
+      <td>15.11%</td>
+      <td>3.86%</td>
+      <td>-64.20</td>
+    </tr>
+    <tr>
+      <td>1967-12-10</td>
+      <td>Kansas City Chiefs</td>
+      <td>1629.12</td>
+      <td>21</td>
+      <td>@ New York Jets</td>
+      <td>1547.05</td>
+      <td>7</td>
+      <td>54.23%</td>
+      <td>41.88%</td>
+      <td>3.89%</td>
+      <td>30.43</td>
+    </tr>
+    <tr>
+      <td>1967-12-10</td>
+      <td>Oakland Raiders</td>
+      <td>1785.72</td>
+      <td>19</td>
+      <td>@ Houston Oilers</td>
+      <td>1534.89</td>
+      <td>7</td>
+      <td>74.71%</td>
+      <td>21.42%</td>
+      <td>3.87%</td>
+      <td>14.66</td>
+    </tr>
+    <tr>
+      <td>1967-12-10</td>
+      <td>Houston Oilers</td>
+      <td>1534.89</td>
+      <td>7</td>
+      <td>Oakland Raiders</td>
+      <td>1785.72</td>
+      <td>19</td>
+      <td>21.42%</td>
+      <td>74.71%</td>
+      <td>3.87%</td>
+      <td>-14.65</td>
+    </tr>
+    <tr>
+      <td>1967-12-10</td>
+      <td>New York Jets</td>
+      <td>1547.05</td>
+      <td>7</td>
+      <td>Kansas City Chiefs</td>
+      <td>1629.12</td>
+      <td>21</td>
+      <td>41.88%</td>
+      <td>54.23%</td>
+      <td>3.89%</td>
+      <td>-30.43</td>
+    </tr>
+    <tr>
+      <td>1967-12-10</td>
+      <td>Miami Dolphins</td>
+      <td>1274.09</td>
+      <td>41</td>
+      <td>San Diego Chargers</td>
+      <td>1598.89</td>
+      <td>24</td>
+      <td>15.11%</td>
+      <td>81.03%</td>
+      <td>3.86%</td>
+      <td>64.19</td>
+    </tr>
+    <tr>
+      <td>1967-12-16</td>
+      <td>San Diego Chargers</td>
+      <td>1534.69</td>
+      <td>17</td>
+      <td>@ Houston Oilers</td>
+      <td>1520.24</td>
+      <td>24</td>
+      <td>44.57%</td>
+      <td>51.54%</td>
+      <td>3.89%</td>
+      <td>-22.85</td>
+    </tr>
+    <tr>
+      <td>1967-12-16</td>
+      <td>Houston Oilers</td>
+      <td>1520.24</td>
+      <td>24</td>
+      <td>San Diego Chargers</td>
+      <td>1534.69</td>
+      <td>17</td>
+      <td>51.54%</td>
+      <td>44.57%</td>
+      <td>3.89%</td>
+      <td>22.85</td>
+    </tr>
+    <tr>
+      <td>1967-12-17</td>
+      <td>Boston Patriots</td>
+      <td>1359.60</td>
+      <td>32</td>
+      <td>@ Miami Dolphins</td>
+      <td>1338.28</td>
+      <td>41</td>
+      <td>45.55%</td>
+      <td>50.56%</td>
+      <td>3.89%</td>
+      <td>-26.45</td>
+    </tr>
+    <tr>
+      <td>1967-12-17</td>
+      <td>New York Jets</td>
+      <td>1516.62</td>
+      <td>29</td>
+      <td>@ Oakland Raiders</td>
+      <td>1800.38</td>
+      <td>38</td>
+      <td>12.61%</td>
+      <td>83.54%</td>
+      <td>3.85%</td>
+      <td>-7.53</td>
+    </tr>
+    <tr>
+      <td>1967-12-17</td>
+      <td>Denver Broncos</td>
+      <td>1333.48</td>
+      <td>24</td>
+      <td>Kansas City Chiefs</td>
+      <td>1659.55</td>
+      <td>38</td>
+      <td>15.02%</td>
+      <td>81.12%</td>
+      <td>3.86%</td>
+      <td>-11.16</td>
+    </tr>
+    <tr>
+      <td>1967-12-17</td>
+      <td>Miami Dolphins</td>
+      <td>1338.28</td>
+      <td>41</td>
+      <td>Boston Patriots</td>
+      <td>1359.60</td>
+      <td>32</td>
+      <td>50.56%</td>
+      <td>45.55%</td>
+      <td>3.89%</td>
+      <td>26.46</td>
+    </tr>
+    <tr>
+      <td>1967-12-17</td>
+      <td>Oakland Raiders</td>
+      <td>1800.38</td>
+      <td>38</td>
+      <td>New York Jets</td>
+      <td>1516.62</td>
+      <td>29</td>
+      <td>83.54%</td>
+      <td>12.61%</td>
+      <td>3.85%</td>
+      <td>7.53</td>
+    </tr>
+    <tr>
+      <td>1967-12-17</td>
+      <td>Kansas City Chiefs</td>
+      <td>1659.55</td>
+      <td>38</td>
+      <td>@ Denver Broncos</td>
+      <td>1333.48</td>
+      <td>24</td>
+      <td>81.12%</td>
+      <td>15.02%</td>
+      <td>3.86%</td>
+      <td>11.16</td>
+    </tr>
+    <tr>
+      <td>1967-12-23</td>
+      <td>Houston Oilers</td>
+      <td>1543.09</td>
+      <td>41</td>
+      <td>@ Miami Dolphins</td>
+      <td>1364.74</td>
+      <td>10</td>
+      <td>66.85%</td>
+      <td>29.27%</td>
+      <td>3.88%</td>
+      <td>31.98</td>
+    </tr>
+    <tr>
+      <td>1967-12-23</td>
+      <td>Miami Dolphins</td>
+      <td>1364.74</td>
+      <td>10</td>
+      <td>Houston Oilers</td>
+      <td>1543.09</td>
+      <td>41</td>
+      <td>29.27%</td>
+      <td>66.85%</td>
+      <td>3.88%</td>
+      <td>-31.97</td>
+    </tr>
+    <tr>
+      <td>1967-12-24</td>
+      <td>Oakland Raiders</td>
+      <td>1807.91</td>
+      <td>28</td>
+      <td>Buffalo Bills</td>
+      <td>1437.15</td>
+      <td>21</td>
+      <td>88.13%</td>
+      <td>8.04%</td>
+      <td>3.82%</td>
+      <td>4.24</td>
+    </tr>
+    <tr>
+      <td>1967-12-24</td>
+      <td>San Diego Chargers</td>
+      <td>1511.84</td>
+      <td>31</td>
+      <td>New York Jets</td>
+      <td>1509.09</td>
+      <td>42</td>
+      <td>53.97%</td>
+      <td>42.14%</td>
+      <td>3.89%</td>
+      <td>-34.46</td>
+    </tr>
+    <tr>
+      <td>1967-12-24</td>
+      <td>New York Jets</td>
+      <td>1509.09</td>
+      <td>42</td>
+      <td>@ San Diego Chargers</td>
+      <td>1511.84</td>
+      <td>31</td>
+      <td>42.14%</td>
+      <td>53.97%</td>
+      <td>3.89%</td>
+      <td>34.46</td>
+    </tr>
+    <tr>
+      <td>1967-12-24</td>
+      <td>Buffalo Bills</td>
+      <td>1437.15</td>
+      <td>21</td>
+      <td>@ Oakland Raiders</td>
+      <td>1807.91</td>
+      <td>28</td>
+      <td>8.04%</td>
+      <td>88.13%</td>
+      <td>3.82%</td>
+      <td>-4.25</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
