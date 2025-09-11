@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>1960 AFL Simulation – Elo, Playoffs & Standings</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Explore the 1960 AFL season through a Monte Carlo simulation that tracks team performance, Elo ratings, and playoff odds as they evolved throughout the year.">
+        
+        <!-- Link to external styles -->
+        <link rel="stylesheet" href="/sports-history-simulations/styles.css" />
+        
+        <!-- Add any simulation-specific styles here if needed -->
+        <style>
+            /* Minimal or unique styles can go here */
+        </style>
+    </head>
+    
+    
+    <body>
+        <div id="site-header"></div>
+        <div id="usa-header"></div>
+        
+        <div class="content">
+            
+            <div class="season-links">
+                <a href="/sports-history-simulations/usa/simulations/AFL/1961/">1961 →</a>
+            </div>
+            
+                
+            <div class="season-header">
+                <h1 class="sim-title">1960 AFL Season</h1>
+            </div>
+
+
+            <h2 class="sim-subsection">Season In Review</h2>
+            
+            <details class="plot-section" data-expanded="true">
+                <summary>Regular Season</summary>
+
+<!--                 <section class="season-in-review">
+                    <h3>League News & Notes</h3>
+                    
+                    <ul>
+                        <li>With the addition of the Houston Texans to the league, the NFL realigned to 8 divisions of 4 teams with each conference having a North, South, East, and West division.</li>
+                        <li>Seattle became the first team to switch conferences since 1977, moving from the east West to the west West.</li>
+                        <li>Playoffs were restructured so that the 4 division winners and 2 wild card teams qualified for the playoffs in each conference.</li>
+                    </ul>
+                </section> -->
+
+
+                <section class="season-in-review">
+                    <h3>Standings</h3>
+    
+                    <div class="side-by-side-flex-wrapper">
+                        <div class="standings-table-container">
+                            <table class="standings-table nfl">
+                                <tr><th>Eastern</th><th style="text-align:center;">Record</th><th style="text-align:center;">GB</th></tr>
+                                <tr><td>Houston Oilers</td><td style="text-align:center;">10-4</td><td style="text-align:center;">-</td></tr>
+                                <tr><td>New York Titans</td><td style="text-align:center;">7-7</td><td style="text-align:center;">3</td></tr>
+                                <tr><td>Buffalo Bills</td><td style="text-align:center;">5-8-1</td><td style="text-align:center;">4.5</td></tr>
+                                <tr><td>Boston Patriots</td><td style="text-align:center;">5-9</td><td style="text-align:center;">5</td></tr>
+                            </table>
+                        </div>
+                
+                        <div class="standings-table-container">
+                            <table class="standings-table nfl">
+                                <tr><th>Western</th><th style="text-align:center;">Record</th><th style="text-align:center;">GB</th></tr>
+                                <tr><td>Los Angeles Chargers</td><td style="text-align:center;">10-4</td><td style="text-align:center;">-</td></tr>
+                                <tr><td>Dallas Texans</td><td style="text-align:center;">8-6</td><td style="text-align:center;">2</td></tr>
+                                <tr><td>Oakland Raiders</td><td style="text-align:center;">6-8</td><td style="text-align:center;">4</td></tr>
+                                <tr><td>Denver Broncos</td><td style="text-align:center;">4-9-1</td><td style="text-align:center;">5.5</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </details>
+
+            
+
+            <details class="plot-section" data-expanded="true">
+                <summary>Playoffs</summary>
+
+                <section class="season-in-review">
+                    <h3>Bracket</h3>
+                
+                    <!-- Actual Playoff Bracket -->
+                    <div class="playoffs-wrapper">
+                
+                        <!-- Main part of bracket -->
+                        <div class="bracket-container">
+                            <div class="bracket">
+                                
+                                <!-- Super Bowl -->
+                                <div class="region finals" id="finals">
+                                    <div class="round" data-round="3">
+                                        <div class="round-title">Championship Game</div>
+                                        <div class="matchup">
+                                            <div class="team">
+                                                <div class="seed">1</div>
+                                                <div class="name">Houston</div>
+                                                <div class="score">20</div>
+                                            </div>
+                                            <div class="team">
+                                                <div class="seed">2</div>
+                                                <div class="name">Los Angeles</div>
+                                                <div class="score">16</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </details>
+
+
+<!--             <details class="plot-section" data-expanded="true">
+                <summary>Season Highlights</summary>
+
+
+                <section class="season-in-review">
+                    <h3>Storylines</h3>
+                    
+                    <ul>
+                        <li>Tampa Bay tied a franchise record with a 12-4 record and won their first Super Bowl in franchise history.</li>
+                        <li>Cincinnati finished with their worst record in franchise history (2-14).</li>
+                        <li>Chicago fell to 4-12 after a 13-3 season in 2001 while playing their home games at Memorial Stadium in Champaign while Soldier Field was being renovated.</li>
+                        <li>The New York Jets used a Week 17 win over the Packers and a Dolphins win over the Patriots to win a three-way tie at 9-7 in the East.</li>
+                        <li>Cleveland made the playoffs for the first time since 1994, securing the 6-seed over the Dolphins and Patriots based on better conference record.</li>
+                    </ul>
+                </section>
+
+                <section class="season-in-review">
+                    <h3>Extremes</h3>
+    
+                    <div class="side-by-side-flex-wrapper">
+                        <div class="review-table-container">
+                            <table class="review-table">
+                                <tr><th>League Best Record</th><td> ()</td></tr>
+                                <tr><th>Biggest Improvement</th><td> ( → )</td></tr>
+                                <tr><th>Longest Winning Streak</th><td> ()</td></tr>
+                                <tr><th>Franchise Best Season</th><td> ()</td></tr>
+                                <tr><th>Most Wins Above Expected</th><td> (+)</td></tr>
+                                <tr><th>Most Unlikely Playoff Team</th><td> ()</td></tr>
+                            </table>
+                        </div>
+                
+                        <div class="review-table-container">
+                            <table class="review-table">
+                                <tr><th>League Worst Record</th><td> ()</td></tr>
+                                <tr><th>Biggest Decline</th><td>
+                                    <div> ( → )</div>
+                                    <div> ( → )</div></td>
+                                </tr>
+                                <tr><th>Longest Losing Streak</th><td> ()</td></tr>
+                                <tr><th>Franchise Worst Season</th><td> ()</td></tr>
+                                <tr><th>Most Wins Below Expected</th><td> (-)</td></tr>
+                                <tr><th>Best Team to Miss Playoffs</th><td> ()</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </details> -->
+
+            
+            
+            <!-- Beginning of Simulation Content -->
+            <h2 class="sim-subsection">Regular Season</h2>
+            
+            
+            <details class="plot-section" data-expanded="false">
+                <summary>Season Summary</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How many games would we have expected each team to win at the beginning of the season?</i>
+                </div>
+                <iframe data-src="regular_season_summary.html" class="extra-padding"></iframe>
+            </details>
+            
+                
+            <details>
+                <summary>Comparisons</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>
+                    How did each team's actual results compare to their simulated results, Elo rating,
+                    opponent average Elo rating, and relative position of their actual points within simulated outcomes?
+                    </i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('comparisons', 'comparisons_sim_vs_actual')" class="active">Simulated Points</button>
+                    <button onclick="showTab('comparisons', 'comparisons_elo_vs_actual')">Team Elo</button>
+                    <button onclick="showTab('comparisons', 'comparisons_opponent_elo_vs_actual')">Opponent Elo</button>
+                    <button onclick="showTab('comparisons', 'comparisons_percentile_vs_actual')">Percentile</button>
+                </div>
+                <div class="tab-content comparisons active" id="comparisons_sim_vs_actual">
+                    <div class="iframe-wrapper">
+                        <iframe data-src="sim_vs_actual_graph.html"></iframe>
+                    </div>
+                </div>
+                <div class="tab-content comparisons" id="comparisons_elo_vs_actual">
+                    <div class="iframe-wrapper">
+                        <iframe data-src="team_elo_vs_actual_graph.html"></iframe>
+                    </div>
+                </div>
+                <div class="tab-content comparisons" id="comparisons_opponent_elo_vs_actual">
+                    <div class="iframe-wrapper">
+                        <iframe data-src="opponent_elo_vs_actual_graph.html"></iframe>
+                    </div>
+                </div>
+                <div class="tab-content comparisons" id="comparisons_percentile_vs_actual">
+                    <div class="iframe-wrapper">
+                        <iframe data-src="percentile_vs_actual_graph.html"></iframe>
+                    </div>
+                </div>
+            </details>
+            
+                
+            <details class="plot-section" data-expanded="false">
+                <summary>League & Conference Heatmaps</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>Where was each team expected to finish within their conference and the league as a whole at the beginning of the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('league_heatmap', 'league_heatmap_East')" class="active">Eastern</button>
+                    <button onclick="showTab('league_heatmap', 'league_heatmap_West')">Western</button>
+                    <button onclick="showTab('league_heatmap', 'league_heatmap_AFL')">AFL</button>
+                </div>
+                <div class="tab-content league_heatmap active" id="league_heatmap_East">
+                    <iframe data-src="East_finish_heatmap.html"></iframe>
+                </div>
+                <div class="tab-content league_heatmap" id="league_heatmap_West">
+                    <iframe data-src="West_finish_heatmap.html"></iframe>
+                </div>
+                <div class="tab-content league_heatmap" id="league_heatmap_AFL">
+                    <iframe data-src="league_finish_heatmap.html"></iframe>
+                </div>
+            </details>
+            
+                
+                
+            <h2 class="sim-subsection">Season Trajectories</h2>
+            
+                
+            <details class="plot-section" data-expanded="false">
+                <summary>Elo Ratings</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did each team's Elo rating change throughout the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('elo', 'elo_East')" class="active">Eastern</button>
+                    <button onclick="showTab('elo', 'elo_West')">Western</button>
+                </div>
+                <div class="tab-content elo active" id="elo_East">
+                    <iframe data-src="East_elo_ratings.html"></iframe>
+                </div>
+                <div class="tab-content elo" id="elo_West">
+                    <iframe data-src="West_elo_ratings.html"></iframe>
+                </div>
+            </details>
+            
+                
+            <details class="plot-section" data-expanded="false">
+                <summary>Simulated Wins</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did each team's simulated win total change throughout the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('wins', 'wins_East')" class="active">Eastern</button>
+                    <button onclick="showTab('wins', 'wins_West')">Western</button>
+                </div>
+                <div class="tab-content wins active" id="wins_East">
+                    <iframe data-src="East_simulated_wins.html"></iframe>
+                </div>
+                <div class="tab-content wins" id="wins_West">
+                    <iframe data-src="West_simulated_wins.html"></iframe>
+                </div>
+            </details>
+            
+                
+            <details class="plot-section" data-expanded="false">
+                <summary>Division Champion Probabilities</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did each team's probability of winning the division change throughout the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('div_prob', 'div_prob_East')" class="active">Eastern</button>
+                    <button onclick="showTab('div_prob', 'div_prob_West')">Western</button>
+                </div>
+                <div class="tab-content div_prob active" id="div_prob_East">
+                    <iframe data-src="East_division_probabilities.html"></iframe>
+                </div>
+                <div class="tab-content div_prob active" id="div_prob_West">
+                    <iframe data-src="West_division_probabilities.html"></iframe>
+                </div>
+            </details>
+            
+                
+            <details class="plot-section" data-expanded="false">
+                <summary>Playoff Probabilities</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did each team's probability of making the playoffs change throughout the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('playoff_prob', 'playoff_prob_East')" class="active">Eastern</button>
+                    <button onclick="showTab('playoff_prob', 'playoff_prob_West')">Western</button>
+                </div>
+                <div class="tab-content playoff_prob active" id="playoff_prob_East">
+                    <iframe data-src="East_playoff_probabilities.html"></iframe>
+                </div>
+                <div class="tab-content playoff_prob" id="playoff_prob_West">
+                    <iframe data-src="West_playoff_probabilities.html"></iframe>
+                </div>
+            </details>
+            
+                
+                
+            <h2 class="sim-subsection">Playoffs</h2>
+            
+                
+            <details>
+                <summary>Playoff Seed Probabilities</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How likely was each team to earn each playoff seed at the beginning of the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('preseason_playoff_seed', 'preseason_playoff_seed_east')" class="active">Eastern</button>
+                    <button onclick="showTab('preseason_playoff_seed', 'preseason_playoff_seed_west')">Western</button>
+                </div>
+                <div class="tab-content preseason_playoff_seed active" id="preseason_playoff_seed_east">
+                    <iframe data-src="East_playoff_heatmap.html"></iframe>
+                </div>
+                <div class="tab-content preseason_playoff_seed" id="preseason_playoff_seed_west">
+                    <iframe data-src="West_playoff_heatmap.html"></iframe>
+                </div>
+            </details>
+            
+                
+            <details>
+                <summary>Playoff Seed Wins</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How many wins did the simulation believe were needed to earn each seed?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('playoff_seed_wins', 'playoff_seed_wins_east')" class="active">East</button>
+                    <button onclick="showTab('playoff_seed_wins', 'playoff_seed_wins_west')">West</button>
+                </div>
+                <div class="tab-content playoff_seed_wins active" id="playoff_seed_wins_east">
+                    <iframe data-src="East_playoff_seed_wins.html"></iframe>
+                </div>
+                <div class="tab-content playoff_seed_wins" id="playoff_seed_wins_west">
+                    <iframe data-src="West_playoff_seed_wins.html"></iframe>
+                </div>
+            </details>
+            
+                
+            <details>
+                <summary>Preseason Playoff Simulation</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did the simulation expect the playoffs to unfold at the beginning of the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_playoff_adv')" class="active">Playoff Progression</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_championship_game')">Championship Game</button>
+                </div>
+                
+                <!-- Playoff Advancement -->
+                <div class="tab-content preseason_playoff active" id="preseason_playoff_playoff_adv">
+                    <iframe data-src="playoff_success_preseason_playoff.html"></iframe>
+                </div>
+                
+                <!-- Championship Game -->
+                <div class="tab-content preseason_playoff" id="preseason_playoff_championship_game">
+                    <iframe data-src="championship_game_preseason_playoff.html"></iframe>
+                </div>
+            </details>
+            
+                
+            <details>
+                <summary>End-of-Season Playoff Simulation</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did the simulation expect the actual playoff bracket to unfold after the end of the regular season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_playoff_adv')" class="active">Playoff Progression</button>
+                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_championship_game')">Championship Game</button>
+                </div>
+                
+                <!-- Playoff Progression -->
+                <div class="tab-content end_of_season_playoff active" id="end_of_season_playoff_playoff_adv">
+                    <iframe data-src="playoff_success_end_of_regular_season.html"></iframe>
+                </div>
+             
+                <!-- Super Bowl -->
+                <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_championship_game">
+                    <iframe data-src="championship_game_end_of_regular_season.html"></iframe>
+                </div>
+            </details>
+
+
+            <h2 class="sim-subsection">Game Logs</h2>
+
+            <details>
+                <summary>Regular Season</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did each team's regular season unfold?</i>?</i>
+                </div>
+                <iframe data-src="team_games_table.html" class="extra-padding" style="max-height:800px;"></iframe>
+            </details>
+
+        
+            <details>
+                <summary>Playoffs</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did each playoff team's postseason unfold?</i>?</i>
+                </div>
+                <iframe data-src="team_playoff_games_table.html" class="extra-padding" style="max-height:800px;"></iframe>
+            </details>
+
+
+            <details>
+                <summary>Biggest Upsets and Elo Changes</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>What were the biggest upsets and Elo rating changes of the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('games', 'games_biggest_upsets')" class="active">Biggest Upsets</button>
+                    <button onclick="showTab('games', 'games_biggest_elo_changes')">Biggest Elo Changes</button>
+                </div>
+                <div class="tab-content games active" id="games_biggest_upsets">
+                    <iframe data-src="biggest_upsets_table.html" class="double-extra-padding"></iframe>
+                </div>
+                <div class="tab-content games" id="games_biggest_elo_changes">
+                    <iframe data-src="biggest_elo_changes_table.html" class="double-extra-padding"></iframe>
+                </div>
+            </details>
+        </div>
+        
+            
+        <div id="site-footer"></div>
+        
+            
+        <script src="/sports-history-simulations/scripts/main.js"></script>
+    </body>
+</html>
