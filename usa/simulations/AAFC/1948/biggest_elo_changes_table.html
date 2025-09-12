@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th colspan="3" halign="left"></th>
+      <th colspan="4" halign="left">Winning Team</th>
+      <th colspan="4" halign="left">Losing Team</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <th>Date</th>
+      <th>Elo Change</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Tie Pct.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>1948-09-05</td>
+      <td>104.82</td>
+      <td>Baltimore Colts (1st) (H)</td>
+      <td>1334.28</td>
+      <td>45</td>
+      <td>14.99%</td>
+      <td>New York Yankees</td>
+      <td>1631.33</td>
+      <td>28</td>
+      <td>83.75%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1948-11-07</td>
+      <td>101.55</td>
+      <td>New York Yankees (H)</td>
+      <td>1408.15</td>
+      <td>38</td>
+      <td>39.59%</td>
+      <td>Los Angeles Dons</td>
+      <td>1477.14</td>
+      <td>6</td>
+      <td>59.14%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1948-12-05</td>
+      <td>92.90</td>
+      <td>Baltimore Colts (1st) (H)</td>
+      <td>1458.82</td>
+      <td>35</td>
+      <td>30.26%</td>
+      <td>Buffalo Bills (1st)</td>
+      <td>1599.43</td>
+      <td>15</td>
+      <td>68.47%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1948-10-15</td>
+      <td>77.10</td>
+      <td>Baltimore Colts (1st)</td>
+      <td>1447.98</td>
+      <td>29</td>
+      <td>33.13%</td>
+      <td>Los Angeles Dons (H)</td>
+      <td>1565.59</td>
+      <td>14</td>
+      <td>65.61%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>1948-09-16</td>
+      <td>66.63</td>
+      <td>Baltimore Colts (1st)</td>
+      <td>1383.71</td>
+      <td>27</td>
+      <td>37.85%</td>
+      <td>New York Yankees (H)</td>
+      <td>1465.48</td>
+      <td>14</td>
+      <td>60.89%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>1948-11-28</td>
+      <td>66.59</td>
+      <td>Buffalo Bills (1st)</td>
+      <td>1532.84</td>
+      <td>35</td>
+      <td>50.96%</td>
+      <td>New York Yankees (H)</td>
+      <td>1521.77</td>
+      <td>14</td>
+      <td>47.78%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>1948-10-15</td>
+      <td>62.97</td>
+      <td>Brooklyn Dodgers (H)</td>
+      <td>1246.82</td>
+      <td>21</td>
+      <td>43.32%</td>
+      <td>Chicago Rockets</td>
+      <td>1289.12</td>
+      <td>7</td>
+      <td>55.42%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>1948-10-31</td>
+      <td>62.77</td>
+      <td>Buffalo Bills (1st) (H)</td>
+      <td>1514.61</td>
+      <td>35</td>
+      <td>50.09%</td>
+      <td>Baltimore Colts (1st)</td>
+      <td>1509.63</td>
+      <td>17</td>
+      <td>48.65%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>1948-09-06</td>
+      <td>62.76</td>
+      <td>Buffalo Bills (1st) (H)</td>
+      <td>1461.82</td>
+      <td>42</td>
+      <td>63.98%</td>
+      <td>Chicago Rockets</td>
+      <td>1356.84</td>
+      <td>7</td>
+      <td>34.76%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>1948-10-24</td>
+      <td>61.93</td>
+      <td>Buffalo Bills (1st)</td>
+      <td>1452.68</td>
+      <td>35</td>
+      <td>44.24%</td>
+      <td>Los Angeles Dons (H)</td>
+      <td>1488.50</td>
+      <td>21</td>
+      <td>54.50%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>1948-11-14</td>
+      <td>61.47</td>
+      <td>Los Angeles Dons</td>
+      <td>1375.59</td>
+      <td>27</td>
+      <td>22.17%</td>
+      <td>Buffalo Bills (1st) (H)</td>
+      <td>1589.34</td>
+      <td>20</td>
+      <td>76.57%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>1948-09-12</td>
+      <td>61.03</td>
+      <td>San Francisco 49ers (H)</td>
+      <td>1659.44</td>
+      <td>41</td>
+      <td>67.53%</td>
+      <td>New York Yankees</td>
+      <td>1526.51</td>
+      <td>0</td>
+      <td>31.20%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>1948-08-29</td>
+      <td>55.81</td>
+      <td>San Francisco 49ers (H)</td>
+      <td>1583.95</td>
+      <td>35</td>
+      <td>58.78%</td>
+      <td>Buffalo Bills (1st)</td>
+      <td>1517.63</td>
+      <td>14</td>
+      <td>39.96%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>1948-09-10</td>
+      <td>55.39</td>
+      <td>Chicago Rockets (H)</td>
+      <td>1294.08</td>
+      <td>21</td>
+      <td>29.73%</td>
+      <td>Baltimore Colts (1st)</td>
+      <td>1439.10</td>
+      <td>14</td>
+      <td>69.01%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>1948-10-24</td>
+      <td>52.54</td>
+      <td>Brooklyn Dodgers</td>
+      <td>1309.79</td>
+      <td>35</td>
+      <td>61.14%</td>
+      <td>Chicago Rockets (H)</td>
+      <td>1226.15</td>
+      <td>14</td>
+      <td>37.60%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>1948-10-31</td>
+      <td>50.58</td>
+      <td>Los Angeles Dons</td>
+      <td>1426.57</td>
+      <td>17</td>
+      <td>58.49%</td>
+      <td>Brooklyn Dodgers (H)</td>
+      <td>1362.33</td>
+      <td>0</td>
+      <td>40.25%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>1948-10-31</td>
+      <td>44.57</td>
+      <td>New York Yankees (H)</td>
+      <td>1363.58</td>
+      <td>42</td>
+      <td>74.12%</td>
+      <td>Chicago Rockets</td>
+      <td>1173.61</td>
+      <td>7</td>
+      <td>24.62%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>1948-09-12</td>
+      <td>41.76</td>
+      <td>Cleveland Browns</td>
+      <td>1707.78</td>
+      <td>42</td>
+      <td>73.39%</td>
+      <td>Buffalo Bills (1st) (H)</td>
+      <td>1524.57</td>
+      <td>13</td>
+      <td>25.35%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>1948-11-14</td>
+      <td>40.62</td>
+      <td>Cleveland Browns (H)</td>
+      <td>1829.49</td>
+      <td>14</td>
+      <td>48.23%</td>
+      <td>San Francisco 49ers</td>
+      <td>1837.39</td>
+      <td>7</td>
+      <td>50.50%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>1948-11-28</td>
+      <td>37.09</td>
+      <td>Baltimore Colts (1st)</td>
+      <td>1421.73</td>
+      <td>38</td>
+      <td>70.14%</td>
+      <td>Brooklyn Dodgers (H)</td>
+      <td>1267.19</td>
+      <td>20</td>
+      <td>28.60%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>1948-09-19</td>
+      <td>36.33</td>
+      <td>San Francisco 49ers (H)</td>
+      <td>1720.47</td>
+      <td>36</td>
+      <td>73.42%</td>
+      <td>Los Angeles Dons</td>
+      <td>1536.98</td>
+      <td>14</td>
+      <td>25.32%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>1948-09-26</td>
+      <td>36.07</td>
+      <td>Baltimore Colts (1st) (H)</td>
+      <td>1450.34</td>
+      <td>35</td>
+      <td>68.25%</td>
+      <td>Brooklyn Dodgers</td>
+      <td>1311.54</td>
+      <td>20</td>
+      <td>30.48%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>1948-09-29</td>
+      <td>33.94</td>
+      <td>Los Angeles Dons (H)</td>
+      <td>1500.65</td>
+      <td>20</td>
+      <td>63.56%</td>
+      <td>New York Yankees</td>
+      <td>1398.85</td>
+      <td>10</td>
+      <td>35.18%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>1948-10-08</td>
+      <td>31.00</td>
+      <td>Los Angeles Dons (H)</td>
+      <td>1534.59</td>
+      <td>49</td>
+      <td>76.64%</td>
+      <td>Chicago Rockets</td>
+      <td>1320.12</td>
+      <td>28</td>
+      <td>22.10%</td>
+      <td>1.26%</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>1948-10-10</td>
+      <td>28.61</td>
+      <td>San Francisco 49ers</td>
+      <td>1781.97</td>
+      <td>56</td>
+      <td>84.35%</td>
+      <td>Baltimore Colts (1st) (H)</td>
+      <td>1476.59</td>
+      <td>14</td>
+      <td>14.39%</td>
+      <td>1.26%</td>
+    </tr>
+  </tbody>
+</table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+        });
+    </script>
+</body>
+</html>
