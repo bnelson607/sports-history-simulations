@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Denver Nuggets">Denver Nuggets</option><option value="Indiana Pacers">Indiana Pacers</option><option value="Kentucky Colonels">Kentucky Colonels</option><option value="Memphis Sounds">Memphis Sounds</option><option value="New York Nets">New York Nets</option><option value="San Antonio Spurs">San Antonio Spurs</option><option value="Spirits of St. Louis">Spirits of St. Louis</option><option value="Utah Stars">Utah Stars</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1975-04-04</td>
+      <td>Kentucky Colonels</td>
+      <td>1660.58</td>
+      <td>108</td>
+      <td>New York Nets</td>
+      <td>1660.35</td>
+      <td>99</td>
+      <td>70.76%</td>
+      <td>29.24%</td>
+      <td>4.40</td>
+    </tr>
+    <tr>
+      <td>1975-04-04</td>
+      <td>New York Nets</td>
+      <td>1660.35</td>
+      <td>99</td>
+      <td>@ Kentucky Colonels</td>
+      <td>1660.58</td>
+      <td>108</td>
+      <td>29.24%</td>
+      <td>70.76%</td>
+      <td>-4.40</td>
+    </tr>
+    <tr>
+      <td>1975-04-05</td>
+      <td>San Antonio Spurs</td>
+      <td>1589.47</td>
+      <td>119</td>
+      <td>Indiana Pacers</td>
+      <td>1536.74</td>
+      <td>122</td>
+      <td>76.60%</td>
+      <td>23.40%</td>
+      <td>-4.70</td>
+    </tr>
+    <tr>
+      <td>1975-04-05</td>
+      <td>Indiana Pacers</td>
+      <td>1536.74</td>
+      <td>122</td>
+      <td>@ San Antonio Spurs</td>
+      <td>1589.47</td>
+      <td>119</td>
+      <td>23.40%</td>
+      <td>76.60%</td>
+      <td>4.70</td>
+    </tr>
+    <tr>
+      <td>1975-04-06</td>
+      <td>New York Nets</td>
+      <td>1655.95</td>
+      <td>111</td>
+      <td>Spirits of St. Louis</td>
+      <td>1420.65</td>
+      <td>105</td>
+      <td>90.35%</td>
+      <td>9.65%</td>
+      <td>1.19</td>
+    </tr>
+    <tr>
+      <td>1975-04-06</td>
+      <td>Denver Nuggets</td>
+      <td>1658.46</td>
+      <td>122</td>
+      <td>Utah Stars</td>
+      <td>1467.29</td>
+      <td>107</td>
+      <td>87.90%</td>
+      <td>12.10%</td>
+      <td>2.35</td>
+    </tr>
+    <tr>
+      <td>1975-04-06</td>
+      <td>Kentucky Colonels</td>
+      <td>1664.98</td>
+      <td>98</td>
+      <td>Memphis Sounds</td>
+      <td>1355.71</td>
+      <td>91</td>
+      <td>93.48%</td>
+      <td>6.52%</td>
+      <td>0.86</td>
+    </tr>
+    <tr>
+      <td>1975-04-06</td>
+      <td>Memphis Sounds</td>
+      <td>1355.71</td>
+      <td>91</td>
+      <td>@ Kentucky Colonels</td>
+      <td>1664.98</td>
+      <td>98</td>
+      <td>6.52%</td>
+      <td>93.48%</td>
+      <td>-0.87</td>
+    </tr>
+    <tr>
+      <td>1975-04-06</td>
+      <td>Utah Stars</td>
+      <td>1467.29</td>
+      <td>107</td>
+      <td>@ Denver Nuggets</td>
+      <td>1658.46</td>
+      <td>122</td>
+      <td>12.10%</td>
+      <td>87.90%</td>
+      <td>-2.34</td>
+    </tr>
+    <tr>
+      <td>1975-04-06</td>
+      <td>Spirits of St. Louis</td>
+      <td>1420.65</td>
+      <td>105</td>
+      <td>@ New York Nets</td>
+      <td>1655.95</td>
+      <td>111</td>
+      <td>9.65%</td>
+      <td>90.35%</td>
+      <td>-1.18</td>
+    </tr>
+    <tr>
+      <td>1975-04-07</td>
+      <td>San Antonio Spurs</td>
+      <td>1584.77</td>
+      <td>93</td>
+      <td>Indiana Pacers</td>
+      <td>1541.44</td>
+      <td>98</td>
+      <td>75.62%</td>
+      <td>24.38%</td>
+      <td>-8.47</td>
+    </tr>
+    <tr>
+      <td>1975-04-07</td>
+      <td>Denver Nuggets</td>
+      <td>1660.81</td>
+      <td>126</td>
+      <td>Utah Stars</td>
+      <td>1464.95</td>
+      <td>120</td>
+      <td>88.18%</td>
+      <td>11.82%</td>
+      <td>1.45</td>
+    </tr>
+    <tr>
+      <td>1975-04-07</td>
+      <td>Utah Stars</td>
+      <td>1464.95</td>
+      <td>120</td>
+      <td>@ Denver Nuggets</td>
+      <td>1660.81</td>
+      <td>126</td>
+      <td>11.82%</td>
+      <td>88.18%</td>
+      <td>-1.45</td>
+    </tr>
+    <tr>
+      <td>1975-04-07</td>
+      <td>Indiana Pacers</td>
+      <td>1541.44</td>
+      <td>98</td>
+      <td>@ San Antonio Spurs</td>
+      <td>1584.77</td>
+      <td>93</td>
+      <td>24.38%</td>
+      <td>75.62%</td>
+      <td>8.47</td>
+    </tr>
+    <tr>
+      <td>1975-04-08</td>
+      <td>Memphis Sounds</td>
+      <td>1354.84</td>
+      <td>105</td>
+      <td>@ Kentucky Colonels</td>
+      <td>1665.84</td>
+      <td>119</td>
+      <td>6.46%</td>
+      <td>93.54%</td>
+      <td>-1.21</td>
+    </tr>
+    <tr>
+      <td>1975-04-08</td>
+      <td>Kentucky Colonels</td>
+      <td>1665.84</td>
+      <td>119</td>
+      <td>Memphis Sounds</td>
+      <td>1354.84</td>
+      <td>105</td>
+      <td>93.54%</td>
+      <td>6.46%</td>
+      <td>1.21</td>
+    </tr>
+    <tr>
+      <td>1975-04-09</td>
+      <td>Denver Nuggets</td>
+      <td>1662.26</td>
+      <td>108</td>
+      <td>@ Utah Stars</td>
+      <td>1463.50</td>
+      <td>122</td>
+      <td>56.51%</td>
+      <td>43.49%</td>
+      <td>-10.60</td>
+    </tr>
+    <tr>
+      <td>1975-04-09</td>
+      <td>Spirits of St. Louis</td>
+      <td>1419.47</td>
+      <td>115</td>
+      <td>@ New York Nets</td>
+      <td>1657.14</td>
+      <td>97</td>
+      <td>9.53%</td>
+      <td>90.47%</td>
+      <td>19.23</td>
+    </tr>
+    <tr>
+      <td>1975-04-09</td>
+      <td>Utah Stars</td>
+      <td>1463.50</td>
+      <td>122</td>
+      <td>Denver Nuggets</td>
+      <td>1662.26</td>
+      <td>108</td>
+      <td>43.49%</td>
+      <td>56.51%</td>
+      <td>10.59</td>
+    </tr>
+    <tr>
+      <td>1975-04-09</td>
+      <td>New York Nets</td>
+      <td>1657.14</td>
+      <td>97</td>
+      <td>Spirits of St. Louis</td>
+      <td>1419.47</td>
+      <td>115</td>
+      <td>90.47%</td>
+      <td>9.53%</td>
+      <td>-19.23</td>
+    </tr>
+    <tr>
+      <td>1975-04-10</td>
+      <td>Indiana Pacers</td>
+      <td>1549.91</td>
+      <td>113</td>
+      <td>San Antonio Spurs</td>
+      <td>1576.30</td>
+      <td>103</td>
+      <td>67.49%</td>
+      <td>32.51%</td>
+      <td>3.64</td>
+    </tr>
+    <tr>
+      <td>1975-04-10</td>
+      <td>Memphis Sounds</td>
+      <td>1353.63</td>
+      <td>80</td>
+      <td>Kentucky Colonels</td>
+      <td>1667.05</td>
+      <td>101</td>
+      <td>28.46%</td>
+      <td>71.54%</td>
+      <td>-6.53</td>
+    </tr>
+    <tr>
+      <td>1975-04-10</td>
+      <td>San Antonio Spurs</td>
+      <td>1576.30</td>
+      <td>103</td>
+      <td>@ Indiana Pacers</td>
+      <td>1549.91</td>
+      <td>113</td>
+      <td>32.51%</td>
+      <td>67.49%</td>
+      <td>-3.65</td>
+    </tr>
+    <tr>
+      <td>1975-04-10</td>
+      <td>Kentucky Colonels</td>
+      <td>1667.05</td>
+      <td>101</td>
+      <td>@ Memphis Sounds</td>
+      <td>1353.63</td>
+      <td>80</td>
+      <td>71.54%</td>
+      <td>28.46%</td>
+      <td>6.54</td>
+    </tr>
+    <tr>
+      <td>1975-04-11</td>
+      <td>Spirits of St. Louis</td>
+      <td>1438.70</td>
+      <td>113</td>
+      <td>New York Nets</td>
+      <td>1637.91</td>
+      <td>108</td>
+      <td>43.43%</td>
+      <td>56.57%</td>
+      <td>6.33</td>
+    </tr>
+    <tr>
+      <td>1975-04-11</td>
+      <td>Utah Stars</td>
+      <td>1474.09</td>
+      <td>132</td>
+      <td>Denver Nuggets</td>
+      <td>1651.66</td>
+      <td>110</td>
+      <td>46.51%</td>
+      <td>53.49%</td>
+      <td>12.57</td>
+    </tr>
+    <tr>
+      <td>1975-04-11</td>
+      <td>Memphis Sounds</td>
+      <td>1347.10</td>
+      <td>107</td>
+      <td>Kentucky Colonels</td>
+      <td>1673.59</td>
+      <td>93</td>
+      <td>26.95%</td>
+      <td>73.05%</td>
+      <td>13.69</td>
+    </tr>
+    <tr>
+      <td>1975-04-11</td>
+      <td>New York Nets</td>
+      <td>1637.91</td>
+      <td>108</td>
+      <td>@ Spirits of St. Louis</td>
+      <td>1438.70</td>
+      <td>113</td>
+      <td>56.57%</td>
+      <td>43.43%</td>
+      <td>-6.34</td>
+    </tr>
+    <tr>
+      <td>1975-04-11</td>
+      <td>Denver Nuggets</td>
+      <td>1651.66</td>
+      <td>110</td>
+      <td>@ Utah Stars</td>
+      <td>1474.09</td>
+      <td>132</td>
+      <td>53.49%</td>
+      <td>46.51%</td>
+      <td>-12.57</td>
+    </tr>
+    <tr>
+      <td>1975-04-11</td>
+      <td>Kentucky Colonels</td>
+      <td>1673.59</td>
+      <td>93</td>
+      <td>@ Memphis Sounds</td>
+      <td>1347.10</td>
+      <td>107</td>
+      <td>73.05%</td>
+      <td>26.95%</td>
+      <td>-13.70</td>
+    </tr>
+    <tr>
+      <td>1975-04-12</td>
+      <td>Utah Stars</td>
+      <td>1486.66</td>
+      <td>119</td>
+      <td>@ Denver Nuggets</td>
+      <td>1639.09</td>
+      <td>130</td>
+      <td>14.68%</td>
+      <td>85.32%</td>
+      <td>-2.44</td>
+    </tr>
+    <tr>
+      <td>1975-04-12</td>
+      <td>Denver Nuggets</td>
+      <td>1639.09</td>
+      <td>130</td>
+      <td>Utah Stars</td>
+      <td>1486.66</td>
+      <td>119</td>
+      <td>85.32%</td>
+      <td>14.68%</td>
+      <td>2.44</td>
+    </tr>
+    <tr>
+      <td>1975-04-12</td>
+      <td>Indiana Pacers</td>
+      <td>1553.55</td>
+      <td>109</td>
+      <td>San Antonio Spurs</td>
+      <td>1572.65</td>
+      <td>110</td>
+      <td>68.41%</td>
+      <td>31.59%</td>
+      <td>-3.43</td>
+    </tr>
+    <tr>
+      <td>1975-04-12</td>
+      <td>San Antonio Spurs</td>
+      <td>1572.65</td>
+      <td>110</td>
+      <td>@ Indiana Pacers</td>
+      <td>1553.55</td>
+      <td>109</td>
+      <td>31.59%</td>
+      <td>68.41%</td>
+      <td>3.43</td>
+    </tr>
+    <tr>
+      <td>1975-04-13</td>
+      <td>Spirits of St. Louis</td>
+      <td>1445.03</td>
+      <td>100</td>
+      <td>New York Nets</td>
+      <td>1631.57</td>
+      <td>89</td>
+      <td>45.23%</td>
+      <td>54.77%</td>
+      <td>9.10</td>
+    </tr>
+    <tr>
+      <td>1975-04-13</td>
+      <td>Memphis Sounds</td>
+      <td>1360.79</td>
+      <td>99</td>
+      <td>@ Kentucky Colonels</td>
+      <td>1659.89</td>
+      <td>111</td>
+      <td>6.89%</td>
+      <td>93.11%</td>
+      <td>-1.20</td>
+    </tr>
+    <tr>
+      <td>1975-04-13</td>
+      <td>New York Nets</td>
+      <td>1631.57</td>
+      <td>89</td>
+      <td>@ Spirits of St. Louis</td>
+      <td>1445.03</td>
+      <td>100</td>
+      <td>54.77%</td>
+      <td>45.23%</td>
+      <td>-9.10</td>
+    </tr>
+    <tr>
+      <td>1975-04-13</td>
+      <td>Kentucky Colonels</td>
+      <td>1659.89</td>
+      <td>111</td>
+      <td>Memphis Sounds</td>
+      <td>1360.79</td>
+      <td>99</td>
+      <td>93.11%</td>
+      <td>6.89%</td>
+      <td>1.20</td>
+    </tr>
+    <tr>
+      <td>1975-04-14</td>
+      <td>Denver Nuggets</td>
+      <td>1641.53</td>
+      <td>115</td>
+      <td>@ Utah Stars</td>
+      <td>1484.22</td>
+      <td>113</td>
+      <td>50.58%</td>
+      <td>49.42%</td>
+      <td>3.50</td>
+    </tr>
+    <tr>
+      <td>1975-04-14</td>
+      <td>Indiana Pacers</td>
+      <td>1550.12</td>
+      <td>117</td>
+      <td>@ San Antonio Spurs</td>
+      <td>1576.08</td>
+      <td>123</td>
+      <td>26.27%</td>
+      <td>73.73%</td>
+      <td>-3.22</td>
+    </tr>
+    <tr>
+      <td>1975-04-14</td>
+      <td>San Antonio Spurs</td>
+      <td>1576.08</td>
+      <td>123</td>
+      <td>Indiana Pacers</td>
+      <td>1550.12</td>
+      <td>117</td>
+      <td>73.73%</td>
+      <td>26.27%</td>
+      <td>3.23</td>
+    </tr>
+    <tr>
+      <td>1975-04-14</td>
+      <td>Utah Stars</td>
+      <td>1484.22</td>
+      <td>113</td>
+      <td>Denver Nuggets</td>
+      <td>1641.53</td>
+      <td>115</td>
+      <td>49.42%</td>
+      <td>50.58%</td>
+      <td>-3.50</td>
+    </tr>
+    <tr>
+      <td>1975-04-15</td>
+      <td>Spirits of St. Louis</td>
+      <td>1454.13</td>
+      <td>108</td>
+      <td>@ New York Nets</td>
+      <td>1622.47</td>
+      <td>107</td>
+      <td>13.57%</td>
+      <td>86.43%</td>
+      <td>4.33</td>
+    </tr>
+    <tr>
+      <td>1975-04-15</td>
+      <td>New York Nets</td>
+      <td>1622.47</td>
+      <td>107</td>
+      <td>Spirits of St. Louis</td>
+      <td>1454.13</td>
+      <td>108</td>
+      <td>86.43%</td>
+      <td>13.57%</td>
+      <td>-4.33</td>
+    </tr>
+    <tr>
+      <td>1975-04-16</td>
+      <td>San Antonio Spurs</td>
+      <td>1579.31</td>
+      <td>100</td>
+      <td>@ Indiana Pacers</td>
+      <td>1546.90</td>
+      <td>115</td>
+      <td>33.27%</td>
+      <td>66.73%</td>
+      <td>-6.46</td>
+    </tr>
+    <tr>
+      <td>1975-04-16</td>
+      <td>Indiana Pacers</td>
+      <td>1546.90</td>
+      <td>115</td>
+      <td>San Antonio Spurs</td>
+      <td>1579.31</td>
+      <td>100</td>
+      <td>66.73%</td>
+      <td>33.27%</td>
+      <td>6.46</td>
+    </tr>
+    <tr>
+      <td>1975-04-20</td>
+      <td>Indiana Pacers</td>
+      <td>1553.36</td>
+      <td>128</td>
+      <td>@ Denver Nuggets</td>
+      <td>1645.03</td>
+      <td>131</td>
+      <td>19.62%</td>
+      <td>80.38%</td>
+      <td>-1.71</td>
+    </tr>
+    <tr>
+      <td>1975-04-20</td>
+      <td>Denver Nuggets</td>
+      <td>1645.03</td>
+      <td>131</td>
+      <td>Indiana Pacers</td>
+      <td>1553.36</td>
+      <td>128</td>
+      <td>80.38%</td>
+      <td>19.62%</td>
+      <td>1.71</td>
+    </tr>
+    <tr>
+      <td>1975-04-21</td>
+      <td>Spirits of St. Louis</td>
+      <td>1458.46</td>
+      <td>109</td>
+      <td>@ Kentucky Colonels</td>
+      <td>1661.09</td>
+      <td>112</td>
+      <td>11.42%</td>
+      <td>88.58%</td>
+      <td>-0.99</td>
+    </tr>
+    <tr>
+      <td>1975-04-21</td>
+      <td>Kentucky Colonels</td>
+      <td>1661.09</td>
+      <td>112</td>
+      <td>Spirits of St. Louis</td>
+      <td>1458.46</td>
+      <td>109</td>
+      <td>88.58%</td>
+      <td>11.42%</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <td>1975-04-22</td>
+      <td>Indiana Pacers</td>
+      <td>1551.65</td>
+      <td>131</td>
+      <td>@ Denver Nuggets</td>
+      <td>1646.74</td>
+      <td>124</td>
+      <td>19.31%</td>
+      <td>80.69%</td>
+      <td>10.70</td>
+    </tr>
+    <tr>
+      <td>1975-04-22</td>
+      <td>Denver Nuggets</td>
+      <td>1646.74</td>
+      <td>124</td>
+      <td>Indiana Pacers</td>
+      <td>1551.65</td>
+      <td>131</td>
+      <td>80.69%</td>
+      <td>19.31%</td>
+      <td>-10.70</td>
+    </tr>
+    <tr>
+      <td>1975-04-23</td>
+      <td>Kentucky Colonels</td>
+      <td>1662.08</td>
+      <td>108</td>
+      <td>Spirits of St. Louis</td>
+      <td>1457.47</td>
+      <td>103</td>
+      <td>88.70%</td>
+      <td>11.30%</td>
+      <td>1.27</td>
+    </tr>
+    <tr>
+      <td>1975-04-23</td>
+      <td>Spirits of St. Louis</td>
+      <td>1457.47</td>
+      <td>103</td>
+      <td>@ Kentucky Colonels</td>
+      <td>1662.08</td>
+      <td>108</td>
+      <td>11.30%</td>
+      <td>88.70%</td>
+      <td>-1.26</td>
+    </tr>
+    <tr>
+      <td>1975-04-24</td>
+      <td>Denver Nuggets</td>
+      <td>1636.04</td>
+      <td>112</td>
+      <td>@ Indiana Pacers</td>
+      <td>1562.35</td>
+      <td>118</td>
+      <td>38.74%</td>
+      <td>61.26%</td>
+      <td>-4.75</td>
+    </tr>
+    <tr>
+      <td>1975-04-24</td>
+      <td>Indiana Pacers</td>
+      <td>1562.35</td>
+      <td>118</td>
+      <td>Denver Nuggets</td>
+      <td>1636.04</td>
+      <td>112</td>
+      <td>61.26%</td>
+      <td>38.74%</td>
+      <td>4.75</td>
+    </tr>
+    <tr>
+      <td>1975-04-25</td>
+      <td>Denver Nuggets</td>
+      <td>1631.29</td>
+      <td>126</td>
+      <td>@ Indiana Pacers</td>
+      <td>1567.10</td>
+      <td>109</td>
+      <td>37.45%</td>
+      <td>62.55%</td>
+      <td>12.92</td>
+    </tr>
+    <tr>
+      <td>1975-04-25</td>
+      <td>Kentucky Colonels</td>
+      <td>1663.35</td>
+      <td>97</td>
+      <td>@ Spirits of St. Louis</td>
+      <td>1456.21</td>
+      <td>103</td>
+      <td>57.69%</td>
+      <td>42.31%</td>
+      <td>-7.08</td>
+    </tr>
+    <tr>
+      <td>1975-04-25</td>
+      <td>Spirits of St. Louis</td>
+      <td>1456.21</td>
+      <td>103</td>
+      <td>Kentucky Colonels</td>
+      <td>1663.35</td>
+      <td>97</td>
+      <td>42.31%</td>
+      <td>57.69%</td>
+      <td>7.08</td>
+    </tr>
+    <tr>
+      <td>1975-04-25</td>
+      <td>Indiana Pacers</td>
+      <td>1567.10</td>
+      <td>109</td>
+      <td>Denver Nuggets</td>
+      <td>1631.29</td>
+      <td>126</td>
+      <td>62.55%</td>
+      <td>37.45%</td>
+      <td>-12.92</td>
+    </tr>
+    <tr>
+      <td>1975-04-27</td>
+      <td>Kentucky Colonels</td>
+      <td>1656.27</td>
+      <td>117</td>
+      <td>@ Spirits of St. Louis</td>
+      <td>1463.29</td>
+      <td>98</td>
+      <td>55.69%</td>
+      <td>44.31%</td>
+      <td>9.67</td>
+    </tr>
+    <tr>
+      <td>1975-04-27</td>
+      <td>Indiana Pacers</td>
+      <td>1554.18</td>
+      <td>109</td>
+      <td>@ Denver Nuggets</td>
+      <td>1644.21</td>
+      <td>90</td>
+      <td>19.77%</td>
+      <td>80.23%</td>
+      <td>17.52</td>
+    </tr>
+    <tr>
+      <td>1975-04-27</td>
+      <td>Denver Nuggets</td>
+      <td>1644.21</td>
+      <td>90</td>
+      <td>Indiana Pacers</td>
+      <td>1554.18</td>
+      <td>109</td>
+      <td>80.23%</td>
+      <td>19.77%</td>
+      <td>-17.52</td>
+    </tr>
+    <tr>
+      <td>1975-04-27</td>
+      <td>Spirits of St. Louis</td>
+      <td>1463.29</td>
+      <td>98</td>
+      <td>Kentucky Colonels</td>
+      <td>1656.27</td>
+      <td>117</td>
+      <td>44.31%</td>
+      <td>55.69%</td>
+      <td>-9.68</td>
+    </tr>
+    <tr>
+      <td>1975-04-28</td>
+      <td>Spirits of St. Louis</td>
+      <td>1453.61</td>
+      <td>103</td>
+      <td>@ Kentucky Colonels</td>
+      <td>1665.94</td>
+      <td>123</td>
+      <td>10.86%</td>
+      <td>89.14%</td>
+      <td>-2.43</td>
+    </tr>
+    <tr>
+      <td>1975-04-28</td>
+      <td>Kentucky Colonels</td>
+      <td>1665.94</td>
+      <td>123</td>
+      <td>Spirits of St. Louis</td>
+      <td>1453.61</td>
+      <td>103</td>
+      <td>89.14%</td>
+      <td>10.86%</td>
+      <td>2.44</td>
+    </tr>
+    <tr>
+      <td>1975-04-30</td>
+      <td>Denver Nuggets</td>
+      <td>1626.69</td>
+      <td>104</td>
+      <td>@ Indiana Pacers</td>
+      <td>1571.70</td>
+      <td>99</td>
+      <td>36.22%</td>
+      <td>63.78%</td>
+      <td>7.14</td>
+    </tr>
+    <tr>
+      <td>1975-04-30</td>
+      <td>Indiana Pacers</td>
+      <td>1571.70</td>
+      <td>99</td>
+      <td>Denver Nuggets</td>
+      <td>1626.69</td>
+      <td>104</td>
+      <td>63.78%</td>
+      <td>36.22%</td>
+      <td>-7.14</td>
+    </tr>
+    <tr>
+      <td>1975-05-03</td>
+      <td>Denver Nuggets</td>
+      <td>1633.83</td>
+      <td>96</td>
+      <td>Indiana Pacers</td>
+      <td>1564.56</td>
+      <td>104</td>
+      <td>78.27%</td>
+      <td>21.73%</td>
+      <td>-11.09</td>
+    </tr>
+    <tr>
+      <td>1975-05-03</td>
+      <td>Indiana Pacers</td>
+      <td>1564.56</td>
+      <td>104</td>
+      <td>@ Denver Nuggets</td>
+      <td>1633.83</td>
+      <td>96</td>
+      <td>21.73%</td>
+      <td>78.27%</td>
+      <td>11.09</td>
+    </tr>
+    <tr>
+      <td>1975-05-13</td>
+      <td>Indiana Pacers</td>
+      <td>1575.65</td>
+      <td>94</td>
+      <td>@ Kentucky Colonels</td>
+      <td>1668.38</td>
+      <td>120</td>
+      <td>19.53%</td>
+      <td>80.47%</td>
+      <td>-4.99</td>
+    </tr>
+    <tr>
+      <td>1975-05-13</td>
+      <td>Kentucky Colonels</td>
+      <td>1668.38</td>
+      <td>120</td>
+      <td>Indiana Pacers</td>
+      <td>1575.65</td>
+      <td>94</td>
+      <td>80.47%</td>
+      <td>19.53%</td>
+      <td>4.99</td>
+    </tr>
+    <tr>
+      <td>1975-05-15</td>
+      <td>Indiana Pacers</td>
+      <td>1570.66</td>
+      <td>93</td>
+      <td>@ Kentucky Colonels</td>
+      <td>1673.37</td>
+      <td>95</td>
+      <td>18.64%</td>
+      <td>81.36%</td>
+      <td>-1.32</td>
+    </tr>
+    <tr>
+      <td>1975-05-15</td>
+      <td>Kentucky Colonels</td>
+      <td>1673.37</td>
+      <td>95</td>
+      <td>Indiana Pacers</td>
+      <td>1570.66</td>
+      <td>93</td>
+      <td>81.36%</td>
+      <td>18.64%</td>
+      <td>1.32</td>
+    </tr>
+    <tr>
+      <td>1975-05-17</td>
+      <td>Kentucky Colonels</td>
+      <td>1674.69</td>
+      <td>109</td>
+      <td>@ Indiana Pacers</td>
+      <td>1569.34</td>
+      <td>101</td>
+      <td>43.14%</td>
+      <td>56.86%</td>
+      <td>8.05</td>
+    </tr>
+    <tr>
+      <td>1975-05-17</td>
+      <td>Indiana Pacers</td>
+      <td>1569.34</td>
+      <td>101</td>
+      <td>Kentucky Colonels</td>
+      <td>1674.69</td>
+      <td>109</td>
+      <td>56.86%</td>
+      <td>43.14%</td>
+      <td>-8.06</td>
+    </tr>
+    <tr>
+      <td>1975-05-19</td>
+      <td>Kentucky Colonels</td>
+      <td>1682.74</td>
+      <td>86</td>
+      <td>@ Indiana Pacers</td>
+      <td>1561.28</td>
+      <td>94</td>
+      <td>45.43%</td>
+      <td>54.57%</td>
+      <td>-6.43</td>
+    </tr>
+    <tr>
+      <td>1975-05-19</td>
+      <td>Indiana Pacers</td>
+      <td>1561.28</td>
+      <td>94</td>
+      <td>Kentucky Colonels</td>
+      <td>1682.74</td>
+      <td>86</td>
+      <td>54.57%</td>
+      <td>45.43%</td>
+      <td>6.44</td>
+    </tr>
+    <tr>
+      <td>1975-05-22</td>
+      <td>Kentucky Colonels</td>
+      <td>1676.31</td>
+      <td>110</td>
+      <td>Indiana Pacers</td>
+      <td>1567.72</td>
+      <td>105</td>
+      <td>81.87%</td>
+      <td>18.13%</td>
+      <td>2.03</td>
+    </tr>
+    <tr>
+      <td>1975-05-22</td>
+      <td>Indiana Pacers</td>
+      <td>1567.72</td>
+      <td>105</td>
+      <td>@ Kentucky Colonels</td>
+      <td>1676.31</td>
+      <td>110</td>
+      <td>18.13%</td>
+      <td>81.87%</td>
+      <td>-2.03</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
