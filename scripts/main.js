@@ -19,6 +19,13 @@ fetch('/sports-history-simulations/usa/header.html')
         document.getElementById('usa-header').innerHTML = data;
     });
 
+// Load UEFA header HTML dynamically
+fetch('/sports-history-simulations/uefa/header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('uefa-header').innerHTML = data;
+    });
+
 // Tab switching function
 function showTab(group, tabId) {
     const tabElement = document.getElementById(tabId);
