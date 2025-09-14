@@ -1,0 +1,1995 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .filter-controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .filter-controls select {
+            margin: 0 10px;
+            padding: 4px;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- Use CDN version of Tablesort for local compatibility -->
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls" id="filterControls" style="display: none;">
+        <label for="regionFilter" id="regionLabel">Filter by Level:
+            <select id="regionFilter">
+                <option value="">All</option>
+            </select>
+        </label>
+    </div>
+
+    <table class="dataframe sortable">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Team</th>
+      <th>Level</th>
+      <th>Elo</th>
+      <th>Wins</th>
+      <th>Losses</th>
+      <th>Ties</th>
+      <th>Current</th>
+      <th>Avg. Pts.</th>
+      <th>Exp. Pts. Rem.</th>
+      <th>Min</th>
+      <th>Q1</th>
+      <th>Median</th>
+      <th>Q3</th>
+      <th>Max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Liverpool</td>
+      <td>Level 1</td>
+      <td>2151</td>
+      <td>21.52</td>
+      <td>7.19</td>
+      <td>9.30</td>
+      <td>9</td>
+      <td>73.85</td>
+      <td>64.85</td>
+      <td>47</td>
+      <td>68.34</td>
+      <td>73.38</td>
+      <td>78.32</td>
+      <td>101</td>
+    </tr>
+    <tr>
+      <td>Arsenal</td>
+      <td>Level 1</td>
+      <td>2144</td>
+      <td>20.08</td>
+      <td>8.39</td>
+      <td>9.53</td>
+      <td>6</td>
+      <td>69.78</td>
+      <td>63.78</td>
+      <td>42</td>
+      <td>64.26</td>
+      <td>69.42</td>
+      <td>74.31</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <td>Manchester City</td>
+      <td>Level 1</td>
+      <td>2113</td>
+      <td>17.27</td>
+      <td>10.64</td>
+      <td>10.09</td>
+      <td>3</td>
+      <td>61.89</td>
+      <td>58.89</td>
+      <td>34</td>
+      <td>56.40</td>
+      <td>61.46</td>
+      <td>66.50</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>Chelsea</td>
+      <td>Level 1</td>
+      <td>2085</td>
+      <td>16.82</td>
+      <td>9.68</td>
+      <td>11.50</td>
+      <td>7</td>
+      <td>61.96</td>
+      <td>54.96</td>
+      <td>35</td>
+      <td>56.53</td>
+      <td>61.55</td>
+      <td>66.41</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>Newcastle United</td>
+      <td>Level 1</td>
+      <td>2055</td>
+      <td>13.62</td>
+      <td>11.61</td>
+      <td>12.77</td>
+      <td>2</td>
+      <td>53.62</td>
+      <td>51.62</td>
+      <td>25</td>
+      <td>48.08</td>
+      <td>53.05</td>
+      <td>58.10</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <td>Crystal Palace</td>
+      <td>Level 1</td>
+      <td>2043</td>
+      <td>13.89</td>
+      <td>11.31</td>
+      <td>12.80</td>
+      <td>5</td>
+      <td>54.47</td>
+      <td>49.47</td>
+      <td>27</td>
+      <td>48.89</td>
+      <td>53.93</td>
+      <td>58.92</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>Aston Villa</td>
+      <td>Level 1</td>
+      <td>2030</td>
+      <td>12.23</td>
+      <td>13.94</td>
+      <td>11.83</td>
+      <td>1</td>
+      <td>48.51</td>
+      <td>47.51</td>
+      <td>22</td>
+      <td>42.98</td>
+      <td>47.92</td>
+      <td>53.03</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <td>Bournemouth</td>
+      <td>Level 1</td>
+      <td>2029</td>
+      <td>14.15</td>
+      <td>12.95</td>
+      <td>10.90</td>
+      <td>6</td>
+      <td>53.36</td>
+      <td>47.36</td>
+      <td>29</td>
+      <td>47.81</td>
+      <td>52.76</td>
+      <td>57.76</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <td>Brighton and Hove Albion</td>
+      <td>Level 1</td>
+      <td>2027</td>
+      <td>13.13</td>
+      <td>13.07</td>
+      <td>11.79</td>
+      <td>4</td>
+      <td>51.19</td>
+      <td>47.19</td>
+      <td>22</td>
+      <td>45.71</td>
+      <td>50.61</td>
+      <td>55.58</td>
+      <td>79</td>
+    </tr>
+    <tr>
+      <td>Everton</td>
+      <td>Level 1</td>
+      <td>2016</td>
+      <td>13.52</td>
+      <td>13.71</td>
+      <td>10.77</td>
+      <td>6</td>
+      <td>51.34</td>
+      <td>45.34</td>
+      <td>23</td>
+      <td>45.82</td>
+      <td>50.80</td>
+      <td>55.76</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <td>Leeds United</td>
+      <td>Level 1</td>
+      <td>2015</td>
+      <td>12.57</td>
+      <td>13.59</td>
+      <td>11.84</td>
+      <td>4</td>
+      <td>49.54</td>
+      <td>45.54</td>
+      <td>19</td>
+      <td>44.12</td>
+      <td>49.04</td>
+      <td>53.89</td>
+      <td>77</td>
+    </tr>
+    <tr>
+      <td>Nottingham Forest</td>
+      <td>Level 1</td>
+      <td>2014</td>
+      <td>12.38</td>
+      <td>13.86</td>
+      <td>11.76</td>
+      <td>4</td>
+      <td>48.89</td>
+      <td>44.89</td>
+      <td>22</td>
+      <td>43.35</td>
+      <td>48.35</td>
+      <td>53.38</td>
+      <td>79</td>
+    </tr>
+    <tr>
+      <td>Tottenham Hotspur</td>
+      <td>Level 1</td>
+      <td>2008</td>
+      <td>13.24</td>
+      <td>13.99</td>
+      <td>10.77</td>
+      <td>6</td>
+      <td>50.50</td>
+      <td>44.50</td>
+      <td>23</td>
+      <td>44.93</td>
+      <td>49.91</td>
+      <td>54.98</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <td>Brentford</td>
+      <td>Level 1</td>
+      <td>2008</td>
+      <td>12.02</td>
+      <td>15.27</td>
+      <td>10.71</td>
+      <td>3</td>
+      <td>46.77</td>
+      <td>43.77</td>
+      <td>22</td>
+      <td>41.36</td>
+      <td>46.14</td>
+      <td>51.07</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <td>Fulham</td>
+      <td>Level 1</td>
+      <td>2001</td>
+      <td>10.87</td>
+      <td>14.36</td>
+      <td>12.77</td>
+      <td>2</td>
+      <td>45.39</td>
+      <td>43.39</td>
+      <td>20</td>
+      <td>39.94</td>
+      <td>44.81</td>
+      <td>49.69</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <td>Burnley</td>
+      <td>Level 1</td>
+      <td>1993</td>
+      <td>11.32</td>
+      <td>15.95</td>
+      <td>10.73</td>
+      <td>3</td>
+      <td>44.70</td>
+      <td>41.70</td>
+      <td>20</td>
+      <td>39.27</td>
+      <td>44.16</td>
+      <td>49.00</td>
+      <td>77</td>
+    </tr>
+    <tr>
+      <td>Manchester United</td>
+      <td>Level 1</td>
+      <td>1989</td>
+      <td>11.39</td>
+      <td>14.94</td>
+      <td>11.67</td>
+      <td>4</td>
+      <td>45.84</td>
+      <td>41.84</td>
+      <td>19</td>
+      <td>40.39</td>
+      <td>45.26</td>
+      <td>50.15</td>
+      <td>79</td>
+    </tr>
+    <tr>
+      <td>West Ham United</td>
+      <td>Level 1</td>
+      <td>1968</td>
+      <td>10.38</td>
+      <td>17.21</td>
+      <td>10.41</td>
+      <td>3</td>
+      <td>41.55</td>
+      <td>38.55</td>
+      <td>15</td>
+      <td>36.10</td>
+      <td>40.87</td>
+      <td>45.83</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <td>Wolverhampton</td>
+      <td>Level 1</td>
+      <td>1954</td>
+      <td>8.94</td>
+      <td>18.75</td>
+      <td>10.32</td>
+      <td>0</td>
+      <td>37.13</td>
+      <td>37.13</td>
+      <td>11</td>
+      <td>31.73</td>
+      <td>36.45</td>
+      <td>41.33</td>
+      <td>66</td>
+    </tr>
+    <tr>
+      <td>Sunderland</td>
+      <td>Level 1</td>
+      <td>1923</td>
+      <td>9.68</td>
+      <td>18.62</td>
+      <td>9.69</td>
+      <td>6</td>
+      <td>38.74</td>
+      <td>32.74</td>
+      <td>14</td>
+      <td>33.49</td>
+      <td>38.00</td>
+      <td>42.80</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <td>Middlesbrough</td>
+      <td>Level 2</td>
+      <td>1880</td>
+      <td>21.63</td>
+      <td>11.48</td>
+      <td>12.89</td>
+      <td>0</td>
+      <td>77.79</td>
+      <td>77.79</td>
+      <td>48</td>
+      <td>71.70</td>
+      <td>77.32</td>
+      <td>82.82</td>
+      <td>110</td>
+    </tr>
+    <tr>
+      <td>Coventry City</td>
+      <td>Level 2</td>
+      <td>1875</td>
+      <td>19.02</td>
+      <td>12.01</td>
+      <td>14.97</td>
+      <td>0</td>
+      <td>72.02</td>
+      <td>72.02</td>
+      <td>41</td>
+      <td>65.91</td>
+      <td>71.58</td>
+      <td>77.04</td>
+      <td>101</td>
+    </tr>
+    <tr>
+      <td>Leicester City</td>
+      <td>Level 2</td>
+      <td>1875</td>
+      <td>20.08</td>
+      <td>12.88</td>
+      <td>13.04</td>
+      <td>0</td>
+      <td>73.27</td>
+      <td>73.27</td>
+      <td>35</td>
+      <td>67.25</td>
+      <td>72.85</td>
+      <td>78.27</td>
+      <td>107</td>
+    </tr>
+    <tr>
+      <td>West Bromwich Albion</td>
+      <td>Level 2</td>
+      <td>1873</td>
+      <td>20.00</td>
+      <td>11.95</td>
+      <td>14.06</td>
+      <td>0</td>
+      <td>74.05</td>
+      <td>74.05</td>
+      <td>39</td>
+      <td>68.00</td>
+      <td>73.54</td>
+      <td>79.01</td>
+      <td>106</td>
+    </tr>
+    <tr>
+      <td>Bristol City</td>
+      <td>Level 2</td>
+      <td>1863</td>
+      <td>18.42</td>
+      <td>12.49</td>
+      <td>15.09</td>
+      <td>0</td>
+      <td>70.35</td>
+      <td>70.35</td>
+      <td>37</td>
+      <td>64.21</td>
+      <td>69.77</td>
+      <td>75.48</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>Sheffield United</td>
+      <td>Level 2</td>
+      <td>1857</td>
+      <td>16.22</td>
+      <td>16.63</td>
+      <td>13.15</td>
+      <td>0</td>
+      <td>61.80</td>
+      <td>61.80</td>
+      <td>32</td>
+      <td>55.85</td>
+      <td>61.10</td>
+      <td>66.81</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>Ipswich Town</td>
+      <td>Level 2</td>
+      <td>1854</td>
+      <td>15.90</td>
+      <td>13.95</td>
+      <td>16.14</td>
+      <td>0</td>
+      <td>63.85</td>
+      <td>63.85</td>
+      <td>35</td>
+      <td>57.85</td>
+      <td>63.26</td>
+      <td>68.86</td>
+      <td>96</td>
+    </tr>
+    <tr>
+      <td>Birmingham City</td>
+      <td>Level 2</td>
+      <td>1845</td>
+      <td>17.41</td>
+      <td>14.42</td>
+      <td>14.18</td>
+      <td>0</td>
+      <td>66.40</td>
+      <td>66.40</td>
+      <td>39</td>
+      <td>60.22</td>
+      <td>65.86</td>
+      <td>71.39</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <td>Swansea City</td>
+      <td>Level 2</td>
+      <td>1841</td>
+      <td>17.18</td>
+      <td>14.66</td>
+      <td>14.16</td>
+      <td>0</td>
+      <td>65.70</td>
+      <td>65.70</td>
+      <td>36</td>
+      <td>59.74</td>
+      <td>64.99</td>
+      <td>70.64</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <td>Norwich City</td>
+      <td>Level 2</td>
+      <td>1838</td>
+      <td>17.00</td>
+      <td>15.75</td>
+      <td>13.24</td>
+      <td>0</td>
+      <td>64.25</td>
+      <td>64.25</td>
+      <td>36</td>
+      <td>58.08</td>
+      <td>63.68</td>
+      <td>69.37</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <td>Stoke City</td>
+      <td>Level 2</td>
+      <td>1832</td>
+      <td>17.57</td>
+      <td>15.19</td>
+      <td>13.24</td>
+      <td>0</td>
+      <td>65.96</td>
+      <td>65.96</td>
+      <td>39</td>
+      <td>59.92</td>
+      <td>65.43</td>
+      <td>70.87</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <td>Millwall</td>
+      <td>Level 2</td>
+      <td>1830</td>
+      <td>16.52</td>
+      <td>16.24</td>
+      <td>13.24</td>
+      <td>0</td>
+      <td>62.80</td>
+      <td>62.80</td>
+      <td>35</td>
+      <td>56.68</td>
+      <td>62.23</td>
+      <td>67.82</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <td>Southampton</td>
+      <td>Level 2</td>
+      <td>1827</td>
+      <td>15.27</td>
+      <td>15.52</td>
+      <td>15.21</td>
+      <td>0</td>
+      <td>61.02</td>
+      <td>61.02</td>
+      <td>34</td>
+      <td>54.91</td>
+      <td>60.41</td>
+      <td>66.04</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <td>Portsmouth</td>
+      <td>Level 2</td>
+      <td>1825</td>
+      <td>16.17</td>
+      <td>15.63</td>
+      <td>14.20</td>
+      <td>0</td>
+      <td>62.71</td>
+      <td>62.71</td>
+      <td>34</td>
+      <td>56.52</td>
+      <td>62.14</td>
+      <td>67.85</td>
+      <td>96</td>
+    </tr>
+    <tr>
+      <td>Blackburn Rovers</td>
+      <td>Level 2</td>
+      <td>1821</td>
+      <td>15.03</td>
+      <td>17.76</td>
+      <td>13.20</td>
+      <td>0</td>
+      <td>58.30</td>
+      <td>58.30</td>
+      <td>28</td>
+      <td>52.29</td>
+      <td>57.68</td>
+      <td>63.38</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <td>Preston North End</td>
+      <td>Level 2</td>
+      <td>1813</td>
+      <td>15.58</td>
+      <td>16.24</td>
+      <td>14.18</td>
+      <td>0</td>
+      <td>60.91</td>
+      <td>60.91</td>
+      <td>29</td>
+      <td>54.92</td>
+      <td>60.31</td>
+      <td>65.78</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>Watford</td>
+      <td>Level 2</td>
+      <td>1809</td>
+      <td>14.17</td>
+      <td>16.71</td>
+      <td>15.11</td>
+      <td>0</td>
+      <td>57.64</td>
+      <td>57.64</td>
+      <td>29</td>
+      <td>51.58</td>
+      <td>57.04</td>
+      <td>62.53</td>
+      <td>93</td>
+    </tr>
+    <tr>
+      <td>Queens Park Rangers</td>
+      <td>Level 2</td>
+      <td>1807</td>
+      <td>14.10</td>
+      <td>17.73</td>
+      <td>14.17</td>
+      <td>0</td>
+      <td>56.46</td>
+      <td>56.46</td>
+      <td>29</td>
+      <td>50.50</td>
+      <td>55.89</td>
+      <td>61.31</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <td>Hull City</td>
+      <td>Level 2</td>
+      <td>1803</td>
+      <td>13.90</td>
+      <td>17.93</td>
+      <td>14.17</td>
+      <td>0</td>
+      <td>55.87</td>
+      <td>55.87</td>
+      <td>25</td>
+      <td>49.87</td>
+      <td>55.19</td>
+      <td>60.80</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <td>Sheffield Wednesday</td>
+      <td>Level 2</td>
+      <td>1794</td>
+      <td>12.46</td>
+      <td>19.44</td>
+      <td>14.10</td>
+      <td>0</td>
+      <td>51.48</td>
+      <td>51.48</td>
+      <td>25</td>
+      <td>45.48</td>
+      <td>50.87</td>
+      <td>56.27</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <td>Derby County</td>
+      <td>Level 2</td>
+      <td>1794</td>
+      <td>12.57</td>
+      <td>18.32</td>
+      <td>15.10</td>
+      <td>0</td>
+      <td>52.82</td>
+      <td>52.82</td>
+      <td>26</td>
+      <td>46.95</td>
+      <td>52.11</td>
+      <td>57.65</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <td>Oxford United</td>
+      <td>Level 2</td>
+      <td>1780</td>
+      <td>11.77</td>
+      <td>20.30</td>
+      <td>13.93</td>
+      <td>0</td>
+      <td>49.23</td>
+      <td>49.23</td>
+      <td>22</td>
+      <td>43.22</td>
+      <td>48.64</td>
+      <td>54.15</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>Wrexham</td>
+      <td>Level 2</td>
+      <td>1777</td>
+      <td>12.62</td>
+      <td>19.49</td>
+      <td>13.88</td>
+      <td>0</td>
+      <td>51.76</td>
+      <td>51.76</td>
+      <td>26</td>
+      <td>45.85</td>
+      <td>51.08</td>
+      <td>56.55</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <td>Charlton Athletic</td>
+      <td>Level 2</td>
+      <td>1767</td>
+      <td>12.18</td>
+      <td>20.04</td>
+      <td>13.78</td>
+      <td>0</td>
+      <td>50.32</td>
+      <td>50.32</td>
+      <td>21</td>
+      <td>44.49</td>
+      <td>49.65</td>
+      <td>55.04</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <td>Cardiff City</td>
+      <td>Level 3</td>
+      <td>1734</td>
+      <td>24.71</td>
+      <td>8.98</td>
+      <td>12.31</td>
+      <td>0</td>
+      <td>86.44</td>
+      <td>86.44</td>
+      <td>56</td>
+      <td>80.54</td>
+      <td>85.99</td>
+      <td>91.40</td>
+      <td>117</td>
+    </tr>
+    <tr>
+      <td>Luton Town</td>
+      <td>Level 3</td>
+      <td>1734</td>
+      <td>23.82</td>
+      <td>10.94</td>
+      <td>11.24</td>
+      <td>0</td>
+      <td>82.69</td>
+      <td>82.69</td>
+      <td>51</td>
+      <td>76.89</td>
+      <td>82.31</td>
+      <td>87.49</td>
+      <td>114</td>
+    </tr>
+    <tr>
+      <td>Stockport</td>
+      <td>Level 3</td>
+      <td>1694</td>
+      <td>20.47</td>
+      <td>11.55</td>
+      <td>13.97</td>
+      <td>0</td>
+      <td>75.39</td>
+      <td>75.39</td>
+      <td>45</td>
+      <td>69.55</td>
+      <td>74.94</td>
+      <td>80.29</td>
+      <td>103</td>
+    </tr>
+    <tr>
+      <td>Plymouth Argyle</td>
+      <td>Level 3</td>
+      <td>1660</td>
+      <td>16.79</td>
+      <td>16.85</td>
+      <td>12.36</td>
+      <td>0</td>
+      <td>62.73</td>
+      <td>62.73</td>
+      <td>33</td>
+      <td>56.75</td>
+      <td>62.22</td>
+      <td>67.60</td>
+      <td>93</td>
+    </tr>
+    <tr>
+      <td>Leyton Orient</td>
+      <td>Level 3</td>
+      <td>1659</td>
+      <td>17.64</td>
+      <td>15.01</td>
+      <td>13.35</td>
+      <td>0</td>
+      <td>66.28</td>
+      <td>66.28</td>
+      <td>35</td>
+      <td>60.36</td>
+      <td>65.71</td>
+      <td>71.12</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <td>Lincoln City</td>
+      <td>Level 3</td>
+      <td>1657</td>
+      <td>18.27</td>
+      <td>13.37</td>
+      <td>14.36</td>
+      <td>0</td>
+      <td>69.17</td>
+      <td>69.17</td>
+      <td>42</td>
+      <td>63.21</td>
+      <td>68.61</td>
+      <td>74.08</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <td>Barnsley</td>
+      <td>Level 3</td>
+      <td>1649</td>
+      <td>18.78</td>
+      <td>13.85</td>
+      <td>13.38</td>
+      <td>0</td>
+      <td>69.70</td>
+      <td>69.70</td>
+      <td>40</td>
+      <td>63.86</td>
+      <td>69.14</td>
+      <td>74.48</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <td>Huddersfield Town</td>
+      <td>Level 3</td>
+      <td>1646</td>
+      <td>18.81</td>
+      <td>14.79</td>
+      <td>12.40</td>
+      <td>0</td>
+      <td>68.82</td>
+      <td>68.82</td>
+      <td>37</td>
+      <td>62.96</td>
+      <td>68.30</td>
+      <td>73.75</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <td>Bolton Wanderers</td>
+      <td>Level 3</td>
+      <td>1645</td>
+      <td>15.94</td>
+      <td>13.68</td>
+      <td>16.38</td>
+      <td>0</td>
+      <td>64.20</td>
+      <td>64.20</td>
+      <td>34</td>
+      <td>58.39</td>
+      <td>63.57</td>
+      <td>69.04</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <td>Wycombe Wanderers</td>
+      <td>Level 3</td>
+      <td>1644</td>
+      <td>14.68</td>
+      <td>16.94</td>
+      <td>14.38</td>
+      <td>0</td>
+      <td>58.43</td>
+      <td>58.43</td>
+      <td>30</td>
+      <td>52.59</td>
+      <td>57.95</td>
+      <td>63.16</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>Stevenage</td>
+      <td>Level 3</td>
+      <td>1640</td>
+      <td>19.28</td>
+      <td>14.32</td>
+      <td>12.39</td>
+      <td>0</td>
+      <td>70.24</td>
+      <td>70.24</td>
+      <td>35</td>
+      <td>64.43</td>
+      <td>69.72</td>
+      <td>74.98</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <td>Blackpool</td>
+      <td>Level 3</td>
+      <td>1636</td>
+      <td>15.27</td>
+      <td>17.35</td>
+      <td>13.38</td>
+      <td>0</td>
+      <td>59.19</td>
+      <td>59.19</td>
+      <td>33</td>
+      <td>53.31</td>
+      <td>58.65</td>
+      <td>63.98</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <td>Wigan Athletic</td>
+      <td>Level 3</td>
+      <td>1634</td>
+      <td>16.16</td>
+      <td>15.38</td>
+      <td>14.45</td>
+      <td>0</td>
+      <td>62.95</td>
+      <td>62.95</td>
+      <td>33</td>
+      <td>56.98</td>
+      <td>62.28</td>
+      <td>67.74</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <td>Reading</td>
+      <td>Level 3</td>
+      <td>1631</td>
+      <td>14.80</td>
+      <td>16.68</td>
+      <td>14.52</td>
+      <td>0</td>
+      <td>58.91</td>
+      <td>58.91</td>
+      <td>29</td>
+      <td>52.91</td>
+      <td>58.37</td>
+      <td>63.77</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <td>Mansfield Town</td>
+      <td>Level 3</td>
+      <td>1611</td>
+      <td>15.81</td>
+      <td>16.78</td>
+      <td>13.41</td>
+      <td>0</td>
+      <td>60.85</td>
+      <td>60.85</td>
+      <td>31</td>
+      <td>55.12</td>
+      <td>60.28</td>
+      <td>65.65</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <td>Exeter City</td>
+      <td>Level 3</td>
+      <td>1604</td>
+      <td>15.36</td>
+      <td>18.29</td>
+      <td>12.35</td>
+      <td>0</td>
+      <td>58.42</td>
+      <td>58.42</td>
+      <td>30</td>
+      <td>52.62</td>
+      <td>57.74</td>
+      <td>63.14</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>Rotherham United</td>
+      <td>Level 3</td>
+      <td>1603</td>
+      <td>13.71</td>
+      <td>18.56</td>
+      <td>13.74</td>
+      <td>0</td>
+      <td>54.85</td>
+      <td>54.85</td>
+      <td>27</td>
+      <td>48.86</td>
+      <td>54.18</td>
+      <td>59.72</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>Doncaster Rovers</td>
+      <td>Level 3</td>
+      <td>1591</td>
+      <td>15.70</td>
+      <td>17.05</td>
+      <td>13.25</td>
+      <td>0</td>
+      <td>60.35</td>
+      <td>60.35</td>
+      <td>35</td>
+      <td>54.41</td>
+      <td>59.80</td>
+      <td>65.11</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <td>Bradford City</td>
+      <td>Level 3</td>
+      <td>1586</td>
+      <td>15.63</td>
+      <td>16.16</td>
+      <td>14.21</td>
+      <td>0</td>
+      <td>61.09</td>
+      <td>61.09</td>
+      <td>31</td>
+      <td>55.24</td>
+      <td>60.43</td>
+      <td>65.79</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <td>Northampton Town</td>
+      <td>Level 3</td>
+      <td>1585</td>
+      <td>13.61</td>
+      <td>19.14</td>
+      <td>13.25</td>
+      <td>0</td>
+      <td>54.08</td>
+      <td>54.08</td>
+      <td>27</td>
+      <td>48.25</td>
+      <td>53.44</td>
+      <td>58.83</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <td>Burton Albion</td>
+      <td>Level 3</td>
+      <td>1572</td>
+      <td>12.19</td>
+      <td>20.38</td>
+      <td>13.44</td>
+      <td>0</td>
+      <td>50.00</td>
+      <td>50.00</td>
+      <td>22</td>
+      <td>44.21</td>
+      <td>49.25</td>
+      <td>54.83</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <td>Peterborough United</td>
+      <td>Level 3</td>
+      <td>1567</td>
+      <td>10.84</td>
+      <td>22.01</td>
+      <td>13.16</td>
+      <td>0</td>
+      <td>45.67</td>
+      <td>45.67</td>
+      <td>21</td>
+      <td>39.97</td>
+      <td>45.03</td>
+      <td>50.24</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <td>AFC Wimbledon</td>
+      <td>Level 3</td>
+      <td>1565</td>
+      <td>13.80</td>
+      <td>20.09</td>
+      <td>12.11</td>
+      <td>0</td>
+      <td>53.52</td>
+      <td>53.52</td>
+      <td>26</td>
+      <td>47.76</td>
+      <td>52.88</td>
+      <td>58.12</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>Port Vale</td>
+      <td>Level 3</td>
+      <td>1535</td>
+      <td>9.32</td>
+      <td>23.22</td>
+      <td>13.46</td>
+      <td>0</td>
+      <td>41.41</td>
+      <td>41.41</td>
+      <td>13</td>
+      <td>35.79</td>
+      <td>40.76</td>
+      <td>45.91</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <td>Cambridge United</td>
+      <td>Level 4</td>
+      <td>1489</td>
+      <td>20.13</td>
+      <td>12.65</td>
+      <td>13.22</td>
+      <td>0</td>
+      <td>73.61</td>
+      <td>73.61</td>
+      <td>45</td>
+      <td>67.56</td>
+      <td>73.06</td>
+      <td>78.63</td>
+      <td>104</td>
+    </tr>
+    <tr>
+      <td>Walsall</td>
+      <td>Level 4</td>
+      <td>1470</td>
+      <td>20.18</td>
+      <td>13.43</td>
+      <td>12.39</td>
+      <td>0</td>
+      <td>72.93</td>
+      <td>72.93</td>
+      <td>42</td>
+      <td>67.16</td>
+      <td>72.39</td>
+      <td>77.81</td>
+      <td>105</td>
+    </tr>
+    <tr>
+      <td>Bristol Rovers</td>
+      <td>Level 4</td>
+      <td>1466</td>
+      <td>17.89</td>
+      <td>14.65</td>
+      <td>13.46</td>
+      <td>0</td>
+      <td>67.13</td>
+      <td>67.13</td>
+      <td>37</td>
+      <td>61.30</td>
+      <td>66.55</td>
+      <td>71.94</td>
+      <td>96</td>
+    </tr>
+    <tr>
+      <td>Swindon Town</td>
+      <td>Level 4</td>
+      <td>1457</td>
+      <td>19.30</td>
+      <td>14.21</td>
+      <td>12.49</td>
+      <td>0</td>
+      <td>70.40</td>
+      <td>70.40</td>
+      <td>41</td>
+      <td>64.37</td>
+      <td>69.86</td>
+      <td>75.29</td>
+      <td>101</td>
+    </tr>
+    <tr>
+      <td>Chesterfield</td>
+      <td>Level 4</td>
+      <td>1456</td>
+      <td>19.29</td>
+      <td>13.27</td>
+      <td>13.45</td>
+      <td>0</td>
+      <td>71.31</td>
+      <td>71.31</td>
+      <td>42</td>
+      <td>65.32</td>
+      <td>70.66</td>
+      <td>76.15</td>
+      <td>104</td>
+    </tr>
+    <tr>
+      <td>Crawley Town</td>
+      <td>Level 4</td>
+      <td>1456</td>
+      <td>15.17</td>
+      <td>16.26</td>
+      <td>14.57</td>
+      <td>0</td>
+      <td>60.07</td>
+      <td>60.07</td>
+      <td>28</td>
+      <td>54.20</td>
+      <td>59.42</td>
+      <td>64.86</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <td>Bromley</td>
+      <td>Level 4</td>
+      <td>1455</td>
+      <td>18.13</td>
+      <td>12.37</td>
+      <td>15.50</td>
+      <td>0</td>
+      <td>69.88</td>
+      <td>69.88</td>
+      <td>37</td>
+      <td>63.79</td>
+      <td>69.39</td>
+      <td>74.79</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <td>Fleetwood Town</td>
+      <td>Level 4</td>
+      <td>1453</td>
+      <td>18.00</td>
+      <td>13.46</td>
+      <td>14.54</td>
+      <td>0</td>
+      <td>68.54</td>
+      <td>68.54</td>
+      <td>37</td>
+      <td>62.65</td>
+      <td>68.11</td>
+      <td>73.45</td>
+      <td>101</td>
+    </tr>
+    <tr>
+      <td>Gillingham</td>
+      <td>Level 4</td>
+      <td>1449</td>
+      <td>18.77</td>
+      <td>12.70</td>
+      <td>14.52</td>
+      <td>0</td>
+      <td>70.84</td>
+      <td>70.84</td>
+      <td>39</td>
+      <td>64.91</td>
+      <td>70.19</td>
+      <td>75.64</td>
+      <td>102</td>
+    </tr>
+    <tr>
+      <td>Notts County</td>
+      <td>Level 4</td>
+      <td>1446</td>
+      <td>16.62</td>
+      <td>14.83</td>
+      <td>14.55</td>
+      <td>0</td>
+      <td>64.42</td>
+      <td>64.42</td>
+      <td>36</td>
+      <td>58.45</td>
+      <td>63.94</td>
+      <td>69.29</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <td>Salford City</td>
+      <td>Level 4</td>
+      <td>1444</td>
+      <td>17.43</td>
+      <td>14.98</td>
+      <td>13.59</td>
+      <td>0</td>
+      <td>65.87</td>
+      <td>65.87</td>
+      <td>38</td>
+      <td>59.84</td>
+      <td>65.34</td>
+      <td>70.80</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <td>Crewe Alexandra</td>
+      <td>Level 4</td>
+      <td>1438</td>
+      <td>18.31</td>
+      <td>15.08</td>
+      <td>12.61</td>
+      <td>0</td>
+      <td>67.54</td>
+      <td>67.54</td>
+      <td>39</td>
+      <td>61.72</td>
+      <td>66.91</td>
+      <td>72.38</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <td>Grimsby Town</td>
+      <td>Level 4</td>
+      <td>1436</td>
+      <td>17.06</td>
+      <td>14.36</td>
+      <td>14.58</td>
+      <td>0</td>
+      <td>65.77</td>
+      <td>65.77</td>
+      <td>35</td>
+      <td>59.72</td>
+      <td>65.20</td>
+      <td>70.61</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <td>Colchester United</td>
+      <td>Level 4</td>
+      <td>1425</td>
+      <td>14.40</td>
+      <td>15.99</td>
+      <td>15.61</td>
+      <td>0</td>
+      <td>58.80</td>
+      <td>58.80</td>
+      <td>32</td>
+      <td>52.95</td>
+      <td>58.38</td>
+      <td>63.54</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <td>Milton Keynes Dons</td>
+      <td>Level 4</td>
+      <td>1424</td>
+      <td>16.18</td>
+      <td>15.14</td>
+      <td>14.68</td>
+      <td>0</td>
+      <td>63.21</td>
+      <td>63.21</td>
+      <td>35</td>
+      <td>57.19</td>
+      <td>62.55</td>
+      <td>68.11</td>
+      <td>93</td>
+    </tr>
+    <tr>
+      <td>Tranmere Rovers</td>
+      <td>Level 4</td>
+      <td>1421</td>
+      <td>15.63</td>
+      <td>15.48</td>
+      <td>14.89</td>
+      <td>0</td>
+      <td>61.79</td>
+      <td>61.79</td>
+      <td>33</td>
+      <td>55.91</td>
+      <td>61.28</td>
+      <td>66.64</td>
+      <td>93</td>
+    </tr>
+    <tr>
+      <td>Barrow</td>
+      <td>Level 4</td>
+      <td>1415</td>
+      <td>15.00</td>
+      <td>18.45</td>
+      <td>12.55</td>
+      <td>0</td>
+      <td>57.54</td>
+      <td>57.54</td>
+      <td>29</td>
+      <td>51.57</td>
+      <td>56.95</td>
+      <td>62.37</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>Barnet</td>
+      <td>Level 4</td>
+      <td>1411</td>
+      <td>14.86</td>
+      <td>17.62</td>
+      <td>13.51</td>
+      <td>0</td>
+      <td>58.11</td>
+      <td>58.11</td>
+      <td>31</td>
+      <td>52.21</td>
+      <td>57.52</td>
+      <td>62.98</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <td>Shrewsbury Town</td>
+      <td>Level 4</td>
+      <td>1410</td>
+      <td>12.70</td>
+      <td>18.78</td>
+      <td>14.52</td>
+      <td>0</td>
+      <td>52.62</td>
+      <td>52.62</td>
+      <td>24</td>
+      <td>46.75</td>
+      <td>52.00</td>
+      <td>57.33</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <td>Harrogate Town</td>
+      <td>Level 4</td>
+      <td>1400</td>
+      <td>14.35</td>
+      <td>17.12</td>
+      <td>14.53</td>
+      <td>0</td>
+      <td>57.58</td>
+      <td>57.58</td>
+      <td>30</td>
+      <td>51.73</td>
+      <td>57.05</td>
+      <td>62.27</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <td>Cheltenham Town</td>
+      <td>Level 4</td>
+      <td>1387</td>
+      <td>11.63</td>
+      <td>20.96</td>
+      <td>13.41</td>
+      <td>0</td>
+      <td>48.31</td>
+      <td>48.31</td>
+      <td>23</td>
+      <td>42.48</td>
+      <td>47.70</td>
+      <td>52.89</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <td>Accrington Stanley</td>
+      <td>Level 4</td>
+      <td>1381</td>
+      <td>11.60</td>
+      <td>18.79</td>
+      <td>15.61</td>
+      <td>0</td>
+      <td>50.41</td>
+      <td>50.41</td>
+      <td>25</td>
+      <td>44.45</td>
+      <td>49.73</td>
+      <td>55.23</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <td>Newport County</td>
+      <td>Level 4</td>
+      <td>1355</td>
+      <td>11.13</td>
+      <td>21.86</td>
+      <td>13.01</td>
+      <td>0</td>
+      <td>46.39</td>
+      <td>46.39</td>
+      <td>21</td>
+      <td>40.69</td>
+      <td>45.66</td>
+      <td>51.01</td>
+      <td>79</td>
+    </tr>
+    <tr>
+      <td>Oldham Athletic</td>
+      <td>Level 4</td>
+      <td>1339</td>
+      <td>9.51</td>
+      <td>20.81</td>
+      <td>15.69</td>
+      <td>0</td>
+      <td>44.21</td>
+      <td>44.21</td>
+      <td>17</td>
+      <td>38.52</td>
+      <td>43.61</td>
+      <td>48.71</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <td>Carlisle United</td>
+      <td>Level 5</td>
+      <td>1319</td>
+      <td>21.78</td>
+      <td>10.55</td>
+      <td>13.67</td>
+      <td>0</td>
+      <td>79.01</td>
+      <td>79.01</td>
+      <td>50</td>
+      <td>73.11</td>
+      <td>78.55</td>
+      <td>83.95</td>
+      <td>110</td>
+    </tr>
+    <tr>
+      <td>Forest Green Rovers</td>
+      <td>Level 5</td>
+      <td>1307</td>
+      <td>22.04</td>
+      <td>10.05</td>
+      <td>13.90</td>
+      <td>0</td>
+      <td>80.03</td>
+      <td>80.03</td>
+      <td>49</td>
+      <td>74.13</td>
+      <td>79.49</td>
+      <td>84.89</td>
+      <td>109</td>
+    </tr>
+    <tr>
+      <td>York City</td>
+      <td>Level 5</td>
+      <td>1302</td>
+      <td>20.04</td>
+      <td>10.58</td>
+      <td>15.38</td>
+      <td>0</td>
+      <td>75.50</td>
+      <td>75.50</td>
+      <td>44</td>
+      <td>69.36</td>
+      <td>74.91</td>
+      <td>80.74</td>
+      <td>102</td>
+    </tr>
+    <tr>
+      <td>Southend United</td>
+      <td>Level 5</td>
+      <td>1296</td>
+      <td>21.66</td>
+      <td>10.44</td>
+      <td>13.90</td>
+      <td>0</td>
+      <td>78.89</td>
+      <td>78.89</td>
+      <td>42</td>
+      <td>72.86</td>
+      <td>78.38</td>
+      <td>83.72</td>
+      <td>109</td>
+    </tr>
+    <tr>
+      <td>Rochdale</td>
+      <td>Level 5</td>
+      <td>1289</td>
+      <td>22.20</td>
+      <td>11.70</td>
+      <td>12.10</td>
+      <td>0</td>
+      <td>78.70</td>
+      <td>78.70</td>
+      <td>51</td>
+      <td>72.73</td>
+      <td>78.12</td>
+      <td>83.64</td>
+      <td>110</td>
+    </tr>
+    <tr>
+      <td>Brackley Town</td>
+      <td>Level 5</td>
+      <td>1259</td>
+      <td>17.65</td>
+      <td>13.61</td>
+      <td>14.74</td>
+      <td>0</td>
+      <td>67.70</td>
+      <td>67.70</td>
+      <td>37</td>
+      <td>61.65</td>
+      <td>67.10</td>
+      <td>72.67</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <td>Morecambe</td>
+      <td>Level 5</td>
+      <td>1251</td>
+      <td>17.14</td>
+      <td>15.52</td>
+      <td>13.35</td>
+      <td>0</td>
+      <td>64.76</td>
+      <td>64.76</td>
+      <td>35</td>
+      <td>58.65</td>
+      <td>64.33</td>
+      <td>69.79</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <td>Hartlepool United</td>
+      <td>Level 5</td>
+      <td>1248</td>
+      <td>17.70</td>
+      <td>12.84</td>
+      <td>15.47</td>
+      <td>0</td>
+      <td>68.56</td>
+      <td>68.56</td>
+      <td>37</td>
+      <td>62.63</td>
+      <td>68.06</td>
+      <td>73.49</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>Gateshead</td>
+      <td>Level 5</td>
+      <td>1224</td>
+      <td>16.53</td>
+      <td>15.96</td>
+      <td>13.52</td>
+      <td>0</td>
+      <td>63.10</td>
+      <td>63.10</td>
+      <td>28</td>
+      <td>57.21</td>
+      <td>62.49</td>
+      <td>67.78</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <td>Truro City</td>
+      <td>Level 5</td>
+      <td>1223</td>
+      <td>14.48</td>
+      <td>19.06</td>
+      <td>12.46</td>
+      <td>0</td>
+      <td>55.89</td>
+      <td>55.89</td>
+      <td>28</td>
+      <td>50.05</td>
+      <td>55.35</td>
+      <td>60.76</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <td>Altrincham</td>
+      <td>Level 5</td>
+      <td>1218</td>
+      <td>15.24</td>
+      <td>18.26</td>
+      <td>12.50</td>
+      <td>0</td>
+      <td>58.23</td>
+      <td>58.23</td>
+      <td>31</td>
+      <td>52.25</td>
+      <td>57.58</td>
+      <td>63.09</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <td>Sutton United</td>
+      <td>Level 5</td>
+      <td>1216</td>
+      <td>14.28</td>
+      <td>17.16</td>
+      <td>14.56</td>
+      <td>0</td>
+      <td>57.40</td>
+      <td>57.40</td>
+      <td>31</td>
+      <td>51.44</td>
+      <td>56.86</td>
+      <td>62.30</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <td>Aldershot Town</td>
+      <td>Level 5</td>
+      <td>1214</td>
+      <td>14.85</td>
+      <td>17.72</td>
+      <td>13.42</td>
+      <td>0</td>
+      <td>57.98</td>
+      <td>57.98</td>
+      <td>30</td>
+      <td>52.16</td>
+      <td>57.47</td>
+      <td>62.78</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <td>Halifax Town</td>
+      <td>Level 5</td>
+      <td>1214</td>
+      <td>14.88</td>
+      <td>17.68</td>
+      <td>13.44</td>
+      <td>0</td>
+      <td>58.07</td>
+      <td>58.07</td>
+      <td>26</td>
+      <td>52.19</td>
+      <td>57.47</td>
+      <td>62.81</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>Eastleigh</td>
+      <td>Level 5</td>
+      <td>1208</td>
+      <td>15.76</td>
+      <td>17.84</td>
+      <td>12.40</td>
+      <td>0</td>
+      <td>59.67</td>
+      <td>59.67</td>
+      <td>32</td>
+      <td>53.80</td>
+      <td>59.04</td>
+      <td>64.53</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <td>Boreham Wood</td>
+      <td>Level 5</td>
+      <td>1199</td>
+      <td>14.65</td>
+      <td>16.65</td>
+      <td>14.70</td>
+      <td>0</td>
+      <td>58.66</td>
+      <td>58.66</td>
+      <td>33</td>
+      <td>52.73</td>
+      <td>58.07</td>
+      <td>63.51</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <td>Braintree Town</td>
+      <td>Level 5</td>
+      <td>1196</td>
+      <td>14.12</td>
+      <td>18.47</td>
+      <td>13.41</td>
+      <td>0</td>
+      <td>55.78</td>
+      <td>55.78</td>
+      <td>26</td>
+      <td>49.91</td>
+      <td>55.17</td>
+      <td>60.47</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <td>Boston United</td>
+      <td>Level 5</td>
+      <td>1196</td>
+      <td>14.29</td>
+      <td>19.05</td>
+      <td>12.67</td>
+      <td>0</td>
+      <td>55.53</td>
+      <td>55.53</td>
+      <td>28</td>
+      <td>49.69</td>
+      <td>54.93</td>
+      <td>60.26</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>Woking</td>
+      <td>Level 5</td>
+      <td>1195</td>
+      <td>13.14</td>
+      <td>19.47</td>
+      <td>13.39</td>
+      <td>0</td>
+      <td>52.82</td>
+      <td>52.82</td>
+      <td>26</td>
+      <td>47.03</td>
+      <td>52.25</td>
+      <td>57.53</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>Tamworth</td>
+      <td>Level 5</td>
+      <td>1192</td>
+      <td>13.13</td>
+      <td>19.16</td>
+      <td>13.71</td>
+      <td>0</td>
+      <td>53.11</td>
+      <td>53.11</td>
+      <td>25</td>
+      <td>47.20</td>
+      <td>52.42</td>
+      <td>57.90</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <td>Wealdstone</td>
+      <td>Level 5</td>
+      <td>1190</td>
+      <td>14.81</td>
+      <td>18.83</td>
+      <td>12.36</td>
+      <td>0</td>
+      <td>56.78</td>
+      <td>56.78</td>
+      <td>30</td>
+      <td>51.06</td>
+      <td>56.02</td>
+      <td>61.51</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <td>Solihull Moors</td>
+      <td>Level 5</td>
+      <td>1185</td>
+      <td>11.74</td>
+      <td>18.91</td>
+      <td>15.35</td>
+      <td>0</td>
+      <td>50.56</td>
+      <td>50.56</td>
+      <td>19</td>
+      <td>44.67</td>
+      <td>49.83</td>
+      <td>55.24</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <td>Scunthorpe United</td>
+      <td>Level 5</td>
+      <td>1171</td>
+      <td>14.04</td>
+      <td>17.56</td>
+      <td>14.40</td>
+      <td>0</td>
+      <td>56.52</td>
+      <td>56.52</td>
+      <td>28</td>
+      <td>50.67</td>
+      <td>55.91</td>
+      <td>61.14</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>Yeovil Town</td>
+      <td>Level 5</td>
+      <td>1170</td>
+      <td>11.88</td>
+      <td>20.98</td>
+      <td>13.14</td>
+      <td>0</td>
+      <td>48.79</td>
+      <td>48.79</td>
+      <td>19</td>
+      <td>43.11</td>
+      <td>48.16</td>
+      <td>53.35</td>
+      <td>77</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const table = document.querySelector('table.sortable');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+
+            const divColIndex = headers.indexOf("Division");
+            const confColIndex = headers.indexOf("Level");
+
+            const regionFilter = document.getElementById("regionFilter");
+            const regionLabel = document.getElementById("regionLabel");
+            const filterControls = document.getElementById("filterControls");
+
+            const divisionSet = new Set();
+            const conferenceSet = new Set();
+
+            rows.forEach(row => {
+                if (divColIndex !== -1) {
+                    const divVal = row.cells[divColIndex].textContent.trim();
+                    if (divVal) divisionSet.add(divVal);
+                }
+                if (confColIndex !== -1) {
+                    const confVal = row.cells[confColIndex].textContent.trim();
+                    if (confVal) conferenceSet.add(confVal);
+                }
+            });
+
+            const sortedDivisions = Array.from(divisionSet).sort();
+            const sortedConfs = Array.from(conferenceSet).sort();
+
+            sortedDivisions.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                regionFilter.appendChild(opt);
+            });
+
+            sortedConfs.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                regionFilter.appendChild(opt);
+            });
+
+            if (sortedDivisions.length > 0 || sortedConfs.length > 0) {
+                regionLabel.style.display = "inline-block";
+                filterControls.style.display = "block";
+            }
+
+            regionFilter.addEventListener("change", function () {
+                const selected = regionFilter.value;
+
+                rows.forEach(row => {
+                    const divVal = divColIndex !== -1 ? row.cells[divColIndex].textContent.trim() : "";
+                    const confVal = confColIndex !== -1 ? row.cells[confColIndex].textContent.trim() : "";
+
+                    const matches = !selected || divVal === selected || confVal === selected;
+                    row.style.display = matches ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
