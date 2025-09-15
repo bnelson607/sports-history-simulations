@@ -1,0 +1,2464 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Alaves">Alaves</option><option value="Albacete">Albacete</option><option value="Almeria">Almeria</option><option value="Andorra">Andorra</option><option value="Athletic Bilbao">Athletic Bilbao</option><option value="Atletico Madrid">Atletico Madrid</option><option value="Barcelona">Barcelona</option><option value="Burgos">Burgos</option><option value="Cadiz">Cadiz</option><option value="Castellon">Castellon</option><option value="Celta Vigo">Celta Vigo</option><option value="Cordoba">Cordoba</option><option value="Deportivo La Coruna">Deportivo La Coruna</option><option value="Eibar">Eibar</option><option value="Elche">Elche</option><option value="Espanyol Barcelona">Espanyol Barcelona</option><option value="Getafe">Getafe</option><option value="Girona">Girona</option><option value="Granada">Granada</option><option value="Huesca">Huesca</option><option value="Las Palmas">Las Palmas</option><option value="Leganes">Leganes</option><option value="Leonesa">Leonesa</option><option value="Levante">Levante</option><option value="Malaga CF">Malaga CF</option><option value="Mallorca">Mallorca</option><option value="Mirandes">Mirandes</option><option value="Osasuna">Osasuna</option><option value="Racing Santander">Racing Santander</option><option value="Rayo Vallecano">Rayo Vallecano</option><option value="Real Betis">Real Betis</option><option value="Real Madrid">Real Madrid</option><option value="Real Oviedo">Real Oviedo</option><option value="Real Sociedad">Real Sociedad</option><option value="Real Sociedad B">Real Sociedad B</option><option value="Real Valladolid">Real Valladolid</option><option value="Real Zaragoza">Real Zaragoza</option><option value="Sevilla">Sevilla</option><option value="Sporting Gijon">Sporting Gijon</option><option value="Valencia">Valencia</option><option value="Villarreal">Villarreal</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="3" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Tie Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2025-08-15</td>
+      <td>Girona</td>
+      <td>1920.15</td>
+      <td>1</td>
+      <td>Rayo Vallecano</td>
+      <td>1940.67</td>
+      <td>3</td>
+      <td>39.48%</td>
+      <td>30.77%</td>
+      <td>29.75%</td>
+      <td>-16.58</td>
+    </tr>
+    <tr>
+      <td>2025-08-15</td>
+      <td>Villarreal</td>
+      <td>2027.35</td>
+      <td>2</td>
+      <td>Real Oviedo</td>
+      <td>1897.57</td>
+      <td>0</td>
+      <td>58.49%</td>
+      <td>16.33%</td>
+      <td>25.18%</td>
+      <td>7.93</td>
+    </tr>
+    <tr>
+      <td>2025-08-15</td>
+      <td>Burgos</td>
+      <td>1755.03</td>
+      <td>5</td>
+      <td>Leonesa</td>
+      <td>1766.87</td>
+      <td>1</td>
+      <td>40.69%</td>
+      <td>29.65%</td>
+      <td>29.66%</td>
+      <td>19.07</td>
+    </tr>
+    <tr>
+      <td>2025-08-15</td>
+      <td>Rayo Vallecano</td>
+      <td>1940.67</td>
+      <td>3</td>
+      <td>@ Girona</td>
+      <td>1920.15</td>
+      <td>1</td>
+      <td>30.77%</td>
+      <td>39.48%</td>
+      <td>29.75%</td>
+      <td>16.59</td>
+    </tr>
+    <tr>
+      <td>2025-08-15</td>
+      <td>Real Oviedo</td>
+      <td>1897.57</td>
+      <td>0</td>
+      <td>@ Villarreal</td>
+      <td>2027.35</td>
+      <td>2</td>
+      <td>16.33%</td>
+      <td>58.49%</td>
+      <td>25.18%</td>
+      <td>-7.93</td>
+    </tr>
+    <tr>
+      <td>2025-08-15</td>
+      <td>Leonesa</td>
+      <td>1766.87</td>
+      <td>1</td>
+      <td>@ Burgos</td>
+      <td>1755.03</td>
+      <td>5</td>
+      <td>29.65%</td>
+      <td>40.69%</td>
+      <td>29.66%</td>
+      <td>-19.07</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Barcelona</td>
+      <td>2113.93</td>
+      <td>3</td>
+      <td>@ Mallorca</td>
+      <td>1924.94</td>
+      <td>0</td>
+      <td>53.32%</td>
+      <td>19.57%</td>
+      <td>27.10%</td>
+      <td>11.64</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Levante</td>
+      <td>1925.10</td>
+      <td>1</td>
+      <td>@ Alaves</td>
+      <td>1931.04</td>
+      <td>2</td>
+      <td>27.48%</td>
+      <td>43.13%</td>
+      <td>29.39%</td>
+      <td>-9.00</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Real Sociedad</td>
+      <td>1929.66</td>
+      <td>1</td>
+      <td>@ Valencia</td>
+      <td>1948.31</td>
+      <td>1</td>
+      <td>26.02%</td>
+      <td>44.84%</td>
+      <td>29.14%</td>
+      <td>1.08</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Castellon</td>
+      <td>1756.08</td>
+      <td>1</td>
+      <td>@ Racing Santander</td>
+      <td>1796.50</td>
+      <td>3</td>
+      <td>23.70%</td>
+      <td>47.69%</td>
+      <td>28.61%</td>
+      <td>-11.28</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Eibar</td>
+      <td>1787.76</td>
+      <td>1</td>
+      <td>@ Malaga CF</td>
+      <td>1745.69</td>
+      <td>1</td>
+      <td>33.68%</td>
+      <td>36.43%</td>
+      <td>29.89%</td>
+      <td>0.15</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Deportivo La Coruna</td>
+      <td>1764.55</td>
+      <td>3</td>
+      <td>@ Granada</td>
+      <td>1787.64</td>
+      <td>1</td>
+      <td>25.53%</td>
+      <td>45.43%</td>
+      <td>29.04%</td>
+      <td>18.46</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Granada</td>
+      <td>1787.64</td>
+      <td>1</td>
+      <td>Deportivo La Coruna</td>
+      <td>1764.55</td>
+      <td>3</td>
+      <td>45.43%</td>
+      <td>25.53%</td>
+      <td>29.04%</td>
+      <td>-18.45</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Malaga CF</td>
+      <td>1745.69</td>
+      <td>1</td>
+      <td>Eibar</td>
+      <td>1787.76</td>
+      <td>1</td>
+      <td>36.43%</td>
+      <td>33.68%</td>
+      <td>29.89%</td>
+      <td>-0.15</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Racing Santander</td>
+      <td>1796.50</td>
+      <td>3</td>
+      <td>Castellon</td>
+      <td>1756.08</td>
+      <td>1</td>
+      <td>47.69%</td>
+      <td>23.70%</td>
+      <td>28.61%</td>
+      <td>11.28</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Valencia</td>
+      <td>1948.31</td>
+      <td>1</td>
+      <td>Real Sociedad</td>
+      <td>1929.66</td>
+      <td>1</td>
+      <td>44.84%</td>
+      <td>26.02%</td>
+      <td>29.14%</td>
+      <td>-1.08</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Alaves</td>
+      <td>1931.04</td>
+      <td>2</td>
+      <td>Levante</td>
+      <td>1925.10</td>
+      <td>1</td>
+      <td>43.13%</td>
+      <td>27.48%</td>
+      <td>29.39%</td>
+      <td>9.00</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Mallorca</td>
+      <td>1924.94</td>
+      <td>0</td>
+      <td>Barcelona</td>
+      <td>2113.93</td>
+      <td>3</td>
+      <td>19.57%</td>
+      <td>53.32%</td>
+      <td>27.10%</td>
+      <td>-11.64</td>
+    </tr>
+    <tr>
+      <td>2025-08-17</td>
+      <td>Getafe</td>
+      <td>1917.51</td>
+      <td>2</td>
+      <td>@ Celta Vigo</td>
+      <td>1961.47</td>
+      <td>0</td>
+      <td>23.34%</td>
+      <td>48.15%</td>
+      <td>28.51%</td>
+      <td>19.31</td>
+    </tr>
+    <tr>
+      <td>2025-08-17</td>
+      <td>Sevilla</td>
+      <td>1919.48</td>
+      <td>2</td>
+      <td>@ Athletic Bilbao</td>
+      <td>2045.25</td>
+      <td>3</td>
+      <td>16.59%</td>
+      <td>58.03%</td>
+      <td>25.37%</td>
+      <td>-5.69</td>
+    </tr>
+    <tr>
+      <td>2025-08-17</td>
+      <td>Mirandes</td>
+      <td>1815.19</td>
+      <td>0</td>
+      <td>@ Cadiz</td>
+      <td>1775.65</td>
+      <td>1</td>
+      <td>33.33%</td>
+      <td>36.79%</td>
+      <td>29.88%</td>
+      <td>-10.39</td>
+    </tr>
+    <tr>
+      <td>2025-08-17</td>
+      <td>Leganes</td>
+      <td>1833.15</td>
+      <td>1</td>
+      <td>@ Huesca</td>
+      <td>1770.60</td>
+      <td>1</td>
+      <td>36.60%</td>
+      <td>33.51%</td>
+      <td>29.89%</td>
+      <td>-0.17</td>
+    </tr>
+    <tr>
+      <td>2025-08-17</td>
+      <td>Andorra</td>
+      <td>1708.35</td>
+      <td>1</td>
+      <td>@ Las Palmas</td>
+      <td>1802.29</td>
+      <td>1</td>
+      <td>18.90%</td>
+      <td>54.33%</td>
+      <td>26.77%</td>
+      <td>2.13</td>
+    </tr>
+    <tr>
+      <td>2025-08-17</td>
+      <td>Atletico Madrid</td>
+      <td>2055.70</td>
+      <td>1</td>
+      <td>@ Espanyol Barcelona</td>
+      <td>1928.30</td>
+      <td>2</td>
+      <td>45.54%</td>
+      <td>25.43%</td>
+      <td>29.02%</td>
+      <td>-13.07</td>
+    </tr>
+    <tr>
+      <td>2025-08-17</td>
+      <td>Real Zaragoza</td>
+      <td>1733.99</td>
+      <td>0</td>
+      <td>@ Real Sociedad B</td>
+      <td>1720.66</td>
+      <td>1</td>
+      <td>29.84%</td>
+      <td>40.48%</td>
+      <td>29.68%</td>
+      <td>-9.58</td>
+    </tr>
+    <tr>
+      <td>2025-08-17</td>
+      <td>Real Sociedad B</td>
+      <td>1720.66</td>
+      <td>1</td>
+      <td>Real Zaragoza</td>
+      <td>1733.99</td>
+      <td>0</td>
+      <td>40.48%</td>
+      <td>29.84%</td>
+      <td>29.68%</td>
+      <td>9.58</td>
+    </tr>
+    <tr>
+      <td>2025-08-17</td>
+      <td>Las Palmas</td>
+      <td>1802.29</td>
+      <td>1</td>
+      <td>Andorra</td>
+      <td>1708.35</td>
+      <td>1</td>
+      <td>54.33%</td>
+      <td>18.90%</td>
+      <td>26.77%</td>
+      <td>-2.14</td>
+    </tr>
+    <tr>
+      <td>2025-08-17</td>
+      <td>Huesca</td>
+      <td>1770.60</td>
+      <td>1</td>
+      <td>Leganes</td>
+      <td>1833.15</td>
+      <td>1</td>
+      <td>33.51%</td>
+      <td>36.60%</td>
+      <td>29.89%</td>
+      <td>0.17</td>
+    </tr>
+    <tr>
+      <td>2025-08-17</td>
+      <td>Cadiz</td>
+      <td>1775.65</td>
+      <td>1</td>
+      <td>Mirandes</td>
+      <td>1815.19</td>
+      <td>0</td>
+      <td>36.79%</td>
+      <td>33.33%</td>
+      <td>29.88%</td>
+      <td>10.39</td>
+    </tr>
+    <tr>
+      <td>2025-08-17</td>
+      <td>Espanyol Barcelona</td>
+      <td>1928.30</td>
+      <td>2</td>
+      <td>Atletico Madrid</td>
+      <td>2055.70</td>
+      <td>1</td>
+      <td>25.43%</td>
+      <td>45.54%</td>
+      <td>29.02%</td>
+      <td>13.07</td>
+    </tr>
+    <tr>
+      <td>2025-08-17</td>
+      <td>Athletic Bilbao</td>
+      <td>2045.25</td>
+      <td>3</td>
+      <td>Sevilla</td>
+      <td>1919.48</td>
+      <td>2</td>
+      <td>58.03%</td>
+      <td>16.59%</td>
+      <td>25.37%</td>
+      <td>5.70</td>
+    </tr>
+    <tr>
+      <td>2025-08-17</td>
+      <td>Celta Vigo</td>
+      <td>1961.47</td>
+      <td>0</td>
+      <td>Getafe</td>
+      <td>1917.51</td>
+      <td>2</td>
+      <td>48.15%</td>
+      <td>23.34%</td>
+      <td>28.51%</td>
+      <td>-19.31</td>
+    </tr>
+    <tr>
+      <td>2025-08-18</td>
+      <td>Real Betis</td>
+      <td>1988.49</td>
+      <td>1</td>
+      <td>@ Elche</td>
+      <td>1906.12</td>
+      <td>1</td>
+      <td>39.41%</td>
+      <td>30.84%</td>
+      <td>29.76%</td>
+      <td>-0.48</td>
+    </tr>
+    <tr>
+      <td>2025-08-18</td>
+      <td>Almeria</td>
+      <td>1802.03</td>
+      <td>4</td>
+      <td>Albacete</td>
+      <td>1768.87</td>
+      <td>4</td>
+      <td>46.75%</td>
+      <td>24.45%</td>
+      <td>28.80%</td>
+      <td>-1.29</td>
+    </tr>
+    <tr>
+      <td>2025-08-18</td>
+      <td>Sporting Gijon</td>
+      <td>1760.37</td>
+      <td>2</td>
+      <td>Cordoba</td>
+      <td>1759.78</td>
+      <td>1</td>
+      <td>42.40%</td>
+      <td>28.12%</td>
+      <td>29.48%</td>
+      <td>9.16</td>
+    </tr>
+    <tr>
+      <td>2025-08-18</td>
+      <td>Elche</td>
+      <td>1906.12</td>
+      <td>1</td>
+      <td>Real Betis</td>
+      <td>1988.49</td>
+      <td>1</td>
+      <td>30.84%</td>
+      <td>39.41%</td>
+      <td>29.76%</td>
+      <td>0.47</td>
+    </tr>
+    <tr>
+      <td>2025-08-18</td>
+      <td>Cordoba</td>
+      <td>1759.78</td>
+      <td>1</td>
+      <td>@ Sporting Gijon</td>
+      <td>1760.37</td>
+      <td>2</td>
+      <td>28.12%</td>
+      <td>42.40%</td>
+      <td>29.48%</td>
+      <td>-9.16</td>
+    </tr>
+    <tr>
+      <td>2025-08-18</td>
+      <td>Albacete</td>
+      <td>1768.87</td>
+      <td>4</td>
+      <td>@ Almeria</td>
+      <td>1802.03</td>
+      <td>4</td>
+      <td>24.45%</td>
+      <td>46.75%</td>
+      <td>28.80%</td>
+      <td>1.29</td>
+    </tr>
+    <tr>
+      <td>2025-08-19</td>
+      <td>Real Madrid</td>
+      <td>2092.15</td>
+      <td>1</td>
+      <td>Osasuna</td>
+      <td>1962.59</td>
+      <td>0</td>
+      <td>58.47%</td>
+      <td>16.34%</td>
+      <td>25.19%</td>
+      <td>5.61</td>
+    </tr>
+    <tr>
+      <td>2025-08-19</td>
+      <td>Osasuna</td>
+      <td>1962.59</td>
+      <td>0</td>
+      <td>@ Real Madrid</td>
+      <td>2092.15</td>
+      <td>1</td>
+      <td>16.34%</td>
+      <td>58.47%</td>
+      <td>25.19%</td>
+      <td>-5.61</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Granada</td>
+      <td>1769.19</td>
+      <td>0</td>
+      <td>@ Eibar</td>
+      <td>1787.91</td>
+      <td>3</td>
+      <td>26.01%</td>
+      <td>44.84%</td>
+      <td>29.14%</td>
+      <td>-14.91</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Real Valladolid</td>
+      <td>1732.85</td>
+      <td>1</td>
+      <td>@ Castellon</td>
+      <td>1744.80</td>
+      <td>0</td>
+      <td>26.78%</td>
+      <td>43.94%</td>
+      <td>29.28%</td>
+      <td>12.72</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Cadiz</td>
+      <td>1786.04</td>
+      <td>1</td>
+      <td>@ Leganes</td>
+      <td>1832.98</td>
+      <td>1</td>
+      <td>23.05%</td>
+      <td>48.53%</td>
+      <td>28.42%</td>
+      <td>1.49</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Real Betis</td>
+      <td>1988.01</td>
+      <td>1</td>
+      <td>Alaves</td>
+      <td>1940.04</td>
+      <td>0</td>
+      <td>48.66%</td>
+      <td>22.95%</td>
+      <td>28.39%</td>
+      <td>7.76</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Castellon</td>
+      <td>1744.80</td>
+      <td>0</td>
+      <td>Real Valladolid</td>
+      <td>1732.85</td>
+      <td>1</td>
+      <td>43.94%</td>
+      <td>26.78%</td>
+      <td>29.28%</td>
+      <td>-12.71</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Leganes</td>
+      <td>1832.98</td>
+      <td>1</td>
+      <td>Cadiz</td>
+      <td>1786.04</td>
+      <td>1</td>
+      <td>48.53%</td>
+      <td>23.05%</td>
+      <td>28.42%</td>
+      <td>-1.49</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Alaves</td>
+      <td>1940.04</td>
+      <td>0</td>
+      <td>@ Real Betis</td>
+      <td>1988.01</td>
+      <td>1</td>
+      <td>22.95%</td>
+      <td>48.66%</td>
+      <td>28.39%</td>
+      <td>-7.76</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Eibar</td>
+      <td>1787.91</td>
+      <td>3</td>
+      <td>Granada</td>
+      <td>1769.19</td>
+      <td>0</td>
+      <td>44.84%</td>
+      <td>26.01%</td>
+      <td>29.14%</td>
+      <td>14.91</td>
+    </tr>
+    <tr>
+      <td>2025-08-23</td>
+      <td>Celta Vigo</td>
+      <td>1942.16</td>
+      <td>1</td>
+      <td>@ Mallorca</td>
+      <td>1913.30</td>
+      <td>1</td>
+      <td>31.87%</td>
+      <td>38.31%</td>
+      <td>29.82%</td>
+      <td>0.35</td>
+    </tr>
+    <tr>
+      <td>2025-08-23</td>
+      <td>Elche</td>
+      <td>1906.59</td>
+      <td>1</td>
+      <td>@ Atletico Madrid</td>
+      <td>2042.63</td>
+      <td>1</td>
+      <td>15.92%</td>
+      <td>59.20%</td>
+      <td>24.88%</td>
+      <td>2.66</td>
+    </tr>
+    <tr>
+      <td>2025-08-23</td>
+      <td>Barcelona</td>
+      <td>2125.57</td>
+      <td>3</td>
+      <td>@ Levante</td>
+      <td>1916.10</td>
+      <td>2</td>
+      <td>55.76%</td>
+      <td>17.98%</td>
+      <td>26.26%</td>
+      <td>6.19</td>
+    </tr>
+    <tr>
+      <td>2025-08-23</td>
+      <td>Huesca</td>
+      <td>1770.77</td>
+      <td>1</td>
+      <td>@ Mirandes</td>
+      <td>1804.80</td>
+      <td>0</td>
+      <td>24.36%</td>
+      <td>46.86%</td>
+      <td>28.78%</td>
+      <td>13.37</td>
+    </tr>
+    <tr>
+      <td>2025-08-23</td>
+      <td>Andorra</td>
+      <td>1710.48</td>
+      <td>3</td>
+      <td>@ Real Zaragoza</td>
+      <td>1724.41</td>
+      <td>1</td>
+      <td>26.55%</td>
+      <td>44.21%</td>
+      <td>29.24%</td>
+      <td>18.07</td>
+    </tr>
+    <tr>
+      <td>2025-08-23</td>
+      <td>Mallorca</td>
+      <td>1913.30</td>
+      <td>1</td>
+      <td>Celta Vigo</td>
+      <td>1942.16</td>
+      <td>1</td>
+      <td>38.31%</td>
+      <td>31.87%</td>
+      <td>29.82%</td>
+      <td>-0.35</td>
+    </tr>
+    <tr>
+      <td>2025-08-23</td>
+      <td>Atletico Madrid</td>
+      <td>2042.63</td>
+      <td>1</td>
+      <td>Elche</td>
+      <td>1906.59</td>
+      <td>1</td>
+      <td>59.20%</td>
+      <td>15.92%</td>
+      <td>24.88%</td>
+      <td>-2.65</td>
+    </tr>
+    <tr>
+      <td>2025-08-23</td>
+      <td>Mirandes</td>
+      <td>1804.80</td>
+      <td>0</td>
+      <td>Huesca</td>
+      <td>1770.77</td>
+      <td>1</td>
+      <td>46.86%</td>
+      <td>24.36%</td>
+      <td>28.78%</td>
+      <td>-13.37</td>
+    </tr>
+    <tr>
+      <td>2025-08-23</td>
+      <td>Levante</td>
+      <td>1916.10</td>
+      <td>2</td>
+      <td>Barcelona</td>
+      <td>2125.57</td>
+      <td>3</td>
+      <td>17.98%</td>
+      <td>55.76%</td>
+      <td>26.26%</td>
+      <td>-6.18</td>
+    </tr>
+    <tr>
+      <td>2025-08-23</td>
+      <td>Real Zaragoza</td>
+      <td>1724.41</td>
+      <td>1</td>
+      <td>Andorra</td>
+      <td>1710.48</td>
+      <td>3</td>
+      <td>44.21%</td>
+      <td>26.55%</td>
+      <td>29.24%</td>
+      <td>-18.06</td>
+    </tr>
+    <tr>
+      <td>2025-08-24</td>
+      <td>Almeria</td>
+      <td>1800.74</td>
+      <td>1</td>
+      <td>@ Leonesa</td>
+      <td>1747.80</td>
+      <td>0</td>
+      <td>35.22%</td>
+      <td>34.87%</td>
+      <td>29.91%</td>
+      <td>10.72</td>
+    </tr>
+    <tr>
+      <td>2025-08-24</td>
+      <td>Real Sociedad B</td>
+      <td>1730.24</td>
+      <td>0</td>
+      <td>@ Malaga CF</td>
+      <td>1745.54</td>
+      <td>1</td>
+      <td>26.40%</td>
+      <td>44.39%</td>
+      <td>29.21%</td>
+      <td>-8.71</td>
+    </tr>
+    <tr>
+      <td>2025-08-24</td>
+      <td>Girona</td>
+      <td>1903.57</td>
+      <td>0</td>
+      <td>@ Villarreal</td>
+      <td>2035.28</td>
+      <td>5</td>
+      <td>16.20%</td>
+      <td>58.71%</td>
+      <td>25.09%</td>
+      <td>-12.43</td>
+    </tr>
+    <tr>
+      <td>2025-08-24</td>
+      <td>Espanyol Barcelona</td>
+      <td>1941.37</td>
+      <td>2</td>
+      <td>@ Real Sociedad</td>
+      <td>1930.74</td>
+      <td>2</td>
+      <td>29.50%</td>
+      <td>40.86%</td>
+      <td>29.64%</td>
+      <td>0.63</td>
+    </tr>
+    <tr>
+      <td>2025-08-24</td>
+      <td>Valencia</td>
+      <td>1947.23</td>
+      <td>0</td>
+      <td>@ Osasuna</td>
+      <td>1956.98</td>
+      <td>1</td>
+      <td>27.03%</td>
+      <td>43.64%</td>
+      <td>29.32%</td>
+      <td>-8.88</td>
+    </tr>
+    <tr>
+      <td>2025-08-24</td>
+      <td>Malaga CF</td>
+      <td>1745.54</td>
+      <td>1</td>
+      <td>Real Sociedad B</td>
+      <td>1730.24</td>
+      <td>0</td>
+      <td>44.39%</td>
+      <td>26.40%</td>
+      <td>29.21%</td>
+      <td>8.71</td>
+    </tr>
+    <tr>
+      <td>2025-08-24</td>
+      <td>Osasuna</td>
+      <td>1956.98</td>
+      <td>1</td>
+      <td>Valencia</td>
+      <td>1947.23</td>
+      <td>0</td>
+      <td>43.64%</td>
+      <td>27.03%</td>
+      <td>29.32%</td>
+      <td>8.88</td>
+    </tr>
+    <tr>
+      <td>2025-08-24</td>
+      <td>Real Sociedad</td>
+      <td>1930.74</td>
+      <td>2</td>
+      <td>Espanyol Barcelona</td>
+      <td>1941.37</td>
+      <td>2</td>
+      <td>40.86%</td>
+      <td>29.50%</td>
+      <td>29.64%</td>
+      <td>-0.63</td>
+    </tr>
+    <tr>
+      <td>2025-08-24</td>
+      <td>Villarreal</td>
+      <td>2035.28</td>
+      <td>5</td>
+      <td>Girona</td>
+      <td>1903.57</td>
+      <td>0</td>
+      <td>58.71%</td>
+      <td>16.20%</td>
+      <td>25.09%</td>
+      <td>12.42</td>
+    </tr>
+    <tr>
+      <td>2025-08-24</td>
+      <td>Real Oviedo</td>
+      <td>1889.64</td>
+      <td>0</td>
+      <td>Real Madrid</td>
+      <td>2097.76</td>
+      <td>3</td>
+      <td>18.08%</td>
+      <td>55.60%</td>
+      <td>26.32%</td>
+      <td>-10.77</td>
+    </tr>
+    <tr>
+      <td>2025-08-24</td>
+      <td>Deportivo La Coruna</td>
+      <td>1783.01</td>
+      <td>0</td>
+      <td>Burgos</td>
+      <td>1774.10</td>
+      <td>0</td>
+      <td>43.53%</td>
+      <td>27.13%</td>
+      <td>29.34%</td>
+      <td>-0.93</td>
+    </tr>
+    <tr>
+      <td>2025-08-24</td>
+      <td>Leonesa</td>
+      <td>1747.80</td>
+      <td>0</td>
+      <td>Almeria</td>
+      <td>1800.74</td>
+      <td>1</td>
+      <td>34.87%</td>
+      <td>35.22%</td>
+      <td>29.91%</td>
+      <td>-10.72</td>
+    </tr>
+    <tr>
+      <td>2025-08-24</td>
+      <td>Burgos</td>
+      <td>1774.10</td>
+      <td>0</td>
+      <td>@ Deportivo La Coruna</td>
+      <td>1783.01</td>
+      <td>0</td>
+      <td>27.13%</td>
+      <td>43.53%</td>
+      <td>29.34%</td>
+      <td>0.93</td>
+    </tr>
+    <tr>
+      <td>2025-08-24</td>
+      <td>Real Madrid</td>
+      <td>2097.76</td>
+      <td>3</td>
+      <td>@ Real Oviedo</td>
+      <td>1889.64</td>
+      <td>0</td>
+      <td>55.60%</td>
+      <td>18.08%</td>
+      <td>26.32%</td>
+      <td>10.78</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Las Palmas</td>
+      <td>1800.15</td>
+      <td>3</td>
+      <td>@ Cordoba</td>
+      <td>1750.62</td>
+      <td>1</td>
+      <td>34.73%</td>
+      <td>35.36%</td>
+      <td>29.90%</td>
+      <td>15.32</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Getafe</td>
+      <td>1936.82</td>
+      <td>2</td>
+      <td>@ Sevilla</td>
+      <td>1913.79</td>
+      <td>1</td>
+      <td>31.10%</td>
+      <td>39.13%</td>
+      <td>29.78%</td>
+      <td>11.66</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Rayo Vallecano</td>
+      <td>1957.26</td>
+      <td>0</td>
+      <td>@ Athletic Bilbao</td>
+      <td>2050.95</td>
+      <td>1</td>
+      <td>18.92%</td>
+      <td>54.30%</td>
+      <td>26.78%</td>
+      <td>-6.51</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Cordoba</td>
+      <td>1750.62</td>
+      <td>1</td>
+      <td>Las Palmas</td>
+      <td>1800.15</td>
+      <td>3</td>
+      <td>35.36%</td>
+      <td>34.73%</td>
+      <td>29.90%</td>
+      <td>-15.32</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Albacete</td>
+      <td>1770.16</td>
+      <td>2</td>
+      <td>Racing Santander</td>
+      <td>1807.78</td>
+      <td>3</td>
+      <td>37.06%</td>
+      <td>33.06%</td>
+      <td>29.87%</td>
+      <td>-11.20</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Athletic Bilbao</td>
+      <td>2050.95</td>
+      <td>1</td>
+      <td>Rayo Vallecano</td>
+      <td>1957.26</td>
+      <td>0</td>
+      <td>54.30%</td>
+      <td>18.92%</td>
+      <td>26.78%</td>
+      <td>6.51</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Sevilla</td>
+      <td>1913.79</td>
+      <td>1</td>
+      <td>Getafe</td>
+      <td>1936.82</td>
+      <td>2</td>
+      <td>39.13%</td>
+      <td>31.10%</td>
+      <td>29.78%</td>
+      <td>-11.66</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Racing Santander</td>
+      <td>1807.78</td>
+      <td>3</td>
+      <td>@ Albacete</td>
+      <td>1770.16</td>
+      <td>2</td>
+      <td>33.06%</td>
+      <td>37.06%</td>
+      <td>29.87%</td>
+      <td>11.20</td>
+    </tr>
+    <tr>
+      <td>2025-08-27</td>
+      <td>Real Betis</td>
+      <td>1995.77</td>
+      <td>1</td>
+      <td>@ Celta Vigo</td>
+      <td>1942.51</td>
+      <td>1</td>
+      <td>35.27%</td>
+      <td>34.82%</td>
+      <td>29.91%</td>
+      <td>-0.02</td>
+    </tr>
+    <tr>
+      <td>2025-08-27</td>
+      <td>Celta Vigo</td>
+      <td>1942.51</td>
+      <td>1</td>
+      <td>Real Betis</td>
+      <td>1995.77</td>
+      <td>1</td>
+      <td>34.82%</td>
+      <td>35.27%</td>
+      <td>29.91%</td>
+      <td>0.03</td>
+    </tr>
+    <tr>
+      <td>2025-08-29</td>
+      <td>Leonesa</td>
+      <td>1737.08</td>
+      <td>0</td>
+      <td>@ Sporting Gijon</td>
+      <td>1769.53</td>
+      <td>1</td>
+      <td>24.52%</td>
+      <td>46.66%</td>
+      <td>28.82%</td>
+      <td>-8.21</td>
+    </tr>
+    <tr>
+      <td>2025-08-29</td>
+      <td>Getafe</td>
+      <td>1948.48</td>
+      <td>0</td>
+      <td>@ Valencia</td>
+      <td>1938.35</td>
+      <td>3</td>
+      <td>29.44%</td>
+      <td>40.93%</td>
+      <td>29.64%</td>
+      <td>-16.43</td>
+    </tr>
+    <tr>
+      <td>2025-08-29</td>
+      <td>Sporting Gijon</td>
+      <td>1769.53</td>
+      <td>1</td>
+      <td>Leonesa</td>
+      <td>1737.08</td>
+      <td>0</td>
+      <td>46.66%</td>
+      <td>24.52%</td>
+      <td>28.82%</td>
+      <td>8.20</td>
+    </tr>
+    <tr>
+      <td>2025-08-29</td>
+      <td>Levante</td>
+      <td>1909.92</td>
+      <td>0</td>
+      <td>@ Elche</td>
+      <td>1909.25</td>
+      <td>2</td>
+      <td>28.27%</td>
+      <td>42.23%</td>
+      <td>29.50%</td>
+      <td>-13.01</td>
+    </tr>
+    <tr>
+      <td>2025-08-29</td>
+      <td>Elche</td>
+      <td>1909.25</td>
+      <td>2</td>
+      <td>Levante</td>
+      <td>1909.92</td>
+      <td>0</td>
+      <td>42.23%</td>
+      <td>28.27%</td>
+      <td>29.50%</td>
+      <td>13.00</td>
+    </tr>
+    <tr>
+      <td>2025-08-29</td>
+      <td>Valencia</td>
+      <td>1938.35</td>
+      <td>3</td>
+      <td>Getafe</td>
+      <td>1948.48</td>
+      <td>0</td>
+      <td>40.93%</td>
+      <td>29.44%</td>
+      <td>29.64%</td>
+      <td>16.42</td>
+    </tr>
+    <tr>
+      <td>2025-08-29</td>
+      <td>Real Sociedad B</td>
+      <td>1721.53</td>
+      <td>2</td>
+      <td>Almeria</td>
+      <td>1811.46</td>
+      <td>2</td>
+      <td>29.86%</td>
+      <td>40.46%</td>
+      <td>29.68%</td>
+      <td>0.59</td>
+    </tr>
+    <tr>
+      <td>2025-08-29</td>
+      <td>Almeria</td>
+      <td>1811.46</td>
+      <td>2</td>
+      <td>@ Real Sociedad B</td>
+      <td>1721.53</td>
+      <td>2</td>
+      <td>40.46%</td>
+      <td>29.86%</td>
+      <td>29.68%</td>
+      <td>-0.59</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Alaves</td>
+      <td>1932.28</td>
+      <td>1</td>
+      <td>Atletico Madrid</td>
+      <td>2039.98</td>
+      <td>1</td>
+      <td>27.68%</td>
+      <td>42.90%</td>
+      <td>29.42%</td>
+      <td>0.86</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Real Valladolid</td>
+      <td>1745.57</td>
+      <td>0</td>
+      <td>Cordoba</td>
+      <td>1735.30</td>
+      <td>0</td>
+      <td>43.71%</td>
+      <td>26.97%</td>
+      <td>29.31%</td>
+      <td>-0.95</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Girona</td>
+      <td>1891.14</td>
+      <td>0</td>
+      <td>Sevilla</td>
+      <td>1902.13</td>
+      <td>2</td>
+      <td>40.81%</td>
+      <td>29.54%</td>
+      <td>29.65%</td>
+      <td>-17.00</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Real Madrid</td>
+      <td>2108.54</td>
+      <td>2</td>
+      <td>Mallorca</td>
+      <td>1912.95</td>
+      <td>1</td>
+      <td>65.66%</td>
+      <td>12.61%</td>
+      <td>21.73%</td>
+      <td>4.17</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Castellon</td>
+      <td>1732.09</td>
+      <td>1</td>
+      <td>Real Zaragoza</td>
+      <td>1706.35</td>
+      <td>1</td>
+      <td>45.78%</td>
+      <td>25.24%</td>
+      <td>28.98%</td>
+      <td>-1.18</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Real Zaragoza</td>
+      <td>1706.35</td>
+      <td>1</td>
+      <td>@ Castellon</td>
+      <td>1732.09</td>
+      <td>1</td>
+      <td>25.24%</td>
+      <td>45.78%</td>
+      <td>28.98%</td>
+      <td>1.18</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Cordoba</td>
+      <td>1735.30</td>
+      <td>0</td>
+      <td>@ Real Valladolid</td>
+      <td>1745.57</td>
+      <td>0</td>
+      <td>26.97%</td>
+      <td>43.71%</td>
+      <td>29.31%</td>
+      <td>0.95</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Mallorca</td>
+      <td>1912.95</td>
+      <td>1</td>
+      <td>@ Real Madrid</td>
+      <td>2108.54</td>
+      <td>2</td>
+      <td>12.61%</td>
+      <td>65.66%</td>
+      <td>21.73%</td>
+      <td>-4.18</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Sevilla</td>
+      <td>1902.13</td>
+      <td>2</td>
+      <td>@ Girona</td>
+      <td>1891.14</td>
+      <td>0</td>
+      <td>29.54%</td>
+      <td>40.81%</td>
+      <td>29.65%</td>
+      <td>17.00</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Real Sociedad</td>
+      <td>1930.11</td>
+      <td>0</td>
+      <td>@ Real Oviedo</td>
+      <td>1878.87</td>
+      <td>1</td>
+      <td>34.98%</td>
+      <td>35.11%</td>
+      <td>29.91%</td>
+      <td>-10.75</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Atletico Madrid</td>
+      <td>2039.98</td>
+      <td>1</td>
+      <td>@ Alaves</td>
+      <td>1932.28</td>
+      <td>1</td>
+      <td>42.90%</td>
+      <td>27.68%</td>
+      <td>29.42%</td>
+      <td>-0.86</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Real Oviedo</td>
+      <td>1878.87</td>
+      <td>1</td>
+      <td>Real Sociedad</td>
+      <td>1930.11</td>
+      <td>0</td>
+      <td>35.11%</td>
+      <td>34.98%</td>
+      <td>29.91%</td>
+      <td>10.75</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Villarreal</td>
+      <td>2047.70</td>
+      <td>1</td>
+      <td>@ Celta Vigo</td>
+      <td>1942.54</td>
+      <td>1</td>
+      <td>42.56%</td>
+      <td>27.98%</td>
+      <td>29.46%</td>
+      <td>-0.82</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Athletic Bilbao</td>
+      <td>2057.46</td>
+      <td>2</td>
+      <td>@ Real Betis</td>
+      <td>1995.75</td>
+      <td>1</td>
+      <td>36.48%</td>
+      <td>33.63%</td>
+      <td>29.89%</td>
+      <td>10.45</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Barcelona</td>
+      <td>2131.76</td>
+      <td>1</td>
+      <td>@ Rayo Vallecano</td>
+      <td>1950.75</td>
+      <td>1</td>
+      <td>52.35%</td>
+      <td>20.24%</td>
+      <td>27.41%</td>
+      <td>-1.91</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Albacete</td>
+      <td>1758.96</td>
+      <td>1</td>
+      <td>@ Cadiz</td>
+      <td>1787.53</td>
+      <td>2</td>
+      <td>24.94%</td>
+      <td>46.15%</td>
+      <td>28.92%</td>
+      <td>-8.33</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Burgos</td>
+      <td>1775.03</td>
+      <td>1</td>
+      <td>@ Andorra</td>
+      <td>1728.55</td>
+      <td>2</td>
+      <td>34.30%</td>
+      <td>35.80%</td>
+      <td>29.90%</td>
+      <td>-10.60</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Granada</td>
+      <td>1754.28</td>
+      <td>1</td>
+      <td>Mirandes</td>
+      <td>1791.43</td>
+      <td>2</td>
+      <td>37.13%</td>
+      <td>33.00%</td>
+      <td>29.87%</td>
+      <td>-11.22</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Osasuna</td>
+      <td>1965.86</td>
+      <td>0</td>
+      <td>@ Espanyol Barcelona</td>
+      <td>1942.00</td>
+      <td>1</td>
+      <td>31.20%</td>
+      <td>39.01%</td>
+      <td>29.78%</td>
+      <td>-9.90</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Las Palmas</td>
+      <td>1815.47</td>
+      <td>0</td>
+      <td>Malaga CF</td>
+      <td>1754.25</td>
+      <td>1</td>
+      <td>50.33%</td>
+      <td>21.69%</td>
+      <td>27.98%</td>
+      <td>-14.14</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Cadiz</td>
+      <td>1787.53</td>
+      <td>2</td>
+      <td>Albacete</td>
+      <td>1758.96</td>
+      <td>1</td>
+      <td>46.15%</td>
+      <td>24.94%</td>
+      <td>28.92%</td>
+      <td>8.32</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Andorra</td>
+      <td>1728.55</td>
+      <td>2</td>
+      <td>Burgos</td>
+      <td>1775.03</td>
+      <td>1</td>
+      <td>35.80%</td>
+      <td>34.30%</td>
+      <td>29.90%</td>
+      <td>10.60</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Espanyol Barcelona</td>
+      <td>1942.00</td>
+      <td>1</td>
+      <td>Osasuna</td>
+      <td>1965.86</td>
+      <td>0</td>
+      <td>39.01%</td>
+      <td>31.20%</td>
+      <td>29.78%</td>
+      <td>9.91</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Real Betis</td>
+      <td>1995.75</td>
+      <td>1</td>
+      <td>Athletic Bilbao</td>
+      <td>2057.46</td>
+      <td>2</td>
+      <td>33.63%</td>
+      <td>36.48%</td>
+      <td>29.89%</td>
+      <td>-10.46</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Celta Vigo</td>
+      <td>1942.54</td>
+      <td>1</td>
+      <td>Villarreal</td>
+      <td>2047.70</td>
+      <td>1</td>
+      <td>27.98%</td>
+      <td>42.56%</td>
+      <td>29.46%</td>
+      <td>0.82</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Rayo Vallecano</td>
+      <td>1950.75</td>
+      <td>1</td>
+      <td>Barcelona</td>
+      <td>2131.76</td>
+      <td>1</td>
+      <td>20.24%</td>
+      <td>52.35%</td>
+      <td>27.41%</td>
+      <td>1.92</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Mirandes</td>
+      <td>1791.43</td>
+      <td>2</td>
+      <td>@ Granada</td>
+      <td>1754.28</td>
+      <td>1</td>
+      <td>33.00%</td>
+      <td>37.13%</td>
+      <td>29.87%</td>
+      <td>11.22</td>
+    </tr>
+    <tr>
+      <td>2025-08-31</td>
+      <td>Malaga CF</td>
+      <td>1754.25</td>
+      <td>1</td>
+      <td>@ Las Palmas</td>
+      <td>1815.47</td>
+      <td>0</td>
+      <td>21.69%</td>
+      <td>50.33%</td>
+      <td>27.98%</td>
+      <td>14.15</td>
+    </tr>
+    <tr>
+      <td>2025-09-01</td>
+      <td>Deportivo La Coruna</td>
+      <td>1782.08</td>
+      <td>2</td>
+      <td>@ Leganes</td>
+      <td>1831.49</td>
+      <td>2</td>
+      <td>22.81%</td>
+      <td>48.84%</td>
+      <td>28.35%</td>
+      <td>1.52</td>
+    </tr>
+    <tr>
+      <td>2025-09-01</td>
+      <td>Eibar</td>
+      <td>1802.82</td>
+      <td>1</td>
+      <td>@ Huesca</td>
+      <td>1784.14</td>
+      <td>2</td>
+      <td>30.53%</td>
+      <td>39.74%</td>
+      <td>29.74%</td>
+      <td>-9.74</td>
+    </tr>
+    <tr>
+      <td>2025-09-01</td>
+      <td>Huesca</td>
+      <td>1784.14</td>
+      <td>2</td>
+      <td>Eibar</td>
+      <td>1802.82</td>
+      <td>1</td>
+      <td>39.74%</td>
+      <td>30.53%</td>
+      <td>29.74%</td>
+      <td>9.75</td>
+    </tr>
+    <tr>
+      <td>2025-09-01</td>
+      <td>Leganes</td>
+      <td>1831.49</td>
+      <td>2</td>
+      <td>Deportivo La Coruna</td>
+      <td>1782.08</td>
+      <td>2</td>
+      <td>48.84%</td>
+      <td>22.81%</td>
+      <td>28.35%</td>
+      <td>-1.52</td>
+    </tr>
+    <tr>
+      <td>2025-09-05</td>
+      <td>Castellon</td>
+      <td>1730.91</td>
+      <td>1</td>
+      <td>@ Cordoba</td>
+      <td>1736.25</td>
+      <td>2</td>
+      <td>27.55%</td>
+      <td>43.05%</td>
+      <td>29.40%</td>
+      <td>-9.02</td>
+    </tr>
+    <tr>
+      <td>2025-09-05</td>
+      <td>Mirandes</td>
+      <td>1802.65</td>
+      <td>4</td>
+      <td>@ Albacete</td>
+      <td>1750.63</td>
+      <td>1</td>
+      <td>35.09%</td>
+      <td>35.00%</td>
+      <td>29.91%</td>
+      <td>18.63</td>
+    </tr>
+    <tr>
+      <td>2025-09-05</td>
+      <td>Albacete</td>
+      <td>1750.63</td>
+      <td>1</td>
+      <td>Mirandes</td>
+      <td>1802.65</td>
+      <td>4</td>
+      <td>35.00%</td>
+      <td>35.09%</td>
+      <td>29.91%</td>
+      <td>-18.62</td>
+    </tr>
+    <tr>
+      <td>2025-09-05</td>
+      <td>Cordoba</td>
+      <td>1736.25</td>
+      <td>2</td>
+      <td>Castellon</td>
+      <td>1730.91</td>
+      <td>1</td>
+      <td>43.05%</td>
+      <td>27.55%</td>
+      <td>29.40%</td>
+      <td>9.01</td>
+    </tr>
+    <tr>
+      <td>2025-09-06</td>
+      <td>Real Valladolid</td>
+      <td>1744.62</td>
+      <td>1</td>
+      <td>@ Real Zaragoza</td>
+      <td>1707.53</td>
+      <td>1</td>
+      <td>32.99%</td>
+      <td>37.14%</td>
+      <td>29.87%</td>
+      <td>0.22</td>
+    </tr>
+    <tr>
+      <td>2025-09-06</td>
+      <td>Sporting Gijon</td>
+      <td>1777.73</td>
+      <td>0</td>
+      <td>@ Deportivo La Coruna</td>
+      <td>1783.60</td>
+      <td>1</td>
+      <td>27.49%</td>
+      <td>43.12%</td>
+      <td>29.39%</td>
+      <td>-8.99</td>
+    </tr>
+    <tr>
+      <td>2025-09-06</td>
+      <td>Real Zaragoza</td>
+      <td>1707.53</td>
+      <td>1</td>
+      <td>Real Valladolid</td>
+      <td>1744.62</td>
+      <td>1</td>
+      <td>37.14%</td>
+      <td>32.99%</td>
+      <td>29.87%</td>
+      <td>-0.23</td>
+    </tr>
+    <tr>
+      <td>2025-09-06</td>
+      <td>Malaga CF</td>
+      <td>1768.40</td>
+      <td>2</td>
+      <td>Granada</td>
+      <td>1743.06</td>
+      <td>2</td>
+      <td>45.72%</td>
+      <td>25.28%</td>
+      <td>28.99%</td>
+      <td>-1.18</td>
+    </tr>
+    <tr>
+      <td>2025-09-06</td>
+      <td>Granada</td>
+      <td>1743.06</td>
+      <td>2</td>
+      <td>@ Malaga CF</td>
+      <td>1768.40</td>
+      <td>2</td>
+      <td>25.28%</td>
+      <td>45.72%</td>
+      <td>28.99%</td>
+      <td>1.17</td>
+    </tr>
+    <tr>
+      <td>2025-09-06</td>
+      <td>Deportivo La Coruna</td>
+      <td>1783.60</td>
+      <td>1</td>
+      <td>Sporting Gijon</td>
+      <td>1777.73</td>
+      <td>0</td>
+      <td>43.12%</td>
+      <td>27.49%</td>
+      <td>29.39%</td>
+      <td>9.00</td>
+    </tr>
+    <tr>
+      <td>2025-09-07</td>
+      <td>Leonesa</td>
+      <td>1728.87</td>
+      <td>0</td>
+      <td>Leganes</td>
+      <td>1829.97</td>
+      <td>0</td>
+      <td>28.47%</td>
+      <td>42.00%</td>
+      <td>29.53%</td>
+      <td>0.76</td>
+    </tr>
+    <tr>
+      <td>2025-09-07</td>
+      <td>Real Sociedad B</td>
+      <td>1722.12</td>
+      <td>3</td>
+      <td>Cadiz</td>
+      <td>1795.85</td>
+      <td>3</td>
+      <td>31.98%</td>
+      <td>38.19%</td>
+      <td>29.83%</td>
+      <td>0.34</td>
+    </tr>
+    <tr>
+      <td>2025-09-07</td>
+      <td>Almeria</td>
+      <td>1810.87</td>
+      <td>2</td>
+      <td>Racing Santander</td>
+      <td>1818.98</td>
+      <td>3</td>
+      <td>41.21%</td>
+      <td>29.18%</td>
+      <td>29.61%</td>
+      <td>-12.10</td>
+    </tr>
+    <tr>
+      <td>2025-09-07</td>
+      <td>Leganes</td>
+      <td>1829.97</td>
+      <td>0</td>
+      <td>@ Leonesa</td>
+      <td>1728.87</td>
+      <td>0</td>
+      <td>42.00%</td>
+      <td>28.47%</td>
+      <td>29.53%</td>
+      <td>-0.76</td>
+    </tr>
+    <tr>
+      <td>2025-09-07</td>
+      <td>Racing Santander</td>
+      <td>1818.98</td>
+      <td>3</td>
+      <td>@ Almeria</td>
+      <td>1810.87</td>
+      <td>2</td>
+      <td>29.18%</td>
+      <td>41.21%</td>
+      <td>29.61%</td>
+      <td>12.11</td>
+    </tr>
+    <tr>
+      <td>2025-09-07</td>
+      <td>Cadiz</td>
+      <td>1795.85</td>
+      <td>3</td>
+      <td>@ Real Sociedad B</td>
+      <td>1722.12</td>
+      <td>3</td>
+      <td>38.19%</td>
+      <td>31.98%</td>
+      <td>29.83%</td>
+      <td>-0.34</td>
+    </tr>
+    <tr>
+      <td>2025-09-07</td>
+      <td>Las Palmas</td>
+      <td>1801.33</td>
+      <td>0</td>
+      <td>@ Burgos</td>
+      <td>1764.43</td>
+      <td>0</td>
+      <td>32.96%</td>
+      <td>37.17%</td>
+      <td>29.87%</td>
+      <td>0.23</td>
+    </tr>
+    <tr>
+      <td>2025-09-07</td>
+      <td>Burgos</td>
+      <td>1764.43</td>
+      <td>0</td>
+      <td>Las Palmas</td>
+      <td>1801.33</td>
+      <td>0</td>
+      <td>37.17%</td>
+      <td>32.96%</td>
+      <td>29.87%</td>
+      <td>-0.23</td>
+    </tr>
+    <tr>
+      <td>2025-09-08</td>
+      <td>Eibar</td>
+      <td>1793.08</td>
+      <td>2</td>
+      <td>Andorra</td>
+      <td>1739.15</td>
+      <td>0</td>
+      <td>49.42%</td>
+      <td>22.37%</td>
+      <td>28.21%</td>
+      <td>10.73</td>
+    </tr>
+    <tr>
+      <td>2025-09-08</td>
+      <td>Andorra</td>
+      <td>1739.15</td>
+      <td>0</td>
+      <td>@ Eibar</td>
+      <td>1793.08</td>
+      <td>2</td>
+      <td>22.37%</td>
+      <td>49.42%</td>
+      <td>28.21%</td>
+      <td>-10.73</td>
+    </tr>
+    <tr>
+      <td>2025-09-12</td>
+      <td>Sevilla</td>
+      <td>1919.13</td>
+      <td>2</td>
+      <td>Elche</td>
+      <td>1922.25</td>
+      <td>2</td>
+      <td>41.89%</td>
+      <td>28.57%</td>
+      <td>29.54%</td>
+      <td>-0.74</td>
+    </tr>
+    <tr>
+      <td>2025-09-12</td>
+      <td>Real Sociedad B</td>
+      <td>1722.46</td>
+      <td>1</td>
+      <td>@ Las Palmas</td>
+      <td>1801.56</td>
+      <td>2</td>
+      <td>20.11%</td>
+      <td>52.54%</td>
+      <td>27.35%</td>
+      <td>-6.89</td>
+    </tr>
+    <tr>
+      <td>2025-09-12</td>
+      <td>Elche</td>
+      <td>1922.25</td>
+      <td>2</td>
+      <td>@ Sevilla</td>
+      <td>1919.13</td>
+      <td>2</td>
+      <td>28.57%</td>
+      <td>41.89%</td>
+      <td>29.54%</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <td>2025-09-12</td>
+      <td>Las Palmas</td>
+      <td>1801.56</td>
+      <td>2</td>
+      <td>Real Sociedad B</td>
+      <td>1722.46</td>
+      <td>1</td>
+      <td>52.54%</td>
+      <td>20.11%</td>
+      <td>27.35%</td>
+      <td>6.89</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Real Madrid</td>
+      <td>2112.71</td>
+      <td>2</td>
+      <td>@ Real Sociedad</td>
+      <td>1919.36</td>
+      <td>1</td>
+      <td>53.85%</td>
+      <td>19.22%</td>
+      <td>26.93%</td>
+      <td>6.61</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Villarreal</td>
+      <td>2046.88</td>
+      <td>0</td>
+      <td>@ Atletico Madrid</td>
+      <td>2039.12</td>
+      <td>2</td>
+      <td>29.14%</td>
+      <td>41.25%</td>
+      <td>29.61%</td>
+      <td>-13.31</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Getafe</td>
+      <td>1932.05</td>
+      <td>2</td>
+      <td>Real Oviedo</td>
+      <td>1889.62</td>
+      <td>0</td>
+      <td>47.95%</td>
+      <td>23.50%</td>
+      <td>28.55%</td>
+      <td>11.20</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Real Sociedad</td>
+      <td>1919.36</td>
+      <td>1</td>
+      <td>Real Madrid</td>
+      <td>2112.71</td>
+      <td>2</td>
+      <td>19.22%</td>
+      <td>53.85%</td>
+      <td>26.93%</td>
+      <td>-6.61</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Athletic Bilbao</td>
+      <td>2067.91</td>
+      <td>0</td>
+      <td>Alaves</td>
+      <td>1933.14</td>
+      <td>1</td>
+      <td>59.05%</td>
+      <td>16.00%</td>
+      <td>24.94%</td>
+      <td>-16.04</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Atletico Madrid</td>
+      <td>2039.12</td>
+      <td>2</td>
+      <td>Villarreal</td>
+      <td>2046.88</td>
+      <td>0</td>
+      <td>41.25%</td>
+      <td>29.14%</td>
+      <td>29.61%</td>
+      <td>13.30</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Cadiz</td>
+      <td>1795.51</td>
+      <td>1</td>
+      <td>Eibar</td>
+      <td>1803.81</td>
+      <td>0</td>
+      <td>41.18%</td>
+      <td>29.21%</td>
+      <td>29.61%</td>
+      <td>9.42</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Mirandes</td>
+      <td>1821.28</td>
+      <td>1</td>
+      <td>Deportivo La Coruna</td>
+      <td>1792.60</td>
+      <td>5</td>
+      <td>46.16%</td>
+      <td>24.92%</td>
+      <td>28.91%</td>
+      <td>-26.43</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Huesca</td>
+      <td>1793.89</td>
+      <td>1</td>
+      <td>Malaga CF</td>
+      <td>1767.22</td>
+      <td>0</td>
+      <td>45.90%</td>
+      <td>25.14%</td>
+      <td>28.96%</td>
+      <td>8.37</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Alaves</td>
+      <td>1933.14</td>
+      <td>1</td>
+      <td>@ Athletic Bilbao</td>
+      <td>2067.91</td>
+      <td>0</td>
+      <td>16.00%</td>
+      <td>59.05%</td>
+      <td>24.94%</td>
+      <td>16.05</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Real Valladolid</td>
+      <td>1744.84</td>
+      <td>3</td>
+      <td>Almeria</td>
+      <td>1798.77</td>
+      <td>1</td>
+      <td>34.73%</td>
+      <td>35.37%</td>
+      <td>29.90%</td>
+      <td>15.32</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Real Oviedo</td>
+      <td>1889.62</td>
+      <td>0</td>
+      <td>@ Getafe</td>
+      <td>1932.05</td>
+      <td>2</td>
+      <td>23.50%</td>
+      <td>47.95%</td>
+      <td>28.55%</td>
+      <td>-11.20</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Almeria</td>
+      <td>1798.77</td>
+      <td>1</td>
+      <td>@ Real Valladolid</td>
+      <td>1744.84</td>
+      <td>3</td>
+      <td>35.37%</td>
+      <td>34.73%</td>
+      <td>29.90%</td>
+      <td>-15.33</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Malaga CF</td>
+      <td>1767.22</td>
+      <td>0</td>
+      <td>@ Huesca</td>
+      <td>1793.89</td>
+      <td>1</td>
+      <td>25.14%</td>
+      <td>45.90%</td>
+      <td>28.96%</td>
+      <td>-8.38</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Deportivo La Coruna</td>
+      <td>1792.60</td>
+      <td>5</td>
+      <td>@ Mirandes</td>
+      <td>1821.28</td>
+      <td>1</td>
+      <td>24.92%</td>
+      <td>46.16%</td>
+      <td>28.91%</td>
+      <td>26.42</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Eibar</td>
+      <td>1803.81</td>
+      <td>0</td>
+      <td>@ Cadiz</td>
+      <td>1795.51</td>
+      <td>1</td>
+      <td>29.21%</td>
+      <td>41.18%</td>
+      <td>29.61%</td>
+      <td>-9.43</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Real Betis</td>
+      <td>1985.29</td>
+      <td>2</td>
+      <td>@ Levante</td>
+      <td>1896.91</td>
+      <td>2</td>
+      <td>40.25%</td>
+      <td>30.06%</td>
+      <td>29.70%</td>
+      <td>-0.56</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Girona</td>
+      <td>1874.14</td>
+      <td>1</td>
+      <td>@ Celta Vigo</td>
+      <td>1943.36</td>
+      <td>1</td>
+      <td>20.96%</td>
+      <td>51.33%</td>
+      <td>27.71%</td>
+      <td>1.80</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Valencia</td>
+      <td>1954.77</td>
+      <td>0</td>
+      <td>@ Barcelona</td>
+      <td>2129.85</td>
+      <td>6</td>
+      <td>13.65%</td>
+      <td>63.48%</td>
+      <td>22.86%</td>
+      <td>-11.24</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Rayo Vallecano</td>
+      <td>1952.67</td>
+      <td>0</td>
+      <td>@ Osasuna</td>
+      <td>1955.96</td>
+      <td>2</td>
+      <td>27.79%</td>
+      <td>42.77%</td>
+      <td>29.44%</td>
+      <td>-12.83</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Granada</td>
+      <td>1744.23</td>
+      <td>0</td>
+      <td>Leganes</td>
+      <td>1829.21</td>
+      <td>2</td>
+      <td>30.50%</td>
+      <td>39.77%</td>
+      <td>29.73%</td>
+      <td>-13.77</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Leganes</td>
+      <td>1829.21</td>
+      <td>2</td>
+      <td>@ Granada</td>
+      <td>1744.23</td>
+      <td>0</td>
+      <td>39.77%</td>
+      <td>30.50%</td>
+      <td>29.73%</td>
+      <td>13.77</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Cordoba</td>
+      <td>1745.26</td>
+      <td>1</td>
+      <td>@ Andorra</td>
+      <td>1728.42</td>
+      <td>3</td>
+      <td>30.29%</td>
+      <td>39.99%</td>
+      <td>29.72%</td>
+      <td>-13.70</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Sporting Gijon</td>
+      <td>1768.74</td>
+      <td>2</td>
+      <td>Burgos</td>
+      <td>1764.20</td>
+      <td>3</td>
+      <td>42.94%</td>
+      <td>27.65%</td>
+      <td>29.42%</td>
+      <td>-12.50</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Racing Santander</td>
+      <td>1831.09</td>
+      <td>2</td>
+      <td>Leonesa</td>
+      <td>1729.63</td>
+      <td>4</td>
+      <td>55.22%</td>
+      <td>18.32%</td>
+      <td>26.46%</td>
+      <td>-21.53</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Andorra</td>
+      <td>1728.42</td>
+      <td>3</td>
+      <td>Cordoba</td>
+      <td>1745.26</td>
+      <td>1</td>
+      <td>39.99%</td>
+      <td>30.29%</td>
+      <td>29.72%</td>
+      <td>13.70</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Barcelona</td>
+      <td>2129.85</td>
+      <td>6</td>
+      <td>Valencia</td>
+      <td>1954.77</td>
+      <td>0</td>
+      <td>63.48%</td>
+      <td>13.65%</td>
+      <td>22.86%</td>
+      <td>11.24</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Osasuna</td>
+      <td>1955.96</td>
+      <td>2</td>
+      <td>Rayo Vallecano</td>
+      <td>1952.67</td>
+      <td>0</td>
+      <td>42.77%</td>
+      <td>27.79%</td>
+      <td>29.44%</td>
+      <td>12.83</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Levante</td>
+      <td>1896.91</td>
+      <td>2</td>
+      <td>Real Betis</td>
+      <td>1985.29</td>
+      <td>2</td>
+      <td>30.06%</td>
+      <td>40.25%</td>
+      <td>29.70%</td>
+      <td>0.57</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Celta Vigo</td>
+      <td>1943.36</td>
+      <td>1</td>
+      <td>Girona</td>
+      <td>1874.14</td>
+      <td>1</td>
+      <td>51.33%</td>
+      <td>20.96%</td>
+      <td>27.71%</td>
+      <td>-1.80</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Burgos</td>
+      <td>1764.20</td>
+      <td>3</td>
+      <td>@ Sporting Gijon</td>
+      <td>1768.74</td>
+      <td>2</td>
+      <td>27.65%</td>
+      <td>42.94%</td>
+      <td>29.42%</td>
+      <td>12.49</td>
+    </tr>
+    <tr>
+      <td>2025-09-14</td>
+      <td>Leonesa</td>
+      <td>1729.63</td>
+      <td>4</td>
+      <td>@ Racing Santander</td>
+      <td>1831.09</td>
+      <td>2</td>
+      <td>18.32%</td>
+      <td>55.22%</td>
+      <td>26.46%</td>
+      <td>21.53</td>
+    </tr>
+    <tr>
+      <td>2025-09-15</td>
+      <td>Real Zaragoza</td>
+      <td>1707.30</td>
+      <td>0</td>
+      <td>Albacete</td>
+      <td>1732.01</td>
+      <td>0</td>
+      <td>38.89%</td>
+      <td>31.32%</td>
+      <td>29.79%</td>
+      <td>-0.42</td>
+    </tr>
+    <tr>
+      <td>2025-09-15</td>
+      <td>Espanyol Barcelona</td>
+      <td>1951.91</td>
+      <td>3</td>
+      <td>Mallorca</td>
+      <td>1908.77</td>
+      <td>2</td>
+      <td>48.04%</td>
+      <td>23.42%</td>
+      <td>28.53%</td>
+      <td>7.89</td>
+    </tr>
+    <tr>
+      <td>2025-09-15</td>
+      <td>Mallorca</td>
+      <td>1908.77</td>
+      <td>2</td>
+      <td>@ Espanyol Barcelona</td>
+      <td>1951.91</td>
+      <td>3</td>
+      <td>23.42%</td>
+      <td>48.04%</td>
+      <td>28.53%</td>
+      <td>-7.90</td>
+    </tr>
+    <tr>
+      <td>2025-09-15</td>
+      <td>Albacete</td>
+      <td>1732.01</td>
+      <td>0</td>
+      <td>@ Real Zaragoza</td>
+      <td>1707.30</td>
+      <td>0</td>
+      <td>31.32%</td>
+      <td>38.89%</td>
+      <td>29.79%</td>
+      <td>0.41</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
