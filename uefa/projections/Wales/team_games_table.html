@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Bala Town">Bala Town</option><option value="Barry Town United">Barry Town United</option><option value="Briton Ferry Llansawel">Briton Ferry Llansawel</option><option value="Caernarfon Town">Caernarfon Town</option><option value="Cardiff Metropolitan">Cardiff Metropolitan</option><option value="Colwyn Bay">Colwyn Bay</option><option value="Connahs Quay Nomads">Connahs Quay Nomads</option><option value="Flint Town United">Flint Town United</option><option value="Haverfordwest County">Haverfordwest County</option><option value="Llanelli Town">Llanelli Town</option><option value="Penybont">Penybont</option><option value="The New Saints">The New Saints</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="3" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Tie Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2025-08-08</td>
+      <td>Bala Town</td>
+      <td>1173.58</td>
+      <td>1</td>
+      <td>Flint Town United</td>
+      <td>1168.89</td>
+      <td>1</td>
+      <td>27.70%</td>
+      <td>26.35%</td>
+      <td>45.95%</td>
+      <td>-0.07</td>
+    </tr>
+    <tr>
+      <td>2025-08-08</td>
+      <td>Barry Town United</td>
+      <td>1188.12</td>
+      <td>2</td>
+      <td>@ Llanelli Town</td>
+      <td>1098.51</td>
+      <td>0</td>
+      <td>40.49%</td>
+      <td>17.91%</td>
+      <td>41.60%</td>
+      <td>11.30</td>
+    </tr>
+    <tr>
+      <td>2025-08-08</td>
+      <td>Penybont</td>
+      <td>1225.98</td>
+      <td>1</td>
+      <td>@ Haverfordwest County</td>
+      <td>1206.42</td>
+      <td>0</td>
+      <td>29.87%</td>
+      <td>24.39%</td>
+      <td>45.74%</td>
+      <td>10.08</td>
+    </tr>
+    <tr>
+      <td>2025-08-08</td>
+      <td>Flint Town United</td>
+      <td>1168.89</td>
+      <td>1</td>
+      <td>@ Bala Town</td>
+      <td>1173.58</td>
+      <td>1</td>
+      <td>26.35%</td>
+      <td>27.70%</td>
+      <td>45.95%</td>
+      <td>0.07</td>
+    </tr>
+    <tr>
+      <td>2025-08-08</td>
+      <td>Haverfordwest County</td>
+      <td>1206.42</td>
+      <td>0</td>
+      <td>Penybont</td>
+      <td>1225.98</td>
+      <td>1</td>
+      <td>24.39%</td>
+      <td>29.87%</td>
+      <td>45.74%</td>
+      <td>-10.08</td>
+    </tr>
+    <tr>
+      <td>2025-08-08</td>
+      <td>Llanelli Town</td>
+      <td>1098.51</td>
+      <td>0</td>
+      <td>Barry Town United</td>
+      <td>1188.12</td>
+      <td>2</td>
+      <td>17.91%</td>
+      <td>40.49%</td>
+      <td>41.60%</td>
+      <td>-11.29</td>
+    </tr>
+    <tr>
+      <td>2025-08-09</td>
+      <td>Caernarfon Town</td>
+      <td>1193.14</td>
+      <td>2</td>
+      <td>@ Cardiff Metropolitan</td>
+      <td>1177.03</td>
+      <td>2</td>
+      <td>29.36%</td>
+      <td>24.83%</td>
+      <td>45.81%</td>
+      <td>-0.25</td>
+    </tr>
+    <tr>
+      <td>2025-08-09</td>
+      <td>Cardiff Metropolitan</td>
+      <td>1177.03</td>
+      <td>2</td>
+      <td>Caernarfon Town</td>
+      <td>1193.14</td>
+      <td>2</td>
+      <td>24.83%</td>
+      <td>29.36%</td>
+      <td>45.81%</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <td>2025-08-10</td>
+      <td>Connahs Quay Nomads</td>
+      <td>1176.95</td>
+      <td>1</td>
+      <td>@ Colwyn Bay</td>
+      <td>1104.52</td>
+      <td>1</td>
+      <td>37.83%</td>
+      <td>19.11%</td>
+      <td>43.06%</td>
+      <td>-1.10</td>
+    </tr>
+    <tr>
+      <td>2025-08-10</td>
+      <td>Briton Ferry Llansawel</td>
+      <td>1151.95</td>
+      <td>3</td>
+      <td>@ The New Saints</td>
+      <td>1275.10</td>
+      <td>0</td>
+      <td>16.16%</td>
+      <td>45.78%</td>
+      <td>38.07%</td>
+      <td>24.80</td>
+    </tr>
+    <tr>
+      <td>2025-08-10</td>
+      <td>The New Saints</td>
+      <td>1275.10</td>
+      <td>0</td>
+      <td>Briton Ferry Llansawel</td>
+      <td>1151.95</td>
+      <td>3</td>
+      <td>45.78%</td>
+      <td>16.16%</td>
+      <td>38.07%</td>
+      <td>-24.79</td>
+    </tr>
+    <tr>
+      <td>2025-08-10</td>
+      <td>Colwyn Bay</td>
+      <td>1104.52</td>
+      <td>1</td>
+      <td>Connahs Quay Nomads</td>
+      <td>1176.95</td>
+      <td>1</td>
+      <td>19.11%</td>
+      <td>37.83%</td>
+      <td>43.06%</td>
+      <td>1.10</td>
+    </tr>
+    <tr>
+      <td>2025-08-15</td>
+      <td>Briton Ferry Llansawel</td>
+      <td>1176.75</td>
+      <td>1</td>
+      <td>Cardiff Metropolitan</td>
+      <td>1177.28</td>
+      <td>1</td>
+      <td>26.94%</td>
+      <td>27.09%</td>
+      <td>45.96%</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <td>2025-08-15</td>
+      <td>Cardiff Metropolitan</td>
+      <td>1177.28</td>
+      <td>1</td>
+      <td>@ Briton Ferry Llansawel</td>
+      <td>1176.75</td>
+      <td>1</td>
+      <td>27.09%</td>
+      <td>26.94%</td>
+      <td>45.96%</td>
+      <td>-0.01</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Penybont</td>
+      <td>1236.06</td>
+      <td>0</td>
+      <td>The New Saints</td>
+      <td>1250.31</td>
+      <td>2</td>
+      <td>25.07%</td>
+      <td>29.09%</td>
+      <td>45.85%</td>
+      <td>-14.48</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Caernarfon Town</td>
+      <td>1192.89</td>
+      <td>6</td>
+      <td>Llanelli Town</td>
+      <td>1087.22</td>
+      <td>1</td>
+      <td>43.01%</td>
+      <td>16.98%</td>
+      <td>40.00%</td>
+      <td>16.84</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Barry Town United</td>
+      <td>1199.42</td>
+      <td>1</td>
+      <td>Colwyn Bay</td>
+      <td>1105.62</td>
+      <td>1</td>
+      <td>41.15%</td>
+      <td>17.65%</td>
+      <td>41.20%</td>
+      <td>-1.41</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Colwyn Bay</td>
+      <td>1105.62</td>
+      <td>1</td>
+      <td>@ Barry Town United</td>
+      <td>1199.42</td>
+      <td>1</td>
+      <td>17.65%</td>
+      <td>41.15%</td>
+      <td>41.20%</td>
+      <td>1.41</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>Llanelli Town</td>
+      <td>1087.22</td>
+      <td>1</td>
+      <td>@ Caernarfon Town</td>
+      <td>1192.89</td>
+      <td>6</td>
+      <td>16.98%</td>
+      <td>43.01%</td>
+      <td>40.00%</td>
+      <td>-16.83</td>
+    </tr>
+    <tr>
+      <td>2025-08-16</td>
+      <td>The New Saints</td>
+      <td>1250.31</td>
+      <td>2</td>
+      <td>@ Penybont</td>
+      <td>1236.06</td>
+      <td>0</td>
+      <td>29.09%</td>
+      <td>25.07%</td>
+      <td>45.85%</td>
+      <td>14.48</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Colwyn Bay</td>
+      <td>1107.03</td>
+      <td>0</td>
+      <td>@ Bala Town</td>
+      <td>1173.51</td>
+      <td>1</td>
+      <td>19.57%</td>
+      <td>36.92%</td>
+      <td>43.50%</td>
+      <td>-8.66</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Connahs Quay Nomads</td>
+      <td>1175.85</td>
+      <td>0</td>
+      <td>@ The New Saints</td>
+      <td>1264.79</td>
+      <td>3</td>
+      <td>17.95%</td>
+      <td>40.39%</td>
+      <td>41.66%</td>
+      <td>-13.86</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Caernarfon Town</td>
+      <td>1209.73</td>
+      <td>5</td>
+      <td>@ Flint Town United</td>
+      <td>1168.96</td>
+      <td>2</td>
+      <td>33.02%</td>
+      <td>21.96%</td>
+      <td>45.02%</td>
+      <td>16.33</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Cardiff Metropolitan</td>
+      <td>1177.27</td>
+      <td>2</td>
+      <td>@ Haverfordwest County</td>
+      <td>1196.34</td>
+      <td>2</td>
+      <td>24.45%</td>
+      <td>29.80%</td>
+      <td>45.75%</td>
+      <td>0.29</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Briton Ferry Llansawel</td>
+      <td>1176.76</td>
+      <td>4</td>
+      <td>@ Llanelli Town</td>
+      <td>1070.39</td>
+      <td>2</td>
+      <td>43.12%</td>
+      <td>16.95%</td>
+      <td>39.93%</td>
+      <td>10.62</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>The New Saints</td>
+      <td>1264.79</td>
+      <td>3</td>
+      <td>Connahs Quay Nomads</td>
+      <td>1175.85</td>
+      <td>0</td>
+      <td>40.39%</td>
+      <td>17.95%</td>
+      <td>41.66%</td>
+      <td>13.86</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Llanelli Town</td>
+      <td>1070.39</td>
+      <td>2</td>
+      <td>Briton Ferry Llansawel</td>
+      <td>1176.76</td>
+      <td>4</td>
+      <td>16.95%</td>
+      <td>43.12%</td>
+      <td>39.93%</td>
+      <td>-10.62</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Haverfordwest County</td>
+      <td>1196.34</td>
+      <td>2</td>
+      <td>Cardiff Metropolitan</td>
+      <td>1177.27</td>
+      <td>2</td>
+      <td>29.80%</td>
+      <td>24.45%</td>
+      <td>45.75%</td>
+      <td>-0.29</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Flint Town United</td>
+      <td>1168.96</td>
+      <td>2</td>
+      <td>Caernarfon Town</td>
+      <td>1209.73</td>
+      <td>5</td>
+      <td>21.96%</td>
+      <td>33.02%</td>
+      <td>45.02%</td>
+      <td>-16.34</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Barry Town United</td>
+      <td>1198.01</td>
+      <td>2</td>
+      <td>Penybont</td>
+      <td>1221.58</td>
+      <td>3</td>
+      <td>23.90%</td>
+      <td>30.46%</td>
+      <td>45.65%</td>
+      <td>-9.96</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Bala Town</td>
+      <td>1173.51</td>
+      <td>1</td>
+      <td>Colwyn Bay</td>
+      <td>1107.03</td>
+      <td>0</td>
+      <td>36.92%</td>
+      <td>19.57%</td>
+      <td>43.50%</td>
+      <td>8.66</td>
+    </tr>
+    <tr>
+      <td>2025-08-22</td>
+      <td>Penybont</td>
+      <td>1221.58</td>
+      <td>3</td>
+      <td>@ Barry Town United</td>
+      <td>1198.01</td>
+      <td>2</td>
+      <td>30.46%</td>
+      <td>23.90%</td>
+      <td>45.65%</td>
+      <td>9.95</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Llanelli Town</td>
+      <td>1059.77</td>
+      <td>0</td>
+      <td>@ Penybont</td>
+      <td>1231.53</td>
+      <td>2</td>
+      <td>14.53%</td>
+      <td>53.62%</td>
+      <td>31.85%</td>
+      <td>-8.19</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Haverfordwest County</td>
+      <td>1196.05</td>
+      <td>1</td>
+      <td>@ Briton Ferry Llansawel</td>
+      <td>1187.38</td>
+      <td>0</td>
+      <td>28.27%</td>
+      <td>25.81%</td>
+      <td>45.92%</td>
+      <td>10.41</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>The New Saints</td>
+      <td>1278.65</td>
+      <td>1</td>
+      <td>@ Colwyn Bay</td>
+      <td>1098.37</td>
+      <td>1</td>
+      <td>55.01%</td>
+      <td>14.30%</td>
+      <td>30.69%</td>
+      <td>-2.54</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Flint Town United</td>
+      <td>1152.62</td>
+      <td>2</td>
+      <td>@ Connahs Quay Nomads</td>
+      <td>1161.99</td>
+      <td>3</td>
+      <td>25.71%</td>
+      <td>28.38%</td>
+      <td>45.91%</td>
+      <td>-10.39</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Barry Town United</td>
+      <td>1188.05</td>
+      <td>1</td>
+      <td>@ Cardiff Metropolitan</td>
+      <td>1177.56</td>
+      <td>1</td>
+      <td>28.54%</td>
+      <td>25.56%</td>
+      <td>45.90%</td>
+      <td>-0.16</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Briton Ferry Llansawel</td>
+      <td>1187.38</td>
+      <td>0</td>
+      <td>Haverfordwest County</td>
+      <td>1196.05</td>
+      <td>1</td>
+      <td>25.81%</td>
+      <td>28.27%</td>
+      <td>45.92%</td>
+      <td>-10.42</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Caernarfon Town</td>
+      <td>1226.06</td>
+      <td>2</td>
+      <td>Bala Town</td>
+      <td>1182.17</td>
+      <td>0</td>
+      <td>33.49%</td>
+      <td>21.63%</td>
+      <td>44.87%</td>
+      <td>13.21</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Cardiff Metropolitan</td>
+      <td>1177.56</td>
+      <td>1</td>
+      <td>Barry Town United</td>
+      <td>1188.05</td>
+      <td>1</td>
+      <td>25.56%</td>
+      <td>28.54%</td>
+      <td>45.90%</td>
+      <td>0.17</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Colwyn Bay</td>
+      <td>1098.37</td>
+      <td>1</td>
+      <td>The New Saints</td>
+      <td>1278.65</td>
+      <td>1</td>
+      <td>14.30%</td>
+      <td>55.01%</td>
+      <td>30.69%</td>
+      <td>2.54</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Penybont</td>
+      <td>1231.53</td>
+      <td>2</td>
+      <td>Llanelli Town</td>
+      <td>1059.77</td>
+      <td>0</td>
+      <td>53.62%</td>
+      <td>14.53%</td>
+      <td>31.85%</td>
+      <td>8.20</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Bala Town</td>
+      <td>1182.17</td>
+      <td>0</td>
+      <td>@ Caernarfon Town</td>
+      <td>1226.06</td>
+      <td>2</td>
+      <td>21.63%</td>
+      <td>33.49%</td>
+      <td>44.87%</td>
+      <td>-13.21</td>
+    </tr>
+    <tr>
+      <td>2025-08-25</td>
+      <td>Connahs Quay Nomads</td>
+      <td>1161.99</td>
+      <td>3</td>
+      <td>Flint Town United</td>
+      <td>1152.62</td>
+      <td>2</td>
+      <td>28.38%</td>
+      <td>25.71%</td>
+      <td>45.91%</td>
+      <td>10.39</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Briton Ferry Llansawel</td>
+      <td>1176.96</td>
+      <td>2</td>
+      <td>@ Colwyn Bay</td>
+      <td>1100.91</td>
+      <td>2</td>
+      <td>38.39%</td>
+      <td>18.83%</td>
+      <td>42.77%</td>
+      <td>-1.15</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Barry Town United</td>
+      <td>1187.89</td>
+      <td>0</td>
+      <td>The New Saints</td>
+      <td>1276.11</td>
+      <td>0</td>
+      <td>18.00%</td>
+      <td>40.28%</td>
+      <td>41.73%</td>
+      <td>1.33</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Colwyn Bay</td>
+      <td>1100.91</td>
+      <td>2</td>
+      <td>Briton Ferry Llansawel</td>
+      <td>1176.96</td>
+      <td>2</td>
+      <td>18.83%</td>
+      <td>38.39%</td>
+      <td>42.77%</td>
+      <td>1.15</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Flint Town United</td>
+      <td>1142.23</td>
+      <td>4</td>
+      <td>Cardiff Metropolitan</td>
+      <td>1177.73</td>
+      <td>2</td>
+      <td>22.52%</td>
+      <td>32.23%</td>
+      <td>45.25%</td>
+      <td>16.64</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Llanelli Town</td>
+      <td>1051.58</td>
+      <td>0</td>
+      <td>Bala Town</td>
+      <td>1168.96</td>
+      <td>1</td>
+      <td>16.41%</td>
+      <td>44.86%</td>
+      <td>38.73%</td>
+      <td>-7.21</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Penybont</td>
+      <td>1239.73</td>
+      <td>0</td>
+      <td>Connahs Quay Nomads</td>
+      <td>1172.38</td>
+      <td>1</td>
+      <td>37.06%</td>
+      <td>19.50%</td>
+      <td>43.44%</td>
+      <td>-12.73</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Haverfordwest County</td>
+      <td>1206.46</td>
+      <td>1</td>
+      <td>Caernarfon Town</td>
+      <td>1239.27</td>
+      <td>1</td>
+      <td>22.82%</td>
+      <td>31.83%</td>
+      <td>45.35%</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Caernarfon Town</td>
+      <td>1239.27</td>
+      <td>1</td>
+      <td>@ Haverfordwest County</td>
+      <td>1206.46</td>
+      <td>1</td>
+      <td>31.83%</td>
+      <td>22.82%</td>
+      <td>45.35%</td>
+      <td>-0.50</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Connahs Quay Nomads</td>
+      <td>1172.38</td>
+      <td>1</td>
+      <td>@ Penybont</td>
+      <td>1239.73</td>
+      <td>0</td>
+      <td>19.50%</td>
+      <td>37.06%</td>
+      <td>43.44%</td>
+      <td>12.72</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Bala Town</td>
+      <td>1168.96</td>
+      <td>1</td>
+      <td>@ Llanelli Town</td>
+      <td>1051.58</td>
+      <td>0</td>
+      <td>44.86%</td>
+      <td>16.41%</td>
+      <td>38.73%</td>
+      <td>7.20</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>Cardiff Metropolitan</td>
+      <td>1177.73</td>
+      <td>2</td>
+      <td>@ Flint Town United</td>
+      <td>1142.23</td>
+      <td>4</td>
+      <td>32.23%</td>
+      <td>22.52%</td>
+      <td>45.25%</td>
+      <td>-16.65</td>
+    </tr>
+    <tr>
+      <td>2025-08-30</td>
+      <td>The New Saints</td>
+      <td>1276.11</td>
+      <td>0</td>
+      <td>@ Barry Town United</td>
+      <td>1187.89</td>
+      <td>0</td>
+      <td>40.28%</td>
+      <td>18.00%</td>
+      <td>41.73%</td>
+      <td>-1.33</td>
+    </tr>
+    <tr>
+      <td>2025-09-02</td>
+      <td>Connahs Quay Nomads</td>
+      <td>1185.10</td>
+      <td>1</td>
+      <td>Bala Town</td>
+      <td>1176.16</td>
+      <td>3</td>
+      <td>28.31%</td>
+      <td>25.77%</td>
+      <td>45.92%</td>
+      <td>-15.49</td>
+    </tr>
+    <tr>
+      <td>2025-09-02</td>
+      <td>Bala Town</td>
+      <td>1176.16</td>
+      <td>3</td>
+      <td>@ Connahs Quay Nomads</td>
+      <td>1185.10</td>
+      <td>1</td>
+      <td>25.77%</td>
+      <td>28.31%</td>
+      <td>45.92%</td>
+      <td>15.50</td>
+    </tr>
+    <tr>
+      <td>2025-09-06</td>
+      <td>Penybont</td>
+      <td>1227.00</td>
+      <td>0</td>
+      <td>@ Bala Town</td>
+      <td>1191.66</td>
+      <td>0</td>
+      <td>32.21%</td>
+      <td>22.54%</td>
+      <td>45.25%</td>
+      <td>-0.54</td>
+    </tr>
+    <tr>
+      <td>2025-09-06</td>
+      <td>Flint Town United</td>
+      <td>1158.87</td>
+      <td>5</td>
+      <td>@ Llanelli Town</td>
+      <td>1044.37</td>
+      <td>0</td>
+      <td>44.40%</td>
+      <td>16.54%</td>
+      <td>39.05%</td>
+      <td>16.29</td>
+    </tr>
+    <tr>
+      <td>2025-09-06</td>
+      <td>Colwyn Bay</td>
+      <td>1102.06</td>
+      <td>4</td>
+      <td>@ Cardiff Metropolitan</td>
+      <td>1161.08</td>
+      <td>1</td>
+      <td>20.20%</td>
+      <td>35.78%</td>
+      <td>44.01%</td>
+      <td>21.61</td>
+    </tr>
+    <tr>
+      <td>2025-09-06</td>
+      <td>The New Saints</td>
+      <td>1274.78</td>
+      <td>5</td>
+      <td>Haverfordwest County</td>
+      <td>1206.96</td>
+      <td>0</td>
+      <td>37.13%</td>
+      <td>19.46%</td>
+      <td>43.41%</td>
+      <td>19.28</td>
+    </tr>
+    <tr>
+      <td>2025-09-06</td>
+      <td>Llanelli Town</td>
+      <td>1044.37</td>
+      <td>0</td>
+      <td>Flint Town United</td>
+      <td>1158.87</td>
+      <td>5</td>
+      <td>16.54%</td>
+      <td>44.40%</td>
+      <td>39.05%</td>
+      <td>-16.28</td>
+    </tr>
+    <tr>
+      <td>2025-09-06</td>
+      <td>Cardiff Metropolitan</td>
+      <td>1161.08</td>
+      <td>1</td>
+      <td>Colwyn Bay</td>
+      <td>1102.06</td>
+      <td>4</td>
+      <td>35.78%</td>
+      <td>20.20%</td>
+      <td>44.01%</td>
+      <td>-21.61</td>
+    </tr>
+    <tr>
+      <td>2025-09-06</td>
+      <td>Bala Town</td>
+      <td>1191.66</td>
+      <td>0</td>
+      <td>Penybont</td>
+      <td>1227.00</td>
+      <td>0</td>
+      <td>22.54%</td>
+      <td>32.21%</td>
+      <td>45.25%</td>
+      <td>0.54</td>
+    </tr>
+    <tr>
+      <td>2025-09-06</td>
+      <td>Haverfordwest County</td>
+      <td>1206.96</td>
+      <td>0</td>
+      <td>@ The New Saints</td>
+      <td>1274.78</td>
+      <td>5</td>
+      <td>19.46%</td>
+      <td>37.13%</td>
+      <td>43.41%</td>
+      <td>-19.27</td>
+    </tr>
+    <tr>
+      <td>2025-09-07</td>
+      <td>Barry Town United</td>
+      <td>1189.22</td>
+      <td>1</td>
+      <td>@ Caernarfon Town</td>
+      <td>1238.77</td>
+      <td>3</td>
+      <td>21.07%</td>
+      <td>34.35%</td>
+      <td>44.58%</td>
+      <td>-12.97</td>
+    </tr>
+    <tr>
+      <td>2025-09-07</td>
+      <td>Caernarfon Town</td>
+      <td>1238.77</td>
+      <td>3</td>
+      <td>Barry Town United</td>
+      <td>1189.22</td>
+      <td>1</td>
+      <td>34.35%</td>
+      <td>21.07%</td>
+      <td>44.58%</td>
+      <td>12.96</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Bala Town</td>
+      <td>1192.20</td>
+      <td>0</td>
+      <td>@ Barry Town United</td>
+      <td>1176.25</td>
+      <td>4</td>
+      <td>29.34%</td>
+      <td>24.85%</td>
+      <td>45.82%</td>
+      <td>-22.34</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Caernarfon Town</td>
+      <td>1251.73</td>
+      <td>5</td>
+      <td>@ Briton Ferry Llansawel</td>
+      <td>1175.81</td>
+      <td>2</td>
+      <td>38.37%</td>
+      <td>18.84%</td>
+      <td>42.78%</td>
+      <td>14.52</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Cardiff Metropolitan</td>
+      <td>1139.47</td>
+      <td>1</td>
+      <td>@ Connahs Quay Nomads</td>
+      <td>1169.61</td>
+      <td>1</td>
+      <td>23.12%</td>
+      <td>31.44%</td>
+      <td>45.44%</td>
+      <td>0.47</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Haverfordwest County</td>
+      <td>1187.69</td>
+      <td>0</td>
+      <td>@ Colwyn Bay</td>
+      <td>1123.67</td>
+      <td>3</td>
+      <td>36.54%</td>
+      <td>19.78%</td>
+      <td>43.68%</td>
+      <td>-21.87</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>The New Saints</td>
+      <td>1294.06</td>
+      <td>6</td>
+      <td>Llanelli Town</td>
+      <td>1028.09</td>
+      <td>0</td>
+      <td>68.72%</td>
+      <td>12.20%</td>
+      <td>19.08%</td>
+      <td>9.30</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Penybont</td>
+      <td>1226.46</td>
+      <td>5</td>
+      <td>Flint Town United</td>
+      <td>1175.16</td>
+      <td>0</td>
+      <td>34.61%</td>
+      <td>20.91%</td>
+      <td>44.48%</td>
+      <td>20.38</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Connahs Quay Nomads</td>
+      <td>1169.61</td>
+      <td>1</td>
+      <td>Cardiff Metropolitan</td>
+      <td>1139.47</td>
+      <td>1</td>
+      <td>31.44%</td>
+      <td>23.12%</td>
+      <td>45.44%</td>
+      <td>-0.46</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Colwyn Bay</td>
+      <td>1123.67</td>
+      <td>3</td>
+      <td>Haverfordwest County</td>
+      <td>1187.69</td>
+      <td>0</td>
+      <td>19.78%</td>
+      <td>36.54%</td>
+      <td>43.68%</td>
+      <td>21.87</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Briton Ferry Llansawel</td>
+      <td>1175.81</td>
+      <td>2</td>
+      <td>Caernarfon Town</td>
+      <td>1251.73</td>
+      <td>5</td>
+      <td>18.84%</td>
+      <td>38.37%</td>
+      <td>42.78%</td>
+      <td>-14.52</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Barry Town United</td>
+      <td>1176.25</td>
+      <td>4</td>
+      <td>Bala Town</td>
+      <td>1192.20</td>
+      <td>0</td>
+      <td>24.85%</td>
+      <td>29.34%</td>
+      <td>45.82%</td>
+      <td>22.34</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Flint Town United</td>
+      <td>1175.16</td>
+      <td>0</td>
+      <td>@ Penybont</td>
+      <td>1226.46</td>
+      <td>5</td>
+      <td>20.91%</td>
+      <td>34.61%</td>
+      <td>44.48%</td>
+      <td>-20.38</td>
+    </tr>
+    <tr>
+      <td>2025-09-13</td>
+      <td>Llanelli Town</td>
+      <td>1028.09</td>
+      <td>0</td>
+      <td>@ The New Saints</td>
+      <td>1294.06</td>
+      <td>6</td>
+      <td>12.20%</td>
+      <td>68.72%</td>
+      <td>19.08%</td>
+      <td>-9.31</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
