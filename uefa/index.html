@@ -88,45 +88,28 @@
                         <button class="tab-btn" data-sport="wales">Wales</button>
                     </div>
                     <div id="england" class="tab-content active"><div id="england-table-placeholder"></div></div>
+                    <div id="france" class="tab-content"><div id="france-table-placeholder"></div></div>
                     <div id="germany" class="tab-content"><div id="germany-table-placeholder"></div></div>
+                    <div id="italt" class="tab-content"><div id="italy-table-placeholder"></div></div>
                     <div id="spain" class="tab-content"><div id="spain-table-placeholder"></div></div>
-                    <div id="wales" class="tab-content"><div id="wales-table-placeholder"></div></div>
+<!--                     <div id="wales" class="tab-content"><div id="wales-table-placeholder"></div></div> -->
                 </div>
             </main>
 
-            <!-- Right sidebar: Monday updates and polls -->
+            <!-- Right sidebar -->
             <aside class="sidebar-right">
-                <section class="site-updates">
-                    <h2>Current Projections</h2>
-<!--                     <p class="update-date">Last updated: August 8, 2025</p> -->
-                    <ul>
-                        <li><a href="/sports-history-simulations/uefa/projections/England/">England</a></li>
-                        <li><a href="/sports-history-simulations/uefa/projections/Germany/">Germany</a></li>
-                        <li><a href="/sports-history-simulations/uefa/projections/Spain/">Spain</a></li>
-                        <li><a href="/sports-history-simulations/uefa/projections/Wales/">Wales</a></li>
-                    </ul>
-                </section>
-                
-                <section class="site-updates">
-                    <h2>Week in Review</h2>
-                    <ul>
-                        <li><a href="/sports-history-simulations/uefa/week_in_review/England/">England (September 15)</a></li>
-                        <li><a href="/sports-history-simulations/uefa/week_in_review/Germany/">Germany (September 15)</a></li>
-                        <li><a href="/sports-history-simulations/uefa/week_in_review/Spain/">Spain (September 15)</a></li>
-                        <li><a href="/sports-history-simulations/uefa/week_in_review/Wales/">Wales (September 15)</a></li>
-                    </ul>
+
+                <!-- Snapshot Sections for each sport -->
+                <section class="site-updates" id="mlb-snapshot">
+                    <h2><a href="/sports-history-simulations/usa/projections/MLB/">MLB Projections</a></h2>
+                    <div id="mlb-sidebar-placeholder"></div>
                 </section>
 
-                <section class="site-updates">
-                    <h2>Recent Site Updates</h2>
-                    <ul>
-                        <li>September 15: England, Germany, Spain, and Wales projections added</a></li>
-                        <li>September 14: 2024 England and Wales added</a></li>
-                        <li>September 14: UEFA launched</a></li>
-                    </ul>
+                <section class="site-updates" id="nfl-snapshot">
+                    <h2><a href="/sports-history-simulations/usa/projections/NFL/">NFL Projections</a></h2>
+                    <div id="nfl-sidebar-placeholder"></div>
                 </section>
             
-                
             </aside>
         </div>
 
@@ -138,9 +121,11 @@
             // Load power ranking tables
             const tables = {
                 england: '/sports-history-simulations/uefa/power_rankings/england_power_rankings.html',
+                france: '/sports-history-simulations/uefa/power_rankings/france_power_rankings.html',
                 germany: '/sports-history-simulations/uefa/power_rankings/germany_power_rankings.html',
+                italy: '/sports-history-simulations/uefa/power_rankings/italy_power_rankings.html',
                 spain: '/sports-history-simulations/uefa/power_rankings/spain_power_rankings.html',
-                wales: '/sports-history-simulations/uefa/power_rankings/wales_power_rankings.html',
+                // wales: '/sports-history-simulations/uefa/power_rankings/wales_power_rankings.html',
             };
 
             for (const [sport, file] of Object.entries(tables)) {
@@ -161,6 +146,23 @@
                     document.getElementById(button.getAttribute('data-sport')).classList.add('active');
                 });
             });
+
+            // Sidebar Summaries
+            const sidebarSummaries = {
+                england: '/sports-history-simulations/usa/sidebar_summaries/england_sidebar_summary.html',
+                france: '/sports-history-simulations/usa/sidebar_summaries/france_sidebar_summary.html',
+                germany: '/sports-history-simulations/usa/sidebar_summaries/germany_sidebar_summary.html',
+                italy: '/sports-history-simulations/usa/sidebar_summaries/italy_sidebar_summary.html',
+                spain: '/sports-history-simulations/usa/sidebar_summaries/spain_sidebar_summary.html',
+            };
+        
+            for (const [sport, file] of Object.entries(sidebarSummaries)) {
+                const placeholder = document.getElementById(sport + '-sidebar-placeholder');
+                if (!placeholder) continue;  // safely skip if no snapshot exists
+                fetch(file)
+                    .then(response => response.text())
+                    .then(data => placeholder.innerHTML = data);
+            }
         </script>
     </body>
 </html>
