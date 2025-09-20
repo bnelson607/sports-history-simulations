@@ -100,45 +100,20 @@
                 </div>
             </main>
 
-            <!-- Right sidebar: Monday updates and polls -->
+            <!-- Right sidebar -->
             <aside class="sidebar-right">
-                <section class="site-updates">
-                    <h2>Current Projections</h2>
-<!--                     <p class="update-date">Last updated: August 8, 2025</p> -->
-                    <ul>
-                        <li><a href="/sports-history-simulations/usa/projections/MLB/">MLB</a></li>
-                        <li><a href="/sports-history-simulations/usa/projections/NFL/">NFL</a></li>
-            <!--             <li><a href="/sports-history-simulations/usa/projections/NHL/">NHL</a></li> -->
-            <!--             <li><a href="/sports-history-simulations/usa/projections/NBA/">NBA</a></li> -->
-                        <li><a href="/sports-history-simulations/usa/projections/WNBA/">WNBA</a></li>
-                        <li><a href="/sports-history-simulations/usa/projections/MLS/">MLS</a></li>
-                        <li><a href="/sports-history-simulations/usa/projections/USL/">USL</a></li>
-                    </ul>
-                </section>
-                
-                <section class="site-updates">
-                    <h2>Week in Review</h2>
-                    <ul>
-                        <li><a href="/sports-history-simulations/usa/week_in_review/MLB/">MLB (August 4)</a></li>
-                        <li><a href="/sports-history-simulations/usa/week_in_review/NFL/">NFL (August 4)</a></li>
-<!--                         <li><a href="/sports-history-simulations/usa/week_in_review/NHL/">NHL (August 4)</a></li> -->
-<!--                         <li><a href="/sports-history-simulations/usa/week_in_review/NBA/">NBA (August 4)</a></li> -->
-                        <li><a href="/sports-history-simulations/usa/week_in_review/WNBA/">WNBA (August 4)</a></li>
-                        <li><a href="/sports-history-simulations/usa/week_in_review/MLS/">MLS (August 4)</a></li>
-                        <li><a href="/sports-history-simulations/usa/week_in_review/USL/">USL (August 4)</a></li>
-                    </ul>
+
+                <!-- Snapshot Sections for each sport -->
+                <section class="site-updates" id="mlb-snapshot">
+                    <h2><a href="/sports-history-simulations/usa/projections/MLB/">MLB Projections</a></h2>
+                    <div id="mlb-snapshot-placeholder"></div>
                 </section>
 
-                <section class="site-updates">
-                    <h2>Recent Site Updates</h2>
-                    <ul>
-                        <li>August 6, 2025: 2018 and 2022 MLB added</a></li>
-                        <li>August 6, 2025: 2008 and 2024 NFL added</a></li>
-                        <li>August 6, 2025: 2015-16 NHL added</a></li>
-                    </ul>
+                <section class="site-updates" id="nfl-snapshot">
+                    <h2><a href="/sports-history-simulations/usa/projections/NFL/">NFL Projections</a></h2>
+                    <div id="nfl-snapshot-placeholder"></div>
                 </section>
             
-                
             </aside>
         </div>
 
@@ -176,6 +151,25 @@
                     document.getElementById(button.getAttribute('data-sport')).classList.add('active');
                 });
             });
+
+            // Sidebar Summaries
+            const sidebarSummaries = {
+                mlb: '/sports-history-simulations/usa/sidebar_summaries/mlb_sidebar_summary.html',
+                nfl: '/sports-history-simulations/usa/sidebar_summaries/nfl_sidebar_summary.html',
+                nhl: '/sports-history-simulations/usa/sidebar_summaries/nhl_sidebar_summary.html',
+                nba: '/sports-history-simulations/usa/sidebar_summaries/nba_sidebar_summary.html',
+                wnba: '/sports-history-simulations/usa/sidebar_summaries/wnba_sidebar_summary.html',
+                mls: '/sports-history-simulations/usa/sidebar_summaries/mls_sidebar_summary.html',
+                usl: '/sports-history-simulations/usa/sidebar_summaries/usl_sidebar_summary.html'
+            };
+        
+            for (const [sport, file] of Object.entries(sidebarSummaries)) {
+                const placeholder = document.getElementById(sport + '-sidebar-placeholder');
+                if (!placeholder) continue;  // safely skip if no snapshot exists
+                fetch(file)
+                    .then(response => response.text())
+                    .then(data => placeholder.innerHTML = data);
+            }
         </script>
     </body>
 </html>
