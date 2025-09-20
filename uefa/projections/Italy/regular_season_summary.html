@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .filter-controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .filter-controls select {
+            margin: 0 10px;
+            padding: 4px;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- Use CDN version of Tablesort for local compatibility -->
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls" id="filterControls" style="display: none;">
+        <label for="regionFilter" id="regionLabel">Filter by Level:
+            <select id="regionFilter">
+                <option value="">All</option>
+            </select>
+        </label>
+    </div>
+
+    <table class="dataframe sortable">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Team</th>
+      <th>Level</th>
+      <th>Elo</th>
+      <th>Wins</th>
+      <th>Losses</th>
+      <th>Ties</th>
+      <th>Current</th>
+      <th>Avg. Pts.</th>
+      <th>Exp. Pts. Rem.</th>
+      <th>Min</th>
+      <th>Q1</th>
+      <th>Median</th>
+      <th>Q3</th>
+      <th>Max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Inter Milan</td>
+      <td>Level 1</td>
+      <td>2101</td>
+      <td>18.64</td>
+      <td>8.69</td>
+      <td>10.67</td>
+      <td>3</td>
+      <td>66.59</td>
+      <td>63.59</td>
+      <td>41</td>
+      <td>61.30</td>
+      <td>66.21</td>
+      <td>70.94</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <td>Napoli</td>
+      <td>Level 1</td>
+      <td>2100</td>
+      <td>20.50</td>
+      <td>6.84</td>
+      <td>10.66</td>
+      <td>9</td>
+      <td>72.17</td>
+      <td>63.17</td>
+      <td>44</td>
+      <td>66.90</td>
+      <td>71.70</td>
+      <td>76.56</td>
+      <td>102</td>
+    </tr>
+    <tr>
+      <td>Atalanta</td>
+      <td>Level 1</td>
+      <td>2079</td>
+      <td>17.16</td>
+      <td>7.60</td>
+      <td>13.24</td>
+      <td>5</td>
+      <td>64.73</td>
+      <td>59.73</td>
+      <td>38</td>
+      <td>59.35</td>
+      <td>64.17</td>
+      <td>69.07</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <td>Juventus</td>
+      <td>Level 1</td>
+      <td>2077</td>
+      <td>19.43</td>
+      <td>7.50</td>
+      <td>11.08</td>
+      <td>9</td>
+      <td>69.35</td>
+      <td>60.35</td>
+      <td>42</td>
+      <td>64.08</td>
+      <td>68.84</td>
+      <td>73.65</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <td>Roma</td>
+      <td>Level 1</td>
+      <td>2054</td>
+      <td>17.21</td>
+      <td>9.33</td>
+      <td>11.45</td>
+      <td>6</td>
+      <td>63.10</td>
+      <td>57.10</td>
+      <td>27</td>
+      <td>57.63</td>
+      <td>62.66</td>
+      <td>67.51</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <td>AC Milan</td>
+      <td>Level 1</td>
+      <td>2032</td>
+      <td>16.06</td>
+      <td>10.20</td>
+      <td>11.74</td>
+      <td>6</td>
+      <td>59.91</td>
+      <td>53.91</td>
+      <td>34</td>
+      <td>54.42</td>
+      <td>59.53</td>
+      <td>64.45</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <td>Fiorentina</td>
+      <td>Level 1</td>
+      <td>2003</td>
+      <td>13.05</td>
+      <td>11.09</td>
+      <td>13.86</td>
+      <td>2</td>
+      <td>53.00</td>
+      <td>51.00</td>
+      <td>24</td>
+      <td>47.63</td>
+      <td>52.47</td>
+      <td>57.33</td>
+      <td>77</td>
+    </tr>
+    <tr>
+      <td>Bologna</td>
+      <td>Level 1</td>
+      <td>1997</td>
+      <td>13.92</td>
+      <td>12.18</td>
+      <td>11.90</td>
+      <td>3</td>
+      <td>53.66</td>
+      <td>50.66</td>
+      <td>29</td>
+      <td>48.22</td>
+      <td>53.10</td>
+      <td>57.97</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>Lazio Roma</td>
+      <td>Level 1</td>
+      <td>1994</td>
+      <td>13.34</td>
+      <td>12.72</td>
+      <td>11.94</td>
+      <td>3</td>
+      <td>51.97</td>
+      <td>48.97</td>
+      <td>28</td>
+      <td>46.55</td>
+      <td>51.38</td>
+      <td>56.22</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <td>Como</td>
+      <td>Level 1</td>
+      <td>1965</td>
+      <td>12.13</td>
+      <td>12.89</td>
+      <td>12.98</td>
+      <td>4</td>
+      <td>49.37</td>
+      <td>45.37</td>
+      <td>26</td>
+      <td>44.03</td>
+      <td>48.75</td>
+      <td>53.57</td>
+      <td>77</td>
+    </tr>
+    <tr>
+      <td>Torino</td>
+      <td>Level 1</td>
+      <td>1944</td>
+      <td>11.61</td>
+      <td>13.37</td>
+      <td>13.02</td>
+      <td>4</td>
+      <td>47.86</td>
+      <td>43.86</td>
+      <td>23</td>
+      <td>42.45</td>
+      <td>47.15</td>
+      <td>52.11</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <td>Cremonese</td>
+      <td>Level 1</td>
+      <td>1929</td>
+      <td>11.59</td>
+      <td>13.58</td>
+      <td>12.83</td>
+      <td>7</td>
+      <td>47.60</td>
+      <td>40.60</td>
+      <td>21</td>
+      <td>42.37</td>
+      <td>47.05</td>
+      <td>51.72</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <td>Genoa</td>
+      <td>Level 1</td>
+      <td>1926</td>
+      <td>9.51</td>
+      <td>14.64</td>
+      <td>13.85</td>
+      <td>2</td>
+      <td>42.39</td>
+      <td>40.39</td>
+      <td>21</td>
+      <td>37.11</td>
+      <td>41.83</td>
+      <td>46.50</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <td>Udinese</td>
+      <td>Level 1</td>
+      <td>1923</td>
+      <td>11.40</td>
+      <td>13.80</td>
+      <td>12.81</td>
+      <td>7</td>
+      <td>47.00</td>
+      <td>40.00</td>
+      <td>23</td>
+      <td>41.80</td>
+      <td>46.33</td>
+      <td>51.13</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <td>Sassuolo</td>
+      <td>Level 1</td>
+      <td>1916</td>
+      <td>10.34</td>
+      <td>15.88</td>
+      <td>11.78</td>
+      <td>3</td>
+      <td>42.80</td>
+      <td>39.80</td>
+      <td>19</td>
+      <td>37.56</td>
+      <td>42.15</td>
+      <td>46.93</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <td>Cagliari</td>
+      <td>Level 1</td>
+      <td>1906</td>
+      <td>9.79</td>
+      <td>15.52</td>
+      <td>12.69</td>
+      <td>4</td>
+      <td>42.07</td>
+      <td>38.07</td>
+      <td>19</td>
+      <td>36.81</td>
+      <td>41.38</td>
+      <td>46.17</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <td>Pisa</td>
+      <td>Level 1</td>
+      <td>1890</td>
+      <td>8.30</td>
+      <td>17.22</td>
+      <td>12.48</td>
+      <td>1</td>
+      <td>37.37</td>
+      <td>36.37</td>
+      <td>14</td>
+      <td>32.15</td>
+      <td>36.68</td>
+      <td>41.38</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <td>Parma</td>
+      <td>Level 1</td>
+      <td>1886</td>
+      <td>8.24</td>
+      <td>17.27</td>
+      <td>12.49</td>
+      <td>1</td>
+      <td>37.21</td>
+      <td>36.21</td>
+      <td>10</td>
+      <td>32.03</td>
+      <td>36.55</td>
+      <td>41.25</td>
+      <td>65</td>
+    </tr>
+    <tr>
+      <td>Hellas Verona</td>
+      <td>Level 1</td>
+      <td>1868</td>
+      <td>7.45</td>
+      <td>17.52</td>
+      <td>13.03</td>
+      <td>2</td>
+      <td>35.38</td>
+      <td>33.38</td>
+      <td>11</td>
+      <td>30.26</td>
+      <td>34.67</td>
+      <td>39.28</td>
+      <td>64</td>
+    </tr>
+    <tr>
+      <td>Lecce</td>
+      <td>Level 1</td>
+      <td>1855</td>
+      <td>7.12</td>
+      <td>18.97</td>
+      <td>11.92</td>
+      <td>1</td>
+      <td>33.27</td>
+      <td>32.27</td>
+      <td>11</td>
+      <td>28.18</td>
+      <td>32.61</td>
+      <td>37.11</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <td>Venezia</td>
+      <td>Level 2</td>
+      <td>1839</td>
+      <td>15.55</td>
+      <td>8.50</td>
+      <td>13.96</td>
+      <td>0</td>
+      <td>60.59</td>
+      <td>60.59</td>
+      <td>32</td>
+      <td>55.12</td>
+      <td>60.14</td>
+      <td>65.05</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>Spezia</td>
+      <td>Level 2</td>
+      <td>1832</td>
+      <td>14.34</td>
+      <td>9.64</td>
+      <td>14.02</td>
+      <td>0</td>
+      <td>57.03</td>
+      <td>57.03</td>
+      <td>30</td>
+      <td>51.44</td>
+      <td>56.49</td>
+      <td>61.49</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>Palermo</td>
+      <td>Level 2</td>
+      <td>1831</td>
+      <td>16.22</td>
+      <td>8.72</td>
+      <td>13.06</td>
+      <td>0</td>
+      <td>61.71</td>
+      <td>61.71</td>
+      <td>36</td>
+      <td>56.23</td>
+      <td>61.27</td>
+      <td>66.14</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <td>Empoli</td>
+      <td>Level 2</td>
+      <td>1820</td>
+      <td>14.57</td>
+      <td>10.26</td>
+      <td>13.18</td>
+      <td>0</td>
+      <td>56.88</td>
+      <td>56.88</td>
+      <td>30</td>
+      <td>51.45</td>
+      <td>56.44</td>
+      <td>61.30</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>Frosinone</td>
+      <td>Level 2</td>
+      <td>1806</td>
+      <td>14.94</td>
+      <td>9.77</td>
+      <td>13.29</td>
+      <td>0</td>
+      <td>58.10</td>
+      <td>58.10</td>
+      <td>30</td>
+      <td>52.69</td>
+      <td>57.51</td>
+      <td>62.52</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <td>Catanzaro</td>
+      <td>Level 2</td>
+      <td>1805</td>
+      <td>12.97</td>
+      <td>9.77</td>
+      <td>15.26</td>
+      <td>0</td>
+      <td>54.17</td>
+      <td>54.17</td>
+      <td>30</td>
+      <td>48.82</td>
+      <td>53.57</td>
+      <td>58.51</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <td>Cesena</td>
+      <td>Level 2</td>
+      <td>1802</td>
+      <td>14.49</td>
+      <td>10.20</td>
+      <td>13.31</td>
+      <td>0</td>
+      <td>56.77</td>
+      <td>56.77</td>
+      <td>28</td>
+      <td>51.30</td>
+      <td>56.28</td>
+      <td>61.09</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>Modena</td>
+      <td>Level 2</td>
+      <td>1802</td>
+      <td>14.61</td>
+      <td>10.12</td>
+      <td>13.27</td>
+      <td>0</td>
+      <td>57.10</td>
+      <td>57.10</td>
+      <td>29</td>
+      <td>51.58</td>
+      <td>56.57</td>
+      <td>61.51</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <td>Juve Stabia</td>
+      <td>Level 2</td>
+      <td>1786</td>
+      <td>11.88</td>
+      <td>10.76</td>
+      <td>15.36</td>
+      <td>0</td>
+      <td>51.00</td>
+      <td>51.00</td>
+      <td>22</td>
+      <td>45.49</td>
+      <td>50.45</td>
+      <td>55.40</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <td>Sudtirol</td>
+      <td>Level 2</td>
+      <td>1783</td>
+      <td>12.83</td>
+      <td>11.84</td>
+      <td>13.33</td>
+      <td>0</td>
+      <td>51.82</td>
+      <td>51.82</td>
+      <td>23</td>
+      <td>46.37</td>
+      <td>51.27</td>
+      <td>56.26</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <td>Monza</td>
+      <td>Level 2</td>
+      <td>1773</td>
+      <td>12.26</td>
+      <td>12.40</td>
+      <td>13.34</td>
+      <td>0</td>
+      <td>50.13</td>
+      <td>50.13</td>
+      <td>26</td>
+      <td>44.78</td>
+      <td>49.54</td>
+      <td>54.46</td>
+      <td>77</td>
+    </tr>
+    <tr>
+      <td>Carrarese</td>
+      <td>Level 2</td>
+      <td>1773</td>
+      <td>12.38</td>
+      <td>11.22</td>
+      <td>14.40</td>
+      <td>0</td>
+      <td>51.53</td>
+      <td>51.53</td>
+      <td>28</td>
+      <td>46.12</td>
+      <td>50.91</td>
+      <td>55.86</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <td>Reggiana 1919</td>
+      <td>Level 2</td>
+      <td>1770</td>
+      <td>12.37</td>
+      <td>12.28</td>
+      <td>13.35</td>
+      <td>0</td>
+      <td>50.46</td>
+      <td>50.46</td>
+      <td>28</td>
+      <td>45.19</td>
+      <td>49.90</td>
+      <td>54.71</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <td>Bari</td>
+      <td>Level 2</td>
+      <td>1754</td>
+      <td>10.66</td>
+      <td>13.98</td>
+      <td>13.36</td>
+      <td>0</td>
+      <td>45.33</td>
+      <td>45.33</td>
+      <td>22</td>
+      <td>39.90</td>
+      <td>44.79</td>
+      <td>49.71</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <td>Mantova</td>
+      <td>Level 2</td>
+      <td>1741</td>
+      <td>10.63</td>
+      <td>15.09</td>
+      <td>12.28</td>
+      <td>0</td>
+      <td>44.17</td>
+      <td>44.17</td>
+      <td>19</td>
+      <td>38.80</td>
+      <td>43.53</td>
+      <td>48.35</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <td>Avellino</td>
+      <td>Level 2</td>
+      <td>1737</td>
+      <td>10.79</td>
+      <td>13.97</td>
+      <td>13.24</td>
+      <td>0</td>
+      <td>45.62</td>
+      <td>45.62</td>
+      <td>24</td>
+      <td>40.36</td>
+      <td>45.04</td>
+      <td>49.88</td>
+      <td>73</td>
+    </tr>
+    <tr>
+      <td>Sampdoria</td>
+      <td>Level 2</td>
+      <td>1736</td>
+      <td>9.78</td>
+      <td>16.03</td>
+      <td>12.20</td>
+      <td>0</td>
+      <td>41.52</td>
+      <td>41.52</td>
+      <td>18</td>
+      <td>36.24</td>
+      <td>40.96</td>
+      <td>45.69</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <td>Padova</td>
+      <td>Level 2</td>
+      <td>1697</td>
+      <td>8.21</td>
+      <td>16.92</td>
+      <td>12.87</td>
+      <td>0</td>
+      <td>37.50</td>
+      <td>37.50</td>
+      <td>17</td>
+      <td>32.28</td>
+      <td>36.89</td>
+      <td>41.52</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <td>Virtus Entella</td>
+      <td>Level 2</td>
+      <td>1684</td>
+      <td>8.66</td>
+      <td>15.71</td>
+      <td>13.63</td>
+      <td>0</td>
+      <td>39.61</td>
+      <td>39.61</td>
+      <td>18</td>
+      <td>34.42</td>
+      <td>38.92</td>
+      <td>43.59</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <td>Pescara</td>
+      <td>Level 2</td>
+      <td>1673</td>
+      <td>7.29</td>
+      <td>18.21</td>
+      <td>12.50</td>
+      <td>0</td>
+      <td>34.37</td>
+      <td>34.37</td>
+      <td>9</td>
+      <td>29.29</td>
+      <td>33.74</td>
+      <td>38.38</td>
+      <td>64</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const table = document.querySelector('table.sortable');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+
+            const divColIndex = headers.indexOf("Division");
+            const confColIndex = headers.indexOf("Level");
+
+            const regionFilter = document.getElementById("regionFilter");
+            const regionLabel = document.getElementById("regionLabel");
+            const filterControls = document.getElementById("filterControls");
+
+            const divisionSet = new Set();
+            const conferenceSet = new Set();
+
+            rows.forEach(row => {
+                if (divColIndex !== -1) {
+                    const divVal = row.cells[divColIndex].textContent.trim();
+                    if (divVal) divisionSet.add(divVal);
+                }
+                if (confColIndex !== -1) {
+                    const confVal = row.cells[confColIndex].textContent.trim();
+                    if (confVal) conferenceSet.add(confVal);
+                }
+            });
+
+            const sortedDivisions = Array.from(divisionSet).sort();
+            const sortedConfs = Array.from(conferenceSet).sort();
+
+            sortedDivisions.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                regionFilter.appendChild(opt);
+            });
+
+            sortedConfs.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                regionFilter.appendChild(opt);
+            });
+
+            if (sortedDivisions.length > 0 || sortedConfs.length > 0) {
+                regionLabel.style.display = "inline-block";
+                filterControls.style.display = "block";
+            }
+
+            regionFilter.addEventListener("change", function () {
+                const selected = regionFilter.value;
+
+                rows.forEach(row => {
+                    const divVal = divColIndex !== -1 ? row.cells[divColIndex].textContent.trim() : "";
+                    const confVal = confColIndex !== -1 ? row.cells[confColIndex].textContent.trim() : "";
+
+                    const matches = !selected || divVal === selected || confVal === selected;
+                    row.style.display = matches ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
