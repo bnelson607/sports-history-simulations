@@ -179,13 +179,17 @@ window.addEventListener('load', () => {
 });
 
 
-// Automatically fill in the last update date
 document.addEventListener("DOMContentLoaded", function() {
     const dateSpan = document.getElementById('update-date');
-    if (!dateSpan) return; // skip if no span exists
+    if (!dateSpan) return;
 
-    const today = new Date();
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    dateSpan.textContent = today.toLocaleDateString(undefined, options);
+    // Fetch the JSON file in the same directory as the HTML
+    fetch("sim_date.json")
+        .then(response => response.json())
+        .then(data => {
+            dateSpan.textContent = data.simulation_date;
+        })
+        .catch(err => {
+            console.error("Failed to load simulation date:", err);
+        });
 });
-
