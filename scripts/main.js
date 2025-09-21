@@ -177,3 +177,15 @@ window.addEventListener('load', () => {
   // Also attach your existing iframe resize listeners here
   attachIframeListeners();
 });
+
+
+// Automatically fill in the last update date
+document.addEventListener("DOMContentLoaded", function() {
+    const dateSpan = document.getElementById('update-date');
+    if (!dateSpan) return; // skip if no span exists
+
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    dateSpan.textContent = today.toLocaleDateString(undefined, options);
+});
+
