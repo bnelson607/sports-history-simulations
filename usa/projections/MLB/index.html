@@ -44,34 +44,6 @@
             
                 
             <details>
-                <summary>Comparisons</summary>
-                <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How does each team's actual results compare to their simulated results, Elo rating, opponent average Elo rating, and relative position of their actual wins within simulated outcomes?</i>
-                </div>
-                <div class="tab-buttons">
-                    <button onclick="showTab('comparisons', 'comparisons_sim_vs_actual')" class="active">Simulated Wins</button>
-                    <button onclick="showTab('comparisons', 'comparisons_elo_vs_actual')">Team Elo</button>
-                    <button onclick="showTab('comparisons', 'comparisons_opponent_elo_vs_actual')">Opponent Elo</button>
-                </div>
-                <div class="tab-content comparisons active" id="comparisons_sim_vs_actual">
-                    <div class="iframe-wrapper">
-                        <iframe data-src="sim_vs_actual_graph.html"></iframe>
-                    </div>
-                </div>
-                <div class="tab-content comparisons" id="comparisons_elo_vs_actual">
-                    <div class="iframe-wrapper">
-                        <iframe data-src="team_elo_vs_actual_graph.html"></iframe>
-                    </div>
-                </div>
-                <div class="tab-content comparisons" id="comparisons_opponent_elo_vs_actual">
-                    <div class="iframe-wrapper">
-                        <iframe data-src="opponent_elo_vs_actual_graph.html"></iframe>
-                    </div>
-                </div>
-            </details>
-            
-                
-            <details>
                 <summary>Division Heatmaps</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
                     <i>Where is each team expected to finish within their division?</i>
@@ -125,9 +97,139 @@
                     <iframe data-src="league_finish_heatmap.html"></iframe>
                 </div>
             </details>
+
+
+            <details>
+                <summary>Win Totals in Perspective</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How does each team's actual results compare to their simulated results, Elo rating, opponent average Elo rating, and relative position of their actual wins within simulated outcomes?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('comparisons', 'comparisons_sim_vs_actual')" class="active">Simulated Wins</button>
+                    <button onclick="showTab('comparisons', 'comparisons_elo_vs_actual')">Team Elo</button>
+                    <button onclick="showTab('comparisons', 'comparisons_opponent_elo_vs_actual')">Opponent Elo</button>
+                </div>
+                <div class="tab-content comparisons active" id="comparisons_sim_vs_actual">
+                    <div class="iframe-wrapper">
+                        <iframe data-src="sim_vs_actual_graph.html"></iframe>
+                    </div>
+                </div>
+                <div class="tab-content comparisons" id="comparisons_elo_vs_actual">
+                    <div class="iframe-wrapper">
+                        <iframe data-src="team_elo_vs_actual_graph.html"></iframe>
+                    </div>
+                </div>
+                <div class="tab-content comparisons" id="comparisons_opponent_elo_vs_actual">
+                    <div class="iframe-wrapper">
+                        <iframe data-src="opponent_elo_vs_actual_graph.html"></iframe>
+                    </div>
+                </div>
+            </details>
+            
             
                 
-            <h2 class="sim-subsection">Season Trajectories</h2>
+            <h2 class="sim-subsection">Playoffs</h2>
+            
+            
+            <details>
+                <summary>Playoff Seed Probabilities</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How likely is each team to earn each playoff seed?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('preseason_playoff_seed', 'preseason_playoff_seed_american')" class="active">American</button>
+                    <button onclick="showTab('preseason_playoff_seed', 'preseason_playoff_seed_national')">National</button>
+                </div>
+                <div class="tab-content preseason_playoff_seed active" id="preseason_playoff_seed_american">
+                    <iframe data-src="American_playoff_heatmap.html"></iframe>
+                </div>
+                <div class="tab-content preseason_playoff_seed" id="preseason_playoff_seed_national">
+                    <iframe data-src="National_playoff_heatmap.html"></iframe>
+                </div>
+            </details>
+            
+                
+            <details>
+                <summary>Playoff Seed Wins</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How many wins does the simulation believe each seed will have?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('playoff_seed_wins', 'playoff_seed_wins_american')" class="active">American</button>
+                    <button onclick="showTab('playoff_seed_wins', 'playoff_seed_wins_national')">National</button>
+                </div>
+                <div class="tab-content playoff_seed_wins active" id="playoff_seed_wins_american">
+                    <iframe data-src="American_playoff_seed_wins.html"></iframe>
+                </div>
+                <div class="tab-content playoff_seed_wins" id="playoff_seed_wins_national">
+                    <iframe data-src="National_playoff_seed_wins.html"></iframe>
+                </div>
+            </details>
+            
+                
+            <details>
+                <summary>Current Playoff Simulation</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How does the simulation expect the playoffs to unfold?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_playoff_adv')" class="active">Playoff Progression</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_wild_card_round')">Wild Card Round</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_lds')">LDS</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_lcs')">LCS</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_world_series')">World Series</button>
+                </div>
+                
+                <!-- Playoff Advancement -->
+                <div class="tab-content preseason_playoff active" id="preseason_playoff_playoff_adv">
+                    <iframe data-src="playoff_success_preseason_playoff.html"></iframe>
+                </div>
+                
+                <!-- Wild Card Round -->
+                <div class="tab-content preseason_playoff" id="preseason_playoff_wild_card_round">
+                    <div class="iframe-block">
+                        <div class="graph-label">American League</div>
+                        <iframe data-src="wild_card_preseason_playoff_american.html"></iframe>
+                    </div>
+                    <div class="iframe-block">
+                        <div class="graph-label">National League</div>
+                        <iframe data-src="wild_card_preseason_playoff_national.html"></iframe>
+                    </div>
+                </div>
+                
+                <!-- LDS -->
+                <div class="tab-content preseason_playoff" id="preseason_playoff_lds">
+                    <div class="iframe-block">
+                        <div class="graph-label">American League</div>
+                        <iframe data-src="lds_preseason_playoff_american.html"></iframe>
+                    </div>
+                    <div class="iframe-block">
+                        <div class="graph-label">National League</div>
+                        <iframe data-src="lds_preseason_playoff_national.html"></iframe>
+                    </div>
+                </div>
+                
+                <!-- LCS -->
+                <div class="tab-content preseason_playoff" id="preseason_playoff_lcs">
+                    <div class="iframe-block">
+                        <div class="graph-label">American League</div>
+                        <iframe data-src="lcs_preseason_playoff_american.html"></iframe>
+                    </div>
+                    <div class="iframe-block">
+                        <div class="graph-label">National League</div>
+                        <iframe data-src="lcs_preseason_playoff_national.html"></iframe>
+                    </div>
+                </div>
+                
+                <!-- World Series -->
+                <div class="tab-content preseason_playoff" id="preseason_playoff_world_series">
+                    <iframe data-src="world_series_preseason_playoff.html"></iframe>
+                </div>
+            </details>
+
+
+
+            <h2 class="sim-subsection">Season Trends</h2>
             
                 
             <details>
@@ -265,105 +367,6 @@
                 </div>
             </details>
             
-                
-            <h2 class="sim-subsection">Playoffs</h2>
-            
-            
-            <details>
-                <summary>Playoff Seed Probabilities</summary>
-                <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How likely is each team to earn each playoff seed?</i>
-                </div>
-                <div class="tab-buttons">
-                    <button onclick="showTab('preseason_playoff_seed', 'preseason_playoff_seed_american')" class="active">American</button>
-                    <button onclick="showTab('preseason_playoff_seed', 'preseason_playoff_seed_national')">National</button>
-                </div>
-                <div class="tab-content preseason_playoff_seed active" id="preseason_playoff_seed_american">
-                    <iframe data-src="American_playoff_heatmap.html"></iframe>
-                </div>
-                <div class="tab-content preseason_playoff_seed" id="preseason_playoff_seed_national">
-                    <iframe data-src="National_playoff_heatmap.html"></iframe>
-                </div>
-            </details>
-            
-                
-            <details>
-                <summary>Playoff Seed Wins</summary>
-                <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How many wins does the simulation believe each seed will have?</i>
-                </div>
-                <div class="tab-buttons">
-                    <button onclick="showTab('playoff_seed_wins', 'playoff_seed_wins_american')" class="active">American</button>
-                    <button onclick="showTab('playoff_seed_wins', 'playoff_seed_wins_national')">National</button>
-                </div>
-                <div class="tab-content playoff_seed_wins active" id="playoff_seed_wins_american">
-                    <iframe data-src="American_playoff_seed_wins.html"></iframe>
-                </div>
-                <div class="tab-content playoff_seed_wins" id="playoff_seed_wins_national">
-                    <iframe data-src="National_playoff_seed_wins.html"></iframe>
-                </div>
-            </details>
-            
-                
-            <details>
-                <summary>Current Playoff Simulation</summary>
-                <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How does the simulation expect the playoffs to unfold?</i>
-                </div>
-                <div class="tab-buttons">
-                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_playoff_adv')" class="active">Playoff Progression</button>
-                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_wild_card_round')">Wild Card Round</button>
-                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_lds')">LDS</button>
-                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_lcs')">LCS</button>
-                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_world_series')">World Series</button>
-                </div>
-                
-                <!-- Playoff Advancement -->
-                <div class="tab-content preseason_playoff active" id="preseason_playoff_playoff_adv">
-                    <iframe data-src="playoff_success_preseason_playoff.html"></iframe>
-                </div>
-                
-                <!-- Wild Card Round -->
-                <div class="tab-content preseason_playoff" id="preseason_playoff_wild_card_round">
-                    <div class="iframe-block">
-                        <div class="graph-label">American League</div>
-                        <iframe data-src="wild_card_preseason_playoff_american.html"></iframe>
-                    </div>
-                    <div class="iframe-block">
-                        <div class="graph-label">National League</div>
-                        <iframe data-src="wild_card_preseason_playoff_national.html"></iframe>
-                    </div>
-                </div>
-                
-                <!-- LDS -->
-                <div class="tab-content preseason_playoff" id="preseason_playoff_lds">
-                    <div class="iframe-block">
-                        <div class="graph-label">American League</div>
-                        <iframe data-src="lds_preseason_playoff_american.html"></iframe>
-                    </div>
-                    <div class="iframe-block">
-                        <div class="graph-label">National League</div>
-                        <iframe data-src="lds_preseason_playoff_national.html"></iframe>
-                    </div>
-                </div>
-                
-                <!-- LCS -->
-                <div class="tab-content preseason_playoff" id="preseason_playoff_lcs">
-                    <div class="iframe-block">
-                        <div class="graph-label">American League</div>
-                        <iframe data-src="lcs_preseason_playoff_american.html"></iframe>
-                    </div>
-                    <div class="iframe-block">
-                        <div class="graph-label">National League</div>
-                        <iframe data-src="lcs_preseason_playoff_national.html"></iframe>
-                    </div>
-                </div>
-                
-                <!-- World Series -->
-                <div class="tab-content preseason_playoff" id="preseason_playoff_world_series">
-                    <iframe data-src="world_series_preseason_playoff.html"></iframe>
-                </div>
-            </details>
     
     
             <h2 class="sim-subsection">Game Logs</h2>
