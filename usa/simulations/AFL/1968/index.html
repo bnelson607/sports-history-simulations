@@ -173,7 +173,7 @@
             
             
             <details class="plot-section" data-expanded="false">
-                <summary>Season Summary</summary>
+                <summary>Simulated Standings</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
                     <i>How many games would we have expected each team to win at the beginning of the season?</i>
                 </div>
@@ -181,8 +181,30 @@
             </details>
             
                 
+            <details class="plot-section" data-expanded="false">
+                <summary>League & Conference Heatmaps</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>Where was each team expected to finish within their conference and the league as a whole at the beginning of the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('league_heatmap', 'league_heatmap_East')" class="active">Eastern</button>
+                    <button onclick="showTab('league_heatmap', 'league_heatmap_West')">Western</button>
+                    <button onclick="showTab('league_heatmap', 'league_heatmap_AFL')">AFL</button>
+                </div>
+                <div class="tab-content league_heatmap active" id="league_heatmap_East">
+                    <iframe data-src="East_finish_heatmap.html"></iframe>
+                </div>
+                <div class="tab-content league_heatmap" id="league_heatmap_West">
+                    <iframe data-src="West_finish_heatmap.html"></iframe>
+                </div>
+                <div class="tab-content league_heatmap" id="league_heatmap_AFL">
+                    <iframe data-src="league_finish_heatmap.html"></iframe>
+                </div>
+            </details>
+
+
             <details>
-                <summary>Comparisons</summary>
+                <summary>Win Total Comparisons</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
                     <i>
                     How did each team's actual results compare to their simulated results, Elo rating,
@@ -218,108 +240,31 @@
             </details>
             
                 
-            <details class="plot-section" data-expanded="false">
-                <summary>League & Conference Heatmaps</summary>
-                <div class="subheading" style="margin: 0.75em 0;">
-                    <i>Where was each team expected to finish within their conference and the league as a whole at the beginning of the season?</i>
-                </div>
-                <div class="tab-buttons">
-                    <button onclick="showTab('league_heatmap', 'league_heatmap_East')" class="active">Eastern</button>
-                    <button onclick="showTab('league_heatmap', 'league_heatmap_West')">Western</button>
-                    <button onclick="showTab('league_heatmap', 'league_heatmap_AFL')">AFL</button>
-                </div>
-                <div class="tab-content league_heatmap active" id="league_heatmap_East">
-                    <iframe data-src="East_finish_heatmap.html"></iframe>
-                </div>
-                <div class="tab-content league_heatmap" id="league_heatmap_West">
-                    <iframe data-src="West_finish_heatmap.html"></iframe>
-                </div>
-                <div class="tab-content league_heatmap" id="league_heatmap_AFL">
-                    <iframe data-src="league_finish_heatmap.html"></iframe>
-                </div>
-            </details>
-            
-                
-                
-            <h2 class="sim-subsection">Season Trajectories</h2>
-            
-                
-            <details class="plot-section" data-expanded="false">
-                <summary>Elo Ratings</summary>
-                <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How did each team's Elo rating change throughout the season?</i>
-                </div>
-                <div class="tab-buttons">
-                    <button onclick="showTab('elo', 'elo_East')" class="active">Eastern</button>
-                    <button onclick="showTab('elo', 'elo_West')">Western</button>
-                </div>
-                <div class="tab-content elo active" id="elo_East">
-                    <iframe data-src="East_elo_ratings.html"></iframe>
-                </div>
-                <div class="tab-content elo" id="elo_West">
-                    <iframe data-src="West_elo_ratings.html"></iframe>
-                </div>
-            </details>
-            
-                
-            <details class="plot-section" data-expanded="false">
-                <summary>Simulated Wins</summary>
-                <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How did each team's simulated win total change throughout the season?</i>
-                </div>
-                <div class="tab-buttons">
-                    <button onclick="showTab('wins', 'wins_East')" class="active">Eastern</button>
-                    <button onclick="showTab('wins', 'wins_West')">Western</button>
-                </div>
-                <div class="tab-content wins active" id="wins_East">
-                    <iframe data-src="East_simulated_wins.html"></iframe>
-                </div>
-                <div class="tab-content wins" id="wins_West">
-                    <iframe data-src="West_simulated_wins.html"></iframe>
-                </div>
-            </details>
-            
-                
-            <details class="plot-section" data-expanded="false">
-                <summary>Division Champion Probabilities</summary>
-                <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How did each team's probability of winning the division change throughout the season?</i>
-                </div>
-                <div class="tab-buttons">
-                    <button onclick="showTab('div_prob', 'div_prob_East')" class="active">Eastern</button>
-                    <button onclick="showTab('div_prob', 'div_prob_West')">Western</button>
-                </div>
-                <div class="tab-content div_prob active" id="div_prob_East">
-                    <iframe data-src="East_division_probabilities.html"></iframe>
-                </div>
-                <div class="tab-content div_prob active" id="div_prob_West">
-                    <iframe data-src="West_division_probabilities.html"></iframe>
-                </div>
-            </details>
-            
-                
-            <details class="plot-section" data-expanded="false">
-                <summary>Playoff Probabilities</summary>
-                <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How did each team's probability of making the playoffs change throughout the season?</i>
-                </div>
-                <div class="tab-buttons">
-                    <button onclick="showTab('playoff_prob', 'playoff_prob_East')" class="active">Eastern</button>
-                    <button onclick="showTab('playoff_prob', 'playoff_prob_West')">Western</button>
-                </div>
-                <div class="tab-content playoff_prob active" id="playoff_prob_East">
-                    <iframe data-src="East_playoff_probabilities.html"></iframe>
-                </div>
-                <div class="tab-content playoff_prob" id="playoff_prob_West">
-                    <iframe data-src="West_playoff_probabilities.html"></iframe>
-                </div>
-            </details>
-            
-                
                 
             <h2 class="sim-subsection">Playoffs</h2>
-            
+
+            <details>
+                <summary>Preseason Playoff Simulation</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did the simulation expect the playoffs to unfold at the beginning of the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_playoff_adv')" class="active">Playoff Progression</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_championship_game')">Championship Game</button>
+                </div>
                 
+                <!-- Playoff Advancement -->
+                <div class="tab-content preseason_playoff active" id="preseason_playoff_playoff_adv">
+                    <iframe data-src="playoff_success_preseason_playoff.html"></iframe>
+                </div>
+                
+                <!-- Championship Game -->
+                <div class="tab-content preseason_playoff" id="preseason_playoff_championship_game">
+                    <iframe data-src="championship_game_preseason_playoff.html"></iframe>
+                </div>
+            </details>
+            
+            
             <details>
                 <summary>Playoff Seed Probabilities</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
@@ -357,28 +302,6 @@
             
                 
             <details>
-                <summary>Preseason Playoff Simulation</summary>
-                <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How did the simulation expect the playoffs to unfold at the beginning of the season?</i>
-                </div>
-                <div class="tab-buttons">
-                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_playoff_adv')" class="active">Playoff Progression</button>
-                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_championship_game')">Championship Game</button>
-                </div>
-                
-                <!-- Playoff Advancement -->
-                <div class="tab-content preseason_playoff active" id="preseason_playoff_playoff_adv">
-                    <iframe data-src="playoff_success_preseason_playoff.html"></iframe>
-                </div>
-                
-                <!-- Championship Game -->
-                <div class="tab-content preseason_playoff" id="preseason_playoff_championship_game">
-                    <iframe data-src="championship_game_preseason_playoff.html"></iframe>
-                </div>
-            </details>
-            
-                
-            <details>
                 <summary>End-of-Season Playoff Simulation</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
                     <i>How did the simulation expect the actual playoff bracket to unfold after the end of the regular season?</i>
@@ -398,6 +321,82 @@
                     <iframe data-src="championship_game_end_of_regular_season.html"></iframe>
                 </div>
             </details>
+
+
+
+            <h2 class="sim-subsection">Season Trends</h2>
+            
+            <details class="plot-section" data-expanded="false">
+                <summary>Elo Ratings</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did each team's Elo rating change throughout the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('elo', 'elo_East')" class="active">Eastern</button>
+                    <button onclick="showTab('elo', 'elo_West')">Western</button>
+                </div>
+                <div class="tab-content elo active" id="elo_East">
+                    <iframe data-src="East_elo_ratings.html"></iframe>
+                </div>
+                <div class="tab-content elo" id="elo_West">
+                    <iframe data-src="West_elo_ratings.html"></iframe>
+                </div>
+            </details>
+            
+                
+            <details class="plot-section" data-expanded="false">
+                <summary>Simulated Wins</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did each team's simulated win total change throughout the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('wins', 'wins_East')" class="active">Eastern</button>
+                    <button onclick="showTab('wins', 'wins_West')">Western</button>
+                </div>
+                <div class="tab-content wins active" id="wins_East">
+                    <iframe data-src="East_simulated_wins.html"></iframe>
+                </div>
+                <div class="tab-content wins" id="wins_West">
+                    <iframe data-src="West_simulated_wins.html"></iframe>
+                </div>
+            </details>
+            
+                
+            <details class="plot-section" data-expanded="false">
+                <summary>Division Championship Probabilities</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did each team's probability of winning the division change throughout the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('div_prob', 'div_prob_East')" class="active">Eastern</button>
+                    <button onclick="showTab('div_prob', 'div_prob_West')">Western</button>
+                </div>
+                <div class="tab-content div_prob active" id="div_prob_East">
+                    <iframe data-src="East_division_probabilities.html"></iframe>
+                </div>
+                <div class="tab-content div_prob active" id="div_prob_West">
+                    <iframe data-src="West_division_probabilities.html"></iframe>
+                </div>
+            </details>
+            
+                
+            <details class="plot-section" data-expanded="false">
+                <summary>Playoff Probabilities</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did each team's probability of making the playoffs change throughout the season?</i>
+                </div>
+                <div class="tab-buttons">
+                    <button onclick="showTab('playoff_prob', 'playoff_prob_East')" class="active">Eastern</button>
+                    <button onclick="showTab('playoff_prob', 'playoff_prob_West')">Western</button>
+                </div>
+                <div class="tab-content playoff_prob active" id="playoff_prob_East">
+                    <iframe data-src="East_playoff_probabilities.html"></iframe>
+                </div>
+                <div class="tab-content playoff_prob" id="playoff_prob_West">
+                    <iframe data-src="West_playoff_probabilities.html"></iframe>
+                </div>
+            </details>
+            
 
 
             <h2 class="sim-subsection">Game Logs</h2>
