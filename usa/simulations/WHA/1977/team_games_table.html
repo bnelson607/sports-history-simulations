@@ -1,0 +1,8210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Birmingham Bulls">Birmingham Bulls</option><option value="Cincinnati Stingers">Cincinnati Stingers</option><option value="Edmonton Oilers">Edmonton Oilers</option><option value="Houston Aeros">Houston Aeros</option><option value="Indianapolis Racers">Indianapolis Racers</option><option value="New England Whalers">New England Whalers</option><option value="Quebec Nordiques">Quebec Nordiques</option><option value="Winnipeg Jets">Winnipeg Jets</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="3" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Tie Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1977-10-12</td>
+      <td>Edmonton Oilers</td>
+      <td>1468.63</td>
+      <td>3</td>
+      <td>Winnipeg Jets</td>
+      <td>1526.73</td>
+      <td>7</td>
+      <td>50.64%</td>
+      <td>44.89%</td>
+      <td>4.47%</td>
+      <td>-7.39</td>
+    </tr>
+    <tr>
+      <td>1977-10-12</td>
+      <td>New England Whalers</td>
+      <td>1487.09</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1535.04</td>
+      <td>0</td>
+      <td>30.65%</td>
+      <td>64.89%</td>
+      <td>4.46%</td>
+      <td>8.15</td>
+    </tr>
+    <tr>
+      <td>1977-10-12</td>
+      <td>Indianapolis Racers</td>
+      <td>1490.36</td>
+      <td>5</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1486.38</td>
+      <td>4</td>
+      <td>37.35%</td>
+      <td>58.18%</td>
+      <td>4.47%</td>
+      <td>4.23</td>
+    </tr>
+    <tr>
+      <td>1977-10-12</td>
+      <td>Winnipeg Jets</td>
+      <td>1526.73</td>
+      <td>7</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1468.63</td>
+      <td>3</td>
+      <td>44.89%</td>
+      <td>50.64%</td>
+      <td>4.47%</td>
+      <td>7.40</td>
+    </tr>
+    <tr>
+      <td>1977-10-12</td>
+      <td>Houston Aeros</td>
+      <td>1535.04</td>
+      <td>0</td>
+      <td>New England Whalers</td>
+      <td>1487.09</td>
+      <td>3</td>
+      <td>64.89%</td>
+      <td>30.65%</td>
+      <td>4.46%</td>
+      <td>-8.16</td>
+    </tr>
+    <tr>
+      <td>1977-10-12</td>
+      <td>Cincinnati Stingers</td>
+      <td>1486.38</td>
+      <td>4</td>
+      <td>Indianapolis Racers</td>
+      <td>1490.36</td>
+      <td>5</td>
+      <td>58.18%</td>
+      <td>37.35%</td>
+      <td>4.47%</td>
+      <td>-4.23</td>
+    </tr>
+    <tr>
+      <td>1977-10-13</td>
+      <td>Quebec Nordiques</td>
+      <td>1527.64</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1534.13</td>
+      <td>5</td>
+      <td>35.95%</td>
+      <td>59.58%</td>
+      <td>4.46%</td>
+      <td>-4.61</td>
+    </tr>
+    <tr>
+      <td>1977-10-13</td>
+      <td>Winnipeg Jets</td>
+      <td>1534.13</td>
+      <td>5</td>
+      <td>Quebec Nordiques</td>
+      <td>1527.64</td>
+      <td>2</td>
+      <td>59.58%</td>
+      <td>35.95%</td>
+      <td>4.46%</td>
+      <td>4.60</td>
+    </tr>
+    <tr>
+      <td>1977-10-14</td>
+      <td>Houston Aeros</td>
+      <td>1526.88</td>
+      <td>3</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1478.13</td>
+      <td>5</td>
+      <td>43.56%</td>
+      <td>51.97%</td>
+      <td>4.47%</td>
+      <td>-4.52</td>
+    </tr>
+    <tr>
+      <td>1977-10-14</td>
+      <td>Quebec Nordiques</td>
+      <td>1523.03</td>
+      <td>2</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1461.24</td>
+      <td>4</td>
+      <td>45.42%</td>
+      <td>50.11%</td>
+      <td>4.47%</td>
+      <td>-4.71</td>
+    </tr>
+    <tr>
+      <td>1977-10-14</td>
+      <td>Edmonton Oilers</td>
+      <td>1461.24</td>
+      <td>4</td>
+      <td>Quebec Nordiques</td>
+      <td>1523.03</td>
+      <td>2</td>
+      <td>50.11%</td>
+      <td>45.42%</td>
+      <td>4.47%</td>
+      <td>4.71</td>
+    </tr>
+    <tr>
+      <td>1977-10-14</td>
+      <td>Birmingham Bulls</td>
+      <td>1478.13</td>
+      <td>5</td>
+      <td>Houston Aeros</td>
+      <td>1526.88</td>
+      <td>3</td>
+      <td>51.97%</td>
+      <td>43.56%</td>
+      <td>4.47%</td>
+      <td>4.52</td>
+    </tr>
+    <tr>
+      <td>1977-10-15</td>
+      <td>Indianapolis Racers</td>
+      <td>1494.59</td>
+      <td>1</td>
+      <td>@ Houston Aeros</td>
+      <td>1522.36</td>
+      <td>5</td>
+      <td>33.18%</td>
+      <td>62.36%</td>
+      <td>4.46%</td>
+      <td>-4.93</td>
+    </tr>
+    <tr>
+      <td>1977-10-15</td>
+      <td>Birmingham Bulls</td>
+      <td>1482.65</td>
+      <td>2</td>
+      <td>@ New England Whalers</td>
+      <td>1495.24</td>
+      <td>5</td>
+      <td>35.15%</td>
+      <td>60.39%</td>
+      <td>4.46%</td>
+      <td>-4.51</td>
+    </tr>
+    <tr>
+      <td>1977-10-15</td>
+      <td>New England Whalers</td>
+      <td>1495.24</td>
+      <td>5</td>
+      <td>Birmingham Bulls</td>
+      <td>1482.65</td>
+      <td>2</td>
+      <td>60.39%</td>
+      <td>35.15%</td>
+      <td>4.46%</td>
+      <td>4.51</td>
+    </tr>
+    <tr>
+      <td>1977-10-15</td>
+      <td>Houston Aeros</td>
+      <td>1522.36</td>
+      <td>5</td>
+      <td>Indianapolis Racers</td>
+      <td>1494.59</td>
+      <td>1</td>
+      <td>62.36%</td>
+      <td>33.18%</td>
+      <td>4.46%</td>
+      <td>4.92</td>
+    </tr>
+    <tr>
+      <td>1977-10-15</td>
+      <td>Cincinnati Stingers</td>
+      <td>1482.15</td>
+      <td>4</td>
+      <td>Winnipeg Jets</td>
+      <td>1538.73</td>
+      <td>5</td>
+      <td>50.85%</td>
+      <td>44.68%</td>
+      <td>4.47%</td>
+      <td>-3.71</td>
+    </tr>
+    <tr>
+      <td>1977-10-15</td>
+      <td>Edmonton Oilers</td>
+      <td>1465.95</td>
+      <td>2</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1518.32</td>
+      <td>6</td>
+      <td>30.11%</td>
+      <td>65.43%</td>
+      <td>4.46%</td>
+      <td>-4.48</td>
+    </tr>
+    <tr>
+      <td>1977-10-15</td>
+      <td>Quebec Nordiques</td>
+      <td>1518.32</td>
+      <td>6</td>
+      <td>Edmonton Oilers</td>
+      <td>1465.95</td>
+      <td>2</td>
+      <td>65.43%</td>
+      <td>30.11%</td>
+      <td>4.46%</td>
+      <td>4.48</td>
+    </tr>
+    <tr>
+      <td>1977-10-15</td>
+      <td>Winnipeg Jets</td>
+      <td>1538.73</td>
+      <td>5</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1482.15</td>
+      <td>4</td>
+      <td>44.68%</td>
+      <td>50.85%</td>
+      <td>4.47%</td>
+      <td>3.72</td>
+    </tr>
+    <tr>
+      <td>1977-10-16</td>
+      <td>Cincinnati Stingers</td>
+      <td>1478.44</td>
+      <td>6</td>
+      <td>New England Whalers</td>
+      <td>1499.75</td>
+      <td>2</td>
+      <td>55.81%</td>
+      <td>39.72%</td>
+      <td>4.47%</td>
+      <td>5.86</td>
+    </tr>
+    <tr>
+      <td>1977-10-16</td>
+      <td>Indianapolis Racers</td>
+      <td>1489.66</td>
+      <td>1</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1542.45</td>
+      <td>9</td>
+      <td>30.06%</td>
+      <td>65.48%</td>
+      <td>4.46%</td>
+      <td>-6.32</td>
+    </tr>
+    <tr>
+      <td>1977-10-16</td>
+      <td>New England Whalers</td>
+      <td>1499.75</td>
+      <td>2</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1478.44</td>
+      <td>6</td>
+      <td>39.72%</td>
+      <td>55.81%</td>
+      <td>4.47%</td>
+      <td>-5.85</td>
+    </tr>
+    <tr>
+      <td>1977-10-16</td>
+      <td>Winnipeg Jets</td>
+      <td>1542.45</td>
+      <td>9</td>
+      <td>Indianapolis Racers</td>
+      <td>1489.66</td>
+      <td>1</td>
+      <td>65.48%</td>
+      <td>30.06%</td>
+      <td>4.46%</td>
+      <td>6.32</td>
+    </tr>
+    <tr>
+      <td>1977-10-18</td>
+      <td>Cincinnati Stingers</td>
+      <td>1484.30</td>
+      <td>1</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1522.80</td>
+      <td>5</td>
+      <td>31.82%</td>
+      <td>63.72%</td>
+      <td>4.46%</td>
+      <td>-4.73</td>
+    </tr>
+    <tr>
+      <td>1977-10-18</td>
+      <td>New England Whalers</td>
+      <td>1493.90</td>
+      <td>2</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1483.34</td>
+      <td>2</td>
+      <td>38.25%</td>
+      <td>57.29%</td>
+      <td>4.47%</td>
+      <td>0.33</td>
+    </tr>
+    <tr>
+      <td>1977-10-18</td>
+      <td>Quebec Nordiques</td>
+      <td>1522.80</td>
+      <td>5</td>
+      <td>Cincinnati Stingers</td>
+      <td>1484.30</td>
+      <td>1</td>
+      <td>63.72%</td>
+      <td>31.82%</td>
+      <td>4.46%</td>
+      <td>4.73</td>
+    </tr>
+    <tr>
+      <td>1977-10-18</td>
+      <td>Indianapolis Racers</td>
+      <td>1483.34</td>
+      <td>2</td>
+      <td>New England Whalers</td>
+      <td>1493.90</td>
+      <td>2</td>
+      <td>57.29%</td>
+      <td>38.25%</td>
+      <td>4.47%</td>
+      <td>-0.34</td>
+    </tr>
+    <tr>
+      <td>1977-10-19</td>
+      <td>New England Whalers</td>
+      <td>1494.23</td>
+      <td>6</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1461.47</td>
+      <td>3</td>
+      <td>41.31%</td>
+      <td>54.22%</td>
+      <td>4.47%</td>
+      <td>6.84</td>
+    </tr>
+    <tr>
+      <td>1977-10-19</td>
+      <td>Edmonton Oilers</td>
+      <td>1461.47</td>
+      <td>3</td>
+      <td>New England Whalers</td>
+      <td>1494.23</td>
+      <td>6</td>
+      <td>54.22%</td>
+      <td>41.31%</td>
+      <td>4.47%</td>
+      <td>-6.84</td>
+    </tr>
+    <tr>
+      <td>1977-10-21</td>
+      <td>Cincinnati Stingers</td>
+      <td>1479.57</td>
+      <td>5</td>
+      <td>@ Houston Aeros</td>
+      <td>1527.28</td>
+      <td>6</td>
+      <td>30.68%</td>
+      <td>64.86%</td>
+      <td>4.46%</td>
+      <td>-2.28</td>
+    </tr>
+    <tr>
+      <td>1977-10-21</td>
+      <td>New England Whalers</td>
+      <td>1501.07</td>
+      <td>5</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1548.77</td>
+      <td>2</td>
+      <td>30.68%</td>
+      <td>64.86%</td>
+      <td>4.46%</td>
+      <td>8.16</td>
+    </tr>
+    <tr>
+      <td>1977-10-21</td>
+      <td>Quebec Nordiques</td>
+      <td>1527.53</td>
+      <td>4</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1483.00</td>
+      <td>4</td>
+      <td>42.97%</td>
+      <td>52.57%</td>
+      <td>4.47%</td>
+      <td>0.17</td>
+    </tr>
+    <tr>
+      <td>1977-10-21</td>
+      <td>Winnipeg Jets</td>
+      <td>1548.77</td>
+      <td>2</td>
+      <td>New England Whalers</td>
+      <td>1501.07</td>
+      <td>5</td>
+      <td>64.86%</td>
+      <td>30.68%</td>
+      <td>4.46%</td>
+      <td>-8.15</td>
+    </tr>
+    <tr>
+      <td>1977-10-21</td>
+      <td>Indianapolis Racers</td>
+      <td>1483.00</td>
+      <td>4</td>
+      <td>Quebec Nordiques</td>
+      <td>1527.53</td>
+      <td>4</td>
+      <td>52.57%</td>
+      <td>42.97%</td>
+      <td>4.47%</td>
+      <td>-0.17</td>
+    </tr>
+    <tr>
+      <td>1977-10-21</td>
+      <td>Houston Aeros</td>
+      <td>1527.28</td>
+      <td>6</td>
+      <td>Cincinnati Stingers</td>
+      <td>1479.57</td>
+      <td>5</td>
+      <td>64.86%</td>
+      <td>30.68%</td>
+      <td>4.46%</td>
+      <td>2.28</td>
+    </tr>
+    <tr>
+      <td>1977-10-22</td>
+      <td>Quebec Nordiques</td>
+      <td>1527.70</td>
+      <td>8</td>
+      <td>Birmingham Bulls</td>
+      <td>1478.14</td>
+      <td>5</td>
+      <td>65.08%</td>
+      <td>30.46%</td>
+      <td>4.46%</td>
+      <td>3.92</td>
+    </tr>
+    <tr>
+      <td>1977-10-22</td>
+      <td>Birmingham Bulls</td>
+      <td>1478.14</td>
+      <td>5</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1527.70</td>
+      <td>8</td>
+      <td>30.46%</td>
+      <td>65.08%</td>
+      <td>4.46%</td>
+      <td>-3.92</td>
+    </tr>
+    <tr>
+      <td>1977-10-23</td>
+      <td>Winnipeg Jets</td>
+      <td>1540.62</td>
+      <td>10</td>
+      <td>Birmingham Bulls</td>
+      <td>1474.22</td>
+      <td>3</td>
+      <td>67.10%</td>
+      <td>28.44%</td>
+      <td>4.46%</td>
+      <td>5.61</td>
+    </tr>
+    <tr>
+      <td>1977-10-23</td>
+      <td>Birmingham Bulls</td>
+      <td>1474.22</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1540.62</td>
+      <td>10</td>
+      <td>28.44%</td>
+      <td>67.10%</td>
+      <td>4.46%</td>
+      <td>-5.61</td>
+    </tr>
+    <tr>
+      <td>1977-10-25</td>
+      <td>Indianapolis Racers</td>
+      <td>1482.83</td>
+      <td>5</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1468.61</td>
+      <td>4</td>
+      <td>38.75%</td>
+      <td>56.79%</td>
+      <td>4.47%</td>
+      <td>4.13</td>
+    </tr>
+    <tr>
+      <td>1977-10-25</td>
+      <td>Birmingham Bulls</td>
+      <td>1468.61</td>
+      <td>4</td>
+      <td>Indianapolis Racers</td>
+      <td>1482.83</td>
+      <td>5</td>
+      <td>56.79%</td>
+      <td>38.75%</td>
+      <td>4.47%</td>
+      <td>-4.13</td>
+    </tr>
+    <tr>
+      <td>1977-10-26</td>
+      <td>Houston Aeros</td>
+      <td>1529.56</td>
+      <td>8</td>
+      <td>Edmonton Oilers</td>
+      <td>1454.63</td>
+      <td>7</td>
+      <td>68.10%</td>
+      <td>27.45%</td>
+      <td>4.45%</td>
+      <td>2.05</td>
+    </tr>
+    <tr>
+      <td>1977-10-26</td>
+      <td>Indianapolis Racers</td>
+      <td>1486.96</td>
+      <td>5</td>
+      <td>Winnipeg Jets</td>
+      <td>1546.23</td>
+      <td>3</td>
+      <td>50.47%</td>
+      <td>45.06%</td>
+      <td>4.47%</td>
+      <td>4.68</td>
+    </tr>
+    <tr>
+      <td>1977-10-26</td>
+      <td>Edmonton Oilers</td>
+      <td>1454.63</td>
+      <td>7</td>
+      <td>@ Houston Aeros</td>
+      <td>1529.56</td>
+      <td>8</td>
+      <td>27.45%</td>
+      <td>68.10%</td>
+      <td>4.45%</td>
+      <td>-2.05</td>
+    </tr>
+    <tr>
+      <td>1977-10-26</td>
+      <td>Quebec Nordiques</td>
+      <td>1531.62</td>
+      <td>1</td>
+      <td>@ New England Whalers</td>
+      <td>1509.23</td>
+      <td>7</td>
+      <td>39.87%</td>
+      <td>55.66%</td>
+      <td>4.47%</td>
+      <td>-7.20</td>
+    </tr>
+    <tr>
+      <td>1977-10-26</td>
+      <td>Winnipeg Jets</td>
+      <td>1546.23</td>
+      <td>3</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1486.96</td>
+      <td>5</td>
+      <td>45.06%</td>
+      <td>50.47%</td>
+      <td>4.47%</td>
+      <td>-4.68</td>
+    </tr>
+    <tr>
+      <td>1977-10-26</td>
+      <td>New England Whalers</td>
+      <td>1509.23</td>
+      <td>7</td>
+      <td>Quebec Nordiques</td>
+      <td>1531.62</td>
+      <td>1</td>
+      <td>55.66%</td>
+      <td>39.87%</td>
+      <td>4.47%</td>
+      <td>7.19</td>
+    </tr>
+    <tr>
+      <td>1977-10-28</td>
+      <td>Winnipeg Jets</td>
+      <td>1541.55</td>
+      <td>3</td>
+      <td>Cincinnati Stingers</td>
+      <td>1477.29</td>
+      <td>2</td>
+      <td>66.85%</td>
+      <td>28.69%</td>
+      <td>4.46%</td>
+      <td>2.14</td>
+    </tr>
+    <tr>
+      <td>1977-10-28</td>
+      <td>Edmonton Oilers</td>
+      <td>1452.58</td>
+      <td>3</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1464.48</td>
+      <td>2</td>
+      <td>35.24%</td>
+      <td>60.30%</td>
+      <td>4.46%</td>
+      <td>4.38</td>
+    </tr>
+    <tr>
+      <td>1977-10-28</td>
+      <td>Birmingham Bulls</td>
+      <td>1464.48</td>
+      <td>2</td>
+      <td>Edmonton Oilers</td>
+      <td>1452.58</td>
+      <td>3</td>
+      <td>60.30%</td>
+      <td>35.24%</td>
+      <td>4.46%</td>
+      <td>-4.38</td>
+    </tr>
+    <tr>
+      <td>1977-10-28</td>
+      <td>Cincinnati Stingers</td>
+      <td>1477.29</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1541.55</td>
+      <td>3</td>
+      <td>28.69%</td>
+      <td>66.85%</td>
+      <td>4.46%</td>
+      <td>-2.14</td>
+    </tr>
+    <tr>
+      <td>1977-10-29</td>
+      <td>Indianapolis Racers</td>
+      <td>1491.64</td>
+      <td>6</td>
+      <td>Birmingham Bulls</td>
+      <td>1460.10</td>
+      <td>2</td>
+      <td>62.84%</td>
+      <td>32.70%</td>
+      <td>4.46%</td>
+      <td>4.85</td>
+    </tr>
+    <tr>
+      <td>1977-10-29</td>
+      <td>New England Whalers</td>
+      <td>1516.42</td>
+      <td>7</td>
+      <td>Houston Aeros</td>
+      <td>1531.61</td>
+      <td>2</td>
+      <td>56.66%</td>
+      <td>38.88%</td>
+      <td>4.47%</td>
+      <td>6.42</td>
+    </tr>
+    <tr>
+      <td>1977-10-29</td>
+      <td>Birmingham Bulls</td>
+      <td>1460.10</td>
+      <td>2</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1491.64</td>
+      <td>6</td>
+      <td>32.70%</td>
+      <td>62.84%</td>
+      <td>4.46%</td>
+      <td>-4.85</td>
+    </tr>
+    <tr>
+      <td>1977-10-29</td>
+      <td>Houston Aeros</td>
+      <td>1531.61</td>
+      <td>2</td>
+      <td>@ New England Whalers</td>
+      <td>1516.42</td>
+      <td>7</td>
+      <td>38.88%</td>
+      <td>56.66%</td>
+      <td>4.47%</td>
+      <td>-6.41</td>
+    </tr>
+    <tr>
+      <td>1977-10-30</td>
+      <td>Quebec Nordiques</td>
+      <td>1524.42</td>
+      <td>5</td>
+      <td>Houston Aeros</td>
+      <td>1525.20</td>
+      <td>4</td>
+      <td>58.61%</td>
+      <td>36.92%</td>
+      <td>4.47%</td>
+      <td>2.73</td>
+    </tr>
+    <tr>
+      <td>1977-10-30</td>
+      <td>Winnipeg Jets</td>
+      <td>1543.69</td>
+      <td>5</td>
+      <td>Edmonton Oilers</td>
+      <td>1456.96</td>
+      <td>2</td>
+      <td>69.43%</td>
+      <td>26.12%</td>
+      <td>4.45%</td>
+      <td>3.38</td>
+    </tr>
+    <tr>
+      <td>1977-10-30</td>
+      <td>Houston Aeros</td>
+      <td>1525.20</td>
+      <td>4</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1524.42</td>
+      <td>5</td>
+      <td>36.92%</td>
+      <td>58.61%</td>
+      <td>4.47%</td>
+      <td>-2.73</td>
+    </tr>
+    <tr>
+      <td>1977-10-30</td>
+      <td>Edmonton Oilers</td>
+      <td>1456.96</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1543.69</td>
+      <td>5</td>
+      <td>26.12%</td>
+      <td>69.43%</td>
+      <td>4.45%</td>
+      <td>-3.37</td>
+    </tr>
+    <tr>
+      <td>1977-11-01</td>
+      <td>New England Whalers</td>
+      <td>1522.84</td>
+      <td>6</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1527.15</td>
+      <td>3</td>
+      <td>36.24%</td>
+      <td>59.29%</td>
+      <td>4.47%</td>
+      <td>7.46</td>
+    </tr>
+    <tr>
+      <td>1977-11-01</td>
+      <td>Houston Aeros</td>
+      <td>1522.47</td>
+      <td>3</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1496.49</td>
+      <td>6</td>
+      <td>40.37%</td>
+      <td>55.17%</td>
+      <td>4.47%</td>
+      <td>-5.15</td>
+    </tr>
+    <tr>
+      <td>1977-11-01</td>
+      <td>Indianapolis Racers</td>
+      <td>1496.49</td>
+      <td>6</td>
+      <td>Houston Aeros</td>
+      <td>1522.47</td>
+      <td>3</td>
+      <td>55.17%</td>
+      <td>40.37%</td>
+      <td>4.47%</td>
+      <td>5.15</td>
+    </tr>
+    <tr>
+      <td>1977-11-01</td>
+      <td>Quebec Nordiques</td>
+      <td>1527.15</td>
+      <td>3</td>
+      <td>New England Whalers</td>
+      <td>1522.84</td>
+      <td>6</td>
+      <td>59.29%</td>
+      <td>36.24%</td>
+      <td>4.47%</td>
+      <td>-7.46</td>
+    </tr>
+    <tr>
+      <td>1977-11-02</td>
+      <td>Winnipeg Jets</td>
+      <td>1547.07</td>
+      <td>6</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1453.59</td>
+      <td>3</td>
+      <td>49.97%</td>
+      <td>45.56%</td>
+      <td>4.47%</td>
+      <td>5.78</td>
+    </tr>
+    <tr>
+      <td>1977-11-02</td>
+      <td>Birmingham Bulls</td>
+      <td>1455.25</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1517.32</td>
+      <td>5</td>
+      <td>28.95%</td>
+      <td>66.59%</td>
+      <td>4.46%</td>
+      <td>-3.05</td>
+    </tr>
+    <tr>
+      <td>1977-11-02</td>
+      <td>Houston Aeros</td>
+      <td>1517.32</td>
+      <td>5</td>
+      <td>Birmingham Bulls</td>
+      <td>1455.25</td>
+      <td>3</td>
+      <td>66.59%</td>
+      <td>28.95%</td>
+      <td>4.46%</td>
+      <td>3.05</td>
+    </tr>
+    <tr>
+      <td>1977-11-02</td>
+      <td>Edmonton Oilers</td>
+      <td>1453.59</td>
+      <td>3</td>
+      <td>Winnipeg Jets</td>
+      <td>1547.07</td>
+      <td>6</td>
+      <td>45.56%</td>
+      <td>49.97%</td>
+      <td>4.47%</td>
+      <td>-5.79</td>
+    </tr>
+    <tr>
+      <td>1977-11-04</td>
+      <td>New England Whalers</td>
+      <td>1530.30</td>
+      <td>4</td>
+      <td>Cincinnati Stingers</td>
+      <td>1475.15</td>
+      <td>3</td>
+      <td>65.77%</td>
+      <td>29.78%</td>
+      <td>4.46%</td>
+      <td>2.22</td>
+    </tr>
+    <tr>
+      <td>1977-11-04</td>
+      <td>Edmonton Oilers</td>
+      <td>1447.80</td>
+      <td>3</td>
+      <td>Indianapolis Racers</td>
+      <td>1501.64</td>
+      <td>1</td>
+      <td>51.24%</td>
+      <td>44.29%</td>
+      <td>4.47%</td>
+      <td>4.60</td>
+    </tr>
+    <tr>
+      <td>1977-11-04</td>
+      <td>Quebec Nordiques</td>
+      <td>1519.69</td>
+      <td>7</td>
+      <td>@ Houston Aeros</td>
+      <td>1520.37</td>
+      <td>6</td>
+      <td>36.73%</td>
+      <td>58.81%</td>
+      <td>4.47%</td>
+      <td>4.27</td>
+    </tr>
+    <tr>
+      <td>1977-11-04</td>
+      <td>Cincinnati Stingers</td>
+      <td>1475.15</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1530.30</td>
+      <td>4</td>
+      <td>29.78%</td>
+      <td>65.77%</td>
+      <td>4.46%</td>
+      <td>-2.22</td>
+    </tr>
+    <tr>
+      <td>1977-11-04</td>
+      <td>Winnipeg Jets</td>
+      <td>1552.85</td>
+      <td>4</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1452.20</td>
+      <td>2</td>
+      <td>50.99%</td>
+      <td>44.54%</td>
+      <td>4.47%</td>
+      <td>4.63</td>
+    </tr>
+    <tr>
+      <td>1977-11-04</td>
+      <td>Houston Aeros</td>
+      <td>1520.37</td>
+      <td>6</td>
+      <td>Quebec Nordiques</td>
+      <td>1519.69</td>
+      <td>7</td>
+      <td>58.81%</td>
+      <td>36.73%</td>
+      <td>4.47%</td>
+      <td>-4.28</td>
+    </tr>
+    <tr>
+      <td>1977-11-04</td>
+      <td>Birmingham Bulls</td>
+      <td>1452.20</td>
+      <td>2</td>
+      <td>Winnipeg Jets</td>
+      <td>1552.85</td>
+      <td>4</td>
+      <td>44.54%</td>
+      <td>50.99%</td>
+      <td>4.47%</td>
+      <td>-4.63</td>
+    </tr>
+    <tr>
+      <td>1977-11-04</td>
+      <td>Indianapolis Racers</td>
+      <td>1501.64</td>
+      <td>1</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1447.80</td>
+      <td>3</td>
+      <td>44.29%</td>
+      <td>51.24%</td>
+      <td>4.47%</td>
+      <td>-4.59</td>
+    </tr>
+    <tr>
+      <td>1977-11-05</td>
+      <td>Quebec Nordiques</td>
+      <td>1523.96</td>
+      <td>4</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1447.57</td>
+      <td>5</td>
+      <td>47.51%</td>
+      <td>48.02%</td>
+      <td>4.47%</td>
+      <td>-3.47</td>
+    </tr>
+    <tr>
+      <td>1977-11-05</td>
+      <td>Winnipeg Jets</td>
+      <td>1557.48</td>
+      <td>6</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1472.93</td>
+      <td>1</td>
+      <td>48.69%</td>
+      <td>46.84%</td>
+      <td>4.47%</td>
+      <td>7.67</td>
+    </tr>
+    <tr>
+      <td>1977-11-05</td>
+      <td>Birmingham Bulls</td>
+      <td>1447.57</td>
+      <td>5</td>
+      <td>Quebec Nordiques</td>
+      <td>1523.96</td>
+      <td>4</td>
+      <td>48.02%</td>
+      <td>47.51%</td>
+      <td>4.47%</td>
+      <td>3.48</td>
+    </tr>
+    <tr>
+      <td>1977-11-05</td>
+      <td>Cincinnati Stingers</td>
+      <td>1472.93</td>
+      <td>1</td>
+      <td>Winnipeg Jets</td>
+      <td>1557.48</td>
+      <td>6</td>
+      <td>46.84%</td>
+      <td>48.69%</td>
+      <td>4.47%</td>
+      <td>-7.67</td>
+    </tr>
+    <tr>
+      <td>1977-11-06</td>
+      <td>Houston Aeros</td>
+      <td>1516.09</td>
+      <td>1</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1452.40</td>
+      <td>7</td>
+      <td>45.69%</td>
+      <td>49.84%</td>
+      <td>4.47%</td>
+      <td>-8.20</td>
+    </tr>
+    <tr>
+      <td>1977-11-06</td>
+      <td>New England Whalers</td>
+      <td>1532.52</td>
+      <td>5</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1465.26</td>
+      <td>2</td>
+      <td>46.20%</td>
+      <td>49.33%</td>
+      <td>4.47%</td>
+      <td>6.24</td>
+    </tr>
+    <tr>
+      <td>1977-11-06</td>
+      <td>Edmonton Oilers</td>
+      <td>1452.40</td>
+      <td>7</td>
+      <td>Houston Aeros</td>
+      <td>1516.09</td>
+      <td>1</td>
+      <td>49.84%</td>
+      <td>45.69%</td>
+      <td>4.47%</td>
+      <td>8.20</td>
+    </tr>
+    <tr>
+      <td>1977-11-06</td>
+      <td>Cincinnati Stingers</td>
+      <td>1465.26</td>
+      <td>2</td>
+      <td>New England Whalers</td>
+      <td>1532.52</td>
+      <td>5</td>
+      <td>49.33%</td>
+      <td>46.20%</td>
+      <td>4.47%</td>
+      <td>-6.24</td>
+    </tr>
+    <tr>
+      <td>1977-11-08</td>
+      <td>Quebec Nordiques</td>
+      <td>1520.49</td>
+      <td>7</td>
+      <td>Edmonton Oilers</td>
+      <td>1460.60</td>
+      <td>3</td>
+      <td>66.33%</td>
+      <td>29.21%</td>
+      <td>4.46%</td>
+      <td>4.35</td>
+    </tr>
+    <tr>
+      <td>1977-11-08</td>
+      <td>Edmonton Oilers</td>
+      <td>1460.60</td>
+      <td>3</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1520.49</td>
+      <td>7</td>
+      <td>29.21%</td>
+      <td>66.33%</td>
+      <td>4.46%</td>
+      <td>-4.35</td>
+    </tr>
+    <tr>
+      <td>1977-11-08</td>
+      <td>New England Whalers</td>
+      <td>1538.76</td>
+      <td>4</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1451.05</td>
+      <td>3</td>
+      <td>49.14%</td>
+      <td>46.39%</td>
+      <td>4.47%</td>
+      <td>3.40</td>
+    </tr>
+    <tr>
+      <td>1977-11-08</td>
+      <td>Birmingham Bulls</td>
+      <td>1451.05</td>
+      <td>3</td>
+      <td>New England Whalers</td>
+      <td>1538.76</td>
+      <td>4</td>
+      <td>46.39%</td>
+      <td>49.14%</td>
+      <td>4.47%</td>
+      <td>-3.40</td>
+    </tr>
+    <tr>
+      <td>1977-11-09</td>
+      <td>Winnipeg Jets</td>
+      <td>1565.15</td>
+      <td>4</td>
+      <td>Houston Aeros</td>
+      <td>1507.89</td>
+      <td>3</td>
+      <td>66.02%</td>
+      <td>29.52%</td>
+      <td>4.46%</td>
+      <td>2.20</td>
+    </tr>
+    <tr>
+      <td>1977-11-09</td>
+      <td>Cincinnati Stingers</td>
+      <td>1459.02</td>
+      <td>2</td>
+      <td>Birmingham Bulls</td>
+      <td>1447.65</td>
+      <td>1</td>
+      <td>60.23%</td>
+      <td>35.31%</td>
+      <td>4.46%</td>
+      <td>2.61</td>
+    </tr>
+    <tr>
+      <td>1977-11-09</td>
+      <td>Birmingham Bulls</td>
+      <td>1447.65</td>
+      <td>1</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1459.02</td>
+      <td>2</td>
+      <td>35.31%</td>
+      <td>60.23%</td>
+      <td>4.46%</td>
+      <td>-2.61</td>
+    </tr>
+    <tr>
+      <td>1977-11-09</td>
+      <td>Houston Aeros</td>
+      <td>1507.89</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1565.15</td>
+      <td>4</td>
+      <td>29.52%</td>
+      <td>66.02%</td>
+      <td>4.46%</td>
+      <td>-2.20</td>
+    </tr>
+    <tr>
+      <td>1977-11-10</td>
+      <td>Edmonton Oilers</td>
+      <td>1456.25</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1542.16</td>
+      <td>5</td>
+      <td>26.21%</td>
+      <td>69.34%</td>
+      <td>4.45%</td>
+      <td>-2.77</td>
+    </tr>
+    <tr>
+      <td>1977-11-10</td>
+      <td>New England Whalers</td>
+      <td>1542.16</td>
+      <td>5</td>
+      <td>Edmonton Oilers</td>
+      <td>1456.25</td>
+      <td>3</td>
+      <td>69.34%</td>
+      <td>26.21%</td>
+      <td>4.45%</td>
+      <td>2.77</td>
+    </tr>
+    <tr>
+      <td>1977-11-11</td>
+      <td>Edmonton Oilers</td>
+      <td>1453.48</td>
+      <td>3</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1461.63</td>
+      <td>2</td>
+      <td>35.73%</td>
+      <td>59.80%</td>
+      <td>4.46%</td>
+      <td>4.35</td>
+    </tr>
+    <tr>
+      <td>1977-11-11</td>
+      <td>Indianapolis Racers</td>
+      <td>1497.05</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1505.69</td>
+      <td>5</td>
+      <td>35.67%</td>
+      <td>59.87%</td>
+      <td>4.46%</td>
+      <td>-3.74</td>
+    </tr>
+    <tr>
+      <td>1977-11-11</td>
+      <td>Quebec Nordiques</td>
+      <td>1524.84</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1567.35</td>
+      <td>2</td>
+      <td>31.32%</td>
+      <td>64.22%</td>
+      <td>4.46%</td>
+      <td>4.66</td>
+    </tr>
+    <tr>
+      <td>1977-11-11</td>
+      <td>Winnipeg Jets</td>
+      <td>1567.35</td>
+      <td>2</td>
+      <td>Quebec Nordiques</td>
+      <td>1524.84</td>
+      <td>3</td>
+      <td>64.22%</td>
+      <td>31.32%</td>
+      <td>4.46%</td>
+      <td>-4.67</td>
+    </tr>
+    <tr>
+      <td>1977-11-11</td>
+      <td>Houston Aeros</td>
+      <td>1505.69</td>
+      <td>5</td>
+      <td>Indianapolis Racers</td>
+      <td>1497.05</td>
+      <td>3</td>
+      <td>59.87%</td>
+      <td>35.67%</td>
+      <td>4.46%</td>
+      <td>3.73</td>
+    </tr>
+    <tr>
+      <td>1977-11-11</td>
+      <td>Cincinnati Stingers</td>
+      <td>1461.63</td>
+      <td>2</td>
+      <td>Edmonton Oilers</td>
+      <td>1453.48</td>
+      <td>3</td>
+      <td>59.80%</td>
+      <td>35.73%</td>
+      <td>4.46%</td>
+      <td>-4.34</td>
+    </tr>
+    <tr>
+      <td>1977-11-12</td>
+      <td>Edmonton Oilers</td>
+      <td>1457.83</td>
+      <td>1</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1445.04</td>
+      <td>1</td>
+      <td>38.55%</td>
+      <td>56.98%</td>
+      <td>4.47%</td>
+      <td>0.32</td>
+    </tr>
+    <tr>
+      <td>1977-11-12</td>
+      <td>Indianapolis Racers</td>
+      <td>1493.31</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1544.93</td>
+      <td>5</td>
+      <td>30.20%</td>
+      <td>65.34%</td>
+      <td>4.46%</td>
+      <td>-3.18</td>
+    </tr>
+    <tr>
+      <td>1977-11-12</td>
+      <td>Quebec Nordiques</td>
+      <td>1529.50</td>
+      <td>5</td>
+      <td>Cincinnati Stingers</td>
+      <td>1457.29</td>
+      <td>6</td>
+      <td>67.78%</td>
+      <td>27.76%</td>
+      <td>4.46%</td>
+      <td>-4.92</td>
+    </tr>
+    <tr>
+      <td>1977-11-12</td>
+      <td>Birmingham Bulls</td>
+      <td>1445.04</td>
+      <td>1</td>
+      <td>Edmonton Oilers</td>
+      <td>1457.83</td>
+      <td>1</td>
+      <td>56.98%</td>
+      <td>38.55%</td>
+      <td>4.47%</td>
+      <td>-0.33</td>
+    </tr>
+    <tr>
+      <td>1977-11-12</td>
+      <td>New England Whalers</td>
+      <td>1544.93</td>
+      <td>5</td>
+      <td>Indianapolis Racers</td>
+      <td>1493.31</td>
+      <td>3</td>
+      <td>65.34%</td>
+      <td>30.20%</td>
+      <td>4.46%</td>
+      <td>3.18</td>
+    </tr>
+    <tr>
+      <td>1977-11-12</td>
+      <td>Cincinnati Stingers</td>
+      <td>1457.29</td>
+      <td>6</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1529.50</td>
+      <td>5</td>
+      <td>27.76%</td>
+      <td>67.78%</td>
+      <td>4.46%</td>
+      <td>4.92</td>
+    </tr>
+    <tr>
+      <td>1977-11-13</td>
+      <td>Winnipeg Jets</td>
+      <td>1562.68</td>
+      <td>2</td>
+      <td>Cincinnati Stingers</td>
+      <td>1462.21</td>
+      <td>3</td>
+      <td>70.93%</td>
+      <td>24.62%</td>
+      <td>4.45%</td>
+      <td>-5.14</td>
+    </tr>
+    <tr>
+      <td>1977-11-13</td>
+      <td>Cincinnati Stingers</td>
+      <td>1462.21</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1562.68</td>
+      <td>2</td>
+      <td>24.62%</td>
+      <td>70.93%</td>
+      <td>4.45%</td>
+      <td>5.14</td>
+    </tr>
+    <tr>
+      <td>1977-11-15</td>
+      <td>Winnipeg Jets</td>
+      <td>1557.54</td>
+      <td>6</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1524.58</td>
+      <td>7</td>
+      <td>41.34%</td>
+      <td>54.19%</td>
+      <td>4.47%</td>
+      <td>-3.05</td>
+    </tr>
+    <tr>
+      <td>1977-11-15</td>
+      <td>Indianapolis Racers</td>
+      <td>1490.13</td>
+      <td>4</td>
+      <td>New England Whalers</td>
+      <td>1548.11</td>
+      <td>6</td>
+      <td>50.66%</td>
+      <td>44.88%</td>
+      <td>4.47%</td>
+      <td>-5.22</td>
+    </tr>
+    <tr>
+      <td>1977-11-15</td>
+      <td>Quebec Nordiques</td>
+      <td>1524.58</td>
+      <td>7</td>
+      <td>Winnipeg Jets</td>
+      <td>1557.54</td>
+      <td>6</td>
+      <td>54.19%</td>
+      <td>41.34%</td>
+      <td>4.47%</td>
+      <td>3.04</td>
+    </tr>
+    <tr>
+      <td>1977-11-15</td>
+      <td>New England Whalers</td>
+      <td>1548.11</td>
+      <td>6</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1490.13</td>
+      <td>4</td>
+      <td>44.88%</td>
+      <td>50.66%</td>
+      <td>4.47%</td>
+      <td>5.23</td>
+    </tr>
+    <tr>
+      <td>1977-11-16</td>
+      <td>Cincinnati Stingers</td>
+      <td>1467.35</td>
+      <td>4</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1458.15</td>
+      <td>6</td>
+      <td>38.06%</td>
+      <td>57.47%</td>
+      <td>4.47%</td>
+      <td>-3.97</td>
+    </tr>
+    <tr>
+      <td>1977-11-16</td>
+      <td>Birmingham Bulls</td>
+      <td>1444.71</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1554.49</td>
+      <td>2</td>
+      <td>23.64%</td>
+      <td>71.92%</td>
+      <td>4.45%</td>
+      <td>0.87</td>
+    </tr>
+    <tr>
+      <td>1977-11-16</td>
+      <td>Winnipeg Jets</td>
+      <td>1554.49</td>
+      <td>2</td>
+      <td>Birmingham Bulls</td>
+      <td>1444.71</td>
+      <td>2</td>
+      <td>71.92%</td>
+      <td>23.64%</td>
+      <td>4.45%</td>
+      <td>-0.86</td>
+    </tr>
+    <tr>
+      <td>1977-11-16</td>
+      <td>Edmonton Oilers</td>
+      <td>1458.15</td>
+      <td>6</td>
+      <td>Cincinnati Stingers</td>
+      <td>1467.35</td>
+      <td>4</td>
+      <td>57.47%</td>
+      <td>38.06%</td>
+      <td>4.47%</td>
+      <td>3.98</td>
+    </tr>
+    <tr>
+      <td>1977-11-18</td>
+      <td>Houston Aeros</td>
+      <td>1509.42</td>
+      <td>6</td>
+      <td>Quebec Nordiques</td>
+      <td>1527.62</td>
+      <td>5</td>
+      <td>56.24%</td>
+      <td>39.29%</td>
+      <td>4.47%</td>
+      <td>2.90</td>
+    </tr>
+    <tr>
+      <td>1977-11-18</td>
+      <td>Indianapolis Racers</td>
+      <td>1484.91</td>
+      <td>1</td>
+      <td>Birmingham Bulls</td>
+      <td>1445.58</td>
+      <td>2</td>
+      <td>63.82%</td>
+      <td>31.72%</td>
+      <td>4.46%</td>
+      <td>-4.64</td>
+    </tr>
+    <tr>
+      <td>1977-11-18</td>
+      <td>Birmingham Bulls</td>
+      <td>1445.58</td>
+      <td>2</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1484.91</td>
+      <td>1</td>
+      <td>31.72%</td>
+      <td>63.82%</td>
+      <td>4.46%</td>
+      <td>4.63</td>
+    </tr>
+    <tr>
+      <td>1977-11-18</td>
+      <td>Cincinnati Stingers</td>
+      <td>1463.38</td>
+      <td>3</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1462.13</td>
+      <td>4</td>
+      <td>36.99%</td>
+      <td>58.55%</td>
+      <td>4.47%</td>
+      <td>-2.73</td>
+    </tr>
+    <tr>
+      <td>1977-11-18</td>
+      <td>Edmonton Oilers</td>
+      <td>1462.13</td>
+      <td>4</td>
+      <td>Cincinnati Stingers</td>
+      <td>1463.38</td>
+      <td>3</td>
+      <td>58.55%</td>
+      <td>36.99%</td>
+      <td>4.47%</td>
+      <td>2.73</td>
+    </tr>
+    <tr>
+      <td>1977-11-18</td>
+      <td>Quebec Nordiques</td>
+      <td>1527.62</td>
+      <td>5</td>
+      <td>@ Houston Aeros</td>
+      <td>1509.42</td>
+      <td>6</td>
+      <td>39.29%</td>
+      <td>56.24%</td>
+      <td>4.47%</td>
+      <td>-2.90</td>
+    </tr>
+    <tr>
+      <td>1977-11-18</td>
+      <td>Winnipeg Jets</td>
+      <td>1553.63</td>
+      <td>2</td>
+      <td>@ New England Whalers</td>
+      <td>1553.34</td>
+      <td>3</td>
+      <td>36.86%</td>
+      <td>58.68%</td>
+      <td>4.47%</td>
+      <td>-2.73</td>
+    </tr>
+    <tr>
+      <td>1977-11-18</td>
+      <td>New England Whalers</td>
+      <td>1553.34</td>
+      <td>3</td>
+      <td>Winnipeg Jets</td>
+      <td>1553.63</td>
+      <td>2</td>
+      <td>58.68%</td>
+      <td>36.86%</td>
+      <td>4.47%</td>
+      <td>2.72</td>
+    </tr>
+    <tr>
+      <td>1977-11-19</td>
+      <td>Indianapolis Racers</td>
+      <td>1480.27</td>
+      <td>4</td>
+      <td>Winnipeg Jets</td>
+      <td>1550.90</td>
+      <td>6</td>
+      <td>48.84%</td>
+      <td>46.69%</td>
+      <td>4.47%</td>
+      <td>-5.05</td>
+    </tr>
+    <tr>
+      <td>1977-11-19</td>
+      <td>Birmingham Bulls</td>
+      <td>1450.21</td>
+      <td>4</td>
+      <td>Houston Aeros</td>
+      <td>1512.32</td>
+      <td>3</td>
+      <td>50.06%</td>
+      <td>45.47%</td>
+      <td>4.47%</td>
+      <td>3.33</td>
+    </tr>
+    <tr>
+      <td>1977-11-19</td>
+      <td>Winnipeg Jets</td>
+      <td>1550.90</td>
+      <td>6</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1480.27</td>
+      <td>4</td>
+      <td>46.69%</td>
+      <td>48.84%</td>
+      <td>4.47%</td>
+      <td>5.05</td>
+    </tr>
+    <tr>
+      <td>1977-11-19</td>
+      <td>Houston Aeros</td>
+      <td>1512.32</td>
+      <td>3</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1450.21</td>
+      <td>4</td>
+      <td>45.47%</td>
+      <td>50.06%</td>
+      <td>4.47%</td>
+      <td>-3.33</td>
+    </tr>
+    <tr>
+      <td>1977-11-20</td>
+      <td>Indianapolis Racers</td>
+      <td>1475.22</td>
+      <td>2</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1524.72</td>
+      <td>5</td>
+      <td>30.46%</td>
+      <td>65.08%</td>
+      <td>4.46%</td>
+      <td>-3.92</td>
+    </tr>
+    <tr>
+      <td>1977-11-20</td>
+      <td>New England Whalers</td>
+      <td>1556.06</td>
+      <td>5</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1464.86</td>
+      <td>4</td>
+      <td>49.64%</td>
+      <td>45.89%</td>
+      <td>4.47%</td>
+      <td>3.36</td>
+    </tr>
+    <tr>
+      <td>1977-11-20</td>
+      <td>Edmonton Oilers</td>
+      <td>1464.86</td>
+      <td>4</td>
+      <td>New England Whalers</td>
+      <td>1556.06</td>
+      <td>5</td>
+      <td>45.89%</td>
+      <td>49.64%</td>
+      <td>4.47%</td>
+      <td>-3.36</td>
+    </tr>
+    <tr>
+      <td>1977-11-20</td>
+      <td>Quebec Nordiques</td>
+      <td>1524.72</td>
+      <td>5</td>
+      <td>Indianapolis Racers</td>
+      <td>1475.22</td>
+      <td>2</td>
+      <td>65.08%</td>
+      <td>30.46%</td>
+      <td>4.46%</td>
+      <td>3.93</td>
+    </tr>
+    <tr>
+      <td>1977-11-22</td>
+      <td>Quebec Nordiques</td>
+      <td>1528.65</td>
+      <td>5</td>
+      <td>New England Whalers</td>
+      <td>1559.42</td>
+      <td>4</td>
+      <td>54.50%</td>
+      <td>41.03%</td>
+      <td>4.47%</td>
+      <td>3.02</td>
+    </tr>
+    <tr>
+      <td>1977-11-22</td>
+      <td>Edmonton Oilers</td>
+      <td>1461.50</td>
+      <td>4</td>
+      <td>Winnipeg Jets</td>
+      <td>1555.95</td>
+      <td>2</td>
+      <td>45.42%</td>
+      <td>50.11%</td>
+      <td>4.47%</td>
+      <td>5.17</td>
+    </tr>
+    <tr>
+      <td>1977-11-22</td>
+      <td>Winnipeg Jets</td>
+      <td>1555.95</td>
+      <td>2</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1461.50</td>
+      <td>4</td>
+      <td>50.11%</td>
+      <td>45.42%</td>
+      <td>4.47%</td>
+      <td>-5.17</td>
+    </tr>
+    <tr>
+      <td>1977-11-22</td>
+      <td>New England Whalers</td>
+      <td>1559.42</td>
+      <td>4</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1528.65</td>
+      <td>5</td>
+      <td>41.03%</td>
+      <td>54.50%</td>
+      <td>4.47%</td>
+      <td>-3.02</td>
+    </tr>
+    <tr>
+      <td>1977-11-23</td>
+      <td>New England Whalers</td>
+      <td>1556.40</td>
+      <td>3</td>
+      <td>Indianapolis Racers</td>
+      <td>1471.30</td>
+      <td>3</td>
+      <td>69.25%</td>
+      <td>26.30%</td>
+      <td>4.45%</td>
+      <td>-0.76</td>
+    </tr>
+    <tr>
+      <td>1977-11-23</td>
+      <td>Cincinnati Stingers</td>
+      <td>1460.65</td>
+      <td>4</td>
+      <td>Quebec Nordiques</td>
+      <td>1531.67</td>
+      <td>3</td>
+      <td>48.79%</td>
+      <td>46.74%</td>
+      <td>4.47%</td>
+      <td>3.42</td>
+    </tr>
+    <tr>
+      <td>1977-11-23</td>
+      <td>Quebec Nordiques</td>
+      <td>1531.67</td>
+      <td>3</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1460.65</td>
+      <td>4</td>
+      <td>46.74%</td>
+      <td>48.79%</td>
+      <td>4.47%</td>
+      <td>-3.42</td>
+    </tr>
+    <tr>
+      <td>1977-11-23</td>
+      <td>Indianapolis Racers</td>
+      <td>1471.30</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1556.40</td>
+      <td>3</td>
+      <td>26.30%</td>
+      <td>69.25%</td>
+      <td>4.45%</td>
+      <td>0.76</td>
+    </tr>
+    <tr>
+      <td>1977-11-23</td>
+      <td>Birmingham Bulls</td>
+      <td>1453.54</td>
+      <td>0</td>
+      <td>@ Houston Aeros</td>
+      <td>1508.99</td>
+      <td>3</td>
+      <td>29.74%</td>
+      <td>65.80%</td>
+      <td>4.46%</td>
+      <td>-3.83</td>
+    </tr>
+    <tr>
+      <td>1977-11-23</td>
+      <td>Houston Aeros</td>
+      <td>1508.99</td>
+      <td>3</td>
+      <td>Birmingham Bulls</td>
+      <td>1453.54</td>
+      <td>0</td>
+      <td>65.80%</td>
+      <td>29.74%</td>
+      <td>4.46%</td>
+      <td>3.83</td>
+    </tr>
+    <tr>
+      <td>1977-11-24</td>
+      <td>Indianapolis Racers</td>
+      <td>1472.06</td>
+      <td>5</td>
+      <td>Edmonton Oilers</td>
+      <td>1466.67</td>
+      <td>4</td>
+      <td>59.44%</td>
+      <td>36.10%</td>
+      <td>4.47%</td>
+      <td>2.67</td>
+    </tr>
+    <tr>
+      <td>1977-11-24</td>
+      <td>Birmingham Bulls</td>
+      <td>1449.71</td>
+      <td>12</td>
+      <td>Cincinnati Stingers</td>
+      <td>1464.07</td>
+      <td>2</td>
+      <td>56.77%</td>
+      <td>38.76%</td>
+      <td>4.47%</td>
+      <td>9.05</td>
+    </tr>
+    <tr>
+      <td>1977-11-24</td>
+      <td>Edmonton Oilers</td>
+      <td>1466.67</td>
+      <td>4</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1472.06</td>
+      <td>5</td>
+      <td>36.10%</td>
+      <td>59.44%</td>
+      <td>4.47%</td>
+      <td>-2.67</td>
+    </tr>
+    <tr>
+      <td>1977-11-24</td>
+      <td>Cincinnati Stingers</td>
+      <td>1464.07</td>
+      <td>2</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1449.71</td>
+      <td>12</td>
+      <td>38.76%</td>
+      <td>56.77%</td>
+      <td>4.47%</td>
+      <td>-9.05</td>
+    </tr>
+    <tr>
+      <td>1977-11-25</td>
+      <td>Cincinnati Stingers</td>
+      <td>1455.02</td>
+      <td>1</td>
+      <td>@ Houston Aeros</td>
+      <td>1512.82</td>
+      <td>3</td>
+      <td>29.46%</td>
+      <td>66.08%</td>
+      <td>4.46%</td>
+      <td>-3.10</td>
+    </tr>
+    <tr>
+      <td>1977-11-25</td>
+      <td>New England Whalers</td>
+      <td>1555.64</td>
+      <td>2</td>
+      <td>Quebec Nordiques</td>
+      <td>1528.25</td>
+      <td>6</td>
+      <td>62.31%</td>
+      <td>33.23%</td>
+      <td>4.46%</td>
+      <td>-9.05</td>
+    </tr>
+    <tr>
+      <td>1977-11-25</td>
+      <td>Houston Aeros</td>
+      <td>1512.82</td>
+      <td>3</td>
+      <td>Cincinnati Stingers</td>
+      <td>1455.02</td>
+      <td>1</td>
+      <td>66.08%</td>
+      <td>29.46%</td>
+      <td>4.46%</td>
+      <td>3.10</td>
+    </tr>
+    <tr>
+      <td>1977-11-25</td>
+      <td>Quebec Nordiques</td>
+      <td>1528.25</td>
+      <td>6</td>
+      <td>@ New England Whalers</td>
+      <td>1555.64</td>
+      <td>2</td>
+      <td>33.23%</td>
+      <td>62.31%</td>
+      <td>4.46%</td>
+      <td>9.05</td>
+    </tr>
+    <tr>
+      <td>1977-11-26</td>
+      <td>Edmonton Oilers</td>
+      <td>1464.00</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1546.59</td>
+      <td>1</td>
+      <td>26.58%</td>
+      <td>68.97%</td>
+      <td>4.45%</td>
+      <td>7.08</td>
+    </tr>
+    <tr>
+      <td>1977-11-26</td>
+      <td>Birmingham Bulls</td>
+      <td>1458.76</td>
+      <td>2</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1537.30</td>
+      <td>4</td>
+      <td>27.04%</td>
+      <td>68.51%</td>
+      <td>4.45%</td>
+      <td>-2.86</td>
+    </tr>
+    <tr>
+      <td>1977-11-26</td>
+      <td>Cincinnati Stingers</td>
+      <td>1451.92</td>
+      <td>7</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1474.73</td>
+      <td>5</td>
+      <td>33.82%</td>
+      <td>61.72%</td>
+      <td>4.46%</td>
+      <td>6.34</td>
+    </tr>
+    <tr>
+      <td>1977-11-26</td>
+      <td>Quebec Nordiques</td>
+      <td>1537.30</td>
+      <td>4</td>
+      <td>Birmingham Bulls</td>
+      <td>1458.76</td>
+      <td>2</td>
+      <td>68.51%</td>
+      <td>27.04%</td>
+      <td>4.45%</td>
+      <td>2.85</td>
+    </tr>
+    <tr>
+      <td>1977-11-26</td>
+      <td>Indianapolis Racers</td>
+      <td>1474.73</td>
+      <td>5</td>
+      <td>Cincinnati Stingers</td>
+      <td>1451.92</td>
+      <td>7</td>
+      <td>61.72%</td>
+      <td>33.82%</td>
+      <td>4.46%</td>
+      <td>-6.34</td>
+    </tr>
+    <tr>
+      <td>1977-11-26</td>
+      <td>New England Whalers</td>
+      <td>1546.59</td>
+      <td>1</td>
+      <td>Edmonton Oilers</td>
+      <td>1464.00</td>
+      <td>3</td>
+      <td>68.97%</td>
+      <td>26.58%</td>
+      <td>4.45%</td>
+      <td>-7.08</td>
+    </tr>
+    <tr>
+      <td>1977-11-27</td>
+      <td>Winnipeg Jets</td>
+      <td>1550.78</td>
+      <td>3</td>
+      <td>Birmingham Bulls</td>
+      <td>1455.90</td>
+      <td>4</td>
+      <td>70.33%</td>
+      <td>25.22%</td>
+      <td>4.45%</td>
+      <td>-5.11</td>
+    </tr>
+    <tr>
+      <td>1977-11-27</td>
+      <td>Birmingham Bulls</td>
+      <td>1455.90</td>
+      <td>4</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1550.78</td>
+      <td>3</td>
+      <td>25.22%</td>
+      <td>70.33%</td>
+      <td>4.45%</td>
+      <td>5.11</td>
+    </tr>
+    <tr>
+      <td>1977-11-29</td>
+      <td>Cincinnati Stingers</td>
+      <td>1458.26</td>
+      <td>3</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1540.15</td>
+      <td>2</td>
+      <td>26.66%</td>
+      <td>68.89%</td>
+      <td>4.45%</td>
+      <td>5.00</td>
+    </tr>
+    <tr>
+      <td>1977-11-29</td>
+      <td>Quebec Nordiques</td>
+      <td>1540.15</td>
+      <td>2</td>
+      <td>Cincinnati Stingers</td>
+      <td>1458.26</td>
+      <td>3</td>
+      <td>68.89%</td>
+      <td>26.66%</td>
+      <td>4.45%</td>
+      <td>-5.00</td>
+    </tr>
+    <tr>
+      <td>1977-11-30</td>
+      <td>New England Whalers</td>
+      <td>1539.51</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1515.92</td>
+      <td>3</td>
+      <td>40.03%</td>
+      <td>55.50%</td>
+      <td>4.47%</td>
+      <td>0.27</td>
+    </tr>
+    <tr>
+      <td>1977-11-30</td>
+      <td>Edmonton Oilers</td>
+      <td>1471.08</td>
+      <td>4</td>
+      <td>Birmingham Bulls</td>
+      <td>1461.01</td>
+      <td>2</td>
+      <td>60.06%</td>
+      <td>35.48%</td>
+      <td>4.46%</td>
+      <td>3.72</td>
+    </tr>
+    <tr>
+      <td>1977-11-30</td>
+      <td>Cincinnati Stingers</td>
+      <td>1463.26</td>
+      <td>3</td>
+      <td>Indianapolis Racers</td>
+      <td>1468.39</td>
+      <td>0</td>
+      <td>58.02%</td>
+      <td>37.51%</td>
+      <td>4.47%</td>
+      <td>4.80</td>
+    </tr>
+    <tr>
+      <td>1977-11-30</td>
+      <td>Birmingham Bulls</td>
+      <td>1461.01</td>
+      <td>2</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1471.08</td>
+      <td>4</td>
+      <td>35.48%</td>
+      <td>60.06%</td>
+      <td>4.46%</td>
+      <td>-3.72</td>
+    </tr>
+    <tr>
+      <td>1977-11-30</td>
+      <td>Indianapolis Racers</td>
+      <td>1468.39</td>
+      <td>0</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1463.26</td>
+      <td>3</td>
+      <td>37.51%</td>
+      <td>58.02%</td>
+      <td>4.47%</td>
+      <td>-4.80</td>
+    </tr>
+    <tr>
+      <td>1977-11-30</td>
+      <td>Houston Aeros</td>
+      <td>1515.92</td>
+      <td>3</td>
+      <td>New England Whalers</td>
+      <td>1539.51</td>
+      <td>3</td>
+      <td>55.50%</td>
+      <td>40.03%</td>
+      <td>4.47%</td>
+      <td>-0.27</td>
+    </tr>
+    <tr>
+      <td>1977-12-01</td>
+      <td>Indianapolis Racers</td>
+      <td>1463.59</td>
+      <td>5</td>
+      <td>Quebec Nordiques</td>
+      <td>1535.15</td>
+      <td>4</td>
+      <td>48.71%</td>
+      <td>46.82%</td>
+      <td>4.47%</td>
+      <td>3.43</td>
+    </tr>
+    <tr>
+      <td>1977-12-01</td>
+      <td>Quebec Nordiques</td>
+      <td>1535.15</td>
+      <td>4</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1463.59</td>
+      <td>5</td>
+      <td>46.82%</td>
+      <td>48.71%</td>
+      <td>4.47%</td>
+      <td>-3.43</td>
+    </tr>
+    <tr>
+      <td>1977-12-02</td>
+      <td>Houston Aeros</td>
+      <td>1515.65</td>
+      <td>2</td>
+      <td>Indianapolis Racers</td>
+      <td>1467.02</td>
+      <td>4</td>
+      <td>64.97%</td>
+      <td>30.57%</td>
+      <td>4.46%</td>
+      <td>-6.67</td>
+    </tr>
+    <tr>
+      <td>1977-12-02</td>
+      <td>Birmingham Bulls</td>
+      <td>1457.29</td>
+      <td>7</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1474.80</td>
+      <td>5</td>
+      <td>34.50%</td>
+      <td>61.03%</td>
+      <td>4.46%</td>
+      <td>6.27</td>
+    </tr>
+    <tr>
+      <td>1977-12-02</td>
+      <td>Winnipeg Jets</td>
+      <td>1545.67</td>
+      <td>1</td>
+      <td>@ New England Whalers</td>
+      <td>1539.78</td>
+      <td>4</td>
+      <td>37.61%</td>
+      <td>57.92%</td>
+      <td>4.47%</td>
+      <td>-4.81</td>
+    </tr>
+    <tr>
+      <td>1977-12-02</td>
+      <td>Indianapolis Racers</td>
+      <td>1467.02</td>
+      <td>4</td>
+      <td>@ Houston Aeros</td>
+      <td>1515.65</td>
+      <td>2</td>
+      <td>30.57%</td>
+      <td>64.97%</td>
+      <td>4.46%</td>
+      <td>6.67</td>
+    </tr>
+    <tr>
+      <td>1977-12-02</td>
+      <td>Edmonton Oilers</td>
+      <td>1474.80</td>
+      <td>5</td>
+      <td>Birmingham Bulls</td>
+      <td>1457.29</td>
+      <td>7</td>
+      <td>61.03%</td>
+      <td>34.50%</td>
+      <td>4.46%</td>
+      <td>-6.27</td>
+    </tr>
+    <tr>
+      <td>1977-12-02</td>
+      <td>New England Whalers</td>
+      <td>1539.78</td>
+      <td>4</td>
+      <td>Winnipeg Jets</td>
+      <td>1545.67</td>
+      <td>1</td>
+      <td>57.92%</td>
+      <td>37.61%</td>
+      <td>4.47%</td>
+      <td>4.81</td>
+    </tr>
+    <tr>
+      <td>1977-12-03</td>
+      <td>Cincinnati Stingers</td>
+      <td>1468.06</td>
+      <td>5</td>
+      <td>@ New England Whalers</td>
+      <td>1544.59</td>
+      <td>2</td>
+      <td>27.27%</td>
+      <td>68.28%</td>
+      <td>4.45%</td>
+      <td>8.58</td>
+    </tr>
+    <tr>
+      <td>1977-12-03</td>
+      <td>Winnipeg Jets</td>
+      <td>1540.86</td>
+      <td>5</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1531.72</td>
+      <td>6</td>
+      <td>38.05%</td>
+      <td>57.48%</td>
+      <td>4.47%</td>
+      <td>-2.81</td>
+    </tr>
+    <tr>
+      <td>1977-12-03</td>
+      <td>Quebec Nordiques</td>
+      <td>1531.72</td>
+      <td>6</td>
+      <td>Winnipeg Jets</td>
+      <td>1540.86</td>
+      <td>5</td>
+      <td>57.48%</td>
+      <td>38.05%</td>
+      <td>4.47%</td>
+      <td>2.81</td>
+    </tr>
+    <tr>
+      <td>1977-12-03</td>
+      <td>New England Whalers</td>
+      <td>1544.59</td>
+      <td>2</td>
+      <td>Cincinnati Stingers</td>
+      <td>1468.06</td>
+      <td>5</td>
+      <td>68.28%</td>
+      <td>27.27%</td>
+      <td>4.45%</td>
+      <td>-8.58</td>
+    </tr>
+    <tr>
+      <td>1977-12-04</td>
+      <td>Birmingham Bulls</td>
+      <td>1463.56</td>
+      <td>3</td>
+      <td>Indianapolis Racers</td>
+      <td>1473.69</td>
+      <td>0</td>
+      <td>57.35%</td>
+      <td>38.19%</td>
+      <td>4.47%</td>
+      <td>4.89</td>
+    </tr>
+    <tr>
+      <td>1977-12-04</td>
+      <td>Edmonton Oilers</td>
+      <td>1468.53</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1538.05</td>
+      <td>2</td>
+      <td>28.07%</td>
+      <td>67.47%</td>
+      <td>4.46%</td>
+      <td>4.89</td>
+    </tr>
+    <tr>
+      <td>1977-12-04</td>
+      <td>Cincinnati Stingers</td>
+      <td>1476.64</td>
+      <td>2</td>
+      <td>Houston Aeros</td>
+      <td>1508.98</td>
+      <td>3</td>
+      <td>54.28%</td>
+      <td>41.25%</td>
+      <td>4.47%</td>
+      <td>-3.95</td>
+    </tr>
+    <tr>
+      <td>1977-12-04</td>
+      <td>Houston Aeros</td>
+      <td>1508.98</td>
+      <td>3</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1476.64</td>
+      <td>2</td>
+      <td>41.25%</td>
+      <td>54.28%</td>
+      <td>4.47%</td>
+      <td>3.95</td>
+    </tr>
+    <tr>
+      <td>1977-12-04</td>
+      <td>Winnipeg Jets</td>
+      <td>1538.05</td>
+      <td>2</td>
+      <td>Edmonton Oilers</td>
+      <td>1468.53</td>
+      <td>3</td>
+      <td>67.47%</td>
+      <td>28.07%</td>
+      <td>4.46%</td>
+      <td>-4.89</td>
+    </tr>
+    <tr>
+      <td>1977-12-04</td>
+      <td>Indianapolis Racers</td>
+      <td>1473.69</td>
+      <td>0</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1463.56</td>
+      <td>3</td>
+      <td>38.19%</td>
+      <td>57.35%</td>
+      <td>4.47%</td>
+      <td>-4.88</td>
+    </tr>
+    <tr>
+      <td>1977-12-06</td>
+      <td>Quebec Nordiques</td>
+      <td>1534.53</td>
+      <td>4</td>
+      <td>Houston Aeros</td>
+      <td>1512.93</td>
+      <td>3</td>
+      <td>61.56%</td>
+      <td>33.97%</td>
+      <td>4.46%</td>
+      <td>2.52</td>
+    </tr>
+    <tr>
+      <td>1977-12-06</td>
+      <td>Houston Aeros</td>
+      <td>1512.93</td>
+      <td>3</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1534.53</td>
+      <td>4</td>
+      <td>33.97%</td>
+      <td>61.56%</td>
+      <td>4.46%</td>
+      <td>-2.52</td>
+    </tr>
+    <tr>
+      <td>1977-12-06</td>
+      <td>New England Whalers</td>
+      <td>1536.01</td>
+      <td>2</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1468.81</td>
+      <td>5</td>
+      <td>46.20%</td>
+      <td>49.34%</td>
+      <td>4.47%</td>
+      <td>-5.86</td>
+    </tr>
+    <tr>
+      <td>1977-12-06</td>
+      <td>Indianapolis Racers</td>
+      <td>1468.81</td>
+      <td>5</td>
+      <td>New England Whalers</td>
+      <td>1536.01</td>
+      <td>2</td>
+      <td>49.34%</td>
+      <td>46.20%</td>
+      <td>4.47%</td>
+      <td>5.86</td>
+    </tr>
+    <tr>
+      <td>1977-12-07</td>
+      <td>Houston Aeros</td>
+      <td>1510.41</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1533.16</td>
+      <td>5</td>
+      <td>33.82%</td>
+      <td>61.71%</td>
+      <td>4.46%</td>
+      <td>-4.34</td>
+    </tr>
+    <tr>
+      <td>1977-12-07</td>
+      <td>Cincinnati Stingers</td>
+      <td>1472.69</td>
+      <td>4</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1473.42</td>
+      <td>5</td>
+      <td>36.72%</td>
+      <td>58.81%</td>
+      <td>4.47%</td>
+      <td>-2.71</td>
+    </tr>
+    <tr>
+      <td>1977-12-07</td>
+      <td>Edmonton Oilers</td>
+      <td>1473.42</td>
+      <td>5</td>
+      <td>Cincinnati Stingers</td>
+      <td>1472.69</td>
+      <td>4</td>
+      <td>58.81%</td>
+      <td>36.72%</td>
+      <td>4.47%</td>
+      <td>2.72</td>
+    </tr>
+    <tr>
+      <td>1977-12-07</td>
+      <td>Winnipeg Jets</td>
+      <td>1533.16</td>
+      <td>5</td>
+      <td>Houston Aeros</td>
+      <td>1510.41</td>
+      <td>2</td>
+      <td>61.71%</td>
+      <td>33.82%</td>
+      <td>4.46%</td>
+      <td>4.34</td>
+    </tr>
+    <tr>
+      <td>1977-12-07</td>
+      <td>Birmingham Bulls</td>
+      <td>1468.45</td>
+      <td>3</td>
+      <td>New England Whalers</td>
+      <td>1530.15</td>
+      <td>6</td>
+      <td>50.12%</td>
+      <td>45.41%</td>
+      <td>4.47%</td>
+      <td>-6.34</td>
+    </tr>
+    <tr>
+      <td>1977-12-07</td>
+      <td>New England Whalers</td>
+      <td>1530.15</td>
+      <td>6</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1468.45</td>
+      <td>3</td>
+      <td>45.41%</td>
+      <td>50.12%</td>
+      <td>4.47%</td>
+      <td>6.34</td>
+    </tr>
+    <tr>
+      <td>1977-12-09</td>
+      <td>Houston Aeros</td>
+      <td>1506.07</td>
+      <td>5</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1476.14</td>
+      <td>3</td>
+      <td>40.92%</td>
+      <td>54.62%</td>
+      <td>4.47%</td>
+      <td>5.62</td>
+    </tr>
+    <tr>
+      <td>1977-12-09</td>
+      <td>Edmonton Oilers</td>
+      <td>1476.14</td>
+      <td>3</td>
+      <td>Houston Aeros</td>
+      <td>1506.07</td>
+      <td>5</td>
+      <td>54.62%</td>
+      <td>40.92%</td>
+      <td>4.47%</td>
+      <td>-5.63</td>
+    </tr>
+    <tr>
+      <td>1977-12-09</td>
+      <td>Birmingham Bulls</td>
+      <td>1462.11</td>
+      <td>1</td>
+      <td>New England Whalers</td>
+      <td>1536.49</td>
+      <td>2</td>
+      <td>48.30%</td>
+      <td>47.23%</td>
+      <td>4.47%</td>
+      <td>-3.54</td>
+    </tr>
+    <tr>
+      <td>1977-12-09</td>
+      <td>Cincinnati Stingers</td>
+      <td>1469.98</td>
+      <td>4</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1537.50</td>
+      <td>3</td>
+      <td>28.31%</td>
+      <td>67.24%</td>
+      <td>4.46%</td>
+      <td>4.88</td>
+    </tr>
+    <tr>
+      <td>1977-12-09</td>
+      <td>Winnipeg Jets</td>
+      <td>1537.50</td>
+      <td>3</td>
+      <td>Cincinnati Stingers</td>
+      <td>1469.98</td>
+      <td>4</td>
+      <td>67.24%</td>
+      <td>28.31%</td>
+      <td>4.46%</td>
+      <td>-4.88</td>
+    </tr>
+    <tr>
+      <td>1977-12-09</td>
+      <td>New England Whalers</td>
+      <td>1536.49</td>
+      <td>2</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1462.11</td>
+      <td>1</td>
+      <td>47.23%</td>
+      <td>48.30%</td>
+      <td>4.47%</td>
+      <td>3.53</td>
+    </tr>
+    <tr>
+      <td>1977-12-10</td>
+      <td>Quebec Nordiques</td>
+      <td>1537.05</td>
+      <td>5</td>
+      <td>Indianapolis Racers</td>
+      <td>1474.67</td>
+      <td>3</td>
+      <td>66.63%</td>
+      <td>28.91%</td>
+      <td>4.46%</td>
+      <td>3.05</td>
+    </tr>
+    <tr>
+      <td>1977-12-10</td>
+      <td>Indianapolis Racers</td>
+      <td>1474.67</td>
+      <td>3</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1537.05</td>
+      <td>5</td>
+      <td>28.91%</td>
+      <td>66.63%</td>
+      <td>4.46%</td>
+      <td>-3.04</td>
+    </tr>
+    <tr>
+      <td>1977-12-11</td>
+      <td>Houston Aeros</td>
+      <td>1511.69</td>
+      <td>4</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1470.51</td>
+      <td>2</td>
+      <td>42.49%</td>
+      <td>53.04%</td>
+      <td>4.47%</td>
+      <td>5.47</td>
+    </tr>
+    <tr>
+      <td>1977-12-11</td>
+      <td>Winnipeg Jets</td>
+      <td>1532.62</td>
+      <td>7</td>
+      <td>Indianapolis Racers</td>
+      <td>1471.63</td>
+      <td>1</td>
+      <td>66.46%</td>
+      <td>29.08%</td>
+      <td>4.46%</td>
+      <td>5.30</td>
+    </tr>
+    <tr>
+      <td>1977-12-11</td>
+      <td>Indianapolis Racers</td>
+      <td>1471.63</td>
+      <td>1</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1532.62</td>
+      <td>7</td>
+      <td>29.08%</td>
+      <td>66.46%</td>
+      <td>4.46%</td>
+      <td>-5.31</td>
+    </tr>
+    <tr>
+      <td>1977-12-11</td>
+      <td>Edmonton Oilers</td>
+      <td>1470.51</td>
+      <td>2</td>
+      <td>Houston Aeros</td>
+      <td>1511.69</td>
+      <td>4</td>
+      <td>53.04%</td>
+      <td>42.49%</td>
+      <td>4.47%</td>
+      <td>-5.46</td>
+    </tr>
+    <tr>
+      <td>1977-12-13</td>
+      <td>Houston Aeros</td>
+      <td>1517.16</td>
+      <td>3</td>
+      <td>Birmingham Bulls</td>
+      <td>1458.57</td>
+      <td>5</td>
+      <td>66.18%</td>
+      <td>29.36%</td>
+      <td>4.46%</td>
+      <td>-6.79</td>
+    </tr>
+    <tr>
+      <td>1977-12-13</td>
+      <td>Birmingham Bulls</td>
+      <td>1458.57</td>
+      <td>5</td>
+      <td>@ Houston Aeros</td>
+      <td>1517.16</td>
+      <td>3</td>
+      <td>29.36%</td>
+      <td>66.18%</td>
+      <td>4.46%</td>
+      <td>6.80</td>
+    </tr>
+    <tr>
+      <td>1977-12-14</td>
+      <td>Cincinnati Stingers</td>
+      <td>1474.86</td>
+      <td>3</td>
+      <td>Indianapolis Racers</td>
+      <td>1466.32</td>
+      <td>1</td>
+      <td>59.85%</td>
+      <td>35.68%</td>
+      <td>4.46%</td>
+      <td>3.73</td>
+    </tr>
+    <tr>
+      <td>1977-12-14</td>
+      <td>Indianapolis Racers</td>
+      <td>1466.32</td>
+      <td>1</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1474.86</td>
+      <td>3</td>
+      <td>35.68%</td>
+      <td>59.85%</td>
+      <td>4.46%</td>
+      <td>-3.73</td>
+    </tr>
+    <tr>
+      <td>1977-12-15</td>
+      <td>Indianapolis Racers</td>
+      <td>1462.59</td>
+      <td>3</td>
+      <td>Houston Aeros</td>
+      <td>1510.37</td>
+      <td>3</td>
+      <td>52.11%</td>
+      <td>43.43%</td>
+      <td>4.47%</td>
+      <td>-0.16</td>
+    </tr>
+    <tr>
+      <td>1977-12-15</td>
+      <td>Birmingham Bulls</td>
+      <td>1465.37</td>
+      <td>5</td>
+      <td>Cincinnati Stingers</td>
+      <td>1478.59</td>
+      <td>3</td>
+      <td>56.92%</td>
+      <td>38.61%</td>
+      <td>4.47%</td>
+      <td>4.03</td>
+    </tr>
+    <tr>
+      <td>1977-12-15</td>
+      <td>Cincinnati Stingers</td>
+      <td>1478.59</td>
+      <td>3</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1465.37</td>
+      <td>5</td>
+      <td>38.61%</td>
+      <td>56.92%</td>
+      <td>4.47%</td>
+      <td>-4.03</td>
+    </tr>
+    <tr>
+      <td>1977-12-15</td>
+      <td>Houston Aeros</td>
+      <td>1510.37</td>
+      <td>3</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1462.59</td>
+      <td>3</td>
+      <td>43.43%</td>
+      <td>52.11%</td>
+      <td>4.47%</td>
+      <td>0.15</td>
+    </tr>
+    <tr>
+      <td>1977-12-17</td>
+      <td>Winnipeg Jets</td>
+      <td>1537.92</td>
+      <td>6</td>
+      <td>@ New England Whalers</td>
+      <td>1540.02</td>
+      <td>3</td>
+      <td>36.54%</td>
+      <td>59.00%</td>
+      <td>4.47%</td>
+      <td>7.43</td>
+    </tr>
+    <tr>
+      <td>1977-12-17</td>
+      <td>New England Whalers</td>
+      <td>1540.02</td>
+      <td>3</td>
+      <td>Winnipeg Jets</td>
+      <td>1537.92</td>
+      <td>6</td>
+      <td>59.00%</td>
+      <td>36.54%</td>
+      <td>4.47%</td>
+      <td>-7.43</td>
+    </tr>
+    <tr>
+      <td>1977-12-18</td>
+      <td>Winnipeg Jets</td>
+      <td>1545.35</td>
+      <td>7</td>
+      <td>New England Whalers</td>
+      <td>1532.59</td>
+      <td>3</td>
+      <td>60.41%</td>
+      <td>35.12%</td>
+      <td>4.46%</td>
+      <td>5.20</td>
+    </tr>
+    <tr>
+      <td>1977-12-18</td>
+      <td>Birmingham Bulls</td>
+      <td>1469.40</td>
+      <td>3</td>
+      <td>Edmonton Oilers</td>
+      <td>1465.05</td>
+      <td>2</td>
+      <td>59.30%</td>
+      <td>36.24%</td>
+      <td>4.47%</td>
+      <td>2.68</td>
+    </tr>
+    <tr>
+      <td>1977-12-18</td>
+      <td>New England Whalers</td>
+      <td>1532.59</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1545.35</td>
+      <td>7</td>
+      <td>35.12%</td>
+      <td>60.41%</td>
+      <td>4.46%</td>
+      <td>-5.20</td>
+    </tr>
+    <tr>
+      <td>1977-12-18</td>
+      <td>Edmonton Oilers</td>
+      <td>1465.05</td>
+      <td>2</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1469.40</td>
+      <td>3</td>
+      <td>36.24%</td>
+      <td>59.30%</td>
+      <td>4.47%</td>
+      <td>-2.68</td>
+    </tr>
+    <tr>
+      <td>1977-12-20</td>
+      <td>Edmonton Oilers</td>
+      <td>1462.37</td>
+      <td>4</td>
+      <td>@ Houston Aeros</td>
+      <td>1510.52</td>
+      <td>6</td>
+      <td>30.63%</td>
+      <td>64.91%</td>
+      <td>4.46%</td>
+      <td>-3.22</td>
+    </tr>
+    <tr>
+      <td>1977-12-20</td>
+      <td>Houston Aeros</td>
+      <td>1510.52</td>
+      <td>6</td>
+      <td>Edmonton Oilers</td>
+      <td>1462.37</td>
+      <td>4</td>
+      <td>64.91%</td>
+      <td>30.63%</td>
+      <td>4.46%</td>
+      <td>3.22</td>
+    </tr>
+    <tr>
+      <td>1977-12-21</td>
+      <td>Houston Aeros</td>
+      <td>1513.74</td>
+      <td>3</td>
+      <td>Winnipeg Jets</td>
+      <td>1550.55</td>
+      <td>4</td>
+      <td>53.65%</td>
+      <td>41.88%</td>
+      <td>4.47%</td>
+      <td>-3.91</td>
+    </tr>
+    <tr>
+      <td>1977-12-21</td>
+      <td>Winnipeg Jets</td>
+      <td>1550.55</td>
+      <td>4</td>
+      <td>@ Houston Aeros</td>
+      <td>1513.74</td>
+      <td>3</td>
+      <td>41.88%</td>
+      <td>53.65%</td>
+      <td>4.47%</td>
+      <td>3.91</td>
+    </tr>
+    <tr>
+      <td>1977-12-22</td>
+      <td>Cincinnati Stingers</td>
+      <td>1474.56</td>
+      <td>4</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1462.43</td>
+      <td>1</td>
+      <td>38.46%</td>
+      <td>57.07%</td>
+      <td>4.47%</td>
+      <td>7.19</td>
+    </tr>
+    <tr>
+      <td>1977-12-22</td>
+      <td>Indianapolis Racers</td>
+      <td>1462.43</td>
+      <td>1</td>
+      <td>Cincinnati Stingers</td>
+      <td>1474.56</td>
+      <td>4</td>
+      <td>57.07%</td>
+      <td>38.46%</td>
+      <td>4.47%</td>
+      <td>-7.19</td>
+    </tr>
+    <tr>
+      <td>1977-12-23</td>
+      <td>Indianapolis Racers</td>
+      <td>1455.24</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1527.39</td>
+      <td>5</td>
+      <td>27.77%</td>
+      <td>67.77%</td>
+      <td>4.46%</td>
+      <td>-2.92</td>
+    </tr>
+    <tr>
+      <td>1977-12-23</td>
+      <td>New England Whalers</td>
+      <td>1527.39</td>
+      <td>5</td>
+      <td>Indianapolis Racers</td>
+      <td>1455.24</td>
+      <td>3</td>
+      <td>67.77%</td>
+      <td>27.77%</td>
+      <td>4.46%</td>
+      <td>2.93</td>
+    </tr>
+    <tr>
+      <td>1977-12-23</td>
+      <td>Winnipeg Jets</td>
+      <td>1554.46</td>
+      <td>6</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1481.75</td>
+      <td>4</td>
+      <td>46.99%</td>
+      <td>48.54%</td>
+      <td>4.47%</td>
+      <td>5.02</td>
+    </tr>
+    <tr>
+      <td>1977-12-23</td>
+      <td>Cincinnati Stingers</td>
+      <td>1481.75</td>
+      <td>4</td>
+      <td>Winnipeg Jets</td>
+      <td>1554.46</td>
+      <td>6</td>
+      <td>48.54%</td>
+      <td>46.99%</td>
+      <td>4.47%</td>
+      <td>-5.02</td>
+    </tr>
+    <tr>
+      <td>1977-12-26</td>
+      <td>Winnipeg Jets</td>
+      <td>1559.48</td>
+      <td>9</td>
+      <td>Quebec Nordiques</td>
+      <td>1540.10</td>
+      <td>4</td>
+      <td>61.28%</td>
+      <td>34.26%</td>
+      <td>4.46%</td>
+      <td>5.68</td>
+    </tr>
+    <tr>
+      <td>1977-12-26</td>
+      <td>Quebec Nordiques</td>
+      <td>1540.10</td>
+      <td>4</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1559.48</td>
+      <td>9</td>
+      <td>34.26%</td>
+      <td>61.28%</td>
+      <td>4.46%</td>
+      <td>-5.68</td>
+    </tr>
+    <tr>
+      <td>1977-12-27</td>
+      <td>Quebec Nordiques</td>
+      <td>1534.42</td>
+      <td>3</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1459.15</td>
+      <td>9</td>
+      <td>47.35%</td>
+      <td>48.18%</td>
+      <td>4.47%</td>
+      <td>-8.49</td>
+    </tr>
+    <tr>
+      <td>1977-12-27</td>
+      <td>New England Whalers</td>
+      <td>1530.32</td>
+      <td>8</td>
+      <td>Birmingham Bulls</td>
+      <td>1472.08</td>
+      <td>1</td>
+      <td>66.14%</td>
+      <td>29.41%</td>
+      <td>4.46%</td>
+      <td>5.79</td>
+    </tr>
+    <tr>
+      <td>1977-12-27</td>
+      <td>Birmingham Bulls</td>
+      <td>1472.08</td>
+      <td>1</td>
+      <td>@ New England Whalers</td>
+      <td>1530.32</td>
+      <td>8</td>
+      <td>29.41%</td>
+      <td>66.14%</td>
+      <td>4.46%</td>
+      <td>-5.80</td>
+    </tr>
+    <tr>
+      <td>1977-12-27</td>
+      <td>Edmonton Oilers</td>
+      <td>1459.15</td>
+      <td>9</td>
+      <td>Quebec Nordiques</td>
+      <td>1534.42</td>
+      <td>3</td>
+      <td>48.18%</td>
+      <td>47.35%</td>
+      <td>4.47%</td>
+      <td>8.49</td>
+    </tr>
+    <tr>
+      <td>1977-12-28</td>
+      <td>Indianapolis Racers</td>
+      <td>1452.32</td>
+      <td>4</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1476.73</td>
+      <td>5</td>
+      <td>33.61%</td>
+      <td>61.93%</td>
+      <td>4.46%</td>
+      <td>-2.50</td>
+    </tr>
+    <tr>
+      <td>1977-12-28</td>
+      <td>Cincinnati Stingers</td>
+      <td>1476.73</td>
+      <td>5</td>
+      <td>Indianapolis Racers</td>
+      <td>1452.32</td>
+      <td>4</td>
+      <td>61.93%</td>
+      <td>33.61%</td>
+      <td>4.46%</td>
+      <td>2.49</td>
+    </tr>
+    <tr>
+      <td>1977-12-29</td>
+      <td>Birmingham Bulls</td>
+      <td>1466.28</td>
+      <td>7</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1479.22</td>
+      <td>1</td>
+      <td>35.10%</td>
+      <td>60.44%</td>
+      <td>4.46%</td>
+      <td>10.76</td>
+    </tr>
+    <tr>
+      <td>1977-12-29</td>
+      <td>Cincinnati Stingers</td>
+      <td>1479.22</td>
+      <td>1</td>
+      <td>Birmingham Bulls</td>
+      <td>1466.28</td>
+      <td>7</td>
+      <td>60.44%</td>
+      <td>35.10%</td>
+      <td>4.46%</td>
+      <td>-10.75</td>
+    </tr>
+    <tr>
+      <td>1977-12-29</td>
+      <td>Indianapolis Racers</td>
+      <td>1449.82</td>
+      <td>1</td>
+      <td>Houston Aeros</td>
+      <td>1509.83</td>
+      <td>7</td>
+      <td>50.36%</td>
+      <td>45.17%</td>
+      <td>4.47%</td>
+      <td>-9.00</td>
+    </tr>
+    <tr>
+      <td>1977-12-29</td>
+      <td>Houston Aeros</td>
+      <td>1509.83</td>
+      <td>7</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1449.82</td>
+      <td>1</td>
+      <td>45.17%</td>
+      <td>50.36%</td>
+      <td>4.47%</td>
+      <td>9.01</td>
+    </tr>
+    <tr>
+      <td>1977-12-30</td>
+      <td>Indianapolis Racers</td>
+      <td>1440.82</td>
+      <td>5</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1467.64</td>
+      <td>8</td>
+      <td>33.30%</td>
+      <td>62.24%</td>
+      <td>4.46%</td>
+      <td>-4.28</td>
+    </tr>
+    <tr>
+      <td>1977-12-30</td>
+      <td>Birmingham Bulls</td>
+      <td>1477.04</td>
+      <td>2</td>
+      <td>@ New England Whalers</td>
+      <td>1536.11</td>
+      <td>6</td>
+      <td>29.31%</td>
+      <td>66.24%</td>
+      <td>4.46%</td>
+      <td>-4.37</td>
+    </tr>
+    <tr>
+      <td>1977-12-30</td>
+      <td>Cincinnati Stingers</td>
+      <td>1468.47</td>
+      <td>5</td>
+      <td>@ Houston Aeros</td>
+      <td>1518.84</td>
+      <td>5</td>
+      <td>30.36%</td>
+      <td>65.18%</td>
+      <td>4.46%</td>
+      <td>0.62</td>
+    </tr>
+    <tr>
+      <td>1977-12-30</td>
+      <td>Houston Aeros</td>
+      <td>1518.84</td>
+      <td>5</td>
+      <td>Cincinnati Stingers</td>
+      <td>1468.47</td>
+      <td>5</td>
+      <td>65.18%</td>
+      <td>30.36%</td>
+      <td>4.46%</td>
+      <td>-0.62</td>
+    </tr>
+    <tr>
+      <td>1977-12-30</td>
+      <td>New England Whalers</td>
+      <td>1536.11</td>
+      <td>6</td>
+      <td>Birmingham Bulls</td>
+      <td>1477.04</td>
+      <td>2</td>
+      <td>66.24%</td>
+      <td>29.31%</td>
+      <td>4.46%</td>
+      <td>4.37</td>
+    </tr>
+    <tr>
+      <td>1977-12-30</td>
+      <td>Edmonton Oilers</td>
+      <td>1467.64</td>
+      <td>8</td>
+      <td>Indianapolis Racers</td>
+      <td>1440.82</td>
+      <td>5</td>
+      <td>62.24%</td>
+      <td>33.30%</td>
+      <td>4.46%</td>
+      <td>4.28</td>
+    </tr>
+    <tr>
+      <td>1978-01-01</td>
+      <td>Birmingham Bulls</td>
+      <td>1472.67</td>
+      <td>2</td>
+      <td>Quebec Nordiques</td>
+      <td>1525.93</td>
+      <td>5</td>
+      <td>51.33%</td>
+      <td>44.20%</td>
+      <td>4.47%</td>
+      <td>-6.48</td>
+    </tr>
+    <tr>
+      <td>1978-01-01</td>
+      <td>Cincinnati Stingers</td>
+      <td>1469.09</td>
+      <td>3</td>
+      <td>New England Whalers</td>
+      <td>1540.48</td>
+      <td>4</td>
+      <td>48.73%</td>
+      <td>46.80%</td>
+      <td>4.47%</td>
+      <td>-3.57</td>
+    </tr>
+    <tr>
+      <td>1978-01-01</td>
+      <td>New England Whalers</td>
+      <td>1540.48</td>
+      <td>4</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1469.09</td>
+      <td>3</td>
+      <td>46.80%</td>
+      <td>48.73%</td>
+      <td>4.47%</td>
+      <td>3.56</td>
+    </tr>
+    <tr>
+      <td>1978-01-01</td>
+      <td>Quebec Nordiques</td>
+      <td>1525.93</td>
+      <td>5</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1472.67</td>
+      <td>2</td>
+      <td>44.20%</td>
+      <td>51.33%</td>
+      <td>4.47%</td>
+      <td>6.48</td>
+    </tr>
+    <tr>
+      <td>1978-01-01</td>
+      <td>Edmonton Oilers</td>
+      <td>1471.92</td>
+      <td>1</td>
+      <td>Houston Aeros</td>
+      <td>1518.22</td>
+      <td>2</td>
+      <td>52.31%</td>
+      <td>43.22%</td>
+      <td>4.47%</td>
+      <td>-3.82</td>
+    </tr>
+    <tr>
+      <td>1978-01-01</td>
+      <td>Houston Aeros</td>
+      <td>1518.22</td>
+      <td>2</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1471.92</td>
+      <td>1</td>
+      <td>43.22%</td>
+      <td>52.31%</td>
+      <td>4.47%</td>
+      <td>3.82</td>
+    </tr>
+    <tr>
+      <td>1978-01-04</td>
+      <td>Quebec Nordiques</td>
+      <td>1532.41</td>
+      <td>6</td>
+      <td>@ New England Whalers</td>
+      <td>1544.04</td>
+      <td>4</td>
+      <td>35.27%</td>
+      <td>60.26%</td>
+      <td>4.46%</td>
+      <td>6.20</td>
+    </tr>
+    <tr>
+      <td>1978-01-04</td>
+      <td>Houston Aeros</td>
+      <td>1522.04</td>
+      <td>3</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1465.52</td>
+      <td>5</td>
+      <td>44.67%</td>
+      <td>50.86%</td>
+      <td>4.47%</td>
+      <td>-4.64</td>
+    </tr>
+    <tr>
+      <td>1978-01-04</td>
+      <td>New England Whalers</td>
+      <td>1544.04</td>
+      <td>4</td>
+      <td>Quebec Nordiques</td>
+      <td>1532.41</td>
+      <td>6</td>
+      <td>60.26%</td>
+      <td>35.27%</td>
+      <td>4.46%</td>
+      <td>-6.19</td>
+    </tr>
+    <tr>
+      <td>1978-01-04</td>
+      <td>Cincinnati Stingers</td>
+      <td>1465.52</td>
+      <td>5</td>
+      <td>Houston Aeros</td>
+      <td>1522.04</td>
+      <td>3</td>
+      <td>50.86%</td>
+      <td>44.67%</td>
+      <td>4.47%</td>
+      <td>4.64</td>
+    </tr>
+    <tr>
+      <td>1978-01-04</td>
+      <td>Indianapolis Racers</td>
+      <td>1436.54</td>
+      <td>4</td>
+      <td>Birmingham Bulls</td>
+      <td>1466.19</td>
+      <td>1</td>
+      <td>54.65%</td>
+      <td>40.88%</td>
+      <td>4.47%</td>
+      <td>5.21</td>
+    </tr>
+    <tr>
+      <td>1978-01-04</td>
+      <td>Birmingham Bulls</td>
+      <td>1466.19</td>
+      <td>1</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1436.54</td>
+      <td>4</td>
+      <td>40.88%</td>
+      <td>54.65%</td>
+      <td>4.47%</td>
+      <td>-5.22</td>
+    </tr>
+    <tr>
+      <td>1978-01-06</td>
+      <td>Houston Aeros</td>
+      <td>1517.40</td>
+      <td>4</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1460.97</td>
+      <td>6</td>
+      <td>44.65%</td>
+      <td>50.88%</td>
+      <td>4.47%</td>
+      <td>-4.63</td>
+    </tr>
+    <tr>
+      <td>1978-01-06</td>
+      <td>New England Whalers</td>
+      <td>1537.85</td>
+      <td>3</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1441.75</td>
+      <td>4</td>
+      <td>50.34%</td>
+      <td>45.19%</td>
+      <td>4.47%</td>
+      <td>-3.68</td>
+    </tr>
+    <tr>
+      <td>1978-01-06</td>
+      <td>Winnipeg Jets</td>
+      <td>1565.16</td>
+      <td>4</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1468.10</td>
+      <td>1</td>
+      <td>50.48%</td>
+      <td>45.05%</td>
+      <td>4.47%</td>
+      <td>5.72</td>
+    </tr>
+    <tr>
+      <td>1978-01-06</td>
+      <td>Edmonton Oilers</td>
+      <td>1468.10</td>
+      <td>1</td>
+      <td>Winnipeg Jets</td>
+      <td>1565.16</td>
+      <td>4</td>
+      <td>45.05%</td>
+      <td>50.48%</td>
+      <td>4.47%</td>
+      <td>-5.72</td>
+    </tr>
+    <tr>
+      <td>1978-01-06</td>
+      <td>Indianapolis Racers</td>
+      <td>1441.75</td>
+      <td>4</td>
+      <td>New England Whalers</td>
+      <td>1537.85</td>
+      <td>3</td>
+      <td>45.19%</td>
+      <td>50.34%</td>
+      <td>4.47%</td>
+      <td>3.68</td>
+    </tr>
+    <tr>
+      <td>1978-01-06</td>
+      <td>Birmingham Bulls</td>
+      <td>1460.97</td>
+      <td>6</td>
+      <td>Houston Aeros</td>
+      <td>1517.40</td>
+      <td>4</td>
+      <td>50.88%</td>
+      <td>44.65%</td>
+      <td>4.47%</td>
+      <td>4.64</td>
+    </tr>
+    <tr>
+      <td>1978-01-06</td>
+      <td>Cincinnati Stingers</td>
+      <td>1470.16</td>
+      <td>5</td>
+      <td>Quebec Nordiques</td>
+      <td>1538.61</td>
+      <td>3</td>
+      <td>49.16%</td>
+      <td>46.37%</td>
+      <td>4.47%</td>
+      <td>4.80</td>
+    </tr>
+    <tr>
+      <td>1978-01-06</td>
+      <td>Quebec Nordiques</td>
+      <td>1538.61</td>
+      <td>3</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1470.16</td>
+      <td>5</td>
+      <td>46.37%</td>
+      <td>49.16%</td>
+      <td>4.47%</td>
+      <td>-4.81</td>
+    </tr>
+    <tr>
+      <td>1978-01-07</td>
+      <td>Cincinnati Stingers</td>
+      <td>1474.96</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1534.17</td>
+      <td>5</td>
+      <td>29.29%</td>
+      <td>66.25%</td>
+      <td>4.46%</td>
+      <td>-3.08</td>
+    </tr>
+    <tr>
+      <td>1978-01-07</td>
+      <td>Indianapolis Racers</td>
+      <td>1445.43</td>
+      <td>2</td>
+      <td>@ Houston Aeros</td>
+      <td>1512.77</td>
+      <td>1</td>
+      <td>28.33%</td>
+      <td>67.21%</td>
+      <td>4.46%</td>
+      <td>4.88</td>
+    </tr>
+    <tr>
+      <td>1978-01-07</td>
+      <td>Houston Aeros</td>
+      <td>1512.77</td>
+      <td>1</td>
+      <td>Indianapolis Racers</td>
+      <td>1445.43</td>
+      <td>2</td>
+      <td>67.21%</td>
+      <td>28.33%</td>
+      <td>4.46%</td>
+      <td>-4.88</td>
+    </tr>
+    <tr>
+      <td>1978-01-07</td>
+      <td>New England Whalers</td>
+      <td>1534.17</td>
+      <td>5</td>
+      <td>Cincinnati Stingers</td>
+      <td>1474.96</td>
+      <td>3</td>
+      <td>66.25%</td>
+      <td>29.29%</td>
+      <td>4.46%</td>
+      <td>3.09</td>
+    </tr>
+    <tr>
+      <td>1978-01-08</td>
+      <td>New England Whalers</td>
+      <td>1537.26</td>
+      <td>4</td>
+      <td>Birmingham Bulls</td>
+      <td>1465.61</td>
+      <td>5</td>
+      <td>67.72%</td>
+      <td>27.83%</td>
+      <td>4.46%</td>
+      <td>-4.92</td>
+    </tr>
+    <tr>
+      <td>1978-01-08</td>
+      <td>Houston Aeros</td>
+      <td>1507.89</td>
+      <td>2</td>
+      <td>Edmonton Oilers</td>
+      <td>1462.38</td>
+      <td>4</td>
+      <td>64.59%</td>
+      <td>30.95%</td>
+      <td>4.46%</td>
+      <td>-6.63</td>
+    </tr>
+    <tr>
+      <td>1978-01-08</td>
+      <td>Winnipeg Jets</td>
+      <td>1570.88</td>
+      <td>4</td>
+      <td>Indianapolis Racers</td>
+      <td>1450.31</td>
+      <td>2</td>
+      <td>73.02%</td>
+      <td>22.53%</td>
+      <td>4.44%</td>
+      <td>2.39</td>
+    </tr>
+    <tr>
+      <td>1978-01-08</td>
+      <td>Birmingham Bulls</td>
+      <td>1465.61</td>
+      <td>5</td>
+      <td>@ New England Whalers</td>
+      <td>1537.26</td>
+      <td>4</td>
+      <td>27.83%</td>
+      <td>67.72%</td>
+      <td>4.46%</td>
+      <td>4.91</td>
+    </tr>
+    <tr>
+      <td>1978-01-08</td>
+      <td>Edmonton Oilers</td>
+      <td>1462.38</td>
+      <td>4</td>
+      <td>@ Houston Aeros</td>
+      <td>1507.89</td>
+      <td>2</td>
+      <td>30.95%</td>
+      <td>64.59%</td>
+      <td>4.46%</td>
+      <td>6.63</td>
+    </tr>
+    <tr>
+      <td>1978-01-08</td>
+      <td>Indianapolis Racers</td>
+      <td>1450.31</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1570.88</td>
+      <td>4</td>
+      <td>22.53%</td>
+      <td>73.02%</td>
+      <td>4.44%</td>
+      <td>-2.39</td>
+    </tr>
+    <tr>
+      <td>1978-01-10</td>
+      <td>Birmingham Bulls</td>
+      <td>1470.52</td>
+      <td>4</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1533.80</td>
+      <td>6</td>
+      <td>28.81%</td>
+      <td>66.74%</td>
+      <td>4.46%</td>
+      <td>-3.03</td>
+    </tr>
+    <tr>
+      <td>1978-01-10</td>
+      <td>Quebec Nordiques</td>
+      <td>1533.80</td>
+      <td>6</td>
+      <td>Birmingham Bulls</td>
+      <td>1470.52</td>
+      <td>4</td>
+      <td>66.74%</td>
+      <td>28.81%</td>
+      <td>4.46%</td>
+      <td>3.04</td>
+    </tr>
+    <tr>
+      <td>1978-01-11</td>
+      <td>Edmonton Oilers</td>
+      <td>1469.01</td>
+      <td>2</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1471.88</td>
+      <td>0</td>
+      <td>36.43%</td>
+      <td>59.10%</td>
+      <td>4.47%</td>
+      <td>6.07</td>
+    </tr>
+    <tr>
+      <td>1978-01-11</td>
+      <td>Indianapolis Racers</td>
+      <td>1447.92</td>
+      <td>2</td>
+      <td>Quebec Nordiques</td>
+      <td>1536.84</td>
+      <td>1</td>
+      <td>46.22%</td>
+      <td>49.32%</td>
+      <td>4.47%</td>
+      <td>3.60</td>
+    </tr>
+    <tr>
+      <td>1978-01-11</td>
+      <td>Winnipeg Jets</td>
+      <td>1573.27</td>
+      <td>11</td>
+      <td>Birmingham Bulls</td>
+      <td>1467.49</td>
+      <td>2</td>
+      <td>71.50%</td>
+      <td>24.05%</td>
+      <td>4.45%</td>
+      <td>5.40</td>
+    </tr>
+    <tr>
+      <td>1978-01-11</td>
+      <td>Quebec Nordiques</td>
+      <td>1536.84</td>
+      <td>1</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1447.92</td>
+      <td>2</td>
+      <td>49.32%</td>
+      <td>46.22%</td>
+      <td>4.47%</td>
+      <td>-3.61</td>
+    </tr>
+    <tr>
+      <td>1978-01-11</td>
+      <td>Birmingham Bulls</td>
+      <td>1467.49</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1573.27</td>
+      <td>11</td>
+      <td>24.05%</td>
+      <td>71.50%</td>
+      <td>4.45%</td>
+      <td>-5.40</td>
+    </tr>
+    <tr>
+      <td>1978-01-11</td>
+      <td>Cincinnati Stingers</td>
+      <td>1471.88</td>
+      <td>0</td>
+      <td>Edmonton Oilers</td>
+      <td>1469.01</td>
+      <td>2</td>
+      <td>59.10%</td>
+      <td>36.43%</td>
+      <td>4.47%</td>
+      <td>-6.07</td>
+    </tr>
+    <tr>
+      <td>1978-01-13</td>
+      <td>Winnipeg Jets</td>
+      <td>1578.67</td>
+      <td>2</td>
+      <td>@ Houston Aeros</td>
+      <td>1501.26</td>
+      <td>3</td>
+      <td>47.66%</td>
+      <td>47.87%</td>
+      <td>4.47%</td>
+      <td>-3.49</td>
+    </tr>
+    <tr>
+      <td>1978-01-13</td>
+      <td>New England Whalers</td>
+      <td>1532.34</td>
+      <td>2</td>
+      <td>Edmonton Oilers</td>
+      <td>1475.08</td>
+      <td>0</td>
+      <td>66.02%</td>
+      <td>29.52%</td>
+      <td>4.46%</td>
+      <td>3.11</td>
+    </tr>
+    <tr>
+      <td>1978-01-13</td>
+      <td>Houston Aeros</td>
+      <td>1501.26</td>
+      <td>3</td>
+      <td>Winnipeg Jets</td>
+      <td>1578.67</td>
+      <td>2</td>
+      <td>47.87%</td>
+      <td>47.66%</td>
+      <td>4.47%</td>
+      <td>3.48</td>
+    </tr>
+    <tr>
+      <td>1978-01-13</td>
+      <td>Edmonton Oilers</td>
+      <td>1475.08</td>
+      <td>0</td>
+      <td>@ New England Whalers</td>
+      <td>1532.34</td>
+      <td>2</td>
+      <td>29.52%</td>
+      <td>66.02%</td>
+      <td>4.46%</td>
+      <td>-3.11</td>
+    </tr>
+    <tr>
+      <td>1978-01-14</td>
+      <td>New England Whalers</td>
+      <td>1535.45</td>
+      <td>4</td>
+      <td>Houston Aeros</td>
+      <td>1504.74</td>
+      <td>5</td>
+      <td>62.73%</td>
+      <td>32.80%</td>
+      <td>4.46%</td>
+      <td>-4.55</td>
+    </tr>
+    <tr>
+      <td>1978-01-14</td>
+      <td>Cincinnati Stingers</td>
+      <td>1465.81</td>
+      <td>3</td>
+      <td>Birmingham Bulls</td>
+      <td>1462.09</td>
+      <td>4</td>
+      <td>59.21%</td>
+      <td>36.32%</td>
+      <td>4.47%</td>
+      <td>-4.31</td>
+    </tr>
+    <tr>
+      <td>1978-01-14</td>
+      <td>Indianapolis Racers</td>
+      <td>1451.52</td>
+      <td>3</td>
+      <td>Winnipeg Jets</td>
+      <td>1575.18</td>
+      <td>6</td>
+      <td>41.29%</td>
+      <td>54.24%</td>
+      <td>4.47%</td>
+      <td>-5.26</td>
+    </tr>
+    <tr>
+      <td>1978-01-14</td>
+      <td>Quebec Nordiques</td>
+      <td>1533.23</td>
+      <td>7</td>
+      <td>Edmonton Oilers</td>
+      <td>1471.97</td>
+      <td>4</td>
+      <td>66.50%</td>
+      <td>29.05%</td>
+      <td>4.46%</td>
+      <td>3.75</td>
+    </tr>
+    <tr>
+      <td>1978-01-14</td>
+      <td>Winnipeg Jets</td>
+      <td>1575.18</td>
+      <td>6</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1451.52</td>
+      <td>3</td>
+      <td>54.24%</td>
+      <td>41.29%</td>
+      <td>4.47%</td>
+      <td>5.27</td>
+    </tr>
+    <tr>
+      <td>1978-01-14</td>
+      <td>Birmingham Bulls</td>
+      <td>1462.09</td>
+      <td>4</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1465.81</td>
+      <td>3</td>
+      <td>36.32%</td>
+      <td>59.21%</td>
+      <td>4.47%</td>
+      <td>4.30</td>
+    </tr>
+    <tr>
+      <td>1978-01-14</td>
+      <td>Edmonton Oilers</td>
+      <td>1471.97</td>
+      <td>4</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1533.23</td>
+      <td>7</td>
+      <td>29.05%</td>
+      <td>66.50%</td>
+      <td>4.46%</td>
+      <td>-3.74</td>
+    </tr>
+    <tr>
+      <td>1978-01-14</td>
+      <td>Houston Aeros</td>
+      <td>1504.74</td>
+      <td>5</td>
+      <td>@ New England Whalers</td>
+      <td>1535.45</td>
+      <td>4</td>
+      <td>32.80%</td>
+      <td>62.73%</td>
+      <td>4.46%</td>
+      <td>4.56</td>
+    </tr>
+    <tr>
+      <td>1978-01-15</td>
+      <td>Quebec Nordiques</td>
+      <td>1536.98</td>
+      <td>3</td>
+      <td>Cincinnati Stingers</td>
+      <td>1461.50</td>
+      <td>6</td>
+      <td>68.16%</td>
+      <td>27.39%</td>
+      <td>4.45%</td>
+      <td>-8.57</td>
+    </tr>
+    <tr>
+      <td>1978-01-15</td>
+      <td>Winnipeg Jets</td>
+      <td>1580.45</td>
+      <td>3</td>
+      <td>Edmonton Oilers</td>
+      <td>1468.23</td>
+      <td>4</td>
+      <td>72.17%</td>
+      <td>23.38%</td>
+      <td>4.45%</td>
+      <td>-5.24</td>
+    </tr>
+    <tr>
+      <td>1978-01-15</td>
+      <td>Cincinnati Stingers</td>
+      <td>1461.50</td>
+      <td>6</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1536.98</td>
+      <td>3</td>
+      <td>27.39%</td>
+      <td>68.16%</td>
+      <td>4.45%</td>
+      <td>8.57</td>
+    </tr>
+    <tr>
+      <td>1978-01-15</td>
+      <td>Edmonton Oilers</td>
+      <td>1468.23</td>
+      <td>4</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1580.45</td>
+      <td>3</td>
+      <td>23.38%</td>
+      <td>72.17%</td>
+      <td>4.45%</td>
+      <td>5.24</td>
+    </tr>
+    <tr>
+      <td>1978-01-18</td>
+      <td>New England Whalers</td>
+      <td>1530.90</td>
+      <td>0</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1473.47</td>
+      <td>1</td>
+      <td>44.80%</td>
+      <td>50.73%</td>
+      <td>4.47%</td>
+      <td>-3.29</td>
+    </tr>
+    <tr>
+      <td>1978-01-18</td>
+      <td>Birmingham Bulls</td>
+      <td>1466.39</td>
+      <td>3</td>
+      <td>Cincinnati Stingers</td>
+      <td>1470.07</td>
+      <td>0</td>
+      <td>58.22%</td>
+      <td>37.31%</td>
+      <td>4.47%</td>
+      <td>4.78</td>
+    </tr>
+    <tr>
+      <td>1978-01-18</td>
+      <td>Winnipeg Jets</td>
+      <td>1575.21</td>
+      <td>5</td>
+      <td>Quebec Nordiques</td>
+      <td>1528.41</td>
+      <td>1</td>
+      <td>64.75%</td>
+      <td>30.79%</td>
+      <td>4.46%</td>
+      <td>4.58</td>
+    </tr>
+    <tr>
+      <td>1978-01-18</td>
+      <td>Edmonton Oilers</td>
+      <td>1473.47</td>
+      <td>1</td>
+      <td>New England Whalers</td>
+      <td>1530.90</td>
+      <td>0</td>
+      <td>50.73%</td>
+      <td>44.80%</td>
+      <td>4.47%</td>
+      <td>3.28</td>
+    </tr>
+    <tr>
+      <td>1978-01-18</td>
+      <td>Quebec Nordiques</td>
+      <td>1528.41</td>
+      <td>1</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1575.21</td>
+      <td>5</td>
+      <td>30.79%</td>
+      <td>64.75%</td>
+      <td>4.46%</td>
+      <td>-4.58</td>
+    </tr>
+    <tr>
+      <td>1978-01-18</td>
+      <td>Cincinnati Stingers</td>
+      <td>1470.07</td>
+      <td>0</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1466.39</td>
+      <td>3</td>
+      <td>37.31%</td>
+      <td>58.22%</td>
+      <td>4.47%</td>
+      <td>-4.78</td>
+    </tr>
+    <tr>
+      <td>1978-01-20</td>
+      <td>Indianapolis Racers</td>
+      <td>1446.26</td>
+      <td>3</td>
+      <td>Houston Aeros</td>
+      <td>1509.30</td>
+      <td>4</td>
+      <td>49.93%</td>
+      <td>45.60%</td>
+      <td>4.47%</td>
+      <td>-3.65</td>
+    </tr>
+    <tr>
+      <td>1978-01-20</td>
+      <td>Winnipeg Jets</td>
+      <td>1579.79</td>
+      <td>4</td>
+      <td>New England Whalers</td>
+      <td>1527.61</td>
+      <td>4</td>
+      <td>65.40%</td>
+      <td>30.14%</td>
+      <td>4.46%</td>
+      <td>-0.63</td>
+    </tr>
+    <tr>
+      <td>1978-01-20</td>
+      <td>Cincinnati Stingers</td>
+      <td>1465.29</td>
+      <td>2</td>
+      <td>Quebec Nordiques</td>
+      <td>1523.83</td>
+      <td>8</td>
+      <td>50.57%</td>
+      <td>44.96%</td>
+      <td>4.47%</td>
+      <td>-9.04</td>
+    </tr>
+    <tr>
+      <td>1978-01-20</td>
+      <td>Edmonton Oilers</td>
+      <td>1476.75</td>
+      <td>3</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1471.17</td>
+      <td>5</td>
+      <td>37.57%</td>
+      <td>57.96%</td>
+      <td>4.47%</td>
+      <td>-3.92</td>
+    </tr>
+    <tr>
+      <td>1978-01-20</td>
+      <td>Quebec Nordiques</td>
+      <td>1523.83</td>
+      <td>8</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1465.29</td>
+      <td>2</td>
+      <td>44.96%</td>
+      <td>50.57%</td>
+      <td>4.47%</td>
+      <td>9.05</td>
+    </tr>
+    <tr>
+      <td>1978-01-20</td>
+      <td>New England Whalers</td>
+      <td>1527.61</td>
+      <td>4</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1579.79</td>
+      <td>4</td>
+      <td>30.14%</td>
+      <td>65.40%</td>
+      <td>4.46%</td>
+      <td>0.62</td>
+    </tr>
+    <tr>
+      <td>1978-01-20</td>
+      <td>Houston Aeros</td>
+      <td>1509.30</td>
+      <td>4</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1446.26</td>
+      <td>3</td>
+      <td>45.60%</td>
+      <td>49.93%</td>
+      <td>4.47%</td>
+      <td>3.65</td>
+    </tr>
+    <tr>
+      <td>1978-01-20</td>
+      <td>Birmingham Bulls</td>
+      <td>1471.17</td>
+      <td>5</td>
+      <td>Edmonton Oilers</td>
+      <td>1476.75</td>
+      <td>3</td>
+      <td>57.96%</td>
+      <td>37.57%</td>
+      <td>4.47%</td>
+      <td>3.92</td>
+    </tr>
+    <tr>
+      <td>1978-01-21</td>
+      <td>Indianapolis Racers</td>
+      <td>1442.61</td>
+      <td>2</td>
+      <td>Edmonton Oilers</td>
+      <td>1472.83</td>
+      <td>3</td>
+      <td>54.58%</td>
+      <td>40.96%</td>
+      <td>4.47%</td>
+      <td>-3.97</td>
+    </tr>
+    <tr>
+      <td>1978-01-21</td>
+      <td>Quebec Nordiques</td>
+      <td>1532.88</td>
+      <td>3</td>
+      <td>New England Whalers</td>
+      <td>1528.23</td>
+      <td>2</td>
+      <td>59.34%</td>
+      <td>36.20%</td>
+      <td>4.47%</td>
+      <td>2.67</td>
+    </tr>
+    <tr>
+      <td>1978-01-21</td>
+      <td>New England Whalers</td>
+      <td>1528.23</td>
+      <td>2</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1532.88</td>
+      <td>3</td>
+      <td>36.20%</td>
+      <td>59.34%</td>
+      <td>4.47%</td>
+      <td>-2.67</td>
+    </tr>
+    <tr>
+      <td>1978-01-21</td>
+      <td>Houston Aeros</td>
+      <td>1512.95</td>
+      <td>5</td>
+      <td>Cincinnati Stingers</td>
+      <td>1456.25</td>
+      <td>2</td>
+      <td>65.95%</td>
+      <td>29.59%</td>
+      <td>4.46%</td>
+      <td>3.81</td>
+    </tr>
+    <tr>
+      <td>1978-01-21</td>
+      <td>Edmonton Oilers</td>
+      <td>1472.83</td>
+      <td>3</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1442.61</td>
+      <td>2</td>
+      <td>40.96%</td>
+      <td>54.58%</td>
+      <td>4.47%</td>
+      <td>3.97</td>
+    </tr>
+    <tr>
+      <td>1978-01-21</td>
+      <td>Cincinnati Stingers</td>
+      <td>1456.25</td>
+      <td>2</td>
+      <td>@ Houston Aeros</td>
+      <td>1512.95</td>
+      <td>5</td>
+      <td>29.59%</td>
+      <td>65.95%</td>
+      <td>4.46%</td>
+      <td>-3.81</td>
+    </tr>
+    <tr>
+      <td>1978-01-22</td>
+      <td>Houston Aeros</td>
+      <td>1516.76</td>
+      <td>4</td>
+      <td>Birmingham Bulls</td>
+      <td>1475.09</td>
+      <td>2</td>
+      <td>64.11%</td>
+      <td>31.43%</td>
+      <td>4.46%</td>
+      <td>3.30</td>
+    </tr>
+    <tr>
+      <td>1978-01-22</td>
+      <td>Cincinnati Stingers</td>
+      <td>1452.44</td>
+      <td>5</td>
+      <td>Edmonton Oilers</td>
+      <td>1476.80</td>
+      <td>2</td>
+      <td>55.39%</td>
+      <td>40.14%</td>
+      <td>4.47%</td>
+      <td>5.12</td>
+    </tr>
+    <tr>
+      <td>1978-01-22</td>
+      <td>New England Whalers</td>
+      <td>1525.56</td>
+      <td>6</td>
+      <td>Quebec Nordiques</td>
+      <td>1535.55</td>
+      <td>3</td>
+      <td>57.36%</td>
+      <td>38.17%</td>
+      <td>4.47%</td>
+      <td>4.88</td>
+    </tr>
+    <tr>
+      <td>1978-01-22</td>
+      <td>Winnipeg Jets</td>
+      <td>1579.16</td>
+      <td>4</td>
+      <td>Indianapolis Racers</td>
+      <td>1438.64</td>
+      <td>5</td>
+      <td>74.97%</td>
+      <td>20.59%</td>
+      <td>4.44%</td>
+      <td>-5.44</td>
+    </tr>
+    <tr>
+      <td>1978-01-22</td>
+      <td>Indianapolis Racers</td>
+      <td>1438.64</td>
+      <td>5</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1579.16</td>
+      <td>4</td>
+      <td>20.59%</td>
+      <td>74.97%</td>
+      <td>4.44%</td>
+      <td>5.44</td>
+    </tr>
+    <tr>
+      <td>1978-01-22</td>
+      <td>Birmingham Bulls</td>
+      <td>1475.09</td>
+      <td>2</td>
+      <td>@ Houston Aeros</td>
+      <td>1516.76</td>
+      <td>4</td>
+      <td>31.43%</td>
+      <td>64.11%</td>
+      <td>4.46%</td>
+      <td>-3.30</td>
+    </tr>
+    <tr>
+      <td>1978-01-22</td>
+      <td>Quebec Nordiques</td>
+      <td>1535.55</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1525.56</td>
+      <td>6</td>
+      <td>38.17%</td>
+      <td>57.36%</td>
+      <td>4.47%</td>
+      <td>-4.88</td>
+    </tr>
+    <tr>
+      <td>1978-01-22</td>
+      <td>Edmonton Oilers</td>
+      <td>1476.80</td>
+      <td>2</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1452.44</td>
+      <td>5</td>
+      <td>40.14%</td>
+      <td>55.39%</td>
+      <td>4.47%</td>
+      <td>-5.12</td>
+    </tr>
+    <tr>
+      <td>1978-01-24</td>
+      <td>Houston Aeros</td>
+      <td>1520.06</td>
+      <td>6</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1530.67</td>
+      <td>5</td>
+      <td>35.41%</td>
+      <td>60.13%</td>
+      <td>4.46%</td>
+      <td>4.37</td>
+    </tr>
+    <tr>
+      <td>1978-01-24</td>
+      <td>Quebec Nordiques</td>
+      <td>1530.67</td>
+      <td>5</td>
+      <td>Houston Aeros</td>
+      <td>1520.06</td>
+      <td>6</td>
+      <td>60.13%</td>
+      <td>35.41%</td>
+      <td>4.46%</td>
+      <td>-4.37</td>
+    </tr>
+    <tr>
+      <td>1978-01-25</td>
+      <td>Birmingham Bulls</td>
+      <td>1471.79</td>
+      <td>6</td>
+      <td>Winnipeg Jets</td>
+      <td>1573.72</td>
+      <td>2</td>
+      <td>44.36%</td>
+      <td>51.17%</td>
+      <td>4.47%</td>
+      <td>7.47</td>
+    </tr>
+    <tr>
+      <td>1978-01-25</td>
+      <td>Indianapolis Racers</td>
+      <td>1444.08</td>
+      <td>2</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1471.68</td>
+      <td>6</td>
+      <td>33.20%</td>
+      <td>62.34%</td>
+      <td>4.46%</td>
+      <td>-4.93</td>
+    </tr>
+    <tr>
+      <td>1978-01-25</td>
+      <td>Winnipeg Jets</td>
+      <td>1573.72</td>
+      <td>2</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1471.79</td>
+      <td>6</td>
+      <td>51.17%</td>
+      <td>44.36%</td>
+      <td>4.47%</td>
+      <td>-7.47</td>
+    </tr>
+    <tr>
+      <td>1978-01-25</td>
+      <td>New England Whalers</td>
+      <td>1530.44</td>
+      <td>7</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1457.56</td>
+      <td>8</td>
+      <td>47.01%</td>
+      <td>48.52%</td>
+      <td>4.47%</td>
+      <td>-3.44</td>
+    </tr>
+    <tr>
+      <td>1978-01-25</td>
+      <td>Edmonton Oilers</td>
+      <td>1471.68</td>
+      <td>6</td>
+      <td>Indianapolis Racers</td>
+      <td>1444.08</td>
+      <td>2</td>
+      <td>62.34%</td>
+      <td>33.20%</td>
+      <td>4.46%</td>
+      <td>4.92</td>
+    </tr>
+    <tr>
+      <td>1978-01-25</td>
+      <td>Cincinnati Stingers</td>
+      <td>1457.56</td>
+      <td>8</td>
+      <td>New England Whalers</td>
+      <td>1530.44</td>
+      <td>7</td>
+      <td>48.52%</td>
+      <td>47.01%</td>
+      <td>4.47%</td>
+      <td>3.44</td>
+    </tr>
+    <tr>
+      <td>1978-01-26</td>
+      <td>Houston Aeros</td>
+      <td>1524.43</td>
+      <td>2</td>
+      <td>Winnipeg Jets</td>
+      <td>1566.25</td>
+      <td>1</td>
+      <td>52.95%</td>
+      <td>42.58%</td>
+      <td>4.47%</td>
+      <td>3.13</td>
+    </tr>
+    <tr>
+      <td>1978-01-26</td>
+      <td>Winnipeg Jets</td>
+      <td>1566.25</td>
+      <td>1</td>
+      <td>@ Houston Aeros</td>
+      <td>1524.43</td>
+      <td>2</td>
+      <td>42.58%</td>
+      <td>52.95%</td>
+      <td>4.47%</td>
+      <td>-3.13</td>
+    </tr>
+    <tr>
+      <td>1978-01-27</td>
+      <td>Edmonton Oilers</td>
+      <td>1476.60</td>
+      <td>9</td>
+      <td>Quebec Nordiques</td>
+      <td>1526.30</td>
+      <td>6</td>
+      <td>51.83%</td>
+      <td>43.70%</td>
+      <td>4.47%</td>
+      <td>5.56</td>
+    </tr>
+    <tr>
+      <td>1978-01-27</td>
+      <td>Birmingham Bulls</td>
+      <td>1479.26</td>
+      <td>2</td>
+      <td>New England Whalers</td>
+      <td>1527.00</td>
+      <td>6</td>
+      <td>52.11%</td>
+      <td>43.42%</td>
+      <td>4.47%</td>
+      <td>-7.60</td>
+    </tr>
+    <tr>
+      <td>1978-01-27</td>
+      <td>New England Whalers</td>
+      <td>1527.00</td>
+      <td>6</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1479.26</td>
+      <td>2</td>
+      <td>43.42%</td>
+      <td>52.11%</td>
+      <td>4.47%</td>
+      <td>7.60</td>
+    </tr>
+    <tr>
+      <td>1978-01-27</td>
+      <td>Quebec Nordiques</td>
+      <td>1526.30</td>
+      <td>6</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1476.60</td>
+      <td>9</td>
+      <td>43.70%</td>
+      <td>51.83%</td>
+      <td>4.47%</td>
+      <td>-5.56</td>
+    </tr>
+    <tr>
+      <td>1978-01-28</td>
+      <td>Winnipeg Jets</td>
+      <td>1563.12</td>
+      <td>5</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1471.66</td>
+      <td>8</td>
+      <td>49.68%</td>
+      <td>45.85%</td>
+      <td>4.47%</td>
+      <td>-6.28</td>
+    </tr>
+    <tr>
+      <td>1978-01-28</td>
+      <td>New England Whalers</td>
+      <td>1534.60</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1527.56</td>
+      <td>0</td>
+      <td>37.77%</td>
+      <td>57.77%</td>
+      <td>4.47%</td>
+      <td>7.27</td>
+    </tr>
+    <tr>
+      <td>1978-01-28</td>
+      <td>Houston Aeros</td>
+      <td>1527.56</td>
+      <td>0</td>
+      <td>New England Whalers</td>
+      <td>1534.60</td>
+      <td>3</td>
+      <td>57.77%</td>
+      <td>37.77%</td>
+      <td>4.47%</td>
+      <td>-7.27</td>
+    </tr>
+    <tr>
+      <td>1978-01-28</td>
+      <td>Birmingham Bulls</td>
+      <td>1471.66</td>
+      <td>8</td>
+      <td>Winnipeg Jets</td>
+      <td>1563.12</td>
+      <td>5</td>
+      <td>45.85%</td>
+      <td>49.68%</td>
+      <td>4.47%</td>
+      <td>6.28</td>
+    </tr>
+    <tr>
+      <td>1978-01-29</td>
+      <td>Edmonton Oilers</td>
+      <td>1482.16</td>
+      <td>3</td>
+      <td>Quebec Nordiques</td>
+      <td>1520.74</td>
+      <td>4</td>
+      <td>53.40%</td>
+      <td>42.13%</td>
+      <td>4.47%</td>
+      <td>-3.89</td>
+    </tr>
+    <tr>
+      <td>1978-01-29</td>
+      <td>Quebec Nordiques</td>
+      <td>1520.74</td>
+      <td>4</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1482.16</td>
+      <td>3</td>
+      <td>42.13%</td>
+      <td>53.40%</td>
+      <td>4.47%</td>
+      <td>3.90</td>
+    </tr>
+    <tr>
+      <td>1978-01-29</td>
+      <td>New England Whalers</td>
+      <td>1541.87</td>
+      <td>4</td>
+      <td>@ Houston Aeros</td>
+      <td>1520.29</td>
+      <td>6</td>
+      <td>39.76%</td>
+      <td>55.77%</td>
+      <td>4.47%</td>
+      <td>-4.14</td>
+    </tr>
+    <tr>
+      <td>1978-01-29</td>
+      <td>Winnipeg Jets</td>
+      <td>1556.84</td>
+      <td>8</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1461.00</td>
+      <td>4</td>
+      <td>50.31%</td>
+      <td>45.23%</td>
+      <td>4.47%</td>
+      <td>6.63</td>
+    </tr>
+    <tr>
+      <td>1978-01-29</td>
+      <td>Cincinnati Stingers</td>
+      <td>1461.00</td>
+      <td>4</td>
+      <td>Winnipeg Jets</td>
+      <td>1556.84</td>
+      <td>8</td>
+      <td>45.23%</td>
+      <td>50.31%</td>
+      <td>4.47%</td>
+      <td>-6.63</td>
+    </tr>
+    <tr>
+      <td>1978-01-29</td>
+      <td>Houston Aeros</td>
+      <td>1520.29</td>
+      <td>6</td>
+      <td>New England Whalers</td>
+      <td>1541.87</td>
+      <td>4</td>
+      <td>55.77%</td>
+      <td>39.76%</td>
+      <td>4.47%</td>
+      <td>4.14</td>
+    </tr>
+    <tr>
+      <td>1978-01-30</td>
+      <td>Cincinnati Stingers</td>
+      <td>1454.37</td>
+      <td>4</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1439.15</td>
+      <td>3</td>
+      <td>38.88%</td>
+      <td>56.65%</td>
+      <td>4.47%</td>
+      <td>4.12</td>
+    </tr>
+    <tr>
+      <td>1978-01-30</td>
+      <td>Indianapolis Racers</td>
+      <td>1439.15</td>
+      <td>3</td>
+      <td>Cincinnati Stingers</td>
+      <td>1454.37</td>
+      <td>4</td>
+      <td>56.65%</td>
+      <td>38.88%</td>
+      <td>4.47%</td>
+      <td>-4.12</td>
+    </tr>
+    <tr>
+      <td>1978-01-31</td>
+      <td>Indianapolis Racers</td>
+      <td>1435.03</td>
+      <td>4</td>
+      <td>Edmonton Oilers</td>
+      <td>1478.27</td>
+      <td>6</td>
+      <td>52.75%</td>
+      <td>42.78%</td>
+      <td>4.47%</td>
+      <td>-5.43</td>
+    </tr>
+    <tr>
+      <td>1978-01-31</td>
+      <td>Birmingham Bulls</td>
+      <td>1477.94</td>
+      <td>2</td>
+      <td>Houston Aeros</td>
+      <td>1524.43</td>
+      <td>4</td>
+      <td>52.29%</td>
+      <td>43.24%</td>
+      <td>4.47%</td>
+      <td>-5.39</td>
+    </tr>
+    <tr>
+      <td>1978-01-31</td>
+      <td>Winnipeg Jets</td>
+      <td>1563.47</td>
+      <td>7</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1524.64</td>
+      <td>2</td>
+      <td>42.16%</td>
+      <td>53.37%</td>
+      <td>4.47%</td>
+      <td>8.69</td>
+    </tr>
+    <tr>
+      <td>1978-01-31</td>
+      <td>Houston Aeros</td>
+      <td>1524.43</td>
+      <td>4</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1477.94</td>
+      <td>2</td>
+      <td>43.24%</td>
+      <td>52.29%</td>
+      <td>4.47%</td>
+      <td>5.40</td>
+    </tr>
+    <tr>
+      <td>1978-01-31</td>
+      <td>Edmonton Oilers</td>
+      <td>1478.27</td>
+      <td>6</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1435.03</td>
+      <td>4</td>
+      <td>42.78%</td>
+      <td>52.75%</td>
+      <td>4.47%</td>
+      <td>5.44</td>
+    </tr>
+    <tr>
+      <td>1978-01-31</td>
+      <td>Quebec Nordiques</td>
+      <td>1524.64</td>
+      <td>2</td>
+      <td>Winnipeg Jets</td>
+      <td>1563.47</td>
+      <td>7</td>
+      <td>53.37%</td>
+      <td>42.16%</td>
+      <td>4.47%</td>
+      <td>-8.70</td>
+    </tr>
+    <tr>
+      <td>1978-02-01</td>
+      <td>Cincinnati Stingers</td>
+      <td>1458.49</td>
+      <td>8</td>
+      <td>Indianapolis Racers</td>
+      <td>1429.60</td>
+      <td>0</td>
+      <td>62.50%</td>
+      <td>33.04%</td>
+      <td>4.46%</td>
+      <td>6.93</td>
+    </tr>
+    <tr>
+      <td>1978-02-01</td>
+      <td>New England Whalers</td>
+      <td>1537.73</td>
+      <td>4</td>
+      <td>Edmonton Oilers</td>
+      <td>1483.71</td>
+      <td>3</td>
+      <td>65.63%</td>
+      <td>29.91%</td>
+      <td>4.46%</td>
+      <td>2.22</td>
+    </tr>
+    <tr>
+      <td>1978-02-01</td>
+      <td>Indianapolis Racers</td>
+      <td>1429.60</td>
+      <td>0</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1458.49</td>
+      <td>8</td>
+      <td>33.04%</td>
+      <td>62.50%</td>
+      <td>4.46%</td>
+      <td>-6.94</td>
+    </tr>
+    <tr>
+      <td>1978-02-01</td>
+      <td>Edmonton Oilers</td>
+      <td>1483.71</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1537.73</td>
+      <td>4</td>
+      <td>29.91%</td>
+      <td>65.63%</td>
+      <td>4.46%</td>
+      <td>-2.23</td>
+    </tr>
+    <tr>
+      <td>1978-02-02</td>
+      <td>Quebec Nordiques</td>
+      <td>1515.94</td>
+      <td>4</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1472.55</td>
+      <td>2</td>
+      <td>42.80%</td>
+      <td>52.73%</td>
+      <td>4.47%</td>
+      <td>5.44</td>
+    </tr>
+    <tr>
+      <td>1978-02-02</td>
+      <td>Birmingham Bulls</td>
+      <td>1472.55</td>
+      <td>2</td>
+      <td>Quebec Nordiques</td>
+      <td>1515.94</td>
+      <td>4</td>
+      <td>52.73%</td>
+      <td>42.80%</td>
+      <td>4.47%</td>
+      <td>-5.43</td>
+    </tr>
+    <tr>
+      <td>1978-02-03</td>
+      <td>Houston Aeros</td>
+      <td>1529.83</td>
+      <td>0</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1465.42</td>
+      <td>1</td>
+      <td>45.79%</td>
+      <td>49.74%</td>
+      <td>4.47%</td>
+      <td>-3.36</td>
+    </tr>
+    <tr>
+      <td>1978-02-03</td>
+      <td>Edmonton Oilers</td>
+      <td>1481.48</td>
+      <td>6</td>
+      <td>@ New England Whalers</td>
+      <td>1539.95</td>
+      <td>3</td>
+      <td>29.38%</td>
+      <td>66.16%</td>
+      <td>4.46%</td>
+      <td>8.32</td>
+    </tr>
+    <tr>
+      <td>1978-02-03</td>
+      <td>Quebec Nordiques</td>
+      <td>1521.38</td>
+      <td>4</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1422.66</td>
+      <td>5</td>
+      <td>50.72%</td>
+      <td>44.81%</td>
+      <td>4.47%</td>
+      <td>-3.71</td>
+    </tr>
+    <tr>
+      <td>1978-02-03</td>
+      <td>Cincinnati Stingers</td>
+      <td>1465.42</td>
+      <td>1</td>
+      <td>Houston Aeros</td>
+      <td>1529.83</td>
+      <td>0</td>
+      <td>49.74%</td>
+      <td>45.79%</td>
+      <td>4.47%</td>
+      <td>3.36</td>
+    </tr>
+    <tr>
+      <td>1978-02-03</td>
+      <td>Indianapolis Racers</td>
+      <td>1422.66</td>
+      <td>5</td>
+      <td>Quebec Nordiques</td>
+      <td>1521.38</td>
+      <td>4</td>
+      <td>44.81%</td>
+      <td>50.72%</td>
+      <td>4.47%</td>
+      <td>3.70</td>
+    </tr>
+    <tr>
+      <td>1978-02-03</td>
+      <td>New England Whalers</td>
+      <td>1539.95</td>
+      <td>3</td>
+      <td>Edmonton Oilers</td>
+      <td>1481.48</td>
+      <td>6</td>
+      <td>66.16%</td>
+      <td>29.38%</td>
+      <td>4.46%</td>
+      <td>-8.32</td>
+    </tr>
+    <tr>
+      <td>1978-02-04</td>
+      <td>Edmonton Oilers</td>
+      <td>1489.80</td>
+      <td>4</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1517.67</td>
+      <td>3</td>
+      <td>33.17%</td>
+      <td>62.37%</td>
+      <td>4.46%</td>
+      <td>4.53</td>
+    </tr>
+    <tr>
+      <td>1978-02-04</td>
+      <td>Indianapolis Racers</td>
+      <td>1426.36</td>
+      <td>2</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1467.12</td>
+      <td>5</td>
+      <td>31.54%</td>
+      <td>64.00%</td>
+      <td>4.46%</td>
+      <td>-4.06</td>
+    </tr>
+    <tr>
+      <td>1978-02-04</td>
+      <td>New England Whalers</td>
+      <td>1531.63</td>
+      <td>4</td>
+      <td>@ Houston Aeros</td>
+      <td>1526.47</td>
+      <td>5</td>
+      <td>37.51%</td>
+      <td>58.02%</td>
+      <td>4.47%</td>
+      <td>-2.77</td>
+    </tr>
+    <tr>
+      <td>1978-02-04</td>
+      <td>Cincinnati Stingers</td>
+      <td>1468.78</td>
+      <td>5</td>
+      <td>Winnipeg Jets</td>
+      <td>1572.16</td>
+      <td>7</td>
+      <td>44.15%</td>
+      <td>51.38%</td>
+      <td>4.47%</td>
+      <td>-4.59</td>
+    </tr>
+    <tr>
+      <td>1978-02-04</td>
+      <td>Houston Aeros</td>
+      <td>1526.47</td>
+      <td>5</td>
+      <td>New England Whalers</td>
+      <td>1531.63</td>
+      <td>4</td>
+      <td>58.02%</td>
+      <td>37.51%</td>
+      <td>4.47%</td>
+      <td>2.77</td>
+    </tr>
+    <tr>
+      <td>1978-02-04</td>
+      <td>Quebec Nordiques</td>
+      <td>1517.67</td>
+      <td>3</td>
+      <td>Edmonton Oilers</td>
+      <td>1489.80</td>
+      <td>4</td>
+      <td>62.37%</td>
+      <td>33.17%</td>
+      <td>4.46%</td>
+      <td>-4.53</td>
+    </tr>
+    <tr>
+      <td>1978-02-04</td>
+      <td>Birmingham Bulls</td>
+      <td>1467.12</td>
+      <td>5</td>
+      <td>Indianapolis Racers</td>
+      <td>1426.36</td>
+      <td>2</td>
+      <td>64.00%</td>
+      <td>31.54%</td>
+      <td>4.46%</td>
+      <td>4.06</td>
+    </tr>
+    <tr>
+      <td>1978-02-04</td>
+      <td>Winnipeg Jets</td>
+      <td>1572.16</td>
+      <td>7</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1468.78</td>
+      <td>5</td>
+      <td>51.38%</td>
+      <td>44.15%</td>
+      <td>4.47%</td>
+      <td>4.59</td>
+    </tr>
+    <tr>
+      <td>1978-02-05</td>
+      <td>Winnipeg Jets</td>
+      <td>1576.75</td>
+      <td>4</td>
+      <td>Edmonton Oilers</td>
+      <td>1494.33</td>
+      <td>3</td>
+      <td>68.95%</td>
+      <td>26.60%</td>
+      <td>4.45%</td>
+      <td>1.98</td>
+    </tr>
+    <tr>
+      <td>1978-02-05</td>
+      <td>Indianapolis Racers</td>
+      <td>1422.30</td>
+      <td>6</td>
+      <td>Birmingham Bulls</td>
+      <td>1471.18</td>
+      <td>1</td>
+      <td>51.95%</td>
+      <td>43.58%</td>
+      <td>4.47%</td>
+      <td>7.16</td>
+    </tr>
+    <tr>
+      <td>1978-02-05</td>
+      <td>Birmingham Bulls</td>
+      <td>1471.18</td>
+      <td>1</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1422.30</td>
+      <td>6</td>
+      <td>43.58%</td>
+      <td>51.95%</td>
+      <td>4.47%</td>
+      <td>-7.16</td>
+    </tr>
+    <tr>
+      <td>1978-02-05</td>
+      <td>Edmonton Oilers</td>
+      <td>1494.33</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1576.75</td>
+      <td>4</td>
+      <td>26.60%</td>
+      <td>68.95%</td>
+      <td>4.45%</td>
+      <td>-1.99</td>
+    </tr>
+    <tr>
+      <td>1978-02-07</td>
+      <td>Quebec Nordiques</td>
+      <td>1513.14</td>
+      <td>8</td>
+      <td>Birmingham Bulls</td>
+      <td>1464.02</td>
+      <td>3</td>
+      <td>65.03%</td>
+      <td>30.51%</td>
+      <td>4.46%</td>
+      <td>5.08</td>
+    </tr>
+    <tr>
+      <td>1978-02-07</td>
+      <td>Birmingham Bulls</td>
+      <td>1464.02</td>
+      <td>3</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1513.14</td>
+      <td>8</td>
+      <td>30.51%</td>
+      <td>65.03%</td>
+      <td>4.46%</td>
+      <td>-5.08</td>
+    </tr>
+    <tr>
+      <td>1978-02-08</td>
+      <td>Birmingham Bulls</td>
+      <td>1458.94</td>
+      <td>0</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1578.73</td>
+      <td>9</td>
+      <td>22.61%</td>
+      <td>72.94%</td>
+      <td>4.44%</td>
+      <td>-5.08</td>
+    </tr>
+    <tr>
+      <td>1978-02-08</td>
+      <td>Cincinnati Stingers</td>
+      <td>1464.19</td>
+      <td>6</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1492.34</td>
+      <td>6</td>
+      <td>33.13%</td>
+      <td>62.41%</td>
+      <td>4.46%</td>
+      <td>0.52</td>
+    </tr>
+    <tr>
+      <td>1978-02-08</td>
+      <td>Edmonton Oilers</td>
+      <td>1492.34</td>
+      <td>6</td>
+      <td>Cincinnati Stingers</td>
+      <td>1464.19</td>
+      <td>6</td>
+      <td>62.41%</td>
+      <td>33.13%</td>
+      <td>4.46%</td>
+      <td>-0.51</td>
+    </tr>
+    <tr>
+      <td>1978-02-08</td>
+      <td>Winnipeg Jets</td>
+      <td>1578.73</td>
+      <td>9</td>
+      <td>Birmingham Bulls</td>
+      <td>1458.94</td>
+      <td>0</td>
+      <td>72.94%</td>
+      <td>22.61%</td>
+      <td>4.44%</td>
+      <td>5.09</td>
+    </tr>
+    <tr>
+      <td>1978-02-09</td>
+      <td>Houston Aeros</td>
+      <td>1529.24</td>
+      <td>2</td>
+      <td>Quebec Nordiques</td>
+      <td>1518.22</td>
+      <td>1</td>
+      <td>60.18%</td>
+      <td>35.35%</td>
+      <td>4.46%</td>
+      <td>2.62</td>
+    </tr>
+    <tr>
+      <td>1978-02-09</td>
+      <td>Quebec Nordiques</td>
+      <td>1518.22</td>
+      <td>1</td>
+      <td>@ Houston Aeros</td>
+      <td>1529.24</td>
+      <td>2</td>
+      <td>35.35%</td>
+      <td>60.18%</td>
+      <td>4.46%</td>
+      <td>-2.62</td>
+    </tr>
+    <tr>
+      <td>1978-02-10</td>
+      <td>Winnipeg Jets</td>
+      <td>1583.82</td>
+      <td>10</td>
+      <td>Cincinnati Stingers</td>
+      <td>1464.71</td>
+      <td>2</td>
+      <td>72.87%</td>
+      <td>22.68%</td>
+      <td>4.45%</td>
+      <td>4.81</td>
+    </tr>
+    <tr>
+      <td>1978-02-10</td>
+      <td>Cincinnati Stingers</td>
+      <td>1464.71</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1583.82</td>
+      <td>10</td>
+      <td>22.68%</td>
+      <td>72.87%</td>
+      <td>4.45%</td>
+      <td>-4.80</td>
+    </tr>
+    <tr>
+      <td>1978-02-11</td>
+      <td>Houston Aeros</td>
+      <td>1531.86</td>
+      <td>8</td>
+      <td>Quebec Nordiques</td>
+      <td>1515.60</td>
+      <td>4</td>
+      <td>60.87%</td>
+      <td>34.67%</td>
+      <td>4.46%</td>
+      <td>5.13</td>
+    </tr>
+    <tr>
+      <td>1978-02-11</td>
+      <td>Cincinnati Stingers</td>
+      <td>1459.91</td>
+      <td>7</td>
+      <td>New England Whalers</td>
+      <td>1528.86</td>
+      <td>8</td>
+      <td>49.08%</td>
+      <td>46.45%</td>
+      <td>4.47%</td>
+      <td>-3.59</td>
+    </tr>
+    <tr>
+      <td>1978-02-11</td>
+      <td>Winnipeg Jets</td>
+      <td>1588.63</td>
+      <td>5</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1429.46</td>
+      <td>3</td>
+      <td>59.10%</td>
+      <td>36.43%</td>
+      <td>4.47%</td>
+      <td>3.81</td>
+    </tr>
+    <tr>
+      <td>1978-02-11</td>
+      <td>New England Whalers</td>
+      <td>1528.86</td>
+      <td>8</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1459.91</td>
+      <td>7</td>
+      <td>46.45%</td>
+      <td>49.08%</td>
+      <td>4.47%</td>
+      <td>3.59</td>
+    </tr>
+    <tr>
+      <td>1978-02-11</td>
+      <td>Indianapolis Racers</td>
+      <td>1429.46</td>
+      <td>3</td>
+      <td>Winnipeg Jets</td>
+      <td>1588.63</td>
+      <td>5</td>
+      <td>36.43%</td>
+      <td>59.10%</td>
+      <td>4.47%</td>
+      <td>-3.81</td>
+    </tr>
+    <tr>
+      <td>1978-02-11</td>
+      <td>Quebec Nordiques</td>
+      <td>1515.60</td>
+      <td>4</td>
+      <td>@ Houston Aeros</td>
+      <td>1531.86</td>
+      <td>8</td>
+      <td>34.67%</td>
+      <td>60.87%</td>
+      <td>4.46%</td>
+      <td>-5.14</td>
+    </tr>
+    <tr>
+      <td>1978-02-12</td>
+      <td>Quebec Nordiques</td>
+      <td>1510.46</td>
+      <td>2</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1456.32</td>
+      <td>8</td>
+      <td>44.33%</td>
+      <td>51.20%</td>
+      <td>4.47%</td>
+      <td>-7.97</td>
+    </tr>
+    <tr>
+      <td>1978-02-12</td>
+      <td>Cincinnati Stingers</td>
+      <td>1456.32</td>
+      <td>8</td>
+      <td>Quebec Nordiques</td>
+      <td>1510.46</td>
+      <td>2</td>
+      <td>51.20%</td>
+      <td>44.33%</td>
+      <td>4.47%</td>
+      <td>7.97</td>
+    </tr>
+    <tr>
+      <td>1978-02-12</td>
+      <td>Birmingham Bulls</td>
+      <td>1453.86</td>
+      <td>0</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1491.83</td>
+      <td>7</td>
+      <td>31.89%</td>
+      <td>63.65%</td>
+      <td>4.46%</td>
+      <td>-6.27</td>
+    </tr>
+    <tr>
+      <td>1978-02-12</td>
+      <td>Edmonton Oilers</td>
+      <td>1491.83</td>
+      <td>7</td>
+      <td>Birmingham Bulls</td>
+      <td>1453.86</td>
+      <td>0</td>
+      <td>63.65%</td>
+      <td>31.89%</td>
+      <td>4.46%</td>
+      <td>6.26</td>
+    </tr>
+    <tr>
+      <td>1978-02-12</td>
+      <td>Houston Aeros</td>
+      <td>1536.99</td>
+      <td>5</td>
+      <td>Winnipeg Jets</td>
+      <td>1592.44</td>
+      <td>6</td>
+      <td>51.02%</td>
+      <td>44.51%</td>
+      <td>4.47%</td>
+      <td>-3.72</td>
+    </tr>
+    <tr>
+      <td>1978-02-12</td>
+      <td>Winnipeg Jets</td>
+      <td>1592.44</td>
+      <td>6</td>
+      <td>@ Houston Aeros</td>
+      <td>1536.99</td>
+      <td>5</td>
+      <td>44.51%</td>
+      <td>51.02%</td>
+      <td>4.47%</td>
+      <td>3.72</td>
+    </tr>
+    <tr>
+      <td>1978-02-14</td>
+      <td>New England Whalers</td>
+      <td>1532.45</td>
+      <td>5</td>
+      <td>Quebec Nordiques</td>
+      <td>1502.49</td>
+      <td>1</td>
+      <td>62.64%</td>
+      <td>32.90%</td>
+      <td>4.46%</td>
+      <td>4.88</td>
+    </tr>
+    <tr>
+      <td>1978-02-14</td>
+      <td>Birmingham Bulls</td>
+      <td>1447.59</td>
+      <td>1</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1498.09</td>
+      <td>4</td>
+      <td>30.34%</td>
+      <td>65.20%</td>
+      <td>4.46%</td>
+      <td>-3.91</td>
+    </tr>
+    <tr>
+      <td>1978-02-14</td>
+      <td>Quebec Nordiques</td>
+      <td>1502.49</td>
+      <td>1</td>
+      <td>@ New England Whalers</td>
+      <td>1532.45</td>
+      <td>5</td>
+      <td>32.90%</td>
+      <td>62.64%</td>
+      <td>4.46%</td>
+      <td>-4.88</td>
+    </tr>
+    <tr>
+      <td>1978-02-14</td>
+      <td>Edmonton Oilers</td>
+      <td>1498.09</td>
+      <td>4</td>
+      <td>Birmingham Bulls</td>
+      <td>1447.59</td>
+      <td>1</td>
+      <td>65.20%</td>
+      <td>30.34%</td>
+      <td>4.46%</td>
+      <td>3.91</td>
+    </tr>
+    <tr>
+      <td>1978-02-15</td>
+      <td>Indianapolis Racers</td>
+      <td>1425.65</td>
+      <td>9</td>
+      <td>Quebec Nordiques</td>
+      <td>1497.61</td>
+      <td>6</td>
+      <td>48.65%</td>
+      <td>46.88%</td>
+      <td>4.47%</td>
+      <td>5.95</td>
+    </tr>
+    <tr>
+      <td>1978-02-15</td>
+      <td>Winnipeg Jets</td>
+      <td>1596.16</td>
+      <td>6</td>
+      <td>Edmonton Oilers</td>
+      <td>1502.00</td>
+      <td>5</td>
+      <td>70.25%</td>
+      <td>25.30%</td>
+      <td>4.45%</td>
+      <td>1.89</td>
+    </tr>
+    <tr>
+      <td>1978-02-15</td>
+      <td>Cincinnati Stingers</td>
+      <td>1464.29</td>
+      <td>2</td>
+      <td>Houston Aeros</td>
+      <td>1533.27</td>
+      <td>5</td>
+      <td>49.08%</td>
+      <td>46.45%</td>
+      <td>4.47%</td>
+      <td>-6.21</td>
+    </tr>
+    <tr>
+      <td>1978-02-15</td>
+      <td>Edmonton Oilers</td>
+      <td>1502.00</td>
+      <td>5</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1596.16</td>
+      <td>6</td>
+      <td>25.30%</td>
+      <td>70.25%</td>
+      <td>4.45%</td>
+      <td>-1.89</td>
+    </tr>
+    <tr>
+      <td>1978-02-15</td>
+      <td>Houston Aeros</td>
+      <td>1533.27</td>
+      <td>5</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1464.29</td>
+      <td>2</td>
+      <td>46.45%</td>
+      <td>49.08%</td>
+      <td>4.47%</td>
+      <td>6.21</td>
+    </tr>
+    <tr>
+      <td>1978-02-15</td>
+      <td>Quebec Nordiques</td>
+      <td>1497.61</td>
+      <td>6</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1425.65</td>
+      <td>9</td>
+      <td>46.88%</td>
+      <td>48.65%</td>
+      <td>4.47%</td>
+      <td>-5.95</td>
+    </tr>
+    <tr>
+      <td>1978-02-16</td>
+      <td>Winnipeg Jets</td>
+      <td>1598.05</td>
+      <td>2</td>
+      <td>@ New England Whalers</td>
+      <td>1537.33</td>
+      <td>1</td>
+      <td>45.27%</td>
+      <td>50.26%</td>
+      <td>4.47%</td>
+      <td>3.67</td>
+    </tr>
+    <tr>
+      <td>1978-02-16</td>
+      <td>New England Whalers</td>
+      <td>1537.33</td>
+      <td>1</td>
+      <td>Winnipeg Jets</td>
+      <td>1598.05</td>
+      <td>2</td>
+      <td>50.26%</td>
+      <td>45.27%</td>
+      <td>4.47%</td>
+      <td>-3.67</td>
+    </tr>
+    <tr>
+      <td>1978-02-16</td>
+      <td>Houston Aeros</td>
+      <td>1539.48</td>
+      <td>2</td>
+      <td>Birmingham Bulls</td>
+      <td>1443.68</td>
+      <td>5</td>
+      <td>70.43%</td>
+      <td>25.12%</td>
+      <td>4.45%</td>
+      <td>-8.85</td>
+    </tr>
+    <tr>
+      <td>1978-02-16</td>
+      <td>Birmingham Bulls</td>
+      <td>1443.68</td>
+      <td>5</td>
+      <td>@ Houston Aeros</td>
+      <td>1539.48</td>
+      <td>2</td>
+      <td>25.12%</td>
+      <td>70.43%</td>
+      <td>4.45%</td>
+      <td>8.86</td>
+    </tr>
+    <tr>
+      <td>1978-02-17</td>
+      <td>Cincinnati Stingers</td>
+      <td>1458.08</td>
+      <td>4</td>
+      <td>@ Houston Aeros</td>
+      <td>1530.63</td>
+      <td>3</td>
+      <td>27.72%</td>
+      <td>67.82%</td>
+      <td>4.46%</td>
+      <td>4.92</td>
+    </tr>
+    <tr>
+      <td>1978-02-17</td>
+      <td>Quebec Nordiques</td>
+      <td>1491.66</td>
+      <td>4</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1500.11</td>
+      <td>6</td>
+      <td>35.69%</td>
+      <td>59.84%</td>
+      <td>4.46%</td>
+      <td>-3.73</td>
+    </tr>
+    <tr>
+      <td>1978-02-17</td>
+      <td>Indianapolis Racers</td>
+      <td>1431.60</td>
+      <td>4</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1452.54</td>
+      <td>5</td>
+      <td>34.06%</td>
+      <td>61.48%</td>
+      <td>4.46%</td>
+      <td>-2.53</td>
+    </tr>
+    <tr>
+      <td>1978-02-17</td>
+      <td>Birmingham Bulls</td>
+      <td>1452.54</td>
+      <td>5</td>
+      <td>Indianapolis Racers</td>
+      <td>1431.60</td>
+      <td>4</td>
+      <td>61.48%</td>
+      <td>34.06%</td>
+      <td>4.46%</td>
+      <td>2.52</td>
+    </tr>
+    <tr>
+      <td>1978-02-17</td>
+      <td>Edmonton Oilers</td>
+      <td>1500.11</td>
+      <td>6</td>
+      <td>Quebec Nordiques</td>
+      <td>1491.66</td>
+      <td>4</td>
+      <td>59.84%</td>
+      <td>35.69%</td>
+      <td>4.46%</td>
+      <td>3.74</td>
+    </tr>
+    <tr>
+      <td>1978-02-17</td>
+      <td>Houston Aeros</td>
+      <td>1530.63</td>
+      <td>3</td>
+      <td>Cincinnati Stingers</td>
+      <td>1458.08</td>
+      <td>4</td>
+      <td>67.82%</td>
+      <td>27.72%</td>
+      <td>4.46%</td>
+      <td>-4.92</td>
+    </tr>
+    <tr>
+      <td>1978-02-18</td>
+      <td>New England Whalers</td>
+      <td>1533.66</td>
+      <td>4</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1429.07</td>
+      <td>1</td>
+      <td>51.55%</td>
+      <td>43.98%</td>
+      <td>4.47%</td>
+      <td>5.60</td>
+    </tr>
+    <tr>
+      <td>1978-02-18</td>
+      <td>Winnipeg Jets</td>
+      <td>1601.72</td>
+      <td>4</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1463.00</td>
+      <td>0</td>
+      <td>56.33%</td>
+      <td>39.20%</td>
+      <td>4.47%</td>
+      <td>5.78</td>
+    </tr>
+    <tr>
+      <td>1978-02-18</td>
+      <td>Cincinnati Stingers</td>
+      <td>1463.00</td>
+      <td>0</td>
+      <td>Winnipeg Jets</td>
+      <td>1601.72</td>
+      <td>4</td>
+      <td>39.20%</td>
+      <td>56.33%</td>
+      <td>4.47%</td>
+      <td>-5.78</td>
+    </tr>
+    <tr>
+      <td>1978-02-18</td>
+      <td>Indianapolis Racers</td>
+      <td>1429.07</td>
+      <td>1</td>
+      <td>New England Whalers</td>
+      <td>1533.66</td>
+      <td>4</td>
+      <td>43.98%</td>
+      <td>51.55%</td>
+      <td>4.47%</td>
+      <td>-5.59</td>
+    </tr>
+    <tr>
+      <td>1978-02-18</td>
+      <td>Houston Aeros</td>
+      <td>1525.71</td>
+      <td>3</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1455.06</td>
+      <td>2</td>
+      <td>46.69%</td>
+      <td>48.84%</td>
+      <td>4.47%</td>
+      <td>3.57</td>
+    </tr>
+    <tr>
+      <td>1978-02-18</td>
+      <td>Birmingham Bulls</td>
+      <td>1455.06</td>
+      <td>2</td>
+      <td>Houston Aeros</td>
+      <td>1525.71</td>
+      <td>3</td>
+      <td>48.84%</td>
+      <td>46.69%</td>
+      <td>4.47%</td>
+      <td>-3.57</td>
+    </tr>
+    <tr>
+      <td>1978-02-19</td>
+      <td>Winnipeg Jets</td>
+      <td>1607.50</td>
+      <td>5</td>
+      <td>Quebec Nordiques</td>
+      <td>1487.93</td>
+      <td>2</td>
+      <td>72.92%</td>
+      <td>22.63%</td>
+      <td>4.45%</td>
+      <td>2.94</td>
+    </tr>
+    <tr>
+      <td>1978-02-19</td>
+      <td>Edmonton Oilers</td>
+      <td>1503.85</td>
+      <td>4</td>
+      <td>Indianapolis Racers</td>
+      <td>1423.48</td>
+      <td>3</td>
+      <td>68.72%</td>
+      <td>26.83%</td>
+      <td>4.45%</td>
+      <td>2.00</td>
+    </tr>
+    <tr>
+      <td>1978-02-19</td>
+      <td>Quebec Nordiques</td>
+      <td>1487.93</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1607.50</td>
+      <td>5</td>
+      <td>22.63%</td>
+      <td>72.92%</td>
+      <td>4.45%</td>
+      <td>-2.94</td>
+    </tr>
+    <tr>
+      <td>1978-02-19</td>
+      <td>Indianapolis Racers</td>
+      <td>1423.48</td>
+      <td>3</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1503.85</td>
+      <td>4</td>
+      <td>26.83%</td>
+      <td>68.72%</td>
+      <td>4.45%</td>
+      <td>-2.00</td>
+    </tr>
+    <tr>
+      <td>1978-02-19</td>
+      <td>Birmingham Bulls</td>
+      <td>1451.49</td>
+      <td>3</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1457.22</td>
+      <td>4</td>
+      <td>36.05%</td>
+      <td>59.48%</td>
+      <td>4.47%</td>
+      <td>-2.67</td>
+    </tr>
+    <tr>
+      <td>1978-02-19</td>
+      <td>Cincinnati Stingers</td>
+      <td>1457.22</td>
+      <td>4</td>
+      <td>Birmingham Bulls</td>
+      <td>1451.49</td>
+      <td>3</td>
+      <td>59.48%</td>
+      <td>36.05%</td>
+      <td>4.47%</td>
+      <td>2.66</td>
+    </tr>
+    <tr>
+      <td>1978-02-21</td>
+      <td>Quebec Nordiques</td>
+      <td>1484.99</td>
+      <td>6</td>
+      <td>New England Whalers</td>
+      <td>1539.26</td>
+      <td>5</td>
+      <td>51.18%</td>
+      <td>44.35%</td>
+      <td>4.47%</td>
+      <td>3.26</td>
+    </tr>
+    <tr>
+      <td>1978-02-21</td>
+      <td>New England Whalers</td>
+      <td>1539.26</td>
+      <td>5</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1484.99</td>
+      <td>6</td>
+      <td>44.35%</td>
+      <td>51.18%</td>
+      <td>4.47%</td>
+      <td>-3.26</td>
+    </tr>
+    <tr>
+      <td>1978-02-22</td>
+      <td>Winnipeg Jets</td>
+      <td>1610.44</td>
+      <td>4</td>
+      <td>New England Whalers</td>
+      <td>1536.00</td>
+      <td>2</td>
+      <td>68.04%</td>
+      <td>27.51%</td>
+      <td>4.45%</td>
+      <td>2.90</td>
+    </tr>
+    <tr>
+      <td>1978-02-22</td>
+      <td>New England Whalers</td>
+      <td>1536.00</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1610.44</td>
+      <td>4</td>
+      <td>27.51%</td>
+      <td>68.04%</td>
+      <td>4.45%</td>
+      <td>-2.90</td>
+    </tr>
+    <tr>
+      <td>1978-02-22</td>
+      <td>Houston Aeros</td>
+      <td>1529.28</td>
+      <td>6</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1505.85</td>
+      <td>5</td>
+      <td>40.01%</td>
+      <td>55.52%</td>
+      <td>4.47%</td>
+      <td>4.04</td>
+    </tr>
+    <tr>
+      <td>1978-02-22</td>
+      <td>Edmonton Oilers</td>
+      <td>1505.85</td>
+      <td>5</td>
+      <td>Houston Aeros</td>
+      <td>1529.28</td>
+      <td>6</td>
+      <td>55.52%</td>
+      <td>40.01%</td>
+      <td>4.47%</td>
+      <td>-4.04</td>
+    </tr>
+    <tr>
+      <td>1978-02-23</td>
+      <td>Quebec Nordiques</td>
+      <td>1488.25</td>
+      <td>3</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1448.82</td>
+      <td>7</td>
+      <td>42.25%</td>
+      <td>53.29%</td>
+      <td>4.47%</td>
+      <td>-6.22</td>
+    </tr>
+    <tr>
+      <td>1978-02-23</td>
+      <td>Birmingham Bulls</td>
+      <td>1448.82</td>
+      <td>7</td>
+      <td>Quebec Nordiques</td>
+      <td>1488.25</td>
+      <td>3</td>
+      <td>53.29%</td>
+      <td>42.25%</td>
+      <td>4.47%</td>
+      <td>6.22</td>
+    </tr>
+    <tr>
+      <td>1978-02-24</td>
+      <td>Houston Aeros</td>
+      <td>1533.32</td>
+      <td>4</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1501.81</td>
+      <td>5</td>
+      <td>41.14%</td>
+      <td>54.40%</td>
+      <td>4.47%</td>
+      <td>-3.03</td>
+    </tr>
+    <tr>
+      <td>1978-02-24</td>
+      <td>New England Whalers</td>
+      <td>1533.10</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1613.34</td>
+      <td>7</td>
+      <td>26.84%</td>
+      <td>68.70%</td>
+      <td>4.45%</td>
+      <td>-4.48</td>
+    </tr>
+    <tr>
+      <td>1978-02-24</td>
+      <td>Edmonton Oilers</td>
+      <td>1501.81</td>
+      <td>5</td>
+      <td>Houston Aeros</td>
+      <td>1533.32</td>
+      <td>4</td>
+      <td>54.40%</td>
+      <td>41.14%</td>
+      <td>4.47%</td>
+      <td>3.03</td>
+    </tr>
+    <tr>
+      <td>1978-02-24</td>
+      <td>Winnipeg Jets</td>
+      <td>1613.34</td>
+      <td>7</td>
+      <td>New England Whalers</td>
+      <td>1533.10</td>
+      <td>2</td>
+      <td>68.70%</td>
+      <td>26.84%</td>
+      <td>4.45%</td>
+      <td>4.48</td>
+    </tr>
+    <tr>
+      <td>1978-02-25</td>
+      <td>Quebec Nordiques</td>
+      <td>1482.03</td>
+      <td>7</td>
+      <td>Indianapolis Racers</td>
+      <td>1421.48</td>
+      <td>5</td>
+      <td>66.41%</td>
+      <td>29.13%</td>
+      <td>4.46%</td>
+      <td>3.07</td>
+    </tr>
+    <tr>
+      <td>1978-02-25</td>
+      <td>Indianapolis Racers</td>
+      <td>1421.48</td>
+      <td>5</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1482.03</td>
+      <td>7</td>
+      <td>29.13%</td>
+      <td>66.41%</td>
+      <td>4.46%</td>
+      <td>-3.07</td>
+    </tr>
+    <tr>
+      <td>1978-02-25</td>
+      <td>Cincinnati Stingers</td>
+      <td>1459.88</td>
+      <td>3</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1455.04</td>
+      <td>7</td>
+      <td>37.47%</td>
+      <td>58.06%</td>
+      <td>4.47%</td>
+      <td>-5.53</td>
+    </tr>
+    <tr>
+      <td>1978-02-25</td>
+      <td>Birmingham Bulls</td>
+      <td>1455.04</td>
+      <td>7</td>
+      <td>Cincinnati Stingers</td>
+      <td>1459.88</td>
+      <td>3</td>
+      <td>58.06%</td>
+      <td>37.47%</td>
+      <td>4.47%</td>
+      <td>5.53</td>
+    </tr>
+    <tr>
+      <td>1978-02-26</td>
+      <td>Houston Aeros</td>
+      <td>1530.29</td>
+      <td>6</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1617.82</td>
+      <td>9</td>
+      <td>26.03%</td>
+      <td>69.52%</td>
+      <td>4.45%</td>
+      <td>-3.37</td>
+    </tr>
+    <tr>
+      <td>1978-02-26</td>
+      <td>Birmingham Bulls</td>
+      <td>1460.57</td>
+      <td>3</td>
+      <td>Indianapolis Racers</td>
+      <td>1418.41</td>
+      <td>6</td>
+      <td>64.17%</td>
+      <td>31.37%</td>
+      <td>4.46%</td>
+      <td>-8.07</td>
+    </tr>
+    <tr>
+      <td>1978-02-26</td>
+      <td>Winnipeg Jets</td>
+      <td>1617.82</td>
+      <td>9</td>
+      <td>Houston Aeros</td>
+      <td>1530.29</td>
+      <td>6</td>
+      <td>69.52%</td>
+      <td>26.03%</td>
+      <td>4.45%</td>
+      <td>3.37</td>
+    </tr>
+    <tr>
+      <td>1978-02-26</td>
+      <td>Indianapolis Racers</td>
+      <td>1418.41</td>
+      <td>6</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1460.57</td>
+      <td>3</td>
+      <td>31.37%</td>
+      <td>64.17%</td>
+      <td>4.46%</td>
+      <td>8.07</td>
+    </tr>
+    <tr>
+      <td>1978-02-26</td>
+      <td>Edmonton Oilers</td>
+      <td>1504.84</td>
+      <td>5</td>
+      <td>New England Whalers</td>
+      <td>1528.62</td>
+      <td>6</td>
+      <td>55.47%</td>
+      <td>40.06%</td>
+      <td>4.47%</td>
+      <td>-4.04</td>
+    </tr>
+    <tr>
+      <td>1978-02-26</td>
+      <td>New England Whalers</td>
+      <td>1528.62</td>
+      <td>6</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1504.84</td>
+      <td>5</td>
+      <td>40.06%</td>
+      <td>55.47%</td>
+      <td>4.47%</td>
+      <td>4.04</td>
+    </tr>
+    <tr>
+      <td>1978-02-28</td>
+      <td>Quebec Nordiques</td>
+      <td>1485.10</td>
+      <td>5</td>
+      <td>Houston Aeros</td>
+      <td>1526.92</td>
+      <td>2</td>
+      <td>52.95%</td>
+      <td>42.58%</td>
+      <td>4.47%</td>
+      <td>5.42</td>
+    </tr>
+    <tr>
+      <td>1978-02-28</td>
+      <td>Houston Aeros</td>
+      <td>1526.92</td>
+      <td>2</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1485.10</td>
+      <td>5</td>
+      <td>42.58%</td>
+      <td>52.95%</td>
+      <td>4.47%</td>
+      <td>-5.42</td>
+    </tr>
+    <tr>
+      <td>1978-03-01</td>
+      <td>Indianapolis Racers</td>
+      <td>1426.48</td>
+      <td>5</td>
+      <td>Houston Aeros</td>
+      <td>1521.50</td>
+      <td>1</td>
+      <td>45.34%</td>
+      <td>50.19%</td>
+      <td>4.47%</td>
+      <td>7.33</td>
+    </tr>
+    <tr>
+      <td>1978-03-01</td>
+      <td>New England Whalers</td>
+      <td>1532.66</td>
+      <td>3</td>
+      <td>Quebec Nordiques</td>
+      <td>1490.52</td>
+      <td>4</td>
+      <td>64.17%</td>
+      <td>31.37%</td>
+      <td>4.46%</td>
+      <td>-4.66</td>
+    </tr>
+    <tr>
+      <td>1978-03-01</td>
+      <td>Birmingham Bulls</td>
+      <td>1452.50</td>
+      <td>4</td>
+      <td>Winnipeg Jets</td>
+      <td>1621.19</td>
+      <td>3</td>
+      <td>35.17%</td>
+      <td>60.37%</td>
+      <td>4.46%</td>
+      <td>4.39</td>
+    </tr>
+    <tr>
+      <td>1978-03-01</td>
+      <td>Edmonton Oilers</td>
+      <td>1500.80</td>
+      <td>4</td>
+      <td>Cincinnati Stingers</td>
+      <td>1454.35</td>
+      <td>6</td>
+      <td>64.70%</td>
+      <td>30.84%</td>
+      <td>4.46%</td>
+      <td>-6.64</td>
+    </tr>
+    <tr>
+      <td>1978-03-01</td>
+      <td>Quebec Nordiques</td>
+      <td>1490.52</td>
+      <td>4</td>
+      <td>@ New England Whalers</td>
+      <td>1532.66</td>
+      <td>3</td>
+      <td>31.37%</td>
+      <td>64.17%</td>
+      <td>4.46%</td>
+      <td>4.66</td>
+    </tr>
+    <tr>
+      <td>1978-03-01</td>
+      <td>Houston Aeros</td>
+      <td>1521.50</td>
+      <td>1</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1426.48</td>
+      <td>5</td>
+      <td>50.19%</td>
+      <td>45.34%</td>
+      <td>4.47%</td>
+      <td>-7.33</td>
+    </tr>
+    <tr>
+      <td>1978-03-01</td>
+      <td>Winnipeg Jets</td>
+      <td>1621.19</td>
+      <td>3</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1452.50</td>
+      <td>4</td>
+      <td>60.37%</td>
+      <td>35.17%</td>
+      <td>4.46%</td>
+      <td>-4.38</td>
+    </tr>
+    <tr>
+      <td>1978-03-01</td>
+      <td>Cincinnati Stingers</td>
+      <td>1454.35</td>
+      <td>6</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1500.80</td>
+      <td>4</td>
+      <td>30.84%</td>
+      <td>64.70%</td>
+      <td>4.46%</td>
+      <td>6.64</td>
+    </tr>
+    <tr>
+      <td>1978-03-03</td>
+      <td>New England Whalers</td>
+      <td>1528.00</td>
+      <td>2</td>
+      <td>Houston Aeros</td>
+      <td>1514.17</td>
+      <td>3</td>
+      <td>60.55%</td>
+      <td>34.98%</td>
+      <td>4.46%</td>
+      <td>-4.40</td>
+    </tr>
+    <tr>
+      <td>1978-03-03</td>
+      <td>Edmonton Oilers</td>
+      <td>1494.16</td>
+      <td>6</td>
+      <td>Indianapolis Racers</td>
+      <td>1433.81</td>
+      <td>8</td>
+      <td>66.39%</td>
+      <td>29.15%</td>
+      <td>4.46%</td>
+      <td>-6.82</td>
+    </tr>
+    <tr>
+      <td>1978-03-03</td>
+      <td>Winnipeg Jets</td>
+      <td>1616.81</td>
+      <td>1</td>
+      <td>Cincinnati Stingers</td>
+      <td>1460.99</td>
+      <td>5</td>
+      <td>76.38%</td>
+      <td>19.19%</td>
+      <td>4.44%</td>
+      <td>-11.10</td>
+    </tr>
+    <tr>
+      <td>1978-03-03</td>
+      <td>Cincinnati Stingers</td>
+      <td>1460.99</td>
+      <td>5</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1616.81</td>
+      <td>1</td>
+      <td>19.19%</td>
+      <td>76.38%</td>
+      <td>4.44%</td>
+      <td>11.09</td>
+    </tr>
+    <tr>
+      <td>1978-03-03</td>
+      <td>Indianapolis Racers</td>
+      <td>1433.81</td>
+      <td>8</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1494.16</td>
+      <td>6</td>
+      <td>29.15%</td>
+      <td>66.39%</td>
+      <td>4.46%</td>
+      <td>6.81</td>
+    </tr>
+    <tr>
+      <td>1978-03-03</td>
+      <td>Houston Aeros</td>
+      <td>1514.17</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1528.00</td>
+      <td>2</td>
+      <td>34.98%</td>
+      <td>60.55%</td>
+      <td>4.46%</td>
+      <td>4.40</td>
+    </tr>
+    <tr>
+      <td>1978-03-04</td>
+      <td>New England Whalers</td>
+      <td>1523.60</td>
+      <td>2</td>
+      <td>Birmingham Bulls</td>
+      <td>1456.89</td>
+      <td>5</td>
+      <td>67.14%</td>
+      <td>28.40%</td>
+      <td>4.46%</td>
+      <td>-8.44</td>
+    </tr>
+    <tr>
+      <td>1978-03-04</td>
+      <td>Indianapolis Racers</td>
+      <td>1440.62</td>
+      <td>8</td>
+      <td>Winnipeg Jets</td>
+      <td>1605.71</td>
+      <td>6</td>
+      <td>35.64%</td>
+      <td>59.89%</td>
+      <td>4.46%</td>
+      <td>6.16</td>
+    </tr>
+    <tr>
+      <td>1978-03-04</td>
+      <td>Houston Aeros</td>
+      <td>1518.57</td>
+      <td>3</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1495.18</td>
+      <td>3</td>
+      <td>40.01%</td>
+      <td>55.53%</td>
+      <td>4.47%</td>
+      <td>0.27</td>
+    </tr>
+    <tr>
+      <td>1978-03-04</td>
+      <td>Birmingham Bulls</td>
+      <td>1456.89</td>
+      <td>5</td>
+      <td>@ New England Whalers</td>
+      <td>1523.60</td>
+      <td>2</td>
+      <td>28.40%</td>
+      <td>67.14%</td>
+      <td>4.46%</td>
+      <td>8.44</td>
+    </tr>
+    <tr>
+      <td>1978-03-04</td>
+      <td>Quebec Nordiques</td>
+      <td>1495.18</td>
+      <td>3</td>
+      <td>Houston Aeros</td>
+      <td>1518.57</td>
+      <td>3</td>
+      <td>55.53%</td>
+      <td>40.01%</td>
+      <td>4.47%</td>
+      <td>-0.27</td>
+    </tr>
+    <tr>
+      <td>1978-03-04</td>
+      <td>Winnipeg Jets</td>
+      <td>1605.71</td>
+      <td>6</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1440.62</td>
+      <td>8</td>
+      <td>59.89%</td>
+      <td>35.64%</td>
+      <td>4.46%</td>
+      <td>-6.15</td>
+    </tr>
+    <tr>
+      <td>1978-03-05</td>
+      <td>Cincinnati Stingers</td>
+      <td>1472.08</td>
+      <td>2</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1446.78</td>
+      <td>4</td>
+      <td>40.27%</td>
+      <td>55.26%</td>
+      <td>4.47%</td>
+      <td>-4.19</td>
+    </tr>
+    <tr>
+      <td>1978-03-05</td>
+      <td>Winnipeg Jets</td>
+      <td>1599.56</td>
+      <td>3</td>
+      <td>Houston Aeros</td>
+      <td>1518.84</td>
+      <td>4</td>
+      <td>68.76%</td>
+      <td>26.79%</td>
+      <td>4.45%</td>
+      <td>-4.99</td>
+    </tr>
+    <tr>
+      <td>1978-03-05</td>
+      <td>Indianapolis Racers</td>
+      <td>1446.78</td>
+      <td>4</td>
+      <td>Cincinnati Stingers</td>
+      <td>1472.08</td>
+      <td>2</td>
+      <td>55.26%</td>
+      <td>40.27%</td>
+      <td>4.47%</td>
+      <td>4.19</td>
+    </tr>
+    <tr>
+      <td>1978-03-05</td>
+      <td>Birmingham Bulls</td>
+      <td>1465.33</td>
+      <td>3</td>
+      <td>Edmonton Oilers</td>
+      <td>1487.34</td>
+      <td>4</td>
+      <td>55.72%</td>
+      <td>39.82%</td>
+      <td>4.47%</td>
+      <td>-4.05</td>
+    </tr>
+    <tr>
+      <td>1978-03-05</td>
+      <td>Houston Aeros</td>
+      <td>1518.84</td>
+      <td>4</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1599.56</td>
+      <td>3</td>
+      <td>26.79%</td>
+      <td>68.76%</td>
+      <td>4.45%</td>
+      <td>4.99</td>
+    </tr>
+    <tr>
+      <td>1978-03-05</td>
+      <td>Edmonton Oilers</td>
+      <td>1487.34</td>
+      <td>4</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1465.33</td>
+      <td>3</td>
+      <td>39.82%</td>
+      <td>55.72%</td>
+      <td>4.47%</td>
+      <td>4.06</td>
+    </tr>
+    <tr>
+      <td>1978-03-05</td>
+      <td>New England Whalers</td>
+      <td>1515.16</td>
+      <td>1</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1494.91</td>
+      <td>2</td>
+      <td>39.57%</td>
+      <td>55.96%</td>
+      <td>4.47%</td>
+      <td>-2.92</td>
+    </tr>
+    <tr>
+      <td>1978-03-05</td>
+      <td>Quebec Nordiques</td>
+      <td>1494.91</td>
+      <td>2</td>
+      <td>New England Whalers</td>
+      <td>1515.16</td>
+      <td>1</td>
+      <td>55.96%</td>
+      <td>39.57%</td>
+      <td>4.47%</td>
+      <td>2.92</td>
+    </tr>
+    <tr>
+      <td>1978-03-07</td>
+      <td>Edmonton Oilers</td>
+      <td>1491.40</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1523.83</td>
+      <td>4</td>
+      <td>32.59%</td>
+      <td>62.95%</td>
+      <td>4.46%</td>
+      <td>-2.42</td>
+    </tr>
+    <tr>
+      <td>1978-03-07</td>
+      <td>Cincinnati Stingers</td>
+      <td>1467.89</td>
+      <td>5</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1497.83</td>
+      <td>4</td>
+      <td>32.90%</td>
+      <td>62.64%</td>
+      <td>4.46%</td>
+      <td>4.54</td>
+    </tr>
+    <tr>
+      <td>1978-03-07</td>
+      <td>Quebec Nordiques</td>
+      <td>1497.83</td>
+      <td>4</td>
+      <td>Cincinnati Stingers</td>
+      <td>1467.89</td>
+      <td>5</td>
+      <td>62.64%</td>
+      <td>32.90%</td>
+      <td>4.46%</td>
+      <td>-4.55</td>
+    </tr>
+    <tr>
+      <td>1978-03-07</td>
+      <td>Houston Aeros</td>
+      <td>1523.83</td>
+      <td>4</td>
+      <td>Edmonton Oilers</td>
+      <td>1491.40</td>
+      <td>3</td>
+      <td>62.95%</td>
+      <td>32.59%</td>
+      <td>4.46%</td>
+      <td>2.42</td>
+    </tr>
+    <tr>
+      <td>1978-03-08</td>
+      <td>Indianapolis Racers</td>
+      <td>1450.97</td>
+      <td>4</td>
+      <td>Quebec Nordiques</td>
+      <td>1493.28</td>
+      <td>5</td>
+      <td>52.88%</td>
+      <td>42.65%</td>
+      <td>4.47%</td>
+      <td>-3.85</td>
+    </tr>
+    <tr>
+      <td>1978-03-08</td>
+      <td>Quebec Nordiques</td>
+      <td>1493.28</td>
+      <td>5</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1450.97</td>
+      <td>4</td>
+      <td>42.65%</td>
+      <td>52.88%</td>
+      <td>4.47%</td>
+      <td>3.85</td>
+    </tr>
+    <tr>
+      <td>1978-03-09</td>
+      <td>Winnipeg Jets</td>
+      <td>1594.57</td>
+      <td>6</td>
+      <td>Indianapolis Racers</td>
+      <td>1447.12</td>
+      <td>5</td>
+      <td>75.62%</td>
+      <td>19.95%</td>
+      <td>4.44%</td>
+      <td>1.50</td>
+    </tr>
+    <tr>
+      <td>1978-03-09</td>
+      <td>Birmingham Bulls</td>
+      <td>1461.28</td>
+      <td>9</td>
+      <td>Quebec Nordiques</td>
+      <td>1497.13</td>
+      <td>2</td>
+      <td>53.79%</td>
+      <td>41.74%</td>
+      <td>4.47%</td>
+      <td>8.12</td>
+    </tr>
+    <tr>
+      <td>1978-03-09</td>
+      <td>Edmonton Oilers</td>
+      <td>1488.98</td>
+      <td>5</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1472.43</td>
+      <td>6</td>
+      <td>39.06%</td>
+      <td>56.47%</td>
+      <td>4.47%</td>
+      <td>-2.88</td>
+    </tr>
+    <tr>
+      <td>1978-03-09</td>
+      <td>Indianapolis Racers</td>
+      <td>1447.12</td>
+      <td>5</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1594.57</td>
+      <td>6</td>
+      <td>19.95%</td>
+      <td>75.62%</td>
+      <td>4.44%</td>
+      <td>-1.50</td>
+    </tr>
+    <tr>
+      <td>1978-03-09</td>
+      <td>Quebec Nordiques</td>
+      <td>1497.13</td>
+      <td>2</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1461.28</td>
+      <td>9</td>
+      <td>41.74%</td>
+      <td>53.79%</td>
+      <td>4.47%</td>
+      <td>-8.13</td>
+    </tr>
+    <tr>
+      <td>1978-03-09</td>
+      <td>New England Whalers</td>
+      <td>1512.24</td>
+      <td>4</td>
+      <td>@ Houston Aeros</td>
+      <td>1526.25</td>
+      <td>6</td>
+      <td>34.96%</td>
+      <td>60.58%</td>
+      <td>4.46%</td>
+      <td>-3.66</td>
+    </tr>
+    <tr>
+      <td>1978-03-09</td>
+      <td>Houston Aeros</td>
+      <td>1526.25</td>
+      <td>6</td>
+      <td>New England Whalers</td>
+      <td>1512.24</td>
+      <td>4</td>
+      <td>60.58%</td>
+      <td>34.96%</td>
+      <td>4.46%</td>
+      <td>3.66</td>
+    </tr>
+    <tr>
+      <td>1978-03-09</td>
+      <td>Cincinnati Stingers</td>
+      <td>1472.43</td>
+      <td>6</td>
+      <td>Edmonton Oilers</td>
+      <td>1488.98</td>
+      <td>5</td>
+      <td>56.47%</td>
+      <td>39.06%</td>
+      <td>4.47%</td>
+      <td>2.89</td>
+    </tr>
+    <tr>
+      <td>1978-03-10</td>
+      <td>New England Whalers</td>
+      <td>1508.58</td>
+      <td>5</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1469.40</td>
+      <td>4</td>
+      <td>42.21%</td>
+      <td>53.32%</td>
+      <td>4.47%</td>
+      <td>3.88</td>
+    </tr>
+    <tr>
+      <td>1978-03-10</td>
+      <td>Birmingham Bulls</td>
+      <td>1469.40</td>
+      <td>4</td>
+      <td>New England Whalers</td>
+      <td>1508.58</td>
+      <td>5</td>
+      <td>53.32%</td>
+      <td>42.21%</td>
+      <td>4.47%</td>
+      <td>-3.88</td>
+    </tr>
+    <tr>
+      <td>1978-03-11</td>
+      <td>Indianapolis Racers</td>
+      <td>1445.62</td>
+      <td>4</td>
+      <td>Houston Aeros</td>
+      <td>1529.91</td>
+      <td>2</td>
+      <td>46.88%</td>
+      <td>48.65%</td>
+      <td>4.47%</td>
+      <td>5.03</td>
+    </tr>
+    <tr>
+      <td>1978-03-11</td>
+      <td>Cincinnati Stingers</td>
+      <td>1475.32</td>
+      <td>2</td>
+      <td>Edmonton Oilers</td>
+      <td>1486.10</td>
+      <td>0</td>
+      <td>57.26%</td>
+      <td>38.28%</td>
+      <td>4.47%</td>
+      <td>3.99</td>
+    </tr>
+    <tr>
+      <td>1978-03-11</td>
+      <td>Winnipeg Jets</td>
+      <td>1596.07</td>
+      <td>7</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1489.00</td>
+      <td>4</td>
+      <td>51.90%</td>
+      <td>43.63%</td>
+      <td>4.47%</td>
+      <td>5.55</td>
+    </tr>
+    <tr>
+      <td>1978-03-11</td>
+      <td>Edmonton Oilers</td>
+      <td>1486.10</td>
+      <td>0</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1475.32</td>
+      <td>2</td>
+      <td>38.28%</td>
+      <td>57.26%</td>
+      <td>4.47%</td>
+      <td>-4.00</td>
+    </tr>
+    <tr>
+      <td>1978-03-11</td>
+      <td>Houston Aeros</td>
+      <td>1529.91</td>
+      <td>2</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1445.62</td>
+      <td>4</td>
+      <td>48.65%</td>
+      <td>46.88%</td>
+      <td>4.47%</td>
+      <td>-5.03</td>
+    </tr>
+    <tr>
+      <td>1978-03-11</td>
+      <td>Quebec Nordiques</td>
+      <td>1489.00</td>
+      <td>4</td>
+      <td>Winnipeg Jets</td>
+      <td>1596.07</td>
+      <td>7</td>
+      <td>43.63%</td>
+      <td>51.90%</td>
+      <td>4.47%</td>
+      <td>-5.55</td>
+    </tr>
+    <tr>
+      <td>1978-03-12</td>
+      <td>Winnipeg Jets</td>
+      <td>1601.62</td>
+      <td>3</td>
+      <td>Birmingham Bulls</td>
+      <td>1465.52</td>
+      <td>2</td>
+      <td>74.55%</td>
+      <td>21.01%</td>
+      <td>4.44%</td>
+      <td>1.57</td>
+    </tr>
+    <tr>
+      <td>1978-03-12</td>
+      <td>Houston Aeros</td>
+      <td>1524.88</td>
+      <td>6</td>
+      <td>Indianapolis Racers</td>
+      <td>1450.65</td>
+      <td>3</td>
+      <td>68.01%</td>
+      <td>27.53%</td>
+      <td>4.45%</td>
+      <td>3.56</td>
+    </tr>
+    <tr>
+      <td>1978-03-12</td>
+      <td>Birmingham Bulls</td>
+      <td>1465.52</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1601.62</td>
+      <td>3</td>
+      <td>21.01%</td>
+      <td>74.55%</td>
+      <td>4.44%</td>
+      <td>-1.58</td>
+    </tr>
+    <tr>
+      <td>1978-03-12</td>
+      <td>Indianapolis Racers</td>
+      <td>1450.65</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1524.88</td>
+      <td>6</td>
+      <td>27.53%</td>
+      <td>68.01%</td>
+      <td>4.45%</td>
+      <td>-3.55</td>
+    </tr>
+    <tr>
+      <td>1978-03-14</td>
+      <td>New England Whalers</td>
+      <td>1512.46</td>
+      <td>6</td>
+      <td>Birmingham Bulls</td>
+      <td>1463.94</td>
+      <td>0</td>
+      <td>64.96%</td>
+      <td>30.58%</td>
+      <td>4.46%</td>
+      <td>5.57</td>
+    </tr>
+    <tr>
+      <td>1978-03-14</td>
+      <td>Quebec Nordiques</td>
+      <td>1483.45</td>
+      <td>6</td>
+      <td>Edmonton Oilers</td>
+      <td>1482.10</td>
+      <td>3</td>
+      <td>58.90%</td>
+      <td>36.64%</td>
+      <td>4.47%</td>
+      <td>4.70</td>
+    </tr>
+    <tr>
+      <td>1978-03-14</td>
+      <td>Birmingham Bulls</td>
+      <td>1463.94</td>
+      <td>0</td>
+      <td>@ New England Whalers</td>
+      <td>1512.46</td>
+      <td>6</td>
+      <td>30.58%</td>
+      <td>64.96%</td>
+      <td>4.46%</td>
+      <td>-5.57</td>
+    </tr>
+    <tr>
+      <td>1978-03-14</td>
+      <td>Edmonton Oilers</td>
+      <td>1482.10</td>
+      <td>3</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1483.45</td>
+      <td>6</td>
+      <td>36.64%</td>
+      <td>58.90%</td>
+      <td>4.47%</td>
+      <td>-4.69</td>
+    </tr>
+    <tr>
+      <td>1978-03-15</td>
+      <td>Edmonton Oilers</td>
+      <td>1477.41</td>
+      <td>4</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1603.19</td>
+      <td>8</td>
+      <td>22.01%</td>
+      <td>73.54%</td>
+      <td>4.44%</td>
+      <td>-3.30</td>
+    </tr>
+    <tr>
+      <td>1978-03-15</td>
+      <td>Birmingham Bulls</td>
+      <td>1458.37</td>
+      <td>2</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1479.31</td>
+      <td>7</td>
+      <td>34.06%</td>
+      <td>61.48%</td>
+      <td>4.46%</td>
+      <td>-5.64</td>
+    </tr>
+    <tr>
+      <td>1978-03-15</td>
+      <td>Cincinnati Stingers</td>
+      <td>1479.31</td>
+      <td>7</td>
+      <td>Birmingham Bulls</td>
+      <td>1458.37</td>
+      <td>2</td>
+      <td>61.48%</td>
+      <td>34.06%</td>
+      <td>4.46%</td>
+      <td>5.65</td>
+    </tr>
+    <tr>
+      <td>1978-03-15</td>
+      <td>Winnipeg Jets</td>
+      <td>1603.19</td>
+      <td>8</td>
+      <td>Edmonton Oilers</td>
+      <td>1477.41</td>
+      <td>4</td>
+      <td>73.54%</td>
+      <td>22.01%</td>
+      <td>4.44%</td>
+      <td>3.30</td>
+    </tr>
+    <tr>
+      <td>1978-03-15</td>
+      <td>New England Whalers</td>
+      <td>1518.03</td>
+      <td>7</td>
+      <td>Indianapolis Racers</td>
+      <td>1447.10</td>
+      <td>0</td>
+      <td>67.63%</td>
+      <td>27.91%</td>
+      <td>4.46%</td>
+      <td>5.51</td>
+    </tr>
+    <tr>
+      <td>1978-03-15</td>
+      <td>Indianapolis Racers</td>
+      <td>1447.10</td>
+      <td>0</td>
+      <td>@ New England Whalers</td>
+      <td>1518.03</td>
+      <td>7</td>
+      <td>27.91%</td>
+      <td>67.63%</td>
+      <td>4.46%</td>
+      <td>-5.51</td>
+    </tr>
+    <tr>
+      <td>1978-03-16</td>
+      <td>Indianapolis Racers</td>
+      <td>1441.59</td>
+      <td>2</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1488.15</td>
+      <td>5</td>
+      <td>30.82%</td>
+      <td>64.72%</td>
+      <td>4.46%</td>
+      <td>-3.97</td>
+    </tr>
+    <tr>
+      <td>1978-03-16</td>
+      <td>Quebec Nordiques</td>
+      <td>1488.15</td>
+      <td>5</td>
+      <td>Indianapolis Racers</td>
+      <td>1441.59</td>
+      <td>2</td>
+      <td>64.72%</td>
+      <td>30.82%</td>
+      <td>4.46%</td>
+      <td>3.97</td>
+    </tr>
+    <tr>
+      <td>1978-03-17</td>
+      <td>Cincinnati Stingers</td>
+      <td>1484.96</td>
+      <td>2</td>
+      <td>New England Whalers</td>
+      <td>1523.54</td>
+      <td>6</td>
+      <td>53.40%</td>
+      <td>42.13%</td>
+      <td>4.47%</td>
+      <td>-7.78</td>
+    </tr>
+    <tr>
+      <td>1978-03-17</td>
+      <td>Birmingham Bulls</td>
+      <td>1452.73</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1528.44</td>
+      <td>2</td>
+      <td>27.36%</td>
+      <td>68.19%</td>
+      <td>4.45%</td>
+      <td>4.94</td>
+    </tr>
+    <tr>
+      <td>1978-03-17</td>
+      <td>Winnipeg Jets</td>
+      <td>1606.49</td>
+      <td>2</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1474.11</td>
+      <td>6</td>
+      <td>55.46%</td>
+      <td>40.07%</td>
+      <td>4.47%</td>
+      <td>-8.07</td>
+    </tr>
+    <tr>
+      <td>1978-03-17</td>
+      <td>New England Whalers</td>
+      <td>1523.54</td>
+      <td>6</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1484.96</td>
+      <td>2</td>
+      <td>42.13%</td>
+      <td>53.40%</td>
+      <td>4.47%</td>
+      <td>7.78</td>
+    </tr>
+    <tr>
+      <td>1978-03-17</td>
+      <td>Edmonton Oilers</td>
+      <td>1474.11</td>
+      <td>6</td>
+      <td>Winnipeg Jets</td>
+      <td>1606.49</td>
+      <td>2</td>
+      <td>40.07%</td>
+      <td>55.46%</td>
+      <td>4.47%</td>
+      <td>8.07</td>
+    </tr>
+    <tr>
+      <td>1978-03-17</td>
+      <td>Houston Aeros</td>
+      <td>1528.44</td>
+      <td>2</td>
+      <td>Birmingham Bulls</td>
+      <td>1452.73</td>
+      <td>3</td>
+      <td>68.19%</td>
+      <td>27.36%</td>
+      <td>4.45%</td>
+      <td>-4.95</td>
+    </tr>
+    <tr>
+      <td>1978-03-18</td>
+      <td>Indianapolis Racers</td>
+      <td>1437.62</td>
+      <td>2</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1477.18</td>
+      <td>4</td>
+      <td>31.69%</td>
+      <td>63.85%</td>
+      <td>4.46%</td>
+      <td>-3.33</td>
+    </tr>
+    <tr>
+      <td>1978-03-18</td>
+      <td>New England Whalers</td>
+      <td>1531.32</td>
+      <td>3</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1492.12</td>
+      <td>5</td>
+      <td>42.22%</td>
+      <td>53.32%</td>
+      <td>4.47%</td>
+      <td>-4.39</td>
+    </tr>
+    <tr>
+      <td>1978-03-18</td>
+      <td>Cincinnati Stingers</td>
+      <td>1477.18</td>
+      <td>4</td>
+      <td>Indianapolis Racers</td>
+      <td>1437.62</td>
+      <td>2</td>
+      <td>63.85%</td>
+      <td>31.69%</td>
+      <td>4.46%</td>
+      <td>3.33</td>
+    </tr>
+    <tr>
+      <td>1978-03-18</td>
+      <td>Quebec Nordiques</td>
+      <td>1492.12</td>
+      <td>5</td>
+      <td>New England Whalers</td>
+      <td>1531.32</td>
+      <td>3</td>
+      <td>53.32%</td>
+      <td>42.22%</td>
+      <td>4.47%</td>
+      <td>4.39</td>
+    </tr>
+    <tr>
+      <td>1978-03-19</td>
+      <td>Quebec Nordiques</td>
+      <td>1496.51</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1598.42</td>
+      <td>5</td>
+      <td>24.46%</td>
+      <td>71.09%</td>
+      <td>4.45%</td>
+      <td>-2.59</td>
+    </tr>
+    <tr>
+      <td>1978-03-19</td>
+      <td>Cincinnati Stingers</td>
+      <td>1480.51</td>
+      <td>2</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1482.18</td>
+      <td>4</td>
+      <td>36.59%</td>
+      <td>58.94%</td>
+      <td>4.47%</td>
+      <td>-3.83</td>
+    </tr>
+    <tr>
+      <td>1978-03-19</td>
+      <td>Winnipeg Jets</td>
+      <td>1598.42</td>
+      <td>5</td>
+      <td>Quebec Nordiques</td>
+      <td>1496.51</td>
+      <td>3</td>
+      <td>71.09%</td>
+      <td>24.46%</td>
+      <td>4.45%</td>
+      <td>2.59</td>
+    </tr>
+    <tr>
+      <td>1978-03-19</td>
+      <td>Edmonton Oilers</td>
+      <td>1482.18</td>
+      <td>4</td>
+      <td>Cincinnati Stingers</td>
+      <td>1480.51</td>
+      <td>2</td>
+      <td>58.94%</td>
+      <td>36.59%</td>
+      <td>4.47%</td>
+      <td>3.83</td>
+    </tr>
+    <tr>
+      <td>1978-03-19</td>
+      <td>Indianapolis Racers</td>
+      <td>1434.29</td>
+      <td>3</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1457.67</td>
+      <td>3</td>
+      <td>33.74%</td>
+      <td>61.80%</td>
+      <td>4.46%</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <td>1978-03-19</td>
+      <td>Birmingham Bulls</td>
+      <td>1457.67</td>
+      <td>3</td>
+      <td>Indianapolis Racers</td>
+      <td>1434.29</td>
+      <td>3</td>
+      <td>61.80%</td>
+      <td>33.74%</td>
+      <td>4.46%</td>
+      <td>-0.49</td>
+    </tr>
+    <tr>
+      <td>1978-03-21</td>
+      <td>New England Whalers</td>
+      <td>1526.93</td>
+      <td>6</td>
+      <td>Indianapolis Racers</td>
+      <td>1434.79</td>
+      <td>3</td>
+      <td>70.03%</td>
+      <td>25.52%</td>
+      <td>4.45%</td>
+      <td>3.31</td>
+    </tr>
+    <tr>
+      <td>1978-03-21</td>
+      <td>Quebec Nordiques</td>
+      <td>1493.92</td>
+      <td>4</td>
+      <td>Birmingham Bulls</td>
+      <td>1457.18</td>
+      <td>5</td>
+      <td>63.50%</td>
+      <td>32.04%</td>
+      <td>4.46%</td>
+      <td>-4.61</td>
+    </tr>
+    <tr>
+      <td>1978-03-21</td>
+      <td>Indianapolis Racers</td>
+      <td>1434.79</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1526.93</td>
+      <td>6</td>
+      <td>25.52%</td>
+      <td>70.03%</td>
+      <td>4.45%</td>
+      <td>-3.31</td>
+    </tr>
+    <tr>
+      <td>1978-03-21</td>
+      <td>Birmingham Bulls</td>
+      <td>1457.18</td>
+      <td>5</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1493.92</td>
+      <td>4</td>
+      <td>32.04%</td>
+      <td>63.50%</td>
+      <td>4.46%</td>
+      <td>4.61</td>
+    </tr>
+    <tr>
+      <td>1978-03-22</td>
+      <td>Houston Aeros</td>
+      <td>1523.49</td>
+      <td>2</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1476.68</td>
+      <td>9</td>
+      <td>43.29%</td>
+      <td>52.24%</td>
+      <td>4.47%</td>
+      <td>-8.42</td>
+    </tr>
+    <tr>
+      <td>1978-03-22</td>
+      <td>New England Whalers</td>
+      <td>1530.24</td>
+      <td>3</td>
+      <td>Winnipeg Jets</td>
+      <td>1601.01</td>
+      <td>5</td>
+      <td>48.82%</td>
+      <td>46.71%</td>
+      <td>4.47%</td>
+      <td>-5.05</td>
+    </tr>
+    <tr>
+      <td>1978-03-22</td>
+      <td>Cincinnati Stingers</td>
+      <td>1476.68</td>
+      <td>9</td>
+      <td>Houston Aeros</td>
+      <td>1523.49</td>
+      <td>2</td>
+      <td>52.24%</td>
+      <td>43.29%</td>
+      <td>4.47%</td>
+      <td>8.41</td>
+    </tr>
+    <tr>
+      <td>1978-03-22</td>
+      <td>Edmonton Oilers</td>
+      <td>1486.01</td>
+      <td>3</td>
+      <td>Birmingham Bulls</td>
+      <td>1461.79</td>
+      <td>5</td>
+      <td>61.90%</td>
+      <td>33.63%</td>
+      <td>4.46%</td>
+      <td>-6.36</td>
+    </tr>
+    <tr>
+      <td>1978-03-22</td>
+      <td>Winnipeg Jets</td>
+      <td>1601.01</td>
+      <td>5</td>
+      <td>@ New England Whalers</td>
+      <td>1530.24</td>
+      <td>3</td>
+      <td>46.71%</td>
+      <td>48.82%</td>
+      <td>4.47%</td>
+      <td>5.05</td>
+    </tr>
+    <tr>
+      <td>1978-03-22</td>
+      <td>Birmingham Bulls</td>
+      <td>1461.79</td>
+      <td>5</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1486.01</td>
+      <td>3</td>
+      <td>33.63%</td>
+      <td>61.90%</td>
+      <td>4.46%</td>
+      <td>6.36</td>
+    </tr>
+    <tr>
+      <td>1978-03-24</td>
+      <td>New England Whalers</td>
+      <td>1525.19</td>
+      <td>0</td>
+      <td>Houston Aeros</td>
+      <td>1515.07</td>
+      <td>1</td>
+      <td>60.06%</td>
+      <td>35.47%</td>
+      <td>4.46%</td>
+      <td>-4.37</td>
+    </tr>
+    <tr>
+      <td>1978-03-24</td>
+      <td>Birmingham Bulls</td>
+      <td>1468.15</td>
+      <td>3</td>
+      <td>Quebec Nordiques</td>
+      <td>1489.31</td>
+      <td>4</td>
+      <td>55.83%</td>
+      <td>39.70%</td>
+      <td>4.47%</td>
+      <td>-4.07</td>
+    </tr>
+    <tr>
+      <td>1978-03-24</td>
+      <td>Edmonton Oilers</td>
+      <td>1479.65</td>
+      <td>4</td>
+      <td>Indianapolis Racers</td>
+      <td>1431.48</td>
+      <td>0</td>
+      <td>64.91%</td>
+      <td>30.63%</td>
+      <td>4.46%</td>
+      <td>4.55</td>
+    </tr>
+    <tr>
+      <td>1978-03-24</td>
+      <td>Quebec Nordiques</td>
+      <td>1489.31</td>
+      <td>4</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1468.15</td>
+      <td>3</td>
+      <td>39.70%</td>
+      <td>55.83%</td>
+      <td>4.47%</td>
+      <td>4.06</td>
+    </tr>
+    <tr>
+      <td>1978-03-24</td>
+      <td>Houston Aeros</td>
+      <td>1515.07</td>
+      <td>1</td>
+      <td>@ New England Whalers</td>
+      <td>1525.19</td>
+      <td>0</td>
+      <td>35.47%</td>
+      <td>60.06%</td>
+      <td>4.46%</td>
+      <td>4.37</td>
+    </tr>
+    <tr>
+      <td>1978-03-24</td>
+      <td>Indianapolis Racers</td>
+      <td>1431.48</td>
+      <td>0</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1479.65</td>
+      <td>4</td>
+      <td>30.63%</td>
+      <td>64.91%</td>
+      <td>4.46%</td>
+      <td>-4.55</td>
+    </tr>
+    <tr>
+      <td>1978-03-25</td>
+      <td>Houston Aeros</td>
+      <td>1519.44</td>
+      <td>4</td>
+      <td>Quebec Nordiques</td>
+      <td>1493.37</td>
+      <td>3</td>
+      <td>62.14%</td>
+      <td>33.40%</td>
+      <td>4.46%</td>
+      <td>2.48</td>
+    </tr>
+    <tr>
+      <td>1978-03-25</td>
+      <td>Birmingham Bulls</td>
+      <td>1464.08</td>
+      <td>1</td>
+      <td>Winnipeg Jets</td>
+      <td>1606.06</td>
+      <td>3</td>
+      <td>38.75%</td>
+      <td>56.78%</td>
+      <td>4.47%</td>
+      <td>-4.04</td>
+    </tr>
+    <tr>
+      <td>1978-03-25</td>
+      <td>Quebec Nordiques</td>
+      <td>1493.37</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1519.44</td>
+      <td>4</td>
+      <td>33.40%</td>
+      <td>62.14%</td>
+      <td>4.46%</td>
+      <td>-2.48</td>
+    </tr>
+    <tr>
+      <td>1978-03-25</td>
+      <td>Winnipeg Jets</td>
+      <td>1606.06</td>
+      <td>3</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1464.08</td>
+      <td>1</td>
+      <td>56.78%</td>
+      <td>38.75%</td>
+      <td>4.47%</td>
+      <td>4.04</td>
+    </tr>
+    <tr>
+      <td>1978-03-26</td>
+      <td>New England Whalers</td>
+      <td>1520.82</td>
+      <td>5</td>
+      <td>Edmonton Oilers</td>
+      <td>1484.20</td>
+      <td>3</td>
+      <td>63.48%</td>
+      <td>32.06%</td>
+      <td>4.46%</td>
+      <td>3.37</td>
+    </tr>
+    <tr>
+      <td>1978-03-26</td>
+      <td>Edmonton Oilers</td>
+      <td>1484.20</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1520.82</td>
+      <td>5</td>
+      <td>32.06%</td>
+      <td>63.48%</td>
+      <td>4.46%</td>
+      <td>-3.36</td>
+    </tr>
+    <tr>
+      <td>1978-03-28</td>
+      <td>Indianapolis Racers</td>
+      <td>1426.93</td>
+      <td>3</td>
+      <td>Edmonton Oilers</td>
+      <td>1480.84</td>
+      <td>4</td>
+      <td>51.23%</td>
+      <td>44.30%</td>
+      <td>4.47%</td>
+      <td>-3.74</td>
+    </tr>
+    <tr>
+      <td>1978-03-28</td>
+      <td>Houston Aeros</td>
+      <td>1521.92</td>
+      <td>5</td>
+      <td>Winnipeg Jets</td>
+      <td>1610.10</td>
+      <td>3</td>
+      <td>46.32%</td>
+      <td>49.21%</td>
+      <td>4.47%</td>
+      <td>5.08</td>
+    </tr>
+    <tr>
+      <td>1978-03-28</td>
+      <td>Quebec Nordiques</td>
+      <td>1490.89</td>
+      <td>6</td>
+      <td>Cincinnati Stingers</td>
+      <td>1485.09</td>
+      <td>4</td>
+      <td>59.49%</td>
+      <td>36.04%</td>
+      <td>4.47%</td>
+      <td>3.78</td>
+    </tr>
+    <tr>
+      <td>1978-03-28</td>
+      <td>Edmonton Oilers</td>
+      <td>1480.84</td>
+      <td>4</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1426.93</td>
+      <td>3</td>
+      <td>44.30%</td>
+      <td>51.23%</td>
+      <td>4.47%</td>
+      <td>3.73</td>
+    </tr>
+    <tr>
+      <td>1978-03-28</td>
+      <td>Winnipeg Jets</td>
+      <td>1610.10</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1521.92</td>
+      <td>5</td>
+      <td>49.21%</td>
+      <td>46.32%</td>
+      <td>4.47%</td>
+      <td>-5.08</td>
+    </tr>
+    <tr>
+      <td>1978-03-28</td>
+      <td>Cincinnati Stingers</td>
+      <td>1485.09</td>
+      <td>4</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1490.89</td>
+      <td>6</td>
+      <td>36.04%</td>
+      <td>59.49%</td>
+      <td>4.47%</td>
+      <td>-3.77</td>
+    </tr>
+    <tr>
+      <td>1978-03-29</td>
+      <td>Cincinnati Stingers</td>
+      <td>1481.32</td>
+      <td>1</td>
+      <td>@ New England Whalers</td>
+      <td>1524.19</td>
+      <td>6</td>
+      <td>31.28%</td>
+      <td>64.26%</td>
+      <td>4.46%</td>
+      <td>-5.20</td>
+    </tr>
+    <tr>
+      <td>1978-03-29</td>
+      <td>New England Whalers</td>
+      <td>1524.19</td>
+      <td>6</td>
+      <td>Cincinnati Stingers</td>
+      <td>1481.32</td>
+      <td>1</td>
+      <td>64.26%</td>
+      <td>31.28%</td>
+      <td>4.46%</td>
+      <td>5.20</td>
+    </tr>
+    <tr>
+      <td>1978-03-30</td>
+      <td>Houston Aeros</td>
+      <td>1527.00</td>
+      <td>5</td>
+      <td>Edmonton Oilers</td>
+      <td>1484.57</td>
+      <td>1</td>
+      <td>64.21%</td>
+      <td>31.33%</td>
+      <td>4.46%</td>
+      <td>4.66</td>
+    </tr>
+    <tr>
+      <td>1978-03-30</td>
+      <td>Winnipeg Jets</td>
+      <td>1605.02</td>
+      <td>4</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1423.19</td>
+      <td>1</td>
+      <td>62.08%</td>
+      <td>33.46%</td>
+      <td>4.46%</td>
+      <td>4.29</td>
+    </tr>
+    <tr>
+      <td>1978-03-30</td>
+      <td>Edmonton Oilers</td>
+      <td>1484.57</td>
+      <td>1</td>
+      <td>@ Houston Aeros</td>
+      <td>1527.00</td>
+      <td>5</td>
+      <td>31.33%</td>
+      <td>64.21%</td>
+      <td>4.46%</td>
+      <td>-4.65</td>
+    </tr>
+    <tr>
+      <td>1978-03-30</td>
+      <td>Indianapolis Racers</td>
+      <td>1423.19</td>
+      <td>1</td>
+      <td>Winnipeg Jets</td>
+      <td>1605.02</td>
+      <td>4</td>
+      <td>33.46%</td>
+      <td>62.08%</td>
+      <td>4.46%</td>
+      <td>-4.30</td>
+    </tr>
+    <tr>
+      <td>1978-03-31</td>
+      <td>Edmonton Oilers</td>
+      <td>1479.92</td>
+      <td>2</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1460.04</td>
+      <td>5</td>
+      <td>39.52%</td>
+      <td>56.01%</td>
+      <td>4.47%</td>
+      <td>-5.05</td>
+    </tr>
+    <tr>
+      <td>1978-03-31</td>
+      <td>Birmingham Bulls</td>
+      <td>1460.04</td>
+      <td>5</td>
+      <td>Edmonton Oilers</td>
+      <td>1479.92</td>
+      <td>2</td>
+      <td>56.01%</td>
+      <td>39.52%</td>
+      <td>4.47%</td>
+      <td>5.05</td>
+    </tr>
+    <tr>
+      <td>1978-04-01</td>
+      <td>Edmonton Oilers</td>
+      <td>1474.87</td>
+      <td>4</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1418.89</td>
+      <td>1</td>
+      <td>44.59%</td>
+      <td>50.94%</td>
+      <td>4.47%</td>
+      <td>6.44</td>
+    </tr>
+    <tr>
+      <td>1978-04-01</td>
+      <td>Cincinnati Stingers</td>
+      <td>1476.12</td>
+      <td>1</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1465.09</td>
+      <td>5</td>
+      <td>38.31%</td>
+      <td>57.22%</td>
+      <td>4.47%</td>
+      <td>-5.65</td>
+    </tr>
+    <tr>
+      <td>1978-04-01</td>
+      <td>Indianapolis Racers</td>
+      <td>1418.89</td>
+      <td>1</td>
+      <td>Edmonton Oilers</td>
+      <td>1474.87</td>
+      <td>4</td>
+      <td>50.94%</td>
+      <td>44.59%</td>
+      <td>4.47%</td>
+      <td>-6.44</td>
+    </tr>
+    <tr>
+      <td>1978-04-01</td>
+      <td>Quebec Nordiques</td>
+      <td>1494.67</td>
+      <td>5</td>
+      <td>Winnipeg Jets</td>
+      <td>1609.31</td>
+      <td>2</td>
+      <td>42.55%</td>
+      <td>52.98%</td>
+      <td>4.47%</td>
+      <td>6.68</td>
+    </tr>
+    <tr>
+      <td>1978-04-01</td>
+      <td>Birmingham Bulls</td>
+      <td>1465.09</td>
+      <td>5</td>
+      <td>Cincinnati Stingers</td>
+      <td>1476.12</td>
+      <td>1</td>
+      <td>57.22%</td>
+      <td>38.31%</td>
+      <td>4.47%</td>
+      <td>5.65</td>
+    </tr>
+    <tr>
+      <td>1978-04-01</td>
+      <td>Winnipeg Jets</td>
+      <td>1609.31</td>
+      <td>2</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1494.67</td>
+      <td>5</td>
+      <td>52.98%</td>
+      <td>42.55%</td>
+      <td>4.47%</td>
+      <td>-6.68</td>
+    </tr>
+    <tr>
+      <td>1978-04-02</td>
+      <td>Houston Aeros</td>
+      <td>1531.66</td>
+      <td>1</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1501.35</td>
+      <td>7</td>
+      <td>40.97%</td>
+      <td>54.56%</td>
+      <td>4.47%</td>
+      <td>-7.39</td>
+    </tr>
+    <tr>
+      <td>1978-04-02</td>
+      <td>Cincinnati Stingers</td>
+      <td>1470.47</td>
+      <td>3</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1412.45</td>
+      <td>6</td>
+      <td>44.88%</td>
+      <td>50.65%</td>
+      <td>4.47%</td>
+      <td>-5.71</td>
+    </tr>
+    <tr>
+      <td>1978-04-02</td>
+      <td>Quebec Nordiques</td>
+      <td>1501.35</td>
+      <td>7</td>
+      <td>Houston Aeros</td>
+      <td>1531.66</td>
+      <td>1</td>
+      <td>54.56%</td>
+      <td>40.97%</td>
+      <td>4.47%</td>
+      <td>7.39</td>
+    </tr>
+    <tr>
+      <td>1978-04-02</td>
+      <td>Indianapolis Racers</td>
+      <td>1412.45</td>
+      <td>6</td>
+      <td>Cincinnati Stingers</td>
+      <td>1470.47</td>
+      <td>3</td>
+      <td>50.65%</td>
+      <td>44.88%</td>
+      <td>4.47%</td>
+      <td>5.71</td>
+    </tr>
+    <tr>
+      <td>1978-04-03</td>
+      <td>Houston Aeros</td>
+      <td>1524.27</td>
+      <td>6</td>
+      <td>@ New England Whalers</td>
+      <td>1529.39</td>
+      <td>8</td>
+      <td>36.13%</td>
+      <td>59.40%</td>
+      <td>4.47%</td>
+      <td>-3.78</td>
+    </tr>
+    <tr>
+      <td>1978-04-03</td>
+      <td>New England Whalers</td>
+      <td>1529.39</td>
+      <td>8</td>
+      <td>Houston Aeros</td>
+      <td>1524.27</td>
+      <td>6</td>
+      <td>59.40%</td>
+      <td>36.13%</td>
+      <td>4.47%</td>
+      <td>3.78</td>
+    </tr>
+    <tr>
+      <td>1978-04-04</td>
+      <td>Edmonton Oilers</td>
+      <td>1481.31</td>
+      <td>1</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1508.74</td>
+      <td>9</td>
+      <td>33.22%</td>
+      <td>62.32%</td>
+      <td>4.46%</td>
+      <td>-6.97</td>
+    </tr>
+    <tr>
+      <td>1978-04-04</td>
+      <td>Winnipeg Jets</td>
+      <td>1602.63</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1520.49</td>
+      <td>6</td>
+      <td>48.34%</td>
+      <td>47.19%</td>
+      <td>4.47%</td>
+      <td>-6.13</td>
+    </tr>
+    <tr>
+      <td>1978-04-04</td>
+      <td>Houston Aeros</td>
+      <td>1520.49</td>
+      <td>6</td>
+      <td>Winnipeg Jets</td>
+      <td>1602.63</td>
+      <td>3</td>
+      <td>47.19%</td>
+      <td>48.34%</td>
+      <td>4.47%</td>
+      <td>6.12</td>
+    </tr>
+    <tr>
+      <td>1978-04-04</td>
+      <td>Quebec Nordiques</td>
+      <td>1508.74</td>
+      <td>9</td>
+      <td>Edmonton Oilers</td>
+      <td>1481.31</td>
+      <td>1</td>
+      <td>62.32%</td>
+      <td>33.22%</td>
+      <td>4.46%</td>
+      <td>6.97</td>
+    </tr>
+    <tr>
+      <td>1978-04-05</td>
+      <td>Edmonton Oilers</td>
+      <td>1474.34</td>
+      <td>4</td>
+      <td>New England Whalers</td>
+      <td>1533.17</td>
+      <td>4</td>
+      <td>50.53%</td>
+      <td>45.00%</td>
+      <td>4.47%</td>
+      <td>-0.10</td>
+    </tr>
+    <tr>
+      <td>1978-04-05</td>
+      <td>Birmingham Bulls</td>
+      <td>1470.74</td>
+      <td>4</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1464.76</td>
+      <td>5</td>
+      <td>37.62%</td>
+      <td>57.91%</td>
+      <td>4.47%</td>
+      <td>-2.78</td>
+    </tr>
+    <tr>
+      <td>1978-04-05</td>
+      <td>New England Whalers</td>
+      <td>1533.17</td>
+      <td>4</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1474.34</td>
+      <td>4</td>
+      <td>45.00%</td>
+      <td>50.53%</td>
+      <td>4.47%</td>
+      <td>0.10</td>
+    </tr>
+    <tr>
+      <td>1978-04-05</td>
+      <td>Cincinnati Stingers</td>
+      <td>1464.76</td>
+      <td>5</td>
+      <td>Birmingham Bulls</td>
+      <td>1470.74</td>
+      <td>4</td>
+      <td>57.91%</td>
+      <td>37.62%</td>
+      <td>4.47%</td>
+      <td>2.78</td>
+    </tr>
+    <tr>
+      <td>1978-04-06</td>
+      <td>New England Whalers</td>
+      <td>1533.27</td>
+      <td>4</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1596.50</td>
+      <td>7</td>
+      <td>28.81%</td>
+      <td>66.73%</td>
+      <td>4.46%</td>
+      <td>-3.72</td>
+    </tr>
+    <tr>
+      <td>1978-04-06</td>
+      <td>Winnipeg Jets</td>
+      <td>1596.50</td>
+      <td>7</td>
+      <td>New England Whalers</td>
+      <td>1533.27</td>
+      <td>4</td>
+      <td>66.73%</td>
+      <td>28.81%</td>
+      <td>4.46%</td>
+      <td>3.72</td>
+    </tr>
+    <tr>
+      <td>1978-04-07</td>
+      <td>Cincinnati Stingers</td>
+      <td>1467.54</td>
+      <td>6</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1418.16</td>
+      <td>4</td>
+      <td>43.65%</td>
+      <td>51.88%</td>
+      <td>4.47%</td>
+      <td>5.35</td>
+    </tr>
+    <tr>
+      <td>1978-04-07</td>
+      <td>Winnipeg Jets</td>
+      <td>1600.22</td>
+      <td>2</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1474.24</td>
+      <td>4</td>
+      <td>54.57%</td>
+      <td>40.96%</td>
+      <td>4.47%</td>
+      <td>-5.62</td>
+    </tr>
+    <tr>
+      <td>1978-04-07</td>
+      <td>Edmonton Oilers</td>
+      <td>1474.24</td>
+      <td>4</td>
+      <td>Winnipeg Jets</td>
+      <td>1600.22</td>
+      <td>2</td>
+      <td>40.96%</td>
+      <td>54.57%</td>
+      <td>4.47%</td>
+      <td>5.62</td>
+    </tr>
+    <tr>
+      <td>1978-04-07</td>
+      <td>Birmingham Bulls</td>
+      <td>1467.96</td>
+      <td>5</td>
+      <td>Houston Aeros</td>
+      <td>1526.61</td>
+      <td>3</td>
+      <td>50.56%</td>
+      <td>44.97%</td>
+      <td>4.47%</td>
+      <td>4.67</td>
+    </tr>
+    <tr>
+      <td>1978-04-07</td>
+      <td>Indianapolis Racers</td>
+      <td>1418.16</td>
+      <td>4</td>
+      <td>Cincinnati Stingers</td>
+      <td>1467.54</td>
+      <td>6</td>
+      <td>51.88%</td>
+      <td>43.65%</td>
+      <td>4.47%</td>
+      <td>-5.36</td>
+    </tr>
+    <tr>
+      <td>1978-04-07</td>
+      <td>Houston Aeros</td>
+      <td>1526.61</td>
+      <td>3</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1467.96</td>
+      <td>5</td>
+      <td>44.97%</td>
+      <td>50.56%</td>
+      <td>4.47%</td>
+      <td>-4.66</td>
+    </tr>
+    <tr>
+      <td>1978-04-08</td>
+      <td>Indianapolis Racers</td>
+      <td>1412.80</td>
+      <td>3</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1515.71</td>
+      <td>7</td>
+      <td>24.36%</td>
+      <td>71.19%</td>
+      <td>4.45%</td>
+      <td>-3.64</td>
+    </tr>
+    <tr>
+      <td>1978-04-08</td>
+      <td>Cincinnati Stingers</td>
+      <td>1472.89</td>
+      <td>4</td>
+      <td>@ Houston Aeros</td>
+      <td>1521.95</td>
+      <td>5</td>
+      <td>30.52%</td>
+      <td>65.02%</td>
+      <td>4.46%</td>
+      <td>-2.27</td>
+    </tr>
+    <tr>
+      <td>1978-04-08</td>
+      <td>Houston Aeros</td>
+      <td>1521.95</td>
+      <td>5</td>
+      <td>Cincinnati Stingers</td>
+      <td>1472.89</td>
+      <td>4</td>
+      <td>65.02%</td>
+      <td>30.52%</td>
+      <td>4.46%</td>
+      <td>2.27</td>
+    </tr>
+    <tr>
+      <td>1978-04-08</td>
+      <td>Quebec Nordiques</td>
+      <td>1515.71</td>
+      <td>7</td>
+      <td>Indianapolis Racers</td>
+      <td>1412.80</td>
+      <td>3</td>
+      <td>71.19%</td>
+      <td>24.36%</td>
+      <td>4.45%</td>
+      <td>3.65</td>
+    </tr>
+    <tr>
+      <td>1978-04-09</td>
+      <td>Birmingham Bulls</td>
+      <td>1472.63</td>
+      <td>9</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1409.16</td>
+      <td>7</td>
+      <td>45.66%</td>
+      <td>49.87%</td>
+      <td>4.47%</td>
+      <td>5.15</td>
+    </tr>
+    <tr>
+      <td>1978-04-09</td>
+      <td>Quebec Nordiques</td>
+      <td>1519.36</td>
+      <td>2</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1470.62</td>
+      <td>6</td>
+      <td>43.56%</td>
+      <td>51.97%</td>
+      <td>4.47%</td>
+      <td>-6.40</td>
+    </tr>
+    <tr>
+      <td>1978-04-09</td>
+      <td>Houston Aeros</td>
+      <td>1524.22</td>
+      <td>5</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1594.60</td>
+      <td>4</td>
+      <td>27.97%</td>
+      <td>67.57%</td>
+      <td>4.46%</td>
+      <td>4.90</td>
+    </tr>
+    <tr>
+      <td>1978-04-09</td>
+      <td>Cincinnati Stingers</td>
+      <td>1470.62</td>
+      <td>6</td>
+      <td>Quebec Nordiques</td>
+      <td>1519.36</td>
+      <td>2</td>
+      <td>51.97%</td>
+      <td>43.56%</td>
+      <td>4.47%</td>
+      <td>6.40</td>
+    </tr>
+    <tr>
+      <td>1978-04-09</td>
+      <td>Winnipeg Jets</td>
+      <td>1594.60</td>
+      <td>4</td>
+      <td>Houston Aeros</td>
+      <td>1524.22</td>
+      <td>5</td>
+      <td>67.57%</td>
+      <td>27.97%</td>
+      <td>4.46%</td>
+      <td>-4.90</td>
+    </tr>
+    <tr>
+      <td>1978-04-09</td>
+      <td>Indianapolis Racers</td>
+      <td>1409.16</td>
+      <td>7</td>
+      <td>Birmingham Bulls</td>
+      <td>1472.63</td>
+      <td>9</td>
+      <td>49.87%</td>
+      <td>45.66%</td>
+      <td>4.47%</td>
+      <td>-5.15</td>
+    </tr>
+    <tr>
+      <td>1978-04-10</td>
+      <td>Cincinnati Stingers</td>
+      <td>1477.02</td>
+      <td>1</td>
+      <td>@ New England Whalers</td>
+      <td>1529.55</td>
+      <td>6</td>
+      <td>30.09%</td>
+      <td>65.45%</td>
+      <td>4.46%</td>
+      <td>-5.00</td>
+    </tr>
+    <tr>
+      <td>1978-04-10</td>
+      <td>New England Whalers</td>
+      <td>1529.55</td>
+      <td>6</td>
+      <td>Cincinnati Stingers</td>
+      <td>1477.02</td>
+      <td>1</td>
+      <td>65.45%</td>
+      <td>30.09%</td>
+      <td>4.46%</td>
+      <td>5.01</td>
+    </tr>
+    <tr>
+      <td>1978-04-11</td>
+      <td>New England Whalers</td>
+      <td>1534.56</td>
+      <td>6</td>
+      <td>Indianapolis Racers</td>
+      <td>1404.01</td>
+      <td>3</td>
+      <td>74.01%</td>
+      <td>21.55%</td>
+      <td>4.44%</td>
+      <td>2.80</td>
+    </tr>
+    <tr>
+      <td>1978-04-11</td>
+      <td>Indianapolis Racers</td>
+      <td>1404.01</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1534.56</td>
+      <td>6</td>
+      <td>21.55%</td>
+      <td>74.01%</td>
+      <td>4.44%</td>
+      <td>-2.80</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

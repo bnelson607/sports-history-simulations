@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Cincinnati Stingers">Cincinnati Stingers</option><option value="Edmonton Oilers">Edmonton Oilers</option><option value="Houston Aeros">Houston Aeros</option><option value="Indianapolis Racers">Indianapolis Racers</option><option value="New England Whalers">New England Whalers</option><option value="Quebec Nordiques">Quebec Nordiques</option><option value="San Diego Mariners">San Diego Mariners</option><option value="Winnipeg Jets">Winnipeg Jets</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1977-04-09</td>
+      <td>Quebec Nordiques</td>
+      <td>1560.93</td>
+      <td>5</td>
+      <td>New England Whalers</td>
+      <td>1494.46</td>
+      <td>2</td>
+      <td>74.84%</td>
+      <td>25.16%</td>
+      <td>3.05</td>
+    </tr>
+    <tr>
+      <td>1977-04-09</td>
+      <td>Cincinnati Stingers</td>
+      <td>1504.85</td>
+      <td>3</td>
+      <td>Indianapolis Racers</td>
+      <td>1481.61</td>
+      <td>4</td>
+      <td>69.88%</td>
+      <td>30.12%</td>
+      <td>-4.89</td>
+    </tr>
+    <tr>
+      <td>1977-04-09</td>
+      <td>Indianapolis Racers</td>
+      <td>1481.61</td>
+      <td>4</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1504.85</td>
+      <td>3</td>
+      <td>30.12%</td>
+      <td>69.88%</td>
+      <td>4.89</td>
+    </tr>
+    <tr>
+      <td>1977-04-09</td>
+      <td>New England Whalers</td>
+      <td>1494.46</td>
+      <td>2</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1560.93</td>
+      <td>5</td>
+      <td>25.16%</td>
+      <td>74.84%</td>
+      <td>-3.04</td>
+    </tr>
+    <tr>
+      <td>1977-04-10</td>
+      <td>Winnipeg Jets</td>
+      <td>1576.80</td>
+      <td>5</td>
+      <td>San Diego Mariners</td>
+      <td>1504.72</td>
+      <td>1</td>
+      <td>75.45%</td>
+      <td>24.55%</td>
+      <td>3.44</td>
+    </tr>
+    <tr>
+      <td>1977-04-10</td>
+      <td>San Diego Mariners</td>
+      <td>1504.72</td>
+      <td>1</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1576.80</td>
+      <td>5</td>
+      <td>24.55%</td>
+      <td>75.45%</td>
+      <td>-3.43</td>
+    </tr>
+    <tr>
+      <td>1977-04-12</td>
+      <td>Quebec Nordiques</td>
+      <td>1563.98</td>
+      <td>7</td>
+      <td>New England Whalers</td>
+      <td>1491.42</td>
+      <td>3</td>
+      <td>75.50%</td>
+      <td>24.50%</td>
+      <td>3.42</td>
+    </tr>
+    <tr>
+      <td>1977-04-12</td>
+      <td>Cincinnati Stingers</td>
+      <td>1499.96</td>
+      <td>2</td>
+      <td>Indianapolis Racers</td>
+      <td>1486.50</td>
+      <td>7</td>
+      <td>68.68%</td>
+      <td>31.32%</td>
+      <td>-10.73</td>
+    </tr>
+    <tr>
+      <td>1977-04-12</td>
+      <td>Winnipeg Jets</td>
+      <td>1580.24</td>
+      <td>4</td>
+      <td>San Diego Mariners</td>
+      <td>1501.29</td>
+      <td>1</td>
+      <td>76.17%</td>
+      <td>23.83%</td>
+      <td>2.88</td>
+    </tr>
+    <tr>
+      <td>1977-04-12</td>
+      <td>San Diego Mariners</td>
+      <td>1501.29</td>
+      <td>1</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1580.24</td>
+      <td>4</td>
+      <td>23.83%</td>
+      <td>76.17%</td>
+      <td>-2.88</td>
+    </tr>
+    <tr>
+      <td>1977-04-12</td>
+      <td>Indianapolis Racers</td>
+      <td>1486.50</td>
+      <td>7</td>
+      <td>@ Cincinnati Stingers</td>
+      <td>1499.96</td>
+      <td>2</td>
+      <td>31.32%</td>
+      <td>68.68%</td>
+      <td>10.73</td>
+    </tr>
+    <tr>
+      <td>1977-04-12</td>
+      <td>New England Whalers</td>
+      <td>1491.42</td>
+      <td>3</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1563.98</td>
+      <td>7</td>
+      <td>24.50%</td>
+      <td>75.50%</td>
+      <td>-3.43</td>
+    </tr>
+    <tr>
+      <td>1977-04-13</td>
+      <td>Houston Aeros</td>
+      <td>1615.50</td>
+      <td>4</td>
+      <td>Edmonton Oilers</td>
+      <td>1444.57</td>
+      <td>3</td>
+      <td>84.44%</td>
+      <td>15.56%</td>
+      <td>1.09</td>
+    </tr>
+    <tr>
+      <td>1977-04-13</td>
+      <td>Edmonton Oilers</td>
+      <td>1444.57</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1615.50</td>
+      <td>4</td>
+      <td>15.56%</td>
+      <td>84.44%</td>
+      <td>-1.09</td>
+    </tr>
+    <tr>
+      <td>1977-04-14</td>
+      <td>Quebec Nordiques</td>
+      <td>1567.40</td>
+      <td>4</td>
+      <td>@ New England Whalers</td>
+      <td>1487.99</td>
+      <td>3</td>
+      <td>43.77%</td>
+      <td>56.23%</td>
+      <td>3.93</td>
+    </tr>
+    <tr>
+      <td>1977-04-14</td>
+      <td>Cincinnati Stingers</td>
+      <td>1489.23</td>
+      <td>3</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1497.23</td>
+      <td>5</td>
+      <td>32.00%</td>
+      <td>68.00%</td>
+      <td>-3.17</td>
+    </tr>
+    <tr>
+      <td>1977-04-14</td>
+      <td>New England Whalers</td>
+      <td>1487.99</td>
+      <td>3</td>
+      <td>Quebec Nordiques</td>
+      <td>1567.40</td>
+      <td>4</td>
+      <td>56.23%</td>
+      <td>43.77%</td>
+      <td>-3.93</td>
+    </tr>
+    <tr>
+      <td>1977-04-14</td>
+      <td>Indianapolis Racers</td>
+      <td>1497.23</td>
+      <td>5</td>
+      <td>Cincinnati Stingers</td>
+      <td>1489.23</td>
+      <td>3</td>
+      <td>68.00%</td>
+      <td>32.00%</td>
+      <td>3.17</td>
+    </tr>
+    <tr>
+      <td>1977-04-15</td>
+      <td>Houston Aeros</td>
+      <td>1616.59</td>
+      <td>6</td>
+      <td>Edmonton Oilers</td>
+      <td>1443.48</td>
+      <td>2</td>
+      <td>84.61%</td>
+      <td>15.39%</td>
+      <td>2.15</td>
+    </tr>
+    <tr>
+      <td>1977-04-15</td>
+      <td>Edmonton Oilers</td>
+      <td>1443.48</td>
+      <td>2</td>
+      <td>@ Houston Aeros</td>
+      <td>1616.59</td>
+      <td>6</td>
+      <td>15.39%</td>
+      <td>84.61%</td>
+      <td>-2.15</td>
+    </tr>
+    <tr>
+      <td>1977-04-16</td>
+      <td>New England Whalers</td>
+      <td>1484.06</td>
+      <td>6</td>
+      <td>Quebec Nordiques</td>
+      <td>1571.33</td>
+      <td>4</td>
+      <td>55.12%</td>
+      <td>44.88%</td>
+      <td>4.44</td>
+    </tr>
+    <tr>
+      <td>1977-04-16</td>
+      <td>Indianapolis Racers</td>
+      <td>1500.40</td>
+      <td>3</td>
+      <td>Cincinnati Stingers</td>
+      <td>1486.06</td>
+      <td>1</td>
+      <td>68.79%</td>
+      <td>31.21%</td>
+      <td>3.08</td>
+    </tr>
+    <tr>
+      <td>1977-04-16</td>
+      <td>San Diego Mariners</td>
+      <td>1498.41</td>
+      <td>5</td>
+      <td>Winnipeg Jets</td>
+      <td>1583.12</td>
+      <td>4</td>
+      <td>55.48%</td>
+      <td>44.52%</td>
+      <td>3.11</td>
+    </tr>
+    <tr>
+      <td>1977-04-16</td>
+      <td>Quebec Nordiques</td>
+      <td>1571.33</td>
+      <td>4</td>
+      <td>@ New England Whalers</td>
+      <td>1484.06</td>
+      <td>6</td>
+      <td>44.88%</td>
+      <td>55.12%</td>
+      <td>-4.44</td>
+    </tr>
+    <tr>
+      <td>1977-04-16</td>
+      <td>Cincinnati Stingers</td>
+      <td>1486.06</td>
+      <td>1</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1500.40</td>
+      <td>3</td>
+      <td>31.21%</td>
+      <td>68.79%</td>
+      <td>-3.08</td>
+    </tr>
+    <tr>
+      <td>1977-04-16</td>
+      <td>Winnipeg Jets</td>
+      <td>1583.12</td>
+      <td>4</td>
+      <td>@ San Diego Mariners</td>
+      <td>1498.41</td>
+      <td>5</td>
+      <td>44.52%</td>
+      <td>55.48%</td>
+      <td>-3.11</td>
+    </tr>
+    <tr>
+      <td>1977-04-17</td>
+      <td>Edmonton Oilers</td>
+      <td>1441.33</td>
+      <td>7</td>
+      <td>Houston Aeros</td>
+      <td>1618.74</td>
+      <td>2</td>
+      <td>42.23%</td>
+      <td>57.77%</td>
+      <td>9.03</td>
+    </tr>
+    <tr>
+      <td>1977-04-17</td>
+      <td>San Diego Mariners</td>
+      <td>1501.52</td>
+      <td>6</td>
+      <td>Winnipeg Jets</td>
+      <td>1580.01</td>
+      <td>4</td>
+      <td>56.36%</td>
+      <td>43.64%</td>
+      <td>4.31</td>
+    </tr>
+    <tr>
+      <td>1977-04-17</td>
+      <td>Houston Aeros</td>
+      <td>1618.74</td>
+      <td>2</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1441.33</td>
+      <td>7</td>
+      <td>57.77%</td>
+      <td>42.23%</td>
+      <td>-9.03</td>
+    </tr>
+    <tr>
+      <td>1977-04-17</td>
+      <td>Winnipeg Jets</td>
+      <td>1580.01</td>
+      <td>4</td>
+      <td>@ San Diego Mariners</td>
+      <td>1501.52</td>
+      <td>6</td>
+      <td>43.64%</td>
+      <td>56.36%</td>
+      <td>-4.32</td>
+    </tr>
+    <tr>
+      <td>1977-04-19</td>
+      <td>New England Whalers</td>
+      <td>1488.50</td>
+      <td>0</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1566.89</td>
+      <td>3</td>
+      <td>23.89%</td>
+      <td>76.11%</td>
+      <td>-2.89</td>
+    </tr>
+    <tr>
+      <td>1977-04-19</td>
+      <td>Quebec Nordiques</td>
+      <td>1566.89</td>
+      <td>3</td>
+      <td>New England Whalers</td>
+      <td>1488.50</td>
+      <td>0</td>
+      <td>76.11%</td>
+      <td>23.89%</td>
+      <td>2.90</td>
+    </tr>
+    <tr>
+      <td>1977-04-20</td>
+      <td>Edmonton Oilers</td>
+      <td>1450.36</td>
+      <td>1</td>
+      <td>Houston Aeros</td>
+      <td>1609.71</td>
+      <td>4</td>
+      <td>44.78%</td>
+      <td>55.22%</td>
+      <td>-5.42</td>
+    </tr>
+    <tr>
+      <td>1977-04-20</td>
+      <td>Winnipeg Jets</td>
+      <td>1575.69</td>
+      <td>3</td>
+      <td>San Diego Mariners</td>
+      <td>1505.83</td>
+      <td>0</td>
+      <td>75.21%</td>
+      <td>24.79%</td>
+      <td>3.01</td>
+    </tr>
+    <tr>
+      <td>1977-04-20</td>
+      <td>San Diego Mariners</td>
+      <td>1505.83</td>
+      <td>0</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1575.69</td>
+      <td>3</td>
+      <td>24.79%</td>
+      <td>75.21%</td>
+      <td>-3.00</td>
+    </tr>
+    <tr>
+      <td>1977-04-20</td>
+      <td>Houston Aeros</td>
+      <td>1609.71</td>
+      <td>4</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1450.36</td>
+      <td>1</td>
+      <td>55.22%</td>
+      <td>44.78%</td>
+      <td>5.42</td>
+    </tr>
+    <tr>
+      <td>1977-04-22</td>
+      <td>Edmonton Oilers</td>
+      <td>1444.94</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1615.13</td>
+      <td>4</td>
+      <td>15.61%</td>
+      <td>84.39%</td>
+      <td>-1.09</td>
+    </tr>
+    <tr>
+      <td>1977-04-22</td>
+      <td>Winnipeg Jets</td>
+      <td>1578.70</td>
+      <td>1</td>
+      <td>@ San Diego Mariners</td>
+      <td>1502.83</td>
+      <td>3</td>
+      <td>43.27%</td>
+      <td>56.73%</td>
+      <td>-4.28</td>
+    </tr>
+    <tr>
+      <td>1977-04-22</td>
+      <td>San Diego Mariners</td>
+      <td>1502.83</td>
+      <td>3</td>
+      <td>Winnipeg Jets</td>
+      <td>1578.70</td>
+      <td>1</td>
+      <td>56.73%</td>
+      <td>43.27%</td>
+      <td>4.28</td>
+    </tr>
+    <tr>
+      <td>1977-04-22</td>
+      <td>Houston Aeros</td>
+      <td>1615.13</td>
+      <td>4</td>
+      <td>Edmonton Oilers</td>
+      <td>1444.94</td>
+      <td>3</td>
+      <td>84.39%</td>
+      <td>15.61%</td>
+      <td>1.09</td>
+    </tr>
+    <tr>
+      <td>1977-04-23</td>
+      <td>Indianapolis Racers</td>
+      <td>1503.48</td>
+      <td>1</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1569.79</td>
+      <td>3</td>
+      <td>25.17%</td>
+      <td>74.83%</td>
+      <td>-2.49</td>
+    </tr>
+    <tr>
+      <td>1977-04-23</td>
+      <td>Quebec Nordiques</td>
+      <td>1569.79</td>
+      <td>3</td>
+      <td>Indianapolis Racers</td>
+      <td>1503.48</td>
+      <td>1</td>
+      <td>74.83%</td>
+      <td>25.17%</td>
+      <td>2.48</td>
+    </tr>
+    <tr>
+      <td>1977-04-24</td>
+      <td>San Diego Mariners</td>
+      <td>1507.11</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1574.42</td>
+      <td>7</td>
+      <td>25.06%</td>
+      <td>74.94%</td>
+      <td>-3.51</td>
+    </tr>
+    <tr>
+      <td>1977-04-24</td>
+      <td>Winnipeg Jets</td>
+      <td>1574.42</td>
+      <td>7</td>
+      <td>San Diego Mariners</td>
+      <td>1507.11</td>
+      <td>3</td>
+      <td>74.94%</td>
+      <td>25.06%</td>
+      <td>3.50</td>
+    </tr>
+    <tr>
+      <td>1977-04-25</td>
+      <td>Indianapolis Racers</td>
+      <td>1500.99</td>
+      <td>3</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1572.27</td>
+      <td>8</td>
+      <td>24.64%</td>
+      <td>75.36%</td>
+      <td>-3.85</td>
+    </tr>
+    <tr>
+      <td>1977-04-25</td>
+      <td>Quebec Nordiques</td>
+      <td>1572.27</td>
+      <td>8</td>
+      <td>Indianapolis Racers</td>
+      <td>1500.99</td>
+      <td>3</td>
+      <td>75.36%</td>
+      <td>24.64%</td>
+      <td>3.86</td>
+    </tr>
+    <tr>
+      <td>1977-04-26</td>
+      <td>Winnipeg Jets</td>
+      <td>1577.92</td>
+      <td>4</td>
+      <td>@ Houston Aeros</td>
+      <td>1616.22</td>
+      <td>3</td>
+      <td>28.33%</td>
+      <td>71.67%</td>
+      <td>5.01</td>
+    </tr>
+    <tr>
+      <td>1977-04-26</td>
+      <td>Houston Aeros</td>
+      <td>1616.22</td>
+      <td>3</td>
+      <td>Winnipeg Jets</td>
+      <td>1577.92</td>
+      <td>4</td>
+      <td>71.67%</td>
+      <td>28.33%</td>
+      <td>-5.01</td>
+    </tr>
+    <tr>
+      <td>1977-04-28</td>
+      <td>Quebec Nordiques</td>
+      <td>1576.13</td>
+      <td>6</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1497.14</td>
+      <td>5</td>
+      <td>43.71%</td>
+      <td>56.29%</td>
+      <td>3.93</td>
+    </tr>
+    <tr>
+      <td>1977-04-28</td>
+      <td>Houston Aeros</td>
+      <td>1611.21</td>
+      <td>7</td>
+      <td>Winnipeg Jets</td>
+      <td>1582.93</td>
+      <td>2</td>
+      <td>70.48%</td>
+      <td>29.52%</td>
+      <td>4.62</td>
+    </tr>
+    <tr>
+      <td>1977-04-28</td>
+      <td>Indianapolis Racers</td>
+      <td>1497.14</td>
+      <td>5</td>
+      <td>Quebec Nordiques</td>
+      <td>1576.13</td>
+      <td>6</td>
+      <td>56.29%</td>
+      <td>43.71%</td>
+      <td>-3.93</td>
+    </tr>
+    <tr>
+      <td>1977-04-28</td>
+      <td>Winnipeg Jets</td>
+      <td>1582.93</td>
+      <td>2</td>
+      <td>@ Houston Aeros</td>
+      <td>1611.21</td>
+      <td>7</td>
+      <td>29.52%</td>
+      <td>70.48%</td>
+      <td>-4.61</td>
+    </tr>
+    <tr>
+      <td>1977-04-30</td>
+      <td>Quebec Nordiques</td>
+      <td>1580.06</td>
+      <td>0</td>
+      <td>@ Indianapolis Racers</td>
+      <td>1493.21</td>
+      <td>2</td>
+      <td>44.83%</td>
+      <td>55.17%</td>
+      <td>-4.43</td>
+    </tr>
+    <tr>
+      <td>1977-04-30</td>
+      <td>Houston Aeros</td>
+      <td>1615.83</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1578.32</td>
+      <td>4</td>
+      <td>37.95%</td>
+      <td>62.05%</td>
+      <td>-2.66</td>
+    </tr>
+    <tr>
+      <td>1977-04-30</td>
+      <td>Winnipeg Jets</td>
+      <td>1578.32</td>
+      <td>4</td>
+      <td>Houston Aeros</td>
+      <td>1615.83</td>
+      <td>3</td>
+      <td>62.05%</td>
+      <td>37.95%</td>
+      <td>2.65</td>
+    </tr>
+    <tr>
+      <td>1977-04-30</td>
+      <td>Indianapolis Racers</td>
+      <td>1493.21</td>
+      <td>2</td>
+      <td>Quebec Nordiques</td>
+      <td>1580.06</td>
+      <td>0</td>
+      <td>55.17%</td>
+      <td>44.83%</td>
+      <td>4.43</td>
+    </tr>
+    <tr>
+      <td>1977-05-01</td>
+      <td>Houston Aeros</td>
+      <td>1613.17</td>
+      <td>4</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1580.97</td>
+      <td>6</td>
+      <td>37.23%</td>
+      <td>62.77%</td>
+      <td>-3.68</td>
+    </tr>
+    <tr>
+      <td>1977-05-01</td>
+      <td>Winnipeg Jets</td>
+      <td>1580.97</td>
+      <td>6</td>
+      <td>Houston Aeros</td>
+      <td>1613.17</td>
+      <td>4</td>
+      <td>62.77%</td>
+      <td>37.23%</td>
+      <td>3.68</td>
+    </tr>
+    <tr>
+      <td>1977-05-02</td>
+      <td>Indianapolis Racers</td>
+      <td>1497.64</td>
+      <td>3</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1575.63</td>
+      <td>8</td>
+      <td>23.93%</td>
+      <td>76.07%</td>
+      <td>-3.74</td>
+    </tr>
+    <tr>
+      <td>1977-05-02</td>
+      <td>Quebec Nordiques</td>
+      <td>1575.63</td>
+      <td>8</td>
+      <td>Indianapolis Racers</td>
+      <td>1497.64</td>
+      <td>3</td>
+      <td>76.07%</td>
+      <td>23.93%</td>
+      <td>3.74</td>
+    </tr>
+    <tr>
+      <td>1977-05-03</td>
+      <td>Winnipeg Jets</td>
+      <td>1584.65</td>
+      <td>2</td>
+      <td>@ Houston Aeros</td>
+      <td>1609.49</td>
+      <td>3</td>
+      <td>29.93%</td>
+      <td>70.07%</td>
+      <td>-2.09</td>
+    </tr>
+    <tr>
+      <td>1977-05-03</td>
+      <td>Houston Aeros</td>
+      <td>1609.49</td>
+      <td>3</td>
+      <td>Winnipeg Jets</td>
+      <td>1584.65</td>
+      <td>2</td>
+      <td>70.07%</td>
+      <td>29.93%</td>
+      <td>2.10</td>
+    </tr>
+    <tr>
+      <td>1977-05-05</td>
+      <td>Houston Aeros</td>
+      <td>1611.59</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1582.56</td>
+      <td>6</td>
+      <td>36.80%</td>
+      <td>63.20%</td>
+      <td>-4.46</td>
+    </tr>
+    <tr>
+      <td>1977-05-05</td>
+      <td>Winnipeg Jets</td>
+      <td>1582.56</td>
+      <td>6</td>
+      <td>Houston Aeros</td>
+      <td>1611.59</td>
+      <td>3</td>
+      <td>63.20%</td>
+      <td>36.80%</td>
+      <td>4.46</td>
+    </tr>
+    <tr>
+      <td>1977-05-11</td>
+      <td>Winnipeg Jets</td>
+      <td>1587.02</td>
+      <td>2</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1579.37</td>
+      <td>1</td>
+      <td>33.99%</td>
+      <td>66.01%</td>
+      <td>4.61</td>
+    </tr>
+    <tr>
+      <td>1977-05-11</td>
+      <td>Quebec Nordiques</td>
+      <td>1579.37</td>
+      <td>1</td>
+      <td>Winnipeg Jets</td>
+      <td>1587.02</td>
+      <td>2</td>
+      <td>66.01%</td>
+      <td>33.99%</td>
+      <td>-4.62</td>
+    </tr>
+    <tr>
+      <td>1977-05-15</td>
+      <td>Quebec Nordiques</td>
+      <td>1574.75</td>
+      <td>6</td>
+      <td>Winnipeg Jets</td>
+      <td>1591.63</td>
+      <td>1</td>
+      <td>64.81%</td>
+      <td>35.19%</td>
+      <td>5.51</td>
+    </tr>
+    <tr>
+      <td>1977-05-15</td>
+      <td>Winnipeg Jets</td>
+      <td>1591.63</td>
+      <td>1</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1574.75</td>
+      <td>6</td>
+      <td>35.19%</td>
+      <td>64.81%</td>
+      <td>-5.50</td>
+    </tr>
+    <tr>
+      <td>1977-05-18</td>
+      <td>Quebec Nordiques</td>
+      <td>1580.26</td>
+      <td>1</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1586.13</td>
+      <td>6</td>
+      <td>32.27%</td>
+      <td>67.73%</td>
+      <td>-5.05</td>
+    </tr>
+    <tr>
+      <td>1977-05-18</td>
+      <td>Winnipeg Jets</td>
+      <td>1586.13</td>
+      <td>6</td>
+      <td>Quebec Nordiques</td>
+      <td>1580.26</td>
+      <td>1</td>
+      <td>67.73%</td>
+      <td>32.27%</td>
+      <td>5.04</td>
+    </tr>
+    <tr>
+      <td>1977-05-20</td>
+      <td>Quebec Nordiques</td>
+      <td>1575.21</td>
+      <td>4</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1591.17</td>
+      <td>2</td>
+      <td>31.01%</td>
+      <td>68.99%</td>
+      <td>6.82</td>
+    </tr>
+    <tr>
+      <td>1977-05-20</td>
+      <td>Winnipeg Jets</td>
+      <td>1591.17</td>
+      <td>2</td>
+      <td>Quebec Nordiques</td>
+      <td>1575.21</td>
+      <td>4</td>
+      <td>68.99%</td>
+      <td>31.01%</td>
+      <td>-6.82</td>
+    </tr>
+    <tr>
+      <td>1977-05-22</td>
+      <td>Winnipeg Jets</td>
+      <td>1584.35</td>
+      <td>3</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1582.03</td>
+      <td>8</td>
+      <td>33.31%</td>
+      <td>66.69%</td>
+      <td>-5.20</td>
+    </tr>
+    <tr>
+      <td>1977-05-22</td>
+      <td>Quebec Nordiques</td>
+      <td>1582.03</td>
+      <td>8</td>
+      <td>Winnipeg Jets</td>
+      <td>1584.35</td>
+      <td>3</td>
+      <td>66.69%</td>
+      <td>33.31%</td>
+      <td>5.21</td>
+    </tr>
+    <tr>
+      <td>1977-05-24</td>
+      <td>Quebec Nordiques</td>
+      <td>1587.24</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1579.15</td>
+      <td>12</td>
+      <td>34.05%</td>
+      <td>65.95%</td>
+      <td>-7.14</td>
+    </tr>
+    <tr>
+      <td>1977-05-24</td>
+      <td>Winnipeg Jets</td>
+      <td>1579.15</td>
+      <td>12</td>
+      <td>Quebec Nordiques</td>
+      <td>1587.24</td>
+      <td>3</td>
+      <td>65.95%</td>
+      <td>34.05%</td>
+      <td>7.14</td>
+    </tr>
+    <tr>
+      <td>1977-05-26</td>
+      <td>Quebec Nordiques</td>
+      <td>1580.10</td>
+      <td>8</td>
+      <td>Winnipeg Jets</td>
+      <td>1586.29</td>
+      <td>2</td>
+      <td>66.20%</td>
+      <td>33.80%</td>
+      <td>5.79</td>
+    </tr>
+    <tr>
+      <td>1977-05-26</td>
+      <td>Winnipeg Jets</td>
+      <td>1586.29</td>
+      <td>2</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1580.10</td>
+      <td>8</td>
+      <td>33.80%</td>
+      <td>66.20%</td>
+      <td>-5.79</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

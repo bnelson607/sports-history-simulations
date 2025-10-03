@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Chicago Cougars">Chicago Cougars</option><option value="Cleveland Crusaders">Cleveland Crusaders</option><option value="Edmonton Oilers">Edmonton Oilers</option><option value="Houston Aeros">Houston Aeros</option><option value="Minnesota Fighting Saints">Minnesota Fighting Saints</option><option value="New England Whalers">New England Whalers</option><option value="Toronto Toros">Toronto Toros</option><option value="Winnipeg Jets">Winnipeg Jets</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1974-04-06</td>
+      <td>New England Whalers</td>
+      <td>1546.36</td>
+      <td>6</td>
+      <td>Chicago Cougars</td>
+      <td>1502.45</td>
+      <td>4</td>
+      <td>68.93%</td>
+      <td>31.07%</td>
+      <td>3.44</td>
+    </tr>
+    <tr>
+      <td>1974-04-06</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1564.50</td>
+      <td>2</td>
+      <td>Edmonton Oilers</td>
+      <td>1491.25</td>
+      <td>1</td>
+      <td>72.43%</td>
+      <td>27.57%</td>
+      <td>2.16</td>
+    </tr>
+    <tr>
+      <td>1974-04-06</td>
+      <td>Edmonton Oilers</td>
+      <td>1491.25</td>
+      <td>1</td>
+      <td>@ Minnesota Fighting Saints</td>
+      <td>1564.50</td>
+      <td>2</td>
+      <td>27.57%</td>
+      <td>72.43%</td>
+      <td>-2.16</td>
+    </tr>
+    <tr>
+      <td>1974-04-06</td>
+      <td>Chicago Cougars</td>
+      <td>1502.45</td>
+      <td>4</td>
+      <td>@ New England Whalers</td>
+      <td>1546.36</td>
+      <td>6</td>
+      <td>31.07%</td>
+      <td>68.93%</td>
+      <td>-3.44</td>
+    </tr>
+    <tr>
+      <td>1974-04-07</td>
+      <td>Edmonton Oilers</td>
+      <td>1489.09</td>
+      <td>5</td>
+      <td>@ Minnesota Fighting Saints</td>
+      <td>1566.66</td>
+      <td>8</td>
+      <td>27.08%</td>
+      <td>72.92%</td>
+      <td>-3.68</td>
+    </tr>
+    <tr>
+      <td>1974-04-07</td>
+      <td>Chicago Cougars</td>
+      <td>1499.01</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1549.80</td>
+      <td>4</td>
+      <td>30.23%</td>
+      <td>69.77%</td>
+      <td>-2.37</td>
+    </tr>
+    <tr>
+      <td>1974-04-07</td>
+      <td>Cleveland Crusaders</td>
+      <td>1521.92</td>
+      <td>0</td>
+      <td>@ Toronto Toros</td>
+      <td>1544.07</td>
+      <td>4</td>
+      <td>33.81%</td>
+      <td>66.19%</td>
+      <td>-5.31</td>
+    </tr>
+    <tr>
+      <td>1974-04-07</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1566.66</td>
+      <td>8</td>
+      <td>Edmonton Oilers</td>
+      <td>1489.09</td>
+      <td>5</td>
+      <td>72.92%</td>
+      <td>27.08%</td>
+      <td>3.68</td>
+    </tr>
+    <tr>
+      <td>1974-04-07</td>
+      <td>Toronto Toros</td>
+      <td>1544.07</td>
+      <td>4</td>
+      <td>Cleveland Crusaders</td>
+      <td>1521.92</td>
+      <td>0</td>
+      <td>66.19%</td>
+      <td>33.81%</td>
+      <td>5.31</td>
+    </tr>
+    <tr>
+      <td>1974-04-07</td>
+      <td>New England Whalers</td>
+      <td>1549.80</td>
+      <td>4</td>
+      <td>Chicago Cougars</td>
+      <td>1499.01</td>
+      <td>3</td>
+      <td>69.77%</td>
+      <td>30.23%</td>
+      <td>2.37</td>
+    </tr>
+    <tr>
+      <td>1974-04-08</td>
+      <td>Houston Aeros</td>
+      <td>1598.33</td>
+      <td>5</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1466.78</td>
+      <td>2</td>
+      <td>55.31%</td>
+      <td>44.69%</td>
+      <td>6.07</td>
+    </tr>
+    <tr>
+      <td>1974-04-08</td>
+      <td>Winnipeg Jets</td>
+      <td>1466.78</td>
+      <td>2</td>
+      <td>Houston Aeros</td>
+      <td>1598.33</td>
+      <td>5</td>
+      <td>44.69%</td>
+      <td>55.31%</td>
+      <td>-6.07</td>
+    </tr>
+    <tr>
+      <td>1974-04-09</td>
+      <td>Chicago Cougars</td>
+      <td>1496.64</td>
+      <td>8</td>
+      <td>New England Whalers</td>
+      <td>1552.17</td>
+      <td>6</td>
+      <td>55.59%</td>
+      <td>44.41%</td>
+      <td>4.92</td>
+    </tr>
+    <tr>
+      <td>1974-04-09</td>
+      <td>Cleveland Crusaders</td>
+      <td>1516.61</td>
+      <td>3</td>
+      <td>@ Toronto Toros</td>
+      <td>1549.38</td>
+      <td>4</td>
+      <td>32.46%</td>
+      <td>67.54%</td>
+      <td>-2.54</td>
+    </tr>
+    <tr>
+      <td>1974-04-09</td>
+      <td>New England Whalers</td>
+      <td>1552.17</td>
+      <td>6</td>
+      <td>@ Chicago Cougars</td>
+      <td>1496.64</td>
+      <td>8</td>
+      <td>44.41%</td>
+      <td>55.59%</td>
+      <td>-4.92</td>
+    </tr>
+    <tr>
+      <td>1974-04-09</td>
+      <td>Toronto Toros</td>
+      <td>1549.38</td>
+      <td>4</td>
+      <td>Cleveland Crusaders</td>
+      <td>1516.61</td>
+      <td>3</td>
+      <td>67.54%</td>
+      <td>32.46%</td>
+      <td>2.54</td>
+    </tr>
+    <tr>
+      <td>1974-04-10</td>
+      <td>Edmonton Oilers</td>
+      <td>1485.41</td>
+      <td>2</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1570.34</td>
+      <td>6</td>
+      <td>51.38%</td>
+      <td>48.62%</td>
+      <td>-8.06</td>
+    </tr>
+    <tr>
+      <td>1974-04-10</td>
+      <td>Winnipeg Jets</td>
+      <td>1460.71</td>
+      <td>2</td>
+      <td>Houston Aeros</td>
+      <td>1604.40</td>
+      <td>3</td>
+      <td>42.97%</td>
+      <td>57.03%</td>
+      <td>-3.37</td>
+    </tr>
+    <tr>
+      <td>1974-04-10</td>
+      <td>New England Whalers</td>
+      <td>1547.25</td>
+      <td>1</td>
+      <td>@ Chicago Cougars</td>
+      <td>1501.56</td>
+      <td>2</td>
+      <td>43.02%</td>
+      <td>56.98%</td>
+      <td>-3.38</td>
+    </tr>
+    <tr>
+      <td>1974-04-10</td>
+      <td>Chicago Cougars</td>
+      <td>1501.56</td>
+      <td>2</td>
+      <td>New England Whalers</td>
+      <td>1547.25</td>
+      <td>1</td>
+      <td>56.98%</td>
+      <td>43.02%</td>
+      <td>3.38</td>
+    </tr>
+    <tr>
+      <td>1974-04-10</td>
+      <td>Houston Aeros</td>
+      <td>1604.40</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1460.71</td>
+      <td>2</td>
+      <td>57.03%</td>
+      <td>42.97%</td>
+      <td>3.37</td>
+    </tr>
+    <tr>
+      <td>1974-04-10</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1570.34</td>
+      <td>6</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1485.41</td>
+      <td>2</td>
+      <td>48.62%</td>
+      <td>51.38%</td>
+      <td>8.05</td>
+    </tr>
+    <tr>
+      <td>1974-04-12</td>
+      <td>Edmonton Oilers</td>
+      <td>1477.35</td>
+      <td>2</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1578.39</td>
+      <td>1</td>
+      <td>49.06%</td>
+      <td>50.94%</td>
+      <td>4.00</td>
+    </tr>
+    <tr>
+      <td>1974-04-12</td>
+      <td>Cleveland Crusaders</td>
+      <td>1514.07</td>
+      <td>2</td>
+      <td>Toronto Toros</td>
+      <td>1551.92</td>
+      <td>4</td>
+      <td>58.08%</td>
+      <td>41.92%</td>
+      <td>-6.44</td>
+    </tr>
+    <tr>
+      <td>1974-04-12</td>
+      <td>Chicago Cougars</td>
+      <td>1504.94</td>
+      <td>4</td>
+      <td>@ New England Whalers</td>
+      <td>1543.87</td>
+      <td>2</td>
+      <td>31.69%</td>
+      <td>68.31%</td>
+      <td>7.57</td>
+    </tr>
+    <tr>
+      <td>1974-04-12</td>
+      <td>New England Whalers</td>
+      <td>1543.87</td>
+      <td>2</td>
+      <td>Chicago Cougars</td>
+      <td>1504.94</td>
+      <td>4</td>
+      <td>68.31%</td>
+      <td>31.69%</td>
+      <td>-7.57</td>
+    </tr>
+    <tr>
+      <td>1974-04-12</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1578.39</td>
+      <td>1</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1477.35</td>
+      <td>2</td>
+      <td>50.94%</td>
+      <td>49.06%</td>
+      <td>-3.99</td>
+    </tr>
+    <tr>
+      <td>1974-04-12</td>
+      <td>Toronto Toros</td>
+      <td>1551.92</td>
+      <td>4</td>
+      <td>@ Cleveland Crusaders</td>
+      <td>1514.07</td>
+      <td>2</td>
+      <td>41.92%</td>
+      <td>58.08%</td>
+      <td>6.44</td>
+    </tr>
+    <tr>
+      <td>1974-04-13</td>
+      <td>Cleveland Crusaders</td>
+      <td>1507.63</td>
+      <td>3</td>
+      <td>Toronto Toros</td>
+      <td>1558.36</td>
+      <td>2</td>
+      <td>56.27%</td>
+      <td>43.73%</td>
+      <td>3.43</td>
+    </tr>
+    <tr>
+      <td>1974-04-13</td>
+      <td>Winnipeg Jets</td>
+      <td>1457.34</td>
+      <td>1</td>
+      <td>@ Houston Aeros</td>
+      <td>1607.77</td>
+      <td>10</td>
+      <td>19.62%</td>
+      <td>80.38%</td>
+      <td>-4.61</td>
+    </tr>
+    <tr>
+      <td>1974-04-13</td>
+      <td>Toronto Toros</td>
+      <td>1558.36</td>
+      <td>2</td>
+      <td>@ Cleveland Crusaders</td>
+      <td>1507.63</td>
+      <td>3</td>
+      <td>43.73%</td>
+      <td>56.27%</td>
+      <td>-3.43</td>
+    </tr>
+    <tr>
+      <td>1974-04-13</td>
+      <td>Houston Aeros</td>
+      <td>1607.77</td>
+      <td>10</td>
+      <td>Winnipeg Jets</td>
+      <td>1457.34</td>
+      <td>1</td>
+      <td>80.38%</td>
+      <td>19.62%</td>
+      <td>4.62</td>
+    </tr>
+    <tr>
+      <td>1974-04-14</td>
+      <td>New England Whalers</td>
+      <td>1536.30</td>
+      <td>2</td>
+      <td>@ Chicago Cougars</td>
+      <td>1512.51</td>
+      <td>0</td>
+      <td>39.96%</td>
+      <td>60.04%</td>
+      <td>6.66</td>
+    </tr>
+    <tr>
+      <td>1974-04-14</td>
+      <td>Winnipeg Jets</td>
+      <td>1452.73</td>
+      <td>4</td>
+      <td>@ Houston Aeros</td>
+      <td>1612.39</td>
+      <td>5</td>
+      <td>18.80%</td>
+      <td>81.20%</td>
+      <td>-1.48</td>
+    </tr>
+    <tr>
+      <td>1974-04-14</td>
+      <td>Edmonton Oilers</td>
+      <td>1481.35</td>
+      <td>4</td>
+      <td>@ Minnesota Fighting Saints</td>
+      <td>1574.40</td>
+      <td>5</td>
+      <td>25.36%</td>
+      <td>74.64%</td>
+      <td>-1.99</td>
+    </tr>
+    <tr>
+      <td>1974-04-14</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1574.40</td>
+      <td>5</td>
+      <td>Edmonton Oilers</td>
+      <td>1481.35</td>
+      <td>4</td>
+      <td>74.64%</td>
+      <td>25.36%</td>
+      <td>1.99</td>
+    </tr>
+    <tr>
+      <td>1974-04-14</td>
+      <td>Houston Aeros</td>
+      <td>1612.39</td>
+      <td>5</td>
+      <td>Winnipeg Jets</td>
+      <td>1452.73</td>
+      <td>4</td>
+      <td>81.20%</td>
+      <td>18.80%</td>
+      <td>1.47</td>
+    </tr>
+    <tr>
+      <td>1974-04-14</td>
+      <td>Chicago Cougars</td>
+      <td>1512.51</td>
+      <td>0</td>
+      <td>New England Whalers</td>
+      <td>1536.30</td>
+      <td>2</td>
+      <td>60.04%</td>
+      <td>39.96%</td>
+      <td>-6.66</td>
+    </tr>
+    <tr>
+      <td>1974-04-15</td>
+      <td>Cleveland Crusaders</td>
+      <td>1511.06</td>
+      <td>1</td>
+      <td>@ Toronto Toros</td>
+      <td>1554.93</td>
+      <td>4</td>
+      <td>31.07%</td>
+      <td>68.93%</td>
+      <td>-4.22</td>
+    </tr>
+    <tr>
+      <td>1974-04-15</td>
+      <td>Toronto Toros</td>
+      <td>1554.93</td>
+      <td>4</td>
+      <td>Cleveland Crusaders</td>
+      <td>1511.06</td>
+      <td>1</td>
+      <td>68.93%</td>
+      <td>31.07%</td>
+      <td>4.22</td>
+    </tr>
+    <tr>
+      <td>1974-04-16</td>
+      <td>Chicago Cougars</td>
+      <td>1505.85</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1542.96</td>
+      <td>2</td>
+      <td>31.91%</td>
+      <td>68.09%</td>
+      <td>5.34</td>
+    </tr>
+    <tr>
+      <td>1974-04-16</td>
+      <td>New England Whalers</td>
+      <td>1542.96</td>
+      <td>2</td>
+      <td>Chicago Cougars</td>
+      <td>1505.85</td>
+      <td>3</td>
+      <td>68.09%</td>
+      <td>31.91%</td>
+      <td>-5.34</td>
+    </tr>
+    <tr>
+      <td>1974-04-18</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1576.39</td>
+      <td>5</td>
+      <td>@ Houston Aeros</td>
+      <td>1613.86</td>
+      <td>4</td>
+      <td>31.87%</td>
+      <td>68.13%</td>
+      <td>5.34</td>
+    </tr>
+    <tr>
+      <td>1974-04-18</td>
+      <td>Houston Aeros</td>
+      <td>1613.86</td>
+      <td>4</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1576.39</td>
+      <td>5</td>
+      <td>68.13%</td>
+      <td>31.87%</td>
+      <td>-5.34</td>
+    </tr>
+    <tr>
+      <td>1974-04-19</td>
+      <td>Toronto Toros</td>
+      <td>1559.15</td>
+      <td>6</td>
+      <td>Chicago Cougars</td>
+      <td>1511.19</td>
+      <td>4</td>
+      <td>69.43%</td>
+      <td>30.57%</td>
+      <td>3.39</td>
+    </tr>
+    <tr>
+      <td>1974-04-19</td>
+      <td>Chicago Cougars</td>
+      <td>1511.19</td>
+      <td>4</td>
+      <td>@ Toronto Toros</td>
+      <td>1559.15</td>
+      <td>6</td>
+      <td>30.57%</td>
+      <td>69.43%</td>
+      <td>-3.39</td>
+    </tr>
+    <tr>
+      <td>1974-04-20</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1581.73</td>
+      <td>2</td>
+      <td>@ Houston Aeros</td>
+      <td>1608.52</td>
+      <td>5</td>
+      <td>33.22%</td>
+      <td>66.78%</td>
+      <td>-4.51</td>
+    </tr>
+    <tr>
+      <td>1974-04-20</td>
+      <td>Houston Aeros</td>
+      <td>1608.52</td>
+      <td>5</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1581.73</td>
+      <td>2</td>
+      <td>66.78%</td>
+      <td>33.22%</td>
+      <td>4.51</td>
+    </tr>
+    <tr>
+      <td>1974-04-21</td>
+      <td>Houston Aeros</td>
+      <td>1613.03</td>
+      <td>1</td>
+      <td>@ Minnesota Fighting Saints</td>
+      <td>1577.22</td>
+      <td>4</td>
+      <td>41.63%</td>
+      <td>58.37%</td>
+      <td>-5.65</td>
+    </tr>
+    <tr>
+      <td>1974-04-21</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1577.22</td>
+      <td>4</td>
+      <td>Houston Aeros</td>
+      <td>1613.03</td>
+      <td>1</td>
+      <td>58.37%</td>
+      <td>41.63%</td>
+      <td>5.65</td>
+    </tr>
+    <tr>
+      <td>1974-04-22</td>
+      <td>Chicago Cougars</td>
+      <td>1507.80</td>
+      <td>4</td>
+      <td>@ Toronto Toros</td>
+      <td>1562.54</td>
+      <td>3</td>
+      <td>29.75%</td>
+      <td>70.25%</td>
+      <td>5.51</td>
+    </tr>
+    <tr>
+      <td>1974-04-22</td>
+      <td>Toronto Toros</td>
+      <td>1562.54</td>
+      <td>3</td>
+      <td>Chicago Cougars</td>
+      <td>1507.80</td>
+      <td>4</td>
+      <td>70.25%</td>
+      <td>29.75%</td>
+      <td>-5.51</td>
+    </tr>
+    <tr>
+      <td>1974-04-28</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1582.87</td>
+      <td>1</td>
+      <td>Houston Aeros</td>
+      <td>1607.38</td>
+      <td>4</td>
+      <td>59.94%</td>
+      <td>40.06%</td>
+      <td>-8.14</td>
+    </tr>
+    <tr>
+      <td>1974-04-28</td>
+      <td>Houston Aeros</td>
+      <td>1607.38</td>
+      <td>4</td>
+      <td>@ Minnesota Fighting Saints</td>
+      <td>1582.87</td>
+      <td>1</td>
+      <td>40.06%</td>
+      <td>59.94%</td>
+      <td>8.14</td>
+    </tr>
+    <tr>
+      <td>1974-04-28</td>
+      <td>Toronto Toros</td>
+      <td>1557.03</td>
+      <td>2</td>
+      <td>@ Chicago Cougars</td>
+      <td>1513.31</td>
+      <td>3</td>
+      <td>42.74%</td>
+      <td>57.26%</td>
+      <td>-3.35</td>
+    </tr>
+    <tr>
+      <td>1974-04-28</td>
+      <td>Chicago Cougars</td>
+      <td>1513.31</td>
+      <td>3</td>
+      <td>Toronto Toros</td>
+      <td>1557.03</td>
+      <td>2</td>
+      <td>57.26%</td>
+      <td>42.74%</td>
+      <td>3.35</td>
+    </tr>
+    <tr>
+      <td>1974-04-29</td>
+      <td>Houston Aeros</td>
+      <td>1615.52</td>
+      <td>9</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1574.73</td>
+      <td>4</td>
+      <td>68.54%</td>
+      <td>31.46%</td>
+      <td>5.51</td>
+    </tr>
+    <tr>
+      <td>1974-04-29</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1574.73</td>
+      <td>4</td>
+      <td>@ Houston Aeros</td>
+      <td>1615.52</td>
+      <td>9</td>
+      <td>31.46%</td>
+      <td>68.54%</td>
+      <td>-5.51</td>
+    </tr>
+    <tr>
+      <td>1974-04-30</td>
+      <td>Toronto Toros</td>
+      <td>1553.68</td>
+      <td>7</td>
+      <td>@ Chicago Cougars</td>
+      <td>1516.66</td>
+      <td>6</td>
+      <td>41.80%</td>
+      <td>58.20%</td>
+      <td>4.57</td>
+    </tr>
+    <tr>
+      <td>1974-04-30</td>
+      <td>Chicago Cougars</td>
+      <td>1516.66</td>
+      <td>6</td>
+      <td>Toronto Toros</td>
+      <td>1553.68</td>
+      <td>7</td>
+      <td>58.20%</td>
+      <td>41.80%</td>
+      <td>-4.56</td>
+    </tr>
+    <tr>
+      <td>1974-05-01</td>
+      <td>Houston Aeros</td>
+      <td>1621.03</td>
+      <td>3</td>
+      <td>@ Minnesota Fighting Saints</td>
+      <td>1569.22</td>
+      <td>1</td>
+      <td>43.88%</td>
+      <td>56.12%</td>
+      <td>6.22</td>
+    </tr>
+    <tr>
+      <td>1974-05-01</td>
+      <td>Chicago Cougars</td>
+      <td>1512.10</td>
+      <td>3</td>
+      <td>@ Toronto Toros</td>
+      <td>1558.25</td>
+      <td>5</td>
+      <td>30.79%</td>
+      <td>69.21%</td>
+      <td>-3.42</td>
+    </tr>
+    <tr>
+      <td>1974-05-01</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1569.22</td>
+      <td>1</td>
+      <td>Houston Aeros</td>
+      <td>1621.03</td>
+      <td>3</td>
+      <td>56.12%</td>
+      <td>43.88%</td>
+      <td>-6.22</td>
+    </tr>
+    <tr>
+      <td>1974-05-01</td>
+      <td>Toronto Toros</td>
+      <td>1558.25</td>
+      <td>5</td>
+      <td>Chicago Cougars</td>
+      <td>1512.10</td>
+      <td>3</td>
+      <td>69.21%</td>
+      <td>30.79%</td>
+      <td>3.41</td>
+    </tr>
+    <tr>
+      <td>1974-05-04</td>
+      <td>Chicago Cougars</td>
+      <td>1508.68</td>
+      <td>9</td>
+      <td>Toronto Toros</td>
+      <td>1561.66</td>
+      <td>2</td>
+      <td>55.95%</td>
+      <td>44.05%</td>
+      <td>9.14</td>
+    </tr>
+    <tr>
+      <td>1974-05-04</td>
+      <td>Toronto Toros</td>
+      <td>1561.66</td>
+      <td>2</td>
+      <td>@ Chicago Cougars</td>
+      <td>1508.68</td>
+      <td>9</td>
+      <td>44.05%</td>
+      <td>55.95%</td>
+      <td>-9.14</td>
+    </tr>
+    <tr>
+      <td>1974-05-06</td>
+      <td>Chicago Cougars</td>
+      <td>1517.82</td>
+      <td>5</td>
+      <td>@ Toronto Toros</td>
+      <td>1552.52</td>
+      <td>2</td>
+      <td>32.22%</td>
+      <td>67.78%</td>
+      <td>9.20</td>
+    </tr>
+    <tr>
+      <td>1974-05-06</td>
+      <td>Toronto Toros</td>
+      <td>1552.52</td>
+      <td>2</td>
+      <td>Chicago Cougars</td>
+      <td>1517.82</td>
+      <td>5</td>
+      <td>67.78%</td>
+      <td>32.22%</td>
+      <td>-9.20</td>
+    </tr>
+    <tr>
+      <td>1974-05-12</td>
+      <td>Chicago Cougars</td>
+      <td>1527.02</td>
+      <td>2</td>
+      <td>@ Houston Aeros</td>
+      <td>1627.25</td>
+      <td>3</td>
+      <td>24.58%</td>
+      <td>75.42%</td>
+      <td>-1.92</td>
+    </tr>
+    <tr>
+      <td>1974-05-12</td>
+      <td>Houston Aeros</td>
+      <td>1627.25</td>
+      <td>3</td>
+      <td>Chicago Cougars</td>
+      <td>1527.02</td>
+      <td>2</td>
+      <td>75.42%</td>
+      <td>24.58%</td>
+      <td>1.93</td>
+    </tr>
+    <tr>
+      <td>1974-05-15</td>
+      <td>Chicago Cougars</td>
+      <td>1525.10</td>
+      <td>1</td>
+      <td>@ Houston Aeros</td>
+      <td>1629.18</td>
+      <td>6</td>
+      <td>24.17%</td>
+      <td>75.83%</td>
+      <td>-4.24</td>
+    </tr>
+    <tr>
+      <td>1974-05-15</td>
+      <td>Houston Aeros</td>
+      <td>1629.18</td>
+      <td>6</td>
+      <td>Chicago Cougars</td>
+      <td>1525.10</td>
+      <td>1</td>
+      <td>75.83%</td>
+      <td>24.17%</td>
+      <td>4.24</td>
+    </tr>
+    <tr>
+      <td>1974-05-17</td>
+      <td>Houston Aeros</td>
+      <td>1633.42</td>
+      <td>7</td>
+      <td>@ Chicago Cougars</td>
+      <td>1520.86</td>
+      <td>4</td>
+      <td>52.59%</td>
+      <td>47.41%</td>
+      <td>6.43</td>
+    </tr>
+    <tr>
+      <td>1974-05-17</td>
+      <td>Chicago Cougars</td>
+      <td>1520.86</td>
+      <td>4</td>
+      <td>Houston Aeros</td>
+      <td>1633.42</td>
+      <td>7</td>
+      <td>47.41%</td>
+      <td>52.59%</td>
+      <td>-6.44</td>
+    </tr>
+    <tr>
+      <td>1974-05-19</td>
+      <td>Chicago Cougars</td>
+      <td>1514.42</td>
+      <td>2</td>
+      <td>Houston Aeros</td>
+      <td>1639.85</td>
+      <td>6</td>
+      <td>45.56%</td>
+      <td>54.44%</td>
+      <td>-7.14</td>
+    </tr>
+    <tr>
+      <td>1974-05-19</td>
+      <td>Houston Aeros</td>
+      <td>1639.85</td>
+      <td>6</td>
+      <td>@ Chicago Cougars</td>
+      <td>1514.42</td>
+      <td>2</td>
+      <td>54.44%</td>
+      <td>45.56%</td>
+      <td>7.15</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

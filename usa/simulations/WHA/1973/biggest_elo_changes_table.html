@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th colspan="3" halign="left"></th>
+      <th colspan="4" halign="left">Winning Team</th>
+      <th colspan="4" halign="left">Losing Team</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <th>Date</th>
+      <th>Elo Change</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Tie Pct.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>1973-11-17</td>
+      <td>13.30</td>
+      <td>Quebec Nordiques</td>
+      <td>1495.91</td>
+      <td>10</td>
+      <td>28.63%</td>
+      <td>New England Whalers (H)</td>
+      <td>1542.35</td>
+      <td>4</td>
+      <td>66.38%</td>
+      <td>4.99%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1974-02-17</td>
+      <td>12.84</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1517.62</td>
+      <td>6</td>
+      <td>24.84%</td>
+      <td>Houston Aeros (H)</td>
+      <td>1597.73</td>
+      <td>1</td>
+      <td>70.18%</td>
+      <td>4.98%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1973-12-12</td>
+      <td>12.45</td>
+      <td>Los Angeles Sharks</td>
+      <td>1469.75</td>
+      <td>7</td>
+      <td>26.96%</td>
+      <td>Edmonton Oilers (H)</td>
+      <td>1530.65</td>
+      <td>2</td>
+      <td>68.05%</td>
+      <td>4.99%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1973-12-29</td>
+      <td>12.09</td>
+      <td>Toronto Toros</td>
+      <td>1513.20</td>
+      <td>9</td>
+      <td>34.71%</td>
+      <td>Minnesota Fighting Saints (H)</td>
+      <td>1510.82</td>
+      <td>3</td>
+      <td>60.29%</td>
+      <td>5.00%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>1974-03-17</td>
+      <td>11.71</td>
+      <td>Winnipeg Jets (H)</td>
+      <td>1468.55</td>
+      <td>10</td>
+      <td>47.70%</td>
+      <td>New England Whalers</td>
+      <td>1561.64</td>
+      <td>1</td>
+      <td>47.29%</td>
+      <td>5.01%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>1973-10-18</td>
+      <td>11.20</td>
+      <td>Chicago Cougars</td>
+      <td>1481.95</td>
+      <td>7</td>
+      <td>33.80%</td>
+      <td>Los Angeles Sharks (H)</td>
+      <td>1486.59</td>
+      <td>2</td>
+      <td>61.20%</td>
+      <td>5.00%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>1974-01-27</td>
+      <td>10.94</td>
+      <td>Minnesota Fighting Saints (H)</td>
+      <td>1470.36</td>
+      <td>12</td>
+      <td>53.35%</td>
+      <td>Winnipeg Jets</td>
+      <td>1523.76</td>
+      <td>2</td>
+      <td>41.64%</td>
+      <td>5.00%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>1973-10-17</td>
+      <td>10.91</td>
+      <td>Houston Aeros</td>
+      <td>1500.07</td>
+      <td>7</td>
+      <td>35.43%</td>
+      <td>Vancouver Blazers (H)</td>
+      <td>1492.19</td>
+      <td>2</td>
+      <td>59.57%</td>
+      <td>5.00%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>1974-01-22</td>
+      <td>10.74</td>
+      <td>Jersey Knights</td>
+      <td>1471.74</td>
+      <td>6</td>
+      <td>29.41%</td>
+      <td>Edmonton Oilers (H)</td>
+      <td>1511.67</td>
+      <td>2</td>
+      <td>65.60%</td>
+      <td>4.99%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>1974-02-04</td>
+      <td>10.29</td>
+      <td>Houston Aeros</td>
+      <td>1560.59</td>
+      <td>7</td>
+      <td>43.92%</td>
+      <td>Jersey Knights (H)</td>
+      <td>1491.09</td>
+      <td>1</td>
+      <td>51.08%</td>
+      <td>5.01%</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>1973-10-18</td>
+      <td>10.27</td>
+      <td>Winnipeg Jets</td>
+      <td>1516.43</td>
+      <td>6</td>
+      <td>38.99%</td>
+      <td>Jersey Knights (H)</td>
+      <td>1482.12</td>
+      <td>1</td>
+      <td>56.00%</td>
+      <td>5.00%</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>1973-11-22</td>
+      <td>9.90</td>
+      <td>Vancouver Blazers (H)</td>
+      <td>1444.19</td>
+      <td>7</td>
+      <td>45.91%</td>
+      <td>Edmonton Oilers</td>
+      <td>1549.74</td>
+      <td>1</td>
+      <td>49.08%</td>
+      <td>5.01%</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>1973-11-03</td>
+      <td>9.87</td>
+      <td>Jersey Knights</td>
+      <td>1455.57</td>
+      <td>4</td>
+      <td>34.77%</td>
+      <td>Vancouver Blazers (H)</td>
+      <td>1452.76</td>
+      <td>0</td>
+      <td>60.23%</td>
+      <td>5.00%</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>1973-10-25</td>
+      <td>9.85</td>
+      <td>New England Whalers</td>
+      <td>1526.97</td>
+      <td>8</td>
+      <td>41.36%</td>
+      <td>Jersey Knights (H)</td>
+      <td>1475.59</td>
+      <td>3</td>
+      <td>53.64%</td>
+      <td>5.00%</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>1974-02-05</td>
+      <td>9.79</td>
+      <td>Vancouver Blazers (H)</td>
+      <td>1442.58</td>
+      <td>8</td>
+      <td>53.31%</td>
+      <td>Edmonton Oilers</td>
+      <td>1496.27</td>
+      <td>0</td>
+      <td>41.68%</td>
+      <td>5.00%</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>1974-03-03</td>
+      <td>9.73</td>
+      <td>New England Whalers</td>
+      <td>1532.29</td>
+      <td>6</td>
+      <td>26.35%</td>
+      <td>Houston Aeros (H)</td>
+      <td>1598.61</td>
+      <td>3</td>
+      <td>68.66%</td>
+      <td>4.99%</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>1974-01-17</td>
+      <td>9.73</td>
+      <td>Chicago Cougars</td>
+      <td>1476.09</td>
+      <td>5</td>
+      <td>26.36%</td>
+      <td>New England Whalers (H)</td>
+      <td>1542.33</td>
+      <td>2</td>
+      <td>68.66%</td>
+      <td>4.99%</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>1973-11-18</td>
+      <td>9.70</td>
+      <td>Vancouver Blazers (H)</td>
+      <td>1434.49</td>
+      <td>8</td>
+      <td>47.01%</td>
+      <td>Cleveland Crusaders</td>
+      <td>1532.43</td>
+      <td>2</td>
+      <td>47.99%</td>
+      <td>5.01%</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>1974-03-08</td>
+      <td>9.61</td>
+      <td>New England Whalers</td>
+      <td>1542.24</td>
+      <td>7</td>
+      <td>42.70%</td>
+      <td>Jersey Knights (H)</td>
+      <td>1481.33</td>
+      <td>2</td>
+      <td>52.30%</td>
+      <td>5.00%</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>1973-11-02</td>
+      <td>9.59</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1491.62</td>
+      <td>5</td>
+      <td>36.50%</td>
+      <td>Los Angeles Sharks (H)</td>
+      <td>1475.70</td>
+      <td>1</td>
+      <td>58.50%</td>
+      <td>5.00%</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>1973-11-18</td>
+      <td>9.56</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1499.68</td>
+      <td>5</td>
+      <td>27.53%</td>
+      <td>Edmonton Oilers (H)</td>
+      <td>1555.57</td>
+      <td>2</td>
+      <td>67.48%</td>
+      <td>4.99%</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>1973-11-30</td>
+      <td>9.39</td>
+      <td>Los Angeles Sharks</td>
+      <td>1458.46</td>
+      <td>5</td>
+      <td>28.74%</td>
+      <td>Winnipeg Jets (H)</td>
+      <td>1503.96</td>
+      <td>2</td>
+      <td>66.27%</td>
+      <td>4.99%</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>1973-10-24</td>
+      <td>9.30</td>
+      <td>Jersey Knights</td>
+      <td>1466.29</td>
+      <td>5</td>
+      <td>29.37%</td>
+      <td>Minnesota Fighting Saints (H)</td>
+      <td>1506.52</td>
+      <td>2</td>
+      <td>65.64%</td>
+      <td>4.99%</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>1974-01-27</td>
+      <td>9.19</td>
+      <td>Los Angeles Sharks</td>
+      <td>1456.77</td>
+      <td>6</td>
+      <td>30.11%</td>
+      <td>Jersey Knights (H)</td>
+      <td>1490.88</td>
+      <td>3</td>
+      <td>64.90%</td>
+      <td>4.99%</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>1973-11-03</td>
+      <td>9.13</td>
+      <td>Chicago Cougars</td>
+      <td>1503.02</td>
+      <td>7</td>
+      <td>30.61%</td>
+      <td>Cleveland Crusaders (H)</td>
+      <td>1532.99</td>
+      <td>4</td>
+      <td>64.39%</td>
+      <td>4.99%</td>
+    </tr>
+  </tbody>
+</table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+        });
+    </script>
+</body>
+</html>

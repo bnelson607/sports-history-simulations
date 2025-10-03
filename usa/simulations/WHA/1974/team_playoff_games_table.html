@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Cleveland Crusaders">Cleveland Crusaders</option><option value="Houston Aeros">Houston Aeros</option><option value="Minnesota Fighting Saints">Minnesota Fighting Saints</option><option value="New England Whalers">New England Whalers</option><option value="Phoenix Roadrunners">Phoenix Roadrunners</option><option value="Quebec Nordiques">Quebec Nordiques</option><option value="San Diego Mariners">San Diego Mariners</option><option value="Toronto Toros">Toronto Toros</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1975-04-08</td>
+      <td>Quebec Nordiques</td>
+      <td>1547.44</td>
+      <td>5</td>
+      <td>Phoenix Roadrunners</td>
+      <td>1517.25</td>
+      <td>2</td>
+      <td>65.38%</td>
+      <td>34.62%</td>
+      <td>5.02</td>
+    </tr>
+    <tr>
+      <td>1975-04-08</td>
+      <td>Phoenix Roadrunners</td>
+      <td>1517.25</td>
+      <td>2</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1547.44</td>
+      <td>5</td>
+      <td>34.62%</td>
+      <td>65.38%</td>
+      <td>-5.02</td>
+    </tr>
+    <tr>
+      <td>1975-04-09</td>
+      <td>San Diego Mariners</td>
+      <td>1574.93</td>
+      <td>5</td>
+      <td>Toronto Toros</td>
+      <td>1546.85</td>
+      <td>3</td>
+      <td>65.11%</td>
+      <td>34.89%</td>
+      <td>4.13</td>
+    </tr>
+    <tr>
+      <td>1975-04-09</td>
+      <td>New England Whalers</td>
+      <td>1520.49</td>
+      <td>5</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1560.39</td>
+      <td>6</td>
+      <td>55.79%</td>
+      <td>44.21%</td>
+      <td>-4.68</td>
+    </tr>
+    <tr>
+      <td>1975-04-09</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1560.39</td>
+      <td>6</td>
+      <td>@ New England Whalers</td>
+      <td>1520.49</td>
+      <td>5</td>
+      <td>44.21%</td>
+      <td>55.79%</td>
+      <td>4.68</td>
+    </tr>
+    <tr>
+      <td>1975-04-09</td>
+      <td>Toronto Toros</td>
+      <td>1546.85</td>
+      <td>3</td>
+      <td>@ San Diego Mariners</td>
+      <td>1574.93</td>
+      <td>5</td>
+      <td>34.89%</td>
+      <td>65.11%</td>
+      <td>-4.13</td>
+    </tr>
+    <tr>
+      <td>1975-04-10</td>
+      <td>Houston Aeros</td>
+      <td>1657.93</td>
+      <td>8</td>
+      <td>Cleveland Crusaders</td>
+      <td>1482.97</td>
+      <td>5</td>
+      <td>81.30%</td>
+      <td>18.70%</td>
+      <td>2.72</td>
+    </tr>
+    <tr>
+      <td>1975-04-10</td>
+      <td>Cleveland Crusaders</td>
+      <td>1482.97</td>
+      <td>5</td>
+      <td>@ Houston Aeros</td>
+      <td>1657.93</td>
+      <td>8</td>
+      <td>18.70%</td>
+      <td>81.30%</td>
+      <td>-2.71</td>
+    </tr>
+    <tr>
+      <td>1975-04-10</td>
+      <td>Quebec Nordiques</td>
+      <td>1552.46</td>
+      <td>6</td>
+      <td>Phoenix Roadrunners</td>
+      <td>1512.23</td>
+      <td>2</td>
+      <td>66.68%</td>
+      <td>33.32%</td>
+      <td>5.58</td>
+    </tr>
+    <tr>
+      <td>1975-04-10</td>
+      <td>Phoenix Roadrunners</td>
+      <td>1512.23</td>
+      <td>2</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1552.46</td>
+      <td>6</td>
+      <td>33.32%</td>
+      <td>66.68%</td>
+      <td>-5.59</td>
+    </tr>
+    <tr>
+      <td>1975-04-11</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1565.07</td>
+      <td>2</td>
+      <td>@ New England Whalers</td>
+      <td>1515.81</td>
+      <td>3</td>
+      <td>45.54%</td>
+      <td>54.46%</td>
+      <td>-3.82</td>
+    </tr>
+    <tr>
+      <td>1975-04-11</td>
+      <td>New England Whalers</td>
+      <td>1515.81</td>
+      <td>3</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1565.07</td>
+      <td>2</td>
+      <td>54.46%</td>
+      <td>45.54%</td>
+      <td>3.82</td>
+    </tr>
+    <tr>
+      <td>1975-04-12</td>
+      <td>Houston Aeros</td>
+      <td>1660.65</td>
+      <td>5</td>
+      <td>Cleveland Crusaders</td>
+      <td>1480.26</td>
+      <td>3</td>
+      <td>81.77%</td>
+      <td>18.23%</td>
+      <td>2.16</td>
+    </tr>
+    <tr>
+      <td>1975-04-12</td>
+      <td>Cleveland Crusaders</td>
+      <td>1480.26</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1660.65</td>
+      <td>5</td>
+      <td>18.23%</td>
+      <td>81.77%</td>
+      <td>-2.16</td>
+    </tr>
+    <tr>
+      <td>1975-04-12</td>
+      <td>Quebec Nordiques</td>
+      <td>1558.04</td>
+      <td>3</td>
+      <td>@ Phoenix Roadrunners</td>
+      <td>1506.64</td>
+      <td>0</td>
+      <td>45.85%</td>
+      <td>54.15%</td>
+      <td>7.86</td>
+    </tr>
+    <tr>
+      <td>1975-04-12</td>
+      <td>Toronto Toros</td>
+      <td>1542.72</td>
+      <td>6</td>
+      <td>@ San Diego Mariners</td>
+      <td>1579.06</td>
+      <td>7</td>
+      <td>33.82%</td>
+      <td>66.18%</td>
+      <td>-2.83</td>
+    </tr>
+    <tr>
+      <td>1975-04-12</td>
+      <td>San Diego Mariners</td>
+      <td>1579.06</td>
+      <td>7</td>
+      <td>Toronto Toros</td>
+      <td>1542.72</td>
+      <td>6</td>
+      <td>66.18%</td>
+      <td>33.82%</td>
+      <td>2.83</td>
+    </tr>
+    <tr>
+      <td>1975-04-12</td>
+      <td>Phoenix Roadrunners</td>
+      <td>1506.64</td>
+      <td>0</td>
+      <td>Quebec Nordiques</td>
+      <td>1558.04</td>
+      <td>3</td>
+      <td>54.15%</td>
+      <td>45.85%</td>
+      <td>-7.86</td>
+    </tr>
+    <tr>
+      <td>1975-04-13</td>
+      <td>Houston Aeros</td>
+      <td>1662.81</td>
+      <td>1</td>
+      <td>@ Cleveland Crusaders</td>
+      <td>1478.10</td>
+      <td>3</td>
+      <td>64.59%</td>
+      <td>35.41%</td>
+      <td>-7.66</td>
+    </tr>
+    <tr>
+      <td>1975-04-13</td>
+      <td>New England Whalers</td>
+      <td>1519.63</td>
+      <td>3</td>
+      <td>@ Minnesota Fighting Saints</td>
+      <td>1561.25</td>
+      <td>8</td>
+      <td>33.14%</td>
+      <td>66.86%</td>
+      <td>-6.21</td>
+    </tr>
+    <tr>
+      <td>1975-04-13</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1561.25</td>
+      <td>8</td>
+      <td>New England Whalers</td>
+      <td>1519.63</td>
+      <td>3</td>
+      <td>66.86%</td>
+      <td>33.14%</td>
+      <td>6.21</td>
+    </tr>
+    <tr>
+      <td>1975-04-13</td>
+      <td>Cleveland Crusaders</td>
+      <td>1478.10</td>
+      <td>3</td>
+      <td>Houston Aeros</td>
+      <td>1662.81</td>
+      <td>1</td>
+      <td>35.41%</td>
+      <td>64.59%</td>
+      <td>7.65</td>
+    </tr>
+    <tr>
+      <td>1975-04-14</td>
+      <td>San Diego Mariners</td>
+      <td>1581.89</td>
+      <td>2</td>
+      <td>@ Toronto Toros</td>
+      <td>1539.89</td>
+      <td>5</td>
+      <td>44.51%</td>
+      <td>55.49%</td>
+      <td>-6.46</td>
+    </tr>
+    <tr>
+      <td>1975-04-14</td>
+      <td>Toronto Toros</td>
+      <td>1539.89</td>
+      <td>5</td>
+      <td>San Diego Mariners</td>
+      <td>1581.89</td>
+      <td>2</td>
+      <td>55.49%</td>
+      <td>44.51%</td>
+      <td>6.46</td>
+    </tr>
+    <tr>
+      <td>1975-04-15</td>
+      <td>New England Whalers</td>
+      <td>1513.42</td>
+      <td>5</td>
+      <td>@ Minnesota Fighting Saints</td>
+      <td>1567.46</td>
+      <td>2</td>
+      <td>31.58%</td>
+      <td>68.42%</td>
+      <td>9.93</td>
+    </tr>
+    <tr>
+      <td>1975-04-15</td>
+      <td>Quebec Nordiques</td>
+      <td>1565.90</td>
+      <td>5</td>
+      <td>@ Phoenix Roadrunners</td>
+      <td>1498.78</td>
+      <td>6</td>
+      <td>48.10%</td>
+      <td>51.90%</td>
+      <td>-4.03</td>
+    </tr>
+    <tr>
+      <td>1975-04-15</td>
+      <td>Houston Aeros</td>
+      <td>1655.15</td>
+      <td>7</td>
+      <td>@ Cleveland Crusaders</td>
+      <td>1485.75</td>
+      <td>2</td>
+      <td>62.55%</td>
+      <td>37.45%</td>
+      <td>7.02</td>
+    </tr>
+    <tr>
+      <td>1975-04-15</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1567.46</td>
+      <td>2</td>
+      <td>New England Whalers</td>
+      <td>1513.42</td>
+      <td>5</td>
+      <td>68.42%</td>
+      <td>31.58%</td>
+      <td>-9.93</td>
+    </tr>
+    <tr>
+      <td>1975-04-15</td>
+      <td>Phoenix Roadrunners</td>
+      <td>1498.78</td>
+      <td>6</td>
+      <td>Quebec Nordiques</td>
+      <td>1565.90</td>
+      <td>5</td>
+      <td>51.90%</td>
+      <td>48.10%</td>
+      <td>4.03</td>
+    </tr>
+    <tr>
+      <td>1975-04-15</td>
+      <td>Cleveland Crusaders</td>
+      <td>1485.75</td>
+      <td>2</td>
+      <td>Houston Aeros</td>
+      <td>1655.15</td>
+      <td>7</td>
+      <td>37.45%</td>
+      <td>62.55%</td>
+      <td>-7.02</td>
+    </tr>
+    <tr>
+      <td>1975-04-16</td>
+      <td>Toronto Toros</td>
+      <td>1546.35</td>
+      <td>6</td>
+      <td>San Diego Mariners</td>
+      <td>1575.43</td>
+      <td>5</td>
+      <td>57.32%</td>
+      <td>42.68%</td>
+      <td>3.57</td>
+    </tr>
+    <tr>
+      <td>1975-04-16</td>
+      <td>San Diego Mariners</td>
+      <td>1575.43</td>
+      <td>5</td>
+      <td>@ Toronto Toros</td>
+      <td>1546.35</td>
+      <td>6</td>
+      <td>42.68%</td>
+      <td>57.32%</td>
+      <td>-3.57</td>
+    </tr>
+    <tr>
+      <td>1975-04-17</td>
+      <td>Phoenix Roadrunners</td>
+      <td>1502.81</td>
+      <td>2</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1561.87</td>
+      <td>4</td>
+      <td>30.96%</td>
+      <td>69.04%</td>
+      <td>-3.66</td>
+    </tr>
+    <tr>
+      <td>1975-04-17</td>
+      <td>Houston Aeros</td>
+      <td>1662.17</td>
+      <td>3</td>
+      <td>Cleveland Crusaders</td>
+      <td>1478.73</td>
+      <td>1</td>
+      <td>82.03%</td>
+      <td>17.97%</td>
+      <td>2.13</td>
+    </tr>
+    <tr>
+      <td>1975-04-17</td>
+      <td>Cleveland Crusaders</td>
+      <td>1478.73</td>
+      <td>1</td>
+      <td>@ Houston Aeros</td>
+      <td>1662.17</td>
+      <td>3</td>
+      <td>17.97%</td>
+      <td>82.03%</td>
+      <td>-2.13</td>
+    </tr>
+    <tr>
+      <td>1975-04-17</td>
+      <td>Quebec Nordiques</td>
+      <td>1561.87</td>
+      <td>4</td>
+      <td>Phoenix Roadrunners</td>
+      <td>1502.81</td>
+      <td>2</td>
+      <td>69.04%</td>
+      <td>30.96%</td>
+      <td>3.67</td>
+    </tr>
+    <tr>
+      <td>1975-04-18</td>
+      <td>Toronto Toros</td>
+      <td>1549.92</td>
+      <td>3</td>
+      <td>@ San Diego Mariners</td>
+      <td>1571.86</td>
+      <td>4</td>
+      <td>35.70%</td>
+      <td>64.30%</td>
+      <td>-2.99</td>
+    </tr>
+    <tr>
+      <td>1975-04-18</td>
+      <td>New England Whalers</td>
+      <td>1523.35</td>
+      <td>0</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1557.53</td>
+      <td>4</td>
+      <td>56.60%</td>
+      <td>43.40%</td>
+      <td>-9.48</td>
+    </tr>
+    <tr>
+      <td>1975-04-18</td>
+      <td>San Diego Mariners</td>
+      <td>1571.86</td>
+      <td>4</td>
+      <td>Toronto Toros</td>
+      <td>1549.92</td>
+      <td>3</td>
+      <td>64.30%</td>
+      <td>35.70%</td>
+      <td>2.99</td>
+    </tr>
+    <tr>
+      <td>1975-04-18</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1557.53</td>
+      <td>4</td>
+      <td>@ New England Whalers</td>
+      <td>1523.35</td>
+      <td>0</td>
+      <td>43.40%</td>
+      <td>56.60%</td>
+      <td>9.49</td>
+    </tr>
+    <tr>
+      <td>1975-04-19</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1567.02</td>
+      <td>6</td>
+      <td>New England Whalers</td>
+      <td>1513.87</td>
+      <td>1</td>
+      <td>68.31%</td>
+      <td>31.69%</td>
+      <td>5.93</td>
+    </tr>
+    <tr>
+      <td>1975-04-19</td>
+      <td>New England Whalers</td>
+      <td>1513.87</td>
+      <td>1</td>
+      <td>@ Minnesota Fighting Saints</td>
+      <td>1567.02</td>
+      <td>6</td>
+      <td>31.69%</td>
+      <td>68.31%</td>
+      <td>-5.94</td>
+    </tr>
+    <tr>
+      <td>1975-04-21</td>
+      <td>San Diego Mariners</td>
+      <td>1574.85</td>
+      <td>6</td>
+      <td>@ Toronto Toros</td>
+      <td>1546.93</td>
+      <td>4</td>
+      <td>42.52%</td>
+      <td>57.48%</td>
+      <td>6.81</td>
+    </tr>
+    <tr>
+      <td>1975-04-21</td>
+      <td>Toronto Toros</td>
+      <td>1546.93</td>
+      <td>4</td>
+      <td>San Diego Mariners</td>
+      <td>1574.85</td>
+      <td>6</td>
+      <td>57.48%</td>
+      <td>42.52%</td>
+      <td>-6.81</td>
+    </tr>
+    <tr>
+      <td>1975-04-22</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1572.95</td>
+      <td>1</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1565.54</td>
+      <td>4</td>
+      <td>39.66%</td>
+      <td>60.34%</td>
+      <td>-5.75</td>
+    </tr>
+    <tr>
+      <td>1975-04-22</td>
+      <td>Quebec Nordiques</td>
+      <td>1565.54</td>
+      <td>4</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1572.95</td>
+      <td>1</td>
+      <td>60.34%</td>
+      <td>39.66%</td>
+      <td>5.76</td>
+    </tr>
+    <tr>
+      <td>1975-04-23</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1567.20</td>
+      <td>5</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1571.30</td>
+      <td>3</td>
+      <td>38.09%</td>
+      <td>61.91%</td>
+      <td>7.33</td>
+    </tr>
+    <tr>
+      <td>1975-04-23</td>
+      <td>Quebec Nordiques</td>
+      <td>1571.30</td>
+      <td>3</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1567.20</td>
+      <td>5</td>
+      <td>61.91%</td>
+      <td>38.09%</td>
+      <td>-7.34</td>
+    </tr>
+    <tr>
+      <td>1975-04-25</td>
+      <td>Houston Aeros</td>
+      <td>1664.30</td>
+      <td>4</td>
+      <td>@ San Diego Mariners</td>
+      <td>1581.66</td>
+      <td>0</td>
+      <td>50.34%</td>
+      <td>49.66%</td>
+      <td>8.32</td>
+    </tr>
+    <tr>
+      <td>1975-04-25</td>
+      <td>San Diego Mariners</td>
+      <td>1581.66</td>
+      <td>0</td>
+      <td>Houston Aeros</td>
+      <td>1664.30</td>
+      <td>4</td>
+      <td>49.66%</td>
+      <td>50.34%</td>
+      <td>-8.32</td>
+    </tr>
+    <tr>
+      <td>1975-04-26</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1574.53</td>
+      <td>1</td>
+      <td>Quebec Nordiques</td>
+      <td>1563.96</td>
+      <td>6</td>
+      <td>62.79%</td>
+      <td>37.21%</td>
+      <td>-11.76</td>
+    </tr>
+    <tr>
+      <td>1975-04-26</td>
+      <td>Quebec Nordiques</td>
+      <td>1563.96</td>
+      <td>6</td>
+      <td>@ Minnesota Fighting Saints</td>
+      <td>1574.53</td>
+      <td>1</td>
+      <td>37.21%</td>
+      <td>62.79%</td>
+      <td>11.77</td>
+    </tr>
+    <tr>
+      <td>1975-04-27</td>
+      <td>Quebec Nordiques</td>
+      <td>1575.73</td>
+      <td>2</td>
+      <td>@ Minnesota Fighting Saints</td>
+      <td>1562.77</td>
+      <td>4</td>
+      <td>40.43%</td>
+      <td>59.57%</td>
+      <td>-4.80</td>
+    </tr>
+    <tr>
+      <td>1975-04-27</td>
+      <td>Houston Aeros</td>
+      <td>1672.62</td>
+      <td>2</td>
+      <td>@ San Diego Mariners</td>
+      <td>1573.34</td>
+      <td>1</td>
+      <td>52.73%</td>
+      <td>47.27%</td>
+      <td>3.97</td>
+    </tr>
+    <tr>
+      <td>1975-04-27</td>
+      <td>San Diego Mariners</td>
+      <td>1573.34</td>
+      <td>1</td>
+      <td>Houston Aeros</td>
+      <td>1672.62</td>
+      <td>2</td>
+      <td>47.27%</td>
+      <td>52.73%</td>
+      <td>-3.96</td>
+    </tr>
+    <tr>
+      <td>1975-04-27</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1562.77</td>
+      <td>4</td>
+      <td>Quebec Nordiques</td>
+      <td>1575.73</td>
+      <td>2</td>
+      <td>59.57%</td>
+      <td>40.43%</td>
+      <td>4.79</td>
+    </tr>
+    <tr>
+      <td>1975-04-29</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1567.56</td>
+      <td>3</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1570.93</td>
+      <td>6</td>
+      <td>38.19%</td>
+      <td>61.81%</td>
+      <td>-5.54</td>
+    </tr>
+    <tr>
+      <td>1975-04-29</td>
+      <td>San Diego Mariners</td>
+      <td>1569.38</td>
+      <td>0</td>
+      <td>@ Houston Aeros</td>
+      <td>1676.59</td>
+      <td>6</td>
+      <td>25.36%</td>
+      <td>74.64%</td>
+      <td>-5.21</td>
+    </tr>
+    <tr>
+      <td>1975-04-29</td>
+      <td>Quebec Nordiques</td>
+      <td>1570.93</td>
+      <td>6</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1567.56</td>
+      <td>3</td>
+      <td>61.81%</td>
+      <td>38.19%</td>
+      <td>5.55</td>
+    </tr>
+    <tr>
+      <td>1975-04-29</td>
+      <td>Houston Aeros</td>
+      <td>1676.59</td>
+      <td>6</td>
+      <td>San Diego Mariners</td>
+      <td>1569.38</td>
+      <td>0</td>
+      <td>74.64%</td>
+      <td>25.36%</td>
+      <td>5.20</td>
+    </tr>
+    <tr>
+      <td>1975-05-01</td>
+      <td>Quebec Nordiques</td>
+      <td>1576.48</td>
+      <td>4</td>
+      <td>@ Minnesota Fighting Saints</td>
+      <td>1562.02</td>
+      <td>2</td>
+      <td>40.64%</td>
+      <td>59.36%</td>
+      <td>7.03</td>
+    </tr>
+    <tr>
+      <td>1975-05-01</td>
+      <td>Minnesota Fighting Saints</td>
+      <td>1562.02</td>
+      <td>2</td>
+      <td>Quebec Nordiques</td>
+      <td>1576.48</td>
+      <td>4</td>
+      <td>59.36%</td>
+      <td>40.64%</td>
+      <td>-7.04</td>
+    </tr>
+    <tr>
+      <td>1975-05-01</td>
+      <td>Houston Aeros</td>
+      <td>1681.79</td>
+      <td>5</td>
+      <td>San Diego Mariners</td>
+      <td>1564.17</td>
+      <td>4</td>
+      <td>75.76%</td>
+      <td>24.24%</td>
+      <td>2.03</td>
+    </tr>
+    <tr>
+      <td>1975-05-01</td>
+      <td>San Diego Mariners</td>
+      <td>1564.17</td>
+      <td>4</td>
+      <td>@ Houston Aeros</td>
+      <td>1681.79</td>
+      <td>5</td>
+      <td>24.24%</td>
+      <td>75.76%</td>
+      <td>-2.03</td>
+    </tr>
+    <tr>
+      <td>1975-05-03</td>
+      <td>Quebec Nordiques</td>
+      <td>1583.51</td>
+      <td>2</td>
+      <td>@ Houston Aeros</td>
+      <td>1683.82</td>
+      <td>6</td>
+      <td>26.12%</td>
+      <td>73.88%</td>
+      <td>-4.38</td>
+    </tr>
+    <tr>
+      <td>1975-05-03</td>
+      <td>Houston Aeros</td>
+      <td>1683.82</td>
+      <td>6</td>
+      <td>Quebec Nordiques</td>
+      <td>1583.51</td>
+      <td>2</td>
+      <td>73.88%</td>
+      <td>26.12%</td>
+      <td>4.38</td>
+    </tr>
+    <tr>
+      <td>1975-05-06</td>
+      <td>Quebec Nordiques</td>
+      <td>1579.13</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1688.20</td>
+      <td>5</td>
+      <td>25.16%</td>
+      <td>74.84%</td>
+      <td>-2.98</td>
+    </tr>
+    <tr>
+      <td>1975-05-06</td>
+      <td>Houston Aeros</td>
+      <td>1688.20</td>
+      <td>5</td>
+      <td>Quebec Nordiques</td>
+      <td>1579.13</td>
+      <td>3</td>
+      <td>74.84%</td>
+      <td>25.16%</td>
+      <td>2.98</td>
+    </tr>
+    <tr>
+      <td>1975-05-10</td>
+      <td>Houston Aeros</td>
+      <td>1691.18</td>
+      <td>2</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1576.15</td>
+      <td>0</td>
+      <td>54.98%</td>
+      <td>45.02%</td>
+      <td>5.34</td>
+    </tr>
+    <tr>
+      <td>1975-05-10</td>
+      <td>Quebec Nordiques</td>
+      <td>1576.15</td>
+      <td>0</td>
+      <td>Houston Aeros</td>
+      <td>1691.18</td>
+      <td>2</td>
+      <td>45.02%</td>
+      <td>54.98%</td>
+      <td>-5.33</td>
+    </tr>
+    <tr>
+      <td>1975-05-12</td>
+      <td>Quebec Nordiques</td>
+      <td>1570.82</td>
+      <td>2</td>
+      <td>Houston Aeros</td>
+      <td>1696.52</td>
+      <td>7</td>
+      <td>43.50%</td>
+      <td>56.50%</td>
+      <td>-8.15</td>
+    </tr>
+    <tr>
+      <td>1975-05-12</td>
+      <td>Houston Aeros</td>
+      <td>1696.52</td>
+      <td>7</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1570.82</td>
+      <td>2</td>
+      <td>56.50%</td>
+      <td>43.50%</td>
+      <td>8.15</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Birmingham Bulls">Birmingham Bulls</option><option value="Edmonton Oilers">Edmonton Oilers</option><option value="Houston Aeros">Houston Aeros</option><option value="New England Whalers">New England Whalers</option><option value="Quebec Nordiques">Quebec Nordiques</option><option value="Winnipeg Jets">Winnipeg Jets</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1978-04-14</td>
+      <td>Winnipeg Jets</td>
+      <td>1589.70</td>
+      <td>9</td>
+      <td>Birmingham Bulls</td>
+      <td>1477.78</td>
+      <td>3</td>
+      <td>74.91%</td>
+      <td>25.09%</td>
+      <td>4.29</td>
+    </tr>
+    <tr>
+      <td>1978-04-14</td>
+      <td>New England Whalers</td>
+      <td>1537.36</td>
+      <td>6</td>
+      <td>Edmonton Oilers</td>
+      <td>1479.86</td>
+      <td>4</td>
+      <td>68.58%</td>
+      <td>31.42%</td>
+      <td>3.10</td>
+    </tr>
+    <tr>
+      <td>1978-04-14</td>
+      <td>Edmonton Oilers</td>
+      <td>1479.86</td>
+      <td>4</td>
+      <td>@ New England Whalers</td>
+      <td>1537.36</td>
+      <td>6</td>
+      <td>31.42%</td>
+      <td>68.58%</td>
+      <td>-3.11</td>
+    </tr>
+    <tr>
+      <td>1978-04-14</td>
+      <td>Birmingham Bulls</td>
+      <td>1477.78</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1589.70</td>
+      <td>9</td>
+      <td>25.09%</td>
+      <td>74.91%</td>
+      <td>-4.30</td>
+    </tr>
+    <tr>
+      <td>1978-04-16</td>
+      <td>Winnipeg Jets</td>
+      <td>1593.99</td>
+      <td>8</td>
+      <td>Birmingham Bulls</td>
+      <td>1473.48</td>
+      <td>3</td>
+      <td>75.83%</td>
+      <td>24.17%</td>
+      <td>3.78</td>
+    </tr>
+    <tr>
+      <td>1978-04-16</td>
+      <td>New England Whalers</td>
+      <td>1540.46</td>
+      <td>4</td>
+      <td>Edmonton Oilers</td>
+      <td>1476.75</td>
+      <td>1</td>
+      <td>69.35%</td>
+      <td>30.65%</td>
+      <td>3.71</td>
+    </tr>
+    <tr>
+      <td>1978-04-16</td>
+      <td>Houston Aeros</td>
+      <td>1529.12</td>
+      <td>4</td>
+      <td>Quebec Nordiques</td>
+      <td>1512.96</td>
+      <td>3</td>
+      <td>63.25%</td>
+      <td>36.75%</td>
+      <td>2.57</td>
+    </tr>
+    <tr>
+      <td>1978-04-16</td>
+      <td>Quebec Nordiques</td>
+      <td>1512.96</td>
+      <td>3</td>
+      <td>@ Houston Aeros</td>
+      <td>1529.12</td>
+      <td>4</td>
+      <td>36.75%</td>
+      <td>63.25%</td>
+      <td>-2.57</td>
+    </tr>
+    <tr>
+      <td>1978-04-16</td>
+      <td>Edmonton Oilers</td>
+      <td>1476.75</td>
+      <td>1</td>
+      <td>@ New England Whalers</td>
+      <td>1540.46</td>
+      <td>4</td>
+      <td>30.65%</td>
+      <td>69.35%</td>
+      <td>-3.71</td>
+    </tr>
+    <tr>
+      <td>1978-04-16</td>
+      <td>Birmingham Bulls</td>
+      <td>1473.48</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1593.99</td>
+      <td>8</td>
+      <td>24.17%</td>
+      <td>75.83%</td>
+      <td>-3.77</td>
+    </tr>
+    <tr>
+      <td>1978-04-18</td>
+      <td>Houston Aeros</td>
+      <td>1531.69</td>
+      <td>4</td>
+      <td>Quebec Nordiques</td>
+      <td>1510.39</td>
+      <td>5</td>
+      <td>63.93%</td>
+      <td>36.07%</td>
+      <td>-4.47</td>
+    </tr>
+    <tr>
+      <td>1978-04-18</td>
+      <td>Quebec Nordiques</td>
+      <td>1510.39</td>
+      <td>5</td>
+      <td>@ Houston Aeros</td>
+      <td>1531.69</td>
+      <td>4</td>
+      <td>36.07%</td>
+      <td>63.93%</td>
+      <td>4.47</td>
+    </tr>
+    <tr>
+      <td>1978-04-19</td>
+      <td>Birmingham Bulls</td>
+      <td>1469.71</td>
+      <td>3</td>
+      <td>Winnipeg Jets</td>
+      <td>1597.77</td>
+      <td>2</td>
+      <td>42.86%</td>
+      <td>57.14%</td>
+      <td>3.99</td>
+    </tr>
+    <tr>
+      <td>1978-04-19</td>
+      <td>Edmonton Oilers</td>
+      <td>1473.04</td>
+      <td>2</td>
+      <td>New England Whalers</td>
+      <td>1544.17</td>
+      <td>0</td>
+      <td>51.01%</td>
+      <td>48.99%</td>
+      <td>4.85</td>
+    </tr>
+    <tr>
+      <td>1978-04-19</td>
+      <td>New England Whalers</td>
+      <td>1544.17</td>
+      <td>0</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1473.04</td>
+      <td>2</td>
+      <td>48.99%</td>
+      <td>51.01%</td>
+      <td>-4.84</td>
+    </tr>
+    <tr>
+      <td>1978-04-19</td>
+      <td>Winnipeg Jets</td>
+      <td>1597.77</td>
+      <td>2</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1469.71</td>
+      <td>3</td>
+      <td>57.14%</td>
+      <td>42.86%</td>
+      <td>-3.99</td>
+    </tr>
+    <tr>
+      <td>1978-04-20</td>
+      <td>Houston Aeros</td>
+      <td>1527.22</td>
+      <td>1</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1514.86</td>
+      <td>5</td>
+      <td>40.65%</td>
+      <td>59.35%</td>
+      <td>-5.68</td>
+    </tr>
+    <tr>
+      <td>1978-04-20</td>
+      <td>Quebec Nordiques</td>
+      <td>1514.86</td>
+      <td>5</td>
+      <td>Houston Aeros</td>
+      <td>1527.22</td>
+      <td>1</td>
+      <td>59.35%</td>
+      <td>40.65%</td>
+      <td>5.68</td>
+    </tr>
+    <tr>
+      <td>1978-04-21</td>
+      <td>Houston Aeros</td>
+      <td>1521.54</td>
+      <td>0</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1520.54</td>
+      <td>3</td>
+      <td>39.08%</td>
+      <td>60.92%</td>
+      <td>-4.73</td>
+    </tr>
+    <tr>
+      <td>1978-04-21</td>
+      <td>New England Whalers</td>
+      <td>1539.33</td>
+      <td>9</td>
+      <td>@ Edmonton Oilers</td>
+      <td>1477.89</td>
+      <td>1</td>
+      <td>47.60%</td>
+      <td>52.40%</td>
+      <td>10.36</td>
+    </tr>
+    <tr>
+      <td>1978-04-21</td>
+      <td>Winnipeg Jets</td>
+      <td>1593.78</td>
+      <td>5</td>
+      <td>@ Birmingham Bulls</td>
+      <td>1473.70</td>
+      <td>1</td>
+      <td>56.01%</td>
+      <td>43.99%</td>
+      <td>6.15</td>
+    </tr>
+    <tr>
+      <td>1978-04-21</td>
+      <td>Quebec Nordiques</td>
+      <td>1520.54</td>
+      <td>3</td>
+      <td>Houston Aeros</td>
+      <td>1521.54</td>
+      <td>0</td>
+      <td>60.92%</td>
+      <td>39.08%</td>
+      <td>4.73</td>
+    </tr>
+    <tr>
+      <td>1978-04-21</td>
+      <td>Edmonton Oilers</td>
+      <td>1477.89</td>
+      <td>1</td>
+      <td>New England Whalers</td>
+      <td>1539.33</td>
+      <td>9</td>
+      <td>52.40%</td>
+      <td>47.60%</td>
+      <td>-10.36</td>
+    </tr>
+    <tr>
+      <td>1978-04-21</td>
+      <td>Birmingham Bulls</td>
+      <td>1473.70</td>
+      <td>1</td>
+      <td>Winnipeg Jets</td>
+      <td>1593.78</td>
+      <td>5</td>
+      <td>43.99%</td>
+      <td>56.01%</td>
+      <td>-6.15</td>
+    </tr>
+    <tr>
+      <td>1978-04-23</td>
+      <td>Quebec Nordiques</td>
+      <td>1525.27</td>
+      <td>2</td>
+      <td>@ Houston Aeros</td>
+      <td>1516.81</td>
+      <td>5</td>
+      <td>40.11%</td>
+      <td>59.89%</td>
+      <td>-4.85</td>
+    </tr>
+    <tr>
+      <td>1978-04-23</td>
+      <td>Edmonton Oilers</td>
+      <td>1467.53</td>
+      <td>1</td>
+      <td>@ New England Whalers</td>
+      <td>1549.69</td>
+      <td>4</td>
+      <td>28.44%</td>
+      <td>71.56%</td>
+      <td>-3.45</td>
+    </tr>
+    <tr>
+      <td>1978-04-23</td>
+      <td>Birmingham Bulls</td>
+      <td>1467.55</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1599.93</td>
+      <td>5</td>
+      <td>22.94%</td>
+      <td>77.06%</td>
+      <td>-2.78</td>
+    </tr>
+    <tr>
+      <td>1978-04-23</td>
+      <td>Houston Aeros</td>
+      <td>1516.81</td>
+      <td>5</td>
+      <td>Quebec Nordiques</td>
+      <td>1525.27</td>
+      <td>2</td>
+      <td>59.89%</td>
+      <td>40.11%</td>
+      <td>4.85</td>
+    </tr>
+    <tr>
+      <td>1978-04-23</td>
+      <td>New England Whalers</td>
+      <td>1549.69</td>
+      <td>4</td>
+      <td>Edmonton Oilers</td>
+      <td>1467.53</td>
+      <td>1</td>
+      <td>71.56%</td>
+      <td>28.44%</td>
+      <td>3.44</td>
+    </tr>
+    <tr>
+      <td>1978-04-23</td>
+      <td>Winnipeg Jets</td>
+      <td>1599.93</td>
+      <td>5</td>
+      <td>Birmingham Bulls</td>
+      <td>1467.55</td>
+      <td>2</td>
+      <td>77.06%</td>
+      <td>22.94%</td>
+      <td>2.77</td>
+    </tr>
+    <tr>
+      <td>1978-04-25</td>
+      <td>Quebec Nordiques</td>
+      <td>1520.42</td>
+      <td>11</td>
+      <td>Houston Aeros</td>
+      <td>1521.66</td>
+      <td>2</td>
+      <td>60.89%</td>
+      <td>39.11%</td>
+      <td>8.20</td>
+    </tr>
+    <tr>
+      <td>1978-04-25</td>
+      <td>Houston Aeros</td>
+      <td>1521.66</td>
+      <td>2</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1520.42</td>
+      <td>11</td>
+      <td>39.11%</td>
+      <td>60.89%</td>
+      <td>-8.20</td>
+    </tr>
+    <tr>
+      <td>1978-04-28</td>
+      <td>Quebec Nordiques</td>
+      <td>1528.62</td>
+      <td>1</td>
+      <td>@ New England Whalers</td>
+      <td>1553.13</td>
+      <td>5</td>
+      <td>35.64%</td>
+      <td>64.36%</td>
+      <td>-4.98</td>
+    </tr>
+    <tr>
+      <td>1978-04-28</td>
+      <td>New England Whalers</td>
+      <td>1553.13</td>
+      <td>5</td>
+      <td>Quebec Nordiques</td>
+      <td>1528.62</td>
+      <td>1</td>
+      <td>64.36%</td>
+      <td>35.64%</td>
+      <td>4.99</td>
+    </tr>
+    <tr>
+      <td>1978-04-30</td>
+      <td>Quebec Nordiques</td>
+      <td>1523.64</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1558.12</td>
+      <td>2</td>
+      <td>34.34%</td>
+      <td>65.66%</td>
+      <td>4.59</td>
+    </tr>
+    <tr>
+      <td>1978-04-30</td>
+      <td>New England Whalers</td>
+      <td>1558.12</td>
+      <td>2</td>
+      <td>Quebec Nordiques</td>
+      <td>1523.64</td>
+      <td>3</td>
+      <td>65.66%</td>
+      <td>34.34%</td>
+      <td>-4.59</td>
+    </tr>
+    <tr>
+      <td>1978-05-03</td>
+      <td>New England Whalers</td>
+      <td>1553.53</td>
+      <td>5</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1528.23</td>
+      <td>4</td>
+      <td>42.46%</td>
+      <td>57.54%</td>
+      <td>4.02</td>
+    </tr>
+    <tr>
+      <td>1978-05-03</td>
+      <td>Quebec Nordiques</td>
+      <td>1528.23</td>
+      <td>4</td>
+      <td>New England Whalers</td>
+      <td>1553.53</td>
+      <td>5</td>
+      <td>57.54%</td>
+      <td>42.46%</td>
+      <td>-4.03</td>
+    </tr>
+    <tr>
+      <td>1978-05-05</td>
+      <td>Quebec Nordiques</td>
+      <td>1524.20</td>
+      <td>3</td>
+      <td>New England Whalers</td>
+      <td>1557.55</td>
+      <td>7</td>
+      <td>56.41%</td>
+      <td>43.59%</td>
+      <td>-7.88</td>
+    </tr>
+    <tr>
+      <td>1978-05-05</td>
+      <td>New England Whalers</td>
+      <td>1557.55</td>
+      <td>7</td>
+      <td>@ Quebec Nordiques</td>
+      <td>1524.20</td>
+      <td>3</td>
+      <td>43.59%</td>
+      <td>56.41%</td>
+      <td>7.88</td>
+    </tr>
+    <tr>
+      <td>1978-05-07</td>
+      <td>Quebec Nordiques</td>
+      <td>1516.32</td>
+      <td>3</td>
+      <td>@ New England Whalers</td>
+      <td>1565.43</td>
+      <td>6</td>
+      <td>32.46%</td>
+      <td>67.54%</td>
+      <td>-3.93</td>
+    </tr>
+    <tr>
+      <td>1978-05-07</td>
+      <td>New England Whalers</td>
+      <td>1565.43</td>
+      <td>6</td>
+      <td>Quebec Nordiques</td>
+      <td>1516.32</td>
+      <td>3</td>
+      <td>67.54%</td>
+      <td>32.46%</td>
+      <td>3.93</td>
+    </tr>
+    <tr>
+      <td>1978-05-12</td>
+      <td>Winnipeg Jets</td>
+      <td>1602.70</td>
+      <td>4</td>
+      <td>@ New England Whalers</td>
+      <td>1569.36</td>
+      <td>1</td>
+      <td>43.59%</td>
+      <td>56.41%</td>
+      <td>6.83</td>
+    </tr>
+    <tr>
+      <td>1978-05-12</td>
+      <td>New England Whalers</td>
+      <td>1569.36</td>
+      <td>1</td>
+      <td>Winnipeg Jets</td>
+      <td>1602.70</td>
+      <td>4</td>
+      <td>56.41%</td>
+      <td>43.59%</td>
+      <td>-6.82</td>
+    </tr>
+    <tr>
+      <td>1978-05-14</td>
+      <td>Winnipeg Jets</td>
+      <td>1609.53</td>
+      <td>5</td>
+      <td>@ New England Whalers</td>
+      <td>1562.54</td>
+      <td>2</td>
+      <td>45.53%</td>
+      <td>54.47%</td>
+      <td>6.60</td>
+    </tr>
+    <tr>
+      <td>1978-05-14</td>
+      <td>New England Whalers</td>
+      <td>1562.54</td>
+      <td>2</td>
+      <td>Winnipeg Jets</td>
+      <td>1609.53</td>
+      <td>5</td>
+      <td>54.47%</td>
+      <td>45.53%</td>
+      <td>-6.60</td>
+    </tr>
+    <tr>
+      <td>1978-05-19</td>
+      <td>New England Whalers</td>
+      <td>1555.94</td>
+      <td>2</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1616.13</td>
+      <td>10</td>
+      <td>31.08%</td>
+      <td>68.92%</td>
+      <td>-6.14</td>
+    </tr>
+    <tr>
+      <td>1978-05-19</td>
+      <td>Winnipeg Jets</td>
+      <td>1616.13</td>
+      <td>10</td>
+      <td>New England Whalers</td>
+      <td>1555.94</td>
+      <td>2</td>
+      <td>68.92%</td>
+      <td>31.08%</td>
+      <td>6.14</td>
+    </tr>
+    <tr>
+      <td>1978-05-22</td>
+      <td>Winnipeg Jets</td>
+      <td>1622.27</td>
+      <td>5</td>
+      <td>New England Whalers</td>
+      <td>1549.80</td>
+      <td>3</td>
+      <td>70.41%</td>
+      <td>29.59%</td>
+      <td>2.93</td>
+    </tr>
+    <tr>
+      <td>1978-05-22</td>
+      <td>New England Whalers</td>
+      <td>1549.80</td>
+      <td>3</td>
+      <td>@ Winnipeg Jets</td>
+      <td>1622.27</td>
+      <td>5</td>
+      <td>29.59%</td>
+      <td>70.41%</td>
+      <td>-2.93</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
