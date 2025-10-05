@@ -547,16 +547,17 @@ nav.college-nav .dropbtn {
 
 .home-layout {
     display: flex;
-    gap: 40px;                      /* Space between main-left and sidebar */
-    align-items: flex-start;        /* Align tops of columns */
-    max-width: 1280px;              /* Keep overall layout at 1280px */
-    margin: 0 auto;                 /* Center layout */
-    padding: 20px;                  /* Optional padding */
+    gap: 40px;               /* space between columns */
+    align-items: flex-start;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+    flex-wrap: wrap;         /* allow stacking if needed */
 }
 
 .main-left {
-    flex: 1;                       /* Take remaining space */
-    min-width: 0;                  /* Prevent overflow */
+    flex: 2 1 0;             /* grow twice as much as sidebar, shrink if needed */
+    min-width: 300px;        /* prevent content from getting too narrow */
 }
 
 /*------------------------
@@ -565,9 +566,8 @@ nav.college-nav .dropbtn {
 
 /* Right sidebar (fixed 400px width) */
 .sidebar-right {
-    width: 400px;         /* Use a smaller base width */
-    flex: 1 1 400px;      /* Let it shrink and grow */
-    max-width: 600px;     /* But never grow past 600px */
+    flex: 1 1 300px;         /* take up less space than main-left, shrink if needed */
+    min-width: 250px;        /* prevent sidebar from getting too narrow */
 }
 
 /* Space between sections inside sidebar */
@@ -699,25 +699,23 @@ nav.college-nav .dropbtn {
   Responsive Layout for Smaller Screens for Homepage
 -----------------------------------------------------*/
 
+/* Responsive: stack columns on smaller screens */
 @media (max-width: 900px) {
-  .home-layout {
-    flex-direction: column;              /* Stack columns vertically */
-  }
+    .home-layout {
+        flex-direction: column;
+    }
 
-  .sidebar-right {
-    width: 100%;                         /* Full width */
-    margin-top: 0;                    /* Space from main content */
-    padding-left: 0;                     /* Padding inside sidebar */
-    padding-right: 0;
-  }
+    .main-left,
+    .sidebar-right {
+        width: 100%;
+        max-width: none;
+        padding-left: 0;
+        padding-right: 0;
+    }
 
-  .sidebar-right section {
-    margin-bottom: 15px;                 /* Slightly smaller spacing */
-  }
-  
-  .main-left {
-    min-width: auto;                     /* Prevent overflow */
-  }
+    .sidebar-right section {
+        margin-bottom: 15px;
+    }
 }
 
 /*-----------------------------------
