@@ -565,8 +565,9 @@ nav.college-nav .dropbtn {
 
 /* Right sidebar (fixed 400px width) */
 .sidebar-right {
-    width: 600px;
-    flex-shrink: 0;
+    width: 400px;         /* Use a smaller base width */
+    flex: 1 1 400px;      /* Let it shrink and grow */
+    max-width: 600px;     /* But never grow past 600px */
 }
 
 /* Space between sections inside sidebar */
@@ -645,6 +646,18 @@ nav.college-nav .dropbtn {
     width: 100%;
     min-width: 450px;
     border-collapse: collapse;
+}
+
+@media (max-width: 800px) {
+  .home-layout {
+    flex-direction: column;
+  }
+
+  .main-left,
+  .sidebar-right {
+    width: 100%;
+    max-width: none;
+  }
 }
 
 /* Responsive tweak: allow scrolling instead of breaking */
