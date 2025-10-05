@@ -498,8 +498,7 @@ nav.college-nav .dropbtn {
 .featured-article-box,
 .power-rankings,
 .article-list-page,
-.site-updates,
-.poll-box {
+.site-updates {
   background-color: white;           /* White background */
   border-left: 6px solid #002744;    /* Thick deep navy left border */
   border-radius: 8px;                /* Rounded corners */
@@ -516,8 +515,7 @@ nav.college-nav .dropbtn {
 }
 
 /* Optionally limit width for sidebar content boxes */
-.site-updates,
-.poll-box {
+.site-updates {
   max-width: 600px;              /* Match sidebar width */
   margin-left: 0;               /* Align left edge inside sidebar */
   margin-right: 0;
@@ -550,9 +548,9 @@ nav.college-nav .dropbtn {
     min-width: 0;                  /* Prevent overflow */
 }
 
-/*-----------------------------------
-  Sidebar: Weekly Links + Polls
-------------------------------------*/
+/*------------------------
+  Sidebar: Weekly Links
+--------------------------*/
 
 /* Right sidebar (fixed 400px width) */
 .sidebar-right {
@@ -611,6 +609,27 @@ nav.college-nav .dropbtn {
 .sidebar-table td:nth-child(4) { width: 25%; text-align: center; }
 
 
+/* Make each placeholder's wrapper scroll horizontally */
+.sidebar-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Make tables inside those wrappers behave properly */
+.sidebar-table-wrapper table {
+    min-width: 450px;
+    width: max-content;
+    border-collapse: collapse;
+}
+
+/* Responsive tweak: allow scrolling instead of breaking */
+@media (max-width: 768px) {
+    .sidebar-right {
+        width: 100%;
+        padding: 0 10px;
+    }
+}
+
 
 /* Weekly Updates List */
 .site-updates ul {
@@ -631,18 +650,6 @@ nav.college-nav .dropbtn {
     text-decoration: underline;     /* Underline on hover */
 }
 
-
-
-/* Poll Sections */
-.poll-box form {
-    margin-top: 10px;               /* Space above poll options */
-}
-
-.poll-box label {
-    display: block;                 /* Each option on own line */
-    margin-bottom: 6px;
-    cursor: pointer;
-}
 
 /* Space between Weekly Updates and Polls */
 .site-updates {
