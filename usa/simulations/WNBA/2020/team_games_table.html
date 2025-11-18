@@ -1,0 +1,3265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Atlanta Dream">Atlanta Dream</option><option value="Chicago Sky">Chicago Sky</option><option value="Connecticut Sun">Connecticut Sun</option><option value="Dallas Wings">Dallas Wings</option><option value="Indiana Fever">Indiana Fever</option><option value="Las Vegas Aces">Las Vegas Aces</option><option value="Los Angeles Sparks">Los Angeles Sparks</option><option value="Minnesota Lynx">Minnesota Lynx</option><option value="New York Liberty">New York Liberty</option><option value="Phoenix Mercury">Phoenix Mercury</option><option value="Seattle Storm">Seattle Storm</option><option value="Washington Mystics">Washington Mystics</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2020-07-25</td>
+      <td>New York Liberty</td>
+      <td>1400.99</td>
+      <td>71</td>
+      <td>Seattle Storm</td>
+      <td>1513.37</td>
+      <td>87</td>
+      <td>34.37%</td>
+      <td>65.63%</td>
+      <td>-22.29</td>
+    </tr>
+    <tr>
+      <td>2020-07-25</td>
+      <td>Phoenix Mercury</td>
+      <td>1466.33</td>
+      <td>76</td>
+      <td>Los Angeles Sparks</td>
+      <td>1529.53</td>
+      <td>99</td>
+      <td>41.00%</td>
+      <td>59.00%</td>
+      <td>-31.89</td>
+    </tr>
+    <tr>
+      <td>2020-07-25</td>
+      <td>Washington Mystics</td>
+      <td>1619.32</td>
+      <td>101</td>
+      <td>Indiana Fever</td>
+      <td>1472.41</td>
+      <td>76</td>
+      <td>69.97%</td>
+      <td>30.03%</td>
+      <td>24.36</td>
+    </tr>
+    <tr>
+      <td>2020-07-25</td>
+      <td>Indiana Fever</td>
+      <td>1472.41</td>
+      <td>76</td>
+      <td>@ Washington Mystics</td>
+      <td>1619.32</td>
+      <td>101</td>
+      <td>30.03%</td>
+      <td>69.97%</td>
+      <td>-24.36</td>
+    </tr>
+    <tr>
+      <td>2020-07-25</td>
+      <td>Los Angeles Sparks</td>
+      <td>1529.53</td>
+      <td>99</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1466.33</td>
+      <td>76</td>
+      <td>59.00%</td>
+      <td>41.00%</td>
+      <td>31.89</td>
+    </tr>
+    <tr>
+      <td>2020-07-25</td>
+      <td>Seattle Storm</td>
+      <td>1513.37</td>
+      <td>87</td>
+      <td>@ New York Liberty</td>
+      <td>1400.99</td>
+      <td>71</td>
+      <td>65.63%</td>
+      <td>34.37%</td>
+      <td>22.30</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Dallas Wings</td>
+      <td>1433.73</td>
+      <td>95</td>
+      <td>@ Atlanta Dream</td>
+      <td>1409.94</td>
+      <td>105</td>
+      <td>53.42%</td>
+      <td>46.58%</td>
+      <td>-27.40</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Chicago Sky</td>
+      <td>1532.44</td>
+      <td>88</td>
+      <td>@ Las Vegas Aces</td>
+      <td>1532.42</td>
+      <td>86</td>
+      <td>50.00%</td>
+      <td>50.00%</td>
+      <td>11.47</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Connecticut Sun</td>
+      <td>1565.21</td>
+      <td>69</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1524.30</td>
+      <td>77</td>
+      <td>55.86%</td>
+      <td>44.14%</td>
+      <td>-25.63</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Minnesota Lynx</td>
+      <td>1524.30</td>
+      <td>77</td>
+      <td>Connecticut Sun</td>
+      <td>1565.21</td>
+      <td>69</td>
+      <td>44.14%</td>
+      <td>55.86%</td>
+      <td>25.62</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Las Vegas Aces</td>
+      <td>1532.42</td>
+      <td>86</td>
+      <td>Chicago Sky</td>
+      <td>1532.44</td>
+      <td>88</td>
+      <td>50.00%</td>
+      <td>50.00%</td>
+      <td>-11.47</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Atlanta Dream</td>
+      <td>1409.94</td>
+      <td>105</td>
+      <td>Dallas Wings</td>
+      <td>1433.73</td>
+      <td>95</td>
+      <td>46.58%</td>
+      <td>53.42%</td>
+      <td>27.40</td>
+    </tr>
+    <tr>
+      <td>2020-07-28</td>
+      <td>Los Angeles Sparks</td>
+      <td>1561.42</td>
+      <td>78</td>
+      <td>@ Chicago Sky</td>
+      <td>1543.91</td>
+      <td>96</td>
+      <td>52.52%</td>
+      <td>47.48%</td>
+      <td>-36.14</td>
+    </tr>
+    <tr>
+      <td>2020-07-28</td>
+      <td>Seattle Storm</td>
+      <td>1535.67</td>
+      <td>90</td>
+      <td>Minnesota Lynx</td>
+      <td>1549.92</td>
+      <td>66</td>
+      <td>47.95%</td>
+      <td>52.05%</td>
+      <td>41.36</td>
+    </tr>
+    <tr>
+      <td>2020-07-28</td>
+      <td>Minnesota Lynx</td>
+      <td>1549.92</td>
+      <td>66</td>
+      <td>@ Seattle Storm</td>
+      <td>1535.67</td>
+      <td>90</td>
+      <td>52.05%</td>
+      <td>47.95%</td>
+      <td>-41.36</td>
+    </tr>
+    <tr>
+      <td>2020-07-28</td>
+      <td>Washington Mystics</td>
+      <td>1643.68</td>
+      <td>94</td>
+      <td>@ Connecticut Sun</td>
+      <td>1539.58</td>
+      <td>89</td>
+      <td>64.55%</td>
+      <td>35.45%</td>
+      <td>12.86</td>
+    </tr>
+    <tr>
+      <td>2020-07-28</td>
+      <td>Connecticut Sun</td>
+      <td>1539.58</td>
+      <td>89</td>
+      <td>Washington Mystics</td>
+      <td>1643.68</td>
+      <td>94</td>
+      <td>35.45%</td>
+      <td>64.55%</td>
+      <td>-12.86</td>
+    </tr>
+    <tr>
+      <td>2020-07-28</td>
+      <td>Chicago Sky</td>
+      <td>1543.91</td>
+      <td>96</td>
+      <td>Los Angeles Sparks</td>
+      <td>1561.42</td>
+      <td>78</td>
+      <td>47.48%</td>
+      <td>52.52%</td>
+      <td>36.14</td>
+    </tr>
+    <tr>
+      <td>2020-07-29</td>
+      <td>Atlanta Dream</td>
+      <td>1437.34</td>
+      <td>70</td>
+      <td>@ Las Vegas Aces</td>
+      <td>1520.95</td>
+      <td>100</td>
+      <td>38.19%</td>
+      <td>61.81%</td>
+      <td>-33.93</td>
+    </tr>
+    <tr>
+      <td>2020-07-29</td>
+      <td>Phoenix Mercury</td>
+      <td>1434.44</td>
+      <td>100</td>
+      <td>@ Indiana Fever</td>
+      <td>1448.05</td>
+      <td>106</td>
+      <td>48.04%</td>
+      <td>51.96%</td>
+      <td>-19.09</td>
+    </tr>
+    <tr>
+      <td>2020-07-29</td>
+      <td>New York Liberty</td>
+      <td>1378.70</td>
+      <td>80</td>
+      <td>@ Dallas Wings</td>
+      <td>1406.33</td>
+      <td>93</td>
+      <td>46.03%</td>
+      <td>53.97%</td>
+      <td>-26.92</td>
+    </tr>
+    <tr>
+      <td>2020-07-29</td>
+      <td>Dallas Wings</td>
+      <td>1406.33</td>
+      <td>93</td>
+      <td>New York Liberty</td>
+      <td>1378.70</td>
+      <td>80</td>
+      <td>53.97%</td>
+      <td>46.03%</td>
+      <td>26.92</td>
+    </tr>
+    <tr>
+      <td>2020-07-29</td>
+      <td>Las Vegas Aces</td>
+      <td>1520.95</td>
+      <td>100</td>
+      <td>Atlanta Dream</td>
+      <td>1437.34</td>
+      <td>70</td>
+      <td>61.81%</td>
+      <td>38.19%</td>
+      <td>33.93</td>
+    </tr>
+    <tr>
+      <td>2020-07-29</td>
+      <td>Indiana Fever</td>
+      <td>1448.05</td>
+      <td>106</td>
+      <td>Phoenix Mercury</td>
+      <td>1434.44</td>
+      <td>100</td>
+      <td>51.96%</td>
+      <td>48.04%</td>
+      <td>19.09</td>
+    </tr>
+    <tr>
+      <td>2020-07-30</td>
+      <td>Seattle Storm</td>
+      <td>1577.03</td>
+      <td>71</td>
+      <td>@ Washington Mystics</td>
+      <td>1656.54</td>
+      <td>89</td>
+      <td>38.75%</td>
+      <td>61.25%</td>
+      <td>-26.67</td>
+    </tr>
+    <tr>
+      <td>2020-07-30</td>
+      <td>Los Angeles Sparks</td>
+      <td>1525.28</td>
+      <td>81</td>
+      <td>Connecticut Sun</td>
+      <td>1526.72</td>
+      <td>76</td>
+      <td>49.79%</td>
+      <td>50.21%</td>
+      <td>18.21</td>
+    </tr>
+    <tr>
+      <td>2020-07-30</td>
+      <td>Minnesota Lynx</td>
+      <td>1508.56</td>
+      <td>83</td>
+      <td>Chicago Sky</td>
+      <td>1580.05</td>
+      <td>81</td>
+      <td>39.85%</td>
+      <td>60.15%</td>
+      <td>13.80</td>
+    </tr>
+    <tr>
+      <td>2020-07-30</td>
+      <td>Washington Mystics</td>
+      <td>1656.54</td>
+      <td>89</td>
+      <td>Seattle Storm</td>
+      <td>1577.03</td>
+      <td>71</td>
+      <td>61.25%</td>
+      <td>38.75%</td>
+      <td>26.67</td>
+    </tr>
+    <tr>
+      <td>2020-07-30</td>
+      <td>Chicago Sky</td>
+      <td>1580.05</td>
+      <td>81</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1508.56</td>
+      <td>83</td>
+      <td>60.15%</td>
+      <td>39.85%</td>
+      <td>-13.79</td>
+    </tr>
+    <tr>
+      <td>2020-07-30</td>
+      <td>Connecticut Sun</td>
+      <td>1526.72</td>
+      <td>76</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1525.28</td>
+      <td>81</td>
+      <td>50.21%</td>
+      <td>49.79%</td>
+      <td>-18.21</td>
+    </tr>
+    <tr>
+      <td>2020-07-31</td>
+      <td>New York Liberty</td>
+      <td>1351.78</td>
+      <td>78</td>
+      <td>@ Atlanta Dream</td>
+      <td>1403.41</td>
+      <td>84</td>
+      <td>42.62%</td>
+      <td>57.38%</td>
+      <td>-16.94</td>
+    </tr>
+    <tr>
+      <td>2020-07-31</td>
+      <td>Indiana Fever</td>
+      <td>1467.14</td>
+      <td>73</td>
+      <td>@ Dallas Wings</td>
+      <td>1433.25</td>
+      <td>76</td>
+      <td>54.86%</td>
+      <td>45.14%</td>
+      <td>-15.42</td>
+    </tr>
+    <tr>
+      <td>2020-07-31</td>
+      <td>Las Vegas Aces</td>
+      <td>1554.88</td>
+      <td>95</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1415.35</td>
+      <td>102</td>
+      <td>69.07%</td>
+      <td>30.93%</td>
+      <td>-29.63</td>
+    </tr>
+    <tr>
+      <td>2020-07-31</td>
+      <td>Phoenix Mercury</td>
+      <td>1415.35</td>
+      <td>102</td>
+      <td>Las Vegas Aces</td>
+      <td>1554.88</td>
+      <td>95</td>
+      <td>30.93%</td>
+      <td>69.07%</td>
+      <td>29.64</td>
+    </tr>
+    <tr>
+      <td>2020-07-31</td>
+      <td>Dallas Wings</td>
+      <td>1433.25</td>
+      <td>76</td>
+      <td>Indiana Fever</td>
+      <td>1467.14</td>
+      <td>73</td>
+      <td>45.14%</td>
+      <td>54.86%</td>
+      <td>15.42</td>
+    </tr>
+    <tr>
+      <td>2020-07-31</td>
+      <td>Atlanta Dream</td>
+      <td>1403.41</td>
+      <td>84</td>
+      <td>New York Liberty</td>
+      <td>1351.78</td>
+      <td>78</td>
+      <td>57.38%</td>
+      <td>42.62%</td>
+      <td>16.93</td>
+    </tr>
+    <tr>
+      <td>2020-08-01</td>
+      <td>Seattle Storm</td>
+      <td>1550.36</td>
+      <td>81</td>
+      <td>Los Angeles Sparks</td>
+      <td>1543.49</td>
+      <td>75</td>
+      <td>50.99%</td>
+      <td>49.01%</td>
+      <td>19.48</td>
+    </tr>
+    <tr>
+      <td>2020-08-01</td>
+      <td>Chicago Sky</td>
+      <td>1566.26</td>
+      <td>88</td>
+      <td>Washington Mystics</td>
+      <td>1683.21</td>
+      <td>86</td>
+      <td>33.78%</td>
+      <td>66.22%</td>
+      <td>15.19</td>
+    </tr>
+    <tr>
+      <td>2020-08-01</td>
+      <td>Washington Mystics</td>
+      <td>1683.21</td>
+      <td>86</td>
+      <td>@ Chicago Sky</td>
+      <td>1566.26</td>
+      <td>88</td>
+      <td>66.22%</td>
+      <td>33.78%</td>
+      <td>-15.19</td>
+    </tr>
+    <tr>
+      <td>2020-08-01</td>
+      <td>Minnesota Lynx</td>
+      <td>1522.36</td>
+      <td>78</td>
+      <td>@ Connecticut Sun</td>
+      <td>1508.51</td>
+      <td>69</td>
+      <td>51.99%</td>
+      <td>48.01%</td>
+      <td>23.36</td>
+    </tr>
+    <tr>
+      <td>2020-08-01</td>
+      <td>Los Angeles Sparks</td>
+      <td>1543.49</td>
+      <td>75</td>
+      <td>@ Seattle Storm</td>
+      <td>1550.36</td>
+      <td>81</td>
+      <td>49.01%</td>
+      <td>50.99%</td>
+      <td>-19.47</td>
+    </tr>
+    <tr>
+      <td>2020-08-01</td>
+      <td>Connecticut Sun</td>
+      <td>1508.51</td>
+      <td>69</td>
+      <td>Minnesota Lynx</td>
+      <td>1522.36</td>
+      <td>78</td>
+      <td>48.01%</td>
+      <td>51.99%</td>
+      <td>-23.36</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Indiana Fever</td>
+      <td>1451.72</td>
+      <td>93</td>
+      <td>Atlanta Dream</td>
+      <td>1420.34</td>
+      <td>77</td>
+      <td>54.50%</td>
+      <td>45.50%</td>
+      <td>29.52</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Las Vegas Aces</td>
+      <td>1525.25</td>
+      <td>79</td>
+      <td>Dallas Wings</td>
+      <td>1448.67</td>
+      <td>70</td>
+      <td>60.85%</td>
+      <td>39.15%</td>
+      <td>19.05</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>New York Liberty</td>
+      <td>1334.84</td>
+      <td>67</td>
+      <td>Phoenix Mercury</td>
+      <td>1444.99</td>
+      <td>96</td>
+      <td>34.66%</td>
+      <td>65.34%</td>
+      <td>-30.27</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Atlanta Dream</td>
+      <td>1420.34</td>
+      <td>77</td>
+      <td>@ Indiana Fever</td>
+      <td>1451.72</td>
+      <td>93</td>
+      <td>45.50%</td>
+      <td>54.50%</td>
+      <td>-29.52</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Dallas Wings</td>
+      <td>1448.67</td>
+      <td>70</td>
+      <td>@ Las Vegas Aces</td>
+      <td>1525.25</td>
+      <td>79</td>
+      <td>39.15%</td>
+      <td>60.85%</td>
+      <td>-19.06</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Phoenix Mercury</td>
+      <td>1444.99</td>
+      <td>96</td>
+      <td>@ New York Liberty</td>
+      <td>1334.84</td>
+      <td>67</td>
+      <td>65.34%</td>
+      <td>34.66%</td>
+      <td>30.27</td>
+    </tr>
+    <tr>
+      <td>2020-08-04</td>
+      <td>Chicago Sky</td>
+      <td>1581.45</td>
+      <td>82</td>
+      <td>Dallas Wings</td>
+      <td>1429.61</td>
+      <td>79</td>
+      <td>70.56%</td>
+      <td>29.44%</td>
+      <td>8.27</td>
+    </tr>
+    <tr>
+      <td>2020-08-04</td>
+      <td>Dallas Wings</td>
+      <td>1429.61</td>
+      <td>79</td>
+      <td>@ Chicago Sky</td>
+      <td>1581.45</td>
+      <td>82</td>
+      <td>29.44%</td>
+      <td>70.56%</td>
+      <td>-8.27</td>
+    </tr>
+    <tr>
+      <td>2020-08-04</td>
+      <td>Atlanta Dream</td>
+      <td>1390.82</td>
+      <td>74</td>
+      <td>Phoenix Mercury</td>
+      <td>1475.26</td>
+      <td>81</td>
+      <td>38.08%</td>
+      <td>61.92%</td>
+      <td>-16.34</td>
+    </tr>
+    <tr>
+      <td>2020-08-04</td>
+      <td>Phoenix Mercury</td>
+      <td>1475.26</td>
+      <td>81</td>
+      <td>@ Atlanta Dream</td>
+      <td>1390.82</td>
+      <td>74</td>
+      <td>61.92%</td>
+      <td>38.08%</td>
+      <td>16.35</td>
+    </tr>
+    <tr>
+      <td>2020-08-04</td>
+      <td>Connecticut Sun</td>
+      <td>1485.15</td>
+      <td>74</td>
+      <td>@ Seattle Storm</td>
+      <td>1569.84</td>
+      <td>87</td>
+      <td>38.05%</td>
+      <td>61.95%</td>
+      <td>-22.25</td>
+    </tr>
+    <tr>
+      <td>2020-08-04</td>
+      <td>Seattle Storm</td>
+      <td>1569.84</td>
+      <td>87</td>
+      <td>Connecticut Sun</td>
+      <td>1485.15</td>
+      <td>74</td>
+      <td>61.95%</td>
+      <td>38.05%</td>
+      <td>22.25</td>
+    </tr>
+    <tr>
+      <td>2020-08-05</td>
+      <td>New York Liberty</td>
+      <td>1304.57</td>
+      <td>66</td>
+      <td>Minnesota Lynx</td>
+      <td>1545.72</td>
+      <td>92</td>
+      <td>19.97%</td>
+      <td>80.03%</td>
+      <td>-16.52</td>
+    </tr>
+    <tr>
+      <td>2020-08-05</td>
+      <td>Indiana Fever</td>
+      <td>1481.24</td>
+      <td>75</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1524.02</td>
+      <td>86</td>
+      <td>43.87%</td>
+      <td>56.13%</td>
+      <td>-23.60</td>
+    </tr>
+    <tr>
+      <td>2020-08-05</td>
+      <td>Washington Mystics</td>
+      <td>1668.02</td>
+      <td>77</td>
+      <td>Las Vegas Aces</td>
+      <td>1544.30</td>
+      <td>83</td>
+      <td>67.09%</td>
+      <td>32.91%</td>
+      <td>-26.66</td>
+    </tr>
+    <tr>
+      <td>2020-08-05</td>
+      <td>Minnesota Lynx</td>
+      <td>1545.72</td>
+      <td>92</td>
+      <td>@ New York Liberty</td>
+      <td>1304.57</td>
+      <td>66</td>
+      <td>80.03%</td>
+      <td>19.97%</td>
+      <td>16.52</td>
+    </tr>
+    <tr>
+      <td>2020-08-05</td>
+      <td>Los Angeles Sparks</td>
+      <td>1524.02</td>
+      <td>86</td>
+      <td>Indiana Fever</td>
+      <td>1481.24</td>
+      <td>75</td>
+      <td>56.13%</td>
+      <td>43.87%</td>
+      <td>23.60</td>
+    </tr>
+    <tr>
+      <td>2020-08-05</td>
+      <td>Las Vegas Aces</td>
+      <td>1544.30</td>
+      <td>83</td>
+      <td>@ Washington Mystics</td>
+      <td>1668.02</td>
+      <td>77</td>
+      <td>32.91%</td>
+      <td>67.09%</td>
+      <td>26.65</td>
+    </tr>
+    <tr>
+      <td>2020-08-06</td>
+      <td>Chicago Sky</td>
+      <td>1589.72</td>
+      <td>86</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1491.61</td>
+      <td>96</td>
+      <td>63.76%</td>
+      <td>36.24%</td>
+      <td>-32.70</td>
+    </tr>
+    <tr>
+      <td>2020-08-06</td>
+      <td>Connecticut Sun</td>
+      <td>1462.90</td>
+      <td>91</td>
+      <td>@ Dallas Wings</td>
+      <td>1421.34</td>
+      <td>68</td>
+      <td>55.95%</td>
+      <td>44.05%</td>
+      <td>34.26</td>
+    </tr>
+    <tr>
+      <td>2020-08-06</td>
+      <td>Seattle Storm</td>
+      <td>1592.09</td>
+      <td>93</td>
+      <td>@ Atlanta Dream</td>
+      <td>1374.48</td>
+      <td>92</td>
+      <td>77.78%</td>
+      <td>22.22%</td>
+      <td>3.60</td>
+    </tr>
+    <tr>
+      <td>2020-08-06</td>
+      <td>Atlanta Dream</td>
+      <td>1374.48</td>
+      <td>92</td>
+      <td>Seattle Storm</td>
+      <td>1592.09</td>
+      <td>93</td>
+      <td>22.22%</td>
+      <td>77.78%</td>
+      <td>-3.60</td>
+    </tr>
+    <tr>
+      <td>2020-08-06</td>
+      <td>Dallas Wings</td>
+      <td>1421.34</td>
+      <td>68</td>
+      <td>Connecticut Sun</td>
+      <td>1462.90</td>
+      <td>91</td>
+      <td>44.05%</td>
+      <td>55.95%</td>
+      <td>-34.26</td>
+    </tr>
+    <tr>
+      <td>2020-08-06</td>
+      <td>Phoenix Mercury</td>
+      <td>1491.61</td>
+      <td>96</td>
+      <td>Chicago Sky</td>
+      <td>1589.72</td>
+      <td>86</td>
+      <td>36.24%</td>
+      <td>63.76%</td>
+      <td>32.70</td>
+    </tr>
+    <tr>
+      <td>2020-08-07</td>
+      <td>Indiana Fever</td>
+      <td>1457.64</td>
+      <td>80</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1562.24</td>
+      <td>87</td>
+      <td>35.39%</td>
+      <td>64.61%</td>
+      <td>-15.19</td>
+    </tr>
+    <tr>
+      <td>2020-08-07</td>
+      <td>Las Vegas Aces</td>
+      <td>1570.95</td>
+      <td>86</td>
+      <td>Los Angeles Sparks</td>
+      <td>1547.62</td>
+      <td>82</td>
+      <td>53.35%</td>
+      <td>46.65%</td>
+      <td>15.14</td>
+    </tr>
+    <tr>
+      <td>2020-08-07</td>
+      <td>Minnesota Lynx</td>
+      <td>1562.24</td>
+      <td>87</td>
+      <td>Indiana Fever</td>
+      <td>1457.64</td>
+      <td>80</td>
+      <td>64.61%</td>
+      <td>35.39%</td>
+      <td>15.18</td>
+    </tr>
+    <tr>
+      <td>2020-08-07</td>
+      <td>Los Angeles Sparks</td>
+      <td>1547.62</td>
+      <td>82</td>
+      <td>@ Las Vegas Aces</td>
+      <td>1570.95</td>
+      <td>86</td>
+      <td>46.65%</td>
+      <td>53.35%</td>
+      <td>-15.13</td>
+    </tr>
+    <tr>
+      <td>2020-08-07</td>
+      <td>New York Liberty</td>
+      <td>1288.05</td>
+      <td>74</td>
+      <td>@ Washington Mystics</td>
+      <td>1641.36</td>
+      <td>66</td>
+      <td>11.57%</td>
+      <td>88.43%</td>
+      <td>40.57</td>
+    </tr>
+    <tr>
+      <td>2020-08-07</td>
+      <td>Washington Mystics</td>
+      <td>1641.36</td>
+      <td>66</td>
+      <td>New York Liberty</td>
+      <td>1288.05</td>
+      <td>74</td>
+      <td>88.43%</td>
+      <td>11.57%</td>
+      <td>-40.57</td>
+    </tr>
+    <tr>
+      <td>2020-08-08</td>
+      <td>Seattle Storm</td>
+      <td>1595.69</td>
+      <td>74</td>
+      <td>Phoenix Mercury</td>
+      <td>1524.31</td>
+      <td>68</td>
+      <td>60.13%</td>
+      <td>39.87%</td>
+      <td>15.84</td>
+    </tr>
+    <tr>
+      <td>2020-08-08</td>
+      <td>Chicago Sky</td>
+      <td>1557.02</td>
+      <td>100</td>
+      <td>@ Connecticut Sun</td>
+      <td>1497.16</td>
+      <td>93</td>
+      <td>58.53%</td>
+      <td>41.47%</td>
+      <td>17.79</td>
+    </tr>
+    <tr>
+      <td>2020-08-08</td>
+      <td>Dallas Wings</td>
+      <td>1387.08</td>
+      <td>85</td>
+      <td>Atlanta Dream</td>
+      <td>1370.88</td>
+      <td>75</td>
+      <td>52.33%</td>
+      <td>47.67%</td>
+      <td>24.45</td>
+    </tr>
+    <tr>
+      <td>2020-08-08</td>
+      <td>Connecticut Sun</td>
+      <td>1497.16</td>
+      <td>93</td>
+      <td>Chicago Sky</td>
+      <td>1557.02</td>
+      <td>100</td>
+      <td>41.47%</td>
+      <td>58.53%</td>
+      <td>-17.79</td>
+    </tr>
+    <tr>
+      <td>2020-08-08</td>
+      <td>Atlanta Dream</td>
+      <td>1370.88</td>
+      <td>75</td>
+      <td>@ Dallas Wings</td>
+      <td>1387.08</td>
+      <td>85</td>
+      <td>47.67%</td>
+      <td>52.33%</td>
+      <td>-24.46</td>
+    </tr>
+    <tr>
+      <td>2020-08-08</td>
+      <td>Phoenix Mercury</td>
+      <td>1524.31</td>
+      <td>68</td>
+      <td>@ Seattle Storm</td>
+      <td>1595.69</td>
+      <td>74</td>
+      <td>39.87%</td>
+      <td>60.13%</td>
+      <td>-15.84</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Las Vegas Aces</td>
+      <td>1586.09</td>
+      <td>78</td>
+      <td>@ New York Liberty</td>
+      <td>1328.62</td>
+      <td>76</td>
+      <td>81.49%</td>
+      <td>18.51%</td>
+      <td>4.24</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Los Angeles Sparks</td>
+      <td>1532.49</td>
+      <td>97</td>
+      <td>Minnesota Lynx</td>
+      <td>1577.42</td>
+      <td>81</td>
+      <td>43.57%</td>
+      <td>56.43%</td>
+      <td>36.61</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Washington Mystics</td>
+      <td>1600.79</td>
+      <td>84</td>
+      <td>@ Indiana Fever</td>
+      <td>1442.45</td>
+      <td>91</td>
+      <td>71.33%</td>
+      <td>28.67%</td>
+      <td>-30.61</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Minnesota Lynx</td>
+      <td>1577.42</td>
+      <td>81</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1532.49</td>
+      <td>97</td>
+      <td>56.43%</td>
+      <td>43.57%</td>
+      <td>-36.61</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>New York Liberty</td>
+      <td>1328.62</td>
+      <td>76</td>
+      <td>Las Vegas Aces</td>
+      <td>1586.09</td>
+      <td>78</td>
+      <td>18.51%</td>
+      <td>81.49%</td>
+      <td>-4.25</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Indiana Fever</td>
+      <td>1442.45</td>
+      <td>91</td>
+      <td>Washington Mystics</td>
+      <td>1600.79</td>
+      <td>84</td>
+      <td>28.67%</td>
+      <td>71.33%</td>
+      <td>30.61</td>
+    </tr>
+    <tr>
+      <td>2020-08-10</td>
+      <td>Phoenix Mercury</td>
+      <td>1508.47</td>
+      <td>91</td>
+      <td>@ Dallas Wings</td>
+      <td>1411.53</td>
+      <td>79</td>
+      <td>63.60%</td>
+      <td>36.40%</td>
+      <td>20.45</td>
+    </tr>
+    <tr>
+      <td>2020-08-10</td>
+      <td>Seattle Storm</td>
+      <td>1611.53</td>
+      <td>89</td>
+      <td>Chicago Sky</td>
+      <td>1574.81</td>
+      <td>71</td>
+      <td>55.26%</td>
+      <td>44.74%</td>
+      <td>30.79</td>
+    </tr>
+    <tr>
+      <td>2020-08-10</td>
+      <td>Dallas Wings</td>
+      <td>1411.53</td>
+      <td>79</td>
+      <td>Phoenix Mercury</td>
+      <td>1508.47</td>
+      <td>91</td>
+      <td>36.40%</td>
+      <td>63.60%</td>
+      <td>-20.45</td>
+    </tr>
+    <tr>
+      <td>2020-08-10</td>
+      <td>Chicago Sky</td>
+      <td>1574.81</td>
+      <td>71</td>
+      <td>@ Seattle Storm</td>
+      <td>1611.53</td>
+      <td>89</td>
+      <td>44.74%</td>
+      <td>55.26%</td>
+      <td>-30.78</td>
+    </tr>
+    <tr>
+      <td>2020-08-10</td>
+      <td>Connecticut Sun</td>
+      <td>1479.37</td>
+      <td>93</td>
+      <td>@ Atlanta Dream</td>
+      <td>1346.42</td>
+      <td>82</td>
+      <td>68.25%</td>
+      <td>31.75%</td>
+      <td>17.08</td>
+    </tr>
+    <tr>
+      <td>2020-08-10</td>
+      <td>Atlanta Dream</td>
+      <td>1346.42</td>
+      <td>82</td>
+      <td>Connecticut Sun</td>
+      <td>1479.37</td>
+      <td>93</td>
+      <td>31.75%</td>
+      <td>68.25%</td>
+      <td>-17.08</td>
+    </tr>
+    <tr>
+      <td>2020-08-11</td>
+      <td>Washington Mystics</td>
+      <td>1570.18</td>
+      <td>48</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1540.81</td>
+      <td>68</td>
+      <td>54.22%</td>
+      <td>45.78%</td>
+      <td>-39.33</td>
+    </tr>
+    <tr>
+      <td>2020-08-11</td>
+      <td>New York Liberty</td>
+      <td>1324.37</td>
+      <td>78</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1569.10</td>
+      <td>93</td>
+      <td>19.64%</td>
+      <td>80.36%</td>
+      <td>-12.34</td>
+    </tr>
+    <tr>
+      <td>2020-08-11</td>
+      <td>Las Vegas Aces</td>
+      <td>1590.33</td>
+      <td>98</td>
+      <td>@ Indiana Fever</td>
+      <td>1473.06</td>
+      <td>79</td>
+      <td>66.26%</td>
+      <td>33.74%</td>
+      <td>23.85</td>
+    </tr>
+    <tr>
+      <td>2020-08-11</td>
+      <td>Indiana Fever</td>
+      <td>1473.06</td>
+      <td>79</td>
+      <td>Las Vegas Aces</td>
+      <td>1590.33</td>
+      <td>98</td>
+      <td>33.74%</td>
+      <td>66.26%</td>
+      <td>-23.85</td>
+    </tr>
+    <tr>
+      <td>2020-08-11</td>
+      <td>Los Angeles Sparks</td>
+      <td>1569.10</td>
+      <td>93</td>
+      <td>New York Liberty</td>
+      <td>1324.37</td>
+      <td>78</td>
+      <td>80.36%</td>
+      <td>19.64%</td>
+      <td>12.34</td>
+    </tr>
+    <tr>
+      <td>2020-08-11</td>
+      <td>Minnesota Lynx</td>
+      <td>1540.81</td>
+      <td>68</td>
+      <td>Washington Mystics</td>
+      <td>1570.18</td>
+      <td>48</td>
+      <td>45.78%</td>
+      <td>54.22%</td>
+      <td>39.33</td>
+    </tr>
+    <tr>
+      <td>2020-08-12</td>
+      <td>Chicago Sky</td>
+      <td>1544.03</td>
+      <td>89</td>
+      <td>Phoenix Mercury</td>
+      <td>1528.92</td>
+      <td>71</td>
+      <td>52.17%</td>
+      <td>47.83%</td>
+      <td>32.91</td>
+    </tr>
+    <tr>
+      <td>2020-08-12</td>
+      <td>Connecticut Sun</td>
+      <td>1496.45</td>
+      <td>70</td>
+      <td>Dallas Wings</td>
+      <td>1391.08</td>
+      <td>66</td>
+      <td>64.72%</td>
+      <td>35.28%</td>
+      <td>11.44</td>
+    </tr>
+    <tr>
+      <td>2020-08-12</td>
+      <td>Seattle Storm</td>
+      <td>1642.32</td>
+      <td>100</td>
+      <td>Atlanta Dream</td>
+      <td>1329.34</td>
+      <td>63</td>
+      <td>85.83%</td>
+      <td>14.17%</td>
+      <td>13.97</td>
+    </tr>
+    <tr>
+      <td>2020-08-12</td>
+      <td>Phoenix Mercury</td>
+      <td>1528.92</td>
+      <td>71</td>
+      <td>@ Chicago Sky</td>
+      <td>1544.03</td>
+      <td>89</td>
+      <td>47.83%</td>
+      <td>52.17%</td>
+      <td>-32.91</td>
+    </tr>
+    <tr>
+      <td>2020-08-12</td>
+      <td>Atlanta Dream</td>
+      <td>1329.34</td>
+      <td>63</td>
+      <td>@ Seattle Storm</td>
+      <td>1642.32</td>
+      <td>100</td>
+      <td>14.17%</td>
+      <td>85.83%</td>
+      <td>-13.97</td>
+    </tr>
+    <tr>
+      <td>2020-08-12</td>
+      <td>Dallas Wings</td>
+      <td>1391.08</td>
+      <td>66</td>
+      <td>@ Connecticut Sun</td>
+      <td>1496.45</td>
+      <td>70</td>
+      <td>35.28%</td>
+      <td>64.72%</td>
+      <td>-11.45</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>New York Liberty</td>
+      <td>1312.03</td>
+      <td>79</td>
+      <td>Indiana Fever</td>
+      <td>1449.21</td>
+      <td>86</td>
+      <td>31.22%</td>
+      <td>68.78%</td>
+      <td>-13.39</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>Washington Mystics</td>
+      <td>1530.85</td>
+      <td>64</td>
+      <td>Los Angeles Sparks</td>
+      <td>1581.44</td>
+      <td>81</td>
+      <td>42.77%</td>
+      <td>57.23%</td>
+      <td>-28.60</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>Los Angeles Sparks</td>
+      <td>1581.44</td>
+      <td>81</td>
+      <td>@ Washington Mystics</td>
+      <td>1530.85</td>
+      <td>64</td>
+      <td>57.23%</td>
+      <td>42.77%</td>
+      <td>28.61</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>Indiana Fever</td>
+      <td>1449.21</td>
+      <td>86</td>
+      <td>@ New York Liberty</td>
+      <td>1312.03</td>
+      <td>79</td>
+      <td>68.78%</td>
+      <td>31.22%</td>
+      <td>13.40</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>Minnesota Lynx</td>
+      <td>1580.14</td>
+      <td>77</td>
+      <td>@ Las Vegas Aces</td>
+      <td>1614.18</td>
+      <td>87</td>
+      <td>45.12%</td>
+      <td>54.88%</td>
+      <td>-23.14</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>Las Vegas Aces</td>
+      <td>1614.18</td>
+      <td>87</td>
+      <td>Minnesota Lynx</td>
+      <td>1580.14</td>
+      <td>77</td>
+      <td>54.88%</td>
+      <td>45.12%</td>
+      <td>23.14</td>
+    </tr>
+    <tr>
+      <td>2020-08-14</td>
+      <td>Seattle Storm</td>
+      <td>1656.29</td>
+      <td>83</td>
+      <td>@ Dallas Wings</td>
+      <td>1379.63</td>
+      <td>65</td>
+      <td>83.10%</td>
+      <td>16.90%</td>
+      <td>11.63</td>
+    </tr>
+    <tr>
+      <td>2020-08-14</td>
+      <td>Connecticut Sun</td>
+      <td>1507.89</td>
+      <td>77</td>
+      <td>@ Chicago Sky</td>
+      <td>1576.94</td>
+      <td>74</td>
+      <td>40.19%</td>
+      <td>59.81%</td>
+      <td>16.81</td>
+    </tr>
+    <tr>
+      <td>2020-08-14</td>
+      <td>Chicago Sky</td>
+      <td>1576.94</td>
+      <td>74</td>
+      <td>Connecticut Sun</td>
+      <td>1507.89</td>
+      <td>77</td>
+      <td>59.81%</td>
+      <td>40.19%</td>
+      <td>-16.80</td>
+    </tr>
+    <tr>
+      <td>2020-08-14</td>
+      <td>Dallas Wings</td>
+      <td>1379.63</td>
+      <td>65</td>
+      <td>Seattle Storm</td>
+      <td>1656.29</td>
+      <td>83</td>
+      <td>16.90%</td>
+      <td>83.10%</td>
+      <td>-11.63</td>
+    </tr>
+    <tr>
+      <td>2020-08-14</td>
+      <td>Phoenix Mercury</td>
+      <td>1496.01</td>
+      <td>96</td>
+      <td>Atlanta Dream</td>
+      <td>1315.37</td>
+      <td>80</td>
+      <td>73.88%</td>
+      <td>26.12%</td>
+      <td>16.94</td>
+    </tr>
+    <tr>
+      <td>2020-08-14</td>
+      <td>Atlanta Dream</td>
+      <td>1315.37</td>
+      <td>80</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1496.01</td>
+      <td>96</td>
+      <td>26.12%</td>
+      <td>73.88%</td>
+      <td>-16.95</td>
+    </tr>
+    <tr>
+      <td>2020-08-15</td>
+      <td>New York Liberty</td>
+      <td>1298.64</td>
+      <td>64</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1557.00</td>
+      <td>94</td>
+      <td>18.43%</td>
+      <td>81.57%</td>
+      <td>-16.38</td>
+    </tr>
+    <tr>
+      <td>2020-08-15</td>
+      <td>Los Angeles Sparks</td>
+      <td>1610.05</td>
+      <td>90</td>
+      <td>@ Indiana Fever</td>
+      <td>1462.61</td>
+      <td>76</td>
+      <td>70.03%</td>
+      <td>29.97%</td>
+      <td>18.19</td>
+    </tr>
+    <tr>
+      <td>2020-08-15</td>
+      <td>Washington Mystics</td>
+      <td>1502.25</td>
+      <td>73</td>
+      <td>@ Las Vegas Aces</td>
+      <td>1637.32</td>
+      <td>88</td>
+      <td>31.48%</td>
+      <td>68.52%</td>
+      <td>-19.78</td>
+    </tr>
+    <tr>
+      <td>2020-08-15</td>
+      <td>Indiana Fever</td>
+      <td>1462.61</td>
+      <td>76</td>
+      <td>Los Angeles Sparks</td>
+      <td>1610.05</td>
+      <td>90</td>
+      <td>29.97%</td>
+      <td>70.03%</td>
+      <td>-18.19</td>
+    </tr>
+    <tr>
+      <td>2020-08-15</td>
+      <td>Las Vegas Aces</td>
+      <td>1637.32</td>
+      <td>88</td>
+      <td>Washington Mystics</td>
+      <td>1502.25</td>
+      <td>73</td>
+      <td>68.52%</td>
+      <td>31.48%</td>
+      <td>19.78</td>
+    </tr>
+    <tr>
+      <td>2020-08-15</td>
+      <td>Minnesota Lynx</td>
+      <td>1557.00</td>
+      <td>94</td>
+      <td>New York Liberty</td>
+      <td>1298.64</td>
+      <td>64</td>
+      <td>81.57%</td>
+      <td>18.43%</td>
+      <td>16.37</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Chicago Sky</td>
+      <td>1560.14</td>
+      <td>92</td>
+      <td>@ Atlanta Dream</td>
+      <td>1298.42</td>
+      <td>67</td>
+      <td>81.86%</td>
+      <td>18.14%</td>
+      <td>14.71</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Seattle Storm</td>
+      <td>1667.92</td>
+      <td>95</td>
+      <td>@ Connecticut Sun</td>
+      <td>1524.70</td>
+      <td>72</td>
+      <td>69.52%</td>
+      <td>30.48%</td>
+      <td>23.72</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Dallas Wings</td>
+      <td>1368.00</td>
+      <td>95</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1512.95</td>
+      <td>89</td>
+      <td>30.27%</td>
+      <td>69.73%</td>
+      <td>27.70</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Atlanta Dream</td>
+      <td>1298.42</td>
+      <td>67</td>
+      <td>Chicago Sky</td>
+      <td>1560.14</td>
+      <td>92</td>
+      <td>18.14%</td>
+      <td>81.86%</td>
+      <td>-14.71</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Phoenix Mercury</td>
+      <td>1512.95</td>
+      <td>89</td>
+      <td>Dallas Wings</td>
+      <td>1368.00</td>
+      <td>95</td>
+      <td>69.73%</td>
+      <td>30.27%</td>
+      <td>-27.70</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Connecticut Sun</td>
+      <td>1524.70</td>
+      <td>72</td>
+      <td>Seattle Storm</td>
+      <td>1667.92</td>
+      <td>95</td>
+      <td>30.48%</td>
+      <td>69.52%</td>
+      <td>-23.71</td>
+    </tr>
+    <tr>
+      <td>2020-08-18</td>
+      <td>Las Vegas Aces</td>
+      <td>1657.10</td>
+      <td>82</td>
+      <td>@ Chicago Sky</td>
+      <td>1574.85</td>
+      <td>84</td>
+      <td>61.62%</td>
+      <td>38.38%</td>
+      <td>-14.13</td>
+    </tr>
+    <tr>
+      <td>2020-08-18</td>
+      <td>Indiana Fever</td>
+      <td>1444.42</td>
+      <td>62</td>
+      <td>@ Connecticut Sun</td>
+      <td>1500.99</td>
+      <td>84</td>
+      <td>41.93%</td>
+      <td>58.07%</td>
+      <td>-31.90</td>
+    </tr>
+    <tr>
+      <td>2020-08-18</td>
+      <td>New York Liberty</td>
+      <td>1282.26</td>
+      <td>64</td>
+      <td>@ Seattle Storm</td>
+      <td>1691.64</td>
+      <td>105</td>
+      <td>8.65%</td>
+      <td>91.35%</td>
+      <td>-8.99</td>
+    </tr>
+    <tr>
+      <td>2020-08-18</td>
+      <td>Seattle Storm</td>
+      <td>1691.64</td>
+      <td>105</td>
+      <td>New York Liberty</td>
+      <td>1282.26</td>
+      <td>64</td>
+      <td>91.35%</td>
+      <td>8.65%</td>
+      <td>8.98</td>
+    </tr>
+    <tr>
+      <td>2020-08-18</td>
+      <td>Connecticut Sun</td>
+      <td>1500.99</td>
+      <td>84</td>
+      <td>Indiana Fever</td>
+      <td>1444.42</td>
+      <td>62</td>
+      <td>58.07%</td>
+      <td>41.93%</td>
+      <td>31.90</td>
+    </tr>
+    <tr>
+      <td>2020-08-18</td>
+      <td>Chicago Sky</td>
+      <td>1574.85</td>
+      <td>84</td>
+      <td>Las Vegas Aces</td>
+      <td>1657.10</td>
+      <td>82</td>
+      <td>38.38%</td>
+      <td>61.62%</td>
+      <td>14.14</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Phoenix Mercury</td>
+      <td>1485.25</td>
+      <td>74</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1628.24</td>
+      <td>83</td>
+      <td>30.51%</td>
+      <td>69.49%</td>
+      <td>-14.85</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Dallas Wings</td>
+      <td>1395.70</td>
+      <td>84</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1573.37</td>
+      <td>91</td>
+      <td>26.45%</td>
+      <td>73.55%</td>
+      <td>-11.35</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Minnesota Lynx</td>
+      <td>1573.37</td>
+      <td>91</td>
+      <td>Dallas Wings</td>
+      <td>1395.70</td>
+      <td>84</td>
+      <td>73.55%</td>
+      <td>26.45%</td>
+      <td>11.35</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Los Angeles Sparks</td>
+      <td>1628.24</td>
+      <td>83</td>
+      <td>Phoenix Mercury</td>
+      <td>1485.25</td>
+      <td>74</td>
+      <td>69.49%</td>
+      <td>30.51%</td>
+      <td>14.84</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Atlanta Dream</td>
+      <td>1283.71</td>
+      <td>91</td>
+      <td>@ Washington Mystics</td>
+      <td>1482.47</td>
+      <td>98</td>
+      <td>24.16%</td>
+      <td>75.84%</td>
+      <td>-10.37</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Washington Mystics</td>
+      <td>1482.47</td>
+      <td>98</td>
+      <td>Atlanta Dream</td>
+      <td>1283.71</td>
+      <td>91</td>
+      <td>75.84%</td>
+      <td>24.16%</td>
+      <td>10.37</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Seattle Storm</td>
+      <td>1700.62</td>
+      <td>84</td>
+      <td>@ Indiana Fever</td>
+      <td>1412.52</td>
+      <td>90</td>
+      <td>84.00%</td>
+      <td>16.00%</td>
+      <td>-33.37</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Chicago Sky</td>
+      <td>1588.99</td>
+      <td>101</td>
+      <td>@ New York Liberty</td>
+      <td>1273.27</td>
+      <td>85</td>
+      <td>86.03%</td>
+      <td>13.97%</td>
+      <td>9.07</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Connecticut Sun</td>
+      <td>1532.89</td>
+      <td>78</td>
+      <td>@ Las Vegas Aces</td>
+      <td>1642.97</td>
+      <td>99</td>
+      <td>34.67%</td>
+      <td>65.33%</td>
+      <td>-25.77</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>New York Liberty</td>
+      <td>1273.27</td>
+      <td>85</td>
+      <td>Chicago Sky</td>
+      <td>1588.99</td>
+      <td>101</td>
+      <td>13.97%</td>
+      <td>86.03%</td>
+      <td>-9.07</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Indiana Fever</td>
+      <td>1412.52</td>
+      <td>90</td>
+      <td>Seattle Storm</td>
+      <td>1700.62</td>
+      <td>84</td>
+      <td>16.00%</td>
+      <td>84.00%</td>
+      <td>33.38</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Las Vegas Aces</td>
+      <td>1642.97</td>
+      <td>99</td>
+      <td>Connecticut Sun</td>
+      <td>1532.89</td>
+      <td>78</td>
+      <td>65.33%</td>
+      <td>34.67%</td>
+      <td>25.77</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Atlanta Dream</td>
+      <td>1273.34</td>
+      <td>85</td>
+      <td>Los Angeles Sparks</td>
+      <td>1643.08</td>
+      <td>93</td>
+      <td>10.64%</td>
+      <td>89.36%</td>
+      <td>-4.88</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Los Angeles Sparks</td>
+      <td>1643.08</td>
+      <td>93</td>
+      <td>@ Atlanta Dream</td>
+      <td>1273.34</td>
+      <td>85</td>
+      <td>89.36%</td>
+      <td>10.64%</td>
+      <td>4.88</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Washington Mystics</td>
+      <td>1492.84</td>
+      <td>92</td>
+      <td>@ Dallas Wings</td>
+      <td>1384.35</td>
+      <td>101</td>
+      <td>65.12%</td>
+      <td>34.88%</td>
+      <td>-31.69</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Phoenix Mercury</td>
+      <td>1470.40</td>
+      <td>80</td>
+      <td>Minnesota Lynx</td>
+      <td>1584.72</td>
+      <td>90</td>
+      <td>34.12%</td>
+      <td>65.88%</td>
+      <td>-17.50</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Minnesota Lynx</td>
+      <td>1584.72</td>
+      <td>90</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1470.40</td>
+      <td>80</td>
+      <td>65.88%</td>
+      <td>34.12%</td>
+      <td>17.50</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Dallas Wings</td>
+      <td>1384.35</td>
+      <td>101</td>
+      <td>Washington Mystics</td>
+      <td>1492.84</td>
+      <td>92</td>
+      <td>34.88%</td>
+      <td>65.12%</td>
+      <td>31.69</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>New York Liberty</td>
+      <td>1264.20</td>
+      <td>65</td>
+      <td>@ Connecticut Sun</td>
+      <td>1507.12</td>
+      <td>82</td>
+      <td>19.81%</td>
+      <td>80.19%</td>
+      <td>-13.24</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Chicago Sky</td>
+      <td>1598.06</td>
+      <td>87</td>
+      <td>Indiana Fever</td>
+      <td>1445.90</td>
+      <td>76</td>
+      <td>70.60%</td>
+      <td>29.40%</td>
+      <td>15.81</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Connecticut Sun</td>
+      <td>1507.12</td>
+      <td>82</td>
+      <td>New York Liberty</td>
+      <td>1264.20</td>
+      <td>65</td>
+      <td>80.19%</td>
+      <td>19.81%</td>
+      <td>13.25</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Las Vegas Aces</td>
+      <td>1668.74</td>
+      <td>82</td>
+      <td>Seattle Storm</td>
+      <td>1667.25</td>
+      <td>74</td>
+      <td>50.21%</td>
+      <td>49.79%</td>
+      <td>22.84</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Seattle Storm</td>
+      <td>1667.25</td>
+      <td>74</td>
+      <td>@ Las Vegas Aces</td>
+      <td>1668.74</td>
+      <td>82</td>
+      <td>49.79%</td>
+      <td>50.21%</td>
+      <td>-22.84</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Indiana Fever</td>
+      <td>1445.90</td>
+      <td>76</td>
+      <td>@ Chicago Sky</td>
+      <td>1598.06</td>
+      <td>87</td>
+      <td>29.40%</td>
+      <td>70.60%</td>
+      <td>-15.82</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Los Angeles Sparks</td>
+      <td>1647.96</td>
+      <td>84</td>
+      <td>Dallas Wings</td>
+      <td>1416.04</td>
+      <td>81</td>
+      <td>79.17%</td>
+      <td>20.83%</td>
+      <td>5.85</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Minnesota Lynx</td>
+      <td>1602.22</td>
+      <td>75</td>
+      <td>Atlanta Dream</td>
+      <td>1268.46</td>
+      <td>78</td>
+      <td>87.23%</td>
+      <td>12.77%</td>
+      <td>-24.50</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Washington Mystics</td>
+      <td>1461.15</td>
+      <td>87</td>
+      <td>Phoenix Mercury</td>
+      <td>1452.90</td>
+      <td>88</td>
+      <td>51.19%</td>
+      <td>48.81%</td>
+      <td>-8.30</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Dallas Wings</td>
+      <td>1416.04</td>
+      <td>81</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1647.96</td>
+      <td>84</td>
+      <td>20.83%</td>
+      <td>79.17%</td>
+      <td>-5.85</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Atlanta Dream</td>
+      <td>1268.46</td>
+      <td>78</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1602.22</td>
+      <td>75</td>
+      <td>12.77%</td>
+      <td>87.23%</td>
+      <td>24.51</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Phoenix Mercury</td>
+      <td>1452.90</td>
+      <td>88</td>
+      <td>@ Washington Mystics</td>
+      <td>1461.15</td>
+      <td>87</td>
+      <td>48.81%</td>
+      <td>51.19%</td>
+      <td>8.31</td>
+    </tr>
+    <tr>
+      <td>2020-08-25</td>
+      <td>Chicago Sky</td>
+      <td>1613.87</td>
+      <td>99</td>
+      <td>New York Liberty</td>
+      <td>1250.96</td>
+      <td>101</td>
+      <td>88.98%</td>
+      <td>11.02%</td>
+      <td>-20.41</td>
+    </tr>
+    <tr>
+      <td>2020-08-25</td>
+      <td>Dallas Wings</td>
+      <td>1410.19</td>
+      <td>92</td>
+      <td>Las Vegas Aces</td>
+      <td>1691.58</td>
+      <td>96</td>
+      <td>16.52%</td>
+      <td>83.48%</td>
+      <td>-5.36</td>
+    </tr>
+    <tr>
+      <td>2020-08-25</td>
+      <td>Seattle Storm</td>
+      <td>1644.41</td>
+      <td>87</td>
+      <td>Indiana Fever</td>
+      <td>1430.08</td>
+      <td>74</td>
+      <td>77.45%</td>
+      <td>22.55%</td>
+      <td>13.19</td>
+    </tr>
+    <tr>
+      <td>2020-08-25</td>
+      <td>New York Liberty</td>
+      <td>1250.96</td>
+      <td>101</td>
+      <td>@ Chicago Sky</td>
+      <td>1613.87</td>
+      <td>99</td>
+      <td>11.02%</td>
+      <td>88.98%</td>
+      <td>20.41</td>
+    </tr>
+    <tr>
+      <td>2020-08-25</td>
+      <td>Las Vegas Aces</td>
+      <td>1691.58</td>
+      <td>96</td>
+      <td>@ Dallas Wings</td>
+      <td>1410.19</td>
+      <td>92</td>
+      <td>83.48%</td>
+      <td>16.52%</td>
+      <td>5.36</td>
+    </tr>
+    <tr>
+      <td>2020-08-25</td>
+      <td>Indiana Fever</td>
+      <td>1430.08</td>
+      <td>74</td>
+      <td>@ Seattle Storm</td>
+      <td>1644.41</td>
+      <td>87</td>
+      <td>22.55%</td>
+      <td>77.45%</td>
+      <td>-13.19</td>
+    </tr>
+    <tr>
+      <td>2020-08-28</td>
+      <td>Atlanta Dream</td>
+      <td>1292.97</td>
+      <td>79</td>
+      <td>Minnesota Lynx</td>
+      <td>1577.72</td>
+      <td>88</td>
+      <td>16.26%</td>
+      <td>83.74%</td>
+      <td>-7.91</td>
+    </tr>
+    <tr>
+      <td>2020-08-28</td>
+      <td>Minnesota Lynx</td>
+      <td>1577.72</td>
+      <td>88</td>
+      <td>@ Atlanta Dream</td>
+      <td>1292.97</td>
+      <td>79</td>
+      <td>83.74%</td>
+      <td>16.26%</td>
+      <td>7.91</td>
+    </tr>
+    <tr>
+      <td>2020-08-28</td>
+      <td>Connecticut Sun</td>
+      <td>1520.37</td>
+      <td>76</td>
+      <td>Los Angeles Sparks</td>
+      <td>1653.81</td>
+      <td>80</td>
+      <td>31.69%</td>
+      <td>68.31%</td>
+      <td>-10.28</td>
+    </tr>
+    <tr>
+      <td>2020-08-28</td>
+      <td>Los Angeles Sparks</td>
+      <td>1653.81</td>
+      <td>80</td>
+      <td>@ Connecticut Sun</td>
+      <td>1520.37</td>
+      <td>76</td>
+      <td>68.31%</td>
+      <td>31.69%</td>
+      <td>10.28</td>
+    </tr>
+    <tr>
+      <td>2020-08-28</td>
+      <td>Phoenix Mercury</td>
+      <td>1461.21</td>
+      <td>94</td>
+      <td>Washington Mystics</td>
+      <td>1452.85</td>
+      <td>72</td>
+      <td>51.20%</td>
+      <td>48.80%</td>
+      <td>37.12</td>
+    </tr>
+    <tr>
+      <td>2020-08-28</td>
+      <td>Washington Mystics</td>
+      <td>1452.85</td>
+      <td>72</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1461.21</td>
+      <td>94</td>
+      <td>48.80%</td>
+      <td>51.20%</td>
+      <td>-37.13</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Chicago Sky</td>
+      <td>1593.46</td>
+      <td>74</td>
+      <td>Seattle Storm</td>
+      <td>1657.60</td>
+      <td>88</td>
+      <td>40.87%</td>
+      <td>59.13%</td>
+      <td>-24.80</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>New York Liberty</td>
+      <td>1271.37</td>
+      <td>63</td>
+      <td>@ Las Vegas Aces</td>
+      <td>1696.94</td>
+      <td>80</td>
+      <td>7.95%</td>
+      <td>92.05%</td>
+      <td>-5.32</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Indiana Fever</td>
+      <td>1416.89</td>
+      <td>78</td>
+      <td>Dallas Wings</td>
+      <td>1404.83</td>
+      <td>82</td>
+      <td>51.74%</td>
+      <td>48.26%</td>
+      <td>-16.78</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Las Vegas Aces</td>
+      <td>1696.94</td>
+      <td>80</td>
+      <td>New York Liberty</td>
+      <td>1271.37</td>
+      <td>63</td>
+      <td>92.05%</td>
+      <td>7.95%</td>
+      <td>5.31</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Seattle Storm</td>
+      <td>1657.60</td>
+      <td>88</td>
+      <td>@ Chicago Sky</td>
+      <td>1593.46</td>
+      <td>74</td>
+      <td>59.13%</td>
+      <td>40.87%</td>
+      <td>24.80</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Dallas Wings</td>
+      <td>1404.83</td>
+      <td>82</td>
+      <td>@ Indiana Fever</td>
+      <td>1416.89</td>
+      <td>78</td>
+      <td>48.26%</td>
+      <td>51.74%</td>
+      <td>16.78</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Minnesota Lynx</td>
+      <td>1585.63</td>
+      <td>79</td>
+      <td>Phoenix Mercury</td>
+      <td>1498.33</td>
+      <td>83</td>
+      <td>62.31%</td>
+      <td>37.69%</td>
+      <td>-20.21</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Washington Mystics</td>
+      <td>1415.72</td>
+      <td>63</td>
+      <td>Connecticut Sun</td>
+      <td>1510.09</td>
+      <td>76</td>
+      <td>36.74%</td>
+      <td>63.26%</td>
+      <td>-21.49</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Connecticut Sun</td>
+      <td>1510.09</td>
+      <td>76</td>
+      <td>@ Washington Mystics</td>
+      <td>1415.72</td>
+      <td>63</td>
+      <td>63.26%</td>
+      <td>36.74%</td>
+      <td>21.48</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Phoenix Mercury</td>
+      <td>1498.33</td>
+      <td>83</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1585.63</td>
+      <td>79</td>
+      <td>37.69%</td>
+      <td>62.31%</td>
+      <td>20.21</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Atlanta Dream</td>
+      <td>1285.06</td>
+      <td>79</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1664.09</td>
+      <td>84</td>
+      <td>10.14%</td>
+      <td>89.86%</td>
+      <td>-3.68</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Los Angeles Sparks</td>
+      <td>1664.09</td>
+      <td>84</td>
+      <td>Atlanta Dream</td>
+      <td>1285.06</td>
+      <td>79</td>
+      <td>89.86%</td>
+      <td>10.14%</td>
+      <td>3.68</td>
+    </tr>
+    <tr>
+      <td>2020-08-31</td>
+      <td>Indiana Fever</td>
+      <td>1400.11</td>
+      <td>77</td>
+      <td>Chicago Sky</td>
+      <td>1568.66</td>
+      <td>100</td>
+      <td>27.48%</td>
+      <td>72.52%</td>
+      <td>-21.38</td>
+    </tr>
+    <tr>
+      <td>2020-08-31</td>
+      <td>Minnesota Lynx</td>
+      <td>1565.42</td>
+      <td>96</td>
+      <td>Los Angeles Sparks</td>
+      <td>1667.77</td>
+      <td>78</td>
+      <td>35.68%</td>
+      <td>64.32%</td>
+      <td>44.26</td>
+    </tr>
+    <tr>
+      <td>2020-08-31</td>
+      <td>Chicago Sky</td>
+      <td>1568.66</td>
+      <td>100</td>
+      <td>@ Indiana Fever</td>
+      <td>1400.11</td>
+      <td>77</td>
+      <td>72.52%</td>
+      <td>27.48%</td>
+      <td>21.37</td>
+    </tr>
+    <tr>
+      <td>2020-08-31</td>
+      <td>Los Angeles Sparks</td>
+      <td>1667.77</td>
+      <td>78</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1565.42</td>
+      <td>96</td>
+      <td>64.32%</td>
+      <td>35.68%</td>
+      <td>-44.26</td>
+    </tr>
+    <tr>
+      <td>2020-09-01</td>
+      <td>Phoenix Mercury</td>
+      <td>1518.54</td>
+      <td>92</td>
+      <td>@ Las Vegas Aces</td>
+      <td>1702.25</td>
+      <td>85</td>
+      <td>25.78%</td>
+      <td>74.22%</td>
+      <td>31.85</td>
+    </tr>
+    <tr>
+      <td>2020-09-01</td>
+      <td>Atlanta Dream</td>
+      <td>1281.38</td>
+      <td>102</td>
+      <td>Indiana Fever</td>
+      <td>1378.73</td>
+      <td>90</td>
+      <td>36.35%</td>
+      <td>63.65%</td>
+      <td>35.77</td>
+    </tr>
+    <tr>
+      <td>2020-09-01</td>
+      <td>New York Liberty</td>
+      <td>1266.05</td>
+      <td>65</td>
+      <td>Connecticut Sun</td>
+      <td>1531.57</td>
+      <td>70</td>
+      <td>17.82%</td>
+      <td>82.18%</td>
+      <td>-6.46</td>
+    </tr>
+    <tr>
+      <td>2020-09-01</td>
+      <td>Indiana Fever</td>
+      <td>1378.73</td>
+      <td>90</td>
+      <td>@ Atlanta Dream</td>
+      <td>1281.38</td>
+      <td>102</td>
+      <td>63.65%</td>
+      <td>36.35%</td>
+      <td>-35.77</td>
+    </tr>
+    <tr>
+      <td>2020-09-01</td>
+      <td>Connecticut Sun</td>
+      <td>1531.57</td>
+      <td>70</td>
+      <td>@ New York Liberty</td>
+      <td>1266.05</td>
+      <td>65</td>
+      <td>82.18%</td>
+      <td>17.82%</td>
+      <td>6.47</td>
+    </tr>
+    <tr>
+      <td>2020-09-01</td>
+      <td>Las Vegas Aces</td>
+      <td>1702.25</td>
+      <td>85</td>
+      <td>Phoenix Mercury</td>
+      <td>1518.54</td>
+      <td>92</td>
+      <td>74.22%</td>
+      <td>25.78%</td>
+      <td>-31.85</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Chicago Sky</td>
+      <td>1590.03</td>
+      <td>83</td>
+      <td>Minnesota Lynx</td>
+      <td>1609.68</td>
+      <td>86</td>
+      <td>47.18%</td>
+      <td>52.82%</td>
+      <td>-13.25</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Washington Mystics</td>
+      <td>1394.23</td>
+      <td>64</td>
+      <td>@ Seattle Storm</td>
+      <td>1682.40</td>
+      <td>71</td>
+      <td>15.99%</td>
+      <td>84.01%</td>
+      <td>-6.86</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Los Angeles Sparks</td>
+      <td>1623.51</td>
+      <td>91</td>
+      <td>@ Dallas Wings</td>
+      <td>1421.61</td>
+      <td>83</td>
+      <td>76.17%</td>
+      <td>23.83%</td>
+      <td>10.93</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Minnesota Lynx</td>
+      <td>1609.68</td>
+      <td>86</td>
+      <td>@ Chicago Sky</td>
+      <td>1590.03</td>
+      <td>83</td>
+      <td>52.82%</td>
+      <td>47.18%</td>
+      <td>13.25</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Dallas Wings</td>
+      <td>1421.61</td>
+      <td>83</td>
+      <td>Los Angeles Sparks</td>
+      <td>1623.51</td>
+      <td>91</td>
+      <td>23.83%</td>
+      <td>76.17%</td>
+      <td>-10.93</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Seattle Storm</td>
+      <td>1682.40</td>
+      <td>71</td>
+      <td>Washington Mystics</td>
+      <td>1394.23</td>
+      <td>64</td>
+      <td>84.01%</td>
+      <td>15.99%</td>
+      <td>6.87</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Atlanta Dream</td>
+      <td>1317.15</td>
+      <td>62</td>
+      <td>@ New York Liberty</td>
+      <td>1259.59</td>
+      <td>56</td>
+      <td>58.21%</td>
+      <td>41.79%</td>
+      <td>16.60</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Phoenix Mercury</td>
+      <td>1550.39</td>
+      <td>105</td>
+      <td>Indiana Fever</td>
+      <td>1342.96</td>
+      <td>81</td>
+      <td>76.75%</td>
+      <td>23.25%</td>
+      <td>18.48</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Indiana Fever</td>
+      <td>1342.96</td>
+      <td>81</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1550.39</td>
+      <td>105</td>
+      <td>23.25%</td>
+      <td>76.75%</td>
+      <td>-18.47</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Las Vegas Aces</td>
+      <td>1670.40</td>
+      <td>93</td>
+      <td>@ Connecticut Sun</td>
+      <td>1538.04</td>
+      <td>78</td>
+      <td>68.18%</td>
+      <td>31.82%</td>
+      <td>19.99</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>New York Liberty</td>
+      <td>1259.59</td>
+      <td>56</td>
+      <td>Atlanta Dream</td>
+      <td>1317.15</td>
+      <td>62</td>
+      <td>41.79%</td>
+      <td>58.21%</td>
+      <td>-16.60</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Connecticut Sun</td>
+      <td>1538.04</td>
+      <td>78</td>
+      <td>Las Vegas Aces</td>
+      <td>1670.40</td>
+      <td>93</td>
+      <td>31.82%</td>
+      <td>68.18%</td>
+      <td>-19.99</td>
+    </tr>
+    <tr>
+      <td>2020-09-04</td>
+      <td>Los Angeles Sparks</td>
+      <td>1634.44</td>
+      <td>89</td>
+      <td>Seattle Storm</td>
+      <td>1689.27</td>
+      <td>90</td>
+      <td>42.17%</td>
+      <td>57.83%</td>
+      <td>-6.84</td>
+    </tr>
+    <tr>
+      <td>2020-09-04</td>
+      <td>Dallas Wings</td>
+      <td>1410.68</td>
+      <td>75</td>
+      <td>Minnesota Lynx</td>
+      <td>1622.93</td>
+      <td>88</td>
+      <td>22.76%</td>
+      <td>77.24%</td>
+      <td>-13.31</td>
+    </tr>
+    <tr>
+      <td>2020-09-04</td>
+      <td>Minnesota Lynx</td>
+      <td>1622.93</td>
+      <td>88</td>
+      <td>@ Dallas Wings</td>
+      <td>1410.68</td>
+      <td>75</td>
+      <td>77.24%</td>
+      <td>22.76%</td>
+      <td>13.31</td>
+    </tr>
+    <tr>
+      <td>2020-09-04</td>
+      <td>Seattle Storm</td>
+      <td>1689.27</td>
+      <td>90</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1634.44</td>
+      <td>89</td>
+      <td>57.83%</td>
+      <td>42.17%</td>
+      <td>6.84</td>
+    </tr>
+    <tr>
+      <td>2020-09-04</td>
+      <td>Chicago Sky</td>
+      <td>1576.78</td>
+      <td>69</td>
+      <td>@ Washington Mystics</td>
+      <td>1387.37</td>
+      <td>79</td>
+      <td>74.84%</td>
+      <td>25.16%</td>
+      <td>-38.39</td>
+    </tr>
+    <tr>
+      <td>2020-09-04</td>
+      <td>Washington Mystics</td>
+      <td>1387.37</td>
+      <td>79</td>
+      <td>Chicago Sky</td>
+      <td>1576.78</td>
+      <td>69</td>
+      <td>25.16%</td>
+      <td>74.84%</td>
+      <td>38.39</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>New York Liberty</td>
+      <td>1242.99</td>
+      <td>67</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1568.87</td>
+      <td>83</td>
+      <td>13.29%</td>
+      <td>86.71%</td>
+      <td>-8.62</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>Atlanta Dream</td>
+      <td>1333.75</td>
+      <td>79</td>
+      <td>Las Vegas Aces</td>
+      <td>1690.39</td>
+      <td>89</td>
+      <td>11.38%</td>
+      <td>88.62%</td>
+      <td>-5.84</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>Connecticut Sun</td>
+      <td>1518.05</td>
+      <td>96</td>
+      <td>@ Indiana Fever</td>
+      <td>1324.49</td>
+      <td>77</td>
+      <td>75.29%</td>
+      <td>24.71%</td>
+      <td>17.47</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>Las Vegas Aces</td>
+      <td>1690.39</td>
+      <td>89</td>
+      <td>@ Atlanta Dream</td>
+      <td>1333.75</td>
+      <td>79</td>
+      <td>88.62%</td>
+      <td>11.38%</td>
+      <td>5.83</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>Phoenix Mercury</td>
+      <td>1568.87</td>
+      <td>83</td>
+      <td>New York Liberty</td>
+      <td>1242.99</td>
+      <td>67</td>
+      <td>86.71%</td>
+      <td>13.29%</td>
+      <td>8.62</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>Indiana Fever</td>
+      <td>1324.49</td>
+      <td>77</td>
+      <td>Connecticut Sun</td>
+      <td>1518.05</td>
+      <td>96</td>
+      <td>24.71%</td>
+      <td>75.29%</td>
+      <td>-17.47</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Seattle Storm</td>
+      <td>1696.11</td>
+      <td>103</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1636.24</td>
+      <td>88</td>
+      <td>58.53%</td>
+      <td>41.47%</td>
+      <td>26.05</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Washington Mystics</td>
+      <td>1425.76</td>
+      <td>94</td>
+      <td>Dallas Wings</td>
+      <td>1397.37</td>
+      <td>101</td>
+      <td>54.08%</td>
+      <td>45.92%</td>
+      <td>-23.21</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Minnesota Lynx</td>
+      <td>1636.24</td>
+      <td>88</td>
+      <td>Seattle Storm</td>
+      <td>1696.11</td>
+      <td>103</td>
+      <td>41.47%</td>
+      <td>58.53%</td>
+      <td>-26.05</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Los Angeles Sparks</td>
+      <td>1627.60</td>
+      <td>86</td>
+      <td>Chicago Sky</td>
+      <td>1538.39</td>
+      <td>80</td>
+      <td>62.56%</td>
+      <td>37.44%</td>
+      <td>14.87</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Chicago Sky</td>
+      <td>1538.39</td>
+      <td>80</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1627.60</td>
+      <td>86</td>
+      <td>37.44%</td>
+      <td>62.56%</td>
+      <td>-14.87</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Dallas Wings</td>
+      <td>1397.37</td>
+      <td>101</td>
+      <td>@ Washington Mystics</td>
+      <td>1425.76</td>
+      <td>94</td>
+      <td>45.92%</td>
+      <td>54.08%</td>
+      <td>23.21</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Connecticut Sun</td>
+      <td>1535.52</td>
+      <td>85</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1577.49</td>
+      <td>70</td>
+      <td>43.99%</td>
+      <td>56.01%</td>
+      <td>35.18</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Phoenix Mercury</td>
+      <td>1577.49</td>
+      <td>70</td>
+      <td>Connecticut Sun</td>
+      <td>1535.52</td>
+      <td>85</td>
+      <td>56.01%</td>
+      <td>43.99%</td>
+      <td>-35.19</td>
+    </tr>
+    <tr>
+      <td>2020-09-08</td>
+      <td>New York Liberty</td>
+      <td>1234.37</td>
+      <td>70</td>
+      <td>Los Angeles Sparks</td>
+      <td>1642.47</td>
+      <td>96</td>
+      <td>8.71%</td>
+      <td>91.29%</td>
+      <td>-7.21</td>
+    </tr>
+    <tr>
+      <td>2020-09-08</td>
+      <td>Washington Mystics</td>
+      <td>1402.55</td>
+      <td>89</td>
+      <td>Minnesota Lynx</td>
+      <td>1610.19</td>
+      <td>86</td>
+      <td>23.23%</td>
+      <td>76.77%</td>
+      <td>21.57</td>
+    </tr>
+    <tr>
+      <td>2020-09-08</td>
+      <td>Minnesota Lynx</td>
+      <td>1610.19</td>
+      <td>86</td>
+      <td>@ Washington Mystics</td>
+      <td>1402.55</td>
+      <td>89</td>
+      <td>76.77%</td>
+      <td>23.23%</td>
+      <td>-21.57</td>
+    </tr>
+    <tr>
+      <td>2020-09-08</td>
+      <td>Los Angeles Sparks</td>
+      <td>1642.47</td>
+      <td>96</td>
+      <td>@ New York Liberty</td>
+      <td>1234.37</td>
+      <td>70</td>
+      <td>91.29%</td>
+      <td>8.71%</td>
+      <td>7.21</td>
+    </tr>
+    <tr>
+      <td>2020-09-08</td>
+      <td>Indiana Fever</td>
+      <td>1307.02</td>
+      <td>86</td>
+      <td>@ Las Vegas Aces</td>
+      <td>1696.22</td>
+      <td>92</td>
+      <td>9.62%</td>
+      <td>90.38%</td>
+      <td>-3.82</td>
+    </tr>
+    <tr>
+      <td>2020-09-08</td>
+      <td>Las Vegas Aces</td>
+      <td>1696.22</td>
+      <td>92</td>
+      <td>Indiana Fever</td>
+      <td>1307.02</td>
+      <td>86</td>
+      <td>90.38%</td>
+      <td>9.62%</td>
+      <td>3.83</td>
+    </tr>
+    <tr>
+      <td>2020-09-09</td>
+      <td>Atlanta Dream</td>
+      <td>1327.91</td>
+      <td>97</td>
+      <td>@ Chicago Sky</td>
+      <td>1523.52</td>
+      <td>89</td>
+      <td>24.49%</td>
+      <td>75.51%</td>
+      <td>34.65</td>
+    </tr>
+    <tr>
+      <td>2020-09-09</td>
+      <td>Dallas Wings</td>
+      <td>1420.58</td>
+      <td>95</td>
+      <td>@ Seattle Storm</td>
+      <td>1722.16</td>
+      <td>107</td>
+      <td>14.98%</td>
+      <td>85.02%</td>
+      <td>-8.42</td>
+    </tr>
+    <tr>
+      <td>2020-09-09</td>
+      <td>Phoenix Mercury</td>
+      <td>1542.30</td>
+      <td>100</td>
+      <td>@ Connecticut Sun</td>
+      <td>1570.70</td>
+      <td>95</td>
+      <td>45.92%</td>
+      <td>54.08%</td>
+      <td>19.62</td>
+    </tr>
+    <tr>
+      <td>2020-09-09</td>
+      <td>Seattle Storm</td>
+      <td>1722.16</td>
+      <td>107</td>
+      <td>Dallas Wings</td>
+      <td>1420.58</td>
+      <td>95</td>
+      <td>85.02%</td>
+      <td>14.98%</td>
+      <td>8.42</td>
+    </tr>
+    <tr>
+      <td>2020-09-09</td>
+      <td>Connecticut Sun</td>
+      <td>1570.70</td>
+      <td>95</td>
+      <td>Phoenix Mercury</td>
+      <td>1542.30</td>
+      <td>100</td>
+      <td>54.08%</td>
+      <td>45.92%</td>
+      <td>-19.61</td>
+    </tr>
+    <tr>
+      <td>2020-09-09</td>
+      <td>Chicago Sky</td>
+      <td>1523.52</td>
+      <td>89</td>
+      <td>Atlanta Dream</td>
+      <td>1327.91</td>
+      <td>97</td>
+      <td>75.51%</td>
+      <td>24.49%</td>
+      <td>-34.64</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Washington Mystics</td>
+      <td>1424.12</td>
+      <td>80</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1649.68</td>
+      <td>72</td>
+      <td>21.44%</td>
+      <td>78.56%</td>
+      <td>36.04</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Las Vegas Aces</td>
+      <td>1700.05</td>
+      <td>104</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1588.62</td>
+      <td>89</td>
+      <td>65.51%</td>
+      <td>34.49%</td>
+      <td>21.66</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Minnesota Lynx</td>
+      <td>1588.62</td>
+      <td>89</td>
+      <td>Las Vegas Aces</td>
+      <td>1700.05</td>
+      <td>104</td>
+      <td>34.49%</td>
+      <td>65.51%</td>
+      <td>-21.66</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Los Angeles Sparks</td>
+      <td>1649.68</td>
+      <td>72</td>
+      <td>Washington Mystics</td>
+      <td>1424.12</td>
+      <td>80</td>
+      <td>78.56%</td>
+      <td>21.44%</td>
+      <td>-36.04</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Indiana Fever</td>
+      <td>1303.20</td>
+      <td>85</td>
+      <td>New York Liberty</td>
+      <td>1227.16</td>
+      <td>75</td>
+      <td>60.77%</td>
+      <td>39.23%</td>
+      <td>20.12</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>New York Liberty</td>
+      <td>1227.16</td>
+      <td>75</td>
+      <td>@ Indiana Fever</td>
+      <td>1303.20</td>
+      <td>85</td>
+      <td>39.23%</td>
+      <td>60.77%</td>
+      <td>-20.12</td>
+    </tr>
+    <tr>
+      <td>2020-09-11</td>
+      <td>Seattle Storm</td>
+      <td>1730.58</td>
+      <td>83</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1561.92</td>
+      <td>60</td>
+      <td>72.53%</td>
+      <td>27.47%</td>
+      <td>21.36</td>
+    </tr>
+    <tr>
+      <td>2020-09-11</td>
+      <td>Atlanta Dream</td>
+      <td>1362.56</td>
+      <td>82</td>
+      <td>@ Connecticut Sun</td>
+      <td>1551.09</td>
+      <td>75</td>
+      <td>25.25%</td>
+      <td>74.75%</td>
+      <td>32.07</td>
+    </tr>
+    <tr>
+      <td>2020-09-11</td>
+      <td>Chicago Sky</td>
+      <td>1488.88</td>
+      <td>95</td>
+      <td>@ Dallas Wings</td>
+      <td>1412.16</td>
+      <td>88</td>
+      <td>60.86%</td>
+      <td>39.14%</td>
+      <td>16.79</td>
+    </tr>
+    <tr>
+      <td>2020-09-11</td>
+      <td>Dallas Wings</td>
+      <td>1412.16</td>
+      <td>88</td>
+      <td>Chicago Sky</td>
+      <td>1488.88</td>
+      <td>95</td>
+      <td>39.14%</td>
+      <td>60.86%</td>
+      <td>-16.80</td>
+    </tr>
+    <tr>
+      <td>2020-09-11</td>
+      <td>Connecticut Sun</td>
+      <td>1551.09</td>
+      <td>75</td>
+      <td>Atlanta Dream</td>
+      <td>1362.56</td>
+      <td>82</td>
+      <td>74.75%</td>
+      <td>25.25%</td>
+      <td>-32.08</td>
+    </tr>
+    <tr>
+      <td>2020-09-11</td>
+      <td>Phoenix Mercury</td>
+      <td>1561.92</td>
+      <td>60</td>
+      <td>Seattle Storm</td>
+      <td>1730.58</td>
+      <td>83</td>
+      <td>27.47%</td>
+      <td>72.53%</td>
+      <td>-21.37</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>Minnesota Lynx</td>
+      <td>1566.96</td>
+      <td>98</td>
+      <td>@ Indiana Fever</td>
+      <td>1323.32</td>
+      <td>86</td>
+      <td>80.26%</td>
+      <td>19.74%</td>
+      <td>11.09</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>Washington Mystics</td>
+      <td>1460.16</td>
+      <td>75</td>
+      <td>@ New York Liberty</td>
+      <td>1207.04</td>
+      <td>58</td>
+      <td>81.11%</td>
+      <td>18.89%</td>
+      <td>12.63</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>New York Liberty</td>
+      <td>1207.04</td>
+      <td>58</td>
+      <td>Washington Mystics</td>
+      <td>1460.16</td>
+      <td>75</td>
+      <td>18.89%</td>
+      <td>81.11%</td>
+      <td>-12.63</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>Los Angeles Sparks</td>
+      <td>1613.64</td>
+      <td>70</td>
+      <td>Las Vegas Aces</td>
+      <td>1721.71</td>
+      <td>84</td>
+      <td>34.93%</td>
+      <td>65.07%</td>
+      <td>-21.20</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>Indiana Fever</td>
+      <td>1323.32</td>
+      <td>86</td>
+      <td>Minnesota Lynx</td>
+      <td>1566.96</td>
+      <td>98</td>
+      <td>19.74%</td>
+      <td>80.26%</td>
+      <td>-11.10</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>Las Vegas Aces</td>
+      <td>1721.71</td>
+      <td>84</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1613.64</td>
+      <td>70</td>
+      <td>65.07%</td>
+      <td>34.93%</td>
+      <td>21.20</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Las Vegas Aces</td>
+      <td>1742.91</td>
+      <td>86</td>
+      <td>@ Seattle Storm</td>
+      <td>1751.94</td>
+      <td>84</td>
+      <td>48.70%</td>
+      <td>51.30%</td>
+      <td>11.77</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>New York Liberty</td>
+      <td>1194.41</td>
+      <td>79</td>
+      <td>Dallas Wings</td>
+      <td>1395.36</td>
+      <td>82</td>
+      <td>23.92%</td>
+      <td>76.08%</td>
+      <td>-6.73</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Atlanta Dream</td>
+      <td>1394.63</td>
+      <td>78</td>
+      <td>Washington Mystics</td>
+      <td>1472.79</td>
+      <td>85</td>
+      <td>38.94%</td>
+      <td>61.06%</td>
+      <td>-16.71</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Seattle Storm</td>
+      <td>1751.94</td>
+      <td>84</td>
+      <td>Las Vegas Aces</td>
+      <td>1742.91</td>
+      <td>86</td>
+      <td>51.30%</td>
+      <td>48.70%</td>
+      <td>-11.76</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Washington Mystics</td>
+      <td>1472.79</td>
+      <td>85</td>
+      <td>@ Atlanta Dream</td>
+      <td>1394.63</td>
+      <td>78</td>
+      <td>61.06%</td>
+      <td>38.94%</td>
+      <td>16.71</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Dallas Wings</td>
+      <td>1395.36</td>
+      <td>82</td>
+      <td>@ New York Liberty</td>
+      <td>1194.41</td>
+      <td>79</td>
+      <td>76.08%</td>
+      <td>23.92%</td>
+      <td>6.72</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
