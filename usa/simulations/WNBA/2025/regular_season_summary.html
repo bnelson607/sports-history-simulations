@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .filter-controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .filter-controls select {
+            margin: 0 10px;
+            padding: 4px;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- Use CDN version of Tablesort for local compatibility -->
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls" id="filterControls" style="display: none;">
+        <label for="regionFilter" id="regionLabel">Filter by Division or Conference:
+            <select id="regionFilter">
+                <option value="">All</option>
+            </select>
+        </label>
+    </div>
+
+    <table class="dataframe sortable">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Record</th>
+      <th>Avg. Wins</th>
+      <th>Luck</th>
+      <th>Percentile</th>
+      <th>Min</th>
+      <th>Q1</th>
+      <th>Median</th>
+      <th>Q3</th>
+      <th>Max</th>
+      <th>Playoffs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Minnesota Lynx</td>
+      <td>1687</td>
+      <td>36-10</td>
+      <td>32.64</td>
+      <td>3.36</td>
+      <td>90.20%</td>
+      <td>18</td>
+      <td>30.13</td>
+      <td>32.20</td>
+      <td>34.23</td>
+      <td>44</td>
+      <td>99.99%</td>
+    </tr>
+    <tr>
+      <td>Las Vegas Aces</td>
+      <td>1649</td>
+      <td>37-15</td>
+      <td>30.92</td>
+      <td>6.08</td>
+      <td>97.54%</td>
+      <td>16</td>
+      <td>28.13</td>
+      <td>30.44</td>
+      <td>32.74</td>
+      <td>45</td>
+      <td>99.76%</td>
+    </tr>
+    <tr>
+      <td>Atlanta Dream</td>
+      <td>1632</td>
+      <td>31-16</td>
+      <td>27.25</td>
+      <td>3.75</td>
+      <td>90.60%</td>
+      <td>13</td>
+      <td>24.54</td>
+      <td>26.78</td>
+      <td>28.96</td>
+      <td>40</td>
+      <td>97.96%</td>
+    </tr>
+    <tr>
+      <td>Indiana Fever</td>
+      <td>1572</td>
+      <td>31-21</td>
+      <td>27.18</td>
+      <td>3.82</td>
+      <td>89.57%</td>
+      <td>11</td>
+      <td>24.34</td>
+      <td>26.69</td>
+      <td>28.99</td>
+      <td>41</td>
+      <td>97.20%</td>
+    </tr>
+    <tr>
+      <td>New York Liberty</td>
+      <td>1567</td>
+      <td>29-18</td>
+      <td>30.66</td>
+      <td>-1.66</td>
+      <td>35.06%</td>
+      <td>18</td>
+      <td>28.08</td>
+      <td>30.20</td>
+      <td>32.31</td>
+      <td>43</td>
+      <td>99.87%</td>
+    </tr>
+    <tr>
+      <td>Phoenix Mercury</td>
+      <td>1554</td>
+      <td>29-18</td>
+      <td>25.49</td>
+      <td>3.51</td>
+      <td>89.04%</td>
+      <td>12</td>
+      <td>22.79</td>
+      <td>25.01</td>
+      <td>27.22</td>
+      <td>41</td>
+      <td>93.92%</td>
+    </tr>
+    <tr>
+      <td>Seattle Storm</td>
+      <td>1515</td>
+      <td>24-23</td>
+      <td>25.58</td>
+      <td>-1.58</td>
+      <td>37.12%</td>
+      <td>12</td>
+      <td>22.86</td>
+      <td>25.09</td>
+      <td>27.32</td>
+      <td>40</td>
+      <td>94.31%</td>
+    </tr>
+    <tr>
+      <td>Golden State Valkyries</td>
+      <td>1478</td>
+      <td>23-23</td>
+      <td>17.91</td>
+      <td>5.09</td>
+      <td>95.99%</td>
+      <td>5</td>
+      <td>15.24</td>
+      <td>17.38</td>
+      <td>19.55</td>
+      <td>32</td>
+      <td>21.80%</td>
+    </tr>
+    <tr>
+      <td>Los Angeles Sparks</td>
+      <td>1452</td>
+      <td>21-23</td>
+      <td>18.27</td>
+      <td>2.73</td>
+      <td>85.09%</td>
+      <td>5</td>
+      <td>15.63</td>
+      <td>17.74</td>
+      <td>19.86</td>
+      <td>31</td>
+      <td>25.52%</td>
+    </tr>
+    <tr>
+      <td>Washington Mystics</td>
+      <td>1374</td>
+      <td>16-28</td>
+      <td>20.11</td>
+      <td>-4.11</td>
+      <td>12.65%</td>
+      <td>7</td>
+      <td>17.45</td>
+      <td>19.60</td>
+      <td>21.74</td>
+      <td>33</td>
+      <td>48.72%</td>
+    </tr>
+    <tr>
+      <td>Connecticut Sun</td>
+      <td>1370</td>
+      <td>11-33</td>
+      <td>16.89</td>
+      <td>-5.89</td>
+      <td>3.77%</td>
+      <td>5</td>
+      <td>14.27</td>
+      <td>16.36</td>
+      <td>18.47</td>
+      <td>30</td>
+      <td>13.26%</td>
+    </tr>
+    <tr>
+      <td>Dallas Wings</td>
+      <td>1341</td>
+      <td>10-34</td>
+      <td>15.01</td>
+      <td>-5.01</td>
+      <td>6.62%</td>
+      <td>3</td>
+      <td>12.39</td>
+      <td>14.46</td>
+      <td>16.57</td>
+      <td>29</td>
+      <td>4.88%</td>
+    </tr>
+    <tr>
+      <td>Chicago Sky</td>
+      <td>1309</td>
+      <td>10-34</td>
+      <td>14.10</td>
+      <td>-4.10</td>
+      <td>11.31%</td>
+      <td>2</td>
+      <td>11.53</td>
+      <td>13.56</td>
+      <td>15.62</td>
+      <td>27</td>
+      <td>2.82%</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const table = document.querySelector('table.sortable');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+
+            const divColIndex = headers.indexOf("Division");
+            const confColIndex = headers.indexOf("Conference");
+
+            const regionFilter = document.getElementById("regionFilter");
+            const regionLabel = document.getElementById("regionLabel");
+            const filterControls = document.getElementById("filterControls");
+
+            const divisionSet = new Set();
+            const conferenceSet = new Set();
+
+            rows.forEach(row => {
+                if (divColIndex !== -1) {
+                    const divVal = row.cells[divColIndex].textContent.trim();
+                    if (divVal) divisionSet.add(divVal);
+                }
+                if (confColIndex !== -1) {
+                    const confVal = row.cells[confColIndex].textContent.trim();
+                    if (confVal) conferenceSet.add(confVal);
+                }
+            });
+
+            const sortedDivisions = Array.from(divisionSet).sort();
+            const sortedConfs = Array.from(conferenceSet).sort();
+
+            sortedDivisions.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                regionFilter.appendChild(opt);
+            });
+
+            sortedConfs.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                regionFilter.appendChild(opt);
+            });
+
+            if (sortedDivisions.length > 0 || sortedConfs.length > 0) {
+                regionLabel.style.display = "inline-block";
+                filterControls.style.display = "block";
+            }
+
+            regionFilter.addEventListener("change", function () {
+                const selected = regionFilter.value;
+
+                rows.forEach(row => {
+                    const divVal = divColIndex !== -1 ? row.cells[divColIndex].textContent.trim() : "";
+                    const confVal = confColIndex !== -1 ? row.cells[confColIndex].textContent.trim() : "";
+
+                    const matches = !selected || divVal === selected || confVal === selected;
+                    row.style.display = matches ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
