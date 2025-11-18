@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Atlanta Dream">Atlanta Dream</option><option value="Connecticut Sun">Connecticut Sun</option><option value="Indiana Fever">Indiana Fever</option><option value="Las Vegas Aces">Las Vegas Aces</option><option value="Minnesota Lynx">Minnesota Lynx</option><option value="New York Liberty">New York Liberty</option><option value="Phoenix Mercury">Phoenix Mercury</option><option value="Seattle Storm">Seattle Storm</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2024-09-22</td>
+      <td>Connecticut Sun</td>
+      <td>1617.11</td>
+      <td>93</td>
+      <td>Indiana Fever</td>
+      <td>1499.04</td>
+      <td>69</td>
+      <td>68.56%</td>
+      <td>31.44%</td>
+      <td>14.20</td>
+    </tr>
+    <tr>
+      <td>2024-09-22</td>
+      <td>Las Vegas Aces</td>
+      <td>1670.90</td>
+      <td>78</td>
+      <td>Seattle Storm</td>
+      <td>1574.15</td>
+      <td>67</td>
+      <td>65.86%</td>
+      <td>34.14%</td>
+      <td>10.44</td>
+    </tr>
+    <tr>
+      <td>2024-09-22</td>
+      <td>Minnesota Lynx</td>
+      <td>1634.63</td>
+      <td>102</td>
+      <td>Phoenix Mercury</td>
+      <td>1413.60</td>
+      <td>95</td>
+      <td>79.78%</td>
+      <td>20.22%</td>
+      <td>4.93</td>
+    </tr>
+    <tr>
+      <td>2024-09-22</td>
+      <td>New York Liberty</td>
+      <td>1693.90</td>
+      <td>83</td>
+      <td>Atlanta Dream</td>
+      <td>1445.88</td>
+      <td>69</td>
+      <td>82.17%</td>
+      <td>17.83%</td>
+      <td>6.15</td>
+    </tr>
+    <tr>
+      <td>2024-09-22</td>
+      <td>Atlanta Dream</td>
+      <td>1445.88</td>
+      <td>69</td>
+      <td>@ New York Liberty</td>
+      <td>1693.90</td>
+      <td>83</td>
+      <td>17.83%</td>
+      <td>82.17%</td>
+      <td>-6.15</td>
+    </tr>
+    <tr>
+      <td>2024-09-22</td>
+      <td>Phoenix Mercury</td>
+      <td>1413.60</td>
+      <td>95</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1634.63</td>
+      <td>102</td>
+      <td>20.22%</td>
+      <td>79.78%</td>
+      <td>-4.94</td>
+    </tr>
+    <tr>
+      <td>2024-09-22</td>
+      <td>Seattle Storm</td>
+      <td>1574.15</td>
+      <td>67</td>
+      <td>@ Las Vegas Aces</td>
+      <td>1670.90</td>
+      <td>78</td>
+      <td>34.14%</td>
+      <td>65.86%</td>
+      <td>-10.44</td>
+    </tr>
+    <tr>
+      <td>2024-09-22</td>
+      <td>Indiana Fever</td>
+      <td>1499.04</td>
+      <td>69</td>
+      <td>@ Connecticut Sun</td>
+      <td>1617.11</td>
+      <td>93</td>
+      <td>31.44%</td>
+      <td>68.56%</td>
+      <td>-14.19</td>
+    </tr>
+    <tr>
+      <td>2024-09-24</td>
+      <td>Seattle Storm</td>
+      <td>1563.71</td>
+      <td>76</td>
+      <td>@ Las Vegas Aces</td>
+      <td>1681.34</td>
+      <td>83</td>
+      <td>31.49%</td>
+      <td>68.51%</td>
+      <td>-7.68</td>
+    </tr>
+    <tr>
+      <td>2024-09-24</td>
+      <td>Atlanta Dream</td>
+      <td>1439.73</td>
+      <td>82</td>
+      <td>@ New York Liberty</td>
+      <td>1700.05</td>
+      <td>91</td>
+      <td>16.82%</td>
+      <td>83.18%</td>
+      <td>-4.65</td>
+    </tr>
+    <tr>
+      <td>2024-09-24</td>
+      <td>Las Vegas Aces</td>
+      <td>1681.34</td>
+      <td>83</td>
+      <td>Seattle Storm</td>
+      <td>1563.71</td>
+      <td>76</td>
+      <td>68.51%</td>
+      <td>31.49%</td>
+      <td>7.69</td>
+    </tr>
+    <tr>
+      <td>2024-09-24</td>
+      <td>New York Liberty</td>
+      <td>1700.05</td>
+      <td>91</td>
+      <td>Atlanta Dream</td>
+      <td>1439.73</td>
+      <td>82</td>
+      <td>83.18%</td>
+      <td>16.82%</td>
+      <td>4.66</td>
+    </tr>
+    <tr>
+      <td>2024-09-25</td>
+      <td>Connecticut Sun</td>
+      <td>1631.31</td>
+      <td>87</td>
+      <td>Indiana Fever</td>
+      <td>1484.85</td>
+      <td>81</td>
+      <td>71.98%</td>
+      <td>28.02%</td>
+      <td>6.33</td>
+    </tr>
+    <tr>
+      <td>2024-09-25</td>
+      <td>Minnesota Lynx</td>
+      <td>1639.56</td>
+      <td>101</td>
+      <td>Phoenix Mercury</td>
+      <td>1408.66</td>
+      <td>88</td>
+      <td>80.68%</td>
+      <td>19.32%</td>
+      <td>6.43</td>
+    </tr>
+    <tr>
+      <td>2024-09-25</td>
+      <td>Indiana Fever</td>
+      <td>1484.85</td>
+      <td>81</td>
+      <td>@ Connecticut Sun</td>
+      <td>1631.31</td>
+      <td>87</td>
+      <td>28.02%</td>
+      <td>71.98%</td>
+      <td>-6.33</td>
+    </tr>
+    <tr>
+      <td>2024-09-25</td>
+      <td>Phoenix Mercury</td>
+      <td>1408.66</td>
+      <td>88</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1639.56</td>
+      <td>101</td>
+      <td>19.32%</td>
+      <td>80.68%</td>
+      <td>-6.42</td>
+    </tr>
+    <tr>
+      <td>2024-09-29</td>
+      <td>Las Vegas Aces</td>
+      <td>1689.03</td>
+      <td>77</td>
+      <td>@ New York Liberty</td>
+      <td>1704.71</td>
+      <td>87</td>
+      <td>45.26%</td>
+      <td>54.74%</td>
+      <td>-13.20</td>
+    </tr>
+    <tr>
+      <td>2024-09-29</td>
+      <td>Minnesota Lynx</td>
+      <td>1645.99</td>
+      <td>70</td>
+      <td>Connecticut Sun</td>
+      <td>1637.64</td>
+      <td>73</td>
+      <td>53.70%</td>
+      <td>46.30%</td>
+      <td>-8.58</td>
+    </tr>
+    <tr>
+      <td>2024-09-29</td>
+      <td>New York Liberty</td>
+      <td>1704.71</td>
+      <td>87</td>
+      <td>Las Vegas Aces</td>
+      <td>1689.03</td>
+      <td>77</td>
+      <td>54.74%</td>
+      <td>45.26%</td>
+      <td>13.19</td>
+    </tr>
+    <tr>
+      <td>2024-09-29</td>
+      <td>Connecticut Sun</td>
+      <td>1637.64</td>
+      <td>73</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1645.99</td>
+      <td>70</td>
+      <td>46.30%</td>
+      <td>53.70%</td>
+      <td>8.58</td>
+    </tr>
+    <tr>
+      <td>2024-10-01</td>
+      <td>Minnesota Lynx</td>
+      <td>1637.41</td>
+      <td>77</td>
+      <td>Connecticut Sun</td>
+      <td>1646.22</td>
+      <td>70</td>
+      <td>51.23%</td>
+      <td>48.77%</td>
+      <td>11.90</td>
+    </tr>
+    <tr>
+      <td>2024-10-01</td>
+      <td>Las Vegas Aces</td>
+      <td>1675.83</td>
+      <td>84</td>
+      <td>@ New York Liberty</td>
+      <td>1717.90</td>
+      <td>88</td>
+      <td>41.53%</td>
+      <td>58.47%</td>
+      <td>-7.66</td>
+    </tr>
+    <tr>
+      <td>2024-10-01</td>
+      <td>New York Liberty</td>
+      <td>1717.90</td>
+      <td>88</td>
+      <td>Las Vegas Aces</td>
+      <td>1675.83</td>
+      <td>84</td>
+      <td>58.47%</td>
+      <td>41.53%</td>
+      <td>7.66</td>
+    </tr>
+    <tr>
+      <td>2024-10-01</td>
+      <td>Connecticut Sun</td>
+      <td>1646.22</td>
+      <td>70</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1637.41</td>
+      <td>77</td>
+      <td>48.77%</td>
+      <td>51.23%</td>
+      <td>-11.90</td>
+    </tr>
+    <tr>
+      <td>2024-10-04</td>
+      <td>Minnesota Lynx</td>
+      <td>1649.31</td>
+      <td>90</td>
+      <td>@ Connecticut Sun</td>
+      <td>1634.32</td>
+      <td>81</td>
+      <td>49.65%</td>
+      <td>50.35%</td>
+      <td>13.92</td>
+    </tr>
+    <tr>
+      <td>2024-10-04</td>
+      <td>New York Liberty</td>
+      <td>1725.56</td>
+      <td>81</td>
+      <td>@ Las Vegas Aces</td>
+      <td>1668.17</td>
+      <td>95</td>
+      <td>55.73%</td>
+      <td>44.27%</td>
+      <td>-19.23</td>
+    </tr>
+    <tr>
+      <td>2024-10-04</td>
+      <td>Connecticut Sun</td>
+      <td>1634.32</td>
+      <td>81</td>
+      <td>Minnesota Lynx</td>
+      <td>1649.31</td>
+      <td>90</td>
+      <td>50.35%</td>
+      <td>49.65%</td>
+      <td>-13.92</td>
+    </tr>
+    <tr>
+      <td>2024-10-04</td>
+      <td>Las Vegas Aces</td>
+      <td>1668.17</td>
+      <td>95</td>
+      <td>New York Liberty</td>
+      <td>1725.56</td>
+      <td>81</td>
+      <td>44.27%</td>
+      <td>55.73%</td>
+      <td>19.23</td>
+    </tr>
+    <tr>
+      <td>2024-10-06</td>
+      <td>New York Liberty</td>
+      <td>1706.33</td>
+      <td>76</td>
+      <td>@ Las Vegas Aces</td>
+      <td>1687.40</td>
+      <td>62</td>
+      <td>50.22%</td>
+      <td>49.78%</td>
+      <td>17.17</td>
+    </tr>
+    <tr>
+      <td>2024-10-06</td>
+      <td>Minnesota Lynx</td>
+      <td>1663.23</td>
+      <td>82</td>
+      <td>@ Connecticut Sun</td>
+      <td>1620.40</td>
+      <td>92</td>
+      <td>53.66%</td>
+      <td>46.34%</td>
+      <td>-15.64</td>
+    </tr>
+    <tr>
+      <td>2024-10-06</td>
+      <td>Las Vegas Aces</td>
+      <td>1687.40</td>
+      <td>62</td>
+      <td>New York Liberty</td>
+      <td>1706.33</td>
+      <td>76</td>
+      <td>49.78%</td>
+      <td>50.22%</td>
+      <td>-17.17</td>
+    </tr>
+    <tr>
+      <td>2024-10-06</td>
+      <td>Connecticut Sun</td>
+      <td>1620.40</td>
+      <td>92</td>
+      <td>Minnesota Lynx</td>
+      <td>1663.23</td>
+      <td>82</td>
+      <td>46.34%</td>
+      <td>53.66%</td>
+      <td>15.64</td>
+    </tr>
+    <tr>
+      <td>2024-10-08</td>
+      <td>Minnesota Lynx</td>
+      <td>1647.59</td>
+      <td>88</td>
+      <td>Connecticut Sun</td>
+      <td>1636.04</td>
+      <td>77</td>
+      <td>54.15%</td>
+      <td>45.85%</td>
+      <td>14.02</td>
+    </tr>
+    <tr>
+      <td>2024-10-08</td>
+      <td>Connecticut Sun</td>
+      <td>1636.04</td>
+      <td>77</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1647.59</td>
+      <td>88</td>
+      <td>45.85%</td>
+      <td>54.15%</td>
+      <td>-14.02</td>
+    </tr>
+    <tr>
+      <td>2024-10-10</td>
+      <td>Minnesota Lynx</td>
+      <td>1661.61</td>
+      <td>95</td>
+      <td>@ New York Liberty</td>
+      <td>1723.50</td>
+      <td>93</td>
+      <td>38.78%</td>
+      <td>61.22%</td>
+      <td>7.98</td>
+    </tr>
+    <tr>
+      <td>2024-10-10</td>
+      <td>New York Liberty</td>
+      <td>1723.50</td>
+      <td>93</td>
+      <td>Minnesota Lynx</td>
+      <td>1661.61</td>
+      <td>95</td>
+      <td>61.22%</td>
+      <td>38.78%</td>
+      <td>-7.98</td>
+    </tr>
+    <tr>
+      <td>2024-10-13</td>
+      <td>Minnesota Lynx</td>
+      <td>1669.59</td>
+      <td>66</td>
+      <td>@ New York Liberty</td>
+      <td>1715.52</td>
+      <td>80</td>
+      <td>40.99%</td>
+      <td>59.01%</td>
+      <td>-14.14</td>
+    </tr>
+    <tr>
+      <td>2024-10-13</td>
+      <td>New York Liberty</td>
+      <td>1715.52</td>
+      <td>80</td>
+      <td>Minnesota Lynx</td>
+      <td>1669.59</td>
+      <td>66</td>
+      <td>59.01%</td>
+      <td>40.99%</td>
+      <td>14.14</td>
+    </tr>
+    <tr>
+      <td>2024-10-16</td>
+      <td>New York Liberty</td>
+      <td>1729.66</td>
+      <td>80</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1655.45</td>
+      <td>77</td>
+      <td>58.11%</td>
+      <td>41.89%</td>
+      <td>6.69</td>
+    </tr>
+    <tr>
+      <td>2024-10-16</td>
+      <td>Minnesota Lynx</td>
+      <td>1655.45</td>
+      <td>77</td>
+      <td>New York Liberty</td>
+      <td>1729.66</td>
+      <td>80</td>
+      <td>41.89%</td>
+      <td>58.11%</td>
+      <td>-6.69</td>
+    </tr>
+    <tr>
+      <td>2024-10-18</td>
+      <td>New York Liberty</td>
+      <td>1736.35</td>
+      <td>80</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1648.76</td>
+      <td>82</td>
+      <td>59.97%</td>
+      <td>40.03%</td>
+      <td>-7.82</td>
+    </tr>
+    <tr>
+      <td>2024-10-18</td>
+      <td>Minnesota Lynx</td>
+      <td>1648.76</td>
+      <td>82</td>
+      <td>New York Liberty</td>
+      <td>1736.35</td>
+      <td>80</td>
+      <td>40.03%</td>
+      <td>59.97%</td>
+      <td>7.82</td>
+    </tr>
+    <tr>
+      <td>2024-10-20</td>
+      <td>New York Liberty</td>
+      <td>1728.53</td>
+      <td>67</td>
+      <td>Minnesota Lynx</td>
+      <td>1656.58</td>
+      <td>62</td>
+      <td>62.58%</td>
+      <td>37.42%</td>
+      <td>7.72</td>
+    </tr>
+    <tr>
+      <td>2024-10-20</td>
+      <td>Minnesota Lynx</td>
+      <td>1656.58</td>
+      <td>62</td>
+      <td>@ New York Liberty</td>
+      <td>1728.53</td>
+      <td>67</td>
+      <td>37.42%</td>
+      <td>62.58%</td>
+      <td>-7.72</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
