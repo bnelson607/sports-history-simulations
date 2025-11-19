@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Chicago Sky">Chicago Sky</option><option value="Indiana Fever">Indiana Fever</option><option value="Los Angeles Sparks">Los Angeles Sparks</option><option value="Minnesota Lynx">Minnesota Lynx</option><option value="New York Liberty">New York Liberty</option><option value="Phoenix Mercury">Phoenix Mercury</option><option value="Tulsa Shock">Tulsa Shock</option><option value="Washington Mystics">Washington Mystics</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2015-09-17</td>
+      <td>Chicago Sky</td>
+      <td>1569.31</td>
+      <td>77</td>
+      <td>Indiana Fever</td>
+      <td>1564.36</td>
+      <td>72</td>
+      <td>62.43%</td>
+      <td>37.57%</td>
+      <td>7.96</td>
+    </tr>
+    <tr>
+      <td>2015-09-17</td>
+      <td>Phoenix Mercury</td>
+      <td>1579.53</td>
+      <td>88</td>
+      <td>Tulsa Shock</td>
+      <td>1505.82</td>
+      <td>55</td>
+      <td>71.17%</td>
+      <td>28.83%</td>
+      <td>15.70</td>
+    </tr>
+    <tr>
+      <td>2015-09-17</td>
+      <td>Tulsa Shock</td>
+      <td>1505.82</td>
+      <td>55</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1579.53</td>
+      <td>88</td>
+      <td>28.83%</td>
+      <td>71.17%</td>
+      <td>-15.70</td>
+    </tr>
+    <tr>
+      <td>2015-09-17</td>
+      <td>Indiana Fever</td>
+      <td>1564.36</td>
+      <td>72</td>
+      <td>@ Chicago Sky</td>
+      <td>1569.31</td>
+      <td>77</td>
+      <td>37.57%</td>
+      <td>62.43%</td>
+      <td>-7.96</td>
+    </tr>
+    <tr>
+      <td>2015-09-18</td>
+      <td>Minnesota Lynx</td>
+      <td>1565.25</td>
+      <td>67</td>
+      <td>Los Angeles Sparks</td>
+      <td>1493.74</td>
+      <td>65</td>
+      <td>70.91%</td>
+      <td>29.09%</td>
+      <td>3.90</td>
+    </tr>
+    <tr>
+      <td>2015-09-18</td>
+      <td>New York Liberty</td>
+      <td>1562.98</td>
+      <td>83</td>
+      <td>Washington Mystics</td>
+      <td>1553.00</td>
+      <td>86</td>
+      <td>63.11%</td>
+      <td>36.89%</td>
+      <td>-10.36</td>
+    </tr>
+    <tr>
+      <td>2015-09-18</td>
+      <td>Los Angeles Sparks</td>
+      <td>1493.74</td>
+      <td>65</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1565.25</td>
+      <td>67</td>
+      <td>29.09%</td>
+      <td>70.91%</td>
+      <td>-3.90</td>
+    </tr>
+    <tr>
+      <td>2015-09-18</td>
+      <td>Washington Mystics</td>
+      <td>1553.00</td>
+      <td>86</td>
+      <td>@ New York Liberty</td>
+      <td>1562.98</td>
+      <td>83</td>
+      <td>36.89%</td>
+      <td>63.11%</td>
+      <td>10.36</td>
+    </tr>
+    <tr>
+      <td>2015-09-19</td>
+      <td>Phoenix Mercury</td>
+      <td>1595.23</td>
+      <td>91</td>
+      <td>@ Tulsa Shock</td>
+      <td>1490.12</td>
+      <td>67</td>
+      <td>53.13%</td>
+      <td>46.87%</td>
+      <td>21.76</td>
+    </tr>
+    <tr>
+      <td>2015-09-19</td>
+      <td>Chicago Sky</td>
+      <td>1577.27</td>
+      <td>82</td>
+      <td>@ Indiana Fever</td>
+      <td>1556.40</td>
+      <td>89</td>
+      <td>41.11%</td>
+      <td>58.89%</td>
+      <td>-10.31</td>
+    </tr>
+    <tr>
+      <td>2015-09-19</td>
+      <td>Tulsa Shock</td>
+      <td>1490.12</td>
+      <td>67</td>
+      <td>Phoenix Mercury</td>
+      <td>1595.23</td>
+      <td>91</td>
+      <td>46.87%</td>
+      <td>53.13%</td>
+      <td>-21.76</td>
+    </tr>
+    <tr>
+      <td>2015-09-19</td>
+      <td>Indiana Fever</td>
+      <td>1556.40</td>
+      <td>89</td>
+      <td>Chicago Sky</td>
+      <td>1577.27</td>
+      <td>82</td>
+      <td>58.89%</td>
+      <td>41.11%</td>
+      <td>10.31</td>
+    </tr>
+    <tr>
+      <td>2015-09-20</td>
+      <td>New York Liberty</td>
+      <td>1552.62</td>
+      <td>86</td>
+      <td>@ Washington Mystics</td>
+      <td>1563.36</td>
+      <td>68</td>
+      <td>36.79%</td>
+      <td>63.21%</td>
+      <td>25.43</td>
+    </tr>
+    <tr>
+      <td>2015-09-20</td>
+      <td>Minnesota Lynx</td>
+      <td>1569.15</td>
+      <td>71</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1489.84</td>
+      <td>81</td>
+      <td>49.42%</td>
+      <td>50.58%</td>
+      <td>-14.82</td>
+    </tr>
+    <tr>
+      <td>2015-09-20</td>
+      <td>Washington Mystics</td>
+      <td>1563.36</td>
+      <td>68</td>
+      <td>New York Liberty</td>
+      <td>1552.62</td>
+      <td>86</td>
+      <td>63.21%</td>
+      <td>36.79%</td>
+      <td>-25.42</td>
+    </tr>
+    <tr>
+      <td>2015-09-20</td>
+      <td>Los Angeles Sparks</td>
+      <td>1489.84</td>
+      <td>81</td>
+      <td>Minnesota Lynx</td>
+      <td>1569.15</td>
+      <td>71</td>
+      <td>50.58%</td>
+      <td>49.42%</td>
+      <td>14.81</td>
+    </tr>
+    <tr>
+      <td>2015-09-21</td>
+      <td>Chicago Sky</td>
+      <td>1566.96</td>
+      <td>89</td>
+      <td>Indiana Fever</td>
+      <td>1566.71</td>
+      <td>100</td>
+      <td>61.80%</td>
+      <td>38.20%</td>
+      <td>-19.43</td>
+    </tr>
+    <tr>
+      <td>2015-09-21</td>
+      <td>Indiana Fever</td>
+      <td>1566.71</td>
+      <td>100</td>
+      <td>@ Chicago Sky</td>
+      <td>1566.96</td>
+      <td>89</td>
+      <td>38.20%</td>
+      <td>61.80%</td>
+      <td>19.43</td>
+    </tr>
+    <tr>
+      <td>2015-09-22</td>
+      <td>New York Liberty</td>
+      <td>1578.05</td>
+      <td>79</td>
+      <td>Washington Mystics</td>
+      <td>1537.94</td>
+      <td>74</td>
+      <td>67.05%</td>
+      <td>32.95%</td>
+      <td>6.98</td>
+    </tr>
+    <tr>
+      <td>2015-09-22</td>
+      <td>Washington Mystics</td>
+      <td>1537.94</td>
+      <td>74</td>
+      <td>@ New York Liberty</td>
+      <td>1578.05</td>
+      <td>79</td>
+      <td>32.95%</td>
+      <td>67.05%</td>
+      <td>-6.99</td>
+    </tr>
+    <tr>
+      <td>2015-09-22</td>
+      <td>Los Angeles Sparks</td>
+      <td>1504.65</td>
+      <td>80</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1554.33</td>
+      <td>91</td>
+      <td>31.74%</td>
+      <td>68.26%</td>
+      <td>-9.98</td>
+    </tr>
+    <tr>
+      <td>2015-09-22</td>
+      <td>Minnesota Lynx</td>
+      <td>1554.33</td>
+      <td>91</td>
+      <td>Los Angeles Sparks</td>
+      <td>1504.65</td>
+      <td>80</td>
+      <td>68.26%</td>
+      <td>31.74%</td>
+      <td>9.98</td>
+    </tr>
+    <tr>
+      <td>2015-09-23</td>
+      <td>New York Liberty</td>
+      <td>1585.03</td>
+      <td>84</td>
+      <td>Indiana Fever</td>
+      <td>1586.14</td>
+      <td>67</td>
+      <td>61.61%</td>
+      <td>38.39%</td>
+      <td>15.01</td>
+    </tr>
+    <tr>
+      <td>2015-09-23</td>
+      <td>Indiana Fever</td>
+      <td>1586.14</td>
+      <td>67</td>
+      <td>@ New York Liberty</td>
+      <td>1585.03</td>
+      <td>84</td>
+      <td>38.39%</td>
+      <td>61.61%</td>
+      <td>-15.00</td>
+    </tr>
+    <tr>
+      <td>2015-09-24</td>
+      <td>Phoenix Mercury</td>
+      <td>1616.99</td>
+      <td>60</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1564.31</td>
+      <td>67</td>
+      <td>45.60%</td>
+      <td>54.40%</td>
+      <td>-11.43</td>
+    </tr>
+    <tr>
+      <td>2015-09-24</td>
+      <td>Minnesota Lynx</td>
+      <td>1564.31</td>
+      <td>67</td>
+      <td>Phoenix Mercury</td>
+      <td>1616.99</td>
+      <td>60</td>
+      <td>54.40%</td>
+      <td>45.60%</td>
+      <td>11.44</td>
+    </tr>
+    <tr>
+      <td>2015-09-27</td>
+      <td>Minnesota Lynx</td>
+      <td>1575.75</td>
+      <td>72</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1605.56</td>
+      <td>71</td>
+      <td>34.27%</td>
+      <td>65.73%</td>
+      <td>6.23</td>
+    </tr>
+    <tr>
+      <td>2015-09-27</td>
+      <td>New York Liberty</td>
+      <td>1600.04</td>
+      <td>64</td>
+      <td>@ Indiana Fever</td>
+      <td>1571.14</td>
+      <td>70</td>
+      <td>42.23%</td>
+      <td>57.77%</td>
+      <td>-9.81</td>
+    </tr>
+    <tr>
+      <td>2015-09-27</td>
+      <td>Phoenix Mercury</td>
+      <td>1605.56</td>
+      <td>71</td>
+      <td>Minnesota Lynx</td>
+      <td>1575.75</td>
+      <td>72</td>
+      <td>65.73%</td>
+      <td>34.27%</td>
+      <td>-6.24</td>
+    </tr>
+    <tr>
+      <td>2015-09-27</td>
+      <td>Indiana Fever</td>
+      <td>1571.14</td>
+      <td>70</td>
+      <td>New York Liberty</td>
+      <td>1600.04</td>
+      <td>64</td>
+      <td>57.77%</td>
+      <td>42.23%</td>
+      <td>9.81</td>
+    </tr>
+    <tr>
+      <td>2015-09-29</td>
+      <td>New York Liberty</td>
+      <td>1590.23</td>
+      <td>51</td>
+      <td>Indiana Fever</td>
+      <td>1580.95</td>
+      <td>66</td>
+      <td>63.02%</td>
+      <td>36.98%</td>
+      <td>-23.14</td>
+    </tr>
+    <tr>
+      <td>2015-09-29</td>
+      <td>Indiana Fever</td>
+      <td>1580.95</td>
+      <td>66</td>
+      <td>@ New York Liberty</td>
+      <td>1590.23</td>
+      <td>51</td>
+      <td>36.98%</td>
+      <td>63.02%</td>
+      <td>23.13</td>
+    </tr>
+    <tr>
+      <td>2015-10-04</td>
+      <td>Indiana Fever</td>
+      <td>1604.08</td>
+      <td>75</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1581.98</td>
+      <td>69</td>
+      <td>41.28%</td>
+      <td>58.72%</td>
+      <td>13.64</td>
+    </tr>
+    <tr>
+      <td>2015-10-04</td>
+      <td>Minnesota Lynx</td>
+      <td>1581.98</td>
+      <td>69</td>
+      <td>Indiana Fever</td>
+      <td>1604.08</td>
+      <td>75</td>
+      <td>58.72%</td>
+      <td>41.28%</td>
+      <td>-13.64</td>
+    </tr>
+    <tr>
+      <td>2015-10-06</td>
+      <td>Indiana Fever</td>
+      <td>1617.72</td>
+      <td>71</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1568.34</td>
+      <td>77</td>
+      <td>45.13%</td>
+      <td>54.87%</td>
+      <td>-10.48</td>
+    </tr>
+    <tr>
+      <td>2015-10-06</td>
+      <td>Minnesota Lynx</td>
+      <td>1568.34</td>
+      <td>77</td>
+      <td>Indiana Fever</td>
+      <td>1617.72</td>
+      <td>71</td>
+      <td>54.87%</td>
+      <td>45.13%</td>
+      <td>10.48</td>
+    </tr>
+    <tr>
+      <td>2015-10-09</td>
+      <td>Minnesota Lynx</td>
+      <td>1578.82</td>
+      <td>80</td>
+      <td>@ Indiana Fever</td>
+      <td>1607.24</td>
+      <td>77</td>
+      <td>34.45%</td>
+      <td>65.55%</td>
+      <td>10.77</td>
+    </tr>
+    <tr>
+      <td>2015-10-09</td>
+      <td>Indiana Fever</td>
+      <td>1607.24</td>
+      <td>77</td>
+      <td>Minnesota Lynx</td>
+      <td>1578.82</td>
+      <td>80</td>
+      <td>65.55%</td>
+      <td>34.45%</td>
+      <td>-10.76</td>
+    </tr>
+    <tr>
+      <td>2015-10-11</td>
+      <td>Minnesota Lynx</td>
+      <td>1589.59</td>
+      <td>69</td>
+      <td>@ Indiana Fever</td>
+      <td>1596.48</td>
+      <td>75</td>
+      <td>37.30%</td>
+      <td>62.70%</td>
+      <td>-8.66</td>
+    </tr>
+    <tr>
+      <td>2015-10-11</td>
+      <td>Indiana Fever</td>
+      <td>1596.48</td>
+      <td>75</td>
+      <td>Minnesota Lynx</td>
+      <td>1589.59</td>
+      <td>69</td>
+      <td>62.70%</td>
+      <td>37.30%</td>
+      <td>8.66</td>
+    </tr>
+    <tr>
+      <td>2015-10-14</td>
+      <td>Minnesota Lynx</td>
+      <td>1580.93</td>
+      <td>69</td>
+      <td>Indiana Fever</td>
+      <td>1605.14</td>
+      <td>52</td>
+      <td>58.42%</td>
+      <td>41.58%</td>
+      <td>16.25</td>
+    </tr>
+    <tr>
+      <td>2015-10-14</td>
+      <td>Indiana Fever</td>
+      <td>1605.14</td>
+      <td>52</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1580.93</td>
+      <td>69</td>
+      <td>41.58%</td>
+      <td>58.42%</td>
+      <td>-16.25</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
