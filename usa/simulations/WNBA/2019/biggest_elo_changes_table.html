@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th colspan="3" halign="left"></th>
+      <th colspan="4" halign="left">Winning Team</th>
+      <th colspan="4" halign="left">Losing Team</th>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <th>Date</th>
+      <th>Elo Change</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2019-07-10</td>
+      <td>34.68</td>
+      <td>Phoenix Mercury</td>
+      <td>1506.55</td>
+      <td>91</td>
+      <td>24.21%</td>
+      <td>Washington Mystics (H)</td>
+      <td>1628.70</td>
+      <td>68</td>
+      <td>75.79%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2019-09-08</td>
+      <td>33.83</td>
+      <td>Indiana Fever (H)</td>
+      <td>1412.95</td>
+      <td>104</td>
+      <td>32.99%</td>
+      <td>Connecticut Sun</td>
+      <td>1612.20</td>
+      <td>76</td>
+      <td>67.01%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2019-08-09</td>
+      <td>30.82</td>
+      <td>Minnesota Lynx (H)</td>
+      <td>1493.24</td>
+      <td>89</td>
+      <td>42.90%</td>
+      <td>Connecticut Sun</td>
+      <td>1619.03</td>
+      <td>57</td>
+      <td>57.10%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2019-06-18</td>
+      <td>29.49</td>
+      <td>Washington Mystics</td>
+      <td>1551.98</td>
+      <td>81</td>
+      <td>42.60%</td>
+      <td>Los Angeles Sparks (H)</td>
+      <td>1527.62</td>
+      <td>52</td>
+      <td>57.40%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2019-06-06</td>
+      <td>29.09</td>
+      <td>Las Vegas Aces</td>
+      <td>1472.26</td>
+      <td>92</td>
+      <td>36.41%</td>
+      <td>Atlanta Dream (H)</td>
+      <td>1492.98</td>
+      <td>69</td>
+      <td>63.59%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2019-08-05</td>
+      <td>28.94</td>
+      <td>Washington Mystics</td>
+      <td>1617.73</td>
+      <td>99</td>
+      <td>43.67%</td>
+      <td>Las Vegas Aces (H)</td>
+      <td>1585.83</td>
+      <td>70</td>
+      <td>56.33%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2019-07-05</td>
+      <td>28.63</td>
+      <td>Indiana Fever</td>
+      <td>1406.50</td>
+      <td>76</td>
+      <td>32.89%</td>
+      <td>Dallas Wings (H)</td>
+      <td>1454.22</td>
+      <td>56</td>
+      <td>67.11%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2019-07-07</td>
+      <td>27.82</td>
+      <td>Las Vegas Aces</td>
+      <td>1516.03</td>
+      <td>90</td>
+      <td>48.46%</td>
+      <td>New York Liberty (H)</td>
+      <td>1450.59</td>
+      <td>58</td>
+      <td>51.54%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2019-07-05</td>
+      <td>25.50</td>
+      <td>Atlanta Dream</td>
+      <td>1396.21</td>
+      <td>77</td>
+      <td>19.41%</td>
+      <td>Seattle Storm (H)</td>
+      <td>1567.34</td>
+      <td>66</td>
+      <td>80.59%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2019-08-04</td>
+      <td>24.61</td>
+      <td>Phoenix Mercury (H)</td>
+      <td>1522.25</td>
+      <td>103</td>
+      <td>43.71%</td>
+      <td>Washington Mystics</td>
+      <td>1642.34</td>
+      <td>82</td>
+      <td>56.29%</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2019-06-30</td>
+      <td>24.55</td>
+      <td>New York Liberty</td>
+      <td>1405.04</td>
+      <td>74</td>
+      <td>35.67%</td>
+      <td>Atlanta Dream (H)</td>
+      <td>1431.37</td>
+      <td>58</td>
+      <td>64.33%</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>2019-06-23</td>
+      <td>23.98</td>
+      <td>Chicago Sky (H)</td>
+      <td>1481.78</td>
+      <td>93</td>
+      <td>40.76%</td>
+      <td>Connecticut Sun</td>
+      <td>1622.84</td>
+      <td>75</td>
+      <td>59.24%</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2019-06-14</td>
+      <td>23.94</td>
+      <td>Los Angeles Sparks</td>
+      <td>1521.85</td>
+      <td>85</td>
+      <td>39.14%</td>
+      <td>Phoenix Mercury (H)</td>
+      <td>1522.41</td>
+      <td>68</td>
+      <td>60.86%</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2019-06-20</td>
+      <td>23.55</td>
+      <td>Washington Mystics</td>
+      <td>1581.47</td>
+      <td>95</td>
+      <td>48.55%</td>
+      <td>Las Vegas Aces (H)</td>
+      <td>1515.45</td>
+      <td>72</td>
+      <td>51.45%</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2019-07-07</td>
+      <td>23.55</td>
+      <td>Los Angeles Sparks (H)</td>
+      <td>1506.65</td>
+      <td>98</td>
+      <td>40.13%</td>
+      <td>Washington Mystics</td>
+      <td>1652.25</td>
+      <td>81</td>
+      <td>59.87%</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>2019-08-25</td>
+      <td>23.22</td>
+      <td>Indiana Fever</td>
+      <td>1370.01</td>
+      <td>63</td>
+      <td>18.88%</td>
+      <td>Seattle Storm (H)</td>
+      <td>1547.16</td>
+      <td>54</td>
+      <td>81.12%</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>2019-08-27</td>
+      <td>23.21</td>
+      <td>Indiana Fever (H)</td>
+      <td>1393.23</td>
+      <td>86</td>
+      <td>37.20%</td>
+      <td>Las Vegas Aces</td>
+      <td>1560.36</td>
+      <td>71</td>
+      <td>62.80%</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>2019-08-02</td>
+      <td>22.67</td>
+      <td>Washington Mystics</td>
+      <td>1619.67</td>
+      <td>99</td>
+      <td>46.87%</td>
+      <td>Seattle Storm (H)</td>
+      <td>1565.31</td>
+      <td>79</td>
+      <td>53.13%</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>2019-08-25</td>
+      <td>21.67</td>
+      <td>Minnesota Lynx (H)</td>
+      <td>1508.92</td>
+      <td>98</td>
+      <td>50.44%</td>
+      <td>Las Vegas Aces</td>
+      <td>1582.02</td>
+      <td>77</td>
+      <td>49.56%</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>2019-06-29</td>
+      <td>21.38</td>
+      <td>Washington Mystics (H)</td>
+      <td>1630.87</td>
+      <td>102</td>
+      <td>65.84%</td>
+      <td>Connecticut Sun</td>
+      <td>1593.04</td>
+      <td>59</td>
+      <td>34.16%</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>2019-08-18</td>
+      <td>21.37</td>
+      <td>Las Vegas Aces</td>
+      <td>1561.30</td>
+      <td>100</td>
+      <td>42.18%</td>
+      <td>Chicago Sky (H)</td>
+      <td>1539.99</td>
+      <td>85</td>
+      <td>57.82%</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>2019-05-31</td>
+      <td>21.34</td>
+      <td>Seattle Storm</td>
+      <td>1565.59</td>
+      <td>82</td>
+      <td>44.07%</td>
+      <td>Atlanta Dream (H)</td>
+      <td>1530.84</td>
+      <td>66</td>
+      <td>55.93%</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>2019-08-27</td>
+      <td>21.33</td>
+      <td>Connecticut Sun</td>
+      <td>1591.13</td>
+      <td>89</td>
+      <td>48.71%</td>
+      <td>Seattle Storm (H)</td>
+      <td>1523.95</td>
+      <td>70</td>
+      <td>51.29%</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>2019-08-01</td>
+      <td>19.99</td>
+      <td>Dallas Wings (H)</td>
+      <td>1379.32</td>
+      <td>87</td>
+      <td>56.32%</td>
+      <td>New York Liberty</td>
+      <td>1411.32</td>
+      <td>64</td>
+      <td>43.68%</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>2019-09-03</td>
+      <td>19.66</td>
+      <td>Seattle Storm</td>
+      <td>1510.77</td>
+      <td>82</td>
+      <td>40.52%</td>
+      <td>Phoenix Mercury (H)</td>
+      <td>1501.33</td>
+      <td>70</td>
+      <td>59.48%</td>
+    </tr>
+  </tbody>
+</table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+        });
+    </script>
+</body>
+</html>
