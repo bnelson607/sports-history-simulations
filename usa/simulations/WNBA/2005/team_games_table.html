@@ -1,0 +1,5401 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Charlotte Sting">Charlotte Sting</option><option value="Connecticut Sun">Connecticut Sun</option><option value="Detroit Shock">Detroit Shock</option><option value="Houston Comets">Houston Comets</option><option value="Indiana Fever">Indiana Fever</option><option value="Los Angeles Sparks">Los Angeles Sparks</option><option value="Minnesota Lynx">Minnesota Lynx</option><option value="New York Liberty">New York Liberty</option><option value="Phoenix Mercury">Phoenix Mercury</option><option value="Sacramento Monarchs">Sacramento Monarchs</option><option value="San Antonio Silver Stars">San Antonio Silver Stars</option><option value="Seattle Storm">Seattle Storm</option><option value="Washington Mystics">Washington Mystics</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2005-05-21</td>
+      <td>Charlotte Sting</td>
+      <td>1472.21</td>
+      <td>42</td>
+      <td>Washington Mystics</td>
+      <td>1477.91</td>
+      <td>60</td>
+      <td>63.95%</td>
+      <td>36.05%</td>
+      <td>-34.11</td>
+    </tr>
+    <tr>
+      <td>2005-05-21</td>
+      <td>Houston Comets</td>
+      <td>1480.10</td>
+      <td>78</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1438.48</td>
+      <td>70</td>
+      <td>40.94%</td>
+      <td>59.06%</td>
+      <td>21.00</td>
+    </tr>
+    <tr>
+      <td>2005-05-21</td>
+      <td>Los Angeles Sparks</td>
+      <td>1545.37</td>
+      <td>68</td>
+      <td>@ Seattle Storm</td>
+      <td>1564.58</td>
+      <td>50</td>
+      <td>32.81%</td>
+      <td>67.19%</td>
+      <td>35.83</td>
+    </tr>
+    <tr>
+      <td>2005-05-21</td>
+      <td>Washington Mystics</td>
+      <td>1477.91</td>
+      <td>60</td>
+      <td>@ Charlotte Sting</td>
+      <td>1472.21</td>
+      <td>42</td>
+      <td>36.05%</td>
+      <td>63.95%</td>
+      <td>34.10</td>
+    </tr>
+    <tr>
+      <td>2005-05-21</td>
+      <td>Sacramento Monarchs</td>
+      <td>1539.83</td>
+      <td>77</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1500.63</td>
+      <td>72</td>
+      <td>40.60%</td>
+      <td>59.40%</td>
+      <td>16.70</td>
+    </tr>
+    <tr>
+      <td>2005-05-21</td>
+      <td>Connecticut Sun</td>
+      <td>1524.89</td>
+      <td>67</td>
+      <td>@ Detroit Shock</td>
+      <td>1511.63</td>
+      <td>78</td>
+      <td>37.06%</td>
+      <td>62.94%</td>
+      <td>-15.45</td>
+    </tr>
+    <tr>
+      <td>2005-05-21</td>
+      <td>Detroit Shock</td>
+      <td>1511.63</td>
+      <td>78</td>
+      <td>Connecticut Sun</td>
+      <td>1524.89</td>
+      <td>67</td>
+      <td>62.94%</td>
+      <td>37.06%</td>
+      <td>15.45</td>
+    </tr>
+    <tr>
+      <td>2005-05-21</td>
+      <td>Phoenix Mercury</td>
+      <td>1500.63</td>
+      <td>72</td>
+      <td>Sacramento Monarchs</td>
+      <td>1539.83</td>
+      <td>77</td>
+      <td>59.40%</td>
+      <td>40.60%</td>
+      <td>-16.70</td>
+    </tr>
+    <tr>
+      <td>2005-05-21</td>
+      <td>Seattle Storm</td>
+      <td>1564.58</td>
+      <td>50</td>
+      <td>Los Angeles Sparks</td>
+      <td>1545.37</td>
+      <td>68</td>
+      <td>67.19%</td>
+      <td>32.81%</td>
+      <td>-35.83</td>
+    </tr>
+    <tr>
+      <td>2005-05-21</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1438.48</td>
+      <td>70</td>
+      <td>Houston Comets</td>
+      <td>1480.10</td>
+      <td>78</td>
+      <td>59.06%</td>
+      <td>40.94%</td>
+      <td>-21.00</td>
+    </tr>
+    <tr>
+      <td>2005-05-22</td>
+      <td>Indiana Fever</td>
+      <td>1473.50</td>
+      <td>68</td>
+      <td>Charlotte Sting</td>
+      <td>1438.10</td>
+      <td>58</td>
+      <td>69.21%</td>
+      <td>30.79%</td>
+      <td>12.24</td>
+    </tr>
+    <tr>
+      <td>2005-05-22</td>
+      <td>New York Liberty</td>
+      <td>1484.70</td>
+      <td>71</td>
+      <td>Detroit Shock</td>
+      <td>1527.08</td>
+      <td>78</td>
+      <td>58.96%</td>
+      <td>41.04%</td>
+      <td>-19.61</td>
+    </tr>
+    <tr>
+      <td>2005-05-22</td>
+      <td>Washington Mystics</td>
+      <td>1512.01</td>
+      <td>67</td>
+      <td>Connecticut Sun</td>
+      <td>1509.44</td>
+      <td>69</td>
+      <td>65.04%</td>
+      <td>34.96%</td>
+      <td>-11.56</td>
+    </tr>
+    <tr>
+      <td>2005-05-22</td>
+      <td>Minnesota Lynx</td>
+      <td>1486.18</td>
+      <td>65</td>
+      <td>@ Houston Comets</td>
+      <td>1501.10</td>
+      <td>79</td>
+      <td>33.36%</td>
+      <td>66.64%</td>
+      <td>-15.69</td>
+    </tr>
+    <tr>
+      <td>2005-05-22</td>
+      <td>Houston Comets</td>
+      <td>1501.10</td>
+      <td>79</td>
+      <td>Minnesota Lynx</td>
+      <td>1486.18</td>
+      <td>65</td>
+      <td>66.64%</td>
+      <td>33.36%</td>
+      <td>15.69</td>
+    </tr>
+    <tr>
+      <td>2005-05-22</td>
+      <td>Charlotte Sting</td>
+      <td>1438.10</td>
+      <td>58</td>
+      <td>@ Indiana Fever</td>
+      <td>1473.50</td>
+      <td>68</td>
+      <td>30.79%</td>
+      <td>69.21%</td>
+      <td>-12.24</td>
+    </tr>
+    <tr>
+      <td>2005-05-22</td>
+      <td>Connecticut Sun</td>
+      <td>1509.44</td>
+      <td>69</td>
+      <td>@ Washington Mystics</td>
+      <td>1512.01</td>
+      <td>67</td>
+      <td>34.96%</td>
+      <td>65.04%</td>
+      <td>11.56</td>
+    </tr>
+    <tr>
+      <td>2005-05-22</td>
+      <td>Detroit Shock</td>
+      <td>1527.08</td>
+      <td>78</td>
+      <td>@ New York Liberty</td>
+      <td>1484.70</td>
+      <td>71</td>
+      <td>41.04%</td>
+      <td>58.96%</td>
+      <td>19.61</td>
+    </tr>
+    <tr>
+      <td>2005-05-24</td>
+      <td>Phoenix Mercury</td>
+      <td>1483.93</td>
+      <td>76</td>
+      <td>@ Indiana Fever</td>
+      <td>1485.74</td>
+      <td>83</td>
+      <td>35.06%</td>
+      <td>64.94%</td>
+      <td>-11.66</td>
+    </tr>
+    <tr>
+      <td>2005-05-24</td>
+      <td>Indiana Fever</td>
+      <td>1485.74</td>
+      <td>83</td>
+      <td>Phoenix Mercury</td>
+      <td>1483.93</td>
+      <td>76</td>
+      <td>64.94%</td>
+      <td>35.06%</td>
+      <td>11.66</td>
+    </tr>
+    <tr>
+      <td>2005-05-24</td>
+      <td>Detroit Shock</td>
+      <td>1546.69</td>
+      <td>74</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1417.48</td>
+      <td>65</td>
+      <td>79.41%</td>
+      <td>20.59%</td>
+      <td>7.76</td>
+    </tr>
+    <tr>
+      <td>2005-05-24</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1417.48</td>
+      <td>65</td>
+      <td>@ Detroit Shock</td>
+      <td>1546.69</td>
+      <td>74</td>
+      <td>20.59%</td>
+      <td>79.41%</td>
+      <td>-7.76</td>
+    </tr>
+    <tr>
+      <td>2005-05-25</td>
+      <td>Los Angeles Sparks</td>
+      <td>1581.20</td>
+      <td>65</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1470.49</td>
+      <td>68</td>
+      <td>50.78%</td>
+      <td>49.22%</td>
+      <td>-11.06</td>
+    </tr>
+    <tr>
+      <td>2005-05-25</td>
+      <td>Minnesota Lynx</td>
+      <td>1470.49</td>
+      <td>68</td>
+      <td>Los Angeles Sparks</td>
+      <td>1581.20</td>
+      <td>65</td>
+      <td>49.22%</td>
+      <td>50.78%</td>
+      <td>11.05</td>
+    </tr>
+    <tr>
+      <td>2005-05-26</td>
+      <td>Phoenix Mercury</td>
+      <td>1472.27</td>
+      <td>68</td>
+      <td>@ Charlotte Sting</td>
+      <td>1425.86</td>
+      <td>58</td>
+      <td>41.61%</td>
+      <td>58.39%</td>
+      <td>23.22</td>
+    </tr>
+    <tr>
+      <td>2005-05-26</td>
+      <td>Indiana Fever</td>
+      <td>1497.40</td>
+      <td>67</td>
+      <td>@ New York Liberty</td>
+      <td>1465.09</td>
+      <td>59</td>
+      <td>39.65%</td>
+      <td>60.35%</td>
+      <td>21.46</td>
+    </tr>
+    <tr>
+      <td>2005-05-26</td>
+      <td>Los Angeles Sparks</td>
+      <td>1570.14</td>
+      <td>84</td>
+      <td>@ Washington Mystics</td>
+      <td>1500.45</td>
+      <td>75</td>
+      <td>44.89%</td>
+      <td>55.11%</td>
+      <td>20.79</td>
+    </tr>
+    <tr>
+      <td>2005-05-26</td>
+      <td>Charlotte Sting</td>
+      <td>1425.86</td>
+      <td>58</td>
+      <td>Phoenix Mercury</td>
+      <td>1472.27</td>
+      <td>68</td>
+      <td>58.39%</td>
+      <td>41.61%</td>
+      <td>-23.21</td>
+    </tr>
+    <tr>
+      <td>2005-05-26</td>
+      <td>Washington Mystics</td>
+      <td>1500.45</td>
+      <td>75</td>
+      <td>Los Angeles Sparks</td>
+      <td>1570.14</td>
+      <td>84</td>
+      <td>55.11%</td>
+      <td>44.89%</td>
+      <td>-20.78</td>
+    </tr>
+    <tr>
+      <td>2005-05-26</td>
+      <td>New York Liberty</td>
+      <td>1465.09</td>
+      <td>59</td>
+      <td>Indiana Fever</td>
+      <td>1497.40</td>
+      <td>67</td>
+      <td>60.35%</td>
+      <td>39.65%</td>
+      <td>-21.46</td>
+    </tr>
+    <tr>
+      <td>2005-05-27</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1409.72</td>
+      <td>67</td>
+      <td>Sacramento Monarchs</td>
+      <td>1556.53</td>
+      <td>71</td>
+      <td>44.05%</td>
+      <td>55.95%</td>
+      <td>-11.08</td>
+    </tr>
+    <tr>
+      <td>2005-05-27</td>
+      <td>Seattle Storm</td>
+      <td>1528.75</td>
+      <td>79</td>
+      <td>Houston Comets</td>
+      <td>1516.79</td>
+      <td>69</td>
+      <td>66.26%</td>
+      <td>33.74%</td>
+      <td>13.41</td>
+    </tr>
+    <tr>
+      <td>2005-05-27</td>
+      <td>Sacramento Monarchs</td>
+      <td>1556.53</td>
+      <td>71</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1409.72</td>
+      <td>67</td>
+      <td>55.95%</td>
+      <td>44.05%</td>
+      <td>11.07</td>
+    </tr>
+    <tr>
+      <td>2005-05-27</td>
+      <td>Houston Comets</td>
+      <td>1516.79</td>
+      <td>69</td>
+      <td>@ Seattle Storm</td>
+      <td>1528.75</td>
+      <td>79</td>
+      <td>33.74%</td>
+      <td>66.26%</td>
+      <td>-13.41</td>
+    </tr>
+    <tr>
+      <td>2005-05-28</td>
+      <td>Charlotte Sting</td>
+      <td>1402.65</td>
+      <td>84</td>
+      <td>Los Angeles Sparks</td>
+      <td>1590.93</td>
+      <td>75</td>
+      <td>38.28%</td>
+      <td>61.72%</td>
+      <td>23.27</td>
+    </tr>
+    <tr>
+      <td>2005-05-28</td>
+      <td>Phoenix Mercury</td>
+      <td>1495.49</td>
+      <td>68</td>
+      <td>@ Connecticut Sun</td>
+      <td>1521.00</td>
+      <td>85</td>
+      <td>32.02%</td>
+      <td>67.98%</td>
+      <td>-16.60</td>
+    </tr>
+    <tr>
+      <td>2005-05-28</td>
+      <td>Los Angeles Sparks</td>
+      <td>1590.93</td>
+      <td>75</td>
+      <td>@ Charlotte Sting</td>
+      <td>1402.65</td>
+      <td>84</td>
+      <td>61.72%</td>
+      <td>38.28%</td>
+      <td>-23.28</td>
+    </tr>
+    <tr>
+      <td>2005-05-28</td>
+      <td>Connecticut Sun</td>
+      <td>1521.00</td>
+      <td>85</td>
+      <td>Phoenix Mercury</td>
+      <td>1495.49</td>
+      <td>68</td>
+      <td>67.98%</td>
+      <td>32.02%</td>
+      <td>16.60</td>
+    </tr>
+    <tr>
+      <td>2005-05-29</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1398.64</td>
+      <td>51</td>
+      <td>@ Seattle Storm</td>
+      <td>1542.16</td>
+      <td>79</td>
+      <td>19.27%</td>
+      <td>80.73%</td>
+      <td>-12.82</td>
+    </tr>
+    <tr>
+      <td>2005-05-29</td>
+      <td>Sacramento Monarchs</td>
+      <td>1567.60</td>
+      <td>67</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1481.54</td>
+      <td>66</td>
+      <td>47.23%</td>
+      <td>52.77%</td>
+      <td>6.63</td>
+    </tr>
+    <tr>
+      <td>2005-05-29</td>
+      <td>Indiana Fever</td>
+      <td>1518.86</td>
+      <td>78</td>
+      <td>@ Houston Comets</td>
+      <td>1503.38</td>
+      <td>86</td>
+      <td>37.35%</td>
+      <td>62.65%</td>
+      <td>-13.28</td>
+    </tr>
+    <tr>
+      <td>2005-05-29</td>
+      <td>Houston Comets</td>
+      <td>1503.38</td>
+      <td>86</td>
+      <td>Indiana Fever</td>
+      <td>1518.86</td>
+      <td>78</td>
+      <td>62.65%</td>
+      <td>37.35%</td>
+      <td>13.28</td>
+    </tr>
+    <tr>
+      <td>2005-05-29</td>
+      <td>Minnesota Lynx</td>
+      <td>1481.54</td>
+      <td>66</td>
+      <td>Sacramento Monarchs</td>
+      <td>1567.60</td>
+      <td>67</td>
+      <td>52.77%</td>
+      <td>47.23%</td>
+      <td>-6.63</td>
+    </tr>
+    <tr>
+      <td>2005-05-29</td>
+      <td>Seattle Storm</td>
+      <td>1542.16</td>
+      <td>79</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1398.64</td>
+      <td>51</td>
+      <td>80.73%</td>
+      <td>19.27%</td>
+      <td>12.82</td>
+    </tr>
+    <tr>
+      <td>2005-05-31</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1385.82</td>
+      <td>70</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1567.65</td>
+      <td>81</td>
+      <td>16.07%</td>
+      <td>83.93%</td>
+      <td>-6.70</td>
+    </tr>
+    <tr>
+      <td>2005-05-31</td>
+      <td>Los Angeles Sparks</td>
+      <td>1567.65</td>
+      <td>81</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1385.82</td>
+      <td>70</td>
+      <td>83.93%</td>
+      <td>16.07%</td>
+      <td>6.70</td>
+    </tr>
+    <tr>
+      <td>2005-06-01</td>
+      <td>New York Liberty</td>
+      <td>1443.63</td>
+      <td>77</td>
+      <td>@ Washington Mystics</td>
+      <td>1479.67</td>
+      <td>68</td>
+      <td>30.71%</td>
+      <td>69.29%</td>
+      <td>26.13</td>
+    </tr>
+    <tr>
+      <td>2005-06-01</td>
+      <td>Washington Mystics</td>
+      <td>1479.67</td>
+      <td>68</td>
+      <td>New York Liberty</td>
+      <td>1443.63</td>
+      <td>77</td>
+      <td>69.29%</td>
+      <td>30.71%</td>
+      <td>-26.13</td>
+    </tr>
+    <tr>
+      <td>2005-06-01</td>
+      <td>Sacramento Monarchs</td>
+      <td>1574.23</td>
+      <td>60</td>
+      <td>@ Indiana Fever</td>
+      <td>1505.58</td>
+      <td>61</td>
+      <td>44.75%</td>
+      <td>55.25%</td>
+      <td>-5.62</td>
+    </tr>
+    <tr>
+      <td>2005-06-01</td>
+      <td>Indiana Fever</td>
+      <td>1505.58</td>
+      <td>61</td>
+      <td>Sacramento Monarchs</td>
+      <td>1574.23</td>
+      <td>60</td>
+      <td>55.25%</td>
+      <td>44.75%</td>
+      <td>5.62</td>
+    </tr>
+    <tr>
+      <td>2005-06-02</td>
+      <td>Phoenix Mercury</td>
+      <td>1478.89</td>
+      <td>67</td>
+      <td>Seattle Storm</td>
+      <td>1554.98</td>
+      <td>78</td>
+      <td>54.19%</td>
+      <td>45.81%</td>
+      <td>-22.59</td>
+    </tr>
+    <tr>
+      <td>2005-06-02</td>
+      <td>Charlotte Sting</td>
+      <td>1425.92</td>
+      <td>62</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1379.12</td>
+      <td>69</td>
+      <td>41.66%</td>
+      <td>58.34%</td>
+      <td>-13.85</td>
+    </tr>
+    <tr>
+      <td>2005-06-02</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1379.12</td>
+      <td>69</td>
+      <td>Charlotte Sting</td>
+      <td>1425.92</td>
+      <td>62</td>
+      <td>58.34%</td>
+      <td>41.66%</td>
+      <td>13.86</td>
+    </tr>
+    <tr>
+      <td>2005-06-02</td>
+      <td>Seattle Storm</td>
+      <td>1554.98</td>
+      <td>78</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1478.89</td>
+      <td>67</td>
+      <td>45.81%</td>
+      <td>54.19%</td>
+      <td>22.59</td>
+    </tr>
+    <tr>
+      <td>2005-06-03</td>
+      <td>New York Liberty</td>
+      <td>1469.76</td>
+      <td>66</td>
+      <td>@ Detroit Shock</td>
+      <td>1554.45</td>
+      <td>68</td>
+      <td>25.09%</td>
+      <td>74.91%</td>
+      <td>-4.46</td>
+    </tr>
+    <tr>
+      <td>2005-06-03</td>
+      <td>Minnesota Lynx</td>
+      <td>1474.91</td>
+      <td>71</td>
+      <td>@ Washington Mystics</td>
+      <td>1453.54</td>
+      <td>74</td>
+      <td>38.15%</td>
+      <td>61.85%</td>
+      <td>-8.31</td>
+    </tr>
+    <tr>
+      <td>2005-06-03</td>
+      <td>Detroit Shock</td>
+      <td>1554.45</td>
+      <td>68</td>
+      <td>New York Liberty</td>
+      <td>1469.76</td>
+      <td>66</td>
+      <td>74.91%</td>
+      <td>25.09%</td>
+      <td>4.46</td>
+    </tr>
+    <tr>
+      <td>2005-06-03</td>
+      <td>Washington Mystics</td>
+      <td>1453.54</td>
+      <td>74</td>
+      <td>Minnesota Lynx</td>
+      <td>1474.91</td>
+      <td>71</td>
+      <td>61.85%</td>
+      <td>38.15%</td>
+      <td>8.31</td>
+    </tr>
+    <tr>
+      <td>2005-06-04</td>
+      <td>Los Angeles Sparks</td>
+      <td>1574.35</td>
+      <td>53</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1568.61</td>
+      <td>81</td>
+      <td>36.05%</td>
+      <td>63.95%</td>
+      <td>-23.98</td>
+    </tr>
+    <tr>
+      <td>2005-06-04</td>
+      <td>Indiana Fever</td>
+      <td>1511.20</td>
+      <td>77</td>
+      <td>@ Seattle Storm</td>
+      <td>1577.57</td>
+      <td>83</td>
+      <td>27.13%</td>
+      <td>72.87%</td>
+      <td>-8.35</td>
+    </tr>
+    <tr>
+      <td>2005-06-04</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1392.98</td>
+      <td>69</td>
+      <td>@ Connecticut Sun</td>
+      <td>1537.60</td>
+      <td>80</td>
+      <td>19.18%</td>
+      <td>80.82%</td>
+      <td>-8.00</td>
+    </tr>
+    <tr>
+      <td>2005-06-04</td>
+      <td>Connecticut Sun</td>
+      <td>1537.60</td>
+      <td>80</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1392.98</td>
+      <td>69</td>
+      <td>80.82%</td>
+      <td>19.18%</td>
+      <td>7.99</td>
+    </tr>
+    <tr>
+      <td>2005-06-04</td>
+      <td>Houston Comets</td>
+      <td>1516.66</td>
+      <td>59</td>
+      <td>Phoenix Mercury</td>
+      <td>1456.30</td>
+      <td>57</td>
+      <td>72.18%</td>
+      <td>27.82%</td>
+      <td>4.95</td>
+    </tr>
+    <tr>
+      <td>2005-06-04</td>
+      <td>Minnesota Lynx</td>
+      <td>1466.60</td>
+      <td>73</td>
+      <td>Charlotte Sting</td>
+      <td>1412.07</td>
+      <td>67</td>
+      <td>71.51%</td>
+      <td>28.49%</td>
+      <td>8.78</td>
+    </tr>
+    <tr>
+      <td>2005-06-04</td>
+      <td>Sacramento Monarchs</td>
+      <td>1568.61</td>
+      <td>81</td>
+      <td>Los Angeles Sparks</td>
+      <td>1574.35</td>
+      <td>53</td>
+      <td>63.95%</td>
+      <td>36.05%</td>
+      <td>23.98</td>
+    </tr>
+    <tr>
+      <td>2005-06-04</td>
+      <td>Seattle Storm</td>
+      <td>1577.57</td>
+      <td>83</td>
+      <td>Indiana Fever</td>
+      <td>1511.20</td>
+      <td>77</td>
+      <td>72.87%</td>
+      <td>27.13%</td>
+      <td>8.35</td>
+    </tr>
+    <tr>
+      <td>2005-06-04</td>
+      <td>Charlotte Sting</td>
+      <td>1412.07</td>
+      <td>67</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1466.60</td>
+      <td>73</td>
+      <td>28.49%</td>
+      <td>71.51%</td>
+      <td>-8.77</td>
+    </tr>
+    <tr>
+      <td>2005-06-04</td>
+      <td>Phoenix Mercury</td>
+      <td>1456.30</td>
+      <td>57</td>
+      <td>@ Houston Comets</td>
+      <td>1516.66</td>
+      <td>59</td>
+      <td>27.82%</td>
+      <td>72.18%</td>
+      <td>-4.95</td>
+    </tr>
+    <tr>
+      <td>2005-06-05</td>
+      <td>New York Liberty</td>
+      <td>1465.30</td>
+      <td>61</td>
+      <td>Washington Mystics</td>
+      <td>1461.85</td>
+      <td>58</td>
+      <td>65.16%</td>
+      <td>34.84%</td>
+      <td>7.58</td>
+    </tr>
+    <tr>
+      <td>2005-06-05</td>
+      <td>Washington Mystics</td>
+      <td>1461.85</td>
+      <td>58</td>
+      <td>@ New York Liberty</td>
+      <td>1465.30</td>
+      <td>61</td>
+      <td>34.84%</td>
+      <td>65.16%</td>
+      <td>-7.59</td>
+    </tr>
+    <tr>
+      <td>2005-06-07</td>
+      <td>Connecticut Sun</td>
+      <td>1545.59</td>
+      <td>81</td>
+      <td>Seattle Storm</td>
+      <td>1585.92</td>
+      <td>69</td>
+      <td>59.24%</td>
+      <td>40.76%</td>
+      <td>17.75</td>
+    </tr>
+    <tr>
+      <td>2005-06-07</td>
+      <td>Seattle Storm</td>
+      <td>1585.92</td>
+      <td>69</td>
+      <td>@ Connecticut Sun</td>
+      <td>1545.59</td>
+      <td>81</td>
+      <td>40.76%</td>
+      <td>59.24%</td>
+      <td>-17.74</td>
+    </tr>
+    <tr>
+      <td>2005-06-07</td>
+      <td>Minnesota Lynx</td>
+      <td>1475.38</td>
+      <td>62</td>
+      <td>@ Houston Comets</td>
+      <td>1521.61</td>
+      <td>58</td>
+      <td>29.48%</td>
+      <td>70.52%</td>
+      <td>17.73</td>
+    </tr>
+    <tr>
+      <td>2005-06-07</td>
+      <td>Indiana Fever</td>
+      <td>1502.85</td>
+      <td>51</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1592.59</td>
+      <td>65</td>
+      <td>24.55%</td>
+      <td>75.45%</td>
+      <td>-11.55</td>
+    </tr>
+    <tr>
+      <td>2005-06-07</td>
+      <td>Washington Mystics</td>
+      <td>1454.26</td>
+      <td>62</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1384.98</td>
+      <td>71</td>
+      <td>44.83%</td>
+      <td>55.17%</td>
+      <td>-16.91</td>
+    </tr>
+    <tr>
+      <td>2005-06-07</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1384.98</td>
+      <td>71</td>
+      <td>Washington Mystics</td>
+      <td>1454.26</td>
+      <td>62</td>
+      <td>55.17%</td>
+      <td>44.83%</td>
+      <td>16.91</td>
+    </tr>
+    <tr>
+      <td>2005-06-07</td>
+      <td>Sacramento Monarchs</td>
+      <td>1592.59</td>
+      <td>65</td>
+      <td>Indiana Fever</td>
+      <td>1502.85</td>
+      <td>51</td>
+      <td>75.45%</td>
+      <td>24.55%</td>
+      <td>11.55</td>
+    </tr>
+    <tr>
+      <td>2005-06-07</td>
+      <td>Houston Comets</td>
+      <td>1521.61</td>
+      <td>58</td>
+      <td>Minnesota Lynx</td>
+      <td>1475.38</td>
+      <td>62</td>
+      <td>70.52%</td>
+      <td>29.48%</td>
+      <td>-17.73</td>
+    </tr>
+    <tr>
+      <td>2005-06-08</td>
+      <td>Detroit Shock</td>
+      <td>1558.91</td>
+      <td>61</td>
+      <td>Seattle Storm</td>
+      <td>1568.18</td>
+      <td>76</td>
+      <td>63.48%</td>
+      <td>36.52%</td>
+      <td>-30.90</td>
+    </tr>
+    <tr>
+      <td>2005-06-08</td>
+      <td>Los Angeles Sparks</td>
+      <td>1550.37</td>
+      <td>63</td>
+      <td>Phoenix Mercury</td>
+      <td>1451.35</td>
+      <td>66</td>
+      <td>76.43%</td>
+      <td>23.57%</td>
+      <td>-16.64</td>
+    </tr>
+    <tr>
+      <td>2005-06-08</td>
+      <td>Seattle Storm</td>
+      <td>1568.18</td>
+      <td>76</td>
+      <td>@ Detroit Shock</td>
+      <td>1558.91</td>
+      <td>61</td>
+      <td>36.52%</td>
+      <td>63.48%</td>
+      <td>30.90</td>
+    </tr>
+    <tr>
+      <td>2005-06-08</td>
+      <td>Phoenix Mercury</td>
+      <td>1451.35</td>
+      <td>66</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1550.37</td>
+      <td>63</td>
+      <td>23.57%</td>
+      <td>76.43%</td>
+      <td>16.64</td>
+    </tr>
+    <tr>
+      <td>2005-06-10</td>
+      <td>Sacramento Monarchs</td>
+      <td>1604.14</td>
+      <td>73</td>
+      <td>Phoenix Mercury</td>
+      <td>1467.99</td>
+      <td>61</td>
+      <td>80.06%</td>
+      <td>19.94%</td>
+      <td>8.68</td>
+    </tr>
+    <tr>
+      <td>2005-06-10</td>
+      <td>Washington Mystics</td>
+      <td>1437.35</td>
+      <td>64</td>
+      <td>Seattle Storm</td>
+      <td>1599.08</td>
+      <td>52</td>
+      <td>41.95%</td>
+      <td>58.05%</td>
+      <td>25.28</td>
+    </tr>
+    <tr>
+      <td>2005-06-10</td>
+      <td>Detroit Shock</td>
+      <td>1528.01</td>
+      <td>69</td>
+      <td>Charlotte Sting</td>
+      <td>1403.30</td>
+      <td>55</td>
+      <td>78.99%</td>
+      <td>21.01%</td>
+      <td>9.88</td>
+    </tr>
+    <tr>
+      <td>2005-06-10</td>
+      <td>Houston Comets</td>
+      <td>1503.88</td>
+      <td>57</td>
+      <td>Connecticut Sun</td>
+      <td>1563.34</td>
+      <td>77</td>
+      <td>56.56%</td>
+      <td>43.44%</td>
+      <td>-31.80</td>
+    </tr>
+    <tr>
+      <td>2005-06-10</td>
+      <td>Indiana Fever</td>
+      <td>1491.30</td>
+      <td>62</td>
+      <td>New York Liberty</td>
+      <td>1472.88</td>
+      <td>59</td>
+      <td>67.09%</td>
+      <td>32.91%</td>
+      <td>7.17</td>
+    </tr>
+    <tr>
+      <td>2005-06-10</td>
+      <td>Seattle Storm</td>
+      <td>1599.08</td>
+      <td>52</td>
+      <td>@ Washington Mystics</td>
+      <td>1437.35</td>
+      <td>64</td>
+      <td>58.05%</td>
+      <td>41.95%</td>
+      <td>-25.28</td>
+    </tr>
+    <tr>
+      <td>2005-06-10</td>
+      <td>Phoenix Mercury</td>
+      <td>1467.99</td>
+      <td>61</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1604.14</td>
+      <td>73</td>
+      <td>19.94%</td>
+      <td>80.06%</td>
+      <td>-8.68</td>
+    </tr>
+    <tr>
+      <td>2005-06-10</td>
+      <td>New York Liberty</td>
+      <td>1472.88</td>
+      <td>59</td>
+      <td>@ Indiana Fever</td>
+      <td>1491.30</td>
+      <td>62</td>
+      <td>32.91%</td>
+      <td>67.09%</td>
+      <td>-7.16</td>
+    </tr>
+    <tr>
+      <td>2005-06-10</td>
+      <td>Connecticut Sun</td>
+      <td>1563.34</td>
+      <td>77</td>
+      <td>@ Houston Comets</td>
+      <td>1503.88</td>
+      <td>57</td>
+      <td>43.44%</td>
+      <td>56.56%</td>
+      <td>31.79</td>
+    </tr>
+    <tr>
+      <td>2005-06-10</td>
+      <td>Charlotte Sting</td>
+      <td>1403.30</td>
+      <td>55</td>
+      <td>@ Detroit Shock</td>
+      <td>1528.01</td>
+      <td>69</td>
+      <td>21.01%</td>
+      <td>78.99%</td>
+      <td>-9.89</td>
+    </tr>
+    <tr>
+      <td>2005-06-11</td>
+      <td>Connecticut Sun</td>
+      <td>1595.13</td>
+      <td>78</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1401.89</td>
+      <td>69</td>
+      <td>62.39%</td>
+      <td>37.61%</td>
+      <td>14.18</td>
+    </tr>
+    <tr>
+      <td>2005-06-11</td>
+      <td>Washington Mystics</td>
+      <td>1462.63</td>
+      <td>60</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1493.11</td>
+      <td>78</td>
+      <td>31.40%</td>
+      <td>68.60%</td>
+      <td>-16.74</td>
+    </tr>
+    <tr>
+      <td>2005-06-11</td>
+      <td>Los Angeles Sparks</td>
+      <td>1533.73</td>
+      <td>81</td>
+      <td>Sacramento Monarchs</td>
+      <td>1612.82</td>
+      <td>74</td>
+      <td>53.77%</td>
+      <td>46.23%</td>
+      <td>15.38</td>
+    </tr>
+    <tr>
+      <td>2005-06-11</td>
+      <td>Minnesota Lynx</td>
+      <td>1493.11</td>
+      <td>78</td>
+      <td>Washington Mystics</td>
+      <td>1462.63</td>
+      <td>60</td>
+      <td>68.60%</td>
+      <td>31.40%</td>
+      <td>16.74</td>
+    </tr>
+    <tr>
+      <td>2005-06-11</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1401.89</td>
+      <td>69</td>
+      <td>Connecticut Sun</td>
+      <td>1595.13</td>
+      <td>78</td>
+      <td>37.61%</td>
+      <td>62.39%</td>
+      <td>-14.18</td>
+    </tr>
+    <tr>
+      <td>2005-06-11</td>
+      <td>Sacramento Monarchs</td>
+      <td>1612.82</td>
+      <td>74</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1533.73</td>
+      <td>81</td>
+      <td>46.23%</td>
+      <td>53.77%</td>
+      <td>-15.38</td>
+    </tr>
+    <tr>
+      <td>2005-06-12</td>
+      <td>New York Liberty</td>
+      <td>1465.72</td>
+      <td>72</td>
+      <td>Detroit Shock</td>
+      <td>1537.89</td>
+      <td>69</td>
+      <td>54.75%</td>
+      <td>45.25%</td>
+      <td>9.85</td>
+    </tr>
+    <tr>
+      <td>2005-06-12</td>
+      <td>Seattle Storm</td>
+      <td>1573.80</td>
+      <td>62</td>
+      <td>@ Charlotte Sting</td>
+      <td>1393.41</td>
+      <td>60</td>
+      <td>60.64%</td>
+      <td>39.36%</td>
+      <td>7.00</td>
+    </tr>
+    <tr>
+      <td>2005-06-12</td>
+      <td>Detroit Shock</td>
+      <td>1537.89</td>
+      <td>69</td>
+      <td>@ New York Liberty</td>
+      <td>1465.72</td>
+      <td>72</td>
+      <td>45.25%</td>
+      <td>54.75%</td>
+      <td>-9.85</td>
+    </tr>
+    <tr>
+      <td>2005-06-12</td>
+      <td>Charlotte Sting</td>
+      <td>1393.41</td>
+      <td>60</td>
+      <td>Seattle Storm</td>
+      <td>1573.80</td>
+      <td>62</td>
+      <td>39.36%</td>
+      <td>60.64%</td>
+      <td>-6.99</td>
+    </tr>
+    <tr>
+      <td>2005-06-13</td>
+      <td>Houston Comets</td>
+      <td>1472.08</td>
+      <td>68</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1597.44</td>
+      <td>74</td>
+      <td>20.95%</td>
+      <td>79.05%</td>
+      <td>-6.45</td>
+    </tr>
+    <tr>
+      <td>2005-06-13</td>
+      <td>Sacramento Monarchs</td>
+      <td>1597.44</td>
+      <td>74</td>
+      <td>Houston Comets</td>
+      <td>1472.08</td>
+      <td>68</td>
+      <td>79.05%</td>
+      <td>20.95%</td>
+      <td>6.46</td>
+    </tr>
+    <tr>
+      <td>2005-06-15</td>
+      <td>Indiana Fever</td>
+      <td>1498.47</td>
+      <td>84</td>
+      <td>Detroit Shock</td>
+      <td>1528.04</td>
+      <td>79</td>
+      <td>60.73%</td>
+      <td>39.27%</td>
+      <td>11.04</td>
+    </tr>
+    <tr>
+      <td>2005-06-15</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1387.71</td>
+      <td>62</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1459.31</td>
+      <td>76</td>
+      <td>26.54%</td>
+      <td>73.46%</td>
+      <td>-12.48</td>
+    </tr>
+    <tr>
+      <td>2005-06-15</td>
+      <td>Phoenix Mercury</td>
+      <td>1459.31</td>
+      <td>76</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1387.71</td>
+      <td>62</td>
+      <td>73.46%</td>
+      <td>26.54%</td>
+      <td>12.48</td>
+    </tr>
+    <tr>
+      <td>2005-06-15</td>
+      <td>Seattle Storm</td>
+      <td>1580.80</td>
+      <td>81</td>
+      <td>Minnesota Lynx</td>
+      <td>1509.85</td>
+      <td>86</td>
+      <td>73.39%</td>
+      <td>26.61%</td>
+      <td>-20.63</td>
+    </tr>
+    <tr>
+      <td>2005-06-15</td>
+      <td>Minnesota Lynx</td>
+      <td>1509.85</td>
+      <td>86</td>
+      <td>@ Seattle Storm</td>
+      <td>1580.80</td>
+      <td>81</td>
+      <td>26.61%</td>
+      <td>73.39%</td>
+      <td>20.63</td>
+    </tr>
+    <tr>
+      <td>2005-06-15</td>
+      <td>Houston Comets</td>
+      <td>1465.63</td>
+      <td>64</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1549.11</td>
+      <td>83</td>
+      <td>25.22%</td>
+      <td>74.78%</td>
+      <td>-13.82</td>
+    </tr>
+    <tr>
+      <td>2005-06-15</td>
+      <td>Detroit Shock</td>
+      <td>1528.04</td>
+      <td>79</td>
+      <td>@ Indiana Fever</td>
+      <td>1498.47</td>
+      <td>84</td>
+      <td>39.27%</td>
+      <td>60.73%</td>
+      <td>-11.04</td>
+    </tr>
+    <tr>
+      <td>2005-06-15</td>
+      <td>Los Angeles Sparks</td>
+      <td>1549.11</td>
+      <td>83</td>
+      <td>Houston Comets</td>
+      <td>1465.63</td>
+      <td>64</td>
+      <td>74.78%</td>
+      <td>25.22%</td>
+      <td>13.82</td>
+    </tr>
+    <tr>
+      <td>2005-06-16</td>
+      <td>Charlotte Sting</td>
+      <td>1386.42</td>
+      <td>57</td>
+      <td>Indiana Fever</td>
+      <td>1509.51</td>
+      <td>60</td>
+      <td>47.44%</td>
+      <td>52.56%</td>
+      <td>-10.33</td>
+    </tr>
+    <tr>
+      <td>2005-06-16</td>
+      <td>Indiana Fever</td>
+      <td>1509.51</td>
+      <td>60</td>
+      <td>@ Charlotte Sting</td>
+      <td>1386.42</td>
+      <td>57</td>
+      <td>52.56%</td>
+      <td>47.44%</td>
+      <td>10.33</td>
+    </tr>
+    <tr>
+      <td>2005-06-17</td>
+      <td>Minnesota Lynx</td>
+      <td>1530.48</td>
+      <td>50</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1603.90</td>
+      <td>67</td>
+      <td>26.33%</td>
+      <td>73.67%</td>
+      <td>-13.65</td>
+    </tr>
+    <tr>
+      <td>2005-06-17</td>
+      <td>Sacramento Monarchs</td>
+      <td>1603.90</td>
+      <td>67</td>
+      <td>Minnesota Lynx</td>
+      <td>1530.48</td>
+      <td>50</td>
+      <td>73.67%</td>
+      <td>26.33%</td>
+      <td>13.64</td>
+    </tr>
+    <tr>
+      <td>2005-06-18</td>
+      <td>Phoenix Mercury</td>
+      <td>1471.79</td>
+      <td>54</td>
+      <td>@ New York Liberty</td>
+      <td>1475.57</td>
+      <td>65</td>
+      <td>34.80%</td>
+      <td>65.20%</td>
+      <td>-14.51</td>
+    </tr>
+    <tr>
+      <td>2005-06-18</td>
+      <td>New York Liberty</td>
+      <td>1475.57</td>
+      <td>65</td>
+      <td>Phoenix Mercury</td>
+      <td>1471.79</td>
+      <td>54</td>
+      <td>65.20%</td>
+      <td>34.80%</td>
+      <td>14.51</td>
+    </tr>
+    <tr>
+      <td>2005-06-18</td>
+      <td>Indiana Fever</td>
+      <td>1519.84</td>
+      <td>78</td>
+      <td>@ Washington Mystics</td>
+      <td>1445.89</td>
+      <td>88</td>
+      <td>45.50%</td>
+      <td>54.50%</td>
+      <td>-18.09</td>
+    </tr>
+    <tr>
+      <td>2005-06-18</td>
+      <td>Houston Comets</td>
+      <td>1451.81</td>
+      <td>75</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1375.23</td>
+      <td>69</td>
+      <td>45.88%</td>
+      <td>54.12%</td>
+      <td>16.66</td>
+    </tr>
+    <tr>
+      <td>2005-06-18</td>
+      <td>Washington Mystics</td>
+      <td>1445.89</td>
+      <td>88</td>
+      <td>Indiana Fever</td>
+      <td>1519.84</td>
+      <td>78</td>
+      <td>54.50%</td>
+      <td>45.50%</td>
+      <td>18.08</td>
+    </tr>
+    <tr>
+      <td>2005-06-18</td>
+      <td>Minnesota Lynx</td>
+      <td>1516.83</td>
+      <td>56</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1562.93</td>
+      <td>69</td>
+      <td>29.49%</td>
+      <td>70.51%</td>
+      <td>-13.36</td>
+    </tr>
+    <tr>
+      <td>2005-06-18</td>
+      <td>Detroit Shock</td>
+      <td>1517.00</td>
+      <td>63</td>
+      <td>@ Connecticut Sun</td>
+      <td>1609.31</td>
+      <td>73</td>
+      <td>24.28%</td>
+      <td>75.72%</td>
+      <td>-9.65</td>
+    </tr>
+    <tr>
+      <td>2005-06-18</td>
+      <td>Los Angeles Sparks</td>
+      <td>1562.93</td>
+      <td>69</td>
+      <td>Minnesota Lynx</td>
+      <td>1516.83</td>
+      <td>56</td>
+      <td>70.51%</td>
+      <td>29.49%</td>
+      <td>13.37</td>
+    </tr>
+    <tr>
+      <td>2005-06-18</td>
+      <td>Connecticut Sun</td>
+      <td>1609.31</td>
+      <td>73</td>
+      <td>Detroit Shock</td>
+      <td>1517.00</td>
+      <td>63</td>
+      <td>75.72%</td>
+      <td>24.28%</td>
+      <td>9.65</td>
+    </tr>
+    <tr>
+      <td>2005-06-18</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1375.23</td>
+      <td>69</td>
+      <td>Houston Comets</td>
+      <td>1451.81</td>
+      <td>75</td>
+      <td>54.12%</td>
+      <td>45.88%</td>
+      <td>-16.67</td>
+    </tr>
+    <tr>
+      <td>2005-06-20</td>
+      <td>Connecticut Sun</td>
+      <td>1618.96</td>
+      <td>90</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1576.30</td>
+      <td>70</td>
+      <td>41.08%</td>
+      <td>58.92%</td>
+      <td>33.12</td>
+    </tr>
+    <tr>
+      <td>2005-06-20</td>
+      <td>Los Angeles Sparks</td>
+      <td>1576.30</td>
+      <td>70</td>
+      <td>Connecticut Sun</td>
+      <td>1618.96</td>
+      <td>90</td>
+      <td>58.92%</td>
+      <td>41.08%</td>
+      <td>-33.12</td>
+    </tr>
+    <tr>
+      <td>2005-06-21</td>
+      <td>Phoenix Mercury</td>
+      <td>1457.28</td>
+      <td>56</td>
+      <td>@ Washington Mystics</td>
+      <td>1463.97</td>
+      <td>77</td>
+      <td>34.42%</td>
+      <td>65.58%</td>
+      <td>-19.82</td>
+    </tr>
+    <tr>
+      <td>2005-06-21</td>
+      <td>Washington Mystics</td>
+      <td>1463.97</td>
+      <td>77</td>
+      <td>Phoenix Mercury</td>
+      <td>1457.28</td>
+      <td>56</td>
+      <td>65.58%</td>
+      <td>34.42%</td>
+      <td>19.83</td>
+    </tr>
+    <tr>
+      <td>2005-06-21</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1358.56</td>
+      <td>59</td>
+      <td>@ New York Liberty</td>
+      <td>1490.08</td>
+      <td>77</td>
+      <td>20.37%</td>
+      <td>79.63%</td>
+      <td>-10.86</td>
+    </tr>
+    <tr>
+      <td>2005-06-21</td>
+      <td>New York Liberty</td>
+      <td>1490.08</td>
+      <td>77</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1358.56</td>
+      <td>59</td>
+      <td>79.63%</td>
+      <td>20.37%</td>
+      <td>10.86</td>
+    </tr>
+    <tr>
+      <td>2005-06-22</td>
+      <td>Minnesota Lynx</td>
+      <td>1503.47</td>
+      <td>75</td>
+      <td>Phoenix Mercury</td>
+      <td>1437.46</td>
+      <td>59</td>
+      <td>72.83%</td>
+      <td>27.17%</td>
+      <td>13.66</td>
+    </tr>
+    <tr>
+      <td>2005-06-22</td>
+      <td>Phoenix Mercury</td>
+      <td>1437.46</td>
+      <td>59</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1503.47</td>
+      <td>75</td>
+      <td>27.17%</td>
+      <td>72.83%</td>
+      <td>-13.66</td>
+    </tr>
+    <tr>
+      <td>2005-06-22</td>
+      <td>Connecticut Sun</td>
+      <td>1652.08</td>
+      <td>86</td>
+      <td>@ Seattle Storm</td>
+      <td>1560.17</td>
+      <td>95</td>
+      <td>48.07%</td>
+      <td>51.93%</td>
+      <td>-18.12</td>
+    </tr>
+    <tr>
+      <td>2005-06-22</td>
+      <td>Seattle Storm</td>
+      <td>1560.17</td>
+      <td>95</td>
+      <td>Connecticut Sun</td>
+      <td>1652.08</td>
+      <td>86</td>
+      <td>51.93%</td>
+      <td>48.07%</td>
+      <td>18.13</td>
+    </tr>
+    <tr>
+      <td>2005-06-23</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1347.70</td>
+      <td>64</td>
+      <td>@ Charlotte Sting</td>
+      <td>1376.09</td>
+      <td>49</td>
+      <td>31.66%</td>
+      <td>68.34%</td>
+      <td>33.27</td>
+    </tr>
+    <tr>
+      <td>2005-06-23</td>
+      <td>Charlotte Sting</td>
+      <td>1376.09</td>
+      <td>49</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1347.70</td>
+      <td>64</td>
+      <td>68.34%</td>
+      <td>31.66%</td>
+      <td>-33.28</td>
+    </tr>
+    <tr>
+      <td>2005-06-24</td>
+      <td>Washington Mystics</td>
+      <td>1483.80</td>
+      <td>69</td>
+      <td>@ Detroit Shock</td>
+      <td>1507.35</td>
+      <td>55</td>
+      <td>32.26%</td>
+      <td>67.74%</td>
+      <td>31.86</td>
+    </tr>
+    <tr>
+      <td>2005-06-24</td>
+      <td>Connecticut Sun</td>
+      <td>1633.96</td>
+      <td>61</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1617.54</td>
+      <td>50</td>
+      <td>37.48%</td>
+      <td>62.52%</td>
+      <td>26.06</td>
+    </tr>
+    <tr>
+      <td>2005-06-24</td>
+      <td>Seattle Storm</td>
+      <td>1578.30</td>
+      <td>65</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1543.18</td>
+      <td>76</td>
+      <td>40.04%</td>
+      <td>59.96%</td>
+      <td>-16.69</td>
+    </tr>
+    <tr>
+      <td>2005-06-24</td>
+      <td>Minnesota Lynx</td>
+      <td>1517.13</td>
+      <td>55</td>
+      <td>@ Indiana Fever</td>
+      <td>1501.75</td>
+      <td>57</td>
+      <td>37.34%</td>
+      <td>62.66%</td>
+      <td>-6.64</td>
+    </tr>
+    <tr>
+      <td>2005-06-24</td>
+      <td>Detroit Shock</td>
+      <td>1507.35</td>
+      <td>55</td>
+      <td>Washington Mystics</td>
+      <td>1483.80</td>
+      <td>69</td>
+      <td>67.74%</td>
+      <td>32.26%</td>
+      <td>-31.86</td>
+    </tr>
+    <tr>
+      <td>2005-06-24</td>
+      <td>Indiana Fever</td>
+      <td>1501.75</td>
+      <td>57</td>
+      <td>Minnesota Lynx</td>
+      <td>1517.13</td>
+      <td>55</td>
+      <td>62.66%</td>
+      <td>37.34%</td>
+      <td>6.64</td>
+    </tr>
+    <tr>
+      <td>2005-06-24</td>
+      <td>Sacramento Monarchs</td>
+      <td>1617.54</td>
+      <td>50</td>
+      <td>Connecticut Sun</td>
+      <td>1633.96</td>
+      <td>61</td>
+      <td>62.52%</td>
+      <td>37.48%</td>
+      <td>-26.06</td>
+    </tr>
+    <tr>
+      <td>2005-06-24</td>
+      <td>Los Angeles Sparks</td>
+      <td>1543.18</td>
+      <td>76</td>
+      <td>Seattle Storm</td>
+      <td>1578.30</td>
+      <td>65</td>
+      <td>59.96%</td>
+      <td>40.04%</td>
+      <td>16.69</td>
+    </tr>
+    <tr>
+      <td>2005-06-25</td>
+      <td>Houston Comets</td>
+      <td>1468.47</td>
+      <td>62</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1380.97</td>
+      <td>44</td>
+      <td>75.21%</td>
+      <td>24.79%</td>
+      <td>13.23</td>
+    </tr>
+    <tr>
+      <td>2005-06-25</td>
+      <td>Charlotte Sting</td>
+      <td>1342.81</td>
+      <td>67</td>
+      <td>New York Liberty</td>
+      <td>1500.94</td>
+      <td>61</td>
+      <td>42.46%</td>
+      <td>57.54%</td>
+      <td>17.72</td>
+    </tr>
+    <tr>
+      <td>2005-06-25</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1380.97</td>
+      <td>44</td>
+      <td>@ Houston Comets</td>
+      <td>1468.47</td>
+      <td>62</td>
+      <td>24.79%</td>
+      <td>75.21%</td>
+      <td>-13.22</td>
+    </tr>
+    <tr>
+      <td>2005-06-25</td>
+      <td>Connecticut Sun</td>
+      <td>1660.02</td>
+      <td>77</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1423.80</td>
+      <td>69</td>
+      <td>68.00%</td>
+      <td>32.00%</td>
+      <td>11.38</td>
+    </tr>
+    <tr>
+      <td>2005-06-25</td>
+      <td>Phoenix Mercury</td>
+      <td>1423.80</td>
+      <td>69</td>
+      <td>Connecticut Sun</td>
+      <td>1660.02</td>
+      <td>77</td>
+      <td>32.00%</td>
+      <td>68.00%</td>
+      <td>-11.38</td>
+    </tr>
+    <tr>
+      <td>2005-06-25</td>
+      <td>New York Liberty</td>
+      <td>1500.94</td>
+      <td>61</td>
+      <td>@ Charlotte Sting</td>
+      <td>1342.81</td>
+      <td>67</td>
+      <td>57.54%</td>
+      <td>42.46%</td>
+      <td>-17.72</td>
+    </tr>
+    <tr>
+      <td>2005-06-26</td>
+      <td>Detroit Shock</td>
+      <td>1475.49</td>
+      <td>79</td>
+      <td>Los Angeles Sparks</td>
+      <td>1559.87</td>
+      <td>73</td>
+      <td>53.01%</td>
+      <td>46.99%</td>
+      <td>14.47</td>
+    </tr>
+    <tr>
+      <td>2005-06-26</td>
+      <td>Minnesota Lynx</td>
+      <td>1510.49</td>
+      <td>73</td>
+      <td>Seattle Storm</td>
+      <td>1561.61</td>
+      <td>70</td>
+      <td>57.73%</td>
+      <td>42.27%</td>
+      <td>9.20</td>
+    </tr>
+    <tr>
+      <td>2005-06-26</td>
+      <td>Washington Mystics</td>
+      <td>1515.66</td>
+      <td>57</td>
+      <td>Sacramento Monarchs</td>
+      <td>1591.48</td>
+      <td>62</td>
+      <td>54.23%</td>
+      <td>45.77%</td>
+      <td>-15.24</td>
+    </tr>
+    <tr>
+      <td>2005-06-26</td>
+      <td>Sacramento Monarchs</td>
+      <td>1591.48</td>
+      <td>62</td>
+      <td>@ Washington Mystics</td>
+      <td>1515.66</td>
+      <td>57</td>
+      <td>45.77%</td>
+      <td>54.23%</td>
+      <td>15.24</td>
+    </tr>
+    <tr>
+      <td>2005-06-26</td>
+      <td>Seattle Storm</td>
+      <td>1561.61</td>
+      <td>70</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1510.49</td>
+      <td>73</td>
+      <td>42.27%</td>
+      <td>57.73%</td>
+      <td>-9.20</td>
+    </tr>
+    <tr>
+      <td>2005-06-26</td>
+      <td>Los Angeles Sparks</td>
+      <td>1559.87</td>
+      <td>73</td>
+      <td>@ Detroit Shock</td>
+      <td>1475.49</td>
+      <td>79</td>
+      <td>46.99%</td>
+      <td>53.01%</td>
+      <td>-14.47</td>
+    </tr>
+    <tr>
+      <td>2005-06-28</td>
+      <td>Connecticut Sun</td>
+      <td>1671.40</td>
+      <td>70</td>
+      <td>Sacramento Monarchs</td>
+      <td>1606.72</td>
+      <td>66</td>
+      <td>72.68%</td>
+      <td>27.32%</td>
+      <td>6.87</td>
+    </tr>
+    <tr>
+      <td>2005-06-28</td>
+      <td>Minnesota Lynx</td>
+      <td>1519.69</td>
+      <td>63</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1367.75</td>
+      <td>53</td>
+      <td>81.47%</td>
+      <td>18.53%</td>
+      <td>7.37</td>
+    </tr>
+    <tr>
+      <td>2005-06-28</td>
+      <td>Indiana Fever</td>
+      <td>1508.39</td>
+      <td>58</td>
+      <td>Los Angeles Sparks</td>
+      <td>1545.40</td>
+      <td>61</td>
+      <td>59.70%</td>
+      <td>40.30%</td>
+      <td>-13.00</td>
+    </tr>
+    <tr>
+      <td>2005-06-28</td>
+      <td>Houston Comets</td>
+      <td>1481.70</td>
+      <td>71</td>
+      <td>Seattle Storm</td>
+      <td>1552.41</td>
+      <td>67</td>
+      <td>54.96%</td>
+      <td>45.04%</td>
+      <td>11.32</td>
+    </tr>
+    <tr>
+      <td>2005-06-28</td>
+      <td>Charlotte Sting</td>
+      <td>1360.53</td>
+      <td>61</td>
+      <td>Washington Mystics</td>
+      <td>1500.42</td>
+      <td>66</td>
+      <td>45.04%</td>
+      <td>54.96%</td>
+      <td>-12.66</td>
+    </tr>
+    <tr>
+      <td>2005-06-28</td>
+      <td>Sacramento Monarchs</td>
+      <td>1606.72</td>
+      <td>66</td>
+      <td>@ Connecticut Sun</td>
+      <td>1671.40</td>
+      <td>70</td>
+      <td>27.32%</td>
+      <td>72.68%</td>
+      <td>-6.87</td>
+    </tr>
+    <tr>
+      <td>2005-06-28</td>
+      <td>Seattle Storm</td>
+      <td>1552.41</td>
+      <td>67</td>
+      <td>@ Houston Comets</td>
+      <td>1481.70</td>
+      <td>71</td>
+      <td>45.04%</td>
+      <td>54.96%</td>
+      <td>-11.32</td>
+    </tr>
+    <tr>
+      <td>2005-06-28</td>
+      <td>Los Angeles Sparks</td>
+      <td>1545.40</td>
+      <td>61</td>
+      <td>@ Indiana Fever</td>
+      <td>1508.39</td>
+      <td>58</td>
+      <td>40.30%</td>
+      <td>59.70%</td>
+      <td>13.00</td>
+    </tr>
+    <tr>
+      <td>2005-06-28</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1367.75</td>
+      <td>53</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1519.69</td>
+      <td>63</td>
+      <td>18.53%</td>
+      <td>81.47%</td>
+      <td>-7.37</td>
+    </tr>
+    <tr>
+      <td>2005-06-28</td>
+      <td>Washington Mystics</td>
+      <td>1500.42</td>
+      <td>66</td>
+      <td>@ Charlotte Sting</td>
+      <td>1360.53</td>
+      <td>61</td>
+      <td>54.96%</td>
+      <td>45.04%</td>
+      <td>12.65</td>
+    </tr>
+    <tr>
+      <td>2005-06-30</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1360.38</td>
+      <td>81</td>
+      <td>Seattle Storm</td>
+      <td>1541.09</td>
+      <td>69</td>
+      <td>39.32%</td>
+      <td>60.68%</td>
+      <td>26.43</td>
+    </tr>
+    <tr>
+      <td>2005-06-30</td>
+      <td>Washington Mystics</td>
+      <td>1513.07</td>
+      <td>65</td>
+      <td>Charlotte Sting</td>
+      <td>1347.87</td>
+      <td>50</td>
+      <td>82.59%</td>
+      <td>17.41%</td>
+      <td>8.48</td>
+    </tr>
+    <tr>
+      <td>2005-06-30</td>
+      <td>New York Liberty</td>
+      <td>1483.22</td>
+      <td>50</td>
+      <td>Sacramento Monarchs</td>
+      <td>1599.85</td>
+      <td>61</td>
+      <td>48.37%</td>
+      <td>51.63%</td>
+      <td>-20.16</td>
+    </tr>
+    <tr>
+      <td>2005-06-30</td>
+      <td>Connecticut Sun</td>
+      <td>1678.27</td>
+      <td>71</td>
+      <td>Minnesota Lynx</td>
+      <td>1527.06</td>
+      <td>56</td>
+      <td>81.41%</td>
+      <td>18.59%</td>
+      <td>9.05</td>
+    </tr>
+    <tr>
+      <td>2005-06-30</td>
+      <td>Charlotte Sting</td>
+      <td>1347.87</td>
+      <td>50</td>
+      <td>@ Washington Mystics</td>
+      <td>1513.07</td>
+      <td>65</td>
+      <td>17.41%</td>
+      <td>82.59%</td>
+      <td>-8.47</td>
+    </tr>
+    <tr>
+      <td>2005-06-30</td>
+      <td>Minnesota Lynx</td>
+      <td>1527.06</td>
+      <td>56</td>
+      <td>@ Connecticut Sun</td>
+      <td>1678.27</td>
+      <td>71</td>
+      <td>18.59%</td>
+      <td>81.41%</td>
+      <td>-9.06</td>
+    </tr>
+    <tr>
+      <td>2005-06-30</td>
+      <td>Sacramento Monarchs</td>
+      <td>1599.85</td>
+      <td>61</td>
+      <td>@ New York Liberty</td>
+      <td>1483.22</td>
+      <td>50</td>
+      <td>51.63%</td>
+      <td>48.37%</td>
+      <td>20.17</td>
+    </tr>
+    <tr>
+      <td>2005-06-30</td>
+      <td>Seattle Storm</td>
+      <td>1541.09</td>
+      <td>69</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1360.38</td>
+      <td>81</td>
+      <td>60.68%</td>
+      <td>39.32%</td>
+      <td>-26.43</td>
+    </tr>
+    <tr>
+      <td>2005-07-01</td>
+      <td>Detroit Shock</td>
+      <td>1489.96</td>
+      <td>63</td>
+      <td>Sacramento Monarchs</td>
+      <td>1620.02</td>
+      <td>80</td>
+      <td>46.44%</td>
+      <td>53.56%</td>
+      <td>-24.07</td>
+    </tr>
+    <tr>
+      <td>2005-07-01</td>
+      <td>Sacramento Monarchs</td>
+      <td>1620.02</td>
+      <td>80</td>
+      <td>@ Detroit Shock</td>
+      <td>1489.96</td>
+      <td>63</td>
+      <td>53.56%</td>
+      <td>46.44%</td>
+      <td>24.07</td>
+    </tr>
+    <tr>
+      <td>2005-07-02</td>
+      <td>Charlotte Sting</td>
+      <td>1339.40</td>
+      <td>65</td>
+      <td>@ Houston Comets</td>
+      <td>1493.02</td>
+      <td>75</td>
+      <td>18.39%</td>
+      <td>81.61%</td>
+      <td>-7.31</td>
+    </tr>
+    <tr>
+      <td>2005-07-02</td>
+      <td>Phoenix Mercury</td>
+      <td>1412.42</td>
+      <td>63</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1558.40</td>
+      <td>86</td>
+      <td>19.05%</td>
+      <td>80.95%</td>
+      <td>-11.49</td>
+    </tr>
+    <tr>
+      <td>2005-07-02</td>
+      <td>New York Liberty</td>
+      <td>1463.06</td>
+      <td>57</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1386.81</td>
+      <td>69</td>
+      <td>45.83%</td>
+      <td>54.17%</td>
+      <td>-19.96</td>
+    </tr>
+    <tr>
+      <td>2005-07-02</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1386.81</td>
+      <td>69</td>
+      <td>New York Liberty</td>
+      <td>1463.06</td>
+      <td>57</td>
+      <td>54.17%</td>
+      <td>45.83%</td>
+      <td>19.95</td>
+    </tr>
+    <tr>
+      <td>2005-07-02</td>
+      <td>Los Angeles Sparks</td>
+      <td>1558.40</td>
+      <td>86</td>
+      <td>Phoenix Mercury</td>
+      <td>1412.42</td>
+      <td>63</td>
+      <td>80.95%</td>
+      <td>19.05%</td>
+      <td>11.48</td>
+    </tr>
+    <tr>
+      <td>2005-07-02</td>
+      <td>Houston Comets</td>
+      <td>1493.02</td>
+      <td>75</td>
+      <td>Charlotte Sting</td>
+      <td>1339.40</td>
+      <td>65</td>
+      <td>81.61%</td>
+      <td>18.39%</td>
+      <td>7.31</td>
+    </tr>
+    <tr>
+      <td>2005-07-03</td>
+      <td>Seattle Storm</td>
+      <td>1514.66</td>
+      <td>74</td>
+      <td>Sacramento Monarchs</td>
+      <td>1644.09</td>
+      <td>67</td>
+      <td>46.53%</td>
+      <td>53.47%</td>
+      <td>17.78</td>
+    </tr>
+    <tr>
+      <td>2005-07-03</td>
+      <td>Sacramento Monarchs</td>
+      <td>1644.09</td>
+      <td>67</td>
+      <td>@ Seattle Storm</td>
+      <td>1514.66</td>
+      <td>74</td>
+      <td>53.47%</td>
+      <td>46.53%</td>
+      <td>-17.78</td>
+    </tr>
+    <tr>
+      <td>2005-07-05</td>
+      <td>New York Liberty</td>
+      <td>1443.10</td>
+      <td>67</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1569.88</td>
+      <td>55</td>
+      <td>20.82%</td>
+      <td>79.18%</td>
+      <td>34.48</td>
+    </tr>
+    <tr>
+      <td>2005-07-05</td>
+      <td>Phoenix Mercury</td>
+      <td>1400.93</td>
+      <td>76</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1406.76</td>
+      <td>69</td>
+      <td>34.53%</td>
+      <td>65.47%</td>
+      <td>21.77</td>
+    </tr>
+    <tr>
+      <td>2005-07-05</td>
+      <td>Houston Comets</td>
+      <td>1500.33</td>
+      <td>75</td>
+      <td>@ Detroit Shock</td>
+      <td>1465.89</td>
+      <td>66</td>
+      <td>39.94%</td>
+      <td>60.06%</td>
+      <td>22.64</td>
+    </tr>
+    <tr>
+      <td>2005-07-05</td>
+      <td>Los Angeles Sparks</td>
+      <td>1569.88</td>
+      <td>55</td>
+      <td>New York Liberty</td>
+      <td>1443.10</td>
+      <td>67</td>
+      <td>79.18%</td>
+      <td>20.82%</td>
+      <td>-34.48</td>
+    </tr>
+    <tr>
+      <td>2005-07-05</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1406.76</td>
+      <td>69</td>
+      <td>Phoenix Mercury</td>
+      <td>1400.93</td>
+      <td>76</td>
+      <td>65.47%</td>
+      <td>34.53%</td>
+      <td>-21.77</td>
+    </tr>
+    <tr>
+      <td>2005-07-05</td>
+      <td>Detroit Shock</td>
+      <td>1465.89</td>
+      <td>66</td>
+      <td>Houston Comets</td>
+      <td>1500.33</td>
+      <td>75</td>
+      <td>60.06%</td>
+      <td>39.94%</td>
+      <td>-22.65</td>
+    </tr>
+    <tr>
+      <td>2005-07-06</td>
+      <td>Phoenix Mercury</td>
+      <td>1422.70</td>
+      <td>73</td>
+      <td>Seattle Storm</td>
+      <td>1532.44</td>
+      <td>61</td>
+      <td>49.36%</td>
+      <td>50.64%</td>
+      <td>22.05</td>
+    </tr>
+    <tr>
+      <td>2005-07-06</td>
+      <td>Seattle Storm</td>
+      <td>1532.44</td>
+      <td>61</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1422.70</td>
+      <td>73</td>
+      <td>50.64%</td>
+      <td>49.36%</td>
+      <td>-22.05</td>
+    </tr>
+    <tr>
+      <td>2005-07-07</td>
+      <td>Houston Comets</td>
+      <td>1522.97</td>
+      <td>65</td>
+      <td>@ Indiana Fever</td>
+      <td>1495.39</td>
+      <td>63</td>
+      <td>39.00%</td>
+      <td>61.00%</td>
+      <td>10.85</td>
+    </tr>
+    <tr>
+      <td>2005-07-07</td>
+      <td>Indiana Fever</td>
+      <td>1495.39</td>
+      <td>63</td>
+      <td>Houston Comets</td>
+      <td>1522.97</td>
+      <td>65</td>
+      <td>61.00%</td>
+      <td>39.00%</td>
+      <td>-10.85</td>
+    </tr>
+    <tr>
+      <td>2005-07-07</td>
+      <td>New York Liberty</td>
+      <td>1477.58</td>
+      <td>89</td>
+      <td>Connecticut Sun</td>
+      <td>1687.32</td>
+      <td>79</td>
+      <td>35.41%</td>
+      <td>64.59%</td>
+      <td>25.68</td>
+    </tr>
+    <tr>
+      <td>2005-07-07</td>
+      <td>Washington Mystics</td>
+      <td>1521.55</td>
+      <td>62</td>
+      <td>Detroit Shock</td>
+      <td>1443.24</td>
+      <td>76</td>
+      <td>74.21%</td>
+      <td>25.79%</td>
+      <td>-34.90</td>
+    </tr>
+    <tr>
+      <td>2005-07-07</td>
+      <td>Minnesota Lynx</td>
+      <td>1518.00</td>
+      <td>58</td>
+      <td>@ Charlotte Sting</td>
+      <td>1332.09</td>
+      <td>66</td>
+      <td>61.40%</td>
+      <td>38.60%</td>
+      <td>-21.83</td>
+    </tr>
+    <tr>
+      <td>2005-07-07</td>
+      <td>Detroit Shock</td>
+      <td>1443.24</td>
+      <td>76</td>
+      <td>@ Washington Mystics</td>
+      <td>1521.55</td>
+      <td>62</td>
+      <td>25.79%</td>
+      <td>74.21%</td>
+      <td>34.91</td>
+    </tr>
+    <tr>
+      <td>2005-07-07</td>
+      <td>Connecticut Sun</td>
+      <td>1687.32</td>
+      <td>79</td>
+      <td>@ New York Liberty</td>
+      <td>1477.58</td>
+      <td>89</td>
+      <td>64.59%</td>
+      <td>35.41%</td>
+      <td>-25.68</td>
+    </tr>
+    <tr>
+      <td>2005-07-07</td>
+      <td>Charlotte Sting</td>
+      <td>1332.09</td>
+      <td>66</td>
+      <td>Minnesota Lynx</td>
+      <td>1518.00</td>
+      <td>58</td>
+      <td>38.60%</td>
+      <td>61.40%</td>
+      <td>21.83</td>
+    </tr>
+    <tr>
+      <td>2005-07-12</td>
+      <td>Los Angeles Sparks</td>
+      <td>1535.40</td>
+      <td>71</td>
+      <td>Charlotte Sting</td>
+      <td>1353.92</td>
+      <td>59</td>
+      <td>83.90%</td>
+      <td>16.10%</td>
+      <td>7.02</td>
+    </tr>
+    <tr>
+      <td>2005-07-12</td>
+      <td>Charlotte Sting</td>
+      <td>1353.92</td>
+      <td>59</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1535.40</td>
+      <td>71</td>
+      <td>16.10%</td>
+      <td>83.90%</td>
+      <td>-7.01</td>
+    </tr>
+    <tr>
+      <td>2005-07-12</td>
+      <td>New York Liberty</td>
+      <td>1503.26</td>
+      <td>68</td>
+      <td>@ Houston Comets</td>
+      <td>1533.82</td>
+      <td>65</td>
+      <td>31.39%</td>
+      <td>68.61%</td>
+      <td>14.94</td>
+    </tr>
+    <tr>
+      <td>2005-07-12</td>
+      <td>Houston Comets</td>
+      <td>1533.82</td>
+      <td>65</td>
+      <td>New York Liberty</td>
+      <td>1503.26</td>
+      <td>68</td>
+      <td>68.61%</td>
+      <td>31.39%</td>
+      <td>-14.94</td>
+    </tr>
+    <tr>
+      <td>2005-07-13</td>
+      <td>Connecticut Sun</td>
+      <td>1661.64</td>
+      <td>53</td>
+      <td>@ Indiana Fever</td>
+      <td>1484.54</td>
+      <td>64</td>
+      <td>60.19%</td>
+      <td>39.81%</td>
+      <td>-25.09</td>
+    </tr>
+    <tr>
+      <td>2005-07-13</td>
+      <td>Detroit Shock</td>
+      <td>1478.15</td>
+      <td>61</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1496.17</td>
+      <td>71</td>
+      <td>32.96%</td>
+      <td>67.04%</td>
+      <td>-13.11</td>
+    </tr>
+    <tr>
+      <td>2005-07-13</td>
+      <td>Seattle Storm</td>
+      <td>1510.39</td>
+      <td>71</td>
+      <td>Washington Mystics</td>
+      <td>1486.65</td>
+      <td>78</td>
+      <td>67.76%</td>
+      <td>32.24%</td>
+      <td>-22.53</td>
+    </tr>
+    <tr>
+      <td>2005-07-13</td>
+      <td>Phoenix Mercury</td>
+      <td>1444.75</td>
+      <td>82</td>
+      <td>Charlotte Sting</td>
+      <td>1346.91</td>
+      <td>62</td>
+      <td>76.30%</td>
+      <td>23.70%</td>
+      <td>13.33</td>
+    </tr>
+    <tr>
+      <td>2005-07-13</td>
+      <td>Minnesota Lynx</td>
+      <td>1496.17</td>
+      <td>71</td>
+      <td>Detroit Shock</td>
+      <td>1478.15</td>
+      <td>61</td>
+      <td>67.04%</td>
+      <td>32.96%</td>
+      <td>13.11</td>
+    </tr>
+    <tr>
+      <td>2005-07-13</td>
+      <td>Indiana Fever</td>
+      <td>1484.54</td>
+      <td>64</td>
+      <td>Connecticut Sun</td>
+      <td>1661.64</td>
+      <td>53</td>
+      <td>39.81%</td>
+      <td>60.19%</td>
+      <td>25.10</td>
+    </tr>
+    <tr>
+      <td>2005-07-13</td>
+      <td>Washington Mystics</td>
+      <td>1486.65</td>
+      <td>78</td>
+      <td>@ Seattle Storm</td>
+      <td>1510.39</td>
+      <td>71</td>
+      <td>32.24%</td>
+      <td>67.76%</td>
+      <td>22.53</td>
+    </tr>
+    <tr>
+      <td>2005-07-13</td>
+      <td>Charlotte Sting</td>
+      <td>1346.91</td>
+      <td>62</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1444.75</td>
+      <td>82</td>
+      <td>23.70%</td>
+      <td>76.30%</td>
+      <td>-13.32</td>
+    </tr>
+    <tr>
+      <td>2005-07-14</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1384.99</td>
+      <td>61</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1626.31</td>
+      <td>72</td>
+      <td>11.97%</td>
+      <td>88.03%</td>
+      <td>-4.99</td>
+    </tr>
+    <tr>
+      <td>2005-07-14</td>
+      <td>Sacramento Monarchs</td>
+      <td>1626.31</td>
+      <td>72</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1384.99</td>
+      <td>61</td>
+      <td>88.03%</td>
+      <td>11.97%</td>
+      <td>4.99</td>
+    </tr>
+    <tr>
+      <td>2005-07-15</td>
+      <td>Connecticut Sun</td>
+      <td>1636.55</td>
+      <td>70</td>
+      <td>Houston Comets</td>
+      <td>1518.88</td>
+      <td>66</td>
+      <td>78.30%</td>
+      <td>21.70%</td>
+      <td>5.46</td>
+    </tr>
+    <tr>
+      <td>2005-07-15</td>
+      <td>Washington Mystics</td>
+      <td>1509.18</td>
+      <td>66</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1458.08</td>
+      <td>77</td>
+      <td>42.26%</td>
+      <td>57.74%</td>
+      <td>-17.62</td>
+    </tr>
+    <tr>
+      <td>2005-07-15</td>
+      <td>Houston Comets</td>
+      <td>1518.88</td>
+      <td>66</td>
+      <td>@ Connecticut Sun</td>
+      <td>1636.55</td>
+      <td>70</td>
+      <td>21.70%</td>
+      <td>78.30%</td>
+      <td>-5.45</td>
+    </tr>
+    <tr>
+      <td>2005-07-15</td>
+      <td>Minnesota Lynx</td>
+      <td>1509.28</td>
+      <td>64</td>
+      <td>@ New York Liberty</td>
+      <td>1518.20</td>
+      <td>60</td>
+      <td>34.13%</td>
+      <td>65.87%</td>
+      <td>16.56</td>
+    </tr>
+    <tr>
+      <td>2005-07-15</td>
+      <td>Seattle Storm</td>
+      <td>1487.86</td>
+      <td>92</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1380.00</td>
+      <td>70</td>
+      <td>77.33%</td>
+      <td>22.67%</td>
+      <td>13.36</td>
+    </tr>
+    <tr>
+      <td>2005-07-15</td>
+      <td>Phoenix Mercury</td>
+      <td>1458.08</td>
+      <td>77</td>
+      <td>Washington Mystics</td>
+      <td>1509.18</td>
+      <td>66</td>
+      <td>57.74%</td>
+      <td>42.26%</td>
+      <td>17.62</td>
+    </tr>
+    <tr>
+      <td>2005-07-15</td>
+      <td>New York Liberty</td>
+      <td>1518.20</td>
+      <td>60</td>
+      <td>Minnesota Lynx</td>
+      <td>1509.28</td>
+      <td>64</td>
+      <td>65.87%</td>
+      <td>34.13%</td>
+      <td>-16.56</td>
+    </tr>
+    <tr>
+      <td>2005-07-15</td>
+      <td>Indiana Fever</td>
+      <td>1509.64</td>
+      <td>62</td>
+      <td>Detroit Shock</td>
+      <td>1465.04</td>
+      <td>57</td>
+      <td>70.33%</td>
+      <td>29.67%</td>
+      <td>8.34</td>
+    </tr>
+    <tr>
+      <td>2005-07-15</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1380.00</td>
+      <td>70</td>
+      <td>@ Seattle Storm</td>
+      <td>1487.86</td>
+      <td>92</td>
+      <td>22.67%</td>
+      <td>77.33%</td>
+      <td>-13.37</td>
+    </tr>
+    <tr>
+      <td>2005-07-15</td>
+      <td>Detroit Shock</td>
+      <td>1465.04</td>
+      <td>57</td>
+      <td>@ Indiana Fever</td>
+      <td>1509.64</td>
+      <td>62</td>
+      <td>29.67%</td>
+      <td>70.33%</td>
+      <td>-8.34</td>
+    </tr>
+    <tr>
+      <td>2005-07-16</td>
+      <td>Seattle Storm</td>
+      <td>1501.22</td>
+      <td>78</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1542.42</td>
+      <td>70</td>
+      <td>30.08%</td>
+      <td>69.92%</td>
+      <td>24.86</td>
+    </tr>
+    <tr>
+      <td>2005-07-16</td>
+      <td>Washington Mystics</td>
+      <td>1491.56</td>
+      <td>59</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1631.30</td>
+      <td>73</td>
+      <td>19.61%</td>
+      <td>80.39%</td>
+      <td>-9.22</td>
+    </tr>
+    <tr>
+      <td>2005-07-16</td>
+      <td>Sacramento Monarchs</td>
+      <td>1631.30</td>
+      <td>73</td>
+      <td>Washington Mystics</td>
+      <td>1491.56</td>
+      <td>59</td>
+      <td>80.39%</td>
+      <td>19.61%</td>
+      <td>9.22</td>
+    </tr>
+    <tr>
+      <td>2005-07-16</td>
+      <td>Los Angeles Sparks</td>
+      <td>1542.42</td>
+      <td>70</td>
+      <td>Seattle Storm</td>
+      <td>1501.22</td>
+      <td>78</td>
+      <td>69.92%</td>
+      <td>30.08%</td>
+      <td>-24.86</td>
+    </tr>
+    <tr>
+      <td>2005-07-17</td>
+      <td>Charlotte Sting</td>
+      <td>1333.59</td>
+      <td>55</td>
+      <td>Houston Comets</td>
+      <td>1513.43</td>
+      <td>67</td>
+      <td>39.43%</td>
+      <td>60.57%</td>
+      <td>-17.17</td>
+    </tr>
+    <tr>
+      <td>2005-07-17</td>
+      <td>Detroit Shock</td>
+      <td>1456.70</td>
+      <td>58</td>
+      <td>Indiana Fever</td>
+      <td>1517.98</td>
+      <td>59</td>
+      <td>56.30%</td>
+      <td>43.70%</td>
+      <td>-7.07</td>
+    </tr>
+    <tr>
+      <td>2005-07-17</td>
+      <td>Indiana Fever</td>
+      <td>1517.98</td>
+      <td>59</td>
+      <td>@ Detroit Shock</td>
+      <td>1456.70</td>
+      <td>58</td>
+      <td>43.70%</td>
+      <td>56.30%</td>
+      <td>7.07</td>
+    </tr>
+    <tr>
+      <td>2005-07-17</td>
+      <td>Houston Comets</td>
+      <td>1513.43</td>
+      <td>67</td>
+      <td>@ Charlotte Sting</td>
+      <td>1333.59</td>
+      <td>55</td>
+      <td>60.57%</td>
+      <td>39.43%</td>
+      <td>17.17</td>
+    </tr>
+    <tr>
+      <td>2005-07-17</td>
+      <td>Connecticut Sun</td>
+      <td>1642.01</td>
+      <td>72</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1525.84</td>
+      <td>53</td>
+      <td>51.56%</td>
+      <td>48.44%</td>
+      <td>26.53</td>
+    </tr>
+    <tr>
+      <td>2005-07-17</td>
+      <td>Minnesota Lynx</td>
+      <td>1525.84</td>
+      <td>53</td>
+      <td>Connecticut Sun</td>
+      <td>1642.01</td>
+      <td>72</td>
+      <td>48.44%</td>
+      <td>51.56%</td>
+      <td>-26.54</td>
+    </tr>
+    <tr>
+      <td>2005-07-19</td>
+      <td>Connecticut Sun</td>
+      <td>1668.54</td>
+      <td>64</td>
+      <td>@ Charlotte Sting</td>
+      <td>1316.42</td>
+      <td>55</td>
+      <td>80.55%</td>
+      <td>19.45%</td>
+      <td>7.34</td>
+    </tr>
+    <tr>
+      <td>2005-07-19</td>
+      <td>Washington Mystics</td>
+      <td>1482.34</td>
+      <td>74</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1517.56</td>
+      <td>68</td>
+      <td>30.81%</td>
+      <td>69.19%</td>
+      <td>21.30</td>
+    </tr>
+    <tr>
+      <td>2005-07-19</td>
+      <td>Sacramento Monarchs</td>
+      <td>1640.52</td>
+      <td>54</td>
+      <td>@ Houston Comets</td>
+      <td>1530.60</td>
+      <td>58</td>
+      <td>50.67%</td>
+      <td>49.33%</td>
+      <td>-12.73</td>
+    </tr>
+    <tr>
+      <td>2005-07-19</td>
+      <td>Seattle Storm</td>
+      <td>1526.08</td>
+      <td>87</td>
+      <td>New York Liberty</td>
+      <td>1501.64</td>
+      <td>78</td>
+      <td>67.85%</td>
+      <td>32.15%</td>
+      <td>12.12</td>
+    </tr>
+    <tr>
+      <td>2005-07-19</td>
+      <td>Minnesota Lynx</td>
+      <td>1499.30</td>
+      <td>66</td>
+      <td>Indiana Fever</td>
+      <td>1525.05</td>
+      <td>45</td>
+      <td>61.25%</td>
+      <td>38.75%</td>
+      <td>22.32</td>
+    </tr>
+    <tr>
+      <td>2005-07-19</td>
+      <td>Los Angeles Sparks</td>
+      <td>1517.56</td>
+      <td>68</td>
+      <td>Washington Mystics</td>
+      <td>1482.34</td>
+      <td>74</td>
+      <td>69.19%</td>
+      <td>30.81%</td>
+      <td>-21.31</td>
+    </tr>
+    <tr>
+      <td>2005-07-19</td>
+      <td>Charlotte Sting</td>
+      <td>1316.42</td>
+      <td>55</td>
+      <td>Connecticut Sun</td>
+      <td>1668.54</td>
+      <td>64</td>
+      <td>19.45%</td>
+      <td>80.55%</td>
+      <td>-7.34</td>
+    </tr>
+    <tr>
+      <td>2005-07-19</td>
+      <td>Houston Comets</td>
+      <td>1530.60</td>
+      <td>58</td>
+      <td>Sacramento Monarchs</td>
+      <td>1640.52</td>
+      <td>54</td>
+      <td>49.33%</td>
+      <td>50.67%</td>
+      <td>12.73</td>
+    </tr>
+    <tr>
+      <td>2005-07-19</td>
+      <td>New York Liberty</td>
+      <td>1501.64</td>
+      <td>78</td>
+      <td>@ Seattle Storm</td>
+      <td>1526.08</td>
+      <td>87</td>
+      <td>32.15%</td>
+      <td>67.85%</td>
+      <td>-12.13</td>
+    </tr>
+    <tr>
+      <td>2005-07-19</td>
+      <td>Indiana Fever</td>
+      <td>1525.05</td>
+      <td>45</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1499.30</td>
+      <td>66</td>
+      <td>38.75%</td>
+      <td>61.25%</td>
+      <td>-22.32</td>
+    </tr>
+    <tr>
+      <td>2005-07-20</td>
+      <td>Detroit Shock</td>
+      <td>1449.63</td>
+      <td>66</td>
+      <td>Connecticut Sun</td>
+      <td>1675.88</td>
+      <td>57</td>
+      <td>33.26%</td>
+      <td>66.74%</td>
+      <td>25.16</td>
+    </tr>
+    <tr>
+      <td>2005-07-20</td>
+      <td>Connecticut Sun</td>
+      <td>1675.88</td>
+      <td>57</td>
+      <td>@ Detroit Shock</td>
+      <td>1449.63</td>
+      <td>66</td>
+      <td>66.74%</td>
+      <td>33.26%</td>
+      <td>-25.17</td>
+    </tr>
+    <tr>
+      <td>2005-07-21</td>
+      <td>Indiana Fever</td>
+      <td>1502.73</td>
+      <td>66</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1366.63</td>
+      <td>53</td>
+      <td>80.05%</td>
+      <td>19.95%</td>
+      <td>9.04</td>
+    </tr>
+    <tr>
+      <td>2005-07-21</td>
+      <td>Houston Comets</td>
+      <td>1543.33</td>
+      <td>65</td>
+      <td>Washington Mystics</td>
+      <td>1503.64</td>
+      <td>70</td>
+      <td>69.73%</td>
+      <td>30.27%</td>
+      <td>-19.60</td>
+    </tr>
+    <tr>
+      <td>2005-07-21</td>
+      <td>New York Liberty</td>
+      <td>1489.51</td>
+      <td>80</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1475.70</td>
+      <td>70</td>
+      <td>37.13%</td>
+      <td>62.87%</td>
+      <td>24.99</td>
+    </tr>
+    <tr>
+      <td>2005-07-21</td>
+      <td>Washington Mystics</td>
+      <td>1503.64</td>
+      <td>70</td>
+      <td>@ Houston Comets</td>
+      <td>1543.33</td>
+      <td>65</td>
+      <td>30.27%</td>
+      <td>69.73%</td>
+      <td>19.60</td>
+    </tr>
+    <tr>
+      <td>2005-07-21</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1366.63</td>
+      <td>53</td>
+      <td>@ Indiana Fever</td>
+      <td>1502.73</td>
+      <td>66</td>
+      <td>19.95%</td>
+      <td>80.05%</td>
+      <td>-9.04</td>
+    </tr>
+    <tr>
+      <td>2005-07-21</td>
+      <td>Phoenix Mercury</td>
+      <td>1475.70</td>
+      <td>70</td>
+      <td>New York Liberty</td>
+      <td>1489.51</td>
+      <td>80</td>
+      <td>62.87%</td>
+      <td>37.13%</td>
+      <td>-25.00</td>
+    </tr>
+    <tr>
+      <td>2005-07-22</td>
+      <td>Charlotte Sting</td>
+      <td>1309.08</td>
+      <td>63</td>
+      <td>@ Connecticut Sun</td>
+      <td>1650.71</td>
+      <td>73</td>
+      <td>7.09%</td>
+      <td>92.91%</td>
+      <td>-2.82</td>
+    </tr>
+    <tr>
+      <td>2005-07-22</td>
+      <td>Sacramento Monarchs</td>
+      <td>1627.79</td>
+      <td>63</td>
+      <td>New York Liberty</td>
+      <td>1514.50</td>
+      <td>73</td>
+      <td>77.87%</td>
+      <td>22.13%</td>
+      <td>-30.96</td>
+    </tr>
+    <tr>
+      <td>2005-07-22</td>
+      <td>Connecticut Sun</td>
+      <td>1650.71</td>
+      <td>73</td>
+      <td>Charlotte Sting</td>
+      <td>1309.08</td>
+      <td>63</td>
+      <td>92.91%</td>
+      <td>7.09%</td>
+      <td>2.82</td>
+    </tr>
+    <tr>
+      <td>2005-07-22</td>
+      <td>New York Liberty</td>
+      <td>1514.50</td>
+      <td>73</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1627.79</td>
+      <td>63</td>
+      <td>22.13%</td>
+      <td>77.87%</td>
+      <td>30.96</td>
+    </tr>
+    <tr>
+      <td>2005-07-23</td>
+      <td>Charlotte Sting</td>
+      <td>1306.26</td>
+      <td>46</td>
+      <td>Indiana Fever</td>
+      <td>1511.77</td>
+      <td>63</td>
+      <td>35.97%</td>
+      <td>64.03%</td>
+      <td>-18.64</td>
+    </tr>
+    <tr>
+      <td>2005-07-23</td>
+      <td>Houston Comets</td>
+      <td>1523.73</td>
+      <td>59</td>
+      <td>Los Angeles Sparks</td>
+      <td>1496.25</td>
+      <td>69</td>
+      <td>68.23%</td>
+      <td>31.77%</td>
+      <td>-27.12</td>
+    </tr>
+    <tr>
+      <td>2005-07-23</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1357.59</td>
+      <td>49</td>
+      <td>Phoenix Mercury</td>
+      <td>1450.70</td>
+      <td>66</td>
+      <td>51.75%</td>
+      <td>48.25%</td>
+      <td>-26.82</td>
+    </tr>
+    <tr>
+      <td>2005-07-23</td>
+      <td>Seattle Storm</td>
+      <td>1538.20</td>
+      <td>74</td>
+      <td>Detroit Shock</td>
+      <td>1474.79</td>
+      <td>71</td>
+      <td>72.54%</td>
+      <td>27.46%</td>
+      <td>5.98</td>
+    </tr>
+    <tr>
+      <td>2005-07-23</td>
+      <td>Detroit Shock</td>
+      <td>1474.79</td>
+      <td>71</td>
+      <td>@ Seattle Storm</td>
+      <td>1538.20</td>
+      <td>74</td>
+      <td>27.46%</td>
+      <td>72.54%</td>
+      <td>-5.98</td>
+    </tr>
+    <tr>
+      <td>2005-07-23</td>
+      <td>Phoenix Mercury</td>
+      <td>1450.70</td>
+      <td>66</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1357.59</td>
+      <td>49</td>
+      <td>48.25%</td>
+      <td>51.75%</td>
+      <td>26.83</td>
+    </tr>
+    <tr>
+      <td>2005-07-23</td>
+      <td>Los Angeles Sparks</td>
+      <td>1496.25</td>
+      <td>69</td>
+      <td>@ Houston Comets</td>
+      <td>1523.73</td>
+      <td>59</td>
+      <td>31.77%</td>
+      <td>68.23%</td>
+      <td>27.13</td>
+    </tr>
+    <tr>
+      <td>2005-07-23</td>
+      <td>Indiana Fever</td>
+      <td>1511.77</td>
+      <td>63</td>
+      <td>@ Charlotte Sting</td>
+      <td>1306.26</td>
+      <td>46</td>
+      <td>64.03%</td>
+      <td>35.97%</td>
+      <td>18.64</td>
+    </tr>
+    <tr>
+      <td>2005-07-24</td>
+      <td>Minnesota Lynx</td>
+      <td>1521.62</td>
+      <td>47</td>
+      <td>New York Liberty</td>
+      <td>1545.46</td>
+      <td>59</td>
+      <td>61.51%</td>
+      <td>38.49%</td>
+      <td>-26.79</td>
+    </tr>
+    <tr>
+      <td>2005-07-24</td>
+      <td>Sacramento Monarchs</td>
+      <td>1596.83</td>
+      <td>91</td>
+      <td>Detroit Shock</td>
+      <td>1468.81</td>
+      <td>51</td>
+      <td>79.30%</td>
+      <td>20.70%</td>
+      <td>16.46</td>
+    </tr>
+    <tr>
+      <td>2005-07-24</td>
+      <td>Detroit Shock</td>
+      <td>1468.81</td>
+      <td>51</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1596.83</td>
+      <td>91</td>
+      <td>20.70%</td>
+      <td>79.30%</td>
+      <td>-16.45</td>
+    </tr>
+    <tr>
+      <td>2005-07-24</td>
+      <td>New York Liberty</td>
+      <td>1545.46</td>
+      <td>59</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1521.62</td>
+      <td>47</td>
+      <td>38.49%</td>
+      <td>61.51%</td>
+      <td>26.78</td>
+    </tr>
+    <tr>
+      <td>2005-07-26</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1330.77</td>
+      <td>78</td>
+      <td>Minnesota Lynx</td>
+      <td>1494.83</td>
+      <td>71</td>
+      <td>41.62%</td>
+      <td>58.38%</td>
+      <td>19.42</td>
+    </tr>
+    <tr>
+      <td>2005-07-26</td>
+      <td>Washington Mystics</td>
+      <td>1523.24</td>
+      <td>65</td>
+      <td>Houston Comets</td>
+      <td>1496.61</td>
+      <td>83</td>
+      <td>68.12%</td>
+      <td>31.88%</td>
+      <td>-36.33</td>
+    </tr>
+    <tr>
+      <td>2005-07-26</td>
+      <td>Sacramento Monarchs</td>
+      <td>1613.29</td>
+      <td>64</td>
+      <td>Charlotte Sting</td>
+      <td>1287.62</td>
+      <td>54</td>
+      <td>92.28%</td>
+      <td>7.72%</td>
+      <td>3.07</td>
+    </tr>
+    <tr>
+      <td>2005-07-26</td>
+      <td>Phoenix Mercury</td>
+      <td>1477.53</td>
+      <td>77</td>
+      <td>Los Angeles Sparks</td>
+      <td>1523.38</td>
+      <td>60</td>
+      <td>58.47%</td>
+      <td>41.53%</td>
+      <td>21.52</td>
+    </tr>
+    <tr>
+      <td>2005-07-26</td>
+      <td>Connecticut Sun</td>
+      <td>1653.53</td>
+      <td>68</td>
+      <td>Indiana Fever</td>
+      <td>1530.41</td>
+      <td>55</td>
+      <td>78.83%</td>
+      <td>21.17%</td>
+      <td>9.60</td>
+    </tr>
+    <tr>
+      <td>2005-07-26</td>
+      <td>Los Angeles Sparks</td>
+      <td>1523.38</td>
+      <td>60</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1477.53</td>
+      <td>77</td>
+      <td>41.53%</td>
+      <td>58.47%</td>
+      <td>-21.53</td>
+    </tr>
+    <tr>
+      <td>2005-07-26</td>
+      <td>Indiana Fever</td>
+      <td>1530.41</td>
+      <td>55</td>
+      <td>@ Connecticut Sun</td>
+      <td>1653.53</td>
+      <td>68</td>
+      <td>21.17%</td>
+      <td>78.83%</td>
+      <td>-9.59</td>
+    </tr>
+    <tr>
+      <td>2005-07-26</td>
+      <td>Charlotte Sting</td>
+      <td>1287.62</td>
+      <td>54</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1613.29</td>
+      <td>64</td>
+      <td>7.72%</td>
+      <td>92.28%</td>
+      <td>-3.07</td>
+    </tr>
+    <tr>
+      <td>2005-07-26</td>
+      <td>Minnesota Lynx</td>
+      <td>1494.83</td>
+      <td>71</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1330.77</td>
+      <td>78</td>
+      <td>58.38%</td>
+      <td>41.62%</td>
+      <td>-19.41</td>
+    </tr>
+    <tr>
+      <td>2005-07-26</td>
+      <td>Houston Comets</td>
+      <td>1496.61</td>
+      <td>83</td>
+      <td>@ Washington Mystics</td>
+      <td>1523.24</td>
+      <td>65</td>
+      <td>31.88%</td>
+      <td>68.12%</td>
+      <td>36.33</td>
+    </tr>
+    <tr>
+      <td>2005-07-27</td>
+      <td>Houston Comets</td>
+      <td>1532.94</td>
+      <td>71</td>
+      <td>@ New York Liberty</td>
+      <td>1572.24</td>
+      <td>69</td>
+      <td>30.31%</td>
+      <td>69.69%</td>
+      <td>12.39</td>
+    </tr>
+    <tr>
+      <td>2005-07-27</td>
+      <td>New York Liberty</td>
+      <td>1572.24</td>
+      <td>69</td>
+      <td>Houston Comets</td>
+      <td>1532.94</td>
+      <td>71</td>
+      <td>69.69%</td>
+      <td>30.31%</td>
+      <td>-12.39</td>
+    </tr>
+    <tr>
+      <td>2005-07-28</td>
+      <td>Connecticut Sun</td>
+      <td>1663.13</td>
+      <td>73</td>
+      <td>New York Liberty</td>
+      <td>1559.85</td>
+      <td>70</td>
+      <td>76.86%</td>
+      <td>23.14%</td>
+      <td>5.03</td>
+    </tr>
+    <tr>
+      <td>2005-07-28</td>
+      <td>Washington Mystics</td>
+      <td>1486.91</td>
+      <td>73</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1350.19</td>
+      <td>58</td>
+      <td>80.11%</td>
+      <td>19.89%</td>
+      <td>9.68</td>
+    </tr>
+    <tr>
+      <td>2005-07-28</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1350.19</td>
+      <td>58</td>
+      <td>@ Washington Mystics</td>
+      <td>1486.91</td>
+      <td>73</td>
+      <td>19.89%</td>
+      <td>80.11%</td>
+      <td>-9.69</td>
+    </tr>
+    <tr>
+      <td>2005-07-28</td>
+      <td>New York Liberty</td>
+      <td>1559.85</td>
+      <td>70</td>
+      <td>@ Connecticut Sun</td>
+      <td>1663.13</td>
+      <td>73</td>
+      <td>23.14%</td>
+      <td>76.86%</td>
+      <td>-5.03</td>
+    </tr>
+    <tr>
+      <td>2005-07-29</td>
+      <td>Charlotte Sting</td>
+      <td>1284.55</td>
+      <td>68</td>
+      <td>@ Seattle Storm</td>
+      <td>1544.18</td>
+      <td>79</td>
+      <td>10.90%</td>
+      <td>89.10%</td>
+      <td>-4.54</td>
+    </tr>
+    <tr>
+      <td>2005-07-29</td>
+      <td>Phoenix Mercury</td>
+      <td>1499.05</td>
+      <td>69</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1475.42</td>
+      <td>65</td>
+      <td>38.46%</td>
+      <td>61.54%</td>
+      <td>15.47</td>
+    </tr>
+    <tr>
+      <td>2005-07-29</td>
+      <td>Washington Mystics</td>
+      <td>1496.59</td>
+      <td>58</td>
+      <td>@ Indiana Fever</td>
+      <td>1520.82</td>
+      <td>62</td>
+      <td>32.18%</td>
+      <td>67.82%</td>
+      <td>-8.09</td>
+    </tr>
+    <tr>
+      <td>2005-07-29</td>
+      <td>Seattle Storm</td>
+      <td>1544.18</td>
+      <td>79</td>
+      <td>Charlotte Sting</td>
+      <td>1284.55</td>
+      <td>68</td>
+      <td>89.10%</td>
+      <td>10.90%</td>
+      <td>4.55</td>
+    </tr>
+    <tr>
+      <td>2005-07-29</td>
+      <td>Sacramento Monarchs</td>
+      <td>1616.36</td>
+      <td>79</td>
+      <td>Los Angeles Sparks</td>
+      <td>1501.85</td>
+      <td>59</td>
+      <td>77.99%</td>
+      <td>22.01%</td>
+      <td>12.37</td>
+    </tr>
+    <tr>
+      <td>2005-07-29</td>
+      <td>Minnesota Lynx</td>
+      <td>1475.42</td>
+      <td>65</td>
+      <td>Phoenix Mercury</td>
+      <td>1499.05</td>
+      <td>69</td>
+      <td>61.54%</td>
+      <td>38.46%</td>
+      <td>-15.47</td>
+    </tr>
+    <tr>
+      <td>2005-07-29</td>
+      <td>Indiana Fever</td>
+      <td>1520.82</td>
+      <td>62</td>
+      <td>Washington Mystics</td>
+      <td>1496.59</td>
+      <td>58</td>
+      <td>67.82%</td>
+      <td>32.18%</td>
+      <td>8.09</td>
+    </tr>
+    <tr>
+      <td>2005-07-29</td>
+      <td>Los Angeles Sparks</td>
+      <td>1501.85</td>
+      <td>59</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1616.36</td>
+      <td>79</td>
+      <td>22.01%</td>
+      <td>77.99%</td>
+      <td>-12.37</td>
+    </tr>
+    <tr>
+      <td>2005-07-30</td>
+      <td>Connecticut Sun</td>
+      <td>1668.16</td>
+      <td>66</td>
+      <td>Detroit Shock</td>
+      <td>1452.36</td>
+      <td>75</td>
+      <td>86.39%</td>
+      <td>13.61%</td>
+      <td>-32.58</td>
+    </tr>
+    <tr>
+      <td>2005-07-30</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1340.50</td>
+      <td>68</td>
+      <td>@ Houston Comets</td>
+      <td>1545.33</td>
+      <td>63</td>
+      <td>14.37%</td>
+      <td>85.63%</td>
+      <td>24.07</td>
+    </tr>
+    <tr>
+      <td>2005-07-30</td>
+      <td>Houston Comets</td>
+      <td>1545.33</td>
+      <td>63</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1340.50</td>
+      <td>68</td>
+      <td>85.63%</td>
+      <td>14.37%</td>
+      <td>-24.07</td>
+    </tr>
+    <tr>
+      <td>2005-07-30</td>
+      <td>Detroit Shock</td>
+      <td>1452.36</td>
+      <td>75</td>
+      <td>@ Connecticut Sun</td>
+      <td>1668.16</td>
+      <td>66</td>
+      <td>13.61%</td>
+      <td>86.39%</td>
+      <td>32.58</td>
+    </tr>
+    <tr>
+      <td>2005-07-31</td>
+      <td>Phoenix Mercury</td>
+      <td>1514.52</td>
+      <td>63</td>
+      <td>@ Detroit Shock</td>
+      <td>1484.94</td>
+      <td>66</td>
+      <td>39.27%</td>
+      <td>60.73%</td>
+      <td>-8.55</td>
+    </tr>
+    <tr>
+      <td>2005-07-31</td>
+      <td>Detroit Shock</td>
+      <td>1484.94</td>
+      <td>66</td>
+      <td>Phoenix Mercury</td>
+      <td>1514.52</td>
+      <td>63</td>
+      <td>60.73%</td>
+      <td>39.27%</td>
+      <td>8.55</td>
+    </tr>
+    <tr>
+      <td>2005-07-31</td>
+      <td>New York Liberty</td>
+      <td>1554.82</td>
+      <td>67</td>
+      <td>Indiana Fever</td>
+      <td>1528.91</td>
+      <td>53</td>
+      <td>68.03%</td>
+      <td>31.97%</td>
+      <td>15.03</td>
+    </tr>
+    <tr>
+      <td>2005-07-31</td>
+      <td>Sacramento Monarchs</td>
+      <td>1628.73</td>
+      <td>67</td>
+      <td>Minnesota Lynx</td>
+      <td>1459.95</td>
+      <td>54</td>
+      <td>82.89%</td>
+      <td>17.11%</td>
+      <td>7.75</td>
+    </tr>
+    <tr>
+      <td>2005-07-31</td>
+      <td>Seattle Storm</td>
+      <td>1548.73</td>
+      <td>77</td>
+      <td>Los Angeles Sparks</td>
+      <td>1489.48</td>
+      <td>72</td>
+      <td>72.06%</td>
+      <td>27.94%</td>
+      <td>7.85</td>
+    </tr>
+    <tr>
+      <td>2005-07-31</td>
+      <td>Indiana Fever</td>
+      <td>1528.91</td>
+      <td>53</td>
+      <td>@ New York Liberty</td>
+      <td>1554.82</td>
+      <td>67</td>
+      <td>31.97%</td>
+      <td>68.03%</td>
+      <td>-15.03</td>
+    </tr>
+    <tr>
+      <td>2005-07-31</td>
+      <td>Minnesota Lynx</td>
+      <td>1459.95</td>
+      <td>54</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1628.73</td>
+      <td>67</td>
+      <td>17.11%</td>
+      <td>82.89%</td>
+      <td>-7.76</td>
+    </tr>
+    <tr>
+      <td>2005-07-31</td>
+      <td>Los Angeles Sparks</td>
+      <td>1489.48</td>
+      <td>72</td>
+      <td>@ Seattle Storm</td>
+      <td>1548.73</td>
+      <td>77</td>
+      <td>27.94%</td>
+      <td>72.06%</td>
+      <td>-7.85</td>
+    </tr>
+    <tr>
+      <td>2005-08-02</td>
+      <td>New York Liberty</td>
+      <td>1569.85</td>
+      <td>65</td>
+      <td>Connecticut Sun</td>
+      <td>1635.58</td>
+      <td>72</td>
+      <td>55.67%</td>
+      <td>44.33%</td>
+      <td>-18.51</td>
+    </tr>
+    <tr>
+      <td>2005-08-02</td>
+      <td>Charlotte Sting</td>
+      <td>1280.01</td>
+      <td>63</td>
+      <td>@ Washington Mystics</td>
+      <td>1488.50</td>
+      <td>65</td>
+      <td>14.11%</td>
+      <td>85.89%</td>
+      <td>-2.51</td>
+    </tr>
+    <tr>
+      <td>2005-08-02</td>
+      <td>Sacramento Monarchs</td>
+      <td>1636.48</td>
+      <td>67</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1364.57</td>
+      <td>57</td>
+      <td>72.29%</td>
+      <td>27.71%</td>
+      <td>11.02</td>
+    </tr>
+    <tr>
+      <td>2005-08-02</td>
+      <td>Connecticut Sun</td>
+      <td>1635.58</td>
+      <td>72</td>
+      <td>@ New York Liberty</td>
+      <td>1569.85</td>
+      <td>65</td>
+      <td>44.33%</td>
+      <td>55.67%</td>
+      <td>18.52</td>
+    </tr>
+    <tr>
+      <td>2005-08-02</td>
+      <td>Houston Comets</td>
+      <td>1521.26</td>
+      <td>62</td>
+      <td>Detroit Shock</td>
+      <td>1493.49</td>
+      <td>61</td>
+      <td>68.27%</td>
+      <td>31.73%</td>
+      <td>3.99</td>
+    </tr>
+    <tr>
+      <td>2005-08-02</td>
+      <td>Detroit Shock</td>
+      <td>1493.49</td>
+      <td>61</td>
+      <td>@ Houston Comets</td>
+      <td>1521.26</td>
+      <td>62</td>
+      <td>31.73%</td>
+      <td>68.27%</td>
+      <td>-3.99</td>
+    </tr>
+    <tr>
+      <td>2005-08-02</td>
+      <td>Washington Mystics</td>
+      <td>1488.50</td>
+      <td>65</td>
+      <td>Charlotte Sting</td>
+      <td>1280.01</td>
+      <td>63</td>
+      <td>85.89%</td>
+      <td>14.11%</td>
+      <td>2.51</td>
+    </tr>
+    <tr>
+      <td>2005-08-02</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1364.57</td>
+      <td>57</td>
+      <td>Sacramento Monarchs</td>
+      <td>1636.48</td>
+      <td>67</td>
+      <td>27.71%</td>
+      <td>72.29%</td>
+      <td>-11.01</td>
+    </tr>
+    <tr>
+      <td>2005-08-03</td>
+      <td>Minnesota Lynx</td>
+      <td>1452.19</td>
+      <td>64</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1505.97</td>
+      <td>70</td>
+      <td>28.58%</td>
+      <td>71.42%</td>
+      <td>-8.80</td>
+    </tr>
+    <tr>
+      <td>2005-08-03</td>
+      <td>Phoenix Mercury</td>
+      <td>1505.97</td>
+      <td>70</td>
+      <td>Minnesota Lynx</td>
+      <td>1452.19</td>
+      <td>64</td>
+      <td>71.42%</td>
+      <td>28.58%</td>
+      <td>8.80</td>
+    </tr>
+    <tr>
+      <td>2005-08-04</td>
+      <td>Charlotte Sting</td>
+      <td>1277.50</td>
+      <td>58</td>
+      <td>Sacramento Monarchs</td>
+      <td>1647.50</td>
+      <td>76</td>
+      <td>17.89%</td>
+      <td>82.11%</td>
+      <td>-9.54</td>
+    </tr>
+    <tr>
+      <td>2005-08-04</td>
+      <td>Sacramento Monarchs</td>
+      <td>1647.50</td>
+      <td>76</td>
+      <td>@ Charlotte Sting</td>
+      <td>1277.50</td>
+      <td>58</td>
+      <td>82.11%</td>
+      <td>17.89%</td>
+      <td>9.54</td>
+    </tr>
+    <tr>
+      <td>2005-08-04</td>
+      <td>Seattle Storm</td>
+      <td>1556.58</td>
+      <td>68</td>
+      <td>@ Indiana Fever</td>
+      <td>1513.88</td>
+      <td>78</td>
+      <td>41.09%</td>
+      <td>58.91%</td>
+      <td>-16.33</td>
+    </tr>
+    <tr>
+      <td>2005-08-04</td>
+      <td>Indiana Fever</td>
+      <td>1513.88</td>
+      <td>78</td>
+      <td>Seattle Storm</td>
+      <td>1556.58</td>
+      <td>68</td>
+      <td>58.91%</td>
+      <td>41.09%</td>
+      <td>16.33</td>
+    </tr>
+    <tr>
+      <td>2005-08-05</td>
+      <td>Los Angeles Sparks</td>
+      <td>1481.63</td>
+      <td>66</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1353.56</td>
+      <td>63</td>
+      <td>53.27%</td>
+      <td>46.73%</td>
+      <td>10.17</td>
+    </tr>
+    <tr>
+      <td>2005-08-05</td>
+      <td>Phoenix Mercury</td>
+      <td>1514.77</td>
+      <td>80</td>
+      <td>Houston Comets</td>
+      <td>1525.25</td>
+      <td>75</td>
+      <td>63.32%</td>
+      <td>36.68%</td>
+      <td>10.31</td>
+    </tr>
+    <tr>
+      <td>2005-08-05</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1353.56</td>
+      <td>63</td>
+      <td>Los Angeles Sparks</td>
+      <td>1481.63</td>
+      <td>66</td>
+      <td>46.73%</td>
+      <td>53.27%</td>
+      <td>-10.17</td>
+    </tr>
+    <tr>
+      <td>2005-08-05</td>
+      <td>Houston Comets</td>
+      <td>1525.25</td>
+      <td>75</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1514.77</td>
+      <td>80</td>
+      <td>36.68%</td>
+      <td>63.32%</td>
+      <td>-10.31</td>
+    </tr>
+    <tr>
+      <td>2005-08-06</td>
+      <td>Charlotte Sting</td>
+      <td>1267.96</td>
+      <td>82</td>
+      <td>Detroit Shock</td>
+      <td>1489.50</td>
+      <td>73</td>
+      <td>33.87%</td>
+      <td>66.13%</td>
+      <td>24.94</td>
+    </tr>
+    <tr>
+      <td>2005-08-06</td>
+      <td>Indiana Fever</td>
+      <td>1530.21</td>
+      <td>65</td>
+      <td>Connecticut Sun</td>
+      <td>1654.10</td>
+      <td>74</td>
+      <td>47.33%</td>
+      <td>52.67%</td>
+      <td>-17.85</td>
+    </tr>
+    <tr>
+      <td>2005-08-06</td>
+      <td>Seattle Storm</td>
+      <td>1540.25</td>
+      <td>67</td>
+      <td>@ New York Liberty</td>
+      <td>1551.34</td>
+      <td>79</td>
+      <td>33.85%</td>
+      <td>66.15%</td>
+      <td>-14.74</td>
+    </tr>
+    <tr>
+      <td>2005-08-06</td>
+      <td>Connecticut Sun</td>
+      <td>1654.10</td>
+      <td>74</td>
+      <td>@ Indiana Fever</td>
+      <td>1530.21</td>
+      <td>65</td>
+      <td>52.67%</td>
+      <td>47.33%</td>
+      <td>17.84</td>
+    </tr>
+    <tr>
+      <td>2005-08-06</td>
+      <td>Detroit Shock</td>
+      <td>1489.50</td>
+      <td>73</td>
+      <td>@ Charlotte Sting</td>
+      <td>1267.96</td>
+      <td>82</td>
+      <td>66.13%</td>
+      <td>33.87%</td>
+      <td>-24.94</td>
+    </tr>
+    <tr>
+      <td>2005-08-06</td>
+      <td>New York Liberty</td>
+      <td>1551.34</td>
+      <td>79</td>
+      <td>Seattle Storm</td>
+      <td>1540.25</td>
+      <td>67</td>
+      <td>66.15%</td>
+      <td>33.85%</td>
+      <td>14.74</td>
+    </tr>
+    <tr>
+      <td>2005-08-07</td>
+      <td>Sacramento Monarchs</td>
+      <td>1657.04</td>
+      <td>55</td>
+      <td>Houston Comets</td>
+      <td>1514.94</td>
+      <td>45</td>
+      <td>80.60%</td>
+      <td>19.40%</td>
+      <td>7.71</td>
+    </tr>
+    <tr>
+      <td>2005-08-07</td>
+      <td>Minnesota Lynx</td>
+      <td>1443.39</td>
+      <td>76</td>
+      <td>Los Angeles Sparks</td>
+      <td>1491.80</td>
+      <td>72</td>
+      <td>58.11%</td>
+      <td>41.89%</td>
+      <td>10.53</td>
+    </tr>
+    <tr>
+      <td>2005-08-07</td>
+      <td>Washington Mystics</td>
+      <td>1491.01</td>
+      <td>61</td>
+      <td>Indiana Fever</td>
+      <td>1512.36</td>
+      <td>60</td>
+      <td>61.85%</td>
+      <td>38.15%</td>
+      <td>4.80</td>
+    </tr>
+    <tr>
+      <td>2005-08-07</td>
+      <td>Indiana Fever</td>
+      <td>1512.36</td>
+      <td>60</td>
+      <td>@ Washington Mystics</td>
+      <td>1491.01</td>
+      <td>61</td>
+      <td>38.15%</td>
+      <td>61.85%</td>
+      <td>-4.79</td>
+    </tr>
+    <tr>
+      <td>2005-08-07</td>
+      <td>Houston Comets</td>
+      <td>1514.94</td>
+      <td>45</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1657.04</td>
+      <td>55</td>
+      <td>19.40%</td>
+      <td>80.60%</td>
+      <td>-7.71</td>
+    </tr>
+    <tr>
+      <td>2005-08-07</td>
+      <td>Los Angeles Sparks</td>
+      <td>1491.80</td>
+      <td>72</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1443.39</td>
+      <td>76</td>
+      <td>41.89%</td>
+      <td>58.11%</td>
+      <td>-10.53</td>
+    </tr>
+    <tr>
+      <td>2005-08-07</td>
+      <td>New York Liberty</td>
+      <td>1566.08</td>
+      <td>67</td>
+      <td>@ Detroit Shock</td>
+      <td>1464.56</td>
+      <td>72</td>
+      <td>49.46%</td>
+      <td>50.54%</td>
+      <td>-13.90</td>
+    </tr>
+    <tr>
+      <td>2005-08-07</td>
+      <td>Detroit Shock</td>
+      <td>1464.56</td>
+      <td>72</td>
+      <td>New York Liberty</td>
+      <td>1566.08</td>
+      <td>67</td>
+      <td>50.54%</td>
+      <td>49.46%</td>
+      <td>13.90</td>
+    </tr>
+    <tr>
+      <td>2005-08-09</td>
+      <td>Los Angeles Sparks</td>
+      <td>1481.27</td>
+      <td>51</td>
+      <td>@ Connecticut Sun</td>
+      <td>1671.94</td>
+      <td>64</td>
+      <td>15.40%</td>
+      <td>84.60%</td>
+      <td>-6.98</td>
+    </tr>
+    <tr>
+      <td>2005-08-09</td>
+      <td>Charlotte Sting</td>
+      <td>1292.90</td>
+      <td>64</td>
+      <td>@ Detroit Shock</td>
+      <td>1478.46</td>
+      <td>71</td>
+      <td>15.78%</td>
+      <td>84.22%</td>
+      <td>-5.25</td>
+    </tr>
+    <tr>
+      <td>2005-08-09</td>
+      <td>Houston Comets</td>
+      <td>1507.23</td>
+      <td>68</td>
+      <td>@ Seattle Storm</td>
+      <td>1525.51</td>
+      <td>71</td>
+      <td>32.93%</td>
+      <td>67.07%</td>
+      <td>-7.17</td>
+    </tr>
+    <tr>
+      <td>2005-08-09</td>
+      <td>Seattle Storm</td>
+      <td>1525.51</td>
+      <td>71</td>
+      <td>Houston Comets</td>
+      <td>1507.23</td>
+      <td>68</td>
+      <td>67.07%</td>
+      <td>32.93%</td>
+      <td>7.17</td>
+    </tr>
+    <tr>
+      <td>2005-08-09</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1343.39</td>
+      <td>72</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1453.92</td>
+      <td>76</td>
+      <td>22.40%</td>
+      <td>77.60%</td>
+      <td>-5.64</td>
+    </tr>
+    <tr>
+      <td>2005-08-09</td>
+      <td>Minnesota Lynx</td>
+      <td>1453.92</td>
+      <td>76</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1343.39</td>
+      <td>72</td>
+      <td>77.60%</td>
+      <td>22.40%</td>
+      <td>5.63</td>
+    </tr>
+    <tr>
+      <td>2005-08-09</td>
+      <td>Detroit Shock</td>
+      <td>1478.46</td>
+      <td>71</td>
+      <td>Charlotte Sting</td>
+      <td>1292.90</td>
+      <td>64</td>
+      <td>84.22%</td>
+      <td>15.78%</td>
+      <td>5.25</td>
+    </tr>
+    <tr>
+      <td>2005-08-09</td>
+      <td>Connecticut Sun</td>
+      <td>1671.94</td>
+      <td>64</td>
+      <td>Los Angeles Sparks</td>
+      <td>1481.27</td>
+      <td>51</td>
+      <td>84.60%</td>
+      <td>15.40%</td>
+      <td>6.98</td>
+    </tr>
+    <tr>
+      <td>2005-08-10</td>
+      <td>Los Angeles Sparks</td>
+      <td>1474.29</td>
+      <td>69</td>
+      <td>@ New York Liberty</td>
+      <td>1552.18</td>
+      <td>74</td>
+      <td>25.84%</td>
+      <td>74.16%</td>
+      <td>-7.26</td>
+    </tr>
+    <tr>
+      <td>2005-08-10</td>
+      <td>New York Liberty</td>
+      <td>1552.18</td>
+      <td>74</td>
+      <td>Los Angeles Sparks</td>
+      <td>1474.29</td>
+      <td>69</td>
+      <td>74.16%</td>
+      <td>25.84%</td>
+      <td>7.26</td>
+    </tr>
+    <tr>
+      <td>2005-08-11</td>
+      <td>Washington Mystics</td>
+      <td>1495.81</td>
+      <td>65</td>
+      <td>Connecticut Sun</td>
+      <td>1678.92</td>
+      <td>80</td>
+      <td>38.98%</td>
+      <td>61.02%</td>
+      <td>-18.98</td>
+    </tr>
+    <tr>
+      <td>2005-08-11</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1337.75</td>
+      <td>50</td>
+      <td>Indiana Fever</td>
+      <td>1507.57</td>
+      <td>57</td>
+      <td>40.82%</td>
+      <td>59.18%</td>
+      <td>-13.57</td>
+    </tr>
+    <tr>
+      <td>2005-08-11</td>
+      <td>Detroit Shock</td>
+      <td>1483.71</td>
+      <td>72</td>
+      <td>Minnesota Lynx</td>
+      <td>1459.55</td>
+      <td>66</td>
+      <td>67.81%</td>
+      <td>32.19%</td>
+      <td>9.91</td>
+    </tr>
+    <tr>
+      <td>2005-08-11</td>
+      <td>Minnesota Lynx</td>
+      <td>1459.55</td>
+      <td>66</td>
+      <td>@ Detroit Shock</td>
+      <td>1483.71</td>
+      <td>72</td>
+      <td>32.19%</td>
+      <td>67.81%</td>
+      <td>-9.91</td>
+    </tr>
+    <tr>
+      <td>2005-08-11</td>
+      <td>Connecticut Sun</td>
+      <td>1678.92</td>
+      <td>80</td>
+      <td>@ Washington Mystics</td>
+      <td>1495.81</td>
+      <td>65</td>
+      <td>61.02%</td>
+      <td>38.98%</td>
+      <td>18.98</td>
+    </tr>
+    <tr>
+      <td>2005-08-11</td>
+      <td>Indiana Fever</td>
+      <td>1507.57</td>
+      <td>57</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1337.75</td>
+      <td>50</td>
+      <td>59.18%</td>
+      <td>40.82%</td>
+      <td>13.57</td>
+    </tr>
+    <tr>
+      <td>2005-08-12</td>
+      <td>Phoenix Mercury</td>
+      <td>1525.08</td>
+      <td>76</td>
+      <td>Sacramento Monarchs</td>
+      <td>1664.75</td>
+      <td>62</td>
+      <td>45.07%</td>
+      <td>54.93%</td>
+      <td>25.84</td>
+    </tr>
+    <tr>
+      <td>2005-08-12</td>
+      <td>Minnesota Lynx</td>
+      <td>1449.64</td>
+      <td>66</td>
+      <td>Seattle Storm</td>
+      <td>1532.68</td>
+      <td>72</td>
+      <td>53.20%</td>
+      <td>46.80%</td>
+      <td>-16.38</td>
+    </tr>
+    <tr>
+      <td>2005-08-12</td>
+      <td>Charlotte Sting</td>
+      <td>1287.65</td>
+      <td>74</td>
+      <td>New York Liberty</td>
+      <td>1559.44</td>
+      <td>82</td>
+      <td>27.72%</td>
+      <td>72.28%</td>
+      <td>-9.86</td>
+    </tr>
+    <tr>
+      <td>2005-08-12</td>
+      <td>New York Liberty</td>
+      <td>1559.44</td>
+      <td>82</td>
+      <td>@ Charlotte Sting</td>
+      <td>1287.65</td>
+      <td>74</td>
+      <td>72.28%</td>
+      <td>27.72%</td>
+      <td>9.85</td>
+    </tr>
+    <tr>
+      <td>2005-08-12</td>
+      <td>Seattle Storm</td>
+      <td>1532.68</td>
+      <td>72</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1449.64</td>
+      <td>66</td>
+      <td>46.80%</td>
+      <td>53.20%</td>
+      <td>16.38</td>
+    </tr>
+    <tr>
+      <td>2005-08-12</td>
+      <td>Sacramento Monarchs</td>
+      <td>1664.75</td>
+      <td>62</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1525.08</td>
+      <td>76</td>
+      <td>54.93%</td>
+      <td>45.07%</td>
+      <td>-25.83</td>
+    </tr>
+    <tr>
+      <td>2005-08-13</td>
+      <td>Los Angeles Sparks</td>
+      <td>1467.03</td>
+      <td>69</td>
+      <td>Indiana Fever</td>
+      <td>1521.14</td>
+      <td>59</td>
+      <td>57.31%</td>
+      <td>42.69%</td>
+      <td>16.97</td>
+    </tr>
+    <tr>
+      <td>2005-08-13</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1324.18</td>
+      <td>59</td>
+      <td>Detroit Shock</td>
+      <td>1493.62</td>
+      <td>60</td>
+      <td>40.87%</td>
+      <td>59.13%</td>
+      <td>-5.14</td>
+    </tr>
+    <tr>
+      <td>2005-08-13</td>
+      <td>Detroit Shock</td>
+      <td>1493.62</td>
+      <td>60</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1324.18</td>
+      <td>59</td>
+      <td>59.13%</td>
+      <td>40.87%</td>
+      <td>5.14</td>
+    </tr>
+    <tr>
+      <td>2005-08-13</td>
+      <td>Indiana Fever</td>
+      <td>1521.14</td>
+      <td>59</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1467.03</td>
+      <td>69</td>
+      <td>42.69%</td>
+      <td>57.31%</td>
+      <td>-16.97</td>
+    </tr>
+    <tr>
+      <td>2005-08-14</td>
+      <td>Connecticut Sun</td>
+      <td>1697.90</td>
+      <td>80</td>
+      <td>Washington Mystics</td>
+      <td>1476.83</td>
+      <td>77</td>
+      <td>86.75%</td>
+      <td>13.25%</td>
+      <td>2.89</td>
+    </tr>
+    <tr>
+      <td>2005-08-14</td>
+      <td>Houston Comets</td>
+      <td>1500.06</td>
+      <td>75</td>
+      <td>Seattle Storm</td>
+      <td>1549.06</td>
+      <td>72</td>
+      <td>58.03%</td>
+      <td>41.97%</td>
+      <td>9.14</td>
+    </tr>
+    <tr>
+      <td>2005-08-14</td>
+      <td>New York Liberty</td>
+      <td>1569.29</td>
+      <td>73</td>
+      <td>Charlotte Sting</td>
+      <td>1277.79</td>
+      <td>65</td>
+      <td>90.76%</td>
+      <td>9.24%</td>
+      <td>3.29</td>
+    </tr>
+    <tr>
+      <td>2005-08-14</td>
+      <td>Phoenix Mercury</td>
+      <td>1550.92</td>
+      <td>56</td>
+      <td>Indiana Fever</td>
+      <td>1504.17</td>
+      <td>62</td>
+      <td>70.58%</td>
+      <td>29.42%</td>
+      <td>-21.74</td>
+    </tr>
+    <tr>
+      <td>2005-08-14</td>
+      <td>Indiana Fever</td>
+      <td>1504.17</td>
+      <td>62</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1550.92</td>
+      <td>56</td>
+      <td>29.42%</td>
+      <td>70.58%</td>
+      <td>21.74</td>
+    </tr>
+    <tr>
+      <td>2005-08-14</td>
+      <td>Seattle Storm</td>
+      <td>1549.06</td>
+      <td>72</td>
+      <td>@ Houston Comets</td>
+      <td>1500.06</td>
+      <td>75</td>
+      <td>41.97%</td>
+      <td>58.03%</td>
+      <td>-9.14</td>
+    </tr>
+    <tr>
+      <td>2005-08-14</td>
+      <td>Charlotte Sting</td>
+      <td>1277.79</td>
+      <td>65</td>
+      <td>@ New York Liberty</td>
+      <td>1569.29</td>
+      <td>73</td>
+      <td>9.24%</td>
+      <td>90.76%</td>
+      <td>-3.28</td>
+    </tr>
+    <tr>
+      <td>2005-08-14</td>
+      <td>Washington Mystics</td>
+      <td>1476.83</td>
+      <td>77</td>
+      <td>@ Connecticut Sun</td>
+      <td>1697.90</td>
+      <td>80</td>
+      <td>13.25%</td>
+      <td>86.75%</td>
+      <td>-2.89</td>
+    </tr>
+    <tr>
+      <td>2005-08-16</td>
+      <td>Houston Comets</td>
+      <td>1509.20</td>
+      <td>62</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1433.26</td>
+      <td>73</td>
+      <td>45.78%</td>
+      <td>54.22%</td>
+      <td>-19.09</td>
+    </tr>
+    <tr>
+      <td>2005-08-16</td>
+      <td>Detroit Shock</td>
+      <td>1498.76</td>
+      <td>51</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1529.18</td>
+      <td>58</td>
+      <td>31.40%</td>
+      <td>68.60%</td>
+      <td>-10.45</td>
+    </tr>
+    <tr>
+      <td>2005-08-16</td>
+      <td>Phoenix Mercury</td>
+      <td>1529.18</td>
+      <td>58</td>
+      <td>Detroit Shock</td>
+      <td>1498.76</td>
+      <td>51</td>
+      <td>68.60%</td>
+      <td>31.40%</td>
+      <td>10.45</td>
+    </tr>
+    <tr>
+      <td>2005-08-16</td>
+      <td>New York Liberty</td>
+      <td>1572.58</td>
+      <td>72</td>
+      <td>Washington Mystics</td>
+      <td>1473.94</td>
+      <td>66</td>
+      <td>76.39%</td>
+      <td>23.61%</td>
+      <td>7.27</td>
+    </tr>
+    <tr>
+      <td>2005-08-16</td>
+      <td>Minnesota Lynx</td>
+      <td>1433.26</td>
+      <td>73</td>
+      <td>Houston Comets</td>
+      <td>1509.20</td>
+      <td>62</td>
+      <td>54.22%</td>
+      <td>45.78%</td>
+      <td>19.09</td>
+    </tr>
+    <tr>
+      <td>2005-08-16</td>
+      <td>Los Angeles Sparks</td>
+      <td>1484.00</td>
+      <td>63</td>
+      <td>Sacramento Monarchs</td>
+      <td>1638.92</td>
+      <td>72</td>
+      <td>42.91%</td>
+      <td>57.09%</td>
+      <td>-16.18</td>
+    </tr>
+    <tr>
+      <td>2005-08-16</td>
+      <td>Washington Mystics</td>
+      <td>1473.94</td>
+      <td>66</td>
+      <td>@ New York Liberty</td>
+      <td>1572.58</td>
+      <td>72</td>
+      <td>23.61%</td>
+      <td>76.39%</td>
+      <td>-7.27</td>
+    </tr>
+    <tr>
+      <td>2005-08-16</td>
+      <td>Sacramento Monarchs</td>
+      <td>1638.92</td>
+      <td>72</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1484.00</td>
+      <td>63</td>
+      <td>57.09%</td>
+      <td>42.91%</td>
+      <td>16.18</td>
+    </tr>
+    <tr>
+      <td>2005-08-18</td>
+      <td>Sacramento Monarchs</td>
+      <td>1655.10</td>
+      <td>64</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1319.04</td>
+      <td>57</td>
+      <td>92.69%</td>
+      <td>7.31%</td>
+      <td>2.43</td>
+    </tr>
+    <tr>
+      <td>2005-08-18</td>
+      <td>Houston Comets</td>
+      <td>1490.11</td>
+      <td>77</td>
+      <td>Phoenix Mercury</td>
+      <td>1539.63</td>
+      <td>66</td>
+      <td>57.96%</td>
+      <td>42.04%</td>
+      <td>17.53</td>
+    </tr>
+    <tr>
+      <td>2005-08-18</td>
+      <td>Indiana Fever</td>
+      <td>1525.91</td>
+      <td>67</td>
+      <td>Washington Mystics</td>
+      <td>1466.67</td>
+      <td>57</td>
+      <td>72.05%</td>
+      <td>27.95%</td>
+      <td>11.11</td>
+    </tr>
+    <tr>
+      <td>2005-08-18</td>
+      <td>Seattle Storm</td>
+      <td>1539.92</td>
+      <td>76</td>
+      <td>Minnesota Lynx</td>
+      <td>1452.35</td>
+      <td>60</td>
+      <td>75.22%</td>
+      <td>24.78%</td>
+      <td>12.46</td>
+    </tr>
+    <tr>
+      <td>2005-08-18</td>
+      <td>Minnesota Lynx</td>
+      <td>1452.35</td>
+      <td>60</td>
+      <td>@ Seattle Storm</td>
+      <td>1539.92</td>
+      <td>76</td>
+      <td>24.78%</td>
+      <td>75.22%</td>
+      <td>-12.46</td>
+    </tr>
+    <tr>
+      <td>2005-08-18</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1319.04</td>
+      <td>57</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1655.10</td>
+      <td>64</td>
+      <td>7.31%</td>
+      <td>92.69%</td>
+      <td>-2.43</td>
+    </tr>
+    <tr>
+      <td>2005-08-18</td>
+      <td>Washington Mystics</td>
+      <td>1466.67</td>
+      <td>57</td>
+      <td>@ Indiana Fever</td>
+      <td>1525.91</td>
+      <td>67</td>
+      <td>27.95%</td>
+      <td>72.05%</td>
+      <td>-11.11</td>
+    </tr>
+    <tr>
+      <td>2005-08-18</td>
+      <td>Phoenix Mercury</td>
+      <td>1539.63</td>
+      <td>66</td>
+      <td>@ Houston Comets</td>
+      <td>1490.11</td>
+      <td>77</td>
+      <td>42.04%</td>
+      <td>57.96%</td>
+      <td>-17.53</td>
+    </tr>
+    <tr>
+      <td>2005-08-18</td>
+      <td>Charlotte Sting</td>
+      <td>1274.51</td>
+      <td>70</td>
+      <td>@ Connecticut Sun</td>
+      <td>1700.79</td>
+      <td>84</td>
+      <td>4.48%</td>
+      <td>95.52%</td>
+      <td>-2.11</td>
+    </tr>
+    <tr>
+      <td>2005-08-18</td>
+      <td>Connecticut Sun</td>
+      <td>1700.79</td>
+      <td>84</td>
+      <td>Charlotte Sting</td>
+      <td>1274.51</td>
+      <td>70</td>
+      <td>95.52%</td>
+      <td>4.48%</td>
+      <td>2.10</td>
+    </tr>
+    <tr>
+      <td>2005-08-19</td>
+      <td>Los Angeles Sparks</td>
+      <td>1467.82</td>
+      <td>74</td>
+      <td>Detroit Shock</td>
+      <td>1488.31</td>
+      <td>67</td>
+      <td>61.97%</td>
+      <td>38.03%</td>
+      <td>12.65</td>
+    </tr>
+    <tr>
+      <td>2005-08-19</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1316.61</td>
+      <td>57</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1522.10</td>
+      <td>91</td>
+      <td>14.32%</td>
+      <td>85.68%</td>
+      <td>-10.49</td>
+    </tr>
+    <tr>
+      <td>2005-08-19</td>
+      <td>Detroit Shock</td>
+      <td>1488.31</td>
+      <td>67</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1467.82</td>
+      <td>74</td>
+      <td>38.03%</td>
+      <td>61.97%</td>
+      <td>-12.65</td>
+    </tr>
+    <tr>
+      <td>2005-08-19</td>
+      <td>Phoenix Mercury</td>
+      <td>1522.10</td>
+      <td>91</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1316.61</td>
+      <td>57</td>
+      <td>85.68%</td>
+      <td>14.32%</td>
+      <td>10.50</td>
+    </tr>
+    <tr>
+      <td>2005-08-20</td>
+      <td>Charlotte Sting</td>
+      <td>1272.40</td>
+      <td>53</td>
+      <td>@ Indiana Fever</td>
+      <td>1537.02</td>
+      <td>62</td>
+      <td>10.63%</td>
+      <td>89.37%</td>
+      <td>-4.01</td>
+    </tr>
+    <tr>
+      <td>2005-08-20</td>
+      <td>Connecticut Sun</td>
+      <td>1702.89</td>
+      <td>58</td>
+      <td>New York Liberty</td>
+      <td>1579.85</td>
+      <td>64</td>
+      <td>78.83%</td>
+      <td>21.17%</td>
+      <td>-24.27</td>
+    </tr>
+    <tr>
+      <td>2005-08-20</td>
+      <td>Indiana Fever</td>
+      <td>1537.02</td>
+      <td>62</td>
+      <td>Charlotte Sting</td>
+      <td>1272.40</td>
+      <td>53</td>
+      <td>89.37%</td>
+      <td>10.63%</td>
+      <td>4.00</td>
+    </tr>
+    <tr>
+      <td>2005-08-20</td>
+      <td>Sacramento Monarchs</td>
+      <td>1657.53</td>
+      <td>75</td>
+      <td>Seattle Storm</td>
+      <td>1552.38</td>
+      <td>65</td>
+      <td>77.05%</td>
+      <td>22.95%</td>
+      <td>9.12</td>
+    </tr>
+    <tr>
+      <td>2005-08-20</td>
+      <td>New York Liberty</td>
+      <td>1579.85</td>
+      <td>64</td>
+      <td>@ Connecticut Sun</td>
+      <td>1702.89</td>
+      <td>58</td>
+      <td>21.17%</td>
+      <td>78.83%</td>
+      <td>24.27</td>
+    </tr>
+    <tr>
+      <td>2005-08-20</td>
+      <td>Seattle Storm</td>
+      <td>1552.38</td>
+      <td>65</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1657.53</td>
+      <td>75</td>
+      <td>22.95%</td>
+      <td>77.05%</td>
+      <td>-9.12</td>
+    </tr>
+    <tr>
+      <td>2005-08-21</td>
+      <td>Washington Mystics</td>
+      <td>1455.56</td>
+      <td>52</td>
+      <td>@ Detroit Shock</td>
+      <td>1475.66</td>
+      <td>66</td>
+      <td>32.70%</td>
+      <td>67.30%</td>
+      <td>-15.38</td>
+    </tr>
+    <tr>
+      <td>2005-08-21</td>
+      <td>Houston Comets</td>
+      <td>1507.64</td>
+      <td>50</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1480.47</td>
+      <td>55</td>
+      <td>38.94%</td>
+      <td>61.06%</td>
+      <td>-10.95</td>
+    </tr>
+    <tr>
+      <td>2005-08-21</td>
+      <td>Minnesota Lynx</td>
+      <td>1439.89</td>
+      <td>69</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1532.60</td>
+      <td>83</td>
+      <td>24.24%</td>
+      <td>75.76%</td>
+      <td>-11.40</td>
+    </tr>
+    <tr>
+      <td>2005-08-21</td>
+      <td>Detroit Shock</td>
+      <td>1475.66</td>
+      <td>66</td>
+      <td>Washington Mystics</td>
+      <td>1455.56</td>
+      <td>52</td>
+      <td>67.30%</td>
+      <td>32.70%</td>
+      <td>15.38</td>
+    </tr>
+    <tr>
+      <td>2005-08-21</td>
+      <td>Los Angeles Sparks</td>
+      <td>1480.47</td>
+      <td>55</td>
+      <td>Houston Comets</td>
+      <td>1507.64</td>
+      <td>50</td>
+      <td>61.06%</td>
+      <td>38.94%</td>
+      <td>10.94</td>
+    </tr>
+    <tr>
+      <td>2005-08-21</td>
+      <td>Phoenix Mercury</td>
+      <td>1532.60</td>
+      <td>83</td>
+      <td>Minnesota Lynx</td>
+      <td>1439.89</td>
+      <td>69</td>
+      <td>75.76%</td>
+      <td>24.24%</td>
+      <td>11.39</td>
+    </tr>
+    <tr>
+      <td>2005-08-23</td>
+      <td>Charlotte Sting</td>
+      <td>1268.39</td>
+      <td>56</td>
+      <td>Detroit Shock</td>
+      <td>1491.04</td>
+      <td>49</td>
+      <td>33.73%</td>
+      <td>66.27%</td>
+      <td>22.04</td>
+    </tr>
+    <tr>
+      <td>2005-08-23</td>
+      <td>Connecticut Sun</td>
+      <td>1678.62</td>
+      <td>63</td>
+      <td>Indiana Fever</td>
+      <td>1541.02</td>
+      <td>69</td>
+      <td>80.19%</td>
+      <td>19.81%</td>
+      <td>-24.69</td>
+    </tr>
+    <tr>
+      <td>2005-08-23</td>
+      <td>Los Angeles Sparks</td>
+      <td>1491.41</td>
+      <td>74</td>
+      <td>Minnesota Lynx</td>
+      <td>1428.49</td>
+      <td>63</td>
+      <td>72.48%</td>
+      <td>27.52%</td>
+      <td>11.48</td>
+    </tr>
+    <tr>
+      <td>2005-08-23</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1306.12</td>
+      <td>51</td>
+      <td>Seattle Storm</td>
+      <td>1543.26</td>
+      <td>78</td>
+      <td>31.89%</td>
+      <td>68.11%</td>
+      <td>-20.83</td>
+    </tr>
+    <tr>
+      <td>2005-08-23</td>
+      <td>Washington Mystics</td>
+      <td>1440.18</td>
+      <td>82</td>
+      <td>New York Liberty</td>
+      <td>1604.12</td>
+      <td>69</td>
+      <td>41.64%</td>
+      <td>58.36%</td>
+      <td>26.45</td>
+    </tr>
+    <tr>
+      <td>2005-08-23</td>
+      <td>New York Liberty</td>
+      <td>1604.12</td>
+      <td>69</td>
+      <td>@ Washington Mystics</td>
+      <td>1440.18</td>
+      <td>82</td>
+      <td>58.36%</td>
+      <td>41.64%</td>
+      <td>-26.45</td>
+    </tr>
+    <tr>
+      <td>2005-08-23</td>
+      <td>Seattle Storm</td>
+      <td>1543.26</td>
+      <td>78</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1306.12</td>
+      <td>51</td>
+      <td>68.11%</td>
+      <td>31.89%</td>
+      <td>20.83</td>
+    </tr>
+    <tr>
+      <td>2005-08-23</td>
+      <td>Phoenix Mercury</td>
+      <td>1543.99</td>
+      <td>70</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1666.65</td>
+      <td>76</td>
+      <td>21.21%</td>
+      <td>78.79%</td>
+      <td>-6.53</td>
+    </tr>
+    <tr>
+      <td>2005-08-23</td>
+      <td>Minnesota Lynx</td>
+      <td>1428.49</td>
+      <td>63</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1491.41</td>
+      <td>74</td>
+      <td>27.52%</td>
+      <td>72.48%</td>
+      <td>-11.47</td>
+    </tr>
+    <tr>
+      <td>2005-08-23</td>
+      <td>Indiana Fever</td>
+      <td>1541.02</td>
+      <td>69</td>
+      <td>@ Connecticut Sun</td>
+      <td>1678.62</td>
+      <td>63</td>
+      <td>19.81%</td>
+      <td>80.19%</td>
+      <td>24.69</td>
+    </tr>
+    <tr>
+      <td>2005-08-23</td>
+      <td>Detroit Shock</td>
+      <td>1491.04</td>
+      <td>49</td>
+      <td>@ Charlotte Sting</td>
+      <td>1268.39</td>
+      <td>56</td>
+      <td>66.27%</td>
+      <td>33.73%</td>
+      <td>-22.04</td>
+    </tr>
+    <tr>
+      <td>2005-08-23</td>
+      <td>Sacramento Monarchs</td>
+      <td>1666.65</td>
+      <td>76</td>
+      <td>Phoenix Mercury</td>
+      <td>1543.99</td>
+      <td>70</td>
+      <td>78.79%</td>
+      <td>21.21%</td>
+      <td>6.53</td>
+    </tr>
+    <tr>
+      <td>2005-08-25</td>
+      <td>Indiana Fever</td>
+      <td>1565.71</td>
+      <td>40</td>
+      <td>@ Detroit Shock</td>
+      <td>1469.00</td>
+      <td>55</td>
+      <td>48.76%</td>
+      <td>51.24%</td>
+      <td>-23.74</td>
+    </tr>
+    <tr>
+      <td>2005-08-25</td>
+      <td>Charlotte Sting</td>
+      <td>1290.43</td>
+      <td>78</td>
+      <td>@ New York Liberty</td>
+      <td>1577.67</td>
+      <td>66</td>
+      <td>9.45%</td>
+      <td>90.55%</td>
+      <td>39.43</td>
+    </tr>
+    <tr>
+      <td>2005-08-25</td>
+      <td>Sacramento Monarchs</td>
+      <td>1673.18</td>
+      <td>63</td>
+      <td>@ Seattle Storm</td>
+      <td>1564.09</td>
+      <td>76</td>
+      <td>50.54%</td>
+      <td>49.46%</td>
+      <td>-22.91</td>
+    </tr>
+    <tr>
+      <td>2005-08-25</td>
+      <td>Houston Comets</td>
+      <td>1496.69</td>
+      <td>80</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1537.46</td>
+      <td>72</td>
+      <td>30.14%</td>
+      <td>69.86%</td>
+      <td>24.84</td>
+    </tr>
+    <tr>
+      <td>2005-08-25</td>
+      <td>Seattle Storm</td>
+      <td>1564.09</td>
+      <td>76</td>
+      <td>Sacramento Monarchs</td>
+      <td>1673.18</td>
+      <td>63</td>
+      <td>49.46%</td>
+      <td>50.54%</td>
+      <td>22.91</td>
+    </tr>
+    <tr>
+      <td>2005-08-25</td>
+      <td>Phoenix Mercury</td>
+      <td>1537.46</td>
+      <td>72</td>
+      <td>Houston Comets</td>
+      <td>1496.69</td>
+      <td>80</td>
+      <td>69.86%</td>
+      <td>30.14%</td>
+      <td>-24.84</td>
+    </tr>
+    <tr>
+      <td>2005-08-25</td>
+      <td>New York Liberty</td>
+      <td>1577.67</td>
+      <td>66</td>
+      <td>Charlotte Sting</td>
+      <td>1290.43</td>
+      <td>78</td>
+      <td>90.55%</td>
+      <td>9.45%</td>
+      <td>-39.43</td>
+    </tr>
+    <tr>
+      <td>2005-08-25</td>
+      <td>Detroit Shock</td>
+      <td>1469.00</td>
+      <td>55</td>
+      <td>Indiana Fever</td>
+      <td>1565.71</td>
+      <td>40</td>
+      <td>51.24%</td>
+      <td>48.76%</td>
+      <td>23.74</td>
+    </tr>
+    <tr>
+      <td>2005-08-26</td>
+      <td>Los Angeles Sparks</td>
+      <td>1502.89</td>
+      <td>70</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1285.29</td>
+      <td>67</td>
+      <td>65.62%</td>
+      <td>34.38%</td>
+      <td>7.48</td>
+    </tr>
+    <tr>
+      <td>2005-08-26</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1285.29</td>
+      <td>67</td>
+      <td>Los Angeles Sparks</td>
+      <td>1502.89</td>
+      <td>70</td>
+      <td>34.38%</td>
+      <td>65.62%</td>
+      <td>-7.49</td>
+    </tr>
+    <tr>
+      <td>2005-08-26</td>
+      <td>Connecticut Sun</td>
+      <td>1653.93</td>
+      <td>81</td>
+      <td>Washington Mystics</td>
+      <td>1466.63</td>
+      <td>47</td>
+      <td>84.35%</td>
+      <td>15.65%</td>
+      <td>11.48</td>
+    </tr>
+    <tr>
+      <td>2005-08-26</td>
+      <td>Washington Mystics</td>
+      <td>1466.63</td>
+      <td>47</td>
+      <td>@ Connecticut Sun</td>
+      <td>1653.93</td>
+      <td>81</td>
+      <td>15.65%</td>
+      <td>84.35%</td>
+      <td>-11.47</td>
+    </tr>
+    <tr>
+      <td>2005-08-27</td>
+      <td>Connecticut Sun</td>
+      <td>1665.41</td>
+      <td>78</td>
+      <td>@ Charlotte Sting</td>
+      <td>1329.86</td>
+      <td>69</td>
+      <td>79.01%</td>
+      <td>20.99%</td>
+      <td>7.91</td>
+    </tr>
+    <tr>
+      <td>2005-08-27</td>
+      <td>Los Angeles Sparks</td>
+      <td>1510.37</td>
+      <td>51</td>
+      <td>@ Houston Comets</td>
+      <td>1521.53</td>
+      <td>77</td>
+      <td>33.84%</td>
+      <td>66.16%</td>
+      <td>-21.69</td>
+    </tr>
+    <tr>
+      <td>2005-08-27</td>
+      <td>Sacramento Monarchs</td>
+      <td>1650.27</td>
+      <td>61</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1417.02</td>
+      <td>52</td>
+      <td>67.62%</td>
+      <td>32.38%</td>
+      <td>12.21</td>
+    </tr>
+    <tr>
+      <td>2005-08-27</td>
+      <td>New York Liberty</td>
+      <td>1538.24</td>
+      <td>50</td>
+      <td>@ Indiana Fever</td>
+      <td>1541.97</td>
+      <td>75</td>
+      <td>34.80%</td>
+      <td>65.20%</td>
+      <td>-21.87</td>
+    </tr>
+    <tr>
+      <td>2005-08-27</td>
+      <td>Washington Mystics</td>
+      <td>1455.16</td>
+      <td>76</td>
+      <td>Detroit Shock</td>
+      <td>1492.74</td>
+      <td>67</td>
+      <td>59.62%</td>
+      <td>40.38%</td>
+      <td>15.23</td>
+    </tr>
+    <tr>
+      <td>2005-08-27</td>
+      <td>Seattle Storm</td>
+      <td>1587.00</td>
+      <td>85</td>
+      <td>Phoenix Mercury</td>
+      <td>1512.62</td>
+      <td>74</td>
+      <td>73.77%</td>
+      <td>26.23%</td>
+      <td>10.93</td>
+    </tr>
+    <tr>
+      <td>2005-08-27</td>
+      <td>Minnesota Lynx</td>
+      <td>1417.02</td>
+      <td>52</td>
+      <td>Sacramento Monarchs</td>
+      <td>1650.27</td>
+      <td>61</td>
+      <td>32.38%</td>
+      <td>67.62%</td>
+      <td>-12.21</td>
+    </tr>
+    <tr>
+      <td>2005-08-27</td>
+      <td>Indiana Fever</td>
+      <td>1541.97</td>
+      <td>75</td>
+      <td>New York Liberty</td>
+      <td>1538.24</td>
+      <td>50</td>
+      <td>65.20%</td>
+      <td>34.80%</td>
+      <td>21.88</td>
+    </tr>
+    <tr>
+      <td>2005-08-27</td>
+      <td>Houston Comets</td>
+      <td>1521.53</td>
+      <td>77</td>
+      <td>Los Angeles Sparks</td>
+      <td>1510.37</td>
+      <td>51</td>
+      <td>66.16%</td>
+      <td>33.84%</td>
+      <td>21.69</td>
+    </tr>
+    <tr>
+      <td>2005-08-27</td>
+      <td>Charlotte Sting</td>
+      <td>1329.86</td>
+      <td>69</td>
+      <td>Connecticut Sun</td>
+      <td>1665.41</td>
+      <td>78</td>
+      <td>20.99%</td>
+      <td>79.01%</td>
+      <td>-7.92</td>
+    </tr>
+    <tr>
+      <td>2005-08-27</td>
+      <td>Phoenix Mercury</td>
+      <td>1512.62</td>
+      <td>74</td>
+      <td>@ Seattle Storm</td>
+      <td>1587.00</td>
+      <td>85</td>
+      <td>26.23%</td>
+      <td>73.77%</td>
+      <td>-10.93</td>
+    </tr>
+    <tr>
+      <td>2005-08-27</td>
+      <td>Detroit Shock</td>
+      <td>1492.74</td>
+      <td>67</td>
+      <td>@ Washington Mystics</td>
+      <td>1455.16</td>
+      <td>76</td>
+      <td>40.38%</td>
+      <td>59.62%</td>
+      <td>-15.22</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

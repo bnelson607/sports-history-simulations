@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Connecticut Sun">Connecticut Sun</option><option value="Detroit Shock">Detroit Shock</option><option value="Los Angeles Sparks">Los Angeles Sparks</option><option value="Minnesota Lynx">Minnesota Lynx</option><option value="New York Liberty">New York Liberty</option><option value="Sacramento Monarchs">Sacramento Monarchs</option><option value="Seattle Storm">Seattle Storm</option><option value="Washington Mystics">Washington Mystics</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2004-09-24</td>
+      <td>Detroit Shock</td>
+      <td>1528.77</td>
+      <td>62</td>
+      <td>New York Liberty</td>
+      <td>1482.11</td>
+      <td>75</td>
+      <td>66.83%</td>
+      <td>33.17%</td>
+      <td>-16.44</td>
+    </tr>
+    <tr>
+      <td>2004-09-24</td>
+      <td>Sacramento Monarchs</td>
+      <td>1563.70</td>
+      <td>72</td>
+      <td>Los Angeles Sparks</td>
+      <td>1612.05</td>
+      <td>52</td>
+      <td>53.83%</td>
+      <td>46.17%</td>
+      <td>14.08</td>
+    </tr>
+    <tr>
+      <td>2004-09-24</td>
+      <td>New York Liberty</td>
+      <td>1482.11</td>
+      <td>75</td>
+      <td>@ Detroit Shock</td>
+      <td>1528.77</td>
+      <td>62</td>
+      <td>33.17%</td>
+      <td>66.83%</td>
+      <td>16.43</td>
+    </tr>
+    <tr>
+      <td>2004-09-24</td>
+      <td>Los Angeles Sparks</td>
+      <td>1612.05</td>
+      <td>52</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1563.70</td>
+      <td>72</td>
+      <td>46.17%</td>
+      <td>53.83%</td>
+      <td>-14.08</td>
+    </tr>
+    <tr>
+      <td>2004-09-25</td>
+      <td>Connecticut Sun</td>
+      <td>1526.14</td>
+      <td>59</td>
+      <td>@ Washington Mystics</td>
+      <td>1471.28</td>
+      <td>67</td>
+      <td>47.10%</td>
+      <td>52.90%</td>
+      <td>-9.08</td>
+    </tr>
+    <tr>
+      <td>2004-09-25</td>
+      <td>Seattle Storm</td>
+      <td>1567.78</td>
+      <td>70</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1494.70</td>
+      <td>58</td>
+      <td>49.72%</td>
+      <td>50.28%</td>
+      <td>11.88</td>
+    </tr>
+    <tr>
+      <td>2004-09-25</td>
+      <td>Washington Mystics</td>
+      <td>1471.28</td>
+      <td>67</td>
+      <td>Connecticut Sun</td>
+      <td>1526.14</td>
+      <td>59</td>
+      <td>52.90%</td>
+      <td>47.10%</td>
+      <td>9.09</td>
+    </tr>
+    <tr>
+      <td>2004-09-25</td>
+      <td>Minnesota Lynx</td>
+      <td>1494.70</td>
+      <td>58</td>
+      <td>Seattle Storm</td>
+      <td>1567.78</td>
+      <td>70</td>
+      <td>50.28%</td>
+      <td>49.72%</td>
+      <td>-11.88</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Los Angeles Sparks</td>
+      <td>1597.97</td>
+      <td>71</td>
+      <td>Sacramento Monarchs</td>
+      <td>1577.78</td>
+      <td>57</td>
+      <td>63.37%</td>
+      <td>36.63%</td>
+      <td>9.35</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Detroit Shock</td>
+      <td>1512.33</td>
+      <td>76</td>
+      <td>@ New York Liberty</td>
+      <td>1498.54</td>
+      <td>66</td>
+      <td>41.28%</td>
+      <td>58.72%</td>
+      <td>12.67</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>Sacramento Monarchs</td>
+      <td>1577.78</td>
+      <td>57</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1597.97</td>
+      <td>71</td>
+      <td>36.63%</td>
+      <td>63.37%</td>
+      <td>-9.35</td>
+    </tr>
+    <tr>
+      <td>2004-09-26</td>
+      <td>New York Liberty</td>
+      <td>1498.54</td>
+      <td>66</td>
+      <td>Detroit Shock</td>
+      <td>1512.33</td>
+      <td>76</td>
+      <td>58.72%</td>
+      <td>41.28%</td>
+      <td>-12.66</td>
+    </tr>
+    <tr>
+      <td>2004-09-27</td>
+      <td>Connecticut Sun</td>
+      <td>1517.06</td>
+      <td>80</td>
+      <td>Washington Mystics</td>
+      <td>1480.37</td>
+      <td>70</td>
+      <td>65.55%</td>
+      <td>34.45%</td>
+      <td>7.43</td>
+    </tr>
+    <tr>
+      <td>2004-09-27</td>
+      <td>Seattle Storm</td>
+      <td>1579.66</td>
+      <td>64</td>
+      <td>Minnesota Lynx</td>
+      <td>1482.82</td>
+      <td>54</td>
+      <td>72.90%</td>
+      <td>27.10%</td>
+      <td>5.84</td>
+    </tr>
+    <tr>
+      <td>2004-09-27</td>
+      <td>Minnesota Lynx</td>
+      <td>1482.82</td>
+      <td>54</td>
+      <td>@ Seattle Storm</td>
+      <td>1579.66</td>
+      <td>64</td>
+      <td>27.10%</td>
+      <td>72.90%</td>
+      <td>-5.85</td>
+    </tr>
+    <tr>
+      <td>2004-09-27</td>
+      <td>Washington Mystics</td>
+      <td>1480.37</td>
+      <td>70</td>
+      <td>@ Connecticut Sun</td>
+      <td>1517.06</td>
+      <td>80</td>
+      <td>34.45%</td>
+      <td>65.55%</td>
+      <td>-7.43</td>
+    </tr>
+    <tr>
+      <td>2004-09-28</td>
+      <td>Los Angeles Sparks</td>
+      <td>1607.32</td>
+      <td>58</td>
+      <td>Sacramento Monarchs</td>
+      <td>1568.43</td>
+      <td>73</td>
+      <td>65.83%</td>
+      <td>34.17%</td>
+      <td>-17.39</td>
+    </tr>
+    <tr>
+      <td>2004-09-28</td>
+      <td>New York Liberty</td>
+      <td>1485.88</td>
+      <td>66</td>
+      <td>Detroit Shock</td>
+      <td>1525.00</td>
+      <td>64</td>
+      <td>55.15%</td>
+      <td>44.85%</td>
+      <td>4.32</td>
+    </tr>
+    <tr>
+      <td>2004-09-28</td>
+      <td>Detroit Shock</td>
+      <td>1525.00</td>
+      <td>64</td>
+      <td>@ New York Liberty</td>
+      <td>1485.88</td>
+      <td>66</td>
+      <td>44.85%</td>
+      <td>55.15%</td>
+      <td>-4.33</td>
+    </tr>
+    <tr>
+      <td>2004-09-28</td>
+      <td>Sacramento Monarchs</td>
+      <td>1568.43</td>
+      <td>73</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1607.32</td>
+      <td>58</td>
+      <td>34.17%</td>
+      <td>65.83%</td>
+      <td>17.39</td>
+    </tr>
+    <tr>
+      <td>2004-09-29</td>
+      <td>Washington Mystics</td>
+      <td>1472.94</td>
+      <td>56</td>
+      <td>@ Connecticut Sun</td>
+      <td>1524.49</td>
+      <td>76</td>
+      <td>32.55%</td>
+      <td>67.45%</td>
+      <td>-9.93</td>
+    </tr>
+    <tr>
+      <td>2004-09-29</td>
+      <td>Connecticut Sun</td>
+      <td>1524.49</td>
+      <td>76</td>
+      <td>Washington Mystics</td>
+      <td>1472.94</td>
+      <td>56</td>
+      <td>67.45%</td>
+      <td>32.55%</td>
+      <td>9.92</td>
+    </tr>
+    <tr>
+      <td>2004-10-01</td>
+      <td>Seattle Storm</td>
+      <td>1585.50</td>
+      <td>72</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1585.82</td>
+      <td>74</td>
+      <td>39.32%</td>
+      <td>60.68%</td>
+      <td>-3.79</td>
+    </tr>
+    <tr>
+      <td>2004-10-01</td>
+      <td>Connecticut Sun</td>
+      <td>1534.41</td>
+      <td>61</td>
+      <td>@ New York Liberty</td>
+      <td>1490.20</td>
+      <td>51</td>
+      <td>45.58%</td>
+      <td>54.42%</td>
+      <td>11.74</td>
+    </tr>
+    <tr>
+      <td>2004-10-01</td>
+      <td>Sacramento Monarchs</td>
+      <td>1585.82</td>
+      <td>74</td>
+      <td>Seattle Storm</td>
+      <td>1585.50</td>
+      <td>72</td>
+      <td>60.68%</td>
+      <td>39.32%</td>
+      <td>3.80</td>
+    </tr>
+    <tr>
+      <td>2004-10-01</td>
+      <td>New York Liberty</td>
+      <td>1490.20</td>
+      <td>51</td>
+      <td>Connecticut Sun</td>
+      <td>1534.41</td>
+      <td>61</td>
+      <td>54.42%</td>
+      <td>45.58%</td>
+      <td>-11.74</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Sacramento Monarchs</td>
+      <td>1589.62</td>
+      <td>54</td>
+      <td>@ Seattle Storm</td>
+      <td>1581.71</td>
+      <td>66</td>
+      <td>40.46%</td>
+      <td>59.54%</td>
+      <td>-9.56</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Seattle Storm</td>
+      <td>1581.71</td>
+      <td>66</td>
+      <td>Sacramento Monarchs</td>
+      <td>1589.62</td>
+      <td>54</td>
+      <td>59.54%</td>
+      <td>40.46%</td>
+      <td>9.56</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>Connecticut Sun</td>
+      <td>1546.15</td>
+      <td>60</td>
+      <td>New York Liberty</td>
+      <td>1478.46</td>
+      <td>57</td>
+      <td>69.46%</td>
+      <td>30.54%</td>
+      <td>3.61</td>
+    </tr>
+    <tr>
+      <td>2004-10-03</td>
+      <td>New York Liberty</td>
+      <td>1478.46</td>
+      <td>57</td>
+      <td>@ Connecticut Sun</td>
+      <td>1546.15</td>
+      <td>60</td>
+      <td>30.54%</td>
+      <td>69.46%</td>
+      <td>-3.60</td>
+    </tr>
+    <tr>
+      <td>2004-10-05</td>
+      <td>Sacramento Monarchs</td>
+      <td>1580.06</td>
+      <td>62</td>
+      <td>@ Seattle Storm</td>
+      <td>1591.27</td>
+      <td>82</td>
+      <td>37.84%</td>
+      <td>62.16%</td>
+      <td>-11.54</td>
+    </tr>
+    <tr>
+      <td>2004-10-05</td>
+      <td>Seattle Storm</td>
+      <td>1591.27</td>
+      <td>82</td>
+      <td>Sacramento Monarchs</td>
+      <td>1580.06</td>
+      <td>62</td>
+      <td>62.16%</td>
+      <td>37.84%</td>
+      <td>11.54</td>
+    </tr>
+    <tr>
+      <td>2004-10-08</td>
+      <td>Seattle Storm</td>
+      <td>1602.81</td>
+      <td>64</td>
+      <td>@ Connecticut Sun</td>
+      <td>1549.76</td>
+      <td>68</td>
+      <td>46.84%</td>
+      <td>53.16%</td>
+      <td>-6.39</td>
+    </tr>
+    <tr>
+      <td>2004-10-08</td>
+      <td>Connecticut Sun</td>
+      <td>1549.76</td>
+      <td>68</td>
+      <td>Seattle Storm</td>
+      <td>1602.81</td>
+      <td>64</td>
+      <td>53.16%</td>
+      <td>46.84%</td>
+      <td>6.39</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Connecticut Sun</td>
+      <td>1556.15</td>
+      <td>65</td>
+      <td>@ Seattle Storm</td>
+      <td>1596.42</td>
+      <td>67</td>
+      <td>33.99%</td>
+      <td>66.01%</td>
+      <td>-3.28</td>
+    </tr>
+    <tr>
+      <td>2004-10-10</td>
+      <td>Seattle Storm</td>
+      <td>1596.42</td>
+      <td>67</td>
+      <td>Connecticut Sun</td>
+      <td>1556.15</td>
+      <td>65</td>
+      <td>66.01%</td>
+      <td>33.99%</td>
+      <td>3.28</td>
+    </tr>
+    <tr>
+      <td>2004-10-12</td>
+      <td>Seattle Storm</td>
+      <td>1599.70</td>
+      <td>74</td>
+      <td>Connecticut Sun</td>
+      <td>1552.87</td>
+      <td>60</td>
+      <td>66.85%</td>
+      <td>33.15%</td>
+      <td>8.46</td>
+    </tr>
+    <tr>
+      <td>2004-10-12</td>
+      <td>Connecticut Sun</td>
+      <td>1552.87</td>
+      <td>60</td>
+      <td>@ Seattle Storm</td>
+      <td>1599.70</td>
+      <td>74</td>
+      <td>33.15%</td>
+      <td>66.85%</td>
+      <td>-8.46</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

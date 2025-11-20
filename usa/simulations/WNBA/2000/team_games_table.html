@@ -1,0 +1,6241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Charlotte Sting">Charlotte Sting</option><option value="Cleveland Rockers">Cleveland Rockers</option><option value="Detroit Shock">Detroit Shock</option><option value="Houston Comets">Houston Comets</option><option value="Indiana Fever">Indiana Fever</option><option value="Los Angeles Sparks">Los Angeles Sparks</option><option value="Miami Sol">Miami Sol</option><option value="Minnesota Lynx">Minnesota Lynx</option><option value="New York Liberty">New York Liberty</option><option value="Orlando Miracle">Orlando Miracle</option><option value="Phoenix Mercury">Phoenix Mercury</option><option value="Portland Fire">Portland Fire</option><option value="Sacramento Monarchs">Sacramento Monarchs</option><option value="Seattle Storm">Seattle Storm</option><option value="Utah Starzz">Utah Starzz</option><option value="Washington Mystics">Washington Mystics</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2000-05-29</td>
+      <td>Houston Comets</td>
+      <td>1688.76</td>
+      <td>84</td>
+      <td>New York Liberty</td>
+      <td>1572.63</td>
+      <td>68</td>
+      <td>74.35%</td>
+      <td>25.65%</td>
+      <td>7.78</td>
+    </tr>
+    <tr>
+      <td>2000-05-29</td>
+      <td>New York Liberty</td>
+      <td>1572.63</td>
+      <td>68</td>
+      <td>@ Houston Comets</td>
+      <td>1688.76</td>
+      <td>84</td>
+      <td>25.65%</td>
+      <td>74.35%</td>
+      <td>-7.78</td>
+    </tr>
+    <tr>
+      <td>2000-05-31</td>
+      <td>Los Angeles Sparks</td>
+      <td>1603.53</td>
+      <td>69</td>
+      <td>Utah Starzz</td>
+      <td>1546.65</td>
+      <td>62</td>
+      <td>67.33%</td>
+      <td>32.67%</td>
+      <td>6.57</td>
+    </tr>
+    <tr>
+      <td>2000-05-31</td>
+      <td>Minnesota Lynx</td>
+      <td>1501.92</td>
+      <td>73</td>
+      <td>Cleveland Rockers</td>
+      <td>1474.14</td>
+      <td>62</td>
+      <td>63.54%</td>
+      <td>36.46%</td>
+      <td>9.17</td>
+    </tr>
+    <tr>
+      <td>2000-05-31</td>
+      <td>Phoenix Mercury</td>
+      <td>1575.68</td>
+      <td>51</td>
+      <td>New York Liberty</td>
+      <td>1564.85</td>
+      <td>48</td>
+      <td>61.26%</td>
+      <td>38.74%</td>
+      <td>5.09</td>
+    </tr>
+    <tr>
+      <td>2000-05-31</td>
+      <td>Portland Fire</td>
+      <td>1350.00</td>
+      <td>89</td>
+      <td>Houston Comets</td>
+      <td>1696.54</td>
+      <td>93</td>
+      <td>16.81%</td>
+      <td>83.19%</td>
+      <td>-2.55</td>
+    </tr>
+    <tr>
+      <td>2000-05-31</td>
+      <td>Sacramento Monarchs</td>
+      <td>1576.87</td>
+      <td>76</td>
+      <td>Seattle Storm</td>
+      <td>1350.00</td>
+      <td>60</td>
+      <td>84.57%</td>
+      <td>15.43%</td>
+      <td>4.68</td>
+    </tr>
+    <tr>
+      <td>2000-05-31</td>
+      <td>Washington Mystics</td>
+      <td>1467.99</td>
+      <td>92</td>
+      <td>Orlando Miracle</td>
+      <td>1514.19</td>
+      <td>66</td>
+      <td>53.24%</td>
+      <td>46.76%</td>
+      <td>18.09</td>
+    </tr>
+    <tr>
+      <td>2000-05-31</td>
+      <td>Cleveland Rockers</td>
+      <td>1474.14</td>
+      <td>62</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1501.92</td>
+      <td>73</td>
+      <td>36.46%</td>
+      <td>63.54%</td>
+      <td>-9.18</td>
+    </tr>
+    <tr>
+      <td>2000-05-31</td>
+      <td>Utah Starzz</td>
+      <td>1546.65</td>
+      <td>62</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1603.53</td>
+      <td>69</td>
+      <td>32.67%</td>
+      <td>67.33%</td>
+      <td>-6.56</td>
+    </tr>
+    <tr>
+      <td>2000-05-31</td>
+      <td>Orlando Miracle</td>
+      <td>1514.19</td>
+      <td>66</td>
+      <td>@ Washington Mystics</td>
+      <td>1467.99</td>
+      <td>92</td>
+      <td>46.76%</td>
+      <td>53.24%</td>
+      <td>-18.10</td>
+    </tr>
+    <tr>
+      <td>2000-05-31</td>
+      <td>Seattle Storm</td>
+      <td>1350.00</td>
+      <td>60</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1576.87</td>
+      <td>76</td>
+      <td>15.43%</td>
+      <td>84.57%</td>
+      <td>-4.68</td>
+    </tr>
+    <tr>
+      <td>2000-05-31</td>
+      <td>Houston Comets</td>
+      <td>1696.54</td>
+      <td>93</td>
+      <td>@ Portland Fire</td>
+      <td>1350.00</td>
+      <td>89</td>
+      <td>83.19%</td>
+      <td>16.81%</td>
+      <td>2.56</td>
+    </tr>
+    <tr>
+      <td>2000-05-31</td>
+      <td>New York Liberty</td>
+      <td>1564.85</td>
+      <td>48</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1575.68</td>
+      <td>51</td>
+      <td>38.74%</td>
+      <td>61.26%</td>
+      <td>-5.10</td>
+    </tr>
+    <tr>
+      <td>2000-06-01</td>
+      <td>Minnesota Lynx</td>
+      <td>1511.09</td>
+      <td>74</td>
+      <td>@ Utah Starzz</td>
+      <td>1540.09</td>
+      <td>83</td>
+      <td>36.29%</td>
+      <td>63.71%</td>
+      <td>-8.26</td>
+    </tr>
+    <tr>
+      <td>2000-06-01</td>
+      <td>Houston Comets</td>
+      <td>1699.10</td>
+      <td>77</td>
+      <td>@ Seattle Storm</td>
+      <td>1345.32</td>
+      <td>47</td>
+      <td>83.76%</td>
+      <td>16.24%</td>
+      <td>6.74</td>
+    </tr>
+    <tr>
+      <td>2000-06-01</td>
+      <td>Charlotte Sting</td>
+      <td>1546.50</td>
+      <td>79</td>
+      <td>@ Orlando Miracle</td>
+      <td>1496.09</td>
+      <td>82</td>
+      <td>47.36%</td>
+      <td>52.64%</td>
+      <td>-6.22</td>
+    </tr>
+    <tr>
+      <td>2000-06-01</td>
+      <td>Indiana Fever</td>
+      <td>1350.00</td>
+      <td>57</td>
+      <td>@ Miami Sol</td>
+      <td>1350.00</td>
+      <td>54</td>
+      <td>40.23%</td>
+      <td>59.77%</td>
+      <td>7.86</td>
+    </tr>
+    <tr>
+      <td>2000-06-01</td>
+      <td>Miami Sol</td>
+      <td>1350.00</td>
+      <td>54</td>
+      <td>Indiana Fever</td>
+      <td>1350.00</td>
+      <td>57</td>
+      <td>59.77%</td>
+      <td>40.23%</td>
+      <td>-7.86</td>
+    </tr>
+    <tr>
+      <td>2000-06-01</td>
+      <td>Seattle Storm</td>
+      <td>1345.32</td>
+      <td>47</td>
+      <td>Houston Comets</td>
+      <td>1699.10</td>
+      <td>77</td>
+      <td>16.24%</td>
+      <td>83.76%</td>
+      <td>-6.75</td>
+    </tr>
+    <tr>
+      <td>2000-06-01</td>
+      <td>Utah Starzz</td>
+      <td>1540.09</td>
+      <td>83</td>
+      <td>Minnesota Lynx</td>
+      <td>1511.09</td>
+      <td>74</td>
+      <td>63.71%</td>
+      <td>36.29%</td>
+      <td>8.26</td>
+    </tr>
+    <tr>
+      <td>2000-06-01</td>
+      <td>Orlando Miracle</td>
+      <td>1496.09</td>
+      <td>82</td>
+      <td>Charlotte Sting</td>
+      <td>1546.50</td>
+      <td>79</td>
+      <td>52.64%</td>
+      <td>47.36%</td>
+      <td>6.23</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>Miami Sol</td>
+      <td>1342.14</td>
+      <td>74</td>
+      <td>@ Charlotte Sting</td>
+      <td>1540.28</td>
+      <td>63</td>
+      <td>17.71%</td>
+      <td>82.29%</td>
+      <td>20.72</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>Washington Mystics</td>
+      <td>1486.08</td>
+      <td>49</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1464.96</td>
+      <td>72</td>
+      <td>43.19%</td>
+      <td>56.81%</td>
+      <td>-15.72</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>Sacramento Monarchs</td>
+      <td>1581.55</td>
+      <td>74</td>
+      <td>@ Detroit Shock</td>
+      <td>1531.15</td>
+      <td>77</td>
+      <td>47.36%</td>
+      <td>52.64%</td>
+      <td>-6.23</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>Minnesota Lynx</td>
+      <td>1502.83</td>
+      <td>75</td>
+      <td>Los Angeles Sparks</td>
+      <td>1610.10</td>
+      <td>82</td>
+      <td>44.48%</td>
+      <td>55.52%</td>
+      <td>-8.93</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>Indiana Fever</td>
+      <td>1357.86</td>
+      <td>82</td>
+      <td>Orlando Miracle</td>
+      <td>1502.32</td>
+      <td>88</td>
+      <td>39.27%</td>
+      <td>60.73%</td>
+      <td>-7.30</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>Houston Comets</td>
+      <td>1705.84</td>
+      <td>62</td>
+      <td>Phoenix Mercury</td>
+      <td>1580.77</td>
+      <td>80</td>
+      <td>75.32%</td>
+      <td>24.68%</td>
+      <td>-24.25</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>Seattle Storm</td>
+      <td>1338.57</td>
+      <td>58</td>
+      <td>Portland Fire</td>
+      <td>1347.45</td>
+      <td>65</td>
+      <td>58.53%</td>
+      <td>41.47%</td>
+      <td>-11.76</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>Phoenix Mercury</td>
+      <td>1580.77</td>
+      <td>80</td>
+      <td>@ Houston Comets</td>
+      <td>1705.84</td>
+      <td>62</td>
+      <td>24.68%</td>
+      <td>75.32%</td>
+      <td>24.25</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>New York Liberty</td>
+      <td>1559.75</td>
+      <td>87</td>
+      <td>Utah Starzz</td>
+      <td>1548.35</td>
+      <td>76</td>
+      <td>61.33%</td>
+      <td>38.67%</td>
+      <td>9.74</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>Orlando Miracle</td>
+      <td>1502.32</td>
+      <td>88</td>
+      <td>@ Indiana Fever</td>
+      <td>1357.86</td>
+      <td>82</td>
+      <td>60.73%</td>
+      <td>39.27%</td>
+      <td>7.30</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>Los Angeles Sparks</td>
+      <td>1610.10</td>
+      <td>82</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1502.83</td>
+      <td>75</td>
+      <td>55.52%</td>
+      <td>44.48%</td>
+      <td>8.93</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>Utah Starzz</td>
+      <td>1548.35</td>
+      <td>76</td>
+      <td>@ New York Liberty</td>
+      <td>1559.75</td>
+      <td>87</td>
+      <td>38.67%</td>
+      <td>61.33%</td>
+      <td>-9.73</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>Portland Fire</td>
+      <td>1347.45</td>
+      <td>65</td>
+      <td>@ Seattle Storm</td>
+      <td>1338.57</td>
+      <td>58</td>
+      <td>41.47%</td>
+      <td>58.53%</td>
+      <td>11.75</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>Cleveland Rockers</td>
+      <td>1464.96</td>
+      <td>72</td>
+      <td>Washington Mystics</td>
+      <td>1486.08</td>
+      <td>49</td>
+      <td>56.81%</td>
+      <td>43.19%</td>
+      <td>15.72</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>Charlotte Sting</td>
+      <td>1540.28</td>
+      <td>63</td>
+      <td>Miami Sol</td>
+      <td>1342.14</td>
+      <td>74</td>
+      <td>82.29%</td>
+      <td>17.71%</td>
+      <td>-20.72</td>
+    </tr>
+    <tr>
+      <td>2000-06-03</td>
+      <td>Detroit Shock</td>
+      <td>1531.15</td>
+      <td>77</td>
+      <td>Sacramento Monarchs</td>
+      <td>1581.55</td>
+      <td>74</td>
+      <td>52.64%</td>
+      <td>47.36%</td>
+      <td>6.23</td>
+    </tr>
+    <tr>
+      <td>2000-06-04</td>
+      <td>Washington Mystics</td>
+      <td>1470.36</td>
+      <td>79</td>
+      <td>New York Liberty</td>
+      <td>1569.49</td>
+      <td>67</td>
+      <td>45.64%</td>
+      <td>54.36%</td>
+      <td>14.30</td>
+    </tr>
+    <tr>
+      <td>2000-06-04</td>
+      <td>New York Liberty</td>
+      <td>1569.49</td>
+      <td>67</td>
+      <td>@ Washington Mystics</td>
+      <td>1470.36</td>
+      <td>79</td>
+      <td>54.36%</td>
+      <td>45.64%</td>
+      <td>-14.30</td>
+    </tr>
+    <tr>
+      <td>2000-06-05</td>
+      <td>Miami Sol</td>
+      <td>1362.86</td>
+      <td>59</td>
+      <td>@ Indiana Fever</td>
+      <td>1350.56</td>
+      <td>80</td>
+      <td>41.95%</td>
+      <td>58.05%</td>
+      <td>-14.59</td>
+    </tr>
+    <tr>
+      <td>2000-06-05</td>
+      <td>Detroit Shock</td>
+      <td>1537.38</td>
+      <td>68</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1493.90</td>
+      <td>88</td>
+      <td>46.37%</td>
+      <td>53.63%</td>
+      <td>-15.74</td>
+    </tr>
+    <tr>
+      <td>2000-06-05</td>
+      <td>Sacramento Monarchs</td>
+      <td>1575.32</td>
+      <td>68</td>
+      <td>@ Orlando Miracle</td>
+      <td>1509.62</td>
+      <td>75</td>
+      <td>49.56%</td>
+      <td>50.44%</td>
+      <td>-9.95</td>
+    </tr>
+    <tr>
+      <td>2000-06-05</td>
+      <td>Cleveland Rockers</td>
+      <td>1480.68</td>
+      <td>69</td>
+      <td>@ Charlotte Sting</td>
+      <td>1519.56</td>
+      <td>53</td>
+      <td>34.99%</td>
+      <td>65.01%</td>
+      <td>19.74</td>
+    </tr>
+    <tr>
+      <td>2000-06-05</td>
+      <td>Charlotte Sting</td>
+      <td>1519.56</td>
+      <td>53</td>
+      <td>Cleveland Rockers</td>
+      <td>1480.68</td>
+      <td>69</td>
+      <td>65.01%</td>
+      <td>34.99%</td>
+      <td>-19.74</td>
+    </tr>
+    <tr>
+      <td>2000-06-05</td>
+      <td>Indiana Fever</td>
+      <td>1350.56</td>
+      <td>80</td>
+      <td>Miami Sol</td>
+      <td>1362.86</td>
+      <td>59</td>
+      <td>58.05%</td>
+      <td>41.95%</td>
+      <td>14.59</td>
+    </tr>
+    <tr>
+      <td>2000-06-05</td>
+      <td>Minnesota Lynx</td>
+      <td>1493.90</td>
+      <td>88</td>
+      <td>Detroit Shock</td>
+      <td>1537.38</td>
+      <td>68</td>
+      <td>53.63%</td>
+      <td>46.37%</td>
+      <td>15.74</td>
+    </tr>
+    <tr>
+      <td>2000-06-05</td>
+      <td>Orlando Miracle</td>
+      <td>1509.62</td>
+      <td>75</td>
+      <td>Sacramento Monarchs</td>
+      <td>1575.32</td>
+      <td>68</td>
+      <td>50.44%</td>
+      <td>49.56%</td>
+      <td>9.95</td>
+    </tr>
+    <tr>
+      <td>2000-06-06</td>
+      <td>Utah Starzz</td>
+      <td>1538.62</td>
+      <td>76</td>
+      <td>Phoenix Mercury</td>
+      <td>1605.02</td>
+      <td>61</td>
+      <td>50.34%</td>
+      <td>49.66%</td>
+      <td>14.60</td>
+    </tr>
+    <tr>
+      <td>2000-06-06</td>
+      <td>Sacramento Monarchs</td>
+      <td>1565.37</td>
+      <td>70</td>
+      <td>@ Houston Comets</td>
+      <td>1681.59</td>
+      <td>78</td>
+      <td>25.64%</td>
+      <td>74.36%</td>
+      <td>-5.50</td>
+    </tr>
+    <tr>
+      <td>2000-06-06</td>
+      <td>Portland Fire</td>
+      <td>1359.20</td>
+      <td>57</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1619.03</td>
+      <td>70</td>
+      <td>13.11%</td>
+      <td>86.89%</td>
+      <td>-3.59</td>
+    </tr>
+    <tr>
+      <td>2000-06-06</td>
+      <td>Phoenix Mercury</td>
+      <td>1605.02</td>
+      <td>61</td>
+      <td>@ Utah Starzz</td>
+      <td>1538.62</td>
+      <td>76</td>
+      <td>49.66%</td>
+      <td>50.34%</td>
+      <td>-14.59</td>
+    </tr>
+    <tr>
+      <td>2000-06-06</td>
+      <td>Los Angeles Sparks</td>
+      <td>1619.03</td>
+      <td>70</td>
+      <td>Portland Fire</td>
+      <td>1359.20</td>
+      <td>57</td>
+      <td>86.89%</td>
+      <td>13.11%</td>
+      <td>3.58</td>
+    </tr>
+    <tr>
+      <td>2000-06-06</td>
+      <td>Houston Comets</td>
+      <td>1681.59</td>
+      <td>78</td>
+      <td>Sacramento Monarchs</td>
+      <td>1565.37</td>
+      <td>70</td>
+      <td>74.36%</td>
+      <td>25.64%</td>
+      <td>5.51</td>
+    </tr>
+    <tr>
+      <td>2000-06-07</td>
+      <td>Cleveland Rockers</td>
+      <td>1500.42</td>
+      <td>83</td>
+      <td>Orlando Miracle</td>
+      <td>1519.57</td>
+      <td>79</td>
+      <td>57.09%</td>
+      <td>42.91%</td>
+      <td>6.51</td>
+    </tr>
+    <tr>
+      <td>2000-06-07</td>
+      <td>New York Liberty</td>
+      <td>1555.19</td>
+      <td>73</td>
+      <td>@ Detroit Shock</td>
+      <td>1521.64</td>
+      <td>69</td>
+      <td>44.95%</td>
+      <td>55.05%</td>
+      <td>8.36</td>
+    </tr>
+    <tr>
+      <td>2000-06-07</td>
+      <td>Orlando Miracle</td>
+      <td>1519.57</td>
+      <td>79</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1500.42</td>
+      <td>83</td>
+      <td>42.91%</td>
+      <td>57.09%</td>
+      <td>-6.51</td>
+    </tr>
+    <tr>
+      <td>2000-06-07</td>
+      <td>Phoenix Mercury</td>
+      <td>1590.43</td>
+      <td>82</td>
+      <td>Seattle Storm</td>
+      <td>1326.81</td>
+      <td>49</td>
+      <td>87.14%</td>
+      <td>12.86%</td>
+      <td>5.60</td>
+    </tr>
+    <tr>
+      <td>2000-06-07</td>
+      <td>Detroit Shock</td>
+      <td>1521.64</td>
+      <td>69</td>
+      <td>New York Liberty</td>
+      <td>1555.19</td>
+      <td>73</td>
+      <td>55.05%</td>
+      <td>44.95%</td>
+      <td>-8.36</td>
+    </tr>
+    <tr>
+      <td>2000-06-07</td>
+      <td>Seattle Storm</td>
+      <td>1326.81</td>
+      <td>49</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1590.43</td>
+      <td>82</td>
+      <td>12.86%</td>
+      <td>87.14%</td>
+      <td>-5.60</td>
+    </tr>
+    <tr>
+      <td>2000-06-07</td>
+      <td>Washington Mystics</td>
+      <td>1484.66</td>
+      <td>54</td>
+      <td>Houston Comets</td>
+      <td>1687.10</td>
+      <td>81</td>
+      <td>31.66%</td>
+      <td>68.34%</td>
+      <td>-12.49</td>
+    </tr>
+    <tr>
+      <td>2000-06-07</td>
+      <td>Houston Comets</td>
+      <td>1687.10</td>
+      <td>81</td>
+      <td>@ Washington Mystics</td>
+      <td>1484.66</td>
+      <td>54</td>
+      <td>68.34%</td>
+      <td>31.66%</td>
+      <td>12.48</td>
+    </tr>
+    <tr>
+      <td>2000-06-08</td>
+      <td>Miami Sol</td>
+      <td>1348.27</td>
+      <td>51</td>
+      <td>Washington Mystics</td>
+      <td>1472.17</td>
+      <td>73</td>
+      <td>42.13%</td>
+      <td>57.87%</td>
+      <td>-15.00</td>
+    </tr>
+    <tr>
+      <td>2000-06-08</td>
+      <td>Orlando Miracle</td>
+      <td>1513.06</td>
+      <td>57</td>
+      <td>Minnesota Lynx</td>
+      <td>1509.64</td>
+      <td>71</td>
+      <td>60.24%</td>
+      <td>39.76%</td>
+      <td>-17.11</td>
+    </tr>
+    <tr>
+      <td>2000-06-08</td>
+      <td>Portland Fire</td>
+      <td>1355.61</td>
+      <td>72</td>
+      <td>Utah Starzz</td>
+      <td>1553.22</td>
+      <td>81</td>
+      <td>32.26%</td>
+      <td>67.74%</td>
+      <td>-7.34</td>
+    </tr>
+    <tr>
+      <td>2000-06-08</td>
+      <td>Minnesota Lynx</td>
+      <td>1509.64</td>
+      <td>71</td>
+      <td>@ Orlando Miracle</td>
+      <td>1513.06</td>
+      <td>57</td>
+      <td>39.76%</td>
+      <td>60.24%</td>
+      <td>17.11</td>
+    </tr>
+    <tr>
+      <td>2000-06-08</td>
+      <td>Utah Starzz</td>
+      <td>1553.22</td>
+      <td>81</td>
+      <td>@ Portland Fire</td>
+      <td>1355.61</td>
+      <td>72</td>
+      <td>67.74%</td>
+      <td>32.26%</td>
+      <td>7.34</td>
+    </tr>
+    <tr>
+      <td>2000-06-08</td>
+      <td>Washington Mystics</td>
+      <td>1472.17</td>
+      <td>73</td>
+      <td>@ Miami Sol</td>
+      <td>1348.27</td>
+      <td>51</td>
+      <td>57.87%</td>
+      <td>42.13%</td>
+      <td>15.00</td>
+    </tr>
+    <tr>
+      <td>2000-06-09</td>
+      <td>Indiana Fever</td>
+      <td>1365.15</td>
+      <td>76</td>
+      <td>@ Detroit Shock</td>
+      <td>1513.28</td>
+      <td>80</td>
+      <td>22.30%</td>
+      <td>77.70%</td>
+      <td>-3.39</td>
+    </tr>
+    <tr>
+      <td>2000-06-09</td>
+      <td>Seattle Storm</td>
+      <td>1321.21</td>
+      <td>67</td>
+      <td>@ Charlotte Sting</td>
+      <td>1499.82</td>
+      <td>62</td>
+      <td>19.41%</td>
+      <td>80.59%</td>
+      <td>13.67</td>
+    </tr>
+    <tr>
+      <td>2000-06-09</td>
+      <td>Detroit Shock</td>
+      <td>1513.28</td>
+      <td>80</td>
+      <td>Indiana Fever</td>
+      <td>1365.15</td>
+      <td>76</td>
+      <td>77.70%</td>
+      <td>22.30%</td>
+      <td>3.38</td>
+    </tr>
+    <tr>
+      <td>2000-06-09</td>
+      <td>New York Liberty</td>
+      <td>1563.55</td>
+      <td>56</td>
+      <td>Sacramento Monarchs</td>
+      <td>1559.87</td>
+      <td>77</td>
+      <td>60.27%</td>
+      <td>39.73%</td>
+      <td>-20.96</td>
+    </tr>
+    <tr>
+      <td>2000-06-09</td>
+      <td>Charlotte Sting</td>
+      <td>1499.82</td>
+      <td>62</td>
+      <td>Seattle Storm</td>
+      <td>1321.21</td>
+      <td>67</td>
+      <td>80.59%</td>
+      <td>19.41%</td>
+      <td>-13.68</td>
+    </tr>
+    <tr>
+      <td>2000-06-09</td>
+      <td>Sacramento Monarchs</td>
+      <td>1559.87</td>
+      <td>77</td>
+      <td>@ New York Liberty</td>
+      <td>1563.55</td>
+      <td>56</td>
+      <td>39.73%</td>
+      <td>60.27%</td>
+      <td>20.96</td>
+    </tr>
+    <tr>
+      <td>2000-06-10</td>
+      <td>Los Angeles Sparks</td>
+      <td>1622.61</td>
+      <td>76</td>
+      <td>Phoenix Mercury</td>
+      <td>1596.03</td>
+      <td>57</td>
+      <td>63.38%</td>
+      <td>36.62%</td>
+      <td>12.12</td>
+    </tr>
+    <tr>
+      <td>2000-06-10</td>
+      <td>Cleveland Rockers</td>
+      <td>1506.93</td>
+      <td>61</td>
+      <td>Seattle Storm</td>
+      <td>1334.88</td>
+      <td>49</td>
+      <td>80.00%</td>
+      <td>20.00%</td>
+      <td>5.26</td>
+    </tr>
+    <tr>
+      <td>2000-06-10</td>
+      <td>Seattle Storm</td>
+      <td>1334.88</td>
+      <td>49</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1506.93</td>
+      <td>61</td>
+      <td>20.00%</td>
+      <td>80.00%</td>
+      <td>-5.26</td>
+    </tr>
+    <tr>
+      <td>2000-06-10</td>
+      <td>Miami Sol</td>
+      <td>1333.27</td>
+      <td>55</td>
+      <td>Minnesota Lynx</td>
+      <td>1526.75</td>
+      <td>66</td>
+      <td>32.78%</td>
+      <td>67.22%</td>
+      <td>-8.25</td>
+    </tr>
+    <tr>
+      <td>2000-06-10</td>
+      <td>Utah Starzz</td>
+      <td>1560.56</td>
+      <td>71</td>
+      <td>Houston Comets</td>
+      <td>1699.58</td>
+      <td>73</td>
+      <td>40.02%</td>
+      <td>59.98%</td>
+      <td>-4.29</td>
+    </tr>
+    <tr>
+      <td>2000-06-10</td>
+      <td>Charlotte Sting</td>
+      <td>1486.14</td>
+      <td>71</td>
+      <td>Orlando Miracle</td>
+      <td>1495.95</td>
+      <td>74</td>
+      <td>58.40%</td>
+      <td>41.60%</td>
+      <td>-7.67</td>
+    </tr>
+    <tr>
+      <td>2000-06-10</td>
+      <td>Orlando Miracle</td>
+      <td>1495.95</td>
+      <td>74</td>
+      <td>@ Charlotte Sting</td>
+      <td>1486.14</td>
+      <td>71</td>
+      <td>41.60%</td>
+      <td>58.40%</td>
+      <td>7.68</td>
+    </tr>
+    <tr>
+      <td>2000-06-10</td>
+      <td>Indiana Fever</td>
+      <td>1361.76</td>
+      <td>62</td>
+      <td>New York Liberty</td>
+      <td>1542.59</td>
+      <td>70</td>
+      <td>34.41%</td>
+      <td>65.59%</td>
+      <td>-7.39</td>
+    </tr>
+    <tr>
+      <td>2000-06-10</td>
+      <td>Houston Comets</td>
+      <td>1699.58</td>
+      <td>73</td>
+      <td>@ Utah Starzz</td>
+      <td>1560.56</td>
+      <td>71</td>
+      <td>59.98%</td>
+      <td>40.02%</td>
+      <td>4.30</td>
+    </tr>
+    <tr>
+      <td>2000-06-10</td>
+      <td>Minnesota Lynx</td>
+      <td>1526.75</td>
+      <td>66</td>
+      <td>@ Miami Sol</td>
+      <td>1333.27</td>
+      <td>55</td>
+      <td>67.22%</td>
+      <td>32.78%</td>
+      <td>8.25</td>
+    </tr>
+    <tr>
+      <td>2000-06-10</td>
+      <td>Phoenix Mercury</td>
+      <td>1596.03</td>
+      <td>57</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1622.61</td>
+      <td>76</td>
+      <td>36.62%</td>
+      <td>63.38%</td>
+      <td>-12.11</td>
+    </tr>
+    <tr>
+      <td>2000-06-10</td>
+      <td>New York Liberty</td>
+      <td>1542.59</td>
+      <td>70</td>
+      <td>@ Indiana Fever</td>
+      <td>1361.76</td>
+      <td>62</td>
+      <td>65.59%</td>
+      <td>34.41%</td>
+      <td>7.38</td>
+    </tr>
+    <tr>
+      <td>2000-06-11</td>
+      <td>Sacramento Monarchs</td>
+      <td>1580.83</td>
+      <td>75</td>
+      <td>Los Angeles Sparks</td>
+      <td>1634.73</td>
+      <td>68</td>
+      <td>52.13%</td>
+      <td>47.87%</td>
+      <td>9.61</td>
+    </tr>
+    <tr>
+      <td>2000-06-11</td>
+      <td>Los Angeles Sparks</td>
+      <td>1634.73</td>
+      <td>68</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1580.83</td>
+      <td>75</td>
+      <td>47.87%</td>
+      <td>52.13%</td>
+      <td>-9.61</td>
+    </tr>
+    <tr>
+      <td>2000-06-12</td>
+      <td>Charlotte Sting</td>
+      <td>1478.47</td>
+      <td>78</td>
+      <td>@ Detroit Shock</td>
+      <td>1516.66</td>
+      <td>67</td>
+      <td>35.08%</td>
+      <td>64.92%</td>
+      <td>16.34</td>
+    </tr>
+    <tr>
+      <td>2000-06-12</td>
+      <td>Utah Starzz</td>
+      <td>1556.27</td>
+      <td>85</td>
+      <td>@ Houston Comets</td>
+      <td>1703.88</td>
+      <td>107</td>
+      <td>22.35%</td>
+      <td>77.65%</td>
+      <td>-7.96</td>
+    </tr>
+    <tr>
+      <td>2000-06-12</td>
+      <td>Indiana Fever</td>
+      <td>1354.37</td>
+      <td>70</td>
+      <td>Cleveland Rockers</td>
+      <td>1512.19</td>
+      <td>83</td>
+      <td>37.45%</td>
+      <td>62.55%</td>
+      <td>-10.24</td>
+    </tr>
+    <tr>
+      <td>2000-06-12</td>
+      <td>Houston Comets</td>
+      <td>1703.88</td>
+      <td>107</td>
+      <td>Utah Starzz</td>
+      <td>1556.27</td>
+      <td>85</td>
+      <td>77.65%</td>
+      <td>22.35%</td>
+      <td>7.95</td>
+    </tr>
+    <tr>
+      <td>2000-06-12</td>
+      <td>Detroit Shock</td>
+      <td>1516.66</td>
+      <td>67</td>
+      <td>Charlotte Sting</td>
+      <td>1478.47</td>
+      <td>78</td>
+      <td>64.92%</td>
+      <td>35.08%</td>
+      <td>-16.34</td>
+    </tr>
+    <tr>
+      <td>2000-06-12</td>
+      <td>Cleveland Rockers</td>
+      <td>1512.19</td>
+      <td>83</td>
+      <td>@ Indiana Fever</td>
+      <td>1354.37</td>
+      <td>70</td>
+      <td>62.55%</td>
+      <td>37.45%</td>
+      <td>10.25</td>
+    </tr>
+    <tr>
+      <td>2000-06-13</td>
+      <td>Orlando Miracle</td>
+      <td>1503.63</td>
+      <td>88</td>
+      <td>@ Utah Starzz</td>
+      <td>1548.31</td>
+      <td>80</td>
+      <td>34.23%</td>
+      <td>65.77%</td>
+      <td>14.12</td>
+    </tr>
+    <tr>
+      <td>2000-06-13</td>
+      <td>Washington Mystics</td>
+      <td>1487.17</td>
+      <td>57</td>
+      <td>@ New York Liberty</td>
+      <td>1549.97</td>
+      <td>56</td>
+      <td>31.92%</td>
+      <td>68.08%</td>
+      <td>5.17</td>
+    </tr>
+    <tr>
+      <td>2000-06-13</td>
+      <td>Phoenix Mercury</td>
+      <td>1583.92</td>
+      <td>75</td>
+      <td>@ Portland Fire</td>
+      <td>1348.27</td>
+      <td>69</td>
+      <td>72.33%</td>
+      <td>27.67%</td>
+      <td>5.14</td>
+    </tr>
+    <tr>
+      <td>2000-06-13</td>
+      <td>Los Angeles Sparks</td>
+      <td>1625.12</td>
+      <td>59</td>
+      <td>@ Seattle Storm</td>
+      <td>1329.62</td>
+      <td>69</td>
+      <td>78.67%</td>
+      <td>21.33%</td>
+      <td>-18.89</td>
+    </tr>
+    <tr>
+      <td>2000-06-13</td>
+      <td>Utah Starzz</td>
+      <td>1548.31</td>
+      <td>80</td>
+      <td>Orlando Miracle</td>
+      <td>1503.63</td>
+      <td>88</td>
+      <td>65.77%</td>
+      <td>34.23%</td>
+      <td>-14.12</td>
+    </tr>
+    <tr>
+      <td>2000-06-13</td>
+      <td>Seattle Storm</td>
+      <td>1329.62</td>
+      <td>69</td>
+      <td>Los Angeles Sparks</td>
+      <td>1625.12</td>
+      <td>59</td>
+      <td>21.33%</td>
+      <td>78.67%</td>
+      <td>18.89</td>
+    </tr>
+    <tr>
+      <td>2000-06-13</td>
+      <td>Portland Fire</td>
+      <td>1348.27</td>
+      <td>69</td>
+      <td>Phoenix Mercury</td>
+      <td>1583.92</td>
+      <td>75</td>
+      <td>27.67%</td>
+      <td>72.33%</td>
+      <td>-5.15</td>
+    </tr>
+    <tr>
+      <td>2000-06-13</td>
+      <td>New York Liberty</td>
+      <td>1549.97</td>
+      <td>56</td>
+      <td>Washington Mystics</td>
+      <td>1487.17</td>
+      <td>57</td>
+      <td>68.08%</td>
+      <td>31.92%</td>
+      <td>-5.17</td>
+    </tr>
+    <tr>
+      <td>2000-06-13</td>
+      <td>Miami Sol</td>
+      <td>1325.02</td>
+      <td>74</td>
+      <td>Detroit Shock</td>
+      <td>1500.32</td>
+      <td>61</td>
+      <td>35.13%</td>
+      <td>64.87%</td>
+      <td>17.75</td>
+    </tr>
+    <tr>
+      <td>2000-06-13</td>
+      <td>Detroit Shock</td>
+      <td>1500.32</td>
+      <td>61</td>
+      <td>@ Miami Sol</td>
+      <td>1325.02</td>
+      <td>74</td>
+      <td>64.87%</td>
+      <td>35.13%</td>
+      <td>-17.75</td>
+    </tr>
+    <tr>
+      <td>2000-06-14</td>
+      <td>Portland Fire</td>
+      <td>1343.12</td>
+      <td>80</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1589.06</td>
+      <td>81</td>
+      <td>14.05%</td>
+      <td>85.95%</td>
+      <td>-1.06</td>
+    </tr>
+    <tr>
+      <td>2000-06-14</td>
+      <td>Phoenix Mercury</td>
+      <td>1589.06</td>
+      <td>81</td>
+      <td>Portland Fire</td>
+      <td>1343.12</td>
+      <td>80</td>
+      <td>85.95%</td>
+      <td>14.05%</td>
+      <td>1.07</td>
+    </tr>
+    <tr>
+      <td>2000-06-15</td>
+      <td>Utah Starzz</td>
+      <td>1534.19</td>
+      <td>96</td>
+      <td>Charlotte Sting</td>
+      <td>1494.81</td>
+      <td>68</td>
+      <td>65.08%</td>
+      <td>34.92%</td>
+      <td>14.03</td>
+    </tr>
+    <tr>
+      <td>2000-06-15</td>
+      <td>Orlando Miracle</td>
+      <td>1517.75</td>
+      <td>66</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1535.00</td>
+      <td>72</td>
+      <td>37.87%</td>
+      <td>62.13%</td>
+      <td>-7.04</td>
+    </tr>
+    <tr>
+      <td>2000-06-15</td>
+      <td>Sacramento Monarchs</td>
+      <td>1590.44</td>
+      <td>54</td>
+      <td>@ Seattle Storm</td>
+      <td>1348.51</td>
+      <td>50</td>
+      <td>73.05%</td>
+      <td>26.95%</td>
+      <td>4.09</td>
+    </tr>
+    <tr>
+      <td>2000-06-15</td>
+      <td>Seattle Storm</td>
+      <td>1348.51</td>
+      <td>50</td>
+      <td>Sacramento Monarchs</td>
+      <td>1590.44</td>
+      <td>54</td>
+      <td>26.95%</td>
+      <td>73.05%</td>
+      <td>-4.09</td>
+    </tr>
+    <tr>
+      <td>2000-06-15</td>
+      <td>Minnesota Lynx</td>
+      <td>1535.00</td>
+      <td>72</td>
+      <td>Orlando Miracle</td>
+      <td>1517.75</td>
+      <td>66</td>
+      <td>62.13%</td>
+      <td>37.87%</td>
+      <td>7.04</td>
+    </tr>
+    <tr>
+      <td>2000-06-15</td>
+      <td>Houston Comets</td>
+      <td>1711.83</td>
+      <td>77</td>
+      <td>Miami Sol</td>
+      <td>1342.77</td>
+      <td>53</td>
+      <td>92.55%</td>
+      <td>7.45%</td>
+      <td>2.77</td>
+    </tr>
+    <tr>
+      <td>2000-06-15</td>
+      <td>Miami Sol</td>
+      <td>1342.77</td>
+      <td>53</td>
+      <td>@ Houston Comets</td>
+      <td>1711.83</td>
+      <td>77</td>
+      <td>7.45%</td>
+      <td>92.55%</td>
+      <td>-2.77</td>
+    </tr>
+    <tr>
+      <td>2000-06-15</td>
+      <td>Charlotte Sting</td>
+      <td>1494.81</td>
+      <td>68</td>
+      <td>@ Utah Starzz</td>
+      <td>1534.19</td>
+      <td>96</td>
+      <td>34.92%</td>
+      <td>65.08%</td>
+      <td>-14.03</td>
+    </tr>
+    <tr>
+      <td>2000-06-16</td>
+      <td>Detroit Shock</td>
+      <td>1482.57</td>
+      <td>93</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1522.44</td>
+      <td>81</td>
+      <td>34.86%</td>
+      <td>65.14%</td>
+      <td>17.13</td>
+    </tr>
+    <tr>
+      <td>2000-06-16</td>
+      <td>Cleveland Rockers</td>
+      <td>1522.44</td>
+      <td>81</td>
+      <td>Detroit Shock</td>
+      <td>1482.57</td>
+      <td>93</td>
+      <td>65.14%</td>
+      <td>34.86%</td>
+      <td>-17.13</td>
+    </tr>
+    <tr>
+      <td>2000-06-17</td>
+      <td>Cleveland Rockers</td>
+      <td>1505.31</td>
+      <td>48</td>
+      <td>@ Miami Sol</td>
+      <td>1340.00</td>
+      <td>55</td>
+      <td>63.55%</td>
+      <td>36.45%</td>
+      <td>-12.76</td>
+    </tr>
+    <tr>
+      <td>2000-06-17</td>
+      <td>Charlotte Sting</td>
+      <td>1480.78</td>
+      <td>63</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1594.53</td>
+      <td>74</td>
+      <td>25.91%</td>
+      <td>74.09%</td>
+      <td>-6.52</td>
+    </tr>
+    <tr>
+      <td>2000-06-17</td>
+      <td>Indiana Fever</td>
+      <td>1344.13</td>
+      <td>79</td>
+      <td>@ Orlando Miracle</td>
+      <td>1510.71</td>
+      <td>54</td>
+      <td>20.51%</td>
+      <td>79.49%</td>
+      <td>30.16</td>
+    </tr>
+    <tr>
+      <td>2000-06-17</td>
+      <td>Washington Mystics</td>
+      <td>1492.34</td>
+      <td>67</td>
+      <td>@ Utah Starzz</td>
+      <td>1548.22</td>
+      <td>70</td>
+      <td>32.80%</td>
+      <td>67.20%</td>
+      <td>-4.32</td>
+    </tr>
+    <tr>
+      <td>2000-06-17</td>
+      <td>Los Angeles Sparks</td>
+      <td>1606.23</td>
+      <td>94</td>
+      <td>@ Portland Fire</td>
+      <td>1342.06</td>
+      <td>81</td>
+      <td>75.49%</td>
+      <td>24.51%</td>
+      <td>6.71</td>
+    </tr>
+    <tr>
+      <td>2000-06-17</td>
+      <td>Utah Starzz</td>
+      <td>1548.22</td>
+      <td>70</td>
+      <td>Washington Mystics</td>
+      <td>1492.34</td>
+      <td>67</td>
+      <td>67.20%</td>
+      <td>32.80%</td>
+      <td>4.31</td>
+    </tr>
+    <tr>
+      <td>2000-06-17</td>
+      <td>Minnesota Lynx</td>
+      <td>1542.04</td>
+      <td>69</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1590.13</td>
+      <td>62</td>
+      <td>33.79%</td>
+      <td>66.21%</td>
+      <td>13.29</td>
+    </tr>
+    <tr>
+      <td>2000-06-17</td>
+      <td>Portland Fire</td>
+      <td>1342.06</td>
+      <td>81</td>
+      <td>Los Angeles Sparks</td>
+      <td>1606.23</td>
+      <td>94</td>
+      <td>24.51%</td>
+      <td>75.49%</td>
+      <td>-6.71</td>
+    </tr>
+    <tr>
+      <td>2000-06-17</td>
+      <td>Phoenix Mercury</td>
+      <td>1590.13</td>
+      <td>62</td>
+      <td>Minnesota Lynx</td>
+      <td>1542.04</td>
+      <td>69</td>
+      <td>66.21%</td>
+      <td>33.79%</td>
+      <td>-13.29</td>
+    </tr>
+    <tr>
+      <td>2000-06-17</td>
+      <td>Orlando Miracle</td>
+      <td>1510.71</td>
+      <td>54</td>
+      <td>Indiana Fever</td>
+      <td>1344.13</td>
+      <td>79</td>
+      <td>79.49%</td>
+      <td>20.51%</td>
+      <td>-30.17</td>
+    </tr>
+    <tr>
+      <td>2000-06-17</td>
+      <td>Miami Sol</td>
+      <td>1340.00</td>
+      <td>55</td>
+      <td>Cleveland Rockers</td>
+      <td>1505.31</td>
+      <td>48</td>
+      <td>36.45%</td>
+      <td>63.55%</td>
+      <td>12.76</td>
+    </tr>
+    <tr>
+      <td>2000-06-17</td>
+      <td>Sacramento Monarchs</td>
+      <td>1594.53</td>
+      <td>74</td>
+      <td>Charlotte Sting</td>
+      <td>1480.78</td>
+      <td>63</td>
+      <td>74.09%</td>
+      <td>25.91%</td>
+      <td>6.53</td>
+    </tr>
+    <tr>
+      <td>2000-06-18</td>
+      <td>Detroit Shock</td>
+      <td>1499.70</td>
+      <td>111</td>
+      <td>Indiana Fever</td>
+      <td>1374.29</td>
+      <td>74</td>
+      <td>75.35%</td>
+      <td>24.65%</td>
+      <td>11.37</td>
+    </tr>
+    <tr>
+      <td>2000-06-18</td>
+      <td>Houston Comets</td>
+      <td>1714.60</td>
+      <td>78</td>
+      <td>Minnesota Lynx</td>
+      <td>1555.33</td>
+      <td>66</td>
+      <td>78.79%</td>
+      <td>21.21%</td>
+      <td>5.58</td>
+    </tr>
+    <tr>
+      <td>2000-06-18</td>
+      <td>Los Angeles Sparks</td>
+      <td>1612.94</td>
+      <td>70</td>
+      <td>Charlotte Sting</td>
+      <td>1474.26</td>
+      <td>62</td>
+      <td>76.75%</td>
+      <td>23.25%</td>
+      <td>4.99</td>
+    </tr>
+    <tr>
+      <td>2000-06-18</td>
+      <td>Seattle Storm</td>
+      <td>1344.42</td>
+      <td>53</td>
+      <td>Utah Starzz</td>
+      <td>1552.53</td>
+      <td>56</td>
+      <td>30.95%</td>
+      <td>69.05%</td>
+      <td>-4.07</td>
+    </tr>
+    <tr>
+      <td>2000-06-18</td>
+      <td>Utah Starzz</td>
+      <td>1552.53</td>
+      <td>56</td>
+      <td>@ Seattle Storm</td>
+      <td>1344.42</td>
+      <td>53</td>
+      <td>69.05%</td>
+      <td>30.95%</td>
+      <td>4.07</td>
+    </tr>
+    <tr>
+      <td>2000-06-18</td>
+      <td>Miami Sol</td>
+      <td>1352.76</td>
+      <td>52</td>
+      <td>@ New York Liberty</td>
+      <td>1544.80</td>
+      <td>58</td>
+      <td>18.23%</td>
+      <td>81.77%</td>
+      <td>-3.38</td>
+    </tr>
+    <tr>
+      <td>2000-06-18</td>
+      <td>Charlotte Sting</td>
+      <td>1474.26</td>
+      <td>62</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1612.94</td>
+      <td>70</td>
+      <td>23.25%</td>
+      <td>76.75%</td>
+      <td>-4.99</td>
+    </tr>
+    <tr>
+      <td>2000-06-18</td>
+      <td>Minnesota Lynx</td>
+      <td>1555.33</td>
+      <td>66</td>
+      <td>@ Houston Comets</td>
+      <td>1714.60</td>
+      <td>78</td>
+      <td>21.21%</td>
+      <td>78.79%</td>
+      <td>-5.57</td>
+    </tr>
+    <tr>
+      <td>2000-06-18</td>
+      <td>Indiana Fever</td>
+      <td>1374.29</td>
+      <td>74</td>
+      <td>@ Detroit Shock</td>
+      <td>1499.70</td>
+      <td>111</td>
+      <td>24.65%</td>
+      <td>75.35%</td>
+      <td>-11.38</td>
+    </tr>
+    <tr>
+      <td>2000-06-18</td>
+      <td>New York Liberty</td>
+      <td>1544.80</td>
+      <td>58</td>
+      <td>Miami Sol</td>
+      <td>1352.76</td>
+      <td>52</td>
+      <td>81.77%</td>
+      <td>18.23%</td>
+      <td>3.39</td>
+    </tr>
+    <tr>
+      <td>2000-06-19</td>
+      <td>Sacramento Monarchs</td>
+      <td>1601.06</td>
+      <td>70</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1492.55</td>
+      <td>81</td>
+      <td>55.70%</td>
+      <td>44.30%</td>
+      <td>-14.02</td>
+    </tr>
+    <tr>
+      <td>2000-06-19</td>
+      <td>Detroit Shock</td>
+      <td>1511.07</td>
+      <td>55</td>
+      <td>@ Washington Mystics</td>
+      <td>1488.02</td>
+      <td>80</td>
+      <td>43.46%</td>
+      <td>56.54%</td>
+      <td>-16.49</td>
+    </tr>
+    <tr>
+      <td>2000-06-19</td>
+      <td>Cleveland Rockers</td>
+      <td>1492.55</td>
+      <td>81</td>
+      <td>Sacramento Monarchs</td>
+      <td>1601.06</td>
+      <td>70</td>
+      <td>44.30%</td>
+      <td>55.70%</td>
+      <td>14.02</td>
+    </tr>
+    <tr>
+      <td>2000-06-19</td>
+      <td>Washington Mystics</td>
+      <td>1488.02</td>
+      <td>80</td>
+      <td>Detroit Shock</td>
+      <td>1511.07</td>
+      <td>55</td>
+      <td>56.54%</td>
+      <td>43.46%</td>
+      <td>16.50</td>
+    </tr>
+    <tr>
+      <td>2000-06-20</td>
+      <td>Los Angeles Sparks</td>
+      <td>1617.93</td>
+      <td>90</td>
+      <td>Houston Comets</td>
+      <td>1720.18</td>
+      <td>84</td>
+      <td>45.19%</td>
+      <td>54.81%</td>
+      <td>10.19</td>
+    </tr>
+    <tr>
+      <td>2000-06-20</td>
+      <td>Charlotte Sting</td>
+      <td>1469.27</td>
+      <td>87</td>
+      <td>@ Portland Fire</td>
+      <td>1335.35</td>
+      <td>85</td>
+      <td>59.27%</td>
+      <td>40.73%</td>
+      <td>4.37</td>
+    </tr>
+    <tr>
+      <td>2000-06-20</td>
+      <td>Phoenix Mercury</td>
+      <td>1576.84</td>
+      <td>74</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1549.76</td>
+      <td>55</td>
+      <td>44.03%</td>
+      <td>55.97%</td>
+      <td>18.51</td>
+    </tr>
+    <tr>
+      <td>2000-06-20</td>
+      <td>Minnesota Lynx</td>
+      <td>1549.76</td>
+      <td>55</td>
+      <td>Phoenix Mercury</td>
+      <td>1576.84</td>
+      <td>74</td>
+      <td>55.97%</td>
+      <td>44.03%</td>
+      <td>-18.52</td>
+    </tr>
+    <tr>
+      <td>2000-06-20</td>
+      <td>Seattle Storm</td>
+      <td>1340.35</td>
+      <td>63</td>
+      <td>@ Utah Starzz</td>
+      <td>1556.60</td>
+      <td>66</td>
+      <td>16.24%</td>
+      <td>83.76%</td>
+      <td>-2.14</td>
+    </tr>
+    <tr>
+      <td>2000-06-20</td>
+      <td>Utah Starzz</td>
+      <td>1556.60</td>
+      <td>66</td>
+      <td>Seattle Storm</td>
+      <td>1340.35</td>
+      <td>63</td>
+      <td>83.76%</td>
+      <td>16.24%</td>
+      <td>2.14</td>
+    </tr>
+    <tr>
+      <td>2000-06-20</td>
+      <td>Houston Comets</td>
+      <td>1720.18</td>
+      <td>84</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1617.93</td>
+      <td>90</td>
+      <td>54.81%</td>
+      <td>45.19%</td>
+      <td>-10.19</td>
+    </tr>
+    <tr>
+      <td>2000-06-20</td>
+      <td>Portland Fire</td>
+      <td>1335.35</td>
+      <td>85</td>
+      <td>Charlotte Sting</td>
+      <td>1469.27</td>
+      <td>87</td>
+      <td>40.73%</td>
+      <td>59.27%</td>
+      <td>-4.37</td>
+    </tr>
+    <tr>
+      <td>2000-06-21</td>
+      <td>Sacramento Monarchs</td>
+      <td>1587.04</td>
+      <td>70</td>
+      <td>@ Indiana Fever</td>
+      <td>1362.91</td>
+      <td>58</td>
+      <td>70.98%</td>
+      <td>29.02%</td>
+      <td>7.63</td>
+    </tr>
+    <tr>
+      <td>2000-06-21</td>
+      <td>Indiana Fever</td>
+      <td>1362.91</td>
+      <td>58</td>
+      <td>Sacramento Monarchs</td>
+      <td>1587.04</td>
+      <td>70</td>
+      <td>29.02%</td>
+      <td>70.98%</td>
+      <td>-7.63</td>
+    </tr>
+    <tr>
+      <td>2000-06-21</td>
+      <td>New York Liberty</td>
+      <td>1548.19</td>
+      <td>63</td>
+      <td>Detroit Shock</td>
+      <td>1494.58</td>
+      <td>67</td>
+      <td>66.91%</td>
+      <td>33.09%</td>
+      <td>-10.15</td>
+    </tr>
+    <tr>
+      <td>2000-06-21</td>
+      <td>Washington Mystics</td>
+      <td>1504.52</td>
+      <td>55</td>
+      <td>Miami Sol</td>
+      <td>1349.38</td>
+      <td>57</td>
+      <td>78.39%</td>
+      <td>21.61%</td>
+      <td>-8.42</td>
+    </tr>
+    <tr>
+      <td>2000-06-21</td>
+      <td>Miami Sol</td>
+      <td>1349.38</td>
+      <td>57</td>
+      <td>@ Washington Mystics</td>
+      <td>1504.52</td>
+      <td>55</td>
+      <td>21.61%</td>
+      <td>78.39%</td>
+      <td>8.41</td>
+    </tr>
+    <tr>
+      <td>2000-06-21</td>
+      <td>Detroit Shock</td>
+      <td>1494.58</td>
+      <td>67</td>
+      <td>@ New York Liberty</td>
+      <td>1548.19</td>
+      <td>63</td>
+      <td>33.09%</td>
+      <td>66.91%</td>
+      <td>10.16</td>
+    </tr>
+    <tr>
+      <td>2000-06-22</td>
+      <td>Orlando Miracle</td>
+      <td>1480.54</td>
+      <td>77</td>
+      <td>Cleveland Rockers</td>
+      <td>1506.57</td>
+      <td>64</td>
+      <td>56.12%</td>
+      <td>43.88%</td>
+      <td>12.01</td>
+    </tr>
+    <tr>
+      <td>2000-06-22</td>
+      <td>Cleveland Rockers</td>
+      <td>1506.57</td>
+      <td>64</td>
+      <td>@ Orlando Miracle</td>
+      <td>1480.54</td>
+      <td>77</td>
+      <td>43.88%</td>
+      <td>56.12%</td>
+      <td>-12.01</td>
+    </tr>
+    <tr>
+      <td>2000-06-22</td>
+      <td>Utah Starzz</td>
+      <td>1558.74</td>
+      <td>64</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1531.24</td>
+      <td>86</td>
+      <td>44.09%</td>
+      <td>55.91%</td>
+      <td>-15.70</td>
+    </tr>
+    <tr>
+      <td>2000-06-22</td>
+      <td>Charlotte Sting</td>
+      <td>1473.64</td>
+      <td>57</td>
+      <td>Phoenix Mercury</td>
+      <td>1595.35</td>
+      <td>90</td>
+      <td>42.44%</td>
+      <td>57.56%</td>
+      <td>-18.50</td>
+    </tr>
+    <tr>
+      <td>2000-06-22</td>
+      <td>Phoenix Mercury</td>
+      <td>1595.35</td>
+      <td>90</td>
+      <td>@ Charlotte Sting</td>
+      <td>1473.64</td>
+      <td>57</td>
+      <td>57.56%</td>
+      <td>42.44%</td>
+      <td>18.50</td>
+    </tr>
+    <tr>
+      <td>2000-06-22</td>
+      <td>Minnesota Lynx</td>
+      <td>1531.24</td>
+      <td>86</td>
+      <td>Utah Starzz</td>
+      <td>1558.74</td>
+      <td>64</td>
+      <td>55.91%</td>
+      <td>44.09%</td>
+      <td>15.70</td>
+    </tr>
+    <tr>
+      <td>2000-06-23</td>
+      <td>Utah Starzz</td>
+      <td>1543.04</td>
+      <td>66</td>
+      <td>Houston Comets</td>
+      <td>1709.99</td>
+      <td>83</td>
+      <td>36.23%</td>
+      <td>63.77%</td>
+      <td>-11.34</td>
+    </tr>
+    <tr>
+      <td>2000-06-23</td>
+      <td>Los Angeles Sparks</td>
+      <td>1628.12</td>
+      <td>68</td>
+      <td>@ Miami Sol</td>
+      <td>1357.79</td>
+      <td>54</td>
+      <td>76.14%</td>
+      <td>23.86%</td>
+      <td>6.78</td>
+    </tr>
+    <tr>
+      <td>2000-06-23</td>
+      <td>Seattle Storm</td>
+      <td>1338.21</td>
+      <td>61</td>
+      <td>@ Portland Fire</td>
+      <td>1330.98</td>
+      <td>72</td>
+      <td>41.24%</td>
+      <td>58.76%</td>
+      <td>-10.38</td>
+    </tr>
+    <tr>
+      <td>2000-06-23</td>
+      <td>Houston Comets</td>
+      <td>1709.99</td>
+      <td>83</td>
+      <td>@ Utah Starzz</td>
+      <td>1543.04</td>
+      <td>66</td>
+      <td>63.77%</td>
+      <td>36.23%</td>
+      <td>11.34</td>
+    </tr>
+    <tr>
+      <td>2000-06-23</td>
+      <td>Sacramento Monarchs</td>
+      <td>1594.67</td>
+      <td>84</td>
+      <td>@ Washington Mystics</td>
+      <td>1496.10</td>
+      <td>69</td>
+      <td>54.28%</td>
+      <td>45.72%</td>
+      <td>13.43</td>
+    </tr>
+    <tr>
+      <td>2000-06-23</td>
+      <td>Washington Mystics</td>
+      <td>1496.10</td>
+      <td>69</td>
+      <td>Sacramento Monarchs</td>
+      <td>1594.67</td>
+      <td>84</td>
+      <td>45.72%</td>
+      <td>54.28%</td>
+      <td>-13.44</td>
+    </tr>
+    <tr>
+      <td>2000-06-23</td>
+      <td>Portland Fire</td>
+      <td>1330.98</td>
+      <td>72</td>
+      <td>Seattle Storm</td>
+      <td>1338.21</td>
+      <td>61</td>
+      <td>58.76%</td>
+      <td>41.24%</td>
+      <td>10.38</td>
+    </tr>
+    <tr>
+      <td>2000-06-23</td>
+      <td>Miami Sol</td>
+      <td>1357.79</td>
+      <td>54</td>
+      <td>Los Angeles Sparks</td>
+      <td>1628.12</td>
+      <td>68</td>
+      <td>23.86%</td>
+      <td>76.14%</td>
+      <td>-6.77</td>
+    </tr>
+    <tr>
+      <td>2000-06-23</td>
+      <td>Indiana Fever</td>
+      <td>1355.28</td>
+      <td>60</td>
+      <td>New York Liberty</td>
+      <td>1538.04</td>
+      <td>69</td>
+      <td>34.16%</td>
+      <td>65.84%</td>
+      <td>-7.77</td>
+    </tr>
+    <tr>
+      <td>2000-06-23</td>
+      <td>New York Liberty</td>
+      <td>1538.04</td>
+      <td>69</td>
+      <td>@ Indiana Fever</td>
+      <td>1355.28</td>
+      <td>60</td>
+      <td>65.84%</td>
+      <td>34.16%</td>
+      <td>7.77</td>
+    </tr>
+    <tr>
+      <td>2000-06-24</td>
+      <td>Charlotte Sting</td>
+      <td>1455.14</td>
+      <td>68</td>
+      <td>@ Orlando Miracle</td>
+      <td>1492.55</td>
+      <td>69</td>
+      <td>35.18%</td>
+      <td>64.82%</td>
+      <td>-2.67</td>
+    </tr>
+    <tr>
+      <td>2000-06-24</td>
+      <td>Washington Mystics</td>
+      <td>1482.66</td>
+      <td>76</td>
+      <td>@ Detroit Shock</td>
+      <td>1504.74</td>
+      <td>70</td>
+      <td>37.22%</td>
+      <td>62.78%</td>
+      <td>11.68</td>
+    </tr>
+    <tr>
+      <td>2000-06-24</td>
+      <td>Cleveland Rockers</td>
+      <td>1494.56</td>
+      <td>57</td>
+      <td>Minnesota Lynx</td>
+      <td>1546.94</td>
+      <td>60</td>
+      <td>52.35%</td>
+      <td>47.65%</td>
+      <td>-6.88</td>
+    </tr>
+    <tr>
+      <td>2000-06-24</td>
+      <td>Detroit Shock</td>
+      <td>1504.74</td>
+      <td>70</td>
+      <td>Washington Mystics</td>
+      <td>1482.66</td>
+      <td>76</td>
+      <td>62.78%</td>
+      <td>37.22%</td>
+      <td>-11.67</td>
+    </tr>
+    <tr>
+      <td>2000-06-24</td>
+      <td>Houston Comets</td>
+      <td>1721.33</td>
+      <td>93</td>
+      <td>Indiana Fever</td>
+      <td>1347.51</td>
+      <td>67</td>
+      <td>92.74%</td>
+      <td>7.26%</td>
+      <td>2.81</td>
+    </tr>
+    <tr>
+      <td>2000-06-24</td>
+      <td>Miami Sol</td>
+      <td>1351.02</td>
+      <td>44</td>
+      <td>Phoenix Mercury</td>
+      <td>1613.85</td>
+      <td>67</td>
+      <td>24.65%</td>
+      <td>75.35%</td>
+      <td>-8.98</td>
+    </tr>
+    <tr>
+      <td>2000-06-24</td>
+      <td>Orlando Miracle</td>
+      <td>1492.55</td>
+      <td>69</td>
+      <td>Charlotte Sting</td>
+      <td>1455.14</td>
+      <td>68</td>
+      <td>64.82%</td>
+      <td>35.18%</td>
+      <td>2.67</td>
+    </tr>
+    <tr>
+      <td>2000-06-24</td>
+      <td>Phoenix Mercury</td>
+      <td>1613.85</td>
+      <td>67</td>
+      <td>@ Miami Sol</td>
+      <td>1351.02</td>
+      <td>44</td>
+      <td>75.35%</td>
+      <td>24.65%</td>
+      <td>8.98</td>
+    </tr>
+    <tr>
+      <td>2000-06-24</td>
+      <td>Indiana Fever</td>
+      <td>1347.51</td>
+      <td>67</td>
+      <td>@ Houston Comets</td>
+      <td>1721.33</td>
+      <td>93</td>
+      <td>7.26%</td>
+      <td>92.74%</td>
+      <td>-2.81</td>
+    </tr>
+    <tr>
+      <td>2000-06-24</td>
+      <td>Minnesota Lynx</td>
+      <td>1546.94</td>
+      <td>60</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1494.56</td>
+      <td>57</td>
+      <td>47.65%</td>
+      <td>52.35%</td>
+      <td>6.88</td>
+    </tr>
+    <tr>
+      <td>2000-06-25</td>
+      <td>Phoenix Mercury</td>
+      <td>1622.83</td>
+      <td>61</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1487.68</td>
+      <td>64</td>
+      <td>59.44%</td>
+      <td>40.56%</td>
+      <td>-7.82</td>
+    </tr>
+    <tr>
+      <td>2000-06-25</td>
+      <td>Charlotte Sting</td>
+      <td>1452.47</td>
+      <td>81</td>
+      <td>Detroit Shock</td>
+      <td>1493.07</td>
+      <td>84</td>
+      <td>54.04%</td>
+      <td>45.96%</td>
+      <td>-7.11</td>
+    </tr>
+    <tr>
+      <td>2000-06-25</td>
+      <td>Cleveland Rockers</td>
+      <td>1487.68</td>
+      <td>64</td>
+      <td>Phoenix Mercury</td>
+      <td>1622.83</td>
+      <td>61</td>
+      <td>40.56%</td>
+      <td>59.44%</td>
+      <td>7.82</td>
+    </tr>
+    <tr>
+      <td>2000-06-25</td>
+      <td>New York Liberty</td>
+      <td>1545.81</td>
+      <td>67</td>
+      <td>Los Angeles Sparks</td>
+      <td>1634.90</td>
+      <td>72</td>
+      <td>47.08%</td>
+      <td>52.92%</td>
+      <td>-7.99</td>
+    </tr>
+    <tr>
+      <td>2000-06-25</td>
+      <td>Sacramento Monarchs</td>
+      <td>1608.10</td>
+      <td>92</td>
+      <td>Portland Fire</td>
+      <td>1341.36</td>
+      <td>76</td>
+      <td>87.34%</td>
+      <td>12.66%</td>
+      <td>3.85</td>
+    </tr>
+    <tr>
+      <td>2000-06-25</td>
+      <td>Los Angeles Sparks</td>
+      <td>1634.90</td>
+      <td>72</td>
+      <td>@ New York Liberty</td>
+      <td>1545.81</td>
+      <td>67</td>
+      <td>52.92%</td>
+      <td>47.08%</td>
+      <td>7.99</td>
+    </tr>
+    <tr>
+      <td>2000-06-25</td>
+      <td>Detroit Shock</td>
+      <td>1493.07</td>
+      <td>84</td>
+      <td>@ Charlotte Sting</td>
+      <td>1452.47</td>
+      <td>81</td>
+      <td>45.96%</td>
+      <td>54.04%</td>
+      <td>7.10</td>
+    </tr>
+    <tr>
+      <td>2000-06-25</td>
+      <td>Portland Fire</td>
+      <td>1341.36</td>
+      <td>76</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1608.10</td>
+      <td>92</td>
+      <td>12.66%</td>
+      <td>87.34%</td>
+      <td>-3.84</td>
+    </tr>
+    <tr>
+      <td>2000-06-26</td>
+      <td>Washington Mystics</td>
+      <td>1494.34</td>
+      <td>72</td>
+      <td>Los Angeles Sparks</td>
+      <td>1642.89</td>
+      <td>74</td>
+      <td>38.71%</td>
+      <td>61.29%</td>
+      <td>-4.16</td>
+    </tr>
+    <tr>
+      <td>2000-06-26</td>
+      <td>Utah Starzz</td>
+      <td>1531.70</td>
+      <td>89</td>
+      <td>Sacramento Monarchs</td>
+      <td>1611.95</td>
+      <td>80</td>
+      <td>48.34%</td>
+      <td>51.66%</td>
+      <td>11.76</td>
+    </tr>
+    <tr>
+      <td>2000-06-26</td>
+      <td>Orlando Miracle</td>
+      <td>1495.22</td>
+      <td>58</td>
+      <td>Houston Comets</td>
+      <td>1724.14</td>
+      <td>70</td>
+      <td>28.45%</td>
+      <td>71.55%</td>
+      <td>-7.48</td>
+    </tr>
+    <tr>
+      <td>2000-06-26</td>
+      <td>Houston Comets</td>
+      <td>1724.14</td>
+      <td>70</td>
+      <td>@ Orlando Miracle</td>
+      <td>1495.22</td>
+      <td>58</td>
+      <td>71.55%</td>
+      <td>28.45%</td>
+      <td>7.48</td>
+    </tr>
+    <tr>
+      <td>2000-06-26</td>
+      <td>Sacramento Monarchs</td>
+      <td>1611.95</td>
+      <td>80</td>
+      <td>@ Utah Starzz</td>
+      <td>1531.70</td>
+      <td>89</td>
+      <td>51.66%</td>
+      <td>48.34%</td>
+      <td>-11.76</td>
+    </tr>
+    <tr>
+      <td>2000-06-26</td>
+      <td>Los Angeles Sparks</td>
+      <td>1642.89</td>
+      <td>74</td>
+      <td>@ Washington Mystics</td>
+      <td>1494.34</td>
+      <td>72</td>
+      <td>61.29%</td>
+      <td>38.71%</td>
+      <td>4.15</td>
+    </tr>
+    <tr>
+      <td>2000-06-28</td>
+      <td>Houston Comets</td>
+      <td>1731.62</td>
+      <td>76</td>
+      <td>@ Charlotte Sting</td>
+      <td>1445.36</td>
+      <td>66</td>
+      <td>77.77%</td>
+      <td>22.23%</td>
+      <td>5.33</td>
+    </tr>
+    <tr>
+      <td>2000-06-28</td>
+      <td>Phoenix Mercury</td>
+      <td>1615.01</td>
+      <td>69</td>
+      <td>@ New York Liberty</td>
+      <td>1537.82</td>
+      <td>82</td>
+      <td>51.22%</td>
+      <td>48.78%</td>
+      <td>-14.01</td>
+    </tr>
+    <tr>
+      <td>2000-06-28</td>
+      <td>Miami Sol</td>
+      <td>1342.04</td>
+      <td>53</td>
+      <td>@ Orlando Miracle</td>
+      <td>1487.74</td>
+      <td>61</td>
+      <td>22.54%</td>
+      <td>77.46%</td>
+      <td>-4.84</td>
+    </tr>
+    <tr>
+      <td>2000-06-28</td>
+      <td>Cleveland Rockers</td>
+      <td>1495.50</td>
+      <td>69</td>
+      <td>@ Portland Fire</td>
+      <td>1337.52</td>
+      <td>80</td>
+      <td>62.57%</td>
+      <td>37.43%</td>
+      <td>-15.75</td>
+    </tr>
+    <tr>
+      <td>2000-06-28</td>
+      <td>Minnesota Lynx</td>
+      <td>1553.82</td>
+      <td>74</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1600.19</td>
+      <td>82</td>
+      <td>34.02%</td>
+      <td>65.98%</td>
+      <td>-7.30</td>
+    </tr>
+    <tr>
+      <td>2000-06-28</td>
+      <td>Detroit Shock</td>
+      <td>1500.17</td>
+      <td>82</td>
+      <td>@ Seattle Storm</td>
+      <td>1327.83</td>
+      <td>78</td>
+      <td>64.48%</td>
+      <td>35.52%</td>
+      <td>5.39</td>
+    </tr>
+    <tr>
+      <td>2000-06-28</td>
+      <td>Los Angeles Sparks</td>
+      <td>1647.04</td>
+      <td>82</td>
+      <td>@ Indiana Fever</td>
+      <td>1344.70</td>
+      <td>73</td>
+      <td>79.33%</td>
+      <td>20.67%</td>
+      <td>4.71</td>
+    </tr>
+    <tr>
+      <td>2000-06-28</td>
+      <td>Charlotte Sting</td>
+      <td>1445.36</td>
+      <td>66</td>
+      <td>Houston Comets</td>
+      <td>1731.62</td>
+      <td>76</td>
+      <td>22.23%</td>
+      <td>77.77%</td>
+      <td>-5.33</td>
+    </tr>
+    <tr>
+      <td>2000-06-28</td>
+      <td>Indiana Fever</td>
+      <td>1344.70</td>
+      <td>73</td>
+      <td>Los Angeles Sparks</td>
+      <td>1647.04</td>
+      <td>82</td>
+      <td>20.67%</td>
+      <td>79.33%</td>
+      <td>-4.71</td>
+    </tr>
+    <tr>
+      <td>2000-06-28</td>
+      <td>New York Liberty</td>
+      <td>1537.82</td>
+      <td>82</td>
+      <td>Phoenix Mercury</td>
+      <td>1615.01</td>
+      <td>69</td>
+      <td>48.78%</td>
+      <td>51.22%</td>
+      <td>14.02</td>
+    </tr>
+    <tr>
+      <td>2000-06-28</td>
+      <td>Orlando Miracle</td>
+      <td>1487.74</td>
+      <td>61</td>
+      <td>Miami Sol</td>
+      <td>1342.04</td>
+      <td>53</td>
+      <td>77.46%</td>
+      <td>22.54%</td>
+      <td>4.84</td>
+    </tr>
+    <tr>
+      <td>2000-06-28</td>
+      <td>Portland Fire</td>
+      <td>1337.52</td>
+      <td>80</td>
+      <td>Cleveland Rockers</td>
+      <td>1495.50</td>
+      <td>69</td>
+      <td>37.43%</td>
+      <td>62.57%</td>
+      <td>15.75</td>
+    </tr>
+    <tr>
+      <td>2000-06-28</td>
+      <td>Sacramento Monarchs</td>
+      <td>1600.19</td>
+      <td>82</td>
+      <td>Minnesota Lynx</td>
+      <td>1553.82</td>
+      <td>74</td>
+      <td>65.98%</td>
+      <td>34.02%</td>
+      <td>7.30</td>
+    </tr>
+    <tr>
+      <td>2000-06-28</td>
+      <td>Seattle Storm</td>
+      <td>1327.83</td>
+      <td>78</td>
+      <td>Detroit Shock</td>
+      <td>1500.17</td>
+      <td>82</td>
+      <td>35.52%</td>
+      <td>64.48%</td>
+      <td>-5.39</td>
+    </tr>
+    <tr>
+      <td>2000-06-30</td>
+      <td>Minnesota Lynx</td>
+      <td>1546.52</td>
+      <td>65</td>
+      <td>@ Seattle Storm</td>
+      <td>1322.44</td>
+      <td>53</td>
+      <td>70.98%</td>
+      <td>29.02%</td>
+      <td>7.63</td>
+    </tr>
+    <tr>
+      <td>2000-06-30</td>
+      <td>Houston Comets</td>
+      <td>1736.95</td>
+      <td>79</td>
+      <td>Portland Fire</td>
+      <td>1353.27</td>
+      <td>39</td>
+      <td>93.11%</td>
+      <td>6.89%</td>
+      <td>3.31</td>
+    </tr>
+    <tr>
+      <td>2000-06-30</td>
+      <td>Phoenix Mercury</td>
+      <td>1601.00</td>
+      <td>66</td>
+      <td>@ Washington Mystics</td>
+      <td>1490.18</td>
+      <td>57</td>
+      <td>56.03%</td>
+      <td>43.97%</td>
+      <td>10.01</td>
+    </tr>
+    <tr>
+      <td>2000-06-30</td>
+      <td>Miami Sol</td>
+      <td>1337.20</td>
+      <td>63</td>
+      <td>Orlando Miracle</td>
+      <td>1492.58</td>
+      <td>66</td>
+      <td>37.78%</td>
+      <td>62.22%</td>
+      <td>-4.96</td>
+    </tr>
+    <tr>
+      <td>2000-06-30</td>
+      <td>Sacramento Monarchs</td>
+      <td>1607.49</td>
+      <td>85</td>
+      <td>Utah Starzz</td>
+      <td>1543.46</td>
+      <td>62</td>
+      <td>68.23%</td>
+      <td>31.77%</td>
+      <td>11.56</td>
+    </tr>
+    <tr>
+      <td>2000-06-30</td>
+      <td>Seattle Storm</td>
+      <td>1322.44</td>
+      <td>53</td>
+      <td>Minnesota Lynx</td>
+      <td>1546.52</td>
+      <td>65</td>
+      <td>29.02%</td>
+      <td>70.98%</td>
+      <td>-7.63</td>
+    </tr>
+    <tr>
+      <td>2000-06-30</td>
+      <td>Portland Fire</td>
+      <td>1353.27</td>
+      <td>39</td>
+      <td>@ Houston Comets</td>
+      <td>1736.95</td>
+      <td>79</td>
+      <td>6.89%</td>
+      <td>93.11%</td>
+      <td>-3.31</td>
+    </tr>
+    <tr>
+      <td>2000-06-30</td>
+      <td>Orlando Miracle</td>
+      <td>1492.58</td>
+      <td>66</td>
+      <td>@ Miami Sol</td>
+      <td>1337.20</td>
+      <td>63</td>
+      <td>62.22%</td>
+      <td>37.78%</td>
+      <td>4.97</td>
+    </tr>
+    <tr>
+      <td>2000-06-30</td>
+      <td>Indiana Fever</td>
+      <td>1339.99</td>
+      <td>70</td>
+      <td>@ New York Liberty</td>
+      <td>1551.84</td>
+      <td>72</td>
+      <td>16.59%</td>
+      <td>83.41%</td>
+      <td>-1.78</td>
+    </tr>
+    <tr>
+      <td>2000-06-30</td>
+      <td>Utah Starzz</td>
+      <td>1543.46</td>
+      <td>62</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1607.49</td>
+      <td>85</td>
+      <td>31.77%</td>
+      <td>68.23%</td>
+      <td>-11.56</td>
+    </tr>
+    <tr>
+      <td>2000-06-30</td>
+      <td>New York Liberty</td>
+      <td>1551.84</td>
+      <td>72</td>
+      <td>Indiana Fever</td>
+      <td>1339.99</td>
+      <td>70</td>
+      <td>83.41%</td>
+      <td>16.59%</td>
+      <td>1.78</td>
+    </tr>
+    <tr>
+      <td>2000-06-30</td>
+      <td>Washington Mystics</td>
+      <td>1490.18</td>
+      <td>57</td>
+      <td>Phoenix Mercury</td>
+      <td>1601.00</td>
+      <td>66</td>
+      <td>43.97%</td>
+      <td>56.03%</td>
+      <td>-10.01</td>
+    </tr>
+    <tr>
+      <td>2000-07-01</td>
+      <td>Charlotte Sting</td>
+      <td>1440.03</td>
+      <td>74</td>
+      <td>Washington Mystics</td>
+      <td>1480.17</td>
+      <td>78</td>
+      <td>54.11%</td>
+      <td>45.89%</td>
+      <td>-8.22</td>
+    </tr>
+    <tr>
+      <td>2000-07-01</td>
+      <td>Indiana Fever</td>
+      <td>1338.21</td>
+      <td>52</td>
+      <td>Miami Sol</td>
+      <td>1332.24</td>
+      <td>54</td>
+      <td>60.59%</td>
+      <td>39.41%</td>
+      <td>-6.51</td>
+    </tr>
+    <tr>
+      <td>2000-07-01</td>
+      <td>Sacramento Monarchs</td>
+      <td>1619.05</td>
+      <td>108</td>
+      <td>Detroit Shock</td>
+      <td>1505.56</td>
+      <td>96</td>
+      <td>74.06%</td>
+      <td>25.94%</td>
+      <td>6.83</td>
+    </tr>
+    <tr>
+      <td>2000-07-01</td>
+      <td>Washington Mystics</td>
+      <td>1480.17</td>
+      <td>78</td>
+      <td>@ Charlotte Sting</td>
+      <td>1440.03</td>
+      <td>74</td>
+      <td>45.89%</td>
+      <td>54.11%</td>
+      <td>8.21</td>
+    </tr>
+    <tr>
+      <td>2000-07-01</td>
+      <td>Miami Sol</td>
+      <td>1332.24</td>
+      <td>54</td>
+      <td>@ Indiana Fever</td>
+      <td>1338.21</td>
+      <td>52</td>
+      <td>39.41%</td>
+      <td>60.59%</td>
+      <td>6.50</td>
+    </tr>
+    <tr>
+      <td>2000-07-01</td>
+      <td>Cleveland Rockers</td>
+      <td>1479.75</td>
+      <td>67</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1651.75</td>
+      <td>75</td>
+      <td>20.01%</td>
+      <td>79.99%</td>
+      <td>-4.30</td>
+    </tr>
+    <tr>
+      <td>2000-07-01</td>
+      <td>New York Liberty</td>
+      <td>1553.62</td>
+      <td>57</td>
+      <td>@ Orlando Miracle</td>
+      <td>1497.55</td>
+      <td>69</td>
+      <td>48.18%</td>
+      <td>51.82%</td>
+      <td>-12.67</td>
+    </tr>
+    <tr>
+      <td>2000-07-01</td>
+      <td>Detroit Shock</td>
+      <td>1505.56</td>
+      <td>96</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1619.05</td>
+      <td>108</td>
+      <td>25.94%</td>
+      <td>74.06%</td>
+      <td>-6.82</td>
+    </tr>
+    <tr>
+      <td>2000-07-01</td>
+      <td>Utah Starzz</td>
+      <td>1531.90</td>
+      <td>81</td>
+      <td>@ Seattle Storm</td>
+      <td>1314.81</td>
+      <td>60</td>
+      <td>70.14%</td>
+      <td>29.86%</td>
+      <td>10.38</td>
+    </tr>
+    <tr>
+      <td>2000-07-01</td>
+      <td>Orlando Miracle</td>
+      <td>1497.55</td>
+      <td>69</td>
+      <td>New York Liberty</td>
+      <td>1553.62</td>
+      <td>57</td>
+      <td>51.82%</td>
+      <td>48.18%</td>
+      <td>12.66</td>
+    </tr>
+    <tr>
+      <td>2000-07-01</td>
+      <td>Seattle Storm</td>
+      <td>1314.81</td>
+      <td>60</td>
+      <td>Utah Starzz</td>
+      <td>1531.90</td>
+      <td>81</td>
+      <td>29.86%</td>
+      <td>70.14%</td>
+      <td>-10.39</td>
+    </tr>
+    <tr>
+      <td>2000-07-01</td>
+      <td>Los Angeles Sparks</td>
+      <td>1651.75</td>
+      <td>75</td>
+      <td>Cleveland Rockers</td>
+      <td>1479.75</td>
+      <td>67</td>
+      <td>79.99%</td>
+      <td>20.01%</td>
+      <td>4.30</td>
+    </tr>
+    <tr>
+      <td>2000-07-02</td>
+      <td>Los Angeles Sparks</td>
+      <td>1656.05</td>
+      <td>85</td>
+      <td>Detroit Shock</td>
+      <td>1498.74</td>
+      <td>63</td>
+      <td>78.60%</td>
+      <td>21.40%</td>
+      <td>7.61</td>
+    </tr>
+    <tr>
+      <td>2000-07-02</td>
+      <td>Phoenix Mercury</td>
+      <td>1611.01</td>
+      <td>58</td>
+      <td>@ Houston Comets</td>
+      <td>1740.26</td>
+      <td>69</td>
+      <td>24.24%</td>
+      <td>75.76%</td>
+      <td>-6.10</td>
+    </tr>
+    <tr>
+      <td>2000-07-02</td>
+      <td>Detroit Shock</td>
+      <td>1498.74</td>
+      <td>63</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1656.05</td>
+      <td>85</td>
+      <td>21.40%</td>
+      <td>78.60%</td>
+      <td>-7.62</td>
+    </tr>
+    <tr>
+      <td>2000-07-02</td>
+      <td>Portland Fire</td>
+      <td>1349.96</td>
+      <td>75</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1554.15</td>
+      <td>81</td>
+      <td>17.21%</td>
+      <td>82.79%</td>
+      <td>-3.20</td>
+    </tr>
+    <tr>
+      <td>2000-07-02</td>
+      <td>Minnesota Lynx</td>
+      <td>1554.15</td>
+      <td>81</td>
+      <td>Portland Fire</td>
+      <td>1349.96</td>
+      <td>75</td>
+      <td>82.79%</td>
+      <td>17.21%</td>
+      <td>3.20</td>
+    </tr>
+    <tr>
+      <td>2000-07-02</td>
+      <td>Houston Comets</td>
+      <td>1740.26</td>
+      <td>69</td>
+      <td>Phoenix Mercury</td>
+      <td>1611.01</td>
+      <td>58</td>
+      <td>75.76%</td>
+      <td>24.24%</td>
+      <td>6.10</td>
+    </tr>
+    <tr>
+      <td>2000-07-03</td>
+      <td>Seattle Storm</td>
+      <td>1304.42</td>
+      <td>55</td>
+      <td>Washington Mystics</td>
+      <td>1488.38</td>
+      <td>60</td>
+      <td>34.00%</td>
+      <td>66.00%</td>
+      <td>-5.77</td>
+    </tr>
+    <tr>
+      <td>2000-07-03</td>
+      <td>Cleveland Rockers</td>
+      <td>1475.45</td>
+      <td>66</td>
+      <td>New York Liberty</td>
+      <td>1540.95</td>
+      <td>65</td>
+      <td>50.47%</td>
+      <td>49.53%</td>
+      <td>3.76</td>
+    </tr>
+    <tr>
+      <td>2000-07-03</td>
+      <td>Indiana Fever</td>
+      <td>1331.70</td>
+      <td>64</td>
+      <td>Portland Fire</td>
+      <td>1346.76</td>
+      <td>68</td>
+      <td>57.66%</td>
+      <td>42.34%</td>
+      <td>-8.75</td>
+    </tr>
+    <tr>
+      <td>2000-07-03</td>
+      <td>Washington Mystics</td>
+      <td>1488.38</td>
+      <td>60</td>
+      <td>@ Seattle Storm</td>
+      <td>1304.42</td>
+      <td>55</td>
+      <td>66.00%</td>
+      <td>34.00%</td>
+      <td>5.77</td>
+    </tr>
+    <tr>
+      <td>2000-07-03</td>
+      <td>Portland Fire</td>
+      <td>1346.76</td>
+      <td>68</td>
+      <td>@ Indiana Fever</td>
+      <td>1331.70</td>
+      <td>64</td>
+      <td>42.34%</td>
+      <td>57.66%</td>
+      <td>8.76</td>
+    </tr>
+    <tr>
+      <td>2000-07-03</td>
+      <td>New York Liberty</td>
+      <td>1540.95</td>
+      <td>65</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1475.45</td>
+      <td>66</td>
+      <td>49.53%</td>
+      <td>50.47%</td>
+      <td>-3.76</td>
+    </tr>
+    <tr>
+      <td>2000-07-05</td>
+      <td>Sacramento Monarchs</td>
+      <td>1625.88</td>
+      <td>61</td>
+      <td>Los Angeles Sparks</td>
+      <td>1663.66</td>
+      <td>76</td>
+      <td>54.44%</td>
+      <td>45.56%</td>
+      <td>-16.01</td>
+    </tr>
+    <tr>
+      <td>2000-07-05</td>
+      <td>New York Liberty</td>
+      <td>1537.19</td>
+      <td>62</td>
+      <td>Portland Fire</td>
+      <td>1355.52</td>
+      <td>45</td>
+      <td>80.87%</td>
+      <td>19.13%</td>
+      <td>5.99</td>
+    </tr>
+    <tr>
+      <td>2000-07-05</td>
+      <td>Minnesota Lynx</td>
+      <td>1557.35</td>
+      <td>60</td>
+      <td>Seattle Storm</td>
+      <td>1298.65</td>
+      <td>67</td>
+      <td>86.82%</td>
+      <td>13.18%</td>
+      <td>-17.44</td>
+    </tr>
+    <tr>
+      <td>2000-07-05</td>
+      <td>Seattle Storm</td>
+      <td>1298.65</td>
+      <td>67</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1557.35</td>
+      <td>60</td>
+      <td>13.18%</td>
+      <td>86.82%</td>
+      <td>17.44</td>
+    </tr>
+    <tr>
+      <td>2000-07-05</td>
+      <td>Miami Sol</td>
+      <td>1338.74</td>
+      <td>70</td>
+      <td>@ Charlotte Sting</td>
+      <td>1431.81</td>
+      <td>76</td>
+      <td>28.26%</td>
+      <td>71.74%</td>
+      <td>-5.26</td>
+    </tr>
+    <tr>
+      <td>2000-07-05</td>
+      <td>Charlotte Sting</td>
+      <td>1431.81</td>
+      <td>76</td>
+      <td>Miami Sol</td>
+      <td>1338.74</td>
+      <td>70</td>
+      <td>71.74%</td>
+      <td>28.26%</td>
+      <td>5.26</td>
+    </tr>
+    <tr>
+      <td>2000-07-05</td>
+      <td>Los Angeles Sparks</td>
+      <td>1663.66</td>
+      <td>76</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1625.88</td>
+      <td>61</td>
+      <td>45.56%</td>
+      <td>54.44%</td>
+      <td>16.01</td>
+    </tr>
+    <tr>
+      <td>2000-07-05</td>
+      <td>Portland Fire</td>
+      <td>1355.52</td>
+      <td>45</td>
+      <td>@ New York Liberty</td>
+      <td>1537.19</td>
+      <td>62</td>
+      <td>19.13%</td>
+      <td>80.87%</td>
+      <td>-5.99</td>
+    </tr>
+    <tr>
+      <td>2000-07-06</td>
+      <td>Orlando Miracle</td>
+      <td>1510.21</td>
+      <td>72</td>
+      <td>Indiana Fever</td>
+      <td>1322.95</td>
+      <td>60</td>
+      <td>81.36%</td>
+      <td>18.64%</td>
+      <td>4.90</td>
+    </tr>
+    <tr>
+      <td>2000-07-06</td>
+      <td>Los Angeles Sparks</td>
+      <td>1679.67</td>
+      <td>79</td>
+      <td>Washington Mystics</td>
+      <td>1494.15</td>
+      <td>70</td>
+      <td>81.21%</td>
+      <td>18.79%</td>
+      <td>4.28</td>
+    </tr>
+    <tr>
+      <td>2000-07-06</td>
+      <td>Houston Comets</td>
+      <td>1746.36</td>
+      <td>80</td>
+      <td>Seattle Storm</td>
+      <td>1316.09</td>
+      <td>50</td>
+      <td>94.65%</td>
+      <td>5.35%</td>
+      <td>2.22</td>
+    </tr>
+    <tr>
+      <td>2000-07-06</td>
+      <td>Phoenix Mercury</td>
+      <td>1604.91</td>
+      <td>83</td>
+      <td>Detroit Shock</td>
+      <td>1491.12</td>
+      <td>69</td>
+      <td>74.09%</td>
+      <td>25.91%</td>
+      <td>7.36</td>
+    </tr>
+    <tr>
+      <td>2000-07-06</td>
+      <td>Washington Mystics</td>
+      <td>1494.15</td>
+      <td>70</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1679.67</td>
+      <td>79</td>
+      <td>18.79%</td>
+      <td>81.21%</td>
+      <td>-4.28</td>
+    </tr>
+    <tr>
+      <td>2000-07-06</td>
+      <td>Seattle Storm</td>
+      <td>1316.09</td>
+      <td>50</td>
+      <td>@ Houston Comets</td>
+      <td>1746.36</td>
+      <td>80</td>
+      <td>5.35%</td>
+      <td>94.65%</td>
+      <td>-2.23</td>
+    </tr>
+    <tr>
+      <td>2000-07-06</td>
+      <td>Indiana Fever</td>
+      <td>1322.95</td>
+      <td>60</td>
+      <td>@ Orlando Miracle</td>
+      <td>1510.21</td>
+      <td>72</td>
+      <td>18.64%</td>
+      <td>81.36%</td>
+      <td>-4.90</td>
+    </tr>
+    <tr>
+      <td>2000-07-06</td>
+      <td>Detroit Shock</td>
+      <td>1491.12</td>
+      <td>69</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1604.91</td>
+      <td>83</td>
+      <td>25.91%</td>
+      <td>74.09%</td>
+      <td>-7.35</td>
+    </tr>
+    <tr>
+      <td>2000-07-07</td>
+      <td>Charlotte Sting</td>
+      <td>1437.07</td>
+      <td>71</td>
+      <td>@ Houston Comets</td>
+      <td>1748.58</td>
+      <td>86</td>
+      <td>10.07%</td>
+      <td>89.93%</td>
+      <td>-2.96</td>
+    </tr>
+    <tr>
+      <td>2000-07-07</td>
+      <td>Cleveland Rockers</td>
+      <td>1479.21</td>
+      <td>46</td>
+      <td>@ Miami Sol</td>
+      <td>1333.48</td>
+      <td>49</td>
+      <td>60.90%</td>
+      <td>39.10%</td>
+      <td>-8.01</td>
+    </tr>
+    <tr>
+      <td>2000-07-07</td>
+      <td>New York Liberty</td>
+      <td>1543.18</td>
+      <td>76</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1539.91</td>
+      <td>70</td>
+      <td>40.69%</td>
+      <td>59.31%</td>
+      <td>11.03</td>
+    </tr>
+    <tr>
+      <td>2000-07-07</td>
+      <td>Sacramento Monarchs</td>
+      <td>1609.87</td>
+      <td>63</td>
+      <td>@ Portland Fire</td>
+      <td>1349.53</td>
+      <td>60</td>
+      <td>75.08%</td>
+      <td>24.92%</td>
+      <td>3.28</td>
+    </tr>
+    <tr>
+      <td>2000-07-07</td>
+      <td>Detroit Shock</td>
+      <td>1483.77</td>
+      <td>73</td>
+      <td>@ Utah Starzz</td>
+      <td>1542.28</td>
+      <td>69</td>
+      <td>32.46%</td>
+      <td>67.54%</td>
+      <td>10.25</td>
+    </tr>
+    <tr>
+      <td>2000-07-07</td>
+      <td>Houston Comets</td>
+      <td>1748.58</td>
+      <td>86</td>
+      <td>Charlotte Sting</td>
+      <td>1437.07</td>
+      <td>71</td>
+      <td>89.93%</td>
+      <td>10.07%</td>
+      <td>2.97</td>
+    </tr>
+    <tr>
+      <td>2000-07-07</td>
+      <td>Miami Sol</td>
+      <td>1333.48</td>
+      <td>49</td>
+      <td>Cleveland Rockers</td>
+      <td>1479.21</td>
+      <td>46</td>
+      <td>39.10%</td>
+      <td>60.90%</td>
+      <td>8.01</td>
+    </tr>
+    <tr>
+      <td>2000-07-07</td>
+      <td>Utah Starzz</td>
+      <td>1542.28</td>
+      <td>69</td>
+      <td>Detroit Shock</td>
+      <td>1483.77</td>
+      <td>73</td>
+      <td>67.54%</td>
+      <td>32.46%</td>
+      <td>-10.25</td>
+    </tr>
+    <tr>
+      <td>2000-07-07</td>
+      <td>Portland Fire</td>
+      <td>1349.53</td>
+      <td>60</td>
+      <td>Sacramento Monarchs</td>
+      <td>1609.87</td>
+      <td>63</td>
+      <td>24.92%</td>
+      <td>75.08%</td>
+      <td>-3.28</td>
+    </tr>
+    <tr>
+      <td>2000-07-07</td>
+      <td>Minnesota Lynx</td>
+      <td>1539.91</td>
+      <td>70</td>
+      <td>New York Liberty</td>
+      <td>1543.18</td>
+      <td>76</td>
+      <td>59.31%</td>
+      <td>40.69%</td>
+      <td>-11.02</td>
+    </tr>
+    <tr>
+      <td>2000-07-08</td>
+      <td>Sacramento Monarchs</td>
+      <td>1613.15</td>
+      <td>78</td>
+      <td>Washington Mystics</td>
+      <td>1489.87</td>
+      <td>56</td>
+      <td>75.13%</td>
+      <td>24.87%</td>
+      <td>8.85</td>
+    </tr>
+    <tr>
+      <td>2000-07-08</td>
+      <td>Orlando Miracle</td>
+      <td>1515.11</td>
+      <td>64</td>
+      <td>Seattle Storm</td>
+      <td>1313.86</td>
+      <td>53</td>
+      <td>82.55%</td>
+      <td>17.45%</td>
+      <td>4.40</td>
+    </tr>
+    <tr>
+      <td>2000-07-08</td>
+      <td>New York Liberty</td>
+      <td>1554.21</td>
+      <td>63</td>
+      <td>Miami Sol</td>
+      <td>1341.49</td>
+      <td>51</td>
+      <td>83.48%</td>
+      <td>16.52%</td>
+      <td>4.34</td>
+    </tr>
+    <tr>
+      <td>2000-07-08</td>
+      <td>Indiana Fever</td>
+      <td>1318.05</td>
+      <td>65</td>
+      <td>Phoenix Mercury</td>
+      <td>1612.27</td>
+      <td>66</td>
+      <td>21.45%</td>
+      <td>78.55%</td>
+      <td>-1.63</td>
+    </tr>
+    <tr>
+      <td>2000-07-08</td>
+      <td>Miami Sol</td>
+      <td>1341.49</td>
+      <td>51</td>
+      <td>@ New York Liberty</td>
+      <td>1554.21</td>
+      <td>63</td>
+      <td>16.52%</td>
+      <td>83.48%</td>
+      <td>-4.34</td>
+    </tr>
+    <tr>
+      <td>2000-07-08</td>
+      <td>Charlotte Sting</td>
+      <td>1434.11</td>
+      <td>59</td>
+      <td>Cleveland Rockers</td>
+      <td>1471.20</td>
+      <td>80</td>
+      <td>54.54%</td>
+      <td>45.46%</td>
+      <td>-18.97</td>
+    </tr>
+    <tr>
+      <td>2000-07-08</td>
+      <td>Washington Mystics</td>
+      <td>1489.87</td>
+      <td>56</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1613.15</td>
+      <td>78</td>
+      <td>24.87%</td>
+      <td>75.13%</td>
+      <td>-8.85</td>
+    </tr>
+    <tr>
+      <td>2000-07-08</td>
+      <td>Cleveland Rockers</td>
+      <td>1471.20</td>
+      <td>80</td>
+      <td>@ Charlotte Sting</td>
+      <td>1434.11</td>
+      <td>59</td>
+      <td>45.46%</td>
+      <td>54.54%</td>
+      <td>18.97</td>
+    </tr>
+    <tr>
+      <td>2000-07-08</td>
+      <td>Phoenix Mercury</td>
+      <td>1612.27</td>
+      <td>66</td>
+      <td>@ Indiana Fever</td>
+      <td>1318.05</td>
+      <td>65</td>
+      <td>78.55%</td>
+      <td>21.45%</td>
+      <td>1.62</td>
+    </tr>
+    <tr>
+      <td>2000-07-08</td>
+      <td>Seattle Storm</td>
+      <td>1313.86</td>
+      <td>53</td>
+      <td>@ Orlando Miracle</td>
+      <td>1515.11</td>
+      <td>64</td>
+      <td>17.45%</td>
+      <td>82.55%</td>
+      <td>-4.39</td>
+    </tr>
+    <tr>
+      <td>2000-07-09</td>
+      <td>Detroit Shock</td>
+      <td>1494.02</td>
+      <td>62</td>
+      <td>Orlando Miracle</td>
+      <td>1519.51</td>
+      <td>68</td>
+      <td>56.19%</td>
+      <td>43.81%</td>
+      <td>-10.45</td>
+    </tr>
+    <tr>
+      <td>2000-07-09</td>
+      <td>Los Angeles Sparks</td>
+      <td>1683.95</td>
+      <td>92</td>
+      <td>Utah Starzz</td>
+      <td>1532.03</td>
+      <td>72</td>
+      <td>78.08%</td>
+      <td>21.92%</td>
+      <td>7.44</td>
+    </tr>
+    <tr>
+      <td>2000-07-09</td>
+      <td>Houston Comets</td>
+      <td>1751.55</td>
+      <td>70</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1528.89</td>
+      <td>60</td>
+      <td>70.81%</td>
+      <td>29.19%</td>
+      <td>7.00</td>
+    </tr>
+    <tr>
+      <td>2000-07-09</td>
+      <td>Portland Fire</td>
+      <td>1346.25</td>
+      <td>75</td>
+      <td>Washington Mystics</td>
+      <td>1481.02</td>
+      <td>58</td>
+      <td>40.61%</td>
+      <td>59.39%</td>
+      <td>18.59</td>
+    </tr>
+    <tr>
+      <td>2000-07-09</td>
+      <td>Utah Starzz</td>
+      <td>1532.03</td>
+      <td>72</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1683.95</td>
+      <td>92</td>
+      <td>21.92%</td>
+      <td>78.08%</td>
+      <td>-7.44</td>
+    </tr>
+    <tr>
+      <td>2000-07-09</td>
+      <td>Orlando Miracle</td>
+      <td>1519.51</td>
+      <td>68</td>
+      <td>@ Detroit Shock</td>
+      <td>1494.02</td>
+      <td>62</td>
+      <td>43.81%</td>
+      <td>56.19%</td>
+      <td>10.44</td>
+    </tr>
+    <tr>
+      <td>2000-07-09</td>
+      <td>Washington Mystics</td>
+      <td>1481.02</td>
+      <td>58</td>
+      <td>@ Portland Fire</td>
+      <td>1346.25</td>
+      <td>75</td>
+      <td>59.39%</td>
+      <td>40.61%</td>
+      <td>-18.59</td>
+    </tr>
+    <tr>
+      <td>2000-07-09</td>
+      <td>Minnesota Lynx</td>
+      <td>1528.89</td>
+      <td>60</td>
+      <td>Houston Comets</td>
+      <td>1751.55</td>
+      <td>70</td>
+      <td>29.19%</td>
+      <td>70.81%</td>
+      <td>-7.01</td>
+    </tr>
+    <tr>
+      <td>2000-07-10</td>
+      <td>Cleveland Rockers</td>
+      <td>1490.17</td>
+      <td>72</td>
+      <td>Charlotte Sting</td>
+      <td>1415.14</td>
+      <td>65</td>
+      <td>69.59%</td>
+      <td>30.41%</td>
+      <td>6.11</td>
+    </tr>
+    <tr>
+      <td>2000-07-10</td>
+      <td>Miami Sol</td>
+      <td>1337.15</td>
+      <td>59</td>
+      <td>Seattle Storm</td>
+      <td>1309.47</td>
+      <td>42</td>
+      <td>63.53%</td>
+      <td>36.47%</td>
+      <td>11.41</td>
+    </tr>
+    <tr>
+      <td>2000-07-10</td>
+      <td>Charlotte Sting</td>
+      <td>1415.14</td>
+      <td>65</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1490.17</td>
+      <td>72</td>
+      <td>30.41%</td>
+      <td>69.59%</td>
+      <td>-6.11</td>
+    </tr>
+    <tr>
+      <td>2000-07-10</td>
+      <td>Seattle Storm</td>
+      <td>1309.47</td>
+      <td>42</td>
+      <td>@ Miami Sol</td>
+      <td>1337.15</td>
+      <td>59</td>
+      <td>36.47%</td>
+      <td>63.53%</td>
+      <td>-11.42</td>
+    </tr>
+    <tr>
+      <td>2000-07-11</td>
+      <td>Los Angeles Sparks</td>
+      <td>1691.39</td>
+      <td>77</td>
+      <td>Portland Fire</td>
+      <td>1364.84</td>
+      <td>80</td>
+      <td>90.68%</td>
+      <td>9.32%</td>
+      <td>-11.92</td>
+    </tr>
+    <tr>
+      <td>2000-07-11</td>
+      <td>Phoenix Mercury</td>
+      <td>1613.89</td>
+      <td>64</td>
+      <td>Minnesota Lynx</td>
+      <td>1521.88</td>
+      <td>54</td>
+      <td>71.61%</td>
+      <td>28.39%</td>
+      <td>6.82</td>
+    </tr>
+    <tr>
+      <td>2000-07-11</td>
+      <td>Minnesota Lynx</td>
+      <td>1521.88</td>
+      <td>54</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1613.89</td>
+      <td>64</td>
+      <td>28.39%</td>
+      <td>71.61%</td>
+      <td>-6.81</td>
+    </tr>
+    <tr>
+      <td>2000-07-11</td>
+      <td>Portland Fire</td>
+      <td>1364.84</td>
+      <td>80</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1691.39</td>
+      <td>77</td>
+      <td>9.32%</td>
+      <td>90.68%</td>
+      <td>11.92</td>
+    </tr>
+    <tr>
+      <td>2000-07-12</td>
+      <td>Indiana Fever</td>
+      <td>1316.42</td>
+      <td>81</td>
+      <td>@ Washington Mystics</td>
+      <td>1462.43</td>
+      <td>58</td>
+      <td>22.51%</td>
+      <td>77.49%</td>
+      <td>28.21</td>
+    </tr>
+    <tr>
+      <td>2000-07-12</td>
+      <td>Detroit Shock</td>
+      <td>1483.57</td>
+      <td>61</td>
+      <td>Seattle Storm</td>
+      <td>1298.05</td>
+      <td>56</td>
+      <td>81.21%</td>
+      <td>18.79%</td>
+      <td>3.19</td>
+    </tr>
+    <tr>
+      <td>2000-07-12</td>
+      <td>Houston Comets</td>
+      <td>1758.55</td>
+      <td>77</td>
+      <td>Sacramento Monarchs</td>
+      <td>1622.00</td>
+      <td>62</td>
+      <td>76.53%</td>
+      <td>23.47%</td>
+      <td>6.90</td>
+    </tr>
+    <tr>
+      <td>2000-07-12</td>
+      <td>New York Liberty</td>
+      <td>1558.55</td>
+      <td>84</td>
+      <td>Charlotte Sting</td>
+      <td>1409.03</td>
+      <td>70</td>
+      <td>77.84%</td>
+      <td>22.16%</td>
+      <td>6.29</td>
+    </tr>
+    <tr>
+      <td>2000-07-12</td>
+      <td>Utah Starzz</td>
+      <td>1524.59</td>
+      <td>76</td>
+      <td>Portland Fire</td>
+      <td>1376.76</td>
+      <td>67</td>
+      <td>77.67%</td>
+      <td>22.33%</td>
+      <td>5.08</td>
+    </tr>
+    <tr>
+      <td>2000-07-12</td>
+      <td>Washington Mystics</td>
+      <td>1462.43</td>
+      <td>58</td>
+      <td>Indiana Fever</td>
+      <td>1316.42</td>
+      <td>81</td>
+      <td>77.49%</td>
+      <td>22.51%</td>
+      <td>-28.21</td>
+    </tr>
+    <tr>
+      <td>2000-07-12</td>
+      <td>Portland Fire</td>
+      <td>1376.76</td>
+      <td>67</td>
+      <td>@ Utah Starzz</td>
+      <td>1524.59</td>
+      <td>76</td>
+      <td>22.33%</td>
+      <td>77.67%</td>
+      <td>-5.08</td>
+    </tr>
+    <tr>
+      <td>2000-07-12</td>
+      <td>Sacramento Monarchs</td>
+      <td>1622.00</td>
+      <td>62</td>
+      <td>@ Houston Comets</td>
+      <td>1758.55</td>
+      <td>77</td>
+      <td>23.47%</td>
+      <td>76.53%</td>
+      <td>-6.90</td>
+    </tr>
+    <tr>
+      <td>2000-07-12</td>
+      <td>Seattle Storm</td>
+      <td>1298.05</td>
+      <td>56</td>
+      <td>@ Detroit Shock</td>
+      <td>1483.57</td>
+      <td>61</td>
+      <td>18.79%</td>
+      <td>81.21%</td>
+      <td>-3.18</td>
+    </tr>
+    <tr>
+      <td>2000-07-12</td>
+      <td>Orlando Miracle</td>
+      <td>1529.95</td>
+      <td>72</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1496.28</td>
+      <td>74</td>
+      <td>44.97%</td>
+      <td>55.03%</td>
+      <td>-4.82</td>
+    </tr>
+    <tr>
+      <td>2000-07-12</td>
+      <td>Cleveland Rockers</td>
+      <td>1496.28</td>
+      <td>74</td>
+      <td>Orlando Miracle</td>
+      <td>1529.95</td>
+      <td>72</td>
+      <td>55.03%</td>
+      <td>44.97%</td>
+      <td>4.83</td>
+    </tr>
+    <tr>
+      <td>2000-07-12</td>
+      <td>Charlotte Sting</td>
+      <td>1409.03</td>
+      <td>70</td>
+      <td>@ New York Liberty</td>
+      <td>1558.55</td>
+      <td>84</td>
+      <td>22.16%</td>
+      <td>77.84%</td>
+      <td>-6.29</td>
+    </tr>
+    <tr>
+      <td>2000-07-13</td>
+      <td>Sacramento Monarchs</td>
+      <td>1615.10</td>
+      <td>64</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1620.71</td>
+      <td>72</td>
+      <td>39.46%</td>
+      <td>60.54%</td>
+      <td>-8.47</td>
+    </tr>
+    <tr>
+      <td>2000-07-13</td>
+      <td>Washington Mystics</td>
+      <td>1434.22</td>
+      <td>60</td>
+      <td>@ Miami Sol</td>
+      <td>1348.56</td>
+      <td>48</td>
+      <td>52.43%</td>
+      <td>47.57%</td>
+      <td>12.51</td>
+    </tr>
+    <tr>
+      <td>2000-07-13</td>
+      <td>Miami Sol</td>
+      <td>1348.56</td>
+      <td>48</td>
+      <td>Washington Mystics</td>
+      <td>1434.22</td>
+      <td>60</td>
+      <td>47.57%</td>
+      <td>52.43%</td>
+      <td>-12.51</td>
+    </tr>
+    <tr>
+      <td>2000-07-13</td>
+      <td>Phoenix Mercury</td>
+      <td>1620.71</td>
+      <td>72</td>
+      <td>Sacramento Monarchs</td>
+      <td>1615.10</td>
+      <td>64</td>
+      <td>60.54%</td>
+      <td>39.46%</td>
+      <td>8.47</td>
+    </tr>
+    <tr>
+      <td>2000-07-14</td>
+      <td>Miami Sol</td>
+      <td>1336.05</td>
+      <td>50</td>
+      <td>@ Detroit Shock</td>
+      <td>1486.76</td>
+      <td>80</td>
+      <td>22.04%</td>
+      <td>77.96%</td>
+      <td>-9.16</td>
+    </tr>
+    <tr>
+      <td>2000-07-14</td>
+      <td>Houston Comets</td>
+      <td>1765.45</td>
+      <td>58</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1679.47</td>
+      <td>63</td>
+      <td>52.48%</td>
+      <td>47.52%</td>
+      <td>-8.90</td>
+    </tr>
+    <tr>
+      <td>2000-07-14</td>
+      <td>Seattle Storm</td>
+      <td>1294.87</td>
+      <td>45</td>
+      <td>@ Indiana Fever</td>
+      <td>1344.63</td>
+      <td>64</td>
+      <td>33.58%</td>
+      <td>66.42%</td>
+      <td>-11.11</td>
+    </tr>
+    <tr>
+      <td>2000-07-14</td>
+      <td>Utah Starzz</td>
+      <td>1529.67</td>
+      <td>87</td>
+      <td>Phoenix Mercury</td>
+      <td>1629.18</td>
+      <td>84</td>
+      <td>45.58%</td>
+      <td>54.42%</td>
+      <td>7.16</td>
+    </tr>
+    <tr>
+      <td>2000-07-14</td>
+      <td>Portland Fire</td>
+      <td>1371.68</td>
+      <td>65</td>
+      <td>Minnesota Lynx</td>
+      <td>1515.07</td>
+      <td>54</td>
+      <td>39.42%</td>
+      <td>60.58%</td>
+      <td>15.25</td>
+    </tr>
+    <tr>
+      <td>2000-07-14</td>
+      <td>Orlando Miracle</td>
+      <td>1525.13</td>
+      <td>51</td>
+      <td>New York Liberty</td>
+      <td>1564.84</td>
+      <td>55</td>
+      <td>54.17%</td>
+      <td>45.83%</td>
+      <td>-8.23</td>
+    </tr>
+    <tr>
+      <td>2000-07-14</td>
+      <td>Los Angeles Sparks</td>
+      <td>1679.47</td>
+      <td>63</td>
+      <td>Houston Comets</td>
+      <td>1765.45</td>
+      <td>58</td>
+      <td>47.52%</td>
+      <td>52.48%</td>
+      <td>8.90</td>
+    </tr>
+    <tr>
+      <td>2000-07-14</td>
+      <td>Detroit Shock</td>
+      <td>1486.76</td>
+      <td>80</td>
+      <td>Miami Sol</td>
+      <td>1336.05</td>
+      <td>50</td>
+      <td>77.96%</td>
+      <td>22.04%</td>
+      <td>9.16</td>
+    </tr>
+    <tr>
+      <td>2000-07-14</td>
+      <td>Indiana Fever</td>
+      <td>1344.63</td>
+      <td>64</td>
+      <td>Seattle Storm</td>
+      <td>1294.87</td>
+      <td>45</td>
+      <td>66.42%</td>
+      <td>33.58%</td>
+      <td>11.11</td>
+    </tr>
+    <tr>
+      <td>2000-07-14</td>
+      <td>Minnesota Lynx</td>
+      <td>1515.07</td>
+      <td>54</td>
+      <td>@ Portland Fire</td>
+      <td>1371.68</td>
+      <td>65</td>
+      <td>60.58%</td>
+      <td>39.42%</td>
+      <td>-15.25</td>
+    </tr>
+    <tr>
+      <td>2000-07-14</td>
+      <td>New York Liberty</td>
+      <td>1564.84</td>
+      <td>55</td>
+      <td>@ Orlando Miracle</td>
+      <td>1525.13</td>
+      <td>51</td>
+      <td>45.83%</td>
+      <td>54.17%</td>
+      <td>8.23</td>
+    </tr>
+    <tr>
+      <td>2000-07-14</td>
+      <td>Phoenix Mercury</td>
+      <td>1629.18</td>
+      <td>84</td>
+      <td>@ Utah Starzz</td>
+      <td>1529.67</td>
+      <td>87</td>
+      <td>54.42%</td>
+      <td>45.58%</td>
+      <td>-7.15</td>
+    </tr>
+    <tr>
+      <td>2000-07-15</td>
+      <td>Washington Mystics</td>
+      <td>1446.73</td>
+      <td>73</td>
+      <td>Charlotte Sting</td>
+      <td>1402.74</td>
+      <td>76</td>
+      <td>65.68%</td>
+      <td>34.32%</td>
+      <td>-8.63</td>
+    </tr>
+    <tr>
+      <td>2000-07-15</td>
+      <td>Sacramento Monarchs</td>
+      <td>1606.63</td>
+      <td>69</td>
+      <td>Utah Starzz</td>
+      <td>1536.83</td>
+      <td>75</td>
+      <td>68.94%</td>
+      <td>31.06%</td>
+      <td>-12.82</td>
+    </tr>
+    <tr>
+      <td>2000-07-15</td>
+      <td>Los Angeles Sparks</td>
+      <td>1688.37</td>
+      <td>58</td>
+      <td>Minnesota Lynx</td>
+      <td>1499.82</td>
+      <td>57</td>
+      <td>81.47%</td>
+      <td>18.53%</td>
+      <td>1.41</td>
+    </tr>
+    <tr>
+      <td>2000-07-15</td>
+      <td>Cleveland Rockers</td>
+      <td>1501.11</td>
+      <td>79</td>
+      <td>Indiana Fever</td>
+      <td>1355.74</td>
+      <td>55</td>
+      <td>77.43%</td>
+      <td>22.57%</td>
+      <td>8.39</td>
+    </tr>
+    <tr>
+      <td>2000-07-15</td>
+      <td>Charlotte Sting</td>
+      <td>1402.74</td>
+      <td>76</td>
+      <td>@ Washington Mystics</td>
+      <td>1446.73</td>
+      <td>73</td>
+      <td>34.32%</td>
+      <td>65.68%</td>
+      <td>8.63</td>
+    </tr>
+    <tr>
+      <td>2000-07-15</td>
+      <td>Indiana Fever</td>
+      <td>1355.74</td>
+      <td>55</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1501.11</td>
+      <td>79</td>
+      <td>22.57%</td>
+      <td>77.43%</td>
+      <td>-8.40</td>
+    </tr>
+    <tr>
+      <td>2000-07-15</td>
+      <td>Minnesota Lynx</td>
+      <td>1499.82</td>
+      <td>57</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1688.37</td>
+      <td>58</td>
+      <td>18.53%</td>
+      <td>81.47%</td>
+      <td>-1.41</td>
+    </tr>
+    <tr>
+      <td>2000-07-15</td>
+      <td>Utah Starzz</td>
+      <td>1536.83</td>
+      <td>75</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1606.63</td>
+      <td>69</td>
+      <td>31.06%</td>
+      <td>68.94%</td>
+      <td>12.81</td>
+    </tr>
+    <tr>
+      <td>2000-07-19</td>
+      <td>Phoenix Mercury</td>
+      <td>1622.03</td>
+      <td>86</td>
+      <td>Utah Starzz</td>
+      <td>1549.64</td>
+      <td>76</td>
+      <td>69.26%</td>
+      <td>30.74%</td>
+      <td>7.37</td>
+    </tr>
+    <tr>
+      <td>2000-07-19</td>
+      <td>Seattle Storm</td>
+      <td>1283.76</td>
+      <td>55</td>
+      <td>New York Liberty</td>
+      <td>1573.07</td>
+      <td>78</td>
+      <td>21.93%</td>
+      <td>78.07%</td>
+      <td>-7.99</td>
+    </tr>
+    <tr>
+      <td>2000-07-19</td>
+      <td>Orlando Miracle</td>
+      <td>1516.90</td>
+      <td>88</td>
+      <td>Detroit Shock</td>
+      <td>1495.92</td>
+      <td>78</td>
+      <td>62.63%</td>
+      <td>37.37%</td>
+      <td>8.97</td>
+    </tr>
+    <tr>
+      <td>2000-07-19</td>
+      <td>Portland Fire</td>
+      <td>1386.93</td>
+      <td>62</td>
+      <td>@ Miami Sol</td>
+      <td>1326.89</td>
+      <td>69</td>
+      <td>48.75%</td>
+      <td>51.25%</td>
+      <td>-9.79</td>
+    </tr>
+    <tr>
+      <td>2000-07-19</td>
+      <td>Miami Sol</td>
+      <td>1326.89</td>
+      <td>69</td>
+      <td>Portland Fire</td>
+      <td>1386.93</td>
+      <td>62</td>
+      <td>51.25%</td>
+      <td>48.75%</td>
+      <td>9.79</td>
+    </tr>
+    <tr>
+      <td>2000-07-19</td>
+      <td>Detroit Shock</td>
+      <td>1495.92</td>
+      <td>78</td>
+      <td>@ Orlando Miracle</td>
+      <td>1516.90</td>
+      <td>88</td>
+      <td>37.37%</td>
+      <td>62.63%</td>
+      <td>-8.96</td>
+    </tr>
+    <tr>
+      <td>2000-07-19</td>
+      <td>Utah Starzz</td>
+      <td>1549.64</td>
+      <td>76</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1622.03</td>
+      <td>86</td>
+      <td>30.74%</td>
+      <td>69.26%</td>
+      <td>-7.37</td>
+    </tr>
+    <tr>
+      <td>2000-07-19</td>
+      <td>New York Liberty</td>
+      <td>1573.07</td>
+      <td>78</td>
+      <td>@ Seattle Storm</td>
+      <td>1283.76</td>
+      <td>55</td>
+      <td>78.07%</td>
+      <td>21.93%</td>
+      <td>7.98</td>
+    </tr>
+    <tr>
+      <td>2000-07-20</td>
+      <td>Indiana Fever</td>
+      <td>1347.34</td>
+      <td>74</td>
+      <td>@ Washington Mystics</td>
+      <td>1438.10</td>
+      <td>85</td>
+      <td>28.53%</td>
+      <td>71.47%</td>
+      <td>-7.18</td>
+    </tr>
+    <tr>
+      <td>2000-07-20</td>
+      <td>Houston Comets</td>
+      <td>1756.55</td>
+      <td>74</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1509.50</td>
+      <td>56</td>
+      <td>73.62%</td>
+      <td>26.38%</td>
+      <td>8.49</td>
+    </tr>
+    <tr>
+      <td>2000-07-20</td>
+      <td>Minnesota Lynx</td>
+      <td>1498.41</td>
+      <td>56</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1593.81</td>
+      <td>73</td>
+      <td>27.99%</td>
+      <td>72.01%</td>
+      <td>-8.76</td>
+    </tr>
+    <tr>
+      <td>2000-07-20</td>
+      <td>New York Liberty</td>
+      <td>1581.05</td>
+      <td>66</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1689.78</td>
+      <td>82</td>
+      <td>26.47%</td>
+      <td>73.53%</td>
+      <td>-8.04</td>
+    </tr>
+    <tr>
+      <td>2000-07-20</td>
+      <td>Sacramento Monarchs</td>
+      <td>1593.81</td>
+      <td>73</td>
+      <td>Minnesota Lynx</td>
+      <td>1498.41</td>
+      <td>56</td>
+      <td>72.01%</td>
+      <td>27.99%</td>
+      <td>8.76</td>
+    </tr>
+    <tr>
+      <td>2000-07-20</td>
+      <td>Cleveland Rockers</td>
+      <td>1509.50</td>
+      <td>56</td>
+      <td>Houston Comets</td>
+      <td>1756.55</td>
+      <td>74</td>
+      <td>26.38%</td>
+      <td>73.62%</td>
+      <td>-8.49</td>
+    </tr>
+    <tr>
+      <td>2000-07-20</td>
+      <td>Washington Mystics</td>
+      <td>1438.10</td>
+      <td>85</td>
+      <td>Indiana Fever</td>
+      <td>1347.34</td>
+      <td>74</td>
+      <td>71.47%</td>
+      <td>28.53%</td>
+      <td>7.18</td>
+    </tr>
+    <tr>
+      <td>2000-07-20</td>
+      <td>Los Angeles Sparks</td>
+      <td>1689.78</td>
+      <td>82</td>
+      <td>New York Liberty</td>
+      <td>1581.05</td>
+      <td>66</td>
+      <td>73.53%</td>
+      <td>26.47%</td>
+      <td>8.03</td>
+    </tr>
+    <tr>
+      <td>2000-07-21</td>
+      <td>Portland Fire</td>
+      <td>1377.14</td>
+      <td>64</td>
+      <td>@ Charlotte Sting</td>
+      <td>1411.37</td>
+      <td>73</td>
+      <td>35.60%</td>
+      <td>64.40%</td>
+      <td>-8.11</td>
+    </tr>
+    <tr>
+      <td>2000-07-21</td>
+      <td>Houston Comets</td>
+      <td>1765.04</td>
+      <td>76</td>
+      <td>@ Detroit Shock</td>
+      <td>1486.96</td>
+      <td>74</td>
+      <td>76.94%</td>
+      <td>23.06%</td>
+      <td>2.48</td>
+    </tr>
+    <tr>
+      <td>2000-07-21</td>
+      <td>Utah Starzz</td>
+      <td>1542.27</td>
+      <td>65</td>
+      <td>@ Miami Sol</td>
+      <td>1336.68</td>
+      <td>76</td>
+      <td>68.73%</td>
+      <td>31.27%</td>
+      <td>-17.31</td>
+    </tr>
+    <tr>
+      <td>2000-07-21</td>
+      <td>Los Angeles Sparks</td>
+      <td>1697.81</td>
+      <td>74</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1629.40</td>
+      <td>68</td>
+      <td>49.95%</td>
+      <td>50.05%</td>
+      <td>9.31</td>
+    </tr>
+    <tr>
+      <td>2000-07-21</td>
+      <td>Minnesota Lynx</td>
+      <td>1489.65</td>
+      <td>61</td>
+      <td>@ Seattle Storm</td>
+      <td>1275.77</td>
+      <td>67</td>
+      <td>69.75%</td>
+      <td>30.25%</td>
+      <td>-12.97</td>
+    </tr>
+    <tr>
+      <td>2000-07-21</td>
+      <td>Orlando Miracle</td>
+      <td>1525.87</td>
+      <td>59</td>
+      <td>@ Washington Mystics</td>
+      <td>1445.28</td>
+      <td>61</td>
+      <td>51.71%</td>
+      <td>48.29%</td>
+      <td>-5.55</td>
+    </tr>
+    <tr>
+      <td>2000-07-21</td>
+      <td>Detroit Shock</td>
+      <td>1486.96</td>
+      <td>74</td>
+      <td>Houston Comets</td>
+      <td>1765.04</td>
+      <td>76</td>
+      <td>23.06%</td>
+      <td>76.94%</td>
+      <td>-2.48</td>
+    </tr>
+    <tr>
+      <td>2000-07-21</td>
+      <td>Washington Mystics</td>
+      <td>1445.28</td>
+      <td>61</td>
+      <td>Orlando Miracle</td>
+      <td>1525.87</td>
+      <td>59</td>
+      <td>48.29%</td>
+      <td>51.71%</td>
+      <td>5.55</td>
+    </tr>
+    <tr>
+      <td>2000-07-21</td>
+      <td>Seattle Storm</td>
+      <td>1275.77</td>
+      <td>67</td>
+      <td>Minnesota Lynx</td>
+      <td>1489.65</td>
+      <td>61</td>
+      <td>30.25%</td>
+      <td>69.75%</td>
+      <td>12.97</td>
+    </tr>
+    <tr>
+      <td>2000-07-21</td>
+      <td>Phoenix Mercury</td>
+      <td>1629.40</td>
+      <td>68</td>
+      <td>Los Angeles Sparks</td>
+      <td>1697.81</td>
+      <td>74</td>
+      <td>50.05%</td>
+      <td>49.95%</td>
+      <td>-9.30</td>
+    </tr>
+    <tr>
+      <td>2000-07-21</td>
+      <td>Miami Sol</td>
+      <td>1336.68</td>
+      <td>76</td>
+      <td>Utah Starzz</td>
+      <td>1542.27</td>
+      <td>65</td>
+      <td>31.27%</td>
+      <td>68.73%</td>
+      <td>17.30</td>
+    </tr>
+    <tr>
+      <td>2000-07-21</td>
+      <td>Charlotte Sting</td>
+      <td>1411.37</td>
+      <td>73</td>
+      <td>Portland Fire</td>
+      <td>1377.14</td>
+      <td>64</td>
+      <td>64.40%</td>
+      <td>35.60%</td>
+      <td>8.11</td>
+    </tr>
+    <tr>
+      <td>2000-07-22</td>
+      <td>Miami Sol</td>
+      <td>1353.98</td>
+      <td>47</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1501.01</td>
+      <td>76</td>
+      <td>22.41%</td>
+      <td>77.59%</td>
+      <td>-9.16</td>
+    </tr>
+    <tr>
+      <td>2000-07-22</td>
+      <td>Sacramento Monarchs</td>
+      <td>1602.57</td>
+      <td>61</td>
+      <td>Phoenix Mercury</td>
+      <td>1620.10</td>
+      <td>60</td>
+      <td>57.32%</td>
+      <td>42.68%</td>
+      <td>3.24</td>
+    </tr>
+    <tr>
+      <td>2000-07-22</td>
+      <td>Indiana Fever</td>
+      <td>1340.16</td>
+      <td>80</td>
+      <td>Charlotte Sting</td>
+      <td>1419.48</td>
+      <td>59</td>
+      <td>48.48%</td>
+      <td>51.52%</td>
+      <td>17.92</td>
+    </tr>
+    <tr>
+      <td>2000-07-22</td>
+      <td>Cleveland Rockers</td>
+      <td>1501.01</td>
+      <td>76</td>
+      <td>Miami Sol</td>
+      <td>1353.98</td>
+      <td>47</td>
+      <td>77.59%</td>
+      <td>22.41%</td>
+      <td>9.16</td>
+    </tr>
+    <tr>
+      <td>2000-07-22</td>
+      <td>Charlotte Sting</td>
+      <td>1419.48</td>
+      <td>59</td>
+      <td>@ Indiana Fever</td>
+      <td>1340.16</td>
+      <td>80</td>
+      <td>51.52%</td>
+      <td>48.48%</td>
+      <td>-17.92</td>
+    </tr>
+    <tr>
+      <td>2000-07-22</td>
+      <td>Phoenix Mercury</td>
+      <td>1620.10</td>
+      <td>60</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1602.57</td>
+      <td>61</td>
+      <td>42.68%</td>
+      <td>57.32%</td>
+      <td>-3.24</td>
+    </tr>
+    <tr>
+      <td>2000-07-23</td>
+      <td>Los Angeles Sparks</td>
+      <td>1707.12</td>
+      <td>73</td>
+      <td>Sacramento Monarchs</td>
+      <td>1605.81</td>
+      <td>68</td>
+      <td>72.69%</td>
+      <td>27.31%</td>
+      <td>4.63</td>
+    </tr>
+    <tr>
+      <td>2000-07-23</td>
+      <td>Utah Starzz</td>
+      <td>1524.96</td>
+      <td>69</td>
+      <td>@ Orlando Miracle</td>
+      <td>1520.32</td>
+      <td>66</td>
+      <td>40.88%</td>
+      <td>59.12%</td>
+      <td>7.78</td>
+    </tr>
+    <tr>
+      <td>2000-07-23</td>
+      <td>Sacramento Monarchs</td>
+      <td>1605.81</td>
+      <td>68</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1707.12</td>
+      <td>73</td>
+      <td>27.31%</td>
+      <td>72.69%</td>
+      <td>-4.63</td>
+    </tr>
+    <tr>
+      <td>2000-07-23</td>
+      <td>Minnesota Lynx</td>
+      <td>1476.68</td>
+      <td>80</td>
+      <td>Portland Fire</td>
+      <td>1369.03</td>
+      <td>63</td>
+      <td>73.41%</td>
+      <td>26.59%</td>
+      <td>8.33</td>
+    </tr>
+    <tr>
+      <td>2000-07-23</td>
+      <td>Houston Comets</td>
+      <td>1767.52</td>
+      <td>64</td>
+      <td>@ New York Liberty</td>
+      <td>1573.01</td>
+      <td>69</td>
+      <td>67.35%</td>
+      <td>32.65%</td>
+      <td>-11.43</td>
+    </tr>
+    <tr>
+      <td>2000-07-23</td>
+      <td>Orlando Miracle</td>
+      <td>1520.32</td>
+      <td>66</td>
+      <td>Utah Starzz</td>
+      <td>1524.96</td>
+      <td>69</td>
+      <td>59.12%</td>
+      <td>40.88%</td>
+      <td>-7.77</td>
+    </tr>
+    <tr>
+      <td>2000-07-23</td>
+      <td>New York Liberty</td>
+      <td>1573.01</td>
+      <td>69</td>
+      <td>Houston Comets</td>
+      <td>1767.52</td>
+      <td>64</td>
+      <td>32.65%</td>
+      <td>67.35%</td>
+      <td>11.43</td>
+    </tr>
+    <tr>
+      <td>2000-07-23</td>
+      <td>Portland Fire</td>
+      <td>1369.03</td>
+      <td>63</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1476.68</td>
+      <td>80</td>
+      <td>26.59%</td>
+      <td>73.41%</td>
+      <td>-8.32</td>
+    </tr>
+    <tr>
+      <td>2000-07-24</td>
+      <td>Indiana Fever</td>
+      <td>1358.08</td>
+      <td>78</td>
+      <td>@ Charlotte Sting</td>
+      <td>1401.56</td>
+      <td>82</td>
+      <td>34.39%</td>
+      <td>65.61%</td>
+      <td>-5.22</td>
+    </tr>
+    <tr>
+      <td>2000-07-24</td>
+      <td>Washington Mystics</td>
+      <td>1450.83</td>
+      <td>64</td>
+      <td>New York Liberty</td>
+      <td>1584.44</td>
+      <td>78</td>
+      <td>40.77%</td>
+      <td>59.23%</td>
+      <td>-11.58</td>
+    </tr>
+    <tr>
+      <td>2000-07-24</td>
+      <td>Phoenix Mercury</td>
+      <td>1616.86</td>
+      <td>67</td>
+      <td>Cleveland Rockers</td>
+      <td>1510.17</td>
+      <td>57</td>
+      <td>73.30%</td>
+      <td>26.70%</td>
+      <td>6.41</td>
+    </tr>
+    <tr>
+      <td>2000-07-24</td>
+      <td>Detroit Shock</td>
+      <td>1484.48</td>
+      <td>57</td>
+      <td>Portland Fire</td>
+      <td>1360.71</td>
+      <td>61</td>
+      <td>75.18%</td>
+      <td>24.82%</td>
+      <td>-11.41</td>
+    </tr>
+    <tr>
+      <td>2000-07-24</td>
+      <td>Charlotte Sting</td>
+      <td>1401.56</td>
+      <td>82</td>
+      <td>Indiana Fever</td>
+      <td>1358.08</td>
+      <td>78</td>
+      <td>65.61%</td>
+      <td>34.39%</td>
+      <td>5.22</td>
+    </tr>
+    <tr>
+      <td>2000-07-24</td>
+      <td>Portland Fire</td>
+      <td>1360.71</td>
+      <td>61</td>
+      <td>@ Detroit Shock</td>
+      <td>1484.48</td>
+      <td>57</td>
+      <td>24.82%</td>
+      <td>75.18%</td>
+      <td>11.41</td>
+    </tr>
+    <tr>
+      <td>2000-07-24</td>
+      <td>Cleveland Rockers</td>
+      <td>1510.17</td>
+      <td>57</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1616.86</td>
+      <td>67</td>
+      <td>26.70%</td>
+      <td>73.30%</td>
+      <td>-6.41</td>
+    </tr>
+    <tr>
+      <td>2000-07-24</td>
+      <td>New York Liberty</td>
+      <td>1584.44</td>
+      <td>78</td>
+      <td>@ Washington Mystics</td>
+      <td>1450.83</td>
+      <td>64</td>
+      <td>59.23%</td>
+      <td>40.77%</td>
+      <td>11.58</td>
+    </tr>
+    <tr>
+      <td>2000-07-25</td>
+      <td>Seattle Storm</td>
+      <td>1288.74</td>
+      <td>53</td>
+      <td>@ Houston Comets</td>
+      <td>1756.09</td>
+      <td>79</td>
+      <td>4.37%</td>
+      <td>95.63%</td>
+      <td>-1.69</td>
+    </tr>
+    <tr>
+      <td>2000-07-25</td>
+      <td>Orlando Miracle</td>
+      <td>1512.55</td>
+      <td>63</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1711.75</td>
+      <td>78</td>
+      <td>17.62%</td>
+      <td>82.38%</td>
+      <td>-5.18</td>
+    </tr>
+    <tr>
+      <td>2000-07-25</td>
+      <td>Los Angeles Sparks</td>
+      <td>1711.75</td>
+      <td>78</td>
+      <td>Orlando Miracle</td>
+      <td>1512.55</td>
+      <td>63</td>
+      <td>82.38%</td>
+      <td>17.62%</td>
+      <td>5.18</td>
+    </tr>
+    <tr>
+      <td>2000-07-25</td>
+      <td>Houston Comets</td>
+      <td>1756.09</td>
+      <td>79</td>
+      <td>Seattle Storm</td>
+      <td>1288.74</td>
+      <td>53</td>
+      <td>95.63%</td>
+      <td>4.37%</td>
+      <td>1.69</td>
+    </tr>
+    <tr>
+      <td>2000-07-26</td>
+      <td>Miami Sol</td>
+      <td>1344.82</td>
+      <td>62</td>
+      <td>@ Detroit Shock</td>
+      <td>1473.07</td>
+      <td>78</td>
+      <td>24.34%</td>
+      <td>75.66%</td>
+      <td>-7.39</td>
+    </tr>
+    <tr>
+      <td>2000-07-26</td>
+      <td>Washington Mystics</td>
+      <td>1439.25</td>
+      <td>80</td>
+      <td>@ Charlotte Sting</td>
+      <td>1406.78</td>
+      <td>87</td>
+      <td>44.80%</td>
+      <td>55.20%</td>
+      <td>-9.00</td>
+    </tr>
+    <tr>
+      <td>2000-07-26</td>
+      <td>Sacramento Monarchs</td>
+      <td>1601.18</td>
+      <td>73</td>
+      <td>@ Portland Fire</td>
+      <td>1372.12</td>
+      <td>70</td>
+      <td>71.56%</td>
+      <td>28.44%</td>
+      <td>3.74</td>
+    </tr>
+    <tr>
+      <td>2000-07-26</td>
+      <td>Utah Starzz</td>
+      <td>1532.74</td>
+      <td>84</td>
+      <td>Cleveland Rockers</td>
+      <td>1503.76</td>
+      <td>77</td>
+      <td>63.70%</td>
+      <td>36.30%</td>
+      <td>7.29</td>
+    </tr>
+    <tr>
+      <td>2000-07-26</td>
+      <td>Portland Fire</td>
+      <td>1372.12</td>
+      <td>70</td>
+      <td>Sacramento Monarchs</td>
+      <td>1601.18</td>
+      <td>73</td>
+      <td>28.44%</td>
+      <td>71.56%</td>
+      <td>-3.74</td>
+    </tr>
+    <tr>
+      <td>2000-07-26</td>
+      <td>Phoenix Mercury</td>
+      <td>1623.27</td>
+      <td>79</td>
+      <td>Indiana Fever</td>
+      <td>1352.86</td>
+      <td>65</td>
+      <td>87.57%</td>
+      <td>12.43%</td>
+      <td>3.53</td>
+    </tr>
+    <tr>
+      <td>2000-07-26</td>
+      <td>Detroit Shock</td>
+      <td>1473.07</td>
+      <td>78</td>
+      <td>Miami Sol</td>
+      <td>1344.82</td>
+      <td>62</td>
+      <td>75.66%</td>
+      <td>24.34%</td>
+      <td>7.39</td>
+    </tr>
+    <tr>
+      <td>2000-07-26</td>
+      <td>Cleveland Rockers</td>
+      <td>1503.76</td>
+      <td>77</td>
+      <td>@ Utah Starzz</td>
+      <td>1532.74</td>
+      <td>84</td>
+      <td>36.30%</td>
+      <td>63.70%</td>
+      <td>-7.29</td>
+    </tr>
+    <tr>
+      <td>2000-07-26</td>
+      <td>Charlotte Sting</td>
+      <td>1406.78</td>
+      <td>87</td>
+      <td>Washington Mystics</td>
+      <td>1439.25</td>
+      <td>80</td>
+      <td>55.20%</td>
+      <td>44.80%</td>
+      <td>8.99</td>
+    </tr>
+    <tr>
+      <td>2000-07-26</td>
+      <td>Indiana Fever</td>
+      <td>1352.86</td>
+      <td>65</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1623.27</td>
+      <td>79</td>
+      <td>12.43%</td>
+      <td>87.57%</td>
+      <td>-3.53</td>
+    </tr>
+    <tr>
+      <td>2000-07-27</td>
+      <td>Seattle Storm</td>
+      <td>1287.05</td>
+      <td>63</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1716.93</td>
+      <td>76</td>
+      <td>5.36%</td>
+      <td>94.64%</td>
+      <td>-1.47</td>
+    </tr>
+    <tr>
+      <td>2000-07-27</td>
+      <td>Sacramento Monarchs</td>
+      <td>1604.92</td>
+      <td>73</td>
+      <td>Orlando Miracle</td>
+      <td>1507.37</td>
+      <td>66</td>
+      <td>72.26%</td>
+      <td>27.74%</td>
+      <td>5.57</td>
+    </tr>
+    <tr>
+      <td>2000-07-27</td>
+      <td>Orlando Miracle</td>
+      <td>1507.37</td>
+      <td>66</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1604.92</td>
+      <td>73</td>
+      <td>27.74%</td>
+      <td>72.26%</td>
+      <td>-5.57</td>
+    </tr>
+    <tr>
+      <td>2000-07-27</td>
+      <td>Los Angeles Sparks</td>
+      <td>1716.93</td>
+      <td>76</td>
+      <td>Seattle Storm</td>
+      <td>1287.05</td>
+      <td>63</td>
+      <td>94.64%</td>
+      <td>5.36%</td>
+      <td>1.47</td>
+    </tr>
+    <tr>
+      <td>2000-07-28</td>
+      <td>Portland Fire</td>
+      <td>1368.38</td>
+      <td>58</td>
+      <td>Indiana Fever</td>
+      <td>1349.33</td>
+      <td>73</td>
+      <td>62.37%</td>
+      <td>37.63%</td>
+      <td>-18.33</td>
+    </tr>
+    <tr>
+      <td>2000-07-28</td>
+      <td>Cleveland Rockers</td>
+      <td>1496.47</td>
+      <td>80</td>
+      <td>Detroit Shock</td>
+      <td>1480.46</td>
+      <td>60</td>
+      <td>61.96%</td>
+      <td>38.04%</td>
+      <td>12.91</td>
+    </tr>
+    <tr>
+      <td>2000-07-28</td>
+      <td>Minnesota Lynx</td>
+      <td>1485.01</td>
+      <td>68</td>
+      <td>Miami Sol</td>
+      <td>1337.43</td>
+      <td>44</td>
+      <td>77.65%</td>
+      <td>22.35%</td>
+      <td>8.31</td>
+    </tr>
+    <tr>
+      <td>2000-07-28</td>
+      <td>Seattle Storm</td>
+      <td>1285.58</td>
+      <td>55</td>
+      <td>Phoenix Mercury</td>
+      <td>1626.80</td>
+      <td>65</td>
+      <td>17.24%</td>
+      <td>82.76%</td>
+      <td>-4.14</td>
+    </tr>
+    <tr>
+      <td>2000-07-28</td>
+      <td>Phoenix Mercury</td>
+      <td>1626.80</td>
+      <td>65</td>
+      <td>@ Seattle Storm</td>
+      <td>1285.58</td>
+      <td>55</td>
+      <td>82.76%</td>
+      <td>17.24%</td>
+      <td>4.14</td>
+    </tr>
+    <tr>
+      <td>2000-07-28</td>
+      <td>Indiana Fever</td>
+      <td>1349.33</td>
+      <td>73</td>
+      <td>@ Portland Fire</td>
+      <td>1368.38</td>
+      <td>58</td>
+      <td>37.63%</td>
+      <td>62.37%</td>
+      <td>18.34</td>
+    </tr>
+    <tr>
+      <td>2000-07-28</td>
+      <td>Miami Sol</td>
+      <td>1337.43</td>
+      <td>44</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1485.01</td>
+      <td>68</td>
+      <td>22.35%</td>
+      <td>77.65%</td>
+      <td>-8.31</td>
+    </tr>
+    <tr>
+      <td>2000-07-28</td>
+      <td>Detroit Shock</td>
+      <td>1480.46</td>
+      <td>60</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1496.47</td>
+      <td>80</td>
+      <td>38.04%</td>
+      <td>61.96%</td>
+      <td>-12.91</td>
+    </tr>
+    <tr>
+      <td>2000-07-28</td>
+      <td>New York Liberty</td>
+      <td>1596.02</td>
+      <td>66</td>
+      <td>@ Charlotte Sting</td>
+      <td>1415.77</td>
+      <td>56</td>
+      <td>65.52%</td>
+      <td>34.48%</td>
+      <td>8.28</td>
+    </tr>
+    <tr>
+      <td>2000-07-28</td>
+      <td>Charlotte Sting</td>
+      <td>1415.77</td>
+      <td>56</td>
+      <td>New York Liberty</td>
+      <td>1596.02</td>
+      <td>66</td>
+      <td>34.48%</td>
+      <td>65.52%</td>
+      <td>-8.27</td>
+    </tr>
+    <tr>
+      <td>2000-07-29</td>
+      <td>Charlotte Sting</td>
+      <td>1407.50</td>
+      <td>72</td>
+      <td>@ Detroit Shock</td>
+      <td>1467.55</td>
+      <td>75</td>
+      <td>32.27%</td>
+      <td>67.73%</td>
+      <td>-4.25</td>
+    </tr>
+    <tr>
+      <td>2000-07-29</td>
+      <td>Los Angeles Sparks</td>
+      <td>1718.40</td>
+      <td>84</td>
+      <td>@ Houston Comets</td>
+      <td>1757.78</td>
+      <td>74</td>
+      <td>34.92%</td>
+      <td>65.08%</td>
+      <td>15.62</td>
+    </tr>
+    <tr>
+      <td>2000-07-29</td>
+      <td>Indiana Fever</td>
+      <td>1367.67</td>
+      <td>71</td>
+      <td>@ Utah Starzz</td>
+      <td>1540.03</td>
+      <td>79</td>
+      <td>19.97%</td>
+      <td>80.03%</td>
+      <td>-4.29</td>
+    </tr>
+    <tr>
+      <td>2000-07-29</td>
+      <td>Utah Starzz</td>
+      <td>1540.03</td>
+      <td>79</td>
+      <td>Indiana Fever</td>
+      <td>1367.67</td>
+      <td>71</td>
+      <td>80.03%</td>
+      <td>19.97%</td>
+      <td>4.28</td>
+    </tr>
+    <tr>
+      <td>2000-07-29</td>
+      <td>Minnesota Lynx</td>
+      <td>1493.32</td>
+      <td>87</td>
+      <td>@ Washington Mystics</td>
+      <td>1430.25</td>
+      <td>85</td>
+      <td>49.18%</td>
+      <td>50.82%</td>
+      <td>5.45</td>
+    </tr>
+    <tr>
+      <td>2000-07-29</td>
+      <td>Cleveland Rockers</td>
+      <td>1509.38</td>
+      <td>67</td>
+      <td>@ New York Liberty</td>
+      <td>1604.30</td>
+      <td>81</td>
+      <td>28.05%</td>
+      <td>71.95%</td>
+      <td>-7.96</td>
+    </tr>
+    <tr>
+      <td>2000-07-29</td>
+      <td>Washington Mystics</td>
+      <td>1430.25</td>
+      <td>85</td>
+      <td>Minnesota Lynx</td>
+      <td>1493.32</td>
+      <td>87</td>
+      <td>50.82%</td>
+      <td>49.18%</td>
+      <td>-5.45</td>
+    </tr>
+    <tr>
+      <td>2000-07-29</td>
+      <td>New York Liberty</td>
+      <td>1604.30</td>
+      <td>81</td>
+      <td>Cleveland Rockers</td>
+      <td>1509.38</td>
+      <td>67</td>
+      <td>71.95%</td>
+      <td>28.05%</td>
+      <td>7.96</td>
+    </tr>
+    <tr>
+      <td>2000-07-29</td>
+      <td>Houston Comets</td>
+      <td>1757.78</td>
+      <td>74</td>
+      <td>Los Angeles Sparks</td>
+      <td>1718.40</td>
+      <td>84</td>
+      <td>65.08%</td>
+      <td>34.92%</td>
+      <td>-15.62</td>
+    </tr>
+    <tr>
+      <td>2000-07-29</td>
+      <td>Detroit Shock</td>
+      <td>1467.55</td>
+      <td>75</td>
+      <td>Charlotte Sting</td>
+      <td>1407.50</td>
+      <td>72</td>
+      <td>67.73%</td>
+      <td>32.27%</td>
+      <td>4.24</td>
+    </tr>
+    <tr>
+      <td>2000-07-30</td>
+      <td>Seattle Storm</td>
+      <td>1281.44</td>
+      <td>51</td>
+      <td>Miami Sol</td>
+      <td>1329.12</td>
+      <td>64</td>
+      <td>53.03%</td>
+      <td>46.97%</td>
+      <td>-14.51</td>
+    </tr>
+    <tr>
+      <td>2000-07-30</td>
+      <td>Portland Fire</td>
+      <td>1350.05</td>
+      <td>76</td>
+      <td>Orlando Miracle</td>
+      <td>1501.80</td>
+      <td>55</td>
+      <td>38.28%</td>
+      <td>61.72%</td>
+      <td>21.47</td>
+    </tr>
+    <tr>
+      <td>2000-07-30</td>
+      <td>Phoenix Mercury</td>
+      <td>1630.94</td>
+      <td>63</td>
+      <td>Sacramento Monarchs</td>
+      <td>1610.49</td>
+      <td>70</td>
+      <td>62.56%</td>
+      <td>37.44%</td>
+      <td>-12.57</td>
+    </tr>
+    <tr>
+      <td>2000-07-30</td>
+      <td>Sacramento Monarchs</td>
+      <td>1610.49</td>
+      <td>70</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1630.94</td>
+      <td>63</td>
+      <td>37.44%</td>
+      <td>62.56%</td>
+      <td>12.56</td>
+    </tr>
+    <tr>
+      <td>2000-07-30</td>
+      <td>Miami Sol</td>
+      <td>1329.12</td>
+      <td>64</td>
+      <td>@ Seattle Storm</td>
+      <td>1281.44</td>
+      <td>51</td>
+      <td>46.97%</td>
+      <td>53.03%</td>
+      <td>14.51</td>
+    </tr>
+    <tr>
+      <td>2000-07-30</td>
+      <td>Orlando Miracle</td>
+      <td>1501.80</td>
+      <td>55</td>
+      <td>@ Portland Fire</td>
+      <td>1350.05</td>
+      <td>76</td>
+      <td>61.72%</td>
+      <td>38.28%</td>
+      <td>-21.47</td>
+    </tr>
+    <tr>
+      <td>2000-07-31</td>
+      <td>Minnesota Lynx</td>
+      <td>1498.77</td>
+      <td>66</td>
+      <td>Los Angeles Sparks</td>
+      <td>1734.02</td>
+      <td>73</td>
+      <td>27.72%</td>
+      <td>72.28%</td>
+      <td>-5.56</td>
+    </tr>
+    <tr>
+      <td>2000-07-31</td>
+      <td>Detroit Shock</td>
+      <td>1471.79</td>
+      <td>65</td>
+      <td>Cleveland Rockers</td>
+      <td>1501.42</td>
+      <td>76</td>
+      <td>55.61%</td>
+      <td>44.39%</td>
+      <td>-14.00</td>
+    </tr>
+    <tr>
+      <td>2000-07-31</td>
+      <td>Cleveland Rockers</td>
+      <td>1501.42</td>
+      <td>76</td>
+      <td>@ Detroit Shock</td>
+      <td>1471.79</td>
+      <td>65</td>
+      <td>44.39%</td>
+      <td>55.61%</td>
+      <td>13.99</td>
+    </tr>
+    <tr>
+      <td>2000-07-31</td>
+      <td>Los Angeles Sparks</td>
+      <td>1734.02</td>
+      <td>73</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1498.77</td>
+      <td>66</td>
+      <td>72.28%</td>
+      <td>27.72%</td>
+      <td>5.57</td>
+    </tr>
+    <tr>
+      <td>2000-07-31</td>
+      <td>Charlotte Sting</td>
+      <td>1403.25</td>
+      <td>56</td>
+      <td>@ New York Liberty</td>
+      <td>1612.26</td>
+      <td>81</td>
+      <td>16.81%</td>
+      <td>83.19%</td>
+      <td>-6.38</td>
+    </tr>
+    <tr>
+      <td>2000-07-31</td>
+      <td>New York Liberty</td>
+      <td>1612.26</td>
+      <td>81</td>
+      <td>Charlotte Sting</td>
+      <td>1403.25</td>
+      <td>56</td>
+      <td>83.19%</td>
+      <td>16.81%</td>
+      <td>6.38</td>
+    </tr>
+    <tr>
+      <td>2000-08-01</td>
+      <td>Houston Comets</td>
+      <td>1742.16</td>
+      <td>68</td>
+      <td>Washington Mystics</td>
+      <td>1424.80</td>
+      <td>60</td>
+      <td>90.23%</td>
+      <td>9.77%</td>
+      <td>2.10</td>
+    </tr>
+    <tr>
+      <td>2000-08-01</td>
+      <td>Washington Mystics</td>
+      <td>1424.80</td>
+      <td>60</td>
+      <td>@ Houston Comets</td>
+      <td>1742.16</td>
+      <td>68</td>
+      <td>9.77%</td>
+      <td>90.23%</td>
+      <td>-2.10</td>
+    </tr>
+    <tr>
+      <td>2000-08-01</td>
+      <td>Miami Sol</td>
+      <td>1343.63</td>
+      <td>50</td>
+      <td>@ Portland Fire</td>
+      <td>1371.52</td>
+      <td>54</td>
+      <td>36.44%</td>
+      <td>63.56%</td>
+      <td>-5.53</td>
+    </tr>
+    <tr>
+      <td>2000-08-01</td>
+      <td>Phoenix Mercury</td>
+      <td>1618.37</td>
+      <td>84</td>
+      <td>Orlando Miracle</td>
+      <td>1480.33</td>
+      <td>77</td>
+      <td>76.68%</td>
+      <td>23.32%</td>
+      <td>4.69</td>
+    </tr>
+    <tr>
+      <td>2000-08-01</td>
+      <td>Portland Fire</td>
+      <td>1371.52</td>
+      <td>54</td>
+      <td>Miami Sol</td>
+      <td>1343.63</td>
+      <td>50</td>
+      <td>63.56%</td>
+      <td>36.44%</td>
+      <td>5.53</td>
+    </tr>
+    <tr>
+      <td>2000-08-01</td>
+      <td>Indiana Fever</td>
+      <td>1363.38</td>
+      <td>60</td>
+      <td>@ Seattle Storm</td>
+      <td>1266.93</td>
+      <td>66</td>
+      <td>53.98%</td>
+      <td>46.02%</td>
+      <td>-10.04</td>
+    </tr>
+    <tr>
+      <td>2000-08-01</td>
+      <td>Seattle Storm</td>
+      <td>1266.93</td>
+      <td>66</td>
+      <td>Indiana Fever</td>
+      <td>1363.38</td>
+      <td>60</td>
+      <td>46.02%</td>
+      <td>53.98%</td>
+      <td>10.04</td>
+    </tr>
+    <tr>
+      <td>2000-08-01</td>
+      <td>Orlando Miracle</td>
+      <td>1480.33</td>
+      <td>77</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1618.37</td>
+      <td>84</td>
+      <td>23.32%</td>
+      <td>76.68%</td>
+      <td>-4.68</td>
+    </tr>
+    <tr>
+      <td>2000-08-02</td>
+      <td>Detroit Shock</td>
+      <td>1457.79</td>
+      <td>81</td>
+      <td>Los Angeles Sparks</td>
+      <td>1739.59</td>
+      <td>84</td>
+      <td>22.68%</td>
+      <td>77.32%</td>
+      <td>-2.98</td>
+    </tr>
+    <tr>
+      <td>2000-08-02</td>
+      <td>Minnesota Lynx</td>
+      <td>1493.21</td>
+      <td>62</td>
+      <td>Utah Starzz</td>
+      <td>1544.31</td>
+      <td>72</td>
+      <td>52.54%</td>
+      <td>47.46%</td>
+      <td>-12.61</td>
+    </tr>
+    <tr>
+      <td>2000-08-02</td>
+      <td>Sacramento Monarchs</td>
+      <td>1623.05</td>
+      <td>73</td>
+      <td>Miami Sol</td>
+      <td>1338.10</td>
+      <td>55</td>
+      <td>88.45%</td>
+      <td>11.55%</td>
+      <td>3.72</td>
+    </tr>
+    <tr>
+      <td>2000-08-02</td>
+      <td>Los Angeles Sparks</td>
+      <td>1739.59</td>
+      <td>84</td>
+      <td>@ Detroit Shock</td>
+      <td>1457.79</td>
+      <td>81</td>
+      <td>77.32%</td>
+      <td>22.68%</td>
+      <td>2.98</td>
+    </tr>
+    <tr>
+      <td>2000-08-02</td>
+      <td>Utah Starzz</td>
+      <td>1544.31</td>
+      <td>72</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1493.21</td>
+      <td>62</td>
+      <td>47.46%</td>
+      <td>52.54%</td>
+      <td>12.61</td>
+    </tr>
+    <tr>
+      <td>2000-08-02</td>
+      <td>Miami Sol</td>
+      <td>1338.10</td>
+      <td>55</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1623.05</td>
+      <td>73</td>
+      <td>11.55%</td>
+      <td>88.45%</td>
+      <td>-3.72</td>
+    </tr>
+    <tr>
+      <td>2000-08-03</td>
+      <td>Indiana Fever</td>
+      <td>1353.34</td>
+      <td>71</td>
+      <td>Washington Mystics</td>
+      <td>1422.70</td>
+      <td>75</td>
+      <td>49.91%</td>
+      <td>50.09%</td>
+      <td>-7.57</td>
+    </tr>
+    <tr>
+      <td>2000-08-03</td>
+      <td>Utah Starzz</td>
+      <td>1556.92</td>
+      <td>71</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1515.41</td>
+      <td>74</td>
+      <td>46.09%</td>
+      <td>53.91%</td>
+      <td>-6.06</td>
+    </tr>
+    <tr>
+      <td>2000-08-03</td>
+      <td>Washington Mystics</td>
+      <td>1422.70</td>
+      <td>75</td>
+      <td>@ Indiana Fever</td>
+      <td>1353.34</td>
+      <td>71</td>
+      <td>50.09%</td>
+      <td>49.91%</td>
+      <td>7.58</td>
+    </tr>
+    <tr>
+      <td>2000-08-03</td>
+      <td>Seattle Storm</td>
+      <td>1276.97</td>
+      <td>63</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1623.06</td>
+      <td>85</td>
+      <td>8.41%</td>
+      <td>91.59%</td>
+      <td>-3.00</td>
+    </tr>
+    <tr>
+      <td>2000-08-03</td>
+      <td>Cleveland Rockers</td>
+      <td>1515.41</td>
+      <td>74</td>
+      <td>Utah Starzz</td>
+      <td>1556.92</td>
+      <td>71</td>
+      <td>53.91%</td>
+      <td>46.09%</td>
+      <td>6.06</td>
+    </tr>
+    <tr>
+      <td>2000-08-03</td>
+      <td>Phoenix Mercury</td>
+      <td>1623.06</td>
+      <td>85</td>
+      <td>Seattle Storm</td>
+      <td>1276.97</td>
+      <td>63</td>
+      <td>91.59%</td>
+      <td>8.41%</td>
+      <td>2.99</td>
+    </tr>
+    <tr>
+      <td>2000-08-04</td>
+      <td>Minnesota Lynx</td>
+      <td>1480.60</td>
+      <td>63</td>
+      <td>Sacramento Monarchs</td>
+      <td>1626.77</td>
+      <td>74</td>
+      <td>39.04%</td>
+      <td>60.96%</td>
+      <td>-9.83</td>
+    </tr>
+    <tr>
+      <td>2000-08-04</td>
+      <td>Miami Sol</td>
+      <td>1334.38</td>
+      <td>60</td>
+      <td>Charlotte Sting</td>
+      <td>1396.87</td>
+      <td>50</td>
+      <td>50.90%</td>
+      <td>49.10%</td>
+      <td>11.79</td>
+    </tr>
+    <tr>
+      <td>2000-08-04</td>
+      <td>New York Liberty</td>
+      <td>1618.64</td>
+      <td>70</td>
+      <td>Orlando Miracle</td>
+      <td>1475.65</td>
+      <td>57</td>
+      <td>77.19%</td>
+      <td>22.81%</td>
+      <td>6.25</td>
+    </tr>
+    <tr>
+      <td>2000-08-04</td>
+      <td>Portland Fire</td>
+      <td>1377.05</td>
+      <td>56</td>
+      <td>Houston Comets</td>
+      <td>1744.26</td>
+      <td>81</td>
+      <td>15.21%</td>
+      <td>84.79%</td>
+      <td>-5.77</td>
+    </tr>
+    <tr>
+      <td>2000-08-04</td>
+      <td>Houston Comets</td>
+      <td>1744.26</td>
+      <td>81</td>
+      <td>@ Portland Fire</td>
+      <td>1377.05</td>
+      <td>56</td>
+      <td>84.79%</td>
+      <td>15.21%</td>
+      <td>5.77</td>
+    </tr>
+    <tr>
+      <td>2000-08-04</td>
+      <td>Orlando Miracle</td>
+      <td>1475.65</td>
+      <td>57</td>
+      <td>@ New York Liberty</td>
+      <td>1618.64</td>
+      <td>70</td>
+      <td>22.81%</td>
+      <td>77.19%</td>
+      <td>-6.25</td>
+    </tr>
+    <tr>
+      <td>2000-08-04</td>
+      <td>Sacramento Monarchs</td>
+      <td>1626.77</td>
+      <td>74</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1480.60</td>
+      <td>63</td>
+      <td>60.96%</td>
+      <td>39.04%</td>
+      <td>9.83</td>
+    </tr>
+    <tr>
+      <td>2000-08-04</td>
+      <td>Charlotte Sting</td>
+      <td>1396.87</td>
+      <td>50</td>
+      <td>@ Miami Sol</td>
+      <td>1334.38</td>
+      <td>60</td>
+      <td>49.10%</td>
+      <td>50.90%</td>
+      <td>-11.78</td>
+    </tr>
+    <tr>
+      <td>2000-08-04</td>
+      <td>Cleveland Rockers</td>
+      <td>1521.47</td>
+      <td>75</td>
+      <td>@ Indiana Fever</td>
+      <td>1345.77</td>
+      <td>87</td>
+      <td>64.93%</td>
+      <td>35.07%</td>
+      <td>-17.07</td>
+    </tr>
+    <tr>
+      <td>2000-08-04</td>
+      <td>Detroit Shock</td>
+      <td>1454.81</td>
+      <td>72</td>
+      <td>@ Washington Mystics</td>
+      <td>1430.28</td>
+      <td>96</td>
+      <td>43.67%</td>
+      <td>56.33%</td>
+      <td>-16.24</td>
+    </tr>
+    <tr>
+      <td>2000-08-04</td>
+      <td>Indiana Fever</td>
+      <td>1345.77</td>
+      <td>87</td>
+      <td>Cleveland Rockers</td>
+      <td>1521.47</td>
+      <td>75</td>
+      <td>35.07%</td>
+      <td>64.93%</td>
+      <td>17.07</td>
+    </tr>
+    <tr>
+      <td>2000-08-04</td>
+      <td>Washington Mystics</td>
+      <td>1430.28</td>
+      <td>96</td>
+      <td>Detroit Shock</td>
+      <td>1454.81</td>
+      <td>72</td>
+      <td>56.33%</td>
+      <td>43.67%</td>
+      <td>16.24</td>
+    </tr>
+    <tr>
+      <td>2000-08-05</td>
+      <td>Utah Starzz</td>
+      <td>1550.86</td>
+      <td>82</td>
+      <td>@ Charlotte Sting</td>
+      <td>1385.09</td>
+      <td>84</td>
+      <td>63.61%</td>
+      <td>36.39%</td>
+      <td>-6.82</td>
+    </tr>
+    <tr>
+      <td>2000-08-05</td>
+      <td>Charlotte Sting</td>
+      <td>1385.09</td>
+      <td>84</td>
+      <td>Utah Starzz</td>
+      <td>1550.86</td>
+      <td>82</td>
+      <td>36.39%</td>
+      <td>63.61%</td>
+      <td>6.83</td>
+    </tr>
+    <tr>
+      <td>2000-08-05</td>
+      <td>Phoenix Mercury</td>
+      <td>1626.05</td>
+      <td>63</td>
+      <td>Los Angeles Sparks</td>
+      <td>1742.57</td>
+      <td>77</td>
+      <td>43.17%</td>
+      <td>56.83%</td>
+      <td>-12.26</td>
+    </tr>
+    <tr>
+      <td>2000-08-05</td>
+      <td>Los Angeles Sparks</td>
+      <td>1742.57</td>
+      <td>77</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1626.05</td>
+      <td>63</td>
+      <td>56.83%</td>
+      <td>43.17%</td>
+      <td>12.26</td>
+    </tr>
+    <tr>
+      <td>2000-08-06</td>
+      <td>Washington Mystics</td>
+      <td>1446.52</td>
+      <td>60</td>
+      <td>@ Cleveland Rockers</td>
+      <td>1504.40</td>
+      <td>77</td>
+      <td>32.54%</td>
+      <td>67.46%</td>
+      <td>-10.19</td>
+    </tr>
+    <tr>
+      <td>2000-08-06</td>
+      <td>New York Liberty</td>
+      <td>1624.89</td>
+      <td>41</td>
+      <td>@ Miami Sol</td>
+      <td>1346.17</td>
+      <td>57</td>
+      <td>77.01%</td>
+      <td>22.99%</td>
+      <td>-23.38</td>
+    </tr>
+    <tr>
+      <td>2000-08-06</td>
+      <td>Indiana Fever</td>
+      <td>1362.84</td>
+      <td>75</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1470.77</td>
+      <td>80</td>
+      <td>26.56%</td>
+      <td>73.44%</td>
+      <td>-4.51</td>
+    </tr>
+    <tr>
+      <td>2000-08-06</td>
+      <td>Detroit Shock</td>
+      <td>1438.57</td>
+      <td>63</td>
+      <td>@ Orlando Miracle</td>
+      <td>1469.40</td>
+      <td>92</td>
+      <td>36.05%</td>
+      <td>63.95%</td>
+      <td>-14.73</td>
+    </tr>
+    <tr>
+      <td>2000-08-06</td>
+      <td>Houston Comets</td>
+      <td>1750.03</td>
+      <td>76</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1636.60</td>
+      <td>63</td>
+      <td>56.40%</td>
+      <td>43.60%</td>
+      <td>11.93</td>
+    </tr>
+    <tr>
+      <td>2000-08-06</td>
+      <td>Portland Fire</td>
+      <td>1371.28</td>
+      <td>58</td>
+      <td>@ Seattle Storm</td>
+      <td>1273.97</td>
+      <td>66</td>
+      <td>54.10%</td>
+      <td>45.90%</td>
+      <td>-11.62</td>
+    </tr>
+    <tr>
+      <td>2000-08-06</td>
+      <td>Cleveland Rockers</td>
+      <td>1504.40</td>
+      <td>77</td>
+      <td>Washington Mystics</td>
+      <td>1446.52</td>
+      <td>60</td>
+      <td>67.46%</td>
+      <td>32.54%</td>
+      <td>10.19</td>
+    </tr>
+    <tr>
+      <td>2000-08-06</td>
+      <td>Miami Sol</td>
+      <td>1346.17</td>
+      <td>57</td>
+      <td>New York Liberty</td>
+      <td>1624.89</td>
+      <td>41</td>
+      <td>22.99%</td>
+      <td>77.01%</td>
+      <td>23.38</td>
+    </tr>
+    <tr>
+      <td>2000-08-06</td>
+      <td>Minnesota Lynx</td>
+      <td>1470.77</td>
+      <td>80</td>
+      <td>Indiana Fever</td>
+      <td>1362.84</td>
+      <td>75</td>
+      <td>73.44%</td>
+      <td>26.56%</td>
+      <td>4.51</td>
+    </tr>
+    <tr>
+      <td>2000-08-06</td>
+      <td>Orlando Miracle</td>
+      <td>1469.40</td>
+      <td>92</td>
+      <td>Detroit Shock</td>
+      <td>1438.57</td>
+      <td>63</td>
+      <td>63.95%</td>
+      <td>36.05%</td>
+      <td>14.74</td>
+    </tr>
+    <tr>
+      <td>2000-08-06</td>
+      <td>Seattle Storm</td>
+      <td>1273.97</td>
+      <td>66</td>
+      <td>Portland Fire</td>
+      <td>1371.28</td>
+      <td>58</td>
+      <td>45.90%</td>
+      <td>54.10%</td>
+      <td>11.62</td>
+    </tr>
+    <tr>
+      <td>2000-08-06</td>
+      <td>Sacramento Monarchs</td>
+      <td>1636.60</td>
+      <td>63</td>
+      <td>Houston Comets</td>
+      <td>1750.03</td>
+      <td>76</td>
+      <td>43.60%</td>
+      <td>56.40%</td>
+      <td>-11.94</td>
+    </tr>
+    <tr>
+      <td>2000-08-07</td>
+      <td>Orlando Miracle</td>
+      <td>1484.14</td>
+      <td>65</td>
+      <td>Washington Mystics</td>
+      <td>1436.33</td>
+      <td>57</td>
+      <td>66.17%</td>
+      <td>33.83%</td>
+      <td>7.26</td>
+    </tr>
+    <tr>
+      <td>2000-08-07</td>
+      <td>Phoenix Mercury</td>
+      <td>1613.79</td>
+      <td>54</td>
+      <td>Houston Comets</td>
+      <td>1761.96</td>
+      <td>71</td>
+      <td>38.76%</td>
+      <td>61.24%</td>
+      <td>-12.13</td>
+    </tr>
+    <tr>
+      <td>2000-08-07</td>
+      <td>Houston Comets</td>
+      <td>1761.96</td>
+      <td>71</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1613.79</td>
+      <td>54</td>
+      <td>61.24%</td>
+      <td>38.76%</td>
+      <td>12.13</td>
+    </tr>
+    <tr>
+      <td>2000-08-07</td>
+      <td>Washington Mystics</td>
+      <td>1436.33</td>
+      <td>57</td>
+      <td>@ Orlando Miracle</td>
+      <td>1484.14</td>
+      <td>65</td>
+      <td>33.83%</td>
+      <td>66.17%</td>
+      <td>-7.26</td>
+    </tr>
+    <tr>
+      <td>2000-08-07</td>
+      <td>Detroit Shock</td>
+      <td>1423.84</td>
+      <td>74</td>
+      <td>@ Indiana Fever</td>
+      <td>1358.33</td>
+      <td>63</td>
+      <td>49.53%</td>
+      <td>50.47%</td>
+      <td>12.70</td>
+    </tr>
+    <tr>
+      <td>2000-08-07</td>
+      <td>Portland Fire</td>
+      <td>1359.66</td>
+      <td>73</td>
+      <td>@ Utah Starzz</td>
+      <td>1544.04</td>
+      <td>83</td>
+      <td>18.89%</td>
+      <td>81.11%</td>
+      <td>-4.53</td>
+    </tr>
+    <tr>
+      <td>2000-08-07</td>
+      <td>Indiana Fever</td>
+      <td>1358.33</td>
+      <td>63</td>
+      <td>Detroit Shock</td>
+      <td>1423.84</td>
+      <td>74</td>
+      <td>50.47%</td>
+      <td>49.53%</td>
+      <td>-12.71</td>
+    </tr>
+    <tr>
+      <td>2000-08-07</td>
+      <td>Utah Starzz</td>
+      <td>1544.04</td>
+      <td>83</td>
+      <td>Portland Fire</td>
+      <td>1359.66</td>
+      <td>73</td>
+      <td>81.11%</td>
+      <td>18.89%</td>
+      <td>4.53</td>
+    </tr>
+    <tr>
+      <td>2000-08-08</td>
+      <td>Minnesota Lynx</td>
+      <td>1475.28</td>
+      <td>76</td>
+      <td>@ Charlotte Sting</td>
+      <td>1391.92</td>
+      <td>67</td>
+      <td>52.10%</td>
+      <td>47.90%</td>
+      <td>10.90</td>
+    </tr>
+    <tr>
+      <td>2000-08-08</td>
+      <td>Los Angeles Sparks</td>
+      <td>1754.83</td>
+      <td>60</td>
+      <td>@ Seattle Storm</td>
+      <td>1285.59</td>
+      <td>52</td>
+      <td>90.93%</td>
+      <td>9.07%</td>
+      <td>1.94</td>
+    </tr>
+    <tr>
+      <td>2000-08-08</td>
+      <td>Seattle Storm</td>
+      <td>1285.59</td>
+      <td>52</td>
+      <td>Los Angeles Sparks</td>
+      <td>1754.83</td>
+      <td>60</td>
+      <td>9.07%</td>
+      <td>90.93%</td>
+      <td>-1.95</td>
+    </tr>
+    <tr>
+      <td>2000-08-08</td>
+      <td>New York Liberty</td>
+      <td>1601.51</td>
+      <td>57</td>
+      <td>Cleveland Rockers</td>
+      <td>1514.59</td>
+      <td>44</td>
+      <td>71.01%</td>
+      <td>28.99%</td>
+      <td>7.93</td>
+    </tr>
+    <tr>
+      <td>2000-08-08</td>
+      <td>Charlotte Sting</td>
+      <td>1391.92</td>
+      <td>67</td>
+      <td>Minnesota Lynx</td>
+      <td>1475.28</td>
+      <td>76</td>
+      <td>47.90%</td>
+      <td>52.10%</td>
+      <td>-10.91</td>
+    </tr>
+    <tr>
+      <td>2000-08-08</td>
+      <td>Cleveland Rockers</td>
+      <td>1514.59</td>
+      <td>44</td>
+      <td>@ New York Liberty</td>
+      <td>1601.51</td>
+      <td>57</td>
+      <td>28.99%</td>
+      <td>71.01%</td>
+      <td>-7.94</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>New York Liberty</td>
+      <td>1609.44</td>
+      <td>63</td>
+      <td>@ Detroit Shock</td>
+      <td>1436.54</td>
+      <td>66</td>
+      <td>64.56%</td>
+      <td>35.44%</td>
+      <td>-8.49</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>Minnesota Lynx</td>
+      <td>1486.18</td>
+      <td>64</td>
+      <td>@ Houston Comets</td>
+      <td>1774.09</td>
+      <td>77</td>
+      <td>11.37%</td>
+      <td>88.63%</td>
+      <td>-3.11</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>Charlotte Sting</td>
+      <td>1381.01</td>
+      <td>51</td>
+      <td>@ Indiana Fever</td>
+      <td>1345.62</td>
+      <td>67</td>
+      <td>45.21%</td>
+      <td>54.79%</td>
+      <td>-13.73</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>Phoenix Mercury</td>
+      <td>1601.66</td>
+      <td>68</td>
+      <td>@ Portland Fire</td>
+      <td>1355.13</td>
+      <td>60</td>
+      <td>73.56%</td>
+      <td>26.44%</td>
+      <td>5.68</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>Seattle Storm</td>
+      <td>1283.64</td>
+      <td>46</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1624.66</td>
+      <td>79</td>
+      <td>8.64%</td>
+      <td>91.36%</td>
+      <td>-3.76</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>Orlando Miracle</td>
+      <td>1491.40</td>
+      <td>64</td>
+      <td>@ Miami Sol</td>
+      <td>1369.55</td>
+      <td>68</td>
+      <td>57.58%</td>
+      <td>42.42%</td>
+      <td>-8.74</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>Washington Mystics</td>
+      <td>1429.07</td>
+      <td>60</td>
+      <td>Cleveland Rockers</td>
+      <td>1506.65</td>
+      <td>48</td>
+      <td>48.73%</td>
+      <td>51.27%</td>
+      <td>13.48</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>Utah Starzz</td>
+      <td>1548.57</td>
+      <td>89</td>
+      <td>Los Angeles Sparks</td>
+      <td>1756.77</td>
+      <td>77</td>
+      <td>30.94%</td>
+      <td>69.06%</td>
+      <td>18.16</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>Sacramento Monarchs</td>
+      <td>1624.66</td>
+      <td>79</td>
+      <td>Seattle Storm</td>
+      <td>1283.64</td>
+      <td>46</td>
+      <td>91.36%</td>
+      <td>8.64%</td>
+      <td>3.77</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>Portland Fire</td>
+      <td>1355.13</td>
+      <td>60</td>
+      <td>Phoenix Mercury</td>
+      <td>1601.66</td>
+      <td>68</td>
+      <td>26.44%</td>
+      <td>73.56%</td>
+      <td>-5.68</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>Miami Sol</td>
+      <td>1369.55</td>
+      <td>68</td>
+      <td>Orlando Miracle</td>
+      <td>1491.40</td>
+      <td>64</td>
+      <td>42.42%</td>
+      <td>57.58%</td>
+      <td>8.74</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>Indiana Fever</td>
+      <td>1345.62</td>
+      <td>67</td>
+      <td>Charlotte Sting</td>
+      <td>1381.01</td>
+      <td>51</td>
+      <td>54.79%</td>
+      <td>45.21%</td>
+      <td>13.73</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>Houston Comets</td>
+      <td>1774.09</td>
+      <td>77</td>
+      <td>Minnesota Lynx</td>
+      <td>1486.18</td>
+      <td>64</td>
+      <td>88.63%</td>
+      <td>11.37%</td>
+      <td>3.11</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>Detroit Shock</td>
+      <td>1436.54</td>
+      <td>66</td>
+      <td>New York Liberty</td>
+      <td>1609.44</td>
+      <td>63</td>
+      <td>35.44%</td>
+      <td>64.56%</td>
+      <td>8.49</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>Los Angeles Sparks</td>
+      <td>1756.77</td>
+      <td>77</td>
+      <td>@ Utah Starzz</td>
+      <td>1548.57</td>
+      <td>89</td>
+      <td>69.06%</td>
+      <td>30.94%</td>
+      <td>-18.15</td>
+    </tr>
+    <tr>
+      <td>2000-08-09</td>
+      <td>Cleveland Rockers</td>
+      <td>1506.65</td>
+      <td>48</td>
+      <td>@ Washington Mystics</td>
+      <td>1429.07</td>
+      <td>60</td>
+      <td>51.27%</td>
+      <td>48.73%</td>
+      <td>-13.48</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

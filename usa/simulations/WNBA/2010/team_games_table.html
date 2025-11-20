@@ -1,0 +1,4993 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Atlanta Dream">Atlanta Dream</option><option value="Chicago Sky">Chicago Sky</option><option value="Connecticut Sun">Connecticut Sun</option><option value="Indiana Fever">Indiana Fever</option><option value="Los Angeles Sparks">Los Angeles Sparks</option><option value="Minnesota Lynx">Minnesota Lynx</option><option value="New York Liberty">New York Liberty</option><option value="Phoenix Mercury">Phoenix Mercury</option><option value="San Antonio Silver Stars">San Antonio Silver Stars</option><option value="Seattle Storm">Seattle Storm</option><option value="Tulsa Shock">Tulsa Shock</option><option value="Washington Mystics">Washington Mystics</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2010-05-15</td>
+      <td>Connecticut Sun</td>
+      <td>1491.47</td>
+      <td>74</td>
+      <td>Chicago Sky</td>
+      <td>1472.77</td>
+      <td>61</td>
+      <td>61.40%</td>
+      <td>38.60%</td>
+      <td>13.89</td>
+    </tr>
+    <tr>
+      <td>2010-05-15</td>
+      <td>Atlanta Dream</td>
+      <td>1495.11</td>
+      <td>75</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1486.76</td>
+      <td>70</td>
+      <td>42.34%</td>
+      <td>57.66%</td>
+      <td>12.86</td>
+    </tr>
+    <tr>
+      <td>2010-05-15</td>
+      <td>Chicago Sky</td>
+      <td>1472.77</td>
+      <td>61</td>
+      <td>@ Connecticut Sun</td>
+      <td>1491.47</td>
+      <td>74</td>
+      <td>38.60%</td>
+      <td>61.40%</td>
+      <td>-13.89</td>
+    </tr>
+    <tr>
+      <td>2010-05-15</td>
+      <td>Los Angeles Sparks</td>
+      <td>1521.34</td>
+      <td>77</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1547.05</td>
+      <td>78</td>
+      <td>37.64%</td>
+      <td>62.36%</td>
+      <td>-3.75</td>
+    </tr>
+    <tr>
+      <td>2010-05-15</td>
+      <td>Washington Mystics</td>
+      <td>1474.61</td>
+      <td>72</td>
+      <td>@ Indiana Fever</td>
+      <td>1523.59</td>
+      <td>65</td>
+      <td>34.56%</td>
+      <td>65.44%</td>
+      <td>17.28</td>
+    </tr>
+    <tr>
+      <td>2010-05-15</td>
+      <td>Minnesota Lynx</td>
+      <td>1468.80</td>
+      <td>80</td>
+      <td>@ Tulsa Shock</td>
+      <td>1526.40</td>
+      <td>74</td>
+      <td>33.44%</td>
+      <td>66.56%</td>
+      <td>16.27</td>
+    </tr>
+    <tr>
+      <td>2010-05-15</td>
+      <td>Phoenix Mercury</td>
+      <td>1547.05</td>
+      <td>78</td>
+      <td>Los Angeles Sparks</td>
+      <td>1521.34</td>
+      <td>77</td>
+      <td>62.36%</td>
+      <td>37.64%</td>
+      <td>3.76</td>
+    </tr>
+    <tr>
+      <td>2010-05-15</td>
+      <td>Indiana Fever</td>
+      <td>1523.59</td>
+      <td>65</td>
+      <td>Washington Mystics</td>
+      <td>1474.61</td>
+      <td>72</td>
+      <td>65.44%</td>
+      <td>34.56%</td>
+      <td>-17.28</td>
+    </tr>
+    <tr>
+      <td>2010-05-15</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1486.76</td>
+      <td>70</td>
+      <td>Atlanta Dream</td>
+      <td>1495.11</td>
+      <td>75</td>
+      <td>57.66%</td>
+      <td>42.34%</td>
+      <td>-12.87</td>
+    </tr>
+    <tr>
+      <td>2010-05-15</td>
+      <td>Tulsa Shock</td>
+      <td>1526.40</td>
+      <td>74</td>
+      <td>Minnesota Lynx</td>
+      <td>1468.80</td>
+      <td>80</td>
+      <td>66.56%</td>
+      <td>33.44%</td>
+      <td>-16.27</td>
+    </tr>
+    <tr>
+      <td>2010-05-16</td>
+      <td>Washington Mystics</td>
+      <td>1491.89</td>
+      <td>87</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1485.07</td>
+      <td>76</td>
+      <td>42.13%</td>
+      <td>57.87%</td>
+      <td>19.15</td>
+    </tr>
+    <tr>
+      <td>2010-05-16</td>
+      <td>Chicago Sky</td>
+      <td>1458.88</td>
+      <td>82</td>
+      <td>@ New York Liberty</td>
+      <td>1481.83</td>
+      <td>85</td>
+      <td>38.02%</td>
+      <td>61.98%</td>
+      <td>-6.57</td>
+    </tr>
+    <tr>
+      <td>2010-05-16</td>
+      <td>Los Angeles Sparks</td>
+      <td>1517.59</td>
+      <td>67</td>
+      <td>@ Seattle Storm</td>
+      <td>1510.27</td>
+      <td>81</td>
+      <td>42.20%</td>
+      <td>57.80%</td>
+      <td>-15.76</td>
+    </tr>
+    <tr>
+      <td>2010-05-16</td>
+      <td>Atlanta Dream</td>
+      <td>1507.97</td>
+      <td>66</td>
+      <td>Indiana Fever</td>
+      <td>1506.31</td>
+      <td>62</td>
+      <td>59.06%</td>
+      <td>40.94%</td>
+      <td>8.17</td>
+    </tr>
+    <tr>
+      <td>2010-05-16</td>
+      <td>Indiana Fever</td>
+      <td>1506.31</td>
+      <td>62</td>
+      <td>@ Atlanta Dream</td>
+      <td>1507.97</td>
+      <td>66</td>
+      <td>40.94%</td>
+      <td>59.06%</td>
+      <td>-8.18</td>
+    </tr>
+    <tr>
+      <td>2010-05-16</td>
+      <td>Minnesota Lynx</td>
+      <td>1485.07</td>
+      <td>76</td>
+      <td>Washington Mystics</td>
+      <td>1491.89</td>
+      <td>87</td>
+      <td>57.87%</td>
+      <td>42.13%</td>
+      <td>-19.15</td>
+    </tr>
+    <tr>
+      <td>2010-05-16</td>
+      <td>New York Liberty</td>
+      <td>1481.83</td>
+      <td>85</td>
+      <td>Chicago Sky</td>
+      <td>1458.88</td>
+      <td>82</td>
+      <td>61.98%</td>
+      <td>38.02%</td>
+      <td>6.57</td>
+    </tr>
+    <tr>
+      <td>2010-05-16</td>
+      <td>Seattle Storm</td>
+      <td>1510.27</td>
+      <td>81</td>
+      <td>Los Angeles Sparks</td>
+      <td>1517.59</td>
+      <td>67</td>
+      <td>57.80%</td>
+      <td>42.20%</td>
+      <td>15.76</td>
+    </tr>
+    <tr>
+      <td>2010-05-19</td>
+      <td>Seattle Storm</td>
+      <td>1526.03</td>
+      <td>79</td>
+      <td>Minnesota Lynx</td>
+      <td>1465.92</td>
+      <td>76</td>
+      <td>66.88%</td>
+      <td>33.12%</td>
+      <td>5.72</td>
+    </tr>
+    <tr>
+      <td>2010-05-19</td>
+      <td>Minnesota Lynx</td>
+      <td>1465.92</td>
+      <td>76</td>
+      <td>@ Seattle Storm</td>
+      <td>1526.03</td>
+      <td>79</td>
+      <td>33.12%</td>
+      <td>66.88%</td>
+      <td>-5.73</td>
+    </tr>
+    <tr>
+      <td>2010-05-20</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1473.89</td>
+      <td>83</td>
+      <td>@ Tulsa Shock</td>
+      <td>1510.13</td>
+      <td>74</td>
+      <td>36.23%</td>
+      <td>63.77%</td>
+      <td>19.10</td>
+    </tr>
+    <tr>
+      <td>2010-05-20</td>
+      <td>Tulsa Shock</td>
+      <td>1510.13</td>
+      <td>74</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1473.89</td>
+      <td>83</td>
+      <td>63.77%</td>
+      <td>36.23%</td>
+      <td>-19.09</td>
+    </tr>
+    <tr>
+      <td>2010-05-21</td>
+      <td>New York Liberty</td>
+      <td>1488.40</td>
+      <td>61</td>
+      <td>@ Washington Mystics</td>
+      <td>1511.04</td>
+      <td>77</td>
+      <td>38.06%</td>
+      <td>61.94%</td>
+      <td>-15.19</td>
+    </tr>
+    <tr>
+      <td>2010-05-21</td>
+      <td>Connecticut Sun</td>
+      <td>1505.36</td>
+      <td>82</td>
+      <td>@ Atlanta Dream</td>
+      <td>1516.14</td>
+      <td>97</td>
+      <td>39.68%</td>
+      <td>60.32%</td>
+      <td>-15.34</td>
+    </tr>
+    <tr>
+      <td>2010-05-21</td>
+      <td>Washington Mystics</td>
+      <td>1511.04</td>
+      <td>77</td>
+      <td>New York Liberty</td>
+      <td>1488.40</td>
+      <td>61</td>
+      <td>61.94%</td>
+      <td>38.06%</td>
+      <td>15.20</td>
+    </tr>
+    <tr>
+      <td>2010-05-21</td>
+      <td>Atlanta Dream</td>
+      <td>1516.14</td>
+      <td>97</td>
+      <td>Connecticut Sun</td>
+      <td>1505.36</td>
+      <td>82</td>
+      <td>60.32%</td>
+      <td>39.68%</td>
+      <td>15.34</td>
+    </tr>
+    <tr>
+      <td>2010-05-22</td>
+      <td>Chicago Sky</td>
+      <td>1452.31</td>
+      <td>86</td>
+      <td>Indiana Fever</td>
+      <td>1498.13</td>
+      <td>92</td>
+      <td>52.32%</td>
+      <td>47.68%</td>
+      <td>-12.79</td>
+    </tr>
+    <tr>
+      <td>2010-05-22</td>
+      <td>Phoenix Mercury</td>
+      <td>1550.81</td>
+      <td>89</td>
+      <td>Seattle Storm</td>
+      <td>1531.75</td>
+      <td>95</td>
+      <td>61.45%</td>
+      <td>38.55%</td>
+      <td>-15.02</td>
+    </tr>
+    <tr>
+      <td>2010-05-22</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1492.99</td>
+      <td>88</td>
+      <td>Los Angeles Sparks</td>
+      <td>1501.83</td>
+      <td>81</td>
+      <td>57.59%</td>
+      <td>42.41%</td>
+      <td>11.19</td>
+    </tr>
+    <tr>
+      <td>2010-05-22</td>
+      <td>Los Angeles Sparks</td>
+      <td>1501.83</td>
+      <td>81</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1492.99</td>
+      <td>88</td>
+      <td>42.41%</td>
+      <td>57.59%</td>
+      <td>-11.20</td>
+    </tr>
+    <tr>
+      <td>2010-05-22</td>
+      <td>Seattle Storm</td>
+      <td>1531.75</td>
+      <td>95</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1550.81</td>
+      <td>89</td>
+      <td>38.55%</td>
+      <td>61.45%</td>
+      <td>15.03</td>
+    </tr>
+    <tr>
+      <td>2010-05-22</td>
+      <td>Indiana Fever</td>
+      <td>1498.13</td>
+      <td>92</td>
+      <td>@ Chicago Sky</td>
+      <td>1452.31</td>
+      <td>86</td>
+      <td>47.68%</td>
+      <td>52.32%</td>
+      <td>12.79</td>
+    </tr>
+    <tr>
+      <td>2010-05-23</td>
+      <td>Connecticut Sun</td>
+      <td>1490.02</td>
+      <td>80</td>
+      <td>Washington Mystics</td>
+      <td>1526.24</td>
+      <td>65</td>
+      <td>53.70%</td>
+      <td>46.30%</td>
+      <td>17.90</td>
+    </tr>
+    <tr>
+      <td>2010-05-23</td>
+      <td>Washington Mystics</td>
+      <td>1526.24</td>
+      <td>65</td>
+      <td>@ Connecticut Sun</td>
+      <td>1490.02</td>
+      <td>80</td>
+      <td>46.30%</td>
+      <td>53.70%</td>
+      <td>-17.90</td>
+    </tr>
+    <tr>
+      <td>2010-05-23</td>
+      <td>Tulsa Shock</td>
+      <td>1491.04</td>
+      <td>94</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1460.19</td>
+      <td>82</td>
+      <td>45.53%</td>
+      <td>54.47%</td>
+      <td>18.83</td>
+    </tr>
+    <tr>
+      <td>2010-05-23</td>
+      <td>Atlanta Dream</td>
+      <td>1531.48</td>
+      <td>86</td>
+      <td>@ New York Liberty</td>
+      <td>1473.21</td>
+      <td>77</td>
+      <td>49.47%</td>
+      <td>50.53%</td>
+      <td>15.13</td>
+    </tr>
+    <tr>
+      <td>2010-05-23</td>
+      <td>Minnesota Lynx</td>
+      <td>1460.19</td>
+      <td>82</td>
+      <td>Tulsa Shock</td>
+      <td>1491.04</td>
+      <td>94</td>
+      <td>54.47%</td>
+      <td>45.53%</td>
+      <td>-18.83</td>
+    </tr>
+    <tr>
+      <td>2010-05-23</td>
+      <td>Indiana Fever</td>
+      <td>1510.92</td>
+      <td>69</td>
+      <td>Chicago Sky</td>
+      <td>1439.52</td>
+      <td>61</td>
+      <td>68.30%</td>
+      <td>31.70%</td>
+      <td>8.95</td>
+    </tr>
+    <tr>
+      <td>2010-05-23</td>
+      <td>Chicago Sky</td>
+      <td>1439.52</td>
+      <td>61</td>
+      <td>@ Indiana Fever</td>
+      <td>1510.92</td>
+      <td>69</td>
+      <td>31.70%</td>
+      <td>68.30%</td>
+      <td>-8.95</td>
+    </tr>
+    <tr>
+      <td>2010-05-23</td>
+      <td>New York Liberty</td>
+      <td>1473.21</td>
+      <td>77</td>
+      <td>Atlanta Dream</td>
+      <td>1531.48</td>
+      <td>86</td>
+      <td>50.53%</td>
+      <td>49.47%</td>
+      <td>-15.13</td>
+    </tr>
+    <tr>
+      <td>2010-05-25</td>
+      <td>Phoenix Mercury</td>
+      <td>1535.79</td>
+      <td>110</td>
+      <td>@ Tulsa Shock</td>
+      <td>1509.87</td>
+      <td>96</td>
+      <td>44.83%</td>
+      <td>55.17%</td>
+      <td>20.60</td>
+    </tr>
+    <tr>
+      <td>2010-05-25</td>
+      <td>Tulsa Shock</td>
+      <td>1509.87</td>
+      <td>96</td>
+      <td>Phoenix Mercury</td>
+      <td>1535.79</td>
+      <td>110</td>
+      <td>55.17%</td>
+      <td>44.83%</td>
+      <td>-20.60</td>
+    </tr>
+    <tr>
+      <td>2010-05-25</td>
+      <td>Seattle Storm</td>
+      <td>1546.78</td>
+      <td>82</td>
+      <td>Washington Mystics</td>
+      <td>1508.34</td>
+      <td>76</td>
+      <td>64.06%</td>
+      <td>35.94%</td>
+      <td>8.78</td>
+    </tr>
+    <tr>
+      <td>2010-05-25</td>
+      <td>Washington Mystics</td>
+      <td>1508.34</td>
+      <td>76</td>
+      <td>@ Seattle Storm</td>
+      <td>1546.78</td>
+      <td>82</td>
+      <td>35.94%</td>
+      <td>64.06%</td>
+      <td>-8.79</td>
+    </tr>
+    <tr>
+      <td>2010-05-27</td>
+      <td>Seattle Storm</td>
+      <td>1555.56</td>
+      <td>75</td>
+      <td>@ Chicago Sky</td>
+      <td>1430.57</td>
+      <td>84</td>
+      <td>58.97%</td>
+      <td>41.03%</td>
+      <td>-17.65</td>
+    </tr>
+    <tr>
+      <td>2010-05-27</td>
+      <td>Minnesota Lynx</td>
+      <td>1441.36</td>
+      <td>79</td>
+      <td>@ Connecticut Sun</td>
+      <td>1507.92</td>
+      <td>105</td>
+      <td>32.30%</td>
+      <td>67.70%</td>
+      <td>-16.44</td>
+    </tr>
+    <tr>
+      <td>2010-05-27</td>
+      <td>Connecticut Sun</td>
+      <td>1507.92</td>
+      <td>105</td>
+      <td>Minnesota Lynx</td>
+      <td>1441.36</td>
+      <td>79</td>
+      <td>67.70%</td>
+      <td>32.30%</td>
+      <td>16.44</td>
+    </tr>
+    <tr>
+      <td>2010-05-27</td>
+      <td>Chicago Sky</td>
+      <td>1430.57</td>
+      <td>84</td>
+      <td>Seattle Storm</td>
+      <td>1555.56</td>
+      <td>75</td>
+      <td>41.03%</td>
+      <td>58.97%</td>
+      <td>17.66</td>
+    </tr>
+    <tr>
+      <td>2010-05-28</td>
+      <td>Washington Mystics</td>
+      <td>1499.55</td>
+      <td>75</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1490.63</td>
+      <td>81</td>
+      <td>42.43%</td>
+      <td>57.57%</td>
+      <td>-10.37</td>
+    </tr>
+    <tr>
+      <td>2010-05-28</td>
+      <td>Los Angeles Sparks</td>
+      <td>1490.63</td>
+      <td>81</td>
+      <td>Washington Mystics</td>
+      <td>1499.55</td>
+      <td>75</td>
+      <td>57.57%</td>
+      <td>42.43%</td>
+      <td>10.37</td>
+    </tr>
+    <tr>
+      <td>2010-05-28</td>
+      <td>Atlanta Dream</td>
+      <td>1546.61</td>
+      <td>96</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1556.39</td>
+      <td>93</td>
+      <td>39.82%</td>
+      <td>60.18%</td>
+      <td>10.40</td>
+    </tr>
+    <tr>
+      <td>2010-05-28</td>
+      <td>Phoenix Mercury</td>
+      <td>1556.39</td>
+      <td>93</td>
+      <td>Atlanta Dream</td>
+      <td>1546.61</td>
+      <td>96</td>
+      <td>60.18%</td>
+      <td>39.82%</td>
+      <td>-10.40</td>
+    </tr>
+    <tr>
+      <td>2010-05-28</td>
+      <td>New York Liberty</td>
+      <td>1458.08</td>
+      <td>77</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1504.18</td>
+      <td>71</td>
+      <td>34.93%</td>
+      <td>65.07%</td>
+      <td>15.91</td>
+    </tr>
+    <tr>
+      <td>2010-05-28</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1504.18</td>
+      <td>71</td>
+      <td>New York Liberty</td>
+      <td>1458.08</td>
+      <td>77</td>
+      <td>65.07%</td>
+      <td>34.93%</td>
+      <td>-15.90</td>
+    </tr>
+    <tr>
+      <td>2010-05-29</td>
+      <td>Minnesota Lynx</td>
+      <td>1424.92</td>
+      <td>58</td>
+      <td>Chicago Sky</td>
+      <td>1448.23</td>
+      <td>73</td>
+      <td>55.54%</td>
+      <td>44.46%</td>
+      <td>-21.47</td>
+    </tr>
+    <tr>
+      <td>2010-05-29</td>
+      <td>Tulsa Shock</td>
+      <td>1489.27</td>
+      <td>79</td>
+      <td>Indiana Fever</td>
+      <td>1519.87</td>
+      <td>74</td>
+      <td>54.50%</td>
+      <td>45.50%</td>
+      <td>10.15</td>
+    </tr>
+    <tr>
+      <td>2010-05-29</td>
+      <td>Chicago Sky</td>
+      <td>1448.23</td>
+      <td>73</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1424.92</td>
+      <td>58</td>
+      <td>44.46%</td>
+      <td>55.54%</td>
+      <td>21.47</td>
+    </tr>
+    <tr>
+      <td>2010-05-29</td>
+      <td>Indiana Fever</td>
+      <td>1519.87</td>
+      <td>74</td>
+      <td>@ Tulsa Shock</td>
+      <td>1489.27</td>
+      <td>79</td>
+      <td>45.50%</td>
+      <td>54.50%</td>
+      <td>-10.15</td>
+    </tr>
+    <tr>
+      <td>2010-05-30</td>
+      <td>Washington Mystics</td>
+      <td>1489.18</td>
+      <td>69</td>
+      <td>Connecticut Sun</td>
+      <td>1524.36</td>
+      <td>65</td>
+      <td>53.85%</td>
+      <td>46.15%</td>
+      <td>9.21</td>
+    </tr>
+    <tr>
+      <td>2010-05-30</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1488.28</td>
+      <td>56</td>
+      <td>Seattle Storm</td>
+      <td>1537.91</td>
+      <td>84</td>
+      <td>51.77%</td>
+      <td>48.23%</td>
+      <td>-27.34</td>
+    </tr>
+    <tr>
+      <td>2010-05-30</td>
+      <td>Atlanta Dream</td>
+      <td>1557.01</td>
+      <td>101</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1501.00</td>
+      <td>82</td>
+      <td>49.14%</td>
+      <td>50.86%</td>
+      <td>22.13</td>
+    </tr>
+    <tr>
+      <td>2010-05-30</td>
+      <td>Connecticut Sun</td>
+      <td>1524.36</td>
+      <td>65</td>
+      <td>@ Washington Mystics</td>
+      <td>1489.18</td>
+      <td>69</td>
+      <td>46.15%</td>
+      <td>53.85%</td>
+      <td>-9.21</td>
+    </tr>
+    <tr>
+      <td>2010-05-30</td>
+      <td>Seattle Storm</td>
+      <td>1537.91</td>
+      <td>84</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1488.28</td>
+      <td>56</td>
+      <td>48.23%</td>
+      <td>51.77%</td>
+      <td>27.34</td>
+    </tr>
+    <tr>
+      <td>2010-05-30</td>
+      <td>Los Angeles Sparks</td>
+      <td>1501.00</td>
+      <td>82</td>
+      <td>Atlanta Dream</td>
+      <td>1557.01</td>
+      <td>101</td>
+      <td>50.86%</td>
+      <td>49.14%</td>
+      <td>-22.12</td>
+    </tr>
+    <tr>
+      <td>2010-06-01</td>
+      <td>Phoenix Mercury</td>
+      <td>1545.99</td>
+      <td>82</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1403.45</td>
+      <td>92</td>
+      <td>61.39%</td>
+      <td>38.61%</td>
+      <td>-19.38</td>
+    </tr>
+    <tr>
+      <td>2010-06-01</td>
+      <td>Minnesota Lynx</td>
+      <td>1403.45</td>
+      <td>92</td>
+      <td>Phoenix Mercury</td>
+      <td>1545.99</td>
+      <td>82</td>
+      <td>38.61%</td>
+      <td>61.39%</td>
+      <td>19.38</td>
+    </tr>
+    <tr>
+      <td>2010-06-01</td>
+      <td>Seattle Storm</td>
+      <td>1565.25</td>
+      <td>90</td>
+      <td>Atlanta Dream</td>
+      <td>1579.14</td>
+      <td>72</td>
+      <td>56.87%</td>
+      <td>43.13%</td>
+      <td>18.26</td>
+    </tr>
+    <tr>
+      <td>2010-06-01</td>
+      <td>Atlanta Dream</td>
+      <td>1579.14</td>
+      <td>72</td>
+      <td>@ Seattle Storm</td>
+      <td>1565.25</td>
+      <td>90</td>
+      <td>43.13%</td>
+      <td>56.87%</td>
+      <td>-18.26</td>
+    </tr>
+    <tr>
+      <td>2010-06-03</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1460.94</td>
+      <td>57</td>
+      <td>@ Indiana Fever</td>
+      <td>1509.72</td>
+      <td>79</td>
+      <td>34.58%</td>
+      <td>65.42%</td>
+      <td>-16.19</td>
+    </tr>
+    <tr>
+      <td>2010-06-03</td>
+      <td>Indiana Fever</td>
+      <td>1509.72</td>
+      <td>79</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1460.94</td>
+      <td>57</td>
+      <td>65.42%</td>
+      <td>34.58%</td>
+      <td>16.19</td>
+    </tr>
+    <tr>
+      <td>2010-06-04</td>
+      <td>Phoenix Mercury</td>
+      <td>1526.61</td>
+      <td>90</td>
+      <td>Los Angeles Sparks</td>
+      <td>1478.88</td>
+      <td>89</td>
+      <td>65.28%</td>
+      <td>34.72%</td>
+      <td>3.47</td>
+    </tr>
+    <tr>
+      <td>2010-06-04</td>
+      <td>Chicago Sky</td>
+      <td>1469.70</td>
+      <td>80</td>
+      <td>@ Atlanta Dream</td>
+      <td>1560.88</td>
+      <td>70</td>
+      <td>29.29%</td>
+      <td>70.71%</td>
+      <td>22.32</td>
+    </tr>
+    <tr>
+      <td>2010-06-04</td>
+      <td>New York Liberty</td>
+      <td>1473.99</td>
+      <td>68</td>
+      <td>@ Connecticut Sun</td>
+      <td>1515.15</td>
+      <td>75</td>
+      <td>35.58%</td>
+      <td>64.42%</td>
+      <td>-9.40</td>
+    </tr>
+    <tr>
+      <td>2010-06-04</td>
+      <td>Los Angeles Sparks</td>
+      <td>1478.88</td>
+      <td>89</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1526.61</td>
+      <td>90</td>
+      <td>34.72%</td>
+      <td>65.28%</td>
+      <td>-3.47</td>
+    </tr>
+    <tr>
+      <td>2010-06-04</td>
+      <td>Minnesota Lynx</td>
+      <td>1422.83</td>
+      <td>79</td>
+      <td>@ Tulsa Shock</td>
+      <td>1499.42</td>
+      <td>92</td>
+      <td>31.05%</td>
+      <td>68.95%</td>
+      <td>-11.17</td>
+    </tr>
+    <tr>
+      <td>2010-06-04</td>
+      <td>Atlanta Dream</td>
+      <td>1560.88</td>
+      <td>70</td>
+      <td>Chicago Sky</td>
+      <td>1469.70</td>
+      <td>80</td>
+      <td>70.71%</td>
+      <td>29.29%</td>
+      <td>-22.32</td>
+    </tr>
+    <tr>
+      <td>2010-06-04</td>
+      <td>Connecticut Sun</td>
+      <td>1515.15</td>
+      <td>75</td>
+      <td>New York Liberty</td>
+      <td>1473.99</td>
+      <td>68</td>
+      <td>64.42%</td>
+      <td>35.58%</td>
+      <td>9.39</td>
+    </tr>
+    <tr>
+      <td>2010-06-04</td>
+      <td>Tulsa Shock</td>
+      <td>1499.42</td>
+      <td>92</td>
+      <td>Minnesota Lynx</td>
+      <td>1422.83</td>
+      <td>79</td>
+      <td>68.95%</td>
+      <td>31.05%</td>
+      <td>11.18</td>
+    </tr>
+    <tr>
+      <td>2010-06-05</td>
+      <td>New York Liberty</td>
+      <td>1464.59</td>
+      <td>73</td>
+      <td>@ Indiana Fever</td>
+      <td>1525.91</td>
+      <td>78</td>
+      <td>32.97%</td>
+      <td>67.03%</td>
+      <td>-7.36</td>
+    </tr>
+    <tr>
+      <td>2010-06-05</td>
+      <td>Washington Mystics</td>
+      <td>1498.39</td>
+      <td>79</td>
+      <td>Atlanta Dream</td>
+      <td>1538.56</td>
+      <td>86</td>
+      <td>53.13%</td>
+      <td>46.87%</td>
+      <td>-14.03</td>
+    </tr>
+    <tr>
+      <td>2010-06-05</td>
+      <td>Chicago Sky</td>
+      <td>1492.02</td>
+      <td>95</td>
+      <td>Tulsa Shock</td>
+      <td>1510.60</td>
+      <td>70</td>
+      <td>56.21%</td>
+      <td>43.79%</td>
+      <td>21.85</td>
+    </tr>
+    <tr>
+      <td>2010-06-05</td>
+      <td>Seattle Storm</td>
+      <td>1583.51</td>
+      <td>79</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1475.41</td>
+      <td>75</td>
+      <td>56.60%</td>
+      <td>43.40%</td>
+      <td>8.66</td>
+    </tr>
+    <tr>
+      <td>2010-06-05</td>
+      <td>Atlanta Dream</td>
+      <td>1538.56</td>
+      <td>86</td>
+      <td>@ Washington Mystics</td>
+      <td>1498.39</td>
+      <td>79</td>
+      <td>46.87%</td>
+      <td>53.13%</td>
+      <td>14.03</td>
+    </tr>
+    <tr>
+      <td>2010-06-05</td>
+      <td>Tulsa Shock</td>
+      <td>1510.60</td>
+      <td>70</td>
+      <td>@ Chicago Sky</td>
+      <td>1492.02</td>
+      <td>95</td>
+      <td>43.79%</td>
+      <td>56.21%</td>
+      <td>-21.86</td>
+    </tr>
+    <tr>
+      <td>2010-06-05</td>
+      <td>Los Angeles Sparks</td>
+      <td>1475.41</td>
+      <td>75</td>
+      <td>Seattle Storm</td>
+      <td>1583.51</td>
+      <td>79</td>
+      <td>43.40%</td>
+      <td>56.60%</td>
+      <td>-8.66</td>
+    </tr>
+    <tr>
+      <td>2010-06-05</td>
+      <td>Indiana Fever</td>
+      <td>1525.91</td>
+      <td>78</td>
+      <td>New York Liberty</td>
+      <td>1464.59</td>
+      <td>73</td>
+      <td>67.03%</td>
+      <td>32.97%</td>
+      <td>7.35</td>
+    </tr>
+    <tr>
+      <td>2010-06-06</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1444.75</td>
+      <td>68</td>
+      <td>@ Connecticut Sun</td>
+      <td>1524.54</td>
+      <td>81</td>
+      <td>30.66%</td>
+      <td>69.34%</td>
+      <td>-11.03</td>
+    </tr>
+    <tr>
+      <td>2010-06-06</td>
+      <td>Connecticut Sun</td>
+      <td>1524.54</td>
+      <td>81</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1444.75</td>
+      <td>68</td>
+      <td>69.34%</td>
+      <td>30.66%</td>
+      <td>11.03</td>
+    </tr>
+    <tr>
+      <td>2010-06-06</td>
+      <td>Phoenix Mercury</td>
+      <td>1530.08</td>
+      <td>74</td>
+      <td>@ Seattle Storm</td>
+      <td>1592.17</td>
+      <td>97</td>
+      <td>32.87%</td>
+      <td>67.13%</td>
+      <td>-15.74</td>
+    </tr>
+    <tr>
+      <td>2010-06-06</td>
+      <td>Minnesota Lynx</td>
+      <td>1411.66</td>
+      <td>51</td>
+      <td>Indiana Fever</td>
+      <td>1533.26</td>
+      <td>89</td>
+      <td>41.50%</td>
+      <td>58.50%</td>
+      <td>-25.54</td>
+    </tr>
+    <tr>
+      <td>2010-06-06</td>
+      <td>Indiana Fever</td>
+      <td>1533.26</td>
+      <td>89</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1411.66</td>
+      <td>51</td>
+      <td>58.50%</td>
+      <td>41.50%</td>
+      <td>25.53</td>
+    </tr>
+    <tr>
+      <td>2010-06-06</td>
+      <td>Seattle Storm</td>
+      <td>1592.17</td>
+      <td>97</td>
+      <td>Phoenix Mercury</td>
+      <td>1530.08</td>
+      <td>74</td>
+      <td>67.13%</td>
+      <td>32.87%</td>
+      <td>15.73</td>
+    </tr>
+    <tr>
+      <td>2010-06-08</td>
+      <td>New York Liberty</td>
+      <td>1457.23</td>
+      <td>85</td>
+      <td>@ Chicago Sky</td>
+      <td>1513.87</td>
+      <td>70</td>
+      <td>33.57%</td>
+      <td>66.43%</td>
+      <td>25.68</td>
+    </tr>
+    <tr>
+      <td>2010-06-08</td>
+      <td>Phoenix Mercury</td>
+      <td>1514.34</td>
+      <td>91</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1466.75</td>
+      <td>92</td>
+      <td>47.93%</td>
+      <td>52.07%</td>
+      <td>-4.78</td>
+    </tr>
+    <tr>
+      <td>2010-06-08</td>
+      <td>Chicago Sky</td>
+      <td>1513.87</td>
+      <td>70</td>
+      <td>New York Liberty</td>
+      <td>1457.23</td>
+      <td>85</td>
+      <td>66.43%</td>
+      <td>33.57%</td>
+      <td>-25.68</td>
+    </tr>
+    <tr>
+      <td>2010-06-08</td>
+      <td>Los Angeles Sparks</td>
+      <td>1466.75</td>
+      <td>92</td>
+      <td>Phoenix Mercury</td>
+      <td>1514.34</td>
+      <td>91</td>
+      <td>52.07%</td>
+      <td>47.93%</td>
+      <td>4.78</td>
+    </tr>
+    <tr>
+      <td>2010-06-10</td>
+      <td>Minnesota Lynx</td>
+      <td>1386.12</td>
+      <td>88</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1509.56</td>
+      <td>99</td>
+      <td>25.59%</td>
+      <td>74.41%</td>
+      <td>-8.47</td>
+    </tr>
+    <tr>
+      <td>2010-06-10</td>
+      <td>Phoenix Mercury</td>
+      <td>1509.56</td>
+      <td>99</td>
+      <td>Minnesota Lynx</td>
+      <td>1386.12</td>
+      <td>88</td>
+      <td>74.41%</td>
+      <td>25.59%</td>
+      <td>8.47</td>
+    </tr>
+    <tr>
+      <td>2010-06-11</td>
+      <td>Tulsa Shock</td>
+      <td>1488.74</td>
+      <td>75</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1433.72</td>
+      <td>87</td>
+      <td>49.00%</td>
+      <td>51.00%</td>
+      <td>-16.94</td>
+    </tr>
+    <tr>
+      <td>2010-06-11</td>
+      <td>Los Angeles Sparks</td>
+      <td>1471.53</td>
+      <td>60</td>
+      <td>@ Seattle Storm</td>
+      <td>1607.90</td>
+      <td>82</td>
+      <td>24.20%</td>
+      <td>75.80%</td>
+      <td>-11.33</td>
+    </tr>
+    <tr>
+      <td>2010-06-11</td>
+      <td>Washington Mystics</td>
+      <td>1484.36</td>
+      <td>95</td>
+      <td>@ Chicago Sky</td>
+      <td>1488.19</td>
+      <td>78</td>
+      <td>40.64%</td>
+      <td>59.36%</td>
+      <td>24.43</td>
+    </tr>
+    <tr>
+      <td>2010-06-11</td>
+      <td>Chicago Sky</td>
+      <td>1488.19</td>
+      <td>78</td>
+      <td>Washington Mystics</td>
+      <td>1484.36</td>
+      <td>95</td>
+      <td>59.36%</td>
+      <td>40.64%</td>
+      <td>-24.43</td>
+    </tr>
+    <tr>
+      <td>2010-06-11</td>
+      <td>Connecticut Sun</td>
+      <td>1535.57</td>
+      <td>86</td>
+      <td>Indiana Fever</td>
+      <td>1558.79</td>
+      <td>77</td>
+      <td>55.55%</td>
+      <td>44.45%</td>
+      <td>13.31</td>
+    </tr>
+    <tr>
+      <td>2010-06-11</td>
+      <td>New York Liberty</td>
+      <td>1482.91</td>
+      <td>91</td>
+      <td>Atlanta Dream</td>
+      <td>1552.59</td>
+      <td>79</td>
+      <td>48.89%</td>
+      <td>51.11%</td>
+      <td>17.67</td>
+    </tr>
+    <tr>
+      <td>2010-06-11</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1433.72</td>
+      <td>87</td>
+      <td>Tulsa Shock</td>
+      <td>1488.74</td>
+      <td>75</td>
+      <td>51.00%</td>
+      <td>49.00%</td>
+      <td>16.94</td>
+    </tr>
+    <tr>
+      <td>2010-06-11</td>
+      <td>Seattle Storm</td>
+      <td>1607.90</td>
+      <td>82</td>
+      <td>Los Angeles Sparks</td>
+      <td>1471.53</td>
+      <td>60</td>
+      <td>75.80%</td>
+      <td>24.20%</td>
+      <td>11.33</td>
+    </tr>
+    <tr>
+      <td>2010-06-11</td>
+      <td>Atlanta Dream</td>
+      <td>1552.59</td>
+      <td>79</td>
+      <td>@ New York Liberty</td>
+      <td>1482.91</td>
+      <td>91</td>
+      <td>51.11%</td>
+      <td>48.89%</td>
+      <td>-17.67</td>
+    </tr>
+    <tr>
+      <td>2010-06-11</td>
+      <td>Indiana Fever</td>
+      <td>1558.79</td>
+      <td>77</td>
+      <td>@ Connecticut Sun</td>
+      <td>1535.57</td>
+      <td>86</td>
+      <td>44.45%</td>
+      <td>55.55%</td>
+      <td>-13.30</td>
+    </tr>
+    <tr>
+      <td>2010-06-12</td>
+      <td>Washington Mystics</td>
+      <td>1508.79</td>
+      <td>82</td>
+      <td>New York Liberty</td>
+      <td>1500.58</td>
+      <td>65</td>
+      <td>59.96%</td>
+      <td>40.04%</td>
+      <td>16.47</td>
+    </tr>
+    <tr>
+      <td>2010-06-12</td>
+      <td>New York Liberty</td>
+      <td>1500.58</td>
+      <td>65</td>
+      <td>@ Washington Mystics</td>
+      <td>1508.79</td>
+      <td>82</td>
+      <td>40.04%</td>
+      <td>59.96%</td>
+      <td>-16.47</td>
+    </tr>
+    <tr>
+      <td>2010-06-12</td>
+      <td>Tulsa Shock</td>
+      <td>1471.80</td>
+      <td>84</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1518.03</td>
+      <td>116</td>
+      <td>34.91%</td>
+      <td>65.09%</td>
+      <td>-19.71</td>
+    </tr>
+    <tr>
+      <td>2010-06-12</td>
+      <td>Phoenix Mercury</td>
+      <td>1518.03</td>
+      <td>116</td>
+      <td>Tulsa Shock</td>
+      <td>1471.80</td>
+      <td>84</td>
+      <td>65.09%</td>
+      <td>34.91%</td>
+      <td>19.71</td>
+    </tr>
+    <tr>
+      <td>2010-06-13</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1450.66</td>
+      <td>83</td>
+      <td>@ Atlanta Dream</td>
+      <td>1534.92</td>
+      <td>90</td>
+      <td>30.12%</td>
+      <td>69.88%</td>
+      <td>-7.96</td>
+    </tr>
+    <tr>
+      <td>2010-06-13</td>
+      <td>Connecticut Sun</td>
+      <td>1548.88</td>
+      <td>67</td>
+      <td>@ Indiana Fever</td>
+      <td>1545.49</td>
+      <td>77</td>
+      <td>41.65%</td>
+      <td>58.35%</td>
+      <td>-13.14</td>
+    </tr>
+    <tr>
+      <td>2010-06-13</td>
+      <td>Atlanta Dream</td>
+      <td>1534.92</td>
+      <td>90</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1450.66</td>
+      <td>83</td>
+      <td>69.88%</td>
+      <td>30.12%</td>
+      <td>7.95</td>
+    </tr>
+    <tr>
+      <td>2010-06-13</td>
+      <td>Indiana Fever</td>
+      <td>1545.49</td>
+      <td>77</td>
+      <td>Connecticut Sun</td>
+      <td>1548.88</td>
+      <td>67</td>
+      <td>58.35%</td>
+      <td>41.65%</td>
+      <td>13.14</td>
+    </tr>
+    <tr>
+      <td>2010-06-13</td>
+      <td>Los Angeles Sparks</td>
+      <td>1460.20</td>
+      <td>88</td>
+      <td>Minnesota Lynx</td>
+      <td>1377.65</td>
+      <td>84</td>
+      <td>69.68%</td>
+      <td>30.32%</td>
+      <td>6.06</td>
+    </tr>
+    <tr>
+      <td>2010-06-13</td>
+      <td>Minnesota Lynx</td>
+      <td>1377.65</td>
+      <td>84</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1460.20</td>
+      <td>88</td>
+      <td>30.32%</td>
+      <td>69.68%</td>
+      <td>-6.05</td>
+    </tr>
+    <tr>
+      <td>2010-06-15</td>
+      <td>Chicago Sky</td>
+      <td>1463.76</td>
+      <td>86</td>
+      <td>Atlanta Dream</td>
+      <td>1542.87</td>
+      <td>93</td>
+      <td>47.53%</td>
+      <td>52.47%</td>
+      <td>-12.55</td>
+    </tr>
+    <tr>
+      <td>2010-06-15</td>
+      <td>Atlanta Dream</td>
+      <td>1542.87</td>
+      <td>93</td>
+      <td>@ Chicago Sky</td>
+      <td>1463.76</td>
+      <td>86</td>
+      <td>52.47%</td>
+      <td>47.53%</td>
+      <td>12.55</td>
+    </tr>
+    <tr>
+      <td>2010-06-17</td>
+      <td>Indiana Fever</td>
+      <td>1558.63</td>
+      <td>72</td>
+      <td>Seattle Storm</td>
+      <td>1619.23</td>
+      <td>65</td>
+      <td>50.20%</td>
+      <td>49.80%</td>
+      <td>13.15</td>
+    </tr>
+    <tr>
+      <td>2010-06-17</td>
+      <td>Seattle Storm</td>
+      <td>1619.23</td>
+      <td>65</td>
+      <td>@ Indiana Fever</td>
+      <td>1558.63</td>
+      <td>72</td>
+      <td>49.80%</td>
+      <td>50.20%</td>
+      <td>-13.15</td>
+    </tr>
+    <tr>
+      <td>2010-06-18</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1442.70</td>
+      <td>108</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1537.74</td>
+      <td>105</td>
+      <td>28.83%</td>
+      <td>71.17%</td>
+      <td>12.31</td>
+    </tr>
+    <tr>
+      <td>2010-06-18</td>
+      <td>Phoenix Mercury</td>
+      <td>1537.74</td>
+      <td>105</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1442.70</td>
+      <td>108</td>
+      <td>71.17%</td>
+      <td>28.83%</td>
+      <td>-12.30</td>
+    </tr>
+    <tr>
+      <td>2010-06-18</td>
+      <td>New York Liberty</td>
+      <td>1484.11</td>
+      <td>84</td>
+      <td>Seattle Storm</td>
+      <td>1606.08</td>
+      <td>92</td>
+      <td>41.45%</td>
+      <td>58.55%</td>
+      <td>-11.70</td>
+    </tr>
+    <tr>
+      <td>2010-06-18</td>
+      <td>Minnesota Lynx</td>
+      <td>1371.60</td>
+      <td>78</td>
+      <td>Tulsa Shock</td>
+      <td>1452.09</td>
+      <td>67</td>
+      <td>47.34%</td>
+      <td>52.66%</td>
+      <td>17.43</td>
+    </tr>
+    <tr>
+      <td>2010-06-18</td>
+      <td>Los Angeles Sparks</td>
+      <td>1466.26</td>
+      <td>75</td>
+      <td>Connecticut Sun</td>
+      <td>1535.74</td>
+      <td>78</td>
+      <td>48.92%</td>
+      <td>51.08%</td>
+      <td>-8.46</td>
+    </tr>
+    <tr>
+      <td>2010-06-18</td>
+      <td>Connecticut Sun</td>
+      <td>1535.74</td>
+      <td>78</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1466.26</td>
+      <td>75</td>
+      <td>51.08%</td>
+      <td>48.92%</td>
+      <td>8.45</td>
+    </tr>
+    <tr>
+      <td>2010-06-18</td>
+      <td>Tulsa Shock</td>
+      <td>1452.09</td>
+      <td>67</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1371.60</td>
+      <td>78</td>
+      <td>52.66%</td>
+      <td>47.34%</td>
+      <td>-17.43</td>
+    </tr>
+    <tr>
+      <td>2010-06-18</td>
+      <td>Seattle Storm</td>
+      <td>1606.08</td>
+      <td>92</td>
+      <td>@ New York Liberty</td>
+      <td>1484.11</td>
+      <td>84</td>
+      <td>58.55%</td>
+      <td>41.45%</td>
+      <td>11.70</td>
+    </tr>
+    <tr>
+      <td>2010-06-19</td>
+      <td>Chicago Sky</td>
+      <td>1451.21</td>
+      <td>61</td>
+      <td>@ Washington Mystics</td>
+      <td>1525.26</td>
+      <td>65</td>
+      <td>31.37%</td>
+      <td>68.63%</td>
+      <td>-6.26</td>
+    </tr>
+    <tr>
+      <td>2010-06-19</td>
+      <td>Minnesota Lynx</td>
+      <td>1389.03</td>
+      <td>92</td>
+      <td>@ Tulsa Shock</td>
+      <td>1434.66</td>
+      <td>78</td>
+      <td>34.99%</td>
+      <td>65.01%</td>
+      <td>24.28</td>
+    </tr>
+    <tr>
+      <td>2010-06-19</td>
+      <td>Atlanta Dream</td>
+      <td>1555.42</td>
+      <td>91</td>
+      <td>@ Indiana Fever</td>
+      <td>1571.78</td>
+      <td>94</td>
+      <td>38.92%</td>
+      <td>61.08%</td>
+      <td>-6.72</td>
+    </tr>
+    <tr>
+      <td>2010-06-19</td>
+      <td>Indiana Fever</td>
+      <td>1571.78</td>
+      <td>94</td>
+      <td>Atlanta Dream</td>
+      <td>1555.42</td>
+      <td>91</td>
+      <td>61.08%</td>
+      <td>38.92%</td>
+      <td>6.73</td>
+    </tr>
+    <tr>
+      <td>2010-06-19</td>
+      <td>Washington Mystics</td>
+      <td>1525.26</td>
+      <td>65</td>
+      <td>Chicago Sky</td>
+      <td>1451.21</td>
+      <td>61</td>
+      <td>68.63%</td>
+      <td>31.37%</td>
+      <td>6.26</td>
+    </tr>
+    <tr>
+      <td>2010-06-19</td>
+      <td>Tulsa Shock</td>
+      <td>1434.66</td>
+      <td>78</td>
+      <td>Minnesota Lynx</td>
+      <td>1389.03</td>
+      <td>92</td>
+      <td>65.01%</td>
+      <td>34.99%</td>
+      <td>-24.27</td>
+    </tr>
+    <tr>
+      <td>2010-06-20</td>
+      <td>Seattle Storm</td>
+      <td>1617.78</td>
+      <td>82</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1455.01</td>
+      <td>61</td>
+      <td>78.48%</td>
+      <td>21.52%</td>
+      <td>9.84</td>
+    </tr>
+    <tr>
+      <td>2010-06-20</td>
+      <td>Phoenix Mercury</td>
+      <td>1525.44</td>
+      <td>94</td>
+      <td>Connecticut Sun</td>
+      <td>1544.19</td>
+      <td>96</td>
+      <td>56.19%</td>
+      <td>43.81%</td>
+      <td>-7.93</td>
+    </tr>
+    <tr>
+      <td>2010-06-20</td>
+      <td>Connecticut Sun</td>
+      <td>1544.19</td>
+      <td>96</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1525.44</td>
+      <td>94</td>
+      <td>43.81%</td>
+      <td>56.19%</td>
+      <td>7.93</td>
+    </tr>
+    <tr>
+      <td>2010-06-20</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1455.01</td>
+      <td>61</td>
+      <td>@ Seattle Storm</td>
+      <td>1617.78</td>
+      <td>82</td>
+      <td>21.52%</td>
+      <td>78.48%</td>
+      <td>-9.85</td>
+    </tr>
+    <tr>
+      <td>2010-06-22</td>
+      <td>Connecticut Sun</td>
+      <td>1552.12</td>
+      <td>77</td>
+      <td>Chicago Sky</td>
+      <td>1444.95</td>
+      <td>86</td>
+      <td>72.58%</td>
+      <td>27.42%</td>
+      <td>-21.73</td>
+    </tr>
+    <tr>
+      <td>2010-06-22</td>
+      <td>New York Liberty</td>
+      <td>1472.41</td>
+      <td>68</td>
+      <td>Minnesota Lynx</td>
+      <td>1413.31</td>
+      <td>75</td>
+      <td>66.75%</td>
+      <td>33.25%</td>
+      <td>-17.63</td>
+    </tr>
+    <tr>
+      <td>2010-06-22</td>
+      <td>Chicago Sky</td>
+      <td>1444.95</td>
+      <td>86</td>
+      <td>@ Connecticut Sun</td>
+      <td>1552.12</td>
+      <td>77</td>
+      <td>27.42%</td>
+      <td>72.58%</td>
+      <td>21.73</td>
+    </tr>
+    <tr>
+      <td>2010-06-22</td>
+      <td>Minnesota Lynx</td>
+      <td>1413.31</td>
+      <td>75</td>
+      <td>@ New York Liberty</td>
+      <td>1472.41</td>
+      <td>68</td>
+      <td>33.25%</td>
+      <td>66.75%</td>
+      <td>17.62</td>
+    </tr>
+    <tr>
+      <td>2010-06-23</td>
+      <td>Atlanta Dream</td>
+      <td>1548.70</td>
+      <td>96</td>
+      <td>Tulsa Shock</td>
+      <td>1410.39</td>
+      <td>90</td>
+      <td>76.00%</td>
+      <td>24.00%</td>
+      <td>5.86</td>
+    </tr>
+    <tr>
+      <td>2010-06-23</td>
+      <td>Tulsa Shock</td>
+      <td>1410.39</td>
+      <td>90</td>
+      <td>@ Atlanta Dream</td>
+      <td>1548.70</td>
+      <td>96</td>
+      <td>24.00%</td>
+      <td>76.00%</td>
+      <td>-5.87</td>
+    </tr>
+    <tr>
+      <td>2010-06-24</td>
+      <td>Washington Mystics</td>
+      <td>1531.52</td>
+      <td>68</td>
+      <td>Los Angeles Sparks</td>
+      <td>1457.80</td>
+      <td>53</td>
+      <td>68.59%</td>
+      <td>31.41%</td>
+      <td>12.14</td>
+    </tr>
+    <tr>
+      <td>2010-06-24</td>
+      <td>Los Angeles Sparks</td>
+      <td>1457.80</td>
+      <td>53</td>
+      <td>@ Washington Mystics</td>
+      <td>1531.52</td>
+      <td>68</td>
+      <td>31.41%</td>
+      <td>68.59%</td>
+      <td>-12.14</td>
+    </tr>
+    <tr>
+      <td>2010-06-25</td>
+      <td>Washington Mystics</td>
+      <td>1543.66</td>
+      <td>72</td>
+      <td>@ Chicago Sky</td>
+      <td>1466.68</td>
+      <td>79</td>
+      <td>52.16%</td>
+      <td>47.84%</td>
+      <td>-13.77</td>
+    </tr>
+    <tr>
+      <td>2010-06-25</td>
+      <td>Phoenix Mercury</td>
+      <td>1517.51</td>
+      <td>79</td>
+      <td>@ Connecticut Sun</td>
+      <td>1530.39</td>
+      <td>82</td>
+      <td>39.39%</td>
+      <td>60.61%</td>
+      <td>-6.81</td>
+    </tr>
+    <tr>
+      <td>2010-06-25</td>
+      <td>Chicago Sky</td>
+      <td>1466.68</td>
+      <td>79</td>
+      <td>Washington Mystics</td>
+      <td>1543.66</td>
+      <td>72</td>
+      <td>47.84%</td>
+      <td>52.16%</td>
+      <td>13.78</td>
+    </tr>
+    <tr>
+      <td>2010-06-25</td>
+      <td>New York Liberty</td>
+      <td>1454.78</td>
+      <td>92</td>
+      <td>@ Tulsa Shock</td>
+      <td>1404.52</td>
+      <td>78</td>
+      <td>48.32%</td>
+      <td>51.68%</td>
+      <td>19.30</td>
+    </tr>
+    <tr>
+      <td>2010-06-25</td>
+      <td>Indiana Fever</td>
+      <td>1578.51</td>
+      <td>81</td>
+      <td>@ Seattle Storm</td>
+      <td>1627.62</td>
+      <td>85</td>
+      <td>34.54%</td>
+      <td>65.46%</td>
+      <td>-6.90</td>
+    </tr>
+    <tr>
+      <td>2010-06-25</td>
+      <td>Tulsa Shock</td>
+      <td>1404.52</td>
+      <td>78</td>
+      <td>New York Liberty</td>
+      <td>1454.78</td>
+      <td>92</td>
+      <td>51.68%</td>
+      <td>48.32%</td>
+      <td>-19.30</td>
+    </tr>
+    <tr>
+      <td>2010-06-25</td>
+      <td>Connecticut Sun</td>
+      <td>1530.39</td>
+      <td>82</td>
+      <td>Phoenix Mercury</td>
+      <td>1517.51</td>
+      <td>79</td>
+      <td>60.61%</td>
+      <td>39.39%</td>
+      <td>6.81</td>
+    </tr>
+    <tr>
+      <td>2010-06-25</td>
+      <td>Seattle Storm</td>
+      <td>1627.62</td>
+      <td>85</td>
+      <td>Indiana Fever</td>
+      <td>1578.51</td>
+      <td>81</td>
+      <td>65.46%</td>
+      <td>34.54%</td>
+      <td>6.90</td>
+    </tr>
+    <tr>
+      <td>2010-06-26</td>
+      <td>Minnesota Lynx</td>
+      <td>1430.93</td>
+      <td>66</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1445.16</td>
+      <td>80</td>
+      <td>39.21%</td>
+      <td>60.79%</td>
+      <td>-14.64</td>
+    </tr>
+    <tr>
+      <td>2010-06-26</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1445.16</td>
+      <td>80</td>
+      <td>Minnesota Lynx</td>
+      <td>1430.93</td>
+      <td>66</td>
+      <td>60.79%</td>
+      <td>39.21%</td>
+      <td>14.64</td>
+    </tr>
+    <tr>
+      <td>2010-06-27</td>
+      <td>Seattle Storm</td>
+      <td>1634.52</td>
+      <td>83</td>
+      <td>@ Tulsa Shock</td>
+      <td>1385.22</td>
+      <td>72</td>
+      <td>74.62%</td>
+      <td>25.38%</td>
+      <td>8.40</td>
+    </tr>
+    <tr>
+      <td>2010-06-27</td>
+      <td>Phoenix Mercury</td>
+      <td>1510.70</td>
+      <td>85</td>
+      <td>@ Washington Mystics</td>
+      <td>1529.89</td>
+      <td>95</td>
+      <td>38.53%</td>
+      <td>61.47%</td>
+      <td>-12.16</td>
+    </tr>
+    <tr>
+      <td>2010-06-27</td>
+      <td>Indiana Fever</td>
+      <td>1571.61</td>
+      <td>70</td>
+      <td>@ Chicago Sky</td>
+      <td>1480.46</td>
+      <td>64</td>
+      <td>54.19%</td>
+      <td>45.81%</td>
+      <td>11.20</td>
+    </tr>
+    <tr>
+      <td>2010-06-27</td>
+      <td>Los Angeles Sparks</td>
+      <td>1445.66</td>
+      <td>81</td>
+      <td>@ Atlanta Dream</td>
+      <td>1554.56</td>
+      <td>89</td>
+      <td>27.22%</td>
+      <td>72.78%</td>
+      <td>-7.68</td>
+    </tr>
+    <tr>
+      <td>2010-06-27</td>
+      <td>Tulsa Shock</td>
+      <td>1385.22</td>
+      <td>72</td>
+      <td>Seattle Storm</td>
+      <td>1634.52</td>
+      <td>83</td>
+      <td>25.38%</td>
+      <td>74.62%</td>
+      <td>-8.40</td>
+    </tr>
+    <tr>
+      <td>2010-06-27</td>
+      <td>New York Liberty</td>
+      <td>1474.08</td>
+      <td>77</td>
+      <td>Connecticut Sun</td>
+      <td>1537.20</td>
+      <td>68</td>
+      <td>49.83%</td>
+      <td>50.17%</td>
+      <td>15.02</td>
+    </tr>
+    <tr>
+      <td>2010-06-27</td>
+      <td>Chicago Sky</td>
+      <td>1480.46</td>
+      <td>64</td>
+      <td>Indiana Fever</td>
+      <td>1571.61</td>
+      <td>70</td>
+      <td>45.81%</td>
+      <td>54.19%</td>
+      <td>-11.20</td>
+    </tr>
+    <tr>
+      <td>2010-06-27</td>
+      <td>Atlanta Dream</td>
+      <td>1554.56</td>
+      <td>89</td>
+      <td>Los Angeles Sparks</td>
+      <td>1445.66</td>
+      <td>81</td>
+      <td>72.78%</td>
+      <td>27.22%</td>
+      <td>7.68</td>
+    </tr>
+    <tr>
+      <td>2010-06-27</td>
+      <td>Connecticut Sun</td>
+      <td>1537.20</td>
+      <td>68</td>
+      <td>@ New York Liberty</td>
+      <td>1474.08</td>
+      <td>77</td>
+      <td>50.17%</td>
+      <td>49.83%</td>
+      <td>-15.02</td>
+    </tr>
+    <tr>
+      <td>2010-06-27</td>
+      <td>Washington Mystics</td>
+      <td>1529.89</td>
+      <td>95</td>
+      <td>Phoenix Mercury</td>
+      <td>1510.70</td>
+      <td>85</td>
+      <td>61.47%</td>
+      <td>38.53%</td>
+      <td>12.16</td>
+    </tr>
+    <tr>
+      <td>2010-06-29</td>
+      <td>Seattle Storm</td>
+      <td>1642.92</td>
+      <td>86</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1459.80</td>
+      <td>72</td>
+      <td>80.39%</td>
+      <td>19.61%</td>
+      <td>7.32</td>
+    </tr>
+    <tr>
+      <td>2010-06-29</td>
+      <td>Los Angeles Sparks</td>
+      <td>1437.98</td>
+      <td>68</td>
+      <td>New York Liberty</td>
+      <td>1489.10</td>
+      <td>80</td>
+      <td>51.56%</td>
+      <td>48.44%</td>
+      <td>-17.83</td>
+    </tr>
+    <tr>
+      <td>2010-06-29</td>
+      <td>Phoenix Mercury</td>
+      <td>1498.54</td>
+      <td>88</td>
+      <td>@ Atlanta Dream</td>
+      <td>1562.24</td>
+      <td>94</td>
+      <td>32.66%</td>
+      <td>67.34%</td>
+      <td>-7.98</td>
+    </tr>
+    <tr>
+      <td>2010-06-29</td>
+      <td>New York Liberty</td>
+      <td>1489.10</td>
+      <td>80</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1437.98</td>
+      <td>68</td>
+      <td>48.44%</td>
+      <td>51.56%</td>
+      <td>17.83</td>
+    </tr>
+    <tr>
+      <td>2010-06-29</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1459.80</td>
+      <td>72</td>
+      <td>@ Seattle Storm</td>
+      <td>1642.92</td>
+      <td>86</td>
+      <td>19.61%</td>
+      <td>80.39%</td>
+      <td>-7.32</td>
+    </tr>
+    <tr>
+      <td>2010-06-29</td>
+      <td>Connecticut Sun</td>
+      <td>1522.18</td>
+      <td>101</td>
+      <td>@ Tulsa Shock</td>
+      <td>1376.82</td>
+      <td>89</td>
+      <td>61.78%</td>
+      <td>38.22%</td>
+      <td>13.22</td>
+    </tr>
+    <tr>
+      <td>2010-06-29</td>
+      <td>Indiana Fever</td>
+      <td>1582.81</td>
+      <td>65</td>
+      <td>@ Washington Mystics</td>
+      <td>1542.05</td>
+      <td>68</td>
+      <td>46.95%</td>
+      <td>53.05%</td>
+      <td>-8.11</td>
+    </tr>
+    <tr>
+      <td>2010-06-29</td>
+      <td>Washington Mystics</td>
+      <td>1542.05</td>
+      <td>68</td>
+      <td>Indiana Fever</td>
+      <td>1582.81</td>
+      <td>65</td>
+      <td>53.05%</td>
+      <td>46.95%</td>
+      <td>8.12</td>
+    </tr>
+    <tr>
+      <td>2010-06-29</td>
+      <td>Atlanta Dream</td>
+      <td>1562.24</td>
+      <td>94</td>
+      <td>Phoenix Mercury</td>
+      <td>1498.54</td>
+      <td>88</td>
+      <td>67.34%</td>
+      <td>32.66%</td>
+      <td>7.99</td>
+    </tr>
+    <tr>
+      <td>2010-06-29</td>
+      <td>Tulsa Shock</td>
+      <td>1376.82</td>
+      <td>89</td>
+      <td>Connecticut Sun</td>
+      <td>1522.18</td>
+      <td>101</td>
+      <td>38.22%</td>
+      <td>61.78%</td>
+      <td>-13.22</td>
+    </tr>
+    <tr>
+      <td>2010-07-01</td>
+      <td>Connecticut Sun</td>
+      <td>1535.40</td>
+      <td>80</td>
+      <td>@ Chicago Sky</td>
+      <td>1469.26</td>
+      <td>92</td>
+      <td>50.60%</td>
+      <td>49.40%</td>
+      <td>-17.50</td>
+    </tr>
+    <tr>
+      <td>2010-07-01</td>
+      <td>Minnesota Lynx</td>
+      <td>1416.29</td>
+      <td>58</td>
+      <td>@ Atlanta Dream</td>
+      <td>1570.23</td>
+      <td>76</td>
+      <td>22.39%</td>
+      <td>77.61%</td>
+      <td>-9.48</td>
+    </tr>
+    <tr>
+      <td>2010-07-01</td>
+      <td>Phoenix Mercury</td>
+      <td>1490.56</td>
+      <td>104</td>
+      <td>Washington Mystics</td>
+      <td>1550.17</td>
+      <td>107</td>
+      <td>50.34%</td>
+      <td>49.66%</td>
+      <td>-8.71</td>
+    </tr>
+    <tr>
+      <td>2010-07-01</td>
+      <td>Los Angeles Sparks</td>
+      <td>1420.15</td>
+      <td>73</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1452.48</td>
+      <td>63</td>
+      <td>54.25%</td>
+      <td>45.75%</td>
+      <td>14.44</td>
+    </tr>
+    <tr>
+      <td>2010-07-01</td>
+      <td>Chicago Sky</td>
+      <td>1469.26</td>
+      <td>92</td>
+      <td>Connecticut Sun</td>
+      <td>1535.40</td>
+      <td>80</td>
+      <td>49.40%</td>
+      <td>50.60%</td>
+      <td>17.49</td>
+    </tr>
+    <tr>
+      <td>2010-07-01</td>
+      <td>Atlanta Dream</td>
+      <td>1570.23</td>
+      <td>76</td>
+      <td>Minnesota Lynx</td>
+      <td>1416.29</td>
+      <td>58</td>
+      <td>77.61%</td>
+      <td>22.39%</td>
+      <td>9.48</td>
+    </tr>
+    <tr>
+      <td>2010-07-01</td>
+      <td>Washington Mystics</td>
+      <td>1550.17</td>
+      <td>107</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1490.56</td>
+      <td>104</td>
+      <td>49.66%</td>
+      <td>50.34%</td>
+      <td>8.70</td>
+    </tr>
+    <tr>
+      <td>2010-07-01</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1452.48</td>
+      <td>63</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1420.15</td>
+      <td>73</td>
+      <td>45.75%</td>
+      <td>54.25%</td>
+      <td>-14.44</td>
+    </tr>
+    <tr>
+      <td>2010-07-03</td>
+      <td>Phoenix Mercury</td>
+      <td>1481.85</td>
+      <td>97</td>
+      <td>New York Liberty</td>
+      <td>1506.93</td>
+      <td>82</td>
+      <td>55.29%</td>
+      <td>44.71%</td>
+      <td>17.29</td>
+    </tr>
+    <tr>
+      <td>2010-07-03</td>
+      <td>Tulsa Shock</td>
+      <td>1363.60</td>
+      <td>54</td>
+      <td>Washington Mystics</td>
+      <td>1558.87</td>
+      <td>69</td>
+      <td>31.70%</td>
+      <td>68.30%</td>
+      <td>-12.25</td>
+    </tr>
+    <tr>
+      <td>2010-07-03</td>
+      <td>Seattle Storm</td>
+      <td>1650.24</td>
+      <td>75</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1434.59</td>
+      <td>62</td>
+      <td>70.78%</td>
+      <td>29.22%</td>
+      <td>10.52</td>
+    </tr>
+    <tr>
+      <td>2010-07-03</td>
+      <td>Chicago Sky</td>
+      <td>1486.75</td>
+      <td>88</td>
+      <td>@ Atlanta Dream</td>
+      <td>1579.71</td>
+      <td>82</td>
+      <td>29.07%</td>
+      <td>70.93%</td>
+      <td>17.34</td>
+    </tr>
+    <tr>
+      <td>2010-07-03</td>
+      <td>Los Angeles Sparks</td>
+      <td>1434.59</td>
+      <td>62</td>
+      <td>Seattle Storm</td>
+      <td>1650.24</td>
+      <td>75</td>
+      <td>29.22%</td>
+      <td>70.78%</td>
+      <td>-10.51</td>
+    </tr>
+    <tr>
+      <td>2010-07-03</td>
+      <td>New York Liberty</td>
+      <td>1506.93</td>
+      <td>82</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1481.85</td>
+      <td>97</td>
+      <td>44.71%</td>
+      <td>55.29%</td>
+      <td>-17.29</td>
+    </tr>
+    <tr>
+      <td>2010-07-03</td>
+      <td>Atlanta Dream</td>
+      <td>1579.71</td>
+      <td>82</td>
+      <td>Chicago Sky</td>
+      <td>1486.75</td>
+      <td>88</td>
+      <td>70.93%</td>
+      <td>29.07%</td>
+      <td>-17.34</td>
+    </tr>
+    <tr>
+      <td>2010-07-03</td>
+      <td>Washington Mystics</td>
+      <td>1558.87</td>
+      <td>69</td>
+      <td>@ Tulsa Shock</td>
+      <td>1363.60</td>
+      <td>54</td>
+      <td>68.30%</td>
+      <td>31.70%</td>
+      <td>12.25</td>
+    </tr>
+    <tr>
+      <td>2010-07-06</td>
+      <td>Indiana Fever</td>
+      <td>1574.70</td>
+      <td>58</td>
+      <td>@ Chicago Sky</td>
+      <td>1504.09</td>
+      <td>51</td>
+      <td>51.24%</td>
+      <td>48.76%</td>
+      <td>12.87</td>
+    </tr>
+    <tr>
+      <td>2010-07-06</td>
+      <td>Chicago Sky</td>
+      <td>1504.09</td>
+      <td>51</td>
+      <td>Indiana Fever</td>
+      <td>1574.70</td>
+      <td>58</td>
+      <td>48.76%</td>
+      <td>51.24%</td>
+      <td>-12.87</td>
+    </tr>
+    <tr>
+      <td>2010-07-06</td>
+      <td>Los Angeles Sparks</td>
+      <td>1424.08</td>
+      <td>89</td>
+      <td>Phoenix Mercury</td>
+      <td>1499.14</td>
+      <td>98</td>
+      <td>48.12%</td>
+      <td>51.88%</td>
+      <td>-14.41</td>
+    </tr>
+    <tr>
+      <td>2010-07-06</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1438.04</td>
+      <td>79</td>
+      <td>Connecticut Sun</td>
+      <td>1517.90</td>
+      <td>66</td>
+      <td>47.43%</td>
+      <td>52.57%</td>
+      <td>18.92</td>
+    </tr>
+    <tr>
+      <td>2010-07-06</td>
+      <td>Seattle Storm</td>
+      <td>1660.76</td>
+      <td>78</td>
+      <td>New York Liberty</td>
+      <td>1489.64</td>
+      <td>70</td>
+      <td>79.28%</td>
+      <td>20.72%</td>
+      <td>5.85</td>
+    </tr>
+    <tr>
+      <td>2010-07-06</td>
+      <td>New York Liberty</td>
+      <td>1489.64</td>
+      <td>70</td>
+      <td>@ Seattle Storm</td>
+      <td>1660.76</td>
+      <td>78</td>
+      <td>20.72%</td>
+      <td>79.28%</td>
+      <td>-5.85</td>
+    </tr>
+    <tr>
+      <td>2010-07-06</td>
+      <td>Connecticut Sun</td>
+      <td>1517.90</td>
+      <td>66</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1438.04</td>
+      <td>79</td>
+      <td>52.57%</td>
+      <td>47.43%</td>
+      <td>-18.92</td>
+    </tr>
+    <tr>
+      <td>2010-07-06</td>
+      <td>Phoenix Mercury</td>
+      <td>1499.14</td>
+      <td>98</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1424.08</td>
+      <td>89</td>
+      <td>51.88%</td>
+      <td>48.12%</td>
+      <td>14.40</td>
+    </tr>
+    <tr>
+      <td>2010-07-07</td>
+      <td>Atlanta Dream</td>
+      <td>1562.37</td>
+      <td>108</td>
+      <td>Connecticut Sun</td>
+      <td>1498.98</td>
+      <td>103</td>
+      <td>67.30%</td>
+      <td>32.70%</td>
+      <td>7.30</td>
+    </tr>
+    <tr>
+      <td>2010-07-07</td>
+      <td>Connecticut Sun</td>
+      <td>1498.98</td>
+      <td>103</td>
+      <td>@ Atlanta Dream</td>
+      <td>1562.37</td>
+      <td>108</td>
+      <td>32.70%</td>
+      <td>67.30%</td>
+      <td>-7.29</td>
+    </tr>
+    <tr>
+      <td>2010-07-08</td>
+      <td>Indiana Fever</td>
+      <td>1587.57</td>
+      <td>100</td>
+      <td>Tulsa Shock</td>
+      <td>1351.35</td>
+      <td>72</td>
+      <td>84.77%</td>
+      <td>15.23%</td>
+      <td>8.04</td>
+    </tr>
+    <tr>
+      <td>2010-07-08</td>
+      <td>Minnesota Lynx</td>
+      <td>1406.81</td>
+      <td>89</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1456.96</td>
+      <td>66</td>
+      <td>51.70%</td>
+      <td>48.30%</td>
+      <td>23.12</td>
+    </tr>
+    <tr>
+      <td>2010-07-08</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1456.96</td>
+      <td>66</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1406.81</td>
+      <td>89</td>
+      <td>48.30%</td>
+      <td>51.70%</td>
+      <td>-23.12</td>
+    </tr>
+    <tr>
+      <td>2010-07-08</td>
+      <td>Tulsa Shock</td>
+      <td>1351.35</td>
+      <td>72</td>
+      <td>@ Indiana Fever</td>
+      <td>1587.57</td>
+      <td>100</td>
+      <td>15.23%</td>
+      <td>84.77%</td>
+      <td>-8.04</td>
+    </tr>
+    <tr>
+      <td>2010-07-11</td>
+      <td>New York Liberty</td>
+      <td>1483.79</td>
+      <td>57</td>
+      <td>Chicago Sky</td>
+      <td>1491.22</td>
+      <td>54</td>
+      <td>57.78%</td>
+      <td>42.22%</td>
+      <td>7.30</td>
+    </tr>
+    <tr>
+      <td>2010-07-11</td>
+      <td>Chicago Sky</td>
+      <td>1491.22</td>
+      <td>54</td>
+      <td>@ New York Liberty</td>
+      <td>1483.79</td>
+      <td>57</td>
+      <td>42.22%</td>
+      <td>57.78%</td>
+      <td>-7.30</td>
+    </tr>
+    <tr>
+      <td>2010-07-13</td>
+      <td>Tulsa Shock</td>
+      <td>1343.31</td>
+      <td>71</td>
+      <td>Los Angeles Sparks</td>
+      <td>1409.67</td>
+      <td>87</td>
+      <td>49.37%</td>
+      <td>50.63%</td>
+      <td>-19.71</td>
+    </tr>
+    <tr>
+      <td>2010-07-13</td>
+      <td>Los Angeles Sparks</td>
+      <td>1409.67</td>
+      <td>87</td>
+      <td>@ Tulsa Shock</td>
+      <td>1343.31</td>
+      <td>71</td>
+      <td>50.63%</td>
+      <td>49.37%</td>
+      <td>19.71</td>
+    </tr>
+    <tr>
+      <td>2010-07-14</td>
+      <td>Indiana Fever</td>
+      <td>1595.61</td>
+      <td>68</td>
+      <td>Connecticut Sun</td>
+      <td>1491.69</td>
+      <td>77</td>
+      <td>72.21%</td>
+      <td>27.79%</td>
+      <td>-21.62</td>
+    </tr>
+    <tr>
+      <td>2010-07-14</td>
+      <td>Chicago Sky</td>
+      <td>1483.92</td>
+      <td>88</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1433.84</td>
+      <td>61</td>
+      <td>65.59%</td>
+      <td>34.41%</td>
+      <td>17.84</td>
+    </tr>
+    <tr>
+      <td>2010-07-14</td>
+      <td>Phoenix Mercury</td>
+      <td>1513.54</td>
+      <td>107</td>
+      <td>Seattle Storm</td>
+      <td>1666.61</td>
+      <td>111</td>
+      <td>37.18%</td>
+      <td>62.82%</td>
+      <td>-7.42</td>
+    </tr>
+    <tr>
+      <td>2010-07-14</td>
+      <td>Seattle Storm</td>
+      <td>1666.61</td>
+      <td>111</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1513.54</td>
+      <td>107</td>
+      <td>62.82%</td>
+      <td>37.18%</td>
+      <td>7.42</td>
+    </tr>
+    <tr>
+      <td>2010-07-14</td>
+      <td>Atlanta Dream</td>
+      <td>1569.67</td>
+      <td>81</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1429.93</td>
+      <td>83</td>
+      <td>61.01%</td>
+      <td>38.99%</td>
+      <td>-8.61</td>
+    </tr>
+    <tr>
+      <td>2010-07-14</td>
+      <td>Connecticut Sun</td>
+      <td>1491.69</td>
+      <td>77</td>
+      <td>@ Indiana Fever</td>
+      <td>1595.61</td>
+      <td>68</td>
+      <td>27.79%</td>
+      <td>72.21%</td>
+      <td>21.62</td>
+    </tr>
+    <tr>
+      <td>2010-07-14</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1433.84</td>
+      <td>61</td>
+      <td>@ Chicago Sky</td>
+      <td>1483.92</td>
+      <td>88</td>
+      <td>34.41%</td>
+      <td>65.59%</td>
+      <td>-17.84</td>
+    </tr>
+    <tr>
+      <td>2010-07-14</td>
+      <td>Minnesota Lynx</td>
+      <td>1429.93</td>
+      <td>83</td>
+      <td>Atlanta Dream</td>
+      <td>1569.67</td>
+      <td>81</td>
+      <td>38.99%</td>
+      <td>61.01%</td>
+      <td>8.61</td>
+    </tr>
+    <tr>
+      <td>2010-07-15</td>
+      <td>New York Liberty</td>
+      <td>1491.09</td>
+      <td>75</td>
+      <td>Washington Mystics</td>
+      <td>1571.12</td>
+      <td>67</td>
+      <td>47.40%</td>
+      <td>52.60%</td>
+      <td>14.85</td>
+    </tr>
+    <tr>
+      <td>2010-07-15</td>
+      <td>Washington Mystics</td>
+      <td>1571.12</td>
+      <td>67</td>
+      <td>@ New York Liberty</td>
+      <td>1491.09</td>
+      <td>75</td>
+      <td>52.60%</td>
+      <td>47.40%</td>
+      <td>-14.84</td>
+    </tr>
+    <tr>
+      <td>2010-07-16</td>
+      <td>Chicago Sky</td>
+      <td>1501.76</td>
+      <td>80</td>
+      <td>Los Angeles Sparks</td>
+      <td>1429.38</td>
+      <td>68</td>
+      <td>68.42%</td>
+      <td>31.58%</td>
+      <td>10.92</td>
+    </tr>
+    <tr>
+      <td>2010-07-16</td>
+      <td>Indiana Fever</td>
+      <td>1573.99</td>
+      <td>89</td>
+      <td>Atlanta Dream</td>
+      <td>1561.06</td>
+      <td>70</td>
+      <td>60.61%</td>
+      <td>39.39%</td>
+      <td>17.14</td>
+    </tr>
+    <tr>
+      <td>2010-07-16</td>
+      <td>Atlanta Dream</td>
+      <td>1561.06</td>
+      <td>70</td>
+      <td>@ Indiana Fever</td>
+      <td>1573.99</td>
+      <td>89</td>
+      <td>39.39%</td>
+      <td>60.61%</td>
+      <td>-17.13</td>
+    </tr>
+    <tr>
+      <td>2010-07-16</td>
+      <td>Los Angeles Sparks</td>
+      <td>1429.38</td>
+      <td>68</td>
+      <td>@ Chicago Sky</td>
+      <td>1501.76</td>
+      <td>80</td>
+      <td>31.58%</td>
+      <td>68.42%</td>
+      <td>-10.92</td>
+    </tr>
+    <tr>
+      <td>2010-07-16</td>
+      <td>Tulsa Shock</td>
+      <td>1323.60</td>
+      <td>75</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1416.00</td>
+      <td>70</td>
+      <td>29.14%</td>
+      <td>70.86%</td>
+      <td>15.81</td>
+    </tr>
+    <tr>
+      <td>2010-07-16</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1416.00</td>
+      <td>70</td>
+      <td>Tulsa Shock</td>
+      <td>1323.60</td>
+      <td>75</td>
+      <td>70.86%</td>
+      <td>29.14%</td>
+      <td>-15.82</td>
+    </tr>
+    <tr>
+      <td>2010-07-17</td>
+      <td>Atlanta Dream</td>
+      <td>1543.93</td>
+      <td>80</td>
+      <td>@ Connecticut Sun</td>
+      <td>1513.31</td>
+      <td>96</td>
+      <td>45.50%</td>
+      <td>54.50%</td>
+      <td>-18.17</td>
+    </tr>
+    <tr>
+      <td>2010-07-17</td>
+      <td>Tulsa Shock</td>
+      <td>1339.41</td>
+      <td>88</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1506.12</td>
+      <td>97</td>
+      <td>21.14%</td>
+      <td>78.86%</td>
+      <td>-6.33</td>
+    </tr>
+    <tr>
+      <td>2010-07-17</td>
+      <td>Seattle Storm</td>
+      <td>1674.03</td>
+      <td>73</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1438.54</td>
+      <td>71</td>
+      <td>73.08%</td>
+      <td>26.92%</td>
+      <td>3.80</td>
+    </tr>
+    <tr>
+      <td>2010-07-17</td>
+      <td>Phoenix Mercury</td>
+      <td>1506.12</td>
+      <td>97</td>
+      <td>Tulsa Shock</td>
+      <td>1339.41</td>
+      <td>88</td>
+      <td>78.86%</td>
+      <td>21.14%</td>
+      <td>6.33</td>
+    </tr>
+    <tr>
+      <td>2010-07-17</td>
+      <td>Connecticut Sun</td>
+      <td>1513.31</td>
+      <td>96</td>
+      <td>Atlanta Dream</td>
+      <td>1543.93</td>
+      <td>80</td>
+      <td>54.50%</td>
+      <td>45.50%</td>
+      <td>18.16</td>
+    </tr>
+    <tr>
+      <td>2010-07-17</td>
+      <td>Minnesota Lynx</td>
+      <td>1438.54</td>
+      <td>71</td>
+      <td>Seattle Storm</td>
+      <td>1674.03</td>
+      <td>73</td>
+      <td>26.92%</td>
+      <td>73.08%</td>
+      <td>-3.80</td>
+    </tr>
+    <tr>
+      <td>2010-07-18</td>
+      <td>Indiana Fever</td>
+      <td>1591.13</td>
+      <td>84</td>
+      <td>@ New York Liberty</td>
+      <td>1505.94</td>
+      <td>81</td>
+      <td>53.34%</td>
+      <td>46.66%</td>
+      <td>8.06</td>
+    </tr>
+    <tr>
+      <td>2010-07-18</td>
+      <td>Washington Mystics</td>
+      <td>1556.28</td>
+      <td>59</td>
+      <td>Chicago Sky</td>
+      <td>1512.68</td>
+      <td>61</td>
+      <td>64.74%</td>
+      <td>35.26%</td>
+      <td>-9.14</td>
+    </tr>
+    <tr>
+      <td>2010-07-18</td>
+      <td>Los Angeles Sparks</td>
+      <td>1418.46</td>
+      <td>73</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1400.18</td>
+      <td>83</td>
+      <td>43.75%</td>
+      <td>56.25%</td>
+      <td>-13.80</td>
+    </tr>
+    <tr>
+      <td>2010-07-18</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1400.18</td>
+      <td>83</td>
+      <td>Los Angeles Sparks</td>
+      <td>1418.46</td>
+      <td>73</td>
+      <td>56.25%</td>
+      <td>43.75%</td>
+      <td>13.81</td>
+    </tr>
+    <tr>
+      <td>2010-07-18</td>
+      <td>Chicago Sky</td>
+      <td>1512.68</td>
+      <td>61</td>
+      <td>@ Washington Mystics</td>
+      <td>1556.28</td>
+      <td>59</td>
+      <td>35.26%</td>
+      <td>64.74%</td>
+      <td>9.14</td>
+    </tr>
+    <tr>
+      <td>2010-07-18</td>
+      <td>New York Liberty</td>
+      <td>1505.94</td>
+      <td>81</td>
+      <td>Indiana Fever</td>
+      <td>1591.13</td>
+      <td>84</td>
+      <td>46.66%</td>
+      <td>53.34%</td>
+      <td>-8.07</td>
+    </tr>
+    <tr>
+      <td>2010-07-20</td>
+      <td>Tulsa Shock</td>
+      <td>1333.08</td>
+      <td>83</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1404.66</td>
+      <td>86</td>
+      <td>31.68%</td>
+      <td>68.32%</td>
+      <td>-5.47</td>
+    </tr>
+    <tr>
+      <td>2010-07-20</td>
+      <td>Seattle Storm</td>
+      <td>1677.83</td>
+      <td>80</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1413.99</td>
+      <td>74</td>
+      <td>76.17%</td>
+      <td>23.83%</td>
+      <td>5.82</td>
+    </tr>
+    <tr>
+      <td>2010-07-20</td>
+      <td>Connecticut Sun</td>
+      <td>1531.47</td>
+      <td>74</td>
+      <td>New York Liberty</td>
+      <td>1497.87</td>
+      <td>82</td>
+      <td>63.42%</td>
+      <td>36.58%</td>
+      <td>-17.90</td>
+    </tr>
+    <tr>
+      <td>2010-07-20</td>
+      <td>Los Angeles Sparks</td>
+      <td>1404.66</td>
+      <td>86</td>
+      <td>Tulsa Shock</td>
+      <td>1333.08</td>
+      <td>83</td>
+      <td>68.32%</td>
+      <td>31.68%</td>
+      <td>5.47</td>
+    </tr>
+    <tr>
+      <td>2010-07-20</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1413.99</td>
+      <td>74</td>
+      <td>Seattle Storm</td>
+      <td>1677.83</td>
+      <td>80</td>
+      <td>23.83%</td>
+      <td>76.17%</td>
+      <td>-5.82</td>
+    </tr>
+    <tr>
+      <td>2010-07-20</td>
+      <td>New York Liberty</td>
+      <td>1497.87</td>
+      <td>82</td>
+      <td>@ Connecticut Sun</td>
+      <td>1531.47</td>
+      <td>74</td>
+      <td>36.58%</td>
+      <td>63.42%</td>
+      <td>17.90</td>
+    </tr>
+    <tr>
+      <td>2010-07-21</td>
+      <td>Washington Mystics</td>
+      <td>1547.14</td>
+      <td>82</td>
+      <td>Atlanta Dream</td>
+      <td>1525.76</td>
+      <td>72</td>
+      <td>61.77%</td>
+      <td>38.23%</td>
+      <td>12.07</td>
+    </tr>
+    <tr>
+      <td>2010-07-21</td>
+      <td>Atlanta Dream</td>
+      <td>1525.76</td>
+      <td>72</td>
+      <td>@ Washington Mystics</td>
+      <td>1547.14</td>
+      <td>82</td>
+      <td>38.23%</td>
+      <td>61.77%</td>
+      <td>-12.06</td>
+    </tr>
+    <tr>
+      <td>2010-07-22</td>
+      <td>Indiana Fever</td>
+      <td>1599.19</td>
+      <td>76</td>
+      <td>Los Angeles Sparks</td>
+      <td>1410.13</td>
+      <td>57</td>
+      <td>80.92%</td>
+      <td>19.08%</td>
+      <td>8.30</td>
+    </tr>
+    <tr>
+      <td>2010-07-22</td>
+      <td>Minnesota Lynx</td>
+      <td>1434.74</td>
+      <td>72</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1408.17</td>
+      <td>74</td>
+      <td>62.47%</td>
+      <td>37.53%</td>
+      <td>-8.82</td>
+    </tr>
+    <tr>
+      <td>2010-07-22</td>
+      <td>Tulsa Shock</td>
+      <td>1327.61</td>
+      <td>91</td>
+      <td>Phoenix Mercury</td>
+      <td>1512.45</td>
+      <td>123</td>
+      <td>33.02%</td>
+      <td>66.98%</td>
+      <td>-18.64</td>
+    </tr>
+    <tr>
+      <td>2010-07-22</td>
+      <td>Phoenix Mercury</td>
+      <td>1512.45</td>
+      <td>123</td>
+      <td>@ Tulsa Shock</td>
+      <td>1327.61</td>
+      <td>91</td>
+      <td>66.98%</td>
+      <td>33.02%</td>
+      <td>18.64</td>
+    </tr>
+    <tr>
+      <td>2010-07-22</td>
+      <td>Los Angeles Sparks</td>
+      <td>1410.13</td>
+      <td>57</td>
+      <td>@ Indiana Fever</td>
+      <td>1599.19</td>
+      <td>76</td>
+      <td>19.08%</td>
+      <td>80.92%</td>
+      <td>-8.30</td>
+    </tr>
+    <tr>
+      <td>2010-07-22</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1408.17</td>
+      <td>74</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1434.74</td>
+      <td>72</td>
+      <td>37.53%</td>
+      <td>62.47%</td>
+      <td>8.81</td>
+    </tr>
+    <tr>
+      <td>2010-07-23</td>
+      <td>Chicago Sky</td>
+      <td>1521.82</td>
+      <td>71</td>
+      <td>New York Liberty</td>
+      <td>1515.77</td>
+      <td>79</td>
+      <td>59.66%</td>
+      <td>40.34%</td>
+      <td>-16.84</td>
+    </tr>
+    <tr>
+      <td>2010-07-23</td>
+      <td>New York Liberty</td>
+      <td>1515.77</td>
+      <td>79</td>
+      <td>@ Chicago Sky</td>
+      <td>1521.82</td>
+      <td>71</td>
+      <td>40.34%</td>
+      <td>59.66%</td>
+      <td>16.85</td>
+    </tr>
+    <tr>
+      <td>2010-07-24</td>
+      <td>Washington Mystics</td>
+      <td>1559.21</td>
+      <td>73</td>
+      <td>Indiana Fever</td>
+      <td>1607.49</td>
+      <td>78</td>
+      <td>51.97%</td>
+      <td>48.03%</td>
+      <td>-11.60</td>
+    </tr>
+    <tr>
+      <td>2010-07-24</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1416.98</td>
+      <td>72</td>
+      <td>Chicago Sky</td>
+      <td>1504.98</td>
+      <td>75</td>
+      <td>46.26%</td>
+      <td>53.74%</td>
+      <td>-7.99</td>
+    </tr>
+    <tr>
+      <td>2010-07-24</td>
+      <td>Connecticut Sun</td>
+      <td>1513.57</td>
+      <td>80</td>
+      <td>Los Angeles Sparks</td>
+      <td>1401.83</td>
+      <td>89</td>
+      <td>73.10%</td>
+      <td>26.90%</td>
+      <td>-21.89</td>
+    </tr>
+    <tr>
+      <td>2010-07-24</td>
+      <td>Indiana Fever</td>
+      <td>1607.49</td>
+      <td>78</td>
+      <td>@ Washington Mystics</td>
+      <td>1559.21</td>
+      <td>73</td>
+      <td>48.03%</td>
+      <td>51.97%</td>
+      <td>11.60</td>
+    </tr>
+    <tr>
+      <td>2010-07-24</td>
+      <td>Minnesota Lynx</td>
+      <td>1425.92</td>
+      <td>124</td>
+      <td>Phoenix Mercury</td>
+      <td>1531.09</td>
+      <td>127</td>
+      <td>43.81%</td>
+      <td>56.19%</td>
+      <td>-7.57</td>
+    </tr>
+    <tr>
+      <td>2010-07-24</td>
+      <td>Phoenix Mercury</td>
+      <td>1531.09</td>
+      <td>127</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1425.92</td>
+      <td>124</td>
+      <td>56.19%</td>
+      <td>43.81%</td>
+      <td>7.57</td>
+    </tr>
+    <tr>
+      <td>2010-07-24</td>
+      <td>Los Angeles Sparks</td>
+      <td>1401.83</td>
+      <td>89</td>
+      <td>@ Connecticut Sun</td>
+      <td>1513.57</td>
+      <td>80</td>
+      <td>26.90%</td>
+      <td>73.10%</td>
+      <td>21.89</td>
+    </tr>
+    <tr>
+      <td>2010-07-24</td>
+      <td>Chicago Sky</td>
+      <td>1504.98</td>
+      <td>75</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1416.98</td>
+      <td>72</td>
+      <td>53.74%</td>
+      <td>46.26%</td>
+      <td>7.99</td>
+    </tr>
+    <tr>
+      <td>2010-07-25</td>
+      <td>New York Liberty</td>
+      <td>1532.62</td>
+      <td>75</td>
+      <td>@ Atlanta Dream</td>
+      <td>1513.70</td>
+      <td>82</td>
+      <td>43.84%</td>
+      <td>56.16%</td>
+      <td>-11.58</td>
+    </tr>
+    <tr>
+      <td>2010-07-25</td>
+      <td>Tulsa Shock</td>
+      <td>1308.97</td>
+      <td>59</td>
+      <td>@ Seattle Storm</td>
+      <td>1683.65</td>
+      <td>75</td>
+      <td>7.49%</td>
+      <td>92.51%</td>
+      <td>-3.00</td>
+    </tr>
+    <tr>
+      <td>2010-07-25</td>
+      <td>Seattle Storm</td>
+      <td>1683.65</td>
+      <td>75</td>
+      <td>Tulsa Shock</td>
+      <td>1308.97</td>
+      <td>59</td>
+      <td>92.51%</td>
+      <td>7.49%</td>
+      <td>2.99</td>
+    </tr>
+    <tr>
+      <td>2010-07-25</td>
+      <td>Atlanta Dream</td>
+      <td>1513.70</td>
+      <td>82</td>
+      <td>New York Liberty</td>
+      <td>1532.62</td>
+      <td>75</td>
+      <td>56.16%</td>
+      <td>43.84%</td>
+      <td>11.57</td>
+    </tr>
+    <tr>
+      <td>2010-07-27</td>
+      <td>Connecticut Sun</td>
+      <td>1491.68</td>
+      <td>88</td>
+      <td>Washington Mystics</td>
+      <td>1547.61</td>
+      <td>78</td>
+      <td>50.87%</td>
+      <td>49.13%</td>
+      <td>15.51</td>
+    </tr>
+    <tr>
+      <td>2010-07-27</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1408.99</td>
+      <td>72</td>
+      <td>@ New York Liberty</td>
+      <td>1521.04</td>
+      <td>77</td>
+      <td>26.86%</td>
+      <td>73.14%</td>
+      <td>-6.00</td>
+    </tr>
+    <tr>
+      <td>2010-07-27</td>
+      <td>Phoenix Mercury</td>
+      <td>1538.66</td>
+      <td>85</td>
+      <td>@ Seattle Storm</td>
+      <td>1686.64</td>
+      <td>91</td>
+      <td>23.00%</td>
+      <td>77.00%</td>
+      <td>-5.62</td>
+    </tr>
+    <tr>
+      <td>2010-07-27</td>
+      <td>Atlanta Dream</td>
+      <td>1525.27</td>
+      <td>105</td>
+      <td>@ Tulsa Shock</td>
+      <td>1305.97</td>
+      <td>89</td>
+      <td>71.21%</td>
+      <td>28.79%</td>
+      <td>11.49</td>
+    </tr>
+    <tr>
+      <td>2010-07-27</td>
+      <td>Seattle Storm</td>
+      <td>1686.64</td>
+      <td>91</td>
+      <td>Phoenix Mercury</td>
+      <td>1538.66</td>
+      <td>85</td>
+      <td>77.00%</td>
+      <td>23.00%</td>
+      <td>5.62</td>
+    </tr>
+    <tr>
+      <td>2010-07-27</td>
+      <td>Tulsa Shock</td>
+      <td>1305.97</td>
+      <td>89</td>
+      <td>Atlanta Dream</td>
+      <td>1525.27</td>
+      <td>105</td>
+      <td>28.79%</td>
+      <td>71.21%</td>
+      <td>-11.49</td>
+    </tr>
+    <tr>
+      <td>2010-07-27</td>
+      <td>Indiana Fever</td>
+      <td>1619.09</td>
+      <td>78</td>
+      <td>Chicago Sky</td>
+      <td>1512.97</td>
+      <td>74</td>
+      <td>72.46%</td>
+      <td>27.54%</td>
+      <td>5.50</td>
+    </tr>
+    <tr>
+      <td>2010-07-27</td>
+      <td>Los Angeles Sparks</td>
+      <td>1423.72</td>
+      <td>71</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1418.35</td>
+      <td>58</td>
+      <td>41.93%</td>
+      <td>58.07%</td>
+      <td>20.90</td>
+    </tr>
+    <tr>
+      <td>2010-07-27</td>
+      <td>Chicago Sky</td>
+      <td>1512.97</td>
+      <td>74</td>
+      <td>@ Indiana Fever</td>
+      <td>1619.09</td>
+      <td>78</td>
+      <td>27.54%</td>
+      <td>72.46%</td>
+      <td>-5.49</td>
+    </tr>
+    <tr>
+      <td>2010-07-27</td>
+      <td>Washington Mystics</td>
+      <td>1547.61</td>
+      <td>78</td>
+      <td>@ Connecticut Sun</td>
+      <td>1491.68</td>
+      <td>88</td>
+      <td>49.13%</td>
+      <td>50.87%</td>
+      <td>-15.51</td>
+    </tr>
+    <tr>
+      <td>2010-07-27</td>
+      <td>New York Liberty</td>
+      <td>1521.04</td>
+      <td>77</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1408.99</td>
+      <td>72</td>
+      <td>73.14%</td>
+      <td>26.86%</td>
+      <td>5.99</td>
+    </tr>
+    <tr>
+      <td>2010-07-27</td>
+      <td>Minnesota Lynx</td>
+      <td>1418.35</td>
+      <td>58</td>
+      <td>Los Angeles Sparks</td>
+      <td>1423.72</td>
+      <td>71</td>
+      <td>58.07%</td>
+      <td>41.93%</td>
+      <td>-20.90</td>
+    </tr>
+    <tr>
+      <td>2010-07-29</td>
+      <td>Minnesota Lynx</td>
+      <td>1397.45</td>
+      <td>92</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1533.04</td>
+      <td>110</td>
+      <td>24.28%</td>
+      <td>75.72%</td>
+      <td>-10.28</td>
+    </tr>
+    <tr>
+      <td>2010-07-29</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1402.99</td>
+      <td>79</td>
+      <td>@ Washington Mystics</td>
+      <td>1532.10</td>
+      <td>75</td>
+      <td>24.98%</td>
+      <td>75.02%</td>
+      <td>14.98</td>
+    </tr>
+    <tr>
+      <td>2010-07-29</td>
+      <td>Washington Mystics</td>
+      <td>1532.10</td>
+      <td>75</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1402.99</td>
+      <td>79</td>
+      <td>75.02%</td>
+      <td>24.98%</td>
+      <td>-14.97</td>
+    </tr>
+    <tr>
+      <td>2010-07-29</td>
+      <td>Phoenix Mercury</td>
+      <td>1533.04</td>
+      <td>110</td>
+      <td>Minnesota Lynx</td>
+      <td>1397.45</td>
+      <td>92</td>
+      <td>75.72%</td>
+      <td>24.28%</td>
+      <td>10.28</td>
+    </tr>
+    <tr>
+      <td>2010-07-30</td>
+      <td>Washington Mystics</td>
+      <td>1517.13</td>
+      <td>77</td>
+      <td>@ Indiana Fever</td>
+      <td>1624.59</td>
+      <td>73</td>
+      <td>27.38%</td>
+      <td>72.62%</td>
+      <td>14.49</td>
+    </tr>
+    <tr>
+      <td>2010-07-30</td>
+      <td>Connecticut Sun</td>
+      <td>1507.19</td>
+      <td>62</td>
+      <td>Atlanta Dream</td>
+      <td>1536.76</td>
+      <td>94</td>
+      <td>54.65%</td>
+      <td>45.35%</td>
+      <td>-30.85</td>
+    </tr>
+    <tr>
+      <td>2010-07-30</td>
+      <td>Indiana Fever</td>
+      <td>1624.59</td>
+      <td>73</td>
+      <td>Washington Mystics</td>
+      <td>1517.13</td>
+      <td>77</td>
+      <td>72.62%</td>
+      <td>27.38%</td>
+      <td>-14.50</td>
+    </tr>
+    <tr>
+      <td>2010-07-30</td>
+      <td>Tulsa Shock</td>
+      <td>1294.48</td>
+      <td>85</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1417.97</td>
+      <td>101</td>
+      <td>41.24%</td>
+      <td>58.76%</td>
+      <td>-16.46</td>
+    </tr>
+    <tr>
+      <td>2010-07-30</td>
+      <td>Seattle Storm</td>
+      <td>1692.26</td>
+      <td>80</td>
+      <td>Chicago Sky</td>
+      <td>1507.48</td>
+      <td>60</td>
+      <td>80.54%</td>
+      <td>19.46%</td>
+      <td>8.69</td>
+    </tr>
+    <tr>
+      <td>2010-07-30</td>
+      <td>Atlanta Dream</td>
+      <td>1536.76</td>
+      <td>94</td>
+      <td>@ Connecticut Sun</td>
+      <td>1507.19</td>
+      <td>62</td>
+      <td>45.35%</td>
+      <td>54.65%</td>
+      <td>30.86</td>
+    </tr>
+    <tr>
+      <td>2010-07-30</td>
+      <td>Los Angeles Sparks</td>
+      <td>1444.62</td>
+      <td>79</td>
+      <td>@ New York Liberty</td>
+      <td>1527.03</td>
+      <td>88</td>
+      <td>30.34%</td>
+      <td>69.66%</td>
+      <td>-9.09</td>
+    </tr>
+    <tr>
+      <td>2010-07-30</td>
+      <td>Chicago Sky</td>
+      <td>1507.48</td>
+      <td>60</td>
+      <td>@ Seattle Storm</td>
+      <td>1692.26</td>
+      <td>80</td>
+      <td>19.46%</td>
+      <td>80.54%</td>
+      <td>-8.69</td>
+    </tr>
+    <tr>
+      <td>2010-07-30</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1417.97</td>
+      <td>101</td>
+      <td>@ Tulsa Shock</td>
+      <td>1294.48</td>
+      <td>85</td>
+      <td>58.76%</td>
+      <td>41.24%</td>
+      <td>16.46</td>
+    </tr>
+    <tr>
+      <td>2010-07-30</td>
+      <td>New York Liberty</td>
+      <td>1527.03</td>
+      <td>88</td>
+      <td>Los Angeles Sparks</td>
+      <td>1444.62</td>
+      <td>79</td>
+      <td>69.66%</td>
+      <td>30.34%</td>
+      <td>9.09</td>
+    </tr>
+    <tr>
+      <td>2010-08-01</td>
+      <td>Atlanta Dream</td>
+      <td>1567.62</td>
+      <td>90</td>
+      <td>Indiana Fever</td>
+      <td>1610.09</td>
+      <td>74</td>
+      <td>52.80%</td>
+      <td>47.20%</td>
+      <td>18.84</td>
+    </tr>
+    <tr>
+      <td>2010-08-01</td>
+      <td>Minnesota Lynx</td>
+      <td>1387.17</td>
+      <td>72</td>
+      <td>Seattle Storm</td>
+      <td>1700.95</td>
+      <td>71</td>
+      <td>19.01%</td>
+      <td>80.99%</td>
+      <td>8.08</td>
+    </tr>
+    <tr>
+      <td>2010-08-01</td>
+      <td>New York Liberty</td>
+      <td>1536.12</td>
+      <td>71</td>
+      <td>Connecticut Sun</td>
+      <td>1476.34</td>
+      <td>67</td>
+      <td>66.84%</td>
+      <td>33.16%</td>
+      <td>6.62</td>
+    </tr>
+    <tr>
+      <td>2010-08-01</td>
+      <td>Phoenix Mercury</td>
+      <td>1543.32</td>
+      <td>97</td>
+      <td>Chicago Sky</td>
+      <td>1498.79</td>
+      <td>96</td>
+      <td>64.86%</td>
+      <td>35.14%</td>
+      <td>3.51</td>
+    </tr>
+    <tr>
+      <td>2010-08-01</td>
+      <td>Washington Mystics</td>
+      <td>1531.62</td>
+      <td>87</td>
+      <td>Tulsa Shock</td>
+      <td>1278.02</td>
+      <td>62</td>
+      <td>86.01%</td>
+      <td>13.99%</td>
+      <td>6.98</td>
+    </tr>
+    <tr>
+      <td>2010-08-01</td>
+      <td>Indiana Fever</td>
+      <td>1610.09</td>
+      <td>74</td>
+      <td>@ Atlanta Dream</td>
+      <td>1567.62</td>
+      <td>90</td>
+      <td>47.20%</td>
+      <td>52.80%</td>
+      <td>-18.84</td>
+    </tr>
+    <tr>
+      <td>2010-08-01</td>
+      <td>Seattle Storm</td>
+      <td>1700.95</td>
+      <td>71</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1387.17</td>
+      <td>72</td>
+      <td>80.99%</td>
+      <td>19.01%</td>
+      <td>-8.08</td>
+    </tr>
+    <tr>
+      <td>2010-08-01</td>
+      <td>Connecticut Sun</td>
+      <td>1476.34</td>
+      <td>67</td>
+      <td>@ New York Liberty</td>
+      <td>1536.12</td>
+      <td>71</td>
+      <td>33.16%</td>
+      <td>66.84%</td>
+      <td>-6.62</td>
+    </tr>
+    <tr>
+      <td>2010-08-01</td>
+      <td>Chicago Sky</td>
+      <td>1498.79</td>
+      <td>96</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1543.32</td>
+      <td>97</td>
+      <td>35.14%</td>
+      <td>64.86%</td>
+      <td>-3.51</td>
+    </tr>
+    <tr>
+      <td>2010-08-01</td>
+      <td>Tulsa Shock</td>
+      <td>1278.02</td>
+      <td>62</td>
+      <td>@ Washington Mystics</td>
+      <td>1531.62</td>
+      <td>87</td>
+      <td>13.99%</td>
+      <td>86.01%</td>
+      <td>-6.98</td>
+    </tr>
+    <tr>
+      <td>2010-08-03</td>
+      <td>Phoenix Mercury</td>
+      <td>1546.83</td>
+      <td>103</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1434.43</td>
+      <td>92</td>
+      <td>57.21%</td>
+      <td>42.79%</td>
+      <td>14.17</td>
+    </tr>
+    <tr>
+      <td>2010-08-03</td>
+      <td>New York Liberty</td>
+      <td>1542.74</td>
+      <td>82</td>
+      <td>@ Indiana Fever</td>
+      <td>1591.25</td>
+      <td>72</td>
+      <td>34.62%</td>
+      <td>65.38%</td>
+      <td>20.63</td>
+    </tr>
+    <tr>
+      <td>2010-08-03</td>
+      <td>Connecticut Sun</td>
+      <td>1469.72</td>
+      <td>103</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1395.25</td>
+      <td>111</td>
+      <td>51.80%</td>
+      <td>48.20%</td>
+      <td>-14.62</td>
+    </tr>
+    <tr>
+      <td>2010-08-03</td>
+      <td>Seattle Storm</td>
+      <td>1692.87</td>
+      <td>75</td>
+      <td>@ Tulsa Shock</td>
+      <td>1271.04</td>
+      <td>84</td>
+      <td>88.81%</td>
+      <td>11.19%</td>
+      <td>-26.59</td>
+    </tr>
+    <tr>
+      <td>2010-08-03</td>
+      <td>Tulsa Shock</td>
+      <td>1271.04</td>
+      <td>84</td>
+      <td>Seattle Storm</td>
+      <td>1692.87</td>
+      <td>75</td>
+      <td>11.19%</td>
+      <td>88.81%</td>
+      <td>26.59</td>
+    </tr>
+    <tr>
+      <td>2010-08-03</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1434.43</td>
+      <td>92</td>
+      <td>Phoenix Mercury</td>
+      <td>1546.83</td>
+      <td>103</td>
+      <td>42.79%</td>
+      <td>57.21%</td>
+      <td>-14.17</td>
+    </tr>
+    <tr>
+      <td>2010-08-03</td>
+      <td>Indiana Fever</td>
+      <td>1591.25</td>
+      <td>72</td>
+      <td>New York Liberty</td>
+      <td>1542.74</td>
+      <td>82</td>
+      <td>65.38%</td>
+      <td>34.62%</td>
+      <td>-20.63</td>
+    </tr>
+    <tr>
+      <td>2010-08-03</td>
+      <td>Atlanta Dream</td>
+      <td>1586.46</td>
+      <td>78</td>
+      <td>Washington Mystics</td>
+      <td>1538.60</td>
+      <td>86</td>
+      <td>65.30%</td>
+      <td>34.70%</td>
+      <td>-18.43</td>
+    </tr>
+    <tr>
+      <td>2010-08-03</td>
+      <td>Washington Mystics</td>
+      <td>1538.60</td>
+      <td>86</td>
+      <td>@ Atlanta Dream</td>
+      <td>1586.46</td>
+      <td>78</td>
+      <td>34.70%</td>
+      <td>65.30%</td>
+      <td>18.43</td>
+    </tr>
+    <tr>
+      <td>2010-08-03</td>
+      <td>Minnesota Lynx</td>
+      <td>1395.25</td>
+      <td>111</td>
+      <td>Connecticut Sun</td>
+      <td>1469.72</td>
+      <td>103</td>
+      <td>48.20%</td>
+      <td>51.80%</td>
+      <td>14.62</td>
+    </tr>
+    <tr>
+      <td>2010-08-04</td>
+      <td>Los Angeles Sparks</td>
+      <td>1435.53</td>
+      <td>82</td>
+      <td>Chicago Sky</td>
+      <td>1495.28</td>
+      <td>77</td>
+      <td>50.32%</td>
+      <td>49.68%</td>
+      <td>11.09</td>
+    </tr>
+    <tr>
+      <td>2010-08-04</td>
+      <td>Chicago Sky</td>
+      <td>1495.28</td>
+      <td>77</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1435.53</td>
+      <td>82</td>
+      <td>49.68%</td>
+      <td>50.32%</td>
+      <td>-11.08</td>
+    </tr>
+    <tr>
+      <td>2010-08-05</td>
+      <td>Connecticut Sun</td>
+      <td>1455.10</td>
+      <td>82</td>
+      <td>@ Seattle Storm</td>
+      <td>1666.28</td>
+      <td>83</td>
+      <td>17.19%</td>
+      <td>82.81%</td>
+      <td>-1.72</td>
+    </tr>
+    <tr>
+      <td>2010-08-05</td>
+      <td>Seattle Storm</td>
+      <td>1666.28</td>
+      <td>83</td>
+      <td>Connecticut Sun</td>
+      <td>1455.10</td>
+      <td>82</td>
+      <td>82.81%</td>
+      <td>17.19%</td>
+      <td>1.71</td>
+    </tr>
+    <tr>
+      <td>2010-08-06</td>
+      <td>Atlanta Dream</td>
+      <td>1568.03</td>
+      <td>93</td>
+      <td>@ Indiana Fever</td>
+      <td>1570.62</td>
+      <td>95</td>
+      <td>40.82%</td>
+      <td>59.18%</td>
+      <td>-5.77</td>
+    </tr>
+    <tr>
+      <td>2010-08-06</td>
+      <td>Washington Mystics</td>
+      <td>1557.03</td>
+      <td>77</td>
+      <td>@ New York Liberty</td>
+      <td>1563.37</td>
+      <td>85</td>
+      <td>40.30%</td>
+      <td>59.70%</td>
+      <td>-11.37</td>
+    </tr>
+    <tr>
+      <td>2010-08-06</td>
+      <td>New York Liberty</td>
+      <td>1563.37</td>
+      <td>85</td>
+      <td>Washington Mystics</td>
+      <td>1557.03</td>
+      <td>77</td>
+      <td>59.70%</td>
+      <td>40.30%</td>
+      <td>11.38</td>
+    </tr>
+    <tr>
+      <td>2010-08-06</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1420.26</td>
+      <td>87</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1561.00</td>
+      <td>103</td>
+      <td>23.74%</td>
+      <td>76.26%</td>
+      <td>-9.47</td>
+    </tr>
+    <tr>
+      <td>2010-08-06</td>
+      <td>Phoenix Mercury</td>
+      <td>1561.00</td>
+      <td>103</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1420.26</td>
+      <td>87</td>
+      <td>76.26%</td>
+      <td>23.74%</td>
+      <td>9.47</td>
+    </tr>
+    <tr>
+      <td>2010-08-06</td>
+      <td>Tulsa Shock</td>
+      <td>1297.63</td>
+      <td>70</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1446.62</td>
+      <td>77</td>
+      <td>22.89%</td>
+      <td>77.11%</td>
+      <td>-6.04</td>
+    </tr>
+    <tr>
+      <td>2010-08-06</td>
+      <td>Los Angeles Sparks</td>
+      <td>1446.62</td>
+      <td>77</td>
+      <td>Tulsa Shock</td>
+      <td>1297.63</td>
+      <td>70</td>
+      <td>77.11%</td>
+      <td>22.89%</td>
+      <td>6.04</td>
+    </tr>
+    <tr>
+      <td>2010-08-06</td>
+      <td>Indiana Fever</td>
+      <td>1570.62</td>
+      <td>95</td>
+      <td>Atlanta Dream</td>
+      <td>1568.03</td>
+      <td>93</td>
+      <td>59.18%</td>
+      <td>40.82%</td>
+      <td>5.76</td>
+    </tr>
+    <tr>
+      <td>2010-08-07</td>
+      <td>Seattle Storm</td>
+      <td>1667.99</td>
+      <td>111</td>
+      <td>Tulsa Shock</td>
+      <td>1291.59</td>
+      <td>65</td>
+      <td>92.58%</td>
+      <td>7.42%</td>
+      <td>5.03</td>
+    </tr>
+    <tr>
+      <td>2010-08-07</td>
+      <td>Minnesota Lynx</td>
+      <td>1409.87</td>
+      <td>87</td>
+      <td>@ Chicago Sky</td>
+      <td>1484.20</td>
+      <td>82</td>
+      <td>31.33%</td>
+      <td>68.67%</td>
+      <td>15.33</td>
+    </tr>
+    <tr>
+      <td>2010-08-07</td>
+      <td>Chicago Sky</td>
+      <td>1484.20</td>
+      <td>82</td>
+      <td>Minnesota Lynx</td>
+      <td>1409.87</td>
+      <td>87</td>
+      <td>68.67%</td>
+      <td>31.33%</td>
+      <td>-15.33</td>
+    </tr>
+    <tr>
+      <td>2010-08-07</td>
+      <td>Tulsa Shock</td>
+      <td>1291.59</td>
+      <td>65</td>
+      <td>@ Seattle Storm</td>
+      <td>1667.99</td>
+      <td>111</td>
+      <td>7.42%</td>
+      <td>92.58%</td>
+      <td>-5.03</td>
+    </tr>
+    <tr>
+      <td>2010-08-08</td>
+      <td>Connecticut Sun</td>
+      <td>1453.38</td>
+      <td>76</td>
+      <td>Washington Mystics</td>
+      <td>1545.66</td>
+      <td>67</td>
+      <td>45.65%</td>
+      <td>54.35%</td>
+      <td>16.27</td>
+    </tr>
+    <tr>
+      <td>2010-08-08</td>
+      <td>Los Angeles Sparks</td>
+      <td>1452.66</td>
+      <td>83</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1410.79</td>
+      <td>92</td>
+      <td>64.51%</td>
+      <td>35.49%</td>
+      <td>-19.31</td>
+    </tr>
+    <tr>
+      <td>2010-08-08</td>
+      <td>Minnesota Lynx</td>
+      <td>1425.20</td>
+      <td>72</td>
+      <td>New York Liberty</td>
+      <td>1574.75</td>
+      <td>74</td>
+      <td>37.66%</td>
+      <td>62.34%</td>
+      <td>-5.32</td>
+    </tr>
+    <tr>
+      <td>2010-08-08</td>
+      <td>Phoenix Mercury</td>
+      <td>1570.47</td>
+      <td>82</td>
+      <td>Indiana Fever</td>
+      <td>1576.38</td>
+      <td>104</td>
+      <td>58.00%</td>
+      <td>42.00%</td>
+      <td>-27.15</td>
+    </tr>
+    <tr>
+      <td>2010-08-08</td>
+      <td>Indiana Fever</td>
+      <td>1576.38</td>
+      <td>104</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1570.47</td>
+      <td>82</td>
+      <td>42.00%</td>
+      <td>58.00%</td>
+      <td>27.15</td>
+    </tr>
+    <tr>
+      <td>2010-08-08</td>
+      <td>New York Liberty</td>
+      <td>1574.75</td>
+      <td>74</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1425.20</td>
+      <td>72</td>
+      <td>62.34%</td>
+      <td>37.66%</td>
+      <td>5.31</td>
+    </tr>
+    <tr>
+      <td>2010-08-08</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1410.79</td>
+      <td>92</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1452.66</td>
+      <td>83</td>
+      <td>35.49%</td>
+      <td>64.51%</td>
+      <td>19.31</td>
+    </tr>
+    <tr>
+      <td>2010-08-08</td>
+      <td>Washington Mystics</td>
+      <td>1545.66</td>
+      <td>67</td>
+      <td>@ Connecticut Sun</td>
+      <td>1453.38</td>
+      <td>76</td>
+      <td>54.35%</td>
+      <td>45.65%</td>
+      <td>-16.27</td>
+    </tr>
+    <tr>
+      <td>2010-08-10</td>
+      <td>Atlanta Dream</td>
+      <td>1562.26</td>
+      <td>70</td>
+      <td>Seattle Storm</td>
+      <td>1673.02</td>
+      <td>80</td>
+      <td>43.02%</td>
+      <td>56.98%</td>
+      <td>-13.57</td>
+    </tr>
+    <tr>
+      <td>2010-08-10</td>
+      <td>Chicago Sky</td>
+      <td>1468.87</td>
+      <td>91</td>
+      <td>Phoenix Mercury</td>
+      <td>1543.32</td>
+      <td>82</td>
+      <td>48.20%</td>
+      <td>51.80%</td>
+      <td>15.51</td>
+    </tr>
+    <tr>
+      <td>2010-08-10</td>
+      <td>Los Angeles Sparks</td>
+      <td>1433.35</td>
+      <td>76</td>
+      <td>Indiana Fever</td>
+      <td>1603.53</td>
+      <td>82</td>
+      <td>34.91%</td>
+      <td>65.09%</td>
+      <td>-8.54</td>
+    </tr>
+    <tr>
+      <td>2010-08-10</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1430.10</td>
+      <td>66</td>
+      <td>Minnesota Lynx</td>
+      <td>1419.88</td>
+      <td>73</td>
+      <td>60.24%</td>
+      <td>39.76%</td>
+      <td>-15.90</td>
+    </tr>
+    <tr>
+      <td>2010-08-10</td>
+      <td>Washington Mystics</td>
+      <td>1529.39</td>
+      <td>84</td>
+      <td>Connecticut Sun</td>
+      <td>1469.65</td>
+      <td>74</td>
+      <td>66.83%</td>
+      <td>33.17%</td>
+      <td>10.46</td>
+    </tr>
+    <tr>
+      <td>2010-08-10</td>
+      <td>Indiana Fever</td>
+      <td>1603.53</td>
+      <td>82</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1433.35</td>
+      <td>76</td>
+      <td>65.09%</td>
+      <td>34.91%</td>
+      <td>8.53</td>
+    </tr>
+    <tr>
+      <td>2010-08-10</td>
+      <td>Seattle Storm</td>
+      <td>1673.02</td>
+      <td>80</td>
+      <td>@ Atlanta Dream</td>
+      <td>1562.26</td>
+      <td>70</td>
+      <td>56.98%</td>
+      <td>43.02%</td>
+      <td>13.57</td>
+    </tr>
+    <tr>
+      <td>2010-08-10</td>
+      <td>Connecticut Sun</td>
+      <td>1469.65</td>
+      <td>74</td>
+      <td>@ Washington Mystics</td>
+      <td>1529.39</td>
+      <td>84</td>
+      <td>33.17%</td>
+      <td>66.83%</td>
+      <td>-10.47</td>
+    </tr>
+    <tr>
+      <td>2010-08-10</td>
+      <td>Minnesota Lynx</td>
+      <td>1419.88</td>
+      <td>73</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1430.10</td>
+      <td>66</td>
+      <td>39.76%</td>
+      <td>60.24%</td>
+      <td>15.91</td>
+    </tr>
+    <tr>
+      <td>2010-08-10</td>
+      <td>Phoenix Mercury</td>
+      <td>1543.32</td>
+      <td>82</td>
+      <td>@ Chicago Sky</td>
+      <td>1468.87</td>
+      <td>91</td>
+      <td>51.80%</td>
+      <td>48.20%</td>
+      <td>-15.50</td>
+    </tr>
+    <tr>
+      <td>2010-08-12</td>
+      <td>Minnesota Lynx</td>
+      <td>1435.79</td>
+      <td>77</td>
+      <td>Los Angeles Sparks</td>
+      <td>1424.81</td>
+      <td>78</td>
+      <td>60.34%</td>
+      <td>39.66%</td>
+      <td>-6.02</td>
+    </tr>
+    <tr>
+      <td>2010-08-12</td>
+      <td>Los Angeles Sparks</td>
+      <td>1424.81</td>
+      <td>78</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1435.79</td>
+      <td>77</td>
+      <td>39.66%</td>
+      <td>60.34%</td>
+      <td>6.03</td>
+    </tr>
+    <tr>
+      <td>2010-08-13</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1414.20</td>
+      <td>94</td>
+      <td>Tulsa Shock</td>
+      <td>1286.56</td>
+      <td>74</td>
+      <td>74.86%</td>
+      <td>25.14%</td>
+      <td>11.21</td>
+    </tr>
+    <tr>
+      <td>2010-08-13</td>
+      <td>Indiana Fever</td>
+      <td>1612.06</td>
+      <td>110</td>
+      <td>Phoenix Mercury</td>
+      <td>1527.82</td>
+      <td>90</td>
+      <td>69.88%</td>
+      <td>30.12%</td>
+      <td>13.44</td>
+    </tr>
+    <tr>
+      <td>2010-08-13</td>
+      <td>Connecticut Sun</td>
+      <td>1459.18</td>
+      <td>88</td>
+      <td>Seattle Storm</td>
+      <td>1686.59</td>
+      <td>68</td>
+      <td>27.84%</td>
+      <td>72.16%</td>
+      <td>32.21</td>
+    </tr>
+    <tr>
+      <td>2010-08-13</td>
+      <td>Atlanta Dream</td>
+      <td>1548.69</td>
+      <td>83</td>
+      <td>New York Liberty</td>
+      <td>1580.06</td>
+      <td>90</td>
+      <td>54.39%</td>
+      <td>45.61%</td>
+      <td>-14.36</td>
+    </tr>
+    <tr>
+      <td>2010-08-13</td>
+      <td>Minnesota Lynx</td>
+      <td>1429.77</td>
+      <td>58</td>
+      <td>@ Washington Mystics</td>
+      <td>1539.85</td>
+      <td>61</td>
+      <td>27.08%</td>
+      <td>72.92%</td>
+      <td>-4.68</td>
+    </tr>
+    <tr>
+      <td>2010-08-13</td>
+      <td>Tulsa Shock</td>
+      <td>1286.56</td>
+      <td>74</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1414.20</td>
+      <td>94</td>
+      <td>25.14%</td>
+      <td>74.86%</td>
+      <td>-11.22</td>
+    </tr>
+    <tr>
+      <td>2010-08-13</td>
+      <td>Phoenix Mercury</td>
+      <td>1527.82</td>
+      <td>90</td>
+      <td>@ Indiana Fever</td>
+      <td>1612.06</td>
+      <td>110</td>
+      <td>30.12%</td>
+      <td>69.88%</td>
+      <td>-13.45</td>
+    </tr>
+    <tr>
+      <td>2010-08-13</td>
+      <td>Seattle Storm</td>
+      <td>1686.59</td>
+      <td>68</td>
+      <td>@ Connecticut Sun</td>
+      <td>1459.18</td>
+      <td>88</td>
+      <td>72.16%</td>
+      <td>27.84%</td>
+      <td>-32.20</td>
+    </tr>
+    <tr>
+      <td>2010-08-13</td>
+      <td>New York Liberty</td>
+      <td>1580.06</td>
+      <td>90</td>
+      <td>@ Atlanta Dream</td>
+      <td>1548.69</td>
+      <td>83</td>
+      <td>45.61%</td>
+      <td>54.39%</td>
+      <td>14.36</td>
+    </tr>
+    <tr>
+      <td>2010-08-13</td>
+      <td>Washington Mystics</td>
+      <td>1539.85</td>
+      <td>61</td>
+      <td>Minnesota Lynx</td>
+      <td>1429.77</td>
+      <td>58</td>
+      <td>72.92%</td>
+      <td>27.08%</td>
+      <td>4.69</td>
+    </tr>
+    <tr>
+      <td>2010-08-14</td>
+      <td>Chicago Sky</td>
+      <td>1484.38</td>
+      <td>74</td>
+      <td>Atlanta Dream</td>
+      <td>1534.33</td>
+      <td>98</td>
+      <td>51.73%</td>
+      <td>48.27%</td>
+      <td>-25.29</td>
+    </tr>
+    <tr>
+      <td>2010-08-14</td>
+      <td>Los Angeles Sparks</td>
+      <td>1430.84</td>
+      <td>92</td>
+      <td>@ Tulsa Shock</td>
+      <td>1275.34</td>
+      <td>87</td>
+      <td>63.14%</td>
+      <td>36.86%</td>
+      <td>8.22</td>
+    </tr>
+    <tr>
+      <td>2010-08-14</td>
+      <td>Phoenix Mercury</td>
+      <td>1514.37</td>
+      <td>69</td>
+      <td>@ New York Liberty</td>
+      <td>1594.42</td>
+      <td>107</td>
+      <td>30.63%</td>
+      <td>69.37%</td>
+      <td>-18.84</td>
+    </tr>
+    <tr>
+      <td>2010-08-14</td>
+      <td>Atlanta Dream</td>
+      <td>1534.33</td>
+      <td>98</td>
+      <td>@ Chicago Sky</td>
+      <td>1484.38</td>
+      <td>74</td>
+      <td>48.27%</td>
+      <td>51.73%</td>
+      <td>25.29</td>
+    </tr>
+    <tr>
+      <td>2010-08-14</td>
+      <td>New York Liberty</td>
+      <td>1594.42</td>
+      <td>107</td>
+      <td>Phoenix Mercury</td>
+      <td>1514.37</td>
+      <td>69</td>
+      <td>69.37%</td>
+      <td>30.63%</td>
+      <td>18.85</td>
+    </tr>
+    <tr>
+      <td>2010-08-14</td>
+      <td>Tulsa Shock</td>
+      <td>1275.34</td>
+      <td>87</td>
+      <td>Los Angeles Sparks</td>
+      <td>1430.84</td>
+      <td>92</td>
+      <td>36.86%</td>
+      <td>63.14%</td>
+      <td>-8.22</td>
+    </tr>
+    <tr>
+      <td>2010-08-15</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1425.41</td>
+      <td>78</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1425.09</td>
+      <td>84</td>
+      <td>41.22%</td>
+      <td>58.78%</td>
+      <td>-10.07</td>
+    </tr>
+    <tr>
+      <td>2010-08-15</td>
+      <td>Indiana Fever</td>
+      <td>1625.50</td>
+      <td>79</td>
+      <td>@ Connecticut Sun</td>
+      <td>1491.39</td>
+      <td>66</td>
+      <td>60.24%</td>
+      <td>39.76%</td>
+      <td>14.31</td>
+    </tr>
+    <tr>
+      <td>2010-08-15</td>
+      <td>Seattle Storm</td>
+      <td>1654.39</td>
+      <td>71</td>
+      <td>@ Washington Mystics</td>
+      <td>1544.54</td>
+      <td>80</td>
+      <td>56.85%</td>
+      <td>43.15%</td>
+      <td>-17.02</td>
+    </tr>
+    <tr>
+      <td>2010-08-15</td>
+      <td>Connecticut Sun</td>
+      <td>1491.39</td>
+      <td>66</td>
+      <td>Indiana Fever</td>
+      <td>1625.50</td>
+      <td>79</td>
+      <td>39.76%</td>
+      <td>60.24%</td>
+      <td>-14.31</td>
+    </tr>
+    <tr>
+      <td>2010-08-15</td>
+      <td>Minnesota Lynx</td>
+      <td>1425.09</td>
+      <td>84</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1425.41</td>
+      <td>78</td>
+      <td>58.78%</td>
+      <td>41.22%</td>
+      <td>10.07</td>
+    </tr>
+    <tr>
+      <td>2010-08-15</td>
+      <td>Washington Mystics</td>
+      <td>1544.54</td>
+      <td>80</td>
+      <td>Seattle Storm</td>
+      <td>1654.39</td>
+      <td>71</td>
+      <td>43.15%</td>
+      <td>56.85%</td>
+      <td>17.02</td>
+    </tr>
+    <tr>
+      <td>2010-08-17</td>
+      <td>Los Angeles Sparks</td>
+      <td>1439.06</td>
+      <td>84</td>
+      <td>Phoenix Mercury</td>
+      <td>1495.53</td>
+      <td>90</td>
+      <td>50.79%</td>
+      <td>49.21%</td>
+      <td>-12.42</td>
+    </tr>
+    <tr>
+      <td>2010-08-17</td>
+      <td>New York Liberty</td>
+      <td>1613.27</td>
+      <td>78</td>
+      <td>Indiana Fever</td>
+      <td>1639.81</td>
+      <td>57</td>
+      <td>55.08%</td>
+      <td>44.92%</td>
+      <td>20.54</td>
+    </tr>
+    <tr>
+      <td>2010-08-17</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1415.34</td>
+      <td>66</td>
+      <td>Washington Mystics</td>
+      <td>1561.56</td>
+      <td>76</td>
+      <td>38.11%</td>
+      <td>61.89%</td>
+      <td>-12.03</td>
+    </tr>
+    <tr>
+      <td>2010-08-17</td>
+      <td>Seattle Storm</td>
+      <td>1637.37</td>
+      <td>68</td>
+      <td>Minnesota Lynx</td>
+      <td>1435.16</td>
+      <td>64</td>
+      <td>82.06%</td>
+      <td>17.94%</td>
+      <td>3.58</td>
+    </tr>
+    <tr>
+      <td>2010-08-17</td>
+      <td>Chicago Sky</td>
+      <td>1459.09</td>
+      <td>84</td>
+      <td>@ Atlanta Dream</td>
+      <td>1559.62</td>
+      <td>79</td>
+      <td>28.18%</td>
+      <td>71.82%</td>
+      <td>16.03</td>
+    </tr>
+    <tr>
+      <td>2010-08-17</td>
+      <td>Minnesota Lynx</td>
+      <td>1435.16</td>
+      <td>64</td>
+      <td>@ Seattle Storm</td>
+      <td>1637.37</td>
+      <td>68</td>
+      <td>17.94%</td>
+      <td>82.06%</td>
+      <td>-3.58</td>
+    </tr>
+    <tr>
+      <td>2010-08-17</td>
+      <td>Washington Mystics</td>
+      <td>1561.56</td>
+      <td>76</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1415.34</td>
+      <td>66</td>
+      <td>61.89%</td>
+      <td>38.11%</td>
+      <td>12.02</td>
+    </tr>
+    <tr>
+      <td>2010-08-17</td>
+      <td>Indiana Fever</td>
+      <td>1639.81</td>
+      <td>57</td>
+      <td>@ New York Liberty</td>
+      <td>1613.27</td>
+      <td>78</td>
+      <td>44.92%</td>
+      <td>55.08%</td>
+      <td>-20.54</td>
+    </tr>
+    <tr>
+      <td>2010-08-17</td>
+      <td>Phoenix Mercury</td>
+      <td>1495.53</td>
+      <td>90</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1439.06</td>
+      <td>84</td>
+      <td>49.21%</td>
+      <td>50.79%</td>
+      <td>12.42</td>
+    </tr>
+    <tr>
+      <td>2010-08-17</td>
+      <td>Tulsa Shock</td>
+      <td>1267.12</td>
+      <td>62</td>
+      <td>@ Connecticut Sun</td>
+      <td>1477.08</td>
+      <td>90</td>
+      <td>17.29%</td>
+      <td>82.71%</td>
+      <td>-9.13</td>
+    </tr>
+    <tr>
+      <td>2010-08-17</td>
+      <td>Connecticut Sun</td>
+      <td>1477.08</td>
+      <td>90</td>
+      <td>Tulsa Shock</td>
+      <td>1267.12</td>
+      <td>62</td>
+      <td>82.71%</td>
+      <td>17.29%</td>
+      <td>9.13</td>
+    </tr>
+    <tr>
+      <td>2010-08-17</td>
+      <td>Atlanta Dream</td>
+      <td>1559.62</td>
+      <td>79</td>
+      <td>Chicago Sky</td>
+      <td>1459.09</td>
+      <td>84</td>
+      <td>71.82%</td>
+      <td>28.18%</td>
+      <td>-16.03</td>
+    </tr>
+    <tr>
+      <td>2010-08-19</td>
+      <td>New York Liberty</td>
+      <td>1633.81</td>
+      <td>95</td>
+      <td>Tulsa Shock</td>
+      <td>1257.99</td>
+      <td>85</td>
+      <td>92.55%</td>
+      <td>7.45%</td>
+      <td>2.35</td>
+    </tr>
+    <tr>
+      <td>2010-08-19</td>
+      <td>Tulsa Shock</td>
+      <td>1257.99</td>
+      <td>85</td>
+      <td>@ New York Liberty</td>
+      <td>1633.81</td>
+      <td>95</td>
+      <td>7.45%</td>
+      <td>92.55%</td>
+      <td>-2.35</td>
+    </tr>
+    <tr>
+      <td>2010-08-20</td>
+      <td>Connecticut Sun</td>
+      <td>1486.21</td>
+      <td>78</td>
+      <td>@ Chicago Sky</td>
+      <td>1475.12</td>
+      <td>71</td>
+      <td>42.73%</td>
+      <td>57.27%</td>
+      <td>15.12</td>
+    </tr>
+    <tr>
+      <td>2010-08-20</td>
+      <td>Seattle Storm</td>
+      <td>1640.95</td>
+      <td>78</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1507.95</td>
+      <td>73</td>
+      <td>60.08%</td>
+      <td>39.92%</td>
+      <td>8.90</td>
+    </tr>
+    <tr>
+      <td>2010-08-20</td>
+      <td>Minnesota Lynx</td>
+      <td>1431.58</td>
+      <td>91</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1426.64</td>
+      <td>98</td>
+      <td>41.87%</td>
+      <td>58.13%</td>
+      <td>-11.05</td>
+    </tr>
+    <tr>
+      <td>2010-08-20</td>
+      <td>New York Liberty</td>
+      <td>1636.16</td>
+      <td>74</td>
+      <td>@ Washington Mystics</td>
+      <td>1573.58</td>
+      <td>75</td>
+      <td>50.09%</td>
+      <td>49.91%</td>
+      <td>-5.00</td>
+    </tr>
+    <tr>
+      <td>2010-08-20</td>
+      <td>Indiana Fever</td>
+      <td>1619.27</td>
+      <td>61</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1403.31</td>
+      <td>75</td>
+      <td>70.82%</td>
+      <td>29.18%</td>
+      <td>-26.45</td>
+    </tr>
+    <tr>
+      <td>2010-08-20</td>
+      <td>Washington Mystics</td>
+      <td>1573.58</td>
+      <td>75</td>
+      <td>New York Liberty</td>
+      <td>1636.16</td>
+      <td>74</td>
+      <td>49.91%</td>
+      <td>50.09%</td>
+      <td>5.00</td>
+    </tr>
+    <tr>
+      <td>2010-08-20</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1403.31</td>
+      <td>75</td>
+      <td>Indiana Fever</td>
+      <td>1619.27</td>
+      <td>61</td>
+      <td>29.18%</td>
+      <td>70.82%</td>
+      <td>26.44</td>
+    </tr>
+    <tr>
+      <td>2010-08-20</td>
+      <td>Phoenix Mercury</td>
+      <td>1507.95</td>
+      <td>73</td>
+      <td>Seattle Storm</td>
+      <td>1640.95</td>
+      <td>78</td>
+      <td>39.92%</td>
+      <td>60.08%</td>
+      <td>-8.91</td>
+    </tr>
+    <tr>
+      <td>2010-08-20</td>
+      <td>Los Angeles Sparks</td>
+      <td>1426.64</td>
+      <td>98</td>
+      <td>Minnesota Lynx</td>
+      <td>1431.58</td>
+      <td>91</td>
+      <td>58.13%</td>
+      <td>41.87%</td>
+      <td>11.06</td>
+    </tr>
+    <tr>
+      <td>2010-08-20</td>
+      <td>Chicago Sky</td>
+      <td>1475.12</td>
+      <td>71</td>
+      <td>Connecticut Sun</td>
+      <td>1486.21</td>
+      <td>78</td>
+      <td>57.27%</td>
+      <td>42.73%</td>
+      <td>-15.12</td>
+    </tr>
+    <tr>
+      <td>2010-08-21</td>
+      <td>Chicago Sky</td>
+      <td>1460.00</td>
+      <td>71</td>
+      <td>@ Tulsa Shock</td>
+      <td>1255.64</td>
+      <td>84</td>
+      <td>69.42%</td>
+      <td>30.58%</td>
+      <td>-24.98</td>
+    </tr>
+    <tr>
+      <td>2010-08-21</td>
+      <td>Tulsa Shock</td>
+      <td>1255.64</td>
+      <td>84</td>
+      <td>Chicago Sky</td>
+      <td>1460.00</td>
+      <td>71</td>
+      <td>30.58%</td>
+      <td>69.42%</td>
+      <td>24.98</td>
+    </tr>
+    <tr>
+      <td>2010-08-21</td>
+      <td>Seattle Storm</td>
+      <td>1649.85</td>
+      <td>76</td>
+      <td>Los Angeles Sparks</td>
+      <td>1437.70</td>
+      <td>75</td>
+      <td>82.89%</td>
+      <td>17.11%</td>
+      <td>1.71</td>
+    </tr>
+    <tr>
+      <td>2010-08-21</td>
+      <td>Los Angeles Sparks</td>
+      <td>1437.70</td>
+      <td>75</td>
+      <td>@ Seattle Storm</td>
+      <td>1649.85</td>
+      <td>76</td>
+      <td>17.11%</td>
+      <td>82.89%</td>
+      <td>-1.71</td>
+    </tr>
+    <tr>
+      <td>2010-08-22</td>
+      <td>Washington Mystics</td>
+      <td>1578.58</td>
+      <td>90</td>
+      <td>@ Atlanta Dream</td>
+      <td>1543.59</td>
+      <td>81</td>
+      <td>46.13%</td>
+      <td>53.87%</td>
+      <td>16.13</td>
+    </tr>
+    <tr>
+      <td>2010-08-22</td>
+      <td>Minnesota Lynx</td>
+      <td>1420.53</td>
+      <td>83</td>
+      <td>@ Indiana Fever</td>
+      <td>1592.82</td>
+      <td>79</td>
+      <td>20.61%</td>
+      <td>79.39%</td>
+      <td>15.84</td>
+    </tr>
+    <tr>
+      <td>2010-08-22</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1429.75</td>
+      <td>83</td>
+      <td>Phoenix Mercury</td>
+      <td>1499.04</td>
+      <td>82</td>
+      <td>48.95%</td>
+      <td>51.05%</td>
+      <td>5.10</td>
+    </tr>
+    <tr>
+      <td>2010-08-22</td>
+      <td>New York Liberty</td>
+      <td>1631.16</td>
+      <td>88</td>
+      <td>Connecticut Sun</td>
+      <td>1501.33</td>
+      <td>87</td>
+      <td>75.10%</td>
+      <td>24.90%</td>
+      <td>2.49</td>
+    </tr>
+    <tr>
+      <td>2010-08-22</td>
+      <td>Indiana Fever</td>
+      <td>1592.82</td>
+      <td>79</td>
+      <td>Minnesota Lynx</td>
+      <td>1420.53</td>
+      <td>83</td>
+      <td>79.39%</td>
+      <td>20.61%</td>
+      <td>-15.84</td>
+    </tr>
+    <tr>
+      <td>2010-08-22</td>
+      <td>Atlanta Dream</td>
+      <td>1543.59</td>
+      <td>81</td>
+      <td>Washington Mystics</td>
+      <td>1578.58</td>
+      <td>90</td>
+      <td>53.87%</td>
+      <td>46.13%</td>
+      <td>-16.13</td>
+    </tr>
+    <tr>
+      <td>2010-08-22</td>
+      <td>Connecticut Sun</td>
+      <td>1501.33</td>
+      <td>87</td>
+      <td>@ New York Liberty</td>
+      <td>1631.16</td>
+      <td>88</td>
+      <td>24.90%</td>
+      <td>75.10%</td>
+      <td>-2.48</td>
+    </tr>
+    <tr>
+      <td>2010-08-22</td>
+      <td>Phoenix Mercury</td>
+      <td>1499.04</td>
+      <td>82</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1429.75</td>
+      <td>83</td>
+      <td>51.05%</td>
+      <td>48.95%</td>
+      <td>-5.10</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

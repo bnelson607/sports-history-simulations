@@ -1,0 +1,4993 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Atlanta Dream">Atlanta Dream</option><option value="Chicago Sky">Chicago Sky</option><option value="Connecticut Sun">Connecticut Sun</option><option value="Indiana Fever">Indiana Fever</option><option value="Los Angeles Sparks">Los Angeles Sparks</option><option value="Minnesota Lynx">Minnesota Lynx</option><option value="New York Liberty">New York Liberty</option><option value="Phoenix Mercury">Phoenix Mercury</option><option value="San Antonio Silver Stars">San Antonio Silver Stars</option><option value="Seattle Storm">Seattle Storm</option><option value="Tulsa Shock">Tulsa Shock</option><option value="Washington Mystics">Washington Mystics</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2013-05-24</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1525.44</td>
+      <td>64</td>
+      <td>Indiana Fever</td>
+      <td>1587.45</td>
+      <td>79</td>
+      <td>52.03%</td>
+      <td>47.97%</td>
+      <td>-17.49</td>
+    </tr>
+    <tr>
+      <td>2013-05-24</td>
+      <td>Indiana Fever</td>
+      <td>1587.45</td>
+      <td>79</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1525.44</td>
+      <td>64</td>
+      <td>47.97%</td>
+      <td>52.03%</td>
+      <td>17.49</td>
+    </tr>
+    <tr>
+      <td>2013-05-25</td>
+      <td>Tulsa Shock</td>
+      <td>1443.24</td>
+      <td>81</td>
+      <td>@ Atlanta Dream</td>
+      <td>1528.44</td>
+      <td>98</td>
+      <td>28.32%</td>
+      <td>71.68%</td>
+      <td>-10.14</td>
+    </tr>
+    <tr>
+      <td>2013-05-25</td>
+      <td>New York Liberty</td>
+      <td>1468.13</td>
+      <td>69</td>
+      <td>@ Connecticut Sun</td>
+      <td>1542.53</td>
+      <td>81</td>
+      <td>29.60%</td>
+      <td>70.40%</td>
+      <td>-8.90</td>
+    </tr>
+    <tr>
+      <td>2013-05-25</td>
+      <td>Atlanta Dream</td>
+      <td>1528.44</td>
+      <td>98</td>
+      <td>Tulsa Shock</td>
+      <td>1443.24</td>
+      <td>81</td>
+      <td>71.68%</td>
+      <td>28.32%</td>
+      <td>10.14</td>
+    </tr>
+    <tr>
+      <td>2013-05-25</td>
+      <td>Connecticut Sun</td>
+      <td>1542.53</td>
+      <td>81</td>
+      <td>New York Liberty</td>
+      <td>1468.13</td>
+      <td>69</td>
+      <td>70.40%</td>
+      <td>29.60%</td>
+      <td>8.90</td>
+    </tr>
+    <tr>
+      <td>2013-05-26</td>
+      <td>Los Angeles Sparks</td>
+      <td>1555.15</td>
+      <td>102</td>
+      <td>Seattle Storm</td>
+      <td>1506.47</td>
+      <td>69</td>
+      <td>67.23%</td>
+      <td>32.77%</td>
+      <td>16.35</td>
+    </tr>
+    <tr>
+      <td>2013-05-26</td>
+      <td>Seattle Storm</td>
+      <td>1506.47</td>
+      <td>69</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1555.15</td>
+      <td>102</td>
+      <td>32.77%</td>
+      <td>67.23%</td>
+      <td>-16.34</td>
+    </tr>
+    <tr>
+      <td>2013-05-27</td>
+      <td>Chicago Sky</td>
+      <td>1486.53</td>
+      <td>102</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1392.56</td>
+      <td>80</td>
+      <td>52.57%</td>
+      <td>47.43%</td>
+      <td>19.32</td>
+    </tr>
+    <tr>
+      <td>2013-05-27</td>
+      <td>Washington Mystics</td>
+      <td>1396.83</td>
+      <td>95</td>
+      <td>@ Tulsa Shock</td>
+      <td>1433.10</td>
+      <td>90</td>
+      <td>34.37%</td>
+      <td>65.63%</td>
+      <td>12.74</td>
+    </tr>
+    <tr>
+      <td>2013-05-27</td>
+      <td>Phoenix Mercury</td>
+      <td>1392.56</td>
+      <td>80</td>
+      <td>Chicago Sky</td>
+      <td>1486.53</td>
+      <td>102</td>
+      <td>47.43%</td>
+      <td>52.57%</td>
+      <td>-19.31</td>
+    </tr>
+    <tr>
+      <td>2013-05-27</td>
+      <td>Tulsa Shock</td>
+      <td>1433.10</td>
+      <td>90</td>
+      <td>Washington Mystics</td>
+      <td>1396.83</td>
+      <td>95</td>
+      <td>65.63%</td>
+      <td>34.37%</td>
+      <td>-12.74</td>
+    </tr>
+    <tr>
+      <td>2013-05-31</td>
+      <td>Indiana Fever</td>
+      <td>1604.94</td>
+      <td>77</td>
+      <td>Atlanta Dream</td>
+      <td>1538.58</td>
+      <td>86</td>
+      <td>69.43%</td>
+      <td>30.57%</td>
+      <td>-18.08</td>
+    </tr>
+    <tr>
+      <td>2013-05-31</td>
+      <td>Tulsa Shock</td>
+      <td>1420.36</td>
+      <td>76</td>
+      <td>@ New York Liberty</td>
+      <td>1459.23</td>
+      <td>78</td>
+      <td>34.03%</td>
+      <td>65.97%</td>
+      <td>-4.17</td>
+    </tr>
+    <tr>
+      <td>2013-05-31</td>
+      <td>Atlanta Dream</td>
+      <td>1538.58</td>
+      <td>86</td>
+      <td>@ Indiana Fever</td>
+      <td>1604.94</td>
+      <td>77</td>
+      <td>30.57%</td>
+      <td>69.43%</td>
+      <td>18.08</td>
+    </tr>
+    <tr>
+      <td>2013-05-31</td>
+      <td>New York Liberty</td>
+      <td>1459.23</td>
+      <td>78</td>
+      <td>Tulsa Shock</td>
+      <td>1420.36</td>
+      <td>76</td>
+      <td>65.97%</td>
+      <td>34.03%</td>
+      <td>4.18</td>
+    </tr>
+    <tr>
+      <td>2013-05-31</td>
+      <td>Connecticut Sun</td>
+      <td>1551.43</td>
+      <td>75</td>
+      <td>@ Chicago Sky</td>
+      <td>1505.85</td>
+      <td>86</td>
+      <td>45.61%</td>
+      <td>54.39%</td>
+      <td>-13.13</td>
+    </tr>
+    <tr>
+      <td>2013-05-31</td>
+      <td>Chicago Sky</td>
+      <td>1505.85</td>
+      <td>86</td>
+      <td>Connecticut Sun</td>
+      <td>1551.43</td>
+      <td>75</td>
+      <td>54.39%</td>
+      <td>45.61%</td>
+      <td>13.13</td>
+    </tr>
+    <tr>
+      <td>2013-06-01</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1507.95</td>
+      <td>83</td>
+      <td>Los Angeles Sparks</td>
+      <td>1571.50</td>
+      <td>78</td>
+      <td>51.81%</td>
+      <td>48.19%</td>
+      <td>9.36</td>
+    </tr>
+    <tr>
+      <td>2013-06-01</td>
+      <td>Connecticut Sun</td>
+      <td>1538.30</td>
+      <td>74</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1567.21</td>
+      <td>90</td>
+      <td>35.33%</td>
+      <td>64.67%</td>
+      <td>-12.27</td>
+    </tr>
+    <tr>
+      <td>2013-06-01</td>
+      <td>Minnesota Lynx</td>
+      <td>1567.21</td>
+      <td>90</td>
+      <td>Connecticut Sun</td>
+      <td>1538.30</td>
+      <td>74</td>
+      <td>64.67%</td>
+      <td>35.33%</td>
+      <td>12.27</td>
+    </tr>
+    <tr>
+      <td>2013-06-01</td>
+      <td>Los Angeles Sparks</td>
+      <td>1571.50</td>
+      <td>78</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1507.95</td>
+      <td>83</td>
+      <td>48.19%</td>
+      <td>51.81%</td>
+      <td>-9.36</td>
+    </tr>
+    <tr>
+      <td>2013-06-02</td>
+      <td>Chicago Sky</td>
+      <td>1518.98</td>
+      <td>92</td>
+      <td>Tulsa Shock</td>
+      <td>1416.19</td>
+      <td>71</td>
+      <td>73.69%</td>
+      <td>26.31%</td>
+      <td>10.46</td>
+    </tr>
+    <tr>
+      <td>2013-06-02</td>
+      <td>Phoenix Mercury</td>
+      <td>1373.25</td>
+      <td>72</td>
+      <td>@ Seattle Storm</td>
+      <td>1490.13</td>
+      <td>75</td>
+      <td>24.77%</td>
+      <td>75.23%</td>
+      <td>-3.72</td>
+    </tr>
+    <tr>
+      <td>2013-06-02</td>
+      <td>Atlanta Dream</td>
+      <td>1556.66</td>
+      <td>73</td>
+      <td>@ Washington Mystics</td>
+      <td>1409.57</td>
+      <td>63</td>
+      <td>60.07%</td>
+      <td>39.93%</td>
+      <td>10.96</td>
+    </tr>
+    <tr>
+      <td>2013-06-02</td>
+      <td>Seattle Storm</td>
+      <td>1490.13</td>
+      <td>75</td>
+      <td>Phoenix Mercury</td>
+      <td>1373.25</td>
+      <td>72</td>
+      <td>75.23%</td>
+      <td>24.77%</td>
+      <td>3.72</td>
+    </tr>
+    <tr>
+      <td>2013-06-02</td>
+      <td>Washington Mystics</td>
+      <td>1409.57</td>
+      <td>63</td>
+      <td>Atlanta Dream</td>
+      <td>1556.66</td>
+      <td>73</td>
+      <td>39.93%</td>
+      <td>60.07%</td>
+      <td>-10.96</td>
+    </tr>
+    <tr>
+      <td>2013-06-02</td>
+      <td>Tulsa Shock</td>
+      <td>1416.19</td>
+      <td>71</td>
+      <td>@ Chicago Sky</td>
+      <td>1518.98</td>
+      <td>92</td>
+      <td>26.31%</td>
+      <td>73.69%</td>
+      <td>-10.47</td>
+    </tr>
+    <tr>
+      <td>2013-06-05</td>
+      <td>Indiana Fever</td>
+      <td>1586.86</td>
+      <td>68</td>
+      <td>@ New York Liberty</td>
+      <td>1463.41</td>
+      <td>75</td>
+      <td>56.77%</td>
+      <td>43.23%</td>
+      <td>-13.03</td>
+    </tr>
+    <tr>
+      <td>2013-06-05</td>
+      <td>New York Liberty</td>
+      <td>1463.41</td>
+      <td>75</td>
+      <td>Indiana Fever</td>
+      <td>1586.86</td>
+      <td>68</td>
+      <td>43.23%</td>
+      <td>56.77%</td>
+      <td>13.04</td>
+    </tr>
+    <tr>
+      <td>2013-06-06</td>
+      <td>Phoenix Mercury</td>
+      <td>1369.53</td>
+      <td>79</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1579.48</td>
+      <td>99</td>
+      <td>16.15%</td>
+      <td>83.85%</td>
+      <td>-6.27</td>
+    </tr>
+    <tr>
+      <td>2013-06-06</td>
+      <td>Minnesota Lynx</td>
+      <td>1579.48</td>
+      <td>99</td>
+      <td>Phoenix Mercury</td>
+      <td>1369.53</td>
+      <td>79</td>
+      <td>83.85%</td>
+      <td>16.15%</td>
+      <td>6.27</td>
+    </tr>
+    <tr>
+      <td>2013-06-07</td>
+      <td>Washington Mystics</td>
+      <td>1398.61</td>
+      <td>66</td>
+      <td>@ Connecticut Sun</td>
+      <td>1526.03</td>
+      <td>62</td>
+      <td>23.65%</td>
+      <td>76.35%</td>
+      <td>13.26</td>
+    </tr>
+    <tr>
+      <td>2013-06-07</td>
+      <td>Atlanta Dream</td>
+      <td>1567.62</td>
+      <td>75</td>
+      <td>New York Liberty</td>
+      <td>1476.45</td>
+      <td>56</td>
+      <td>72.37%</td>
+      <td>27.63%</td>
+      <td>10.45</td>
+    </tr>
+    <tr>
+      <td>2013-06-07</td>
+      <td>Connecticut Sun</td>
+      <td>1526.03</td>
+      <td>62</td>
+      <td>Washington Mystics</td>
+      <td>1398.61</td>
+      <td>66</td>
+      <td>76.35%</td>
+      <td>23.65%</td>
+      <td>-13.25</td>
+    </tr>
+    <tr>
+      <td>2013-06-07</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1517.31</td>
+      <td>81</td>
+      <td>Chicago Sky</td>
+      <td>1529.44</td>
+      <td>69</td>
+      <td>59.11%</td>
+      <td>40.89%</td>
+      <td>12.29</td>
+    </tr>
+    <tr>
+      <td>2013-06-07</td>
+      <td>Seattle Storm</td>
+      <td>1493.85</td>
+      <td>58</td>
+      <td>Tulsa Shock</td>
+      <td>1405.72</td>
+      <td>67</td>
+      <td>72.02%</td>
+      <td>27.98%</td>
+      <td>-18.76</td>
+    </tr>
+    <tr>
+      <td>2013-06-07</td>
+      <td>Tulsa Shock</td>
+      <td>1405.72</td>
+      <td>67</td>
+      <td>@ Seattle Storm</td>
+      <td>1493.85</td>
+      <td>58</td>
+      <td>27.98%</td>
+      <td>72.02%</td>
+      <td>18.76</td>
+    </tr>
+    <tr>
+      <td>2013-06-07</td>
+      <td>Chicago Sky</td>
+      <td>1529.44</td>
+      <td>69</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1517.31</td>
+      <td>81</td>
+      <td>40.89%</td>
+      <td>59.11%</td>
+      <td>-12.29</td>
+    </tr>
+    <tr>
+      <td>2013-06-07</td>
+      <td>New York Liberty</td>
+      <td>1476.45</td>
+      <td>56</td>
+      <td>@ Atlanta Dream</td>
+      <td>1567.62</td>
+      <td>75</td>
+      <td>27.63%</td>
+      <td>72.37%</td>
+      <td>-10.46</td>
+    </tr>
+    <tr>
+      <td>2013-06-08</td>
+      <td>Washington Mystics</td>
+      <td>1411.87</td>
+      <td>85</td>
+      <td>Minnesota Lynx</td>
+      <td>1585.75</td>
+      <td>80</td>
+      <td>36.29%</td>
+      <td>63.71%</td>
+      <td>12.36</td>
+    </tr>
+    <tr>
+      <td>2013-06-08</td>
+      <td>Tulsa Shock</td>
+      <td>1424.48</td>
+      <td>69</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1562.14</td>
+      <td>76</td>
+      <td>22.61%</td>
+      <td>77.39%</td>
+      <td>-5.20</td>
+    </tr>
+    <tr>
+      <td>2013-06-08</td>
+      <td>Los Angeles Sparks</td>
+      <td>1562.14</td>
+      <td>76</td>
+      <td>Tulsa Shock</td>
+      <td>1424.48</td>
+      <td>69</td>
+      <td>77.39%</td>
+      <td>22.61%</td>
+      <td>5.19</td>
+    </tr>
+    <tr>
+      <td>2013-06-08</td>
+      <td>Indiana Fever</td>
+      <td>1573.83</td>
+      <td>67</td>
+      <td>Phoenix Mercury</td>
+      <td>1363.26</td>
+      <td>82</td>
+      <td>83.89%</td>
+      <td>16.11%</td>
+      <td>-28.21</td>
+    </tr>
+    <tr>
+      <td>2013-06-08</td>
+      <td>Phoenix Mercury</td>
+      <td>1363.26</td>
+      <td>82</td>
+      <td>@ Indiana Fever</td>
+      <td>1573.83</td>
+      <td>67</td>
+      <td>16.11%</td>
+      <td>83.89%</td>
+      <td>28.20</td>
+    </tr>
+    <tr>
+      <td>2013-06-08</td>
+      <td>Minnesota Lynx</td>
+      <td>1585.75</td>
+      <td>80</td>
+      <td>@ Washington Mystics</td>
+      <td>1411.87</td>
+      <td>85</td>
+      <td>63.71%</td>
+      <td>36.29%</td>
+      <td>-12.37</td>
+    </tr>
+    <tr>
+      <td>2013-06-09</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1529.60</td>
+      <td>70</td>
+      <td>@ Chicago Sky</td>
+      <td>1517.15</td>
+      <td>72</td>
+      <td>40.94%</td>
+      <td>59.06%</td>
+      <td>-5.02</td>
+    </tr>
+    <tr>
+      <td>2013-06-09</td>
+      <td>New York Liberty</td>
+      <td>1465.99</td>
+      <td>76</td>
+      <td>Atlanta Dream</td>
+      <td>1578.07</td>
+      <td>67</td>
+      <td>44.85%</td>
+      <td>55.15%</td>
+      <td>14.37</td>
+    </tr>
+    <tr>
+      <td>2013-06-09</td>
+      <td>Chicago Sky</td>
+      <td>1517.15</td>
+      <td>72</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1529.60</td>
+      <td>70</td>
+      <td>59.06%</td>
+      <td>40.94%</td>
+      <td>5.02</td>
+    </tr>
+    <tr>
+      <td>2013-06-09</td>
+      <td>Atlanta Dream</td>
+      <td>1578.07</td>
+      <td>67</td>
+      <td>@ New York Liberty</td>
+      <td>1465.99</td>
+      <td>76</td>
+      <td>55.15%</td>
+      <td>44.85%</td>
+      <td>-14.36</td>
+    </tr>
+    <tr>
+      <td>2013-06-11</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1524.58</td>
+      <td>72</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1573.38</td>
+      <td>87</td>
+      <td>32.76%</td>
+      <td>67.24%</td>
+      <td>-11.02</td>
+    </tr>
+    <tr>
+      <td>2013-06-11</td>
+      <td>Minnesota Lynx</td>
+      <td>1573.38</td>
+      <td>87</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1524.58</td>
+      <td>72</td>
+      <td>67.24%</td>
+      <td>32.76%</td>
+      <td>11.01</td>
+    </tr>
+    <tr>
+      <td>2013-06-12</td>
+      <td>Connecticut Sun</td>
+      <td>1512.78</td>
+      <td>73</td>
+      <td>@ Indiana Fever</td>
+      <td>1545.62</td>
+      <td>61</td>
+      <td>34.81%</td>
+      <td>65.19%</td>
+      <td>19.60</td>
+    </tr>
+    <tr>
+      <td>2013-06-12</td>
+      <td>Indiana Fever</td>
+      <td>1545.62</td>
+      <td>61</td>
+      <td>Connecticut Sun</td>
+      <td>1512.78</td>
+      <td>73</td>
+      <td>65.19%</td>
+      <td>34.81%</td>
+      <td>-19.60</td>
+    </tr>
+    <tr>
+      <td>2013-06-14</td>
+      <td>Seattle Storm</td>
+      <td>1475.09</td>
+      <td>59</td>
+      <td>@ Atlanta Dream</td>
+      <td>1563.71</td>
+      <td>68</td>
+      <td>27.92%</td>
+      <td>72.08%</td>
+      <td>-7.27</td>
+    </tr>
+    <tr>
+      <td>2013-06-14</td>
+      <td>Connecticut Sun</td>
+      <td>1532.38</td>
+      <td>68</td>
+      <td>@ New York Liberty</td>
+      <td>1480.36</td>
+      <td>78</td>
+      <td>46.54%</td>
+      <td>53.46%</td>
+      <td>-12.78</td>
+    </tr>
+    <tr>
+      <td>2013-06-14</td>
+      <td>Los Angeles Sparks</td>
+      <td>1567.33</td>
+      <td>81</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1391.46</td>
+      <td>97</td>
+      <td>63.97%</td>
+      <td>36.03%</td>
+      <td>-22.21</td>
+    </tr>
+    <tr>
+      <td>2013-06-14</td>
+      <td>Minnesota Lynx</td>
+      <td>1584.39</td>
+      <td>83</td>
+      <td>@ Tulsa Shock</td>
+      <td>1419.28</td>
+      <td>74</td>
+      <td>62.53%</td>
+      <td>37.47%</td>
+      <td>9.76</td>
+    </tr>
+    <tr>
+      <td>2013-06-14</td>
+      <td>New York Liberty</td>
+      <td>1480.36</td>
+      <td>78</td>
+      <td>Connecticut Sun</td>
+      <td>1532.38</td>
+      <td>68</td>
+      <td>53.46%</td>
+      <td>46.54%</td>
+      <td>12.77</td>
+    </tr>
+    <tr>
+      <td>2013-06-14</td>
+      <td>Tulsa Shock</td>
+      <td>1419.28</td>
+      <td>74</td>
+      <td>Minnesota Lynx</td>
+      <td>1584.39</td>
+      <td>83</td>
+      <td>37.47%</td>
+      <td>62.53%</td>
+      <td>-9.75</td>
+    </tr>
+    <tr>
+      <td>2013-06-14</td>
+      <td>Phoenix Mercury</td>
+      <td>1391.46</td>
+      <td>97</td>
+      <td>Los Angeles Sparks</td>
+      <td>1567.33</td>
+      <td>81</td>
+      <td>36.03%</td>
+      <td>63.97%</td>
+      <td>22.21</td>
+    </tr>
+    <tr>
+      <td>2013-06-14</td>
+      <td>Atlanta Dream</td>
+      <td>1563.71</td>
+      <td>68</td>
+      <td>Seattle Storm</td>
+      <td>1475.09</td>
+      <td>59</td>
+      <td>72.08%</td>
+      <td>27.92%</td>
+      <td>7.27</td>
+    </tr>
+    <tr>
+      <td>2013-06-15</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1513.56</td>
+      <td>48</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1545.12</td>
+      <td>84</td>
+      <td>34.98%</td>
+      <td>65.02%</td>
+      <td>-18.21</td>
+    </tr>
+    <tr>
+      <td>2013-06-15</td>
+      <td>Los Angeles Sparks</td>
+      <td>1545.12</td>
+      <td>84</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1513.56</td>
+      <td>48</td>
+      <td>65.02%</td>
+      <td>34.98%</td>
+      <td>18.22</td>
+    </tr>
+    <tr>
+      <td>2013-06-16</td>
+      <td>Seattle Storm</td>
+      <td>1467.82</td>
+      <td>78</td>
+      <td>@ Connecticut Sun</td>
+      <td>1519.60</td>
+      <td>66</td>
+      <td>32.38%</td>
+      <td>67.62%</td>
+      <td>20.34</td>
+    </tr>
+    <tr>
+      <td>2013-06-16</td>
+      <td>Washington Mystics</td>
+      <td>1424.23</td>
+      <td>64</td>
+      <td>Indiana Fever</td>
+      <td>1526.02</td>
+      <td>60</td>
+      <td>46.31%</td>
+      <td>53.69%</td>
+      <td>9.32</td>
+    </tr>
+    <tr>
+      <td>2013-06-16</td>
+      <td>Tulsa Shock</td>
+      <td>1409.53</td>
+      <td>103</td>
+      <td>Phoenix Mercury</td>
+      <td>1413.67</td>
+      <td>108</td>
+      <td>60.21%</td>
+      <td>39.79%</td>
+      <td>-11.69</td>
+    </tr>
+    <tr>
+      <td>2013-06-16</td>
+      <td>Connecticut Sun</td>
+      <td>1519.60</td>
+      <td>66</td>
+      <td>Seattle Storm</td>
+      <td>1467.82</td>
+      <td>78</td>
+      <td>67.62%</td>
+      <td>32.38%</td>
+      <td>-20.33</td>
+    </tr>
+    <tr>
+      <td>2013-06-16</td>
+      <td>Atlanta Dream</td>
+      <td>1570.98</td>
+      <td>88</td>
+      <td>Chicago Sky</td>
+      <td>1522.17</td>
+      <td>74</td>
+      <td>67.24%</td>
+      <td>32.76%</td>
+      <td>10.64</td>
+    </tr>
+    <tr>
+      <td>2013-06-16</td>
+      <td>Phoenix Mercury</td>
+      <td>1413.67</td>
+      <td>108</td>
+      <td>@ Tulsa Shock</td>
+      <td>1409.53</td>
+      <td>103</td>
+      <td>39.79%</td>
+      <td>60.21%</td>
+      <td>11.69</td>
+    </tr>
+    <tr>
+      <td>2013-06-16</td>
+      <td>Indiana Fever</td>
+      <td>1526.02</td>
+      <td>60</td>
+      <td>@ Washington Mystics</td>
+      <td>1424.23</td>
+      <td>64</td>
+      <td>53.69%</td>
+      <td>46.31%</td>
+      <td>-9.32</td>
+    </tr>
+    <tr>
+      <td>2013-06-16</td>
+      <td>Chicago Sky</td>
+      <td>1522.17</td>
+      <td>74</td>
+      <td>@ Atlanta Dream</td>
+      <td>1570.98</td>
+      <td>88</td>
+      <td>32.76%</td>
+      <td>67.24%</td>
+      <td>-10.64</td>
+    </tr>
+    <tr>
+      <td>2013-06-18</td>
+      <td>Seattle Storm</td>
+      <td>1488.16</td>
+      <td>96</td>
+      <td>Washington Mystics</td>
+      <td>1433.55</td>
+      <td>86</td>
+      <td>67.97%</td>
+      <td>32.03%</td>
+      <td>8.79</td>
+    </tr>
+    <tr>
+      <td>2013-06-18</td>
+      <td>Washington Mystics</td>
+      <td>1433.55</td>
+      <td>86</td>
+      <td>@ Seattle Storm</td>
+      <td>1488.16</td>
+      <td>96</td>
+      <td>32.03%</td>
+      <td>67.97%</td>
+      <td>-8.79</td>
+    </tr>
+    <tr>
+      <td>2013-06-19</td>
+      <td>Phoenix Mercury</td>
+      <td>1425.36</td>
+      <td>69</td>
+      <td>Minnesota Lynx</td>
+      <td>1594.15</td>
+      <td>80</td>
+      <td>36.97%</td>
+      <td>63.03%</td>
+      <td>-10.65</td>
+    </tr>
+    <tr>
+      <td>2013-06-19</td>
+      <td>Minnesota Lynx</td>
+      <td>1594.15</td>
+      <td>80</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1425.36</td>
+      <td>69</td>
+      <td>63.03%</td>
+      <td>36.97%</td>
+      <td>10.64</td>
+    </tr>
+    <tr>
+      <td>2013-06-20</td>
+      <td>Chicago Sky</td>
+      <td>1511.53</td>
+      <td>74</td>
+      <td>@ Tulsa Shock</td>
+      <td>1397.84</td>
+      <td>83</td>
+      <td>55.38%</td>
+      <td>44.62%</td>
+      <td>-14.42</td>
+    </tr>
+    <tr>
+      <td>2013-06-20</td>
+      <td>Tulsa Shock</td>
+      <td>1397.84</td>
+      <td>83</td>
+      <td>Chicago Sky</td>
+      <td>1511.53</td>
+      <td>74</td>
+      <td>44.62%</td>
+      <td>55.38%</td>
+      <td>14.42</td>
+    </tr>
+    <tr>
+      <td>2013-06-21</td>
+      <td>Seattle Storm</td>
+      <td>1496.95</td>
+      <td>91</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1495.35</td>
+      <td>86</td>
+      <td>39.44%</td>
+      <td>60.56%</td>
+      <td>11.75</td>
+    </tr>
+    <tr>
+      <td>2013-06-21</td>
+      <td>Washington Mystics</td>
+      <td>1424.76</td>
+      <td>82</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1414.71</td>
+      <td>90</td>
+      <td>40.60%</td>
+      <td>59.40%</td>
+      <td>-9.97</td>
+    </tr>
+    <tr>
+      <td>2013-06-21</td>
+      <td>Minnesota Lynx</td>
+      <td>1604.79</td>
+      <td>59</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1563.34</td>
+      <td>87</td>
+      <td>45.03%</td>
+      <td>54.97%</td>
+      <td>-20.68</td>
+    </tr>
+    <tr>
+      <td>2013-06-21</td>
+      <td>Los Angeles Sparks</td>
+      <td>1563.34</td>
+      <td>87</td>
+      <td>Minnesota Lynx</td>
+      <td>1604.79</td>
+      <td>59</td>
+      <td>54.97%</td>
+      <td>45.03%</td>
+      <td>20.68</td>
+    </tr>
+    <tr>
+      <td>2013-06-21</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1495.35</td>
+      <td>86</td>
+      <td>Seattle Storm</td>
+      <td>1496.95</td>
+      <td>91</td>
+      <td>60.56%</td>
+      <td>39.44%</td>
+      <td>-11.76</td>
+    </tr>
+    <tr>
+      <td>2013-06-21</td>
+      <td>Phoenix Mercury</td>
+      <td>1414.71</td>
+      <td>90</td>
+      <td>Washington Mystics</td>
+      <td>1424.76</td>
+      <td>82</td>
+      <td>59.40%</td>
+      <td>40.60%</td>
+      <td>9.97</td>
+    </tr>
+    <tr>
+      <td>2013-06-22</td>
+      <td>Seattle Storm</td>
+      <td>1508.70</td>
+      <td>70</td>
+      <td>@ Tulsa Shock</td>
+      <td>1412.26</td>
+      <td>92</td>
+      <td>52.92%</td>
+      <td>47.08%</td>
+      <td>-21.54</td>
+    </tr>
+    <tr>
+      <td>2013-06-22</td>
+      <td>Chicago Sky</td>
+      <td>1497.11</td>
+      <td>71</td>
+      <td>@ Indiana Fever</td>
+      <td>1516.70</td>
+      <td>61</td>
+      <td>36.56%</td>
+      <td>63.44%</td>
+      <td>17.41</td>
+    </tr>
+    <tr>
+      <td>2013-06-22</td>
+      <td>Tulsa Shock</td>
+      <td>1412.26</td>
+      <td>92</td>
+      <td>Seattle Storm</td>
+      <td>1508.70</td>
+      <td>70</td>
+      <td>47.08%</td>
+      <td>52.92%</td>
+      <td>21.55</td>
+    </tr>
+    <tr>
+      <td>2013-06-22</td>
+      <td>Indiana Fever</td>
+      <td>1516.70</td>
+      <td>61</td>
+      <td>Chicago Sky</td>
+      <td>1497.11</td>
+      <td>71</td>
+      <td>63.44%</td>
+      <td>36.56%</td>
+      <td>-17.41</td>
+    </tr>
+    <tr>
+      <td>2013-06-23</td>
+      <td>Atlanta Dream</td>
+      <td>1581.62</td>
+      <td>78</td>
+      <td>@ Connecticut Sun</td>
+      <td>1499.27</td>
+      <td>77</td>
+      <td>50.89%</td>
+      <td>49.11%</td>
+      <td>4.26</td>
+    </tr>
+    <tr>
+      <td>2013-06-23</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1483.59</td>
+      <td>78</td>
+      <td>@ New York Liberty</td>
+      <td>1493.13</td>
+      <td>77</td>
+      <td>37.92%</td>
+      <td>62.08%</td>
+      <td>5.39</td>
+    </tr>
+    <tr>
+      <td>2013-06-23</td>
+      <td>Connecticut Sun</td>
+      <td>1499.27</td>
+      <td>77</td>
+      <td>Atlanta Dream</td>
+      <td>1581.62</td>
+      <td>78</td>
+      <td>49.11%</td>
+      <td>50.89%</td>
+      <td>-4.26</td>
+    </tr>
+    <tr>
+      <td>2013-06-23</td>
+      <td>Washington Mystics</td>
+      <td>1414.79</td>
+      <td>69</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1584.02</td>
+      <td>79</td>
+      <td>19.59%</td>
+      <td>80.41%</td>
+      <td>-5.37</td>
+    </tr>
+    <tr>
+      <td>2013-06-23</td>
+      <td>Tulsa Shock</td>
+      <td>1433.81</td>
+      <td>79</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1584.11</td>
+      <td>88</td>
+      <td>21.36%</td>
+      <td>78.64%</td>
+      <td>-5.56</td>
+    </tr>
+    <tr>
+      <td>2013-06-23</td>
+      <td>New York Liberty</td>
+      <td>1493.13</td>
+      <td>77</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1483.59</td>
+      <td>78</td>
+      <td>62.08%</td>
+      <td>37.92%</td>
+      <td>-5.39</td>
+    </tr>
+    <tr>
+      <td>2013-06-23</td>
+      <td>Los Angeles Sparks</td>
+      <td>1584.02</td>
+      <td>79</td>
+      <td>Washington Mystics</td>
+      <td>1414.79</td>
+      <td>69</td>
+      <td>80.41%</td>
+      <td>19.59%</td>
+      <td>5.38</td>
+    </tr>
+    <tr>
+      <td>2013-06-23</td>
+      <td>Minnesota Lynx</td>
+      <td>1584.11</td>
+      <td>88</td>
+      <td>Tulsa Shock</td>
+      <td>1433.81</td>
+      <td>79</td>
+      <td>78.64%</td>
+      <td>21.36%</td>
+      <td>5.56</td>
+    </tr>
+    <tr>
+      <td>2013-06-25</td>
+      <td>Indiana Fever</td>
+      <td>1499.29</td>
+      <td>60</td>
+      <td>@ Atlanta Dream</td>
+      <td>1585.88</td>
+      <td>76</td>
+      <td>28.16%</td>
+      <td>71.84%</td>
+      <td>-9.78</td>
+    </tr>
+    <tr>
+      <td>2013-06-25</td>
+      <td>Atlanta Dream</td>
+      <td>1585.88</td>
+      <td>76</td>
+      <td>Indiana Fever</td>
+      <td>1499.29</td>
+      <td>60</td>
+      <td>71.84%</td>
+      <td>28.16%</td>
+      <td>9.78</td>
+    </tr>
+    <tr>
+      <td>2013-06-25</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1488.98</td>
+      <td>77</td>
+      <td>Phoenix Mercury</td>
+      <td>1424.68</td>
+      <td>83</td>
+      <td>69.18%</td>
+      <td>30.82%</td>
+      <td>-14.71</td>
+    </tr>
+    <tr>
+      <td>2013-06-25</td>
+      <td>Phoenix Mercury</td>
+      <td>1424.68</td>
+      <td>83</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1488.98</td>
+      <td>77</td>
+      <td>30.82%</td>
+      <td>69.18%</td>
+      <td>14.71</td>
+    </tr>
+    <tr>
+      <td>2013-06-26</td>
+      <td>Chicago Sky</td>
+      <td>1514.52</td>
+      <td>87</td>
+      <td>New York Liberty</td>
+      <td>1487.74</td>
+      <td>74</td>
+      <td>64.39%</td>
+      <td>35.61%</td>
+      <td>11.15</td>
+    </tr>
+    <tr>
+      <td>2013-06-26</td>
+      <td>New York Liberty</td>
+      <td>1487.74</td>
+      <td>74</td>
+      <td>@ Chicago Sky</td>
+      <td>1514.52</td>
+      <td>87</td>
+      <td>35.61%</td>
+      <td>64.39%</td>
+      <td>-11.14</td>
+    </tr>
+    <tr>
+      <td>2013-06-27</td>
+      <td>Washington Mystics</td>
+      <td>1409.42</td>
+      <td>97</td>
+      <td>Phoenix Mercury</td>
+      <td>1439.39</td>
+      <td>101</td>
+      <td>56.60%</td>
+      <td>43.40%</td>
+      <td>-9.83</td>
+    </tr>
+    <tr>
+      <td>2013-06-27</td>
+      <td>Phoenix Mercury</td>
+      <td>1439.39</td>
+      <td>101</td>
+      <td>@ Washington Mystics</td>
+      <td>1409.42</td>
+      <td>97</td>
+      <td>43.40%</td>
+      <td>56.60%</td>
+      <td>9.83</td>
+    </tr>
+    <tr>
+      <td>2013-06-28</td>
+      <td>Indiana Fever</td>
+      <td>1489.51</td>
+      <td>80</td>
+      <td>Tulsa Shock</td>
+      <td>1428.25</td>
+      <td>69</td>
+      <td>68.80%</td>
+      <td>31.20%</td>
+      <td>8.99</td>
+    </tr>
+    <tr>
+      <td>2013-06-28</td>
+      <td>Minnesota Lynx</td>
+      <td>1589.67</td>
+      <td>88</td>
+      <td>Los Angeles Sparks</td>
+      <td>1589.40</td>
+      <td>64</td>
+      <td>60.82%</td>
+      <td>39.18%</td>
+      <td>16.66</td>
+    </tr>
+    <tr>
+      <td>2013-06-28</td>
+      <td>Atlanta Dream</td>
+      <td>1595.66</td>
+      <td>86</td>
+      <td>Washington Mystics</td>
+      <td>1399.59</td>
+      <td>75</td>
+      <td>82.73%</td>
+      <td>17.27%</td>
+      <td>4.97</td>
+    </tr>
+    <tr>
+      <td>2013-06-28</td>
+      <td>Seattle Storm</td>
+      <td>1487.16</td>
+      <td>62</td>
+      <td>New York Liberty</td>
+      <td>1476.60</td>
+      <td>67</td>
+      <td>62.22%</td>
+      <td>37.78%</td>
+      <td>-12.08</td>
+    </tr>
+    <tr>
+      <td>2013-06-28</td>
+      <td>New York Liberty</td>
+      <td>1476.60</td>
+      <td>67</td>
+      <td>@ Seattle Storm</td>
+      <td>1487.16</td>
+      <td>62</td>
+      <td>37.78%</td>
+      <td>62.22%</td>
+      <td>12.07</td>
+    </tr>
+    <tr>
+      <td>2013-06-28</td>
+      <td>Los Angeles Sparks</td>
+      <td>1589.40</td>
+      <td>64</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1589.67</td>
+      <td>88</td>
+      <td>39.18%</td>
+      <td>60.82%</td>
+      <td>-16.66</td>
+    </tr>
+    <tr>
+      <td>2013-06-28</td>
+      <td>Tulsa Shock</td>
+      <td>1428.25</td>
+      <td>69</td>
+      <td>@ Indiana Fever</td>
+      <td>1489.51</td>
+      <td>80</td>
+      <td>31.20%</td>
+      <td>68.80%</td>
+      <td>-8.98</td>
+    </tr>
+    <tr>
+      <td>2013-06-28</td>
+      <td>Washington Mystics</td>
+      <td>1399.59</td>
+      <td>75</td>
+      <td>@ Atlanta Dream</td>
+      <td>1595.66</td>
+      <td>86</td>
+      <td>17.27%</td>
+      <td>82.73%</td>
+      <td>-4.97</td>
+    </tr>
+    <tr>
+      <td>2013-06-29</td>
+      <td>Phoenix Mercury</td>
+      <td>1449.22</td>
+      <td>89</td>
+      <td>@ Connecticut Sun</td>
+      <td>1495.01</td>
+      <td>70</td>
+      <td>33.14%</td>
+      <td>66.86%</td>
+      <td>25.29</td>
+    </tr>
+    <tr>
+      <td>2013-06-29</td>
+      <td>Los Angeles Sparks</td>
+      <td>1572.74</td>
+      <td>82</td>
+      <td>@ Chicago Sky</td>
+      <td>1525.67</td>
+      <td>94</td>
+      <td>45.83%</td>
+      <td>54.17%</td>
+      <td>-13.78</td>
+    </tr>
+    <tr>
+      <td>2013-06-29</td>
+      <td>Chicago Sky</td>
+      <td>1525.67</td>
+      <td>94</td>
+      <td>Los Angeles Sparks</td>
+      <td>1572.74</td>
+      <td>82</td>
+      <td>54.17%</td>
+      <td>45.83%</td>
+      <td>13.78</td>
+    </tr>
+    <tr>
+      <td>2013-06-29</td>
+      <td>Connecticut Sun</td>
+      <td>1495.01</td>
+      <td>70</td>
+      <td>Phoenix Mercury</td>
+      <td>1449.22</td>
+      <td>89</td>
+      <td>66.86%</td>
+      <td>33.14%</td>
+      <td>-25.30</td>
+    </tr>
+    <tr>
+      <td>2013-06-30</td>
+      <td>Tulsa Shock</td>
+      <td>1419.27</td>
+      <td>61</td>
+      <td>@ Washington Mystics</td>
+      <td>1394.62</td>
+      <td>84</td>
+      <td>42.64%</td>
+      <td>57.36%</td>
+      <td>-17.76</td>
+    </tr>
+    <tr>
+      <td>2013-06-30</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1474.27</td>
+      <td>67</td>
+      <td>@ Atlanta Dream</td>
+      <td>1600.63</td>
+      <td>93</td>
+      <td>23.77%</td>
+      <td>76.23%</td>
+      <td>-10.52</td>
+    </tr>
+    <tr>
+      <td>2013-06-30</td>
+      <td>Seattle Storm</td>
+      <td>1475.08</td>
+      <td>63</td>
+      <td>@ Indiana Fever</td>
+      <td>1498.50</td>
+      <td>71</td>
+      <td>36.05%</td>
+      <td>63.95%</td>
+      <td>-8.85</td>
+    </tr>
+    <tr>
+      <td>2013-06-30</td>
+      <td>Atlanta Dream</td>
+      <td>1600.63</td>
+      <td>93</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1474.27</td>
+      <td>67</td>
+      <td>76.23%</td>
+      <td>23.77%</td>
+      <td>10.52</td>
+    </tr>
+    <tr>
+      <td>2013-06-30</td>
+      <td>Washington Mystics</td>
+      <td>1394.62</td>
+      <td>84</td>
+      <td>Tulsa Shock</td>
+      <td>1419.27</td>
+      <td>61</td>
+      <td>57.36%</td>
+      <td>42.64%</td>
+      <td>17.75</td>
+    </tr>
+    <tr>
+      <td>2013-06-30</td>
+      <td>Indiana Fever</td>
+      <td>1498.50</td>
+      <td>71</td>
+      <td>Seattle Storm</td>
+      <td>1475.08</td>
+      <td>63</td>
+      <td>63.95%</td>
+      <td>36.05%</td>
+      <td>8.85</td>
+    </tr>
+    <tr>
+      <td>2013-07-02</td>
+      <td>Minnesota Lynx</td>
+      <td>1606.33</td>
+      <td>66</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1558.96</td>
+      <td>96</td>
+      <td>45.87%</td>
+      <td>54.13%</td>
+      <td>-21.80</td>
+    </tr>
+    <tr>
+      <td>2013-07-02</td>
+      <td>New York Liberty</td>
+      <td>1488.67</td>
+      <td>87</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1474.51</td>
+      <td>94</td>
+      <td>41.18%</td>
+      <td>58.82%</td>
+      <td>-9.45</td>
+    </tr>
+    <tr>
+      <td>2013-07-02</td>
+      <td>Tulsa Shock</td>
+      <td>1401.51</td>
+      <td>69</td>
+      <td>@ Connecticut Sun</td>
+      <td>1469.71</td>
+      <td>88</td>
+      <td>30.35%</td>
+      <td>69.65%</td>
+      <td>-11.48</td>
+    </tr>
+    <tr>
+      <td>2013-07-02</td>
+      <td>Chicago Sky</td>
+      <td>1539.45</td>
+      <td>60</td>
+      <td>Seattle Storm</td>
+      <td>1466.23</td>
+      <td>69</td>
+      <td>70.26%</td>
+      <td>29.74%</td>
+      <td>-18.30</td>
+    </tr>
+    <tr>
+      <td>2013-07-02</td>
+      <td>Connecticut Sun</td>
+      <td>1469.71</td>
+      <td>88</td>
+      <td>Tulsa Shock</td>
+      <td>1401.51</td>
+      <td>69</td>
+      <td>69.65%</td>
+      <td>30.35%</td>
+      <td>11.49</td>
+    </tr>
+    <tr>
+      <td>2013-07-02</td>
+      <td>Los Angeles Sparks</td>
+      <td>1558.96</td>
+      <td>96</td>
+      <td>Minnesota Lynx</td>
+      <td>1606.33</td>
+      <td>66</td>
+      <td>54.13%</td>
+      <td>45.87%</td>
+      <td>21.81</td>
+    </tr>
+    <tr>
+      <td>2013-07-02</td>
+      <td>Phoenix Mercury</td>
+      <td>1474.51</td>
+      <td>94</td>
+      <td>New York Liberty</td>
+      <td>1488.67</td>
+      <td>87</td>
+      <td>58.82%</td>
+      <td>41.18%</td>
+      <td>9.46</td>
+    </tr>
+    <tr>
+      <td>2013-07-02</td>
+      <td>Seattle Storm</td>
+      <td>1466.23</td>
+      <td>69</td>
+      <td>@ Chicago Sky</td>
+      <td>1539.45</td>
+      <td>60</td>
+      <td>29.74%</td>
+      <td>70.26%</td>
+      <td>18.29</td>
+    </tr>
+    <tr>
+      <td>2013-07-04</td>
+      <td>New York Liberty</td>
+      <td>1479.22</td>
+      <td>89</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1580.77</td>
+      <td>97</td>
+      <td>26.45%</td>
+      <td>73.55%</td>
+      <td>-6.50</td>
+    </tr>
+    <tr>
+      <td>2013-07-04</td>
+      <td>Los Angeles Sparks</td>
+      <td>1580.77</td>
+      <td>97</td>
+      <td>New York Liberty</td>
+      <td>1479.22</td>
+      <td>89</td>
+      <td>73.55%</td>
+      <td>26.45%</td>
+      <td>6.49</td>
+    </tr>
+    <tr>
+      <td>2013-07-06</td>
+      <td>Washington Mystics</td>
+      <td>1412.37</td>
+      <td>62</td>
+      <td>Seattle Storm</td>
+      <td>1484.52</td>
+      <td>59</td>
+      <td>50.57%</td>
+      <td>49.43%</td>
+      <td>7.43</td>
+    </tr>
+    <tr>
+      <td>2013-07-06</td>
+      <td>Los Angeles Sparks</td>
+      <td>1587.26</td>
+      <td>93</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1463.75</td>
+      <td>66</td>
+      <td>75.94%</td>
+      <td>24.06%</td>
+      <td>10.85</td>
+    </tr>
+    <tr>
+      <td>2013-07-06</td>
+      <td>Indiana Fever</td>
+      <td>1507.35</td>
+      <td>78</td>
+      <td>Connecticut Sun</td>
+      <td>1481.20</td>
+      <td>66</td>
+      <td>64.31%</td>
+      <td>35.69%</td>
+      <td>10.73</td>
+    </tr>
+    <tr>
+      <td>2013-07-06</td>
+      <td>Seattle Storm</td>
+      <td>1484.52</td>
+      <td>59</td>
+      <td>@ Washington Mystics</td>
+      <td>1412.37</td>
+      <td>62</td>
+      <td>49.43%</td>
+      <td>50.57%</td>
+      <td>-7.43</td>
+    </tr>
+    <tr>
+      <td>2013-07-06</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1463.75</td>
+      <td>66</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1587.26</td>
+      <td>93</td>
+      <td>24.06%</td>
+      <td>75.94%</td>
+      <td>-10.85</td>
+    </tr>
+    <tr>
+      <td>2013-07-06</td>
+      <td>Connecticut Sun</td>
+      <td>1481.20</td>
+      <td>66</td>
+      <td>@ Indiana Fever</td>
+      <td>1507.35</td>
+      <td>78</td>
+      <td>35.69%</td>
+      <td>64.31%</td>
+      <td>-10.74</td>
+    </tr>
+    <tr>
+      <td>2013-07-07</td>
+      <td>Chicago Sky</td>
+      <td>1521.15</td>
+      <td>93</td>
+      <td>@ New York Liberty</td>
+      <td>1472.72</td>
+      <td>64</td>
+      <td>46.02%</td>
+      <td>53.98%</td>
+      <td>25.23</td>
+    </tr>
+    <tr>
+      <td>2013-07-07</td>
+      <td>New York Liberty</td>
+      <td>1472.72</td>
+      <td>64</td>
+      <td>Chicago Sky</td>
+      <td>1521.15</td>
+      <td>93</td>
+      <td>53.98%</td>
+      <td>46.02%</td>
+      <td>-25.23</td>
+    </tr>
+    <tr>
+      <td>2013-07-07</td>
+      <td>Minnesota Lynx</td>
+      <td>1584.53</td>
+      <td>91</td>
+      <td>Phoenix Mercury</td>
+      <td>1483.97</td>
+      <td>59</td>
+      <td>73.44%</td>
+      <td>26.56%</td>
+      <td>13.04</td>
+    </tr>
+    <tr>
+      <td>2013-07-07</td>
+      <td>Phoenix Mercury</td>
+      <td>1483.97</td>
+      <td>59</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1584.53</td>
+      <td>91</td>
+      <td>26.56%</td>
+      <td>73.44%</td>
+      <td>-13.04</td>
+    </tr>
+    <tr>
+      <td>2013-07-09</td>
+      <td>Seattle Storm</td>
+      <td>1477.09</td>
+      <td>57</td>
+      <td>@ New York Liberty</td>
+      <td>1447.49</td>
+      <td>66</td>
+      <td>43.34%</td>
+      <td>56.66%</td>
+      <td>-11.28</td>
+    </tr>
+    <tr>
+      <td>2013-07-09</td>
+      <td>Atlanta Dream</td>
+      <td>1611.15</td>
+      <td>72</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1597.57</td>
+      <td>94</td>
+      <td>41.09%</td>
+      <td>58.91%</td>
+      <td>-16.74</td>
+    </tr>
+    <tr>
+      <td>2013-07-09</td>
+      <td>New York Liberty</td>
+      <td>1447.49</td>
+      <td>66</td>
+      <td>Seattle Storm</td>
+      <td>1477.09</td>
+      <td>57</td>
+      <td>56.66%</td>
+      <td>43.34%</td>
+      <td>11.29</td>
+    </tr>
+    <tr>
+      <td>2013-07-09</td>
+      <td>Minnesota Lynx</td>
+      <td>1597.57</td>
+      <td>94</td>
+      <td>Atlanta Dream</td>
+      <td>1611.15</td>
+      <td>72</td>
+      <td>58.91%</td>
+      <td>41.09%</td>
+      <td>16.73</td>
+    </tr>
+    <tr>
+      <td>2013-07-10</td>
+      <td>Washington Mystics</td>
+      <td>1419.80</td>
+      <td>85</td>
+      <td>@ Chicago Sky</td>
+      <td>1546.38</td>
+      <td>89</td>
+      <td>23.74%</td>
+      <td>76.26%</td>
+      <td>-4.12</td>
+    </tr>
+    <tr>
+      <td>2013-07-10</td>
+      <td>Chicago Sky</td>
+      <td>1546.38</td>
+      <td>89</td>
+      <td>Washington Mystics</td>
+      <td>1419.80</td>
+      <td>85</td>
+      <td>76.26%</td>
+      <td>23.74%</td>
+      <td>4.12</td>
+    </tr>
+    <tr>
+      <td>2013-07-10</td>
+      <td>Phoenix Mercury</td>
+      <td>1470.93</td>
+      <td>80</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1452.90</td>
+      <td>88</td>
+      <td>63.23%</td>
+      <td>36.77%</td>
+      <td>-15.52</td>
+    </tr>
+    <tr>
+      <td>2013-07-10</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1452.90</td>
+      <td>88</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1470.93</td>
+      <td>80</td>
+      <td>36.77%</td>
+      <td>63.23%</td>
+      <td>15.52</td>
+    </tr>
+    <tr>
+      <td>2013-07-11</td>
+      <td>Indiana Fever</td>
+      <td>1518.08</td>
+      <td>62</td>
+      <td>Minnesota Lynx</td>
+      <td>1614.30</td>
+      <td>69</td>
+      <td>47.11%</td>
+      <td>52.89%</td>
+      <td>-10.82</td>
+    </tr>
+    <tr>
+      <td>2013-07-11</td>
+      <td>Los Angeles Sparks</td>
+      <td>1598.11</td>
+      <td>94</td>
+      <td>@ Tulsa Shock</td>
+      <td>1390.03</td>
+      <td>78</td>
+      <td>68.13%</td>
+      <td>31.87%</td>
+      <td>11.07</td>
+    </tr>
+    <tr>
+      <td>2013-07-11</td>
+      <td>Minnesota Lynx</td>
+      <td>1614.30</td>
+      <td>69</td>
+      <td>@ Indiana Fever</td>
+      <td>1518.08</td>
+      <td>62</td>
+      <td>52.89%</td>
+      <td>47.11%</td>
+      <td>10.82</td>
+    </tr>
+    <tr>
+      <td>2013-07-11</td>
+      <td>Tulsa Shock</td>
+      <td>1390.03</td>
+      <td>78</td>
+      <td>Los Angeles Sparks</td>
+      <td>1598.11</td>
+      <td>94</td>
+      <td>31.87%</td>
+      <td>68.13%</td>
+      <td>-11.06</td>
+    </tr>
+    <tr>
+      <td>2013-07-12</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1468.42</td>
+      <td>73</td>
+      <td>Washington Mystics</td>
+      <td>1415.68</td>
+      <td>83</td>
+      <td>67.74%</td>
+      <td>32.26%</td>
+      <td>-18.59</td>
+    </tr>
+    <tr>
+      <td>2013-07-12</td>
+      <td>Connecticut Sun</td>
+      <td>1470.46</td>
+      <td>70</td>
+      <td>Chicago Sky</td>
+      <td>1550.50</td>
+      <td>83</td>
+      <td>49.44%</td>
+      <td>50.56%</td>
+      <td>-15.47</td>
+    </tr>
+    <tr>
+      <td>2013-07-12</td>
+      <td>Washington Mystics</td>
+      <td>1415.68</td>
+      <td>83</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1468.42</td>
+      <td>73</td>
+      <td>32.26%</td>
+      <td>67.74%</td>
+      <td>18.59</td>
+    </tr>
+    <tr>
+      <td>2013-07-12</td>
+      <td>Chicago Sky</td>
+      <td>1550.50</td>
+      <td>83</td>
+      <td>@ Connecticut Sun</td>
+      <td>1470.46</td>
+      <td>70</td>
+      <td>50.56%</td>
+      <td>49.44%</td>
+      <td>15.48</td>
+    </tr>
+    <tr>
+      <td>2013-07-13</td>
+      <td>Tulsa Shock</td>
+      <td>1378.97</td>
+      <td>75</td>
+      <td>Minnesota Lynx</td>
+      <td>1625.12</td>
+      <td>86</td>
+      <td>27.31%</td>
+      <td>72.69%</td>
+      <td>-7.87</td>
+    </tr>
+    <tr>
+      <td>2013-07-13</td>
+      <td>New York Liberty</td>
+      <td>1458.78</td>
+      <td>53</td>
+      <td>Indiana Fever</td>
+      <td>1507.26</td>
+      <td>74</td>
+      <td>53.97%</td>
+      <td>46.03%</td>
+      <td>-21.47</td>
+    </tr>
+    <tr>
+      <td>2013-07-13</td>
+      <td>Minnesota Lynx</td>
+      <td>1625.12</td>
+      <td>86</td>
+      <td>@ Tulsa Shock</td>
+      <td>1378.97</td>
+      <td>75</td>
+      <td>72.69%</td>
+      <td>27.31%</td>
+      <td>7.86</td>
+    </tr>
+    <tr>
+      <td>2013-07-13</td>
+      <td>Indiana Fever</td>
+      <td>1507.26</td>
+      <td>74</td>
+      <td>@ New York Liberty</td>
+      <td>1458.78</td>
+      <td>53</td>
+      <td>46.03%</td>
+      <td>53.97%</td>
+      <td>21.47</td>
+    </tr>
+    <tr>
+      <td>2013-07-14</td>
+      <td>Atlanta Dream</td>
+      <td>1594.41</td>
+      <td>65</td>
+      <td>@ Seattle Storm</td>
+      <td>1465.81</td>
+      <td>73</td>
+      <td>57.50%</td>
+      <td>42.50%</td>
+      <td>-14.11</td>
+    </tr>
+    <tr>
+      <td>2013-07-14</td>
+      <td>Los Angeles Sparks</td>
+      <td>1609.18</td>
+      <td>88</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1455.41</td>
+      <td>76</td>
+      <td>60.99%</td>
+      <td>39.01%</td>
+      <td>11.73</td>
+    </tr>
+    <tr>
+      <td>2013-07-14</td>
+      <td>Seattle Storm</td>
+      <td>1465.81</td>
+      <td>73</td>
+      <td>Atlanta Dream</td>
+      <td>1594.41</td>
+      <td>65</td>
+      <td>42.50%</td>
+      <td>57.50%</td>
+      <td>14.11</td>
+    </tr>
+    <tr>
+      <td>2013-07-14</td>
+      <td>Phoenix Mercury</td>
+      <td>1455.41</td>
+      <td>76</td>
+      <td>Los Angeles Sparks</td>
+      <td>1609.18</td>
+      <td>88</td>
+      <td>39.01%</td>
+      <td>60.99%</td>
+      <td>-11.73</td>
+    </tr>
+    <tr>
+      <td>2013-07-14</td>
+      <td>Connecticut Sun</td>
+      <td>1454.99</td>
+      <td>86</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1449.83</td>
+      <td>84</td>
+      <td>61.49%</td>
+      <td>38.51%</td>
+      <td>4.73</td>
+    </tr>
+    <tr>
+      <td>2013-07-14</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1449.83</td>
+      <td>84</td>
+      <td>@ Connecticut Sun</td>
+      <td>1454.99</td>
+      <td>86</td>
+      <td>38.51%</td>
+      <td>61.49%</td>
+      <td>-4.73</td>
+    </tr>
+    <tr>
+      <td>2013-07-16</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1445.10</td>
+      <td>64</td>
+      <td>@ Washington Mystics</td>
+      <td>1434.27</td>
+      <td>86</td>
+      <td>40.71%</td>
+      <td>59.29%</td>
+      <td>-16.57</td>
+    </tr>
+    <tr>
+      <td>2013-07-16</td>
+      <td>Washington Mystics</td>
+      <td>1434.27</td>
+      <td>86</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1445.10</td>
+      <td>64</td>
+      <td>59.29%</td>
+      <td>40.71%</td>
+      <td>16.58</td>
+    </tr>
+    <tr>
+      <td>2013-07-17</td>
+      <td>Atlanta Dream</td>
+      <td>1580.30</td>
+      <td>73</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1620.91</td>
+      <td>77</td>
+      <td>33.80%</td>
+      <td>66.20%</td>
+      <td>-5.87</td>
+    </tr>
+    <tr>
+      <td>2013-07-17</td>
+      <td>Tulsa Shock</td>
+      <td>1371.10</td>
+      <td>86</td>
+      <td>@ Seattle Storm</td>
+      <td>1479.92</td>
+      <td>59</td>
+      <td>25.64%</td>
+      <td>74.36%</td>
+      <td>33.54</td>
+    </tr>
+    <tr>
+      <td>2013-07-17</td>
+      <td>Los Angeles Sparks</td>
+      <td>1620.91</td>
+      <td>77</td>
+      <td>Atlanta Dream</td>
+      <td>1580.30</td>
+      <td>73</td>
+      <td>66.20%</td>
+      <td>33.80%</td>
+      <td>5.87</td>
+    </tr>
+    <tr>
+      <td>2013-07-17</td>
+      <td>Seattle Storm</td>
+      <td>1479.92</td>
+      <td>59</td>
+      <td>Tulsa Shock</td>
+      <td>1371.10</td>
+      <td>86</td>
+      <td>74.36%</td>
+      <td>25.64%</td>
+      <td>-33.54</td>
+    </tr>
+    <tr>
+      <td>2013-07-18</td>
+      <td>Chicago Sky</td>
+      <td>1565.98</td>
+      <td>75</td>
+      <td>@ New York Liberty</td>
+      <td>1437.31</td>
+      <td>55</td>
+      <td>57.50%</td>
+      <td>42.50%</td>
+      <td>16.49</td>
+    </tr>
+    <tr>
+      <td>2013-07-18</td>
+      <td>New York Liberty</td>
+      <td>1437.31</td>
+      <td>55</td>
+      <td>Chicago Sky</td>
+      <td>1565.98</td>
+      <td>75</td>
+      <td>42.50%</td>
+      <td>57.50%</td>
+      <td>-16.49</td>
+    </tr>
+    <tr>
+      <td>2013-07-18</td>
+      <td>Phoenix Mercury</td>
+      <td>1443.68</td>
+      <td>90</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1626.78</td>
+      <td>84</td>
+      <td>18.36%</td>
+      <td>81.64%</td>
+      <td>17.35</td>
+    </tr>
+    <tr>
+      <td>2013-07-18</td>
+      <td>Los Angeles Sparks</td>
+      <td>1626.78</td>
+      <td>84</td>
+      <td>Phoenix Mercury</td>
+      <td>1443.68</td>
+      <td>90</td>
+      <td>81.64%</td>
+      <td>18.36%</td>
+      <td>-17.36</td>
+    </tr>
+    <tr>
+      <td>2013-07-19</td>
+      <td>Tulsa Shock</td>
+      <td>1404.64</td>
+      <td>64</td>
+      <td>Connecticut Sun</td>
+      <td>1459.72</td>
+      <td>58</td>
+      <td>53.03%</td>
+      <td>46.97%</td>
+      <td>9.99</td>
+    </tr>
+    <tr>
+      <td>2013-07-19</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1428.53</td>
+      <td>71</td>
+      <td>Minnesota Lynx</td>
+      <td>1632.98</td>
+      <td>87</td>
+      <td>32.33%</td>
+      <td>67.67%</td>
+      <td>-11.23</td>
+    </tr>
+    <tr>
+      <td>2013-07-19</td>
+      <td>Indiana Fever</td>
+      <td>1528.73</td>
+      <td>77</td>
+      <td>Washington Mystics</td>
+      <td>1450.85</td>
+      <td>70</td>
+      <td>70.82%</td>
+      <td>29.18%</td>
+      <td>6.70</td>
+    </tr>
+    <tr>
+      <td>2013-07-19</td>
+      <td>Washington Mystics</td>
+      <td>1450.85</td>
+      <td>70</td>
+      <td>@ Indiana Fever</td>
+      <td>1528.73</td>
+      <td>77</td>
+      <td>29.18%</td>
+      <td>70.82%</td>
+      <td>-6.70</td>
+    </tr>
+    <tr>
+      <td>2013-07-19</td>
+      <td>Connecticut Sun</td>
+      <td>1459.72</td>
+      <td>58</td>
+      <td>@ Tulsa Shock</td>
+      <td>1404.64</td>
+      <td>64</td>
+      <td>46.97%</td>
+      <td>53.03%</td>
+      <td>-9.99</td>
+    </tr>
+    <tr>
+      <td>2013-07-19</td>
+      <td>Minnesota Lynx</td>
+      <td>1632.98</td>
+      <td>87</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1428.53</td>
+      <td>71</td>
+      <td>67.67%</td>
+      <td>32.33%</td>
+      <td>11.23</td>
+    </tr>
+    <tr>
+      <td>2013-07-20</td>
+      <td>Seattle Storm</td>
+      <td>1446.38</td>
+      <td>64</td>
+      <td>Los Angeles Sparks</td>
+      <td>1609.42</td>
+      <td>65</td>
+      <td>37.75%</td>
+      <td>62.25%</td>
+      <td>-3.27</td>
+    </tr>
+    <tr>
+      <td>2013-07-20</td>
+      <td>New York Liberty</td>
+      <td>1420.82</td>
+      <td>69</td>
+      <td>@ Chicago Sky</td>
+      <td>1582.47</td>
+      <td>80</td>
+      <td>20.28%</td>
+      <td>79.72%</td>
+      <td>-5.84</td>
+    </tr>
+    <tr>
+      <td>2013-07-20</td>
+      <td>Connecticut Sun</td>
+      <td>1449.73</td>
+      <td>52</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1417.30</td>
+      <td>60</td>
+      <td>43.74%</td>
+      <td>56.26%</td>
+      <td>-10.74</td>
+    </tr>
+    <tr>
+      <td>2013-07-20</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1417.30</td>
+      <td>60</td>
+      <td>Connecticut Sun</td>
+      <td>1449.73</td>
+      <td>52</td>
+      <td>56.26%</td>
+      <td>43.74%</td>
+      <td>10.74</td>
+    </tr>
+    <tr>
+      <td>2013-07-20</td>
+      <td>Los Angeles Sparks</td>
+      <td>1609.42</td>
+      <td>65</td>
+      <td>@ Seattle Storm</td>
+      <td>1446.38</td>
+      <td>64</td>
+      <td>62.25%</td>
+      <td>37.75%</td>
+      <td>3.28</td>
+    </tr>
+    <tr>
+      <td>2013-07-20</td>
+      <td>Chicago Sky</td>
+      <td>1582.47</td>
+      <td>80</td>
+      <td>New York Liberty</td>
+      <td>1420.82</td>
+      <td>69</td>
+      <td>79.72%</td>
+      <td>20.28%</td>
+      <td>5.84</td>
+    </tr>
+    <tr>
+      <td>2013-07-21</td>
+      <td>Atlanta Dream</td>
+      <td>1574.43</td>
+      <td>63</td>
+      <td>@ Tulsa Shock</td>
+      <td>1414.63</td>
+      <td>90</td>
+      <td>61.81%</td>
+      <td>38.19%</td>
+      <td>-27.88</td>
+    </tr>
+    <tr>
+      <td>2013-07-21</td>
+      <td>Indiana Fever</td>
+      <td>1535.43</td>
+      <td>65</td>
+      <td>@ Washington Mystics</td>
+      <td>1444.15</td>
+      <td>52</td>
+      <td>52.18%</td>
+      <td>47.82%</td>
+      <td>14.97</td>
+    </tr>
+    <tr>
+      <td>2013-07-21</td>
+      <td>Phoenix Mercury</td>
+      <td>1461.03</td>
+      <td>77</td>
+      <td>Minnesota Lynx</td>
+      <td>1644.21</td>
+      <td>82</td>
+      <td>35.07%</td>
+      <td>64.93%</td>
+      <td>-6.80</td>
+    </tr>
+    <tr>
+      <td>2013-07-21</td>
+      <td>Tulsa Shock</td>
+      <td>1414.63</td>
+      <td>90</td>
+      <td>Atlanta Dream</td>
+      <td>1574.43</td>
+      <td>63</td>
+      <td>38.19%</td>
+      <td>61.81%</td>
+      <td>27.88</td>
+    </tr>
+    <tr>
+      <td>2013-07-21</td>
+      <td>Washington Mystics</td>
+      <td>1444.15</td>
+      <td>52</td>
+      <td>Indiana Fever</td>
+      <td>1535.43</td>
+      <td>65</td>
+      <td>47.82%</td>
+      <td>52.18%</td>
+      <td>-14.97</td>
+    </tr>
+    <tr>
+      <td>2013-07-21</td>
+      <td>Minnesota Lynx</td>
+      <td>1644.21</td>
+      <td>82</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1461.03</td>
+      <td>77</td>
+      <td>64.93%</td>
+      <td>35.07%</td>
+      <td>6.80</td>
+    </tr>
+    <tr>
+      <td>2013-07-23</td>
+      <td>Indiana Fever</td>
+      <td>1550.40</td>
+      <td>72</td>
+      <td>New York Liberty</td>
+      <td>1414.98</td>
+      <td>77</td>
+      <td>77.17%</td>
+      <td>22.83%</td>
+      <td>-14.98</td>
+    </tr>
+    <tr>
+      <td>2013-07-23</td>
+      <td>New York Liberty</td>
+      <td>1414.98</td>
+      <td>77</td>
+      <td>@ Indiana Fever</td>
+      <td>1550.40</td>
+      <td>72</td>
+      <td>22.83%</td>
+      <td>77.17%</td>
+      <td>14.97</td>
+    </tr>
+    <tr>
+      <td>2013-07-24</td>
+      <td>Connecticut Sun</td>
+      <td>1438.99</td>
+      <td>65</td>
+      <td>@ Atlanta Dream</td>
+      <td>1546.55</td>
+      <td>74</td>
+      <td>25.78%</td>
+      <td>74.22%</td>
+      <td>-6.71</td>
+    </tr>
+    <tr>
+      <td>2013-07-24</td>
+      <td>Phoenix Mercury</td>
+      <td>1454.23</td>
+      <td>69</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1651.01</td>
+      <td>81</td>
+      <td>17.21%</td>
+      <td>82.79%</td>
+      <td>-5.18</td>
+    </tr>
+    <tr>
+      <td>2013-07-24</td>
+      <td>Chicago Sky</td>
+      <td>1588.31</td>
+      <td>78</td>
+      <td>@ Washington Mystics</td>
+      <td>1429.18</td>
+      <td>82</td>
+      <td>61.72%</td>
+      <td>38.28%</td>
+      <td>-10.71</td>
+    </tr>
+    <tr>
+      <td>2013-07-24</td>
+      <td>Washington Mystics</td>
+      <td>1429.18</td>
+      <td>82</td>
+      <td>Chicago Sky</td>
+      <td>1588.31</td>
+      <td>78</td>
+      <td>38.28%</td>
+      <td>61.72%</td>
+      <td>10.72</td>
+    </tr>
+    <tr>
+      <td>2013-07-24</td>
+      <td>Minnesota Lynx</td>
+      <td>1651.01</td>
+      <td>81</td>
+      <td>Phoenix Mercury</td>
+      <td>1454.23</td>
+      <td>69</td>
+      <td>82.79%</td>
+      <td>17.21%</td>
+      <td>5.17</td>
+    </tr>
+    <tr>
+      <td>2013-07-24</td>
+      <td>Atlanta Dream</td>
+      <td>1546.55</td>
+      <td>74</td>
+      <td>Connecticut Sun</td>
+      <td>1438.99</td>
+      <td>65</td>
+      <td>74.22%</td>
+      <td>25.78%</td>
+      <td>6.71</td>
+    </tr>
+    <tr>
+      <td>2013-07-25</td>
+      <td>Los Angeles Sparks</td>
+      <td>1612.70</td>
+      <td>66</td>
+      <td>Seattle Storm</td>
+      <td>1443.11</td>
+      <td>73</td>
+      <td>80.45%</td>
+      <td>19.55%</td>
+      <td>-18.48</td>
+    </tr>
+    <tr>
+      <td>2013-07-25</td>
+      <td>Tulsa Shock</td>
+      <td>1442.51</td>
+      <td>60</td>
+      <td>Indiana Fever</td>
+      <td>1535.42</td>
+      <td>71</td>
+      <td>47.59%</td>
+      <td>52.41%</td>
+      <td>-13.70</td>
+    </tr>
+    <tr>
+      <td>2013-07-25</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1428.04</td>
+      <td>65</td>
+      <td>New York Liberty</td>
+      <td>1429.95</td>
+      <td>53</td>
+      <td>60.52%</td>
+      <td>39.48%</td>
+      <td>11.87</td>
+    </tr>
+    <tr>
+      <td>2013-07-25</td>
+      <td>New York Liberty</td>
+      <td>1429.95</td>
+      <td>53</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1428.04</td>
+      <td>65</td>
+      <td>39.48%</td>
+      <td>60.52%</td>
+      <td>-11.87</td>
+    </tr>
+    <tr>
+      <td>2013-07-25</td>
+      <td>Indiana Fever</td>
+      <td>1535.42</td>
+      <td>71</td>
+      <td>@ Tulsa Shock</td>
+      <td>1442.51</td>
+      <td>60</td>
+      <td>52.41%</td>
+      <td>47.59%</td>
+      <td>13.70</td>
+    </tr>
+    <tr>
+      <td>2013-07-25</td>
+      <td>Seattle Storm</td>
+      <td>1443.11</td>
+      <td>73</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1612.70</td>
+      <td>66</td>
+      <td>19.55%</td>
+      <td>80.45%</td>
+      <td>18.47</td>
+    </tr>
+    <tr>
+      <td>2013-07-31</td>
+      <td>Washington Mystics</td>
+      <td>1439.90</td>
+      <td>78</td>
+      <td>New York Liberty</td>
+      <td>1418.08</td>
+      <td>88</td>
+      <td>63.73%</td>
+      <td>36.27%</td>
+      <td>-17.50</td>
+    </tr>
+    <tr>
+      <td>2013-07-31</td>
+      <td>New York Liberty</td>
+      <td>1418.08</td>
+      <td>88</td>
+      <td>@ Washington Mystics</td>
+      <td>1439.90</td>
+      <td>78</td>
+      <td>36.27%</td>
+      <td>63.73%</td>
+      <td>17.50</td>
+    </tr>
+    <tr>
+      <td>2013-08-01</td>
+      <td>Seattle Storm</td>
+      <td>1461.58</td>
+      <td>88</td>
+      <td>Phoenix Mercury</td>
+      <td>1449.05</td>
+      <td>79</td>
+      <td>62.49%</td>
+      <td>37.51%</td>
+      <td>9.77</td>
+    </tr>
+    <tr>
+      <td>2013-08-01</td>
+      <td>Connecticut Sun</td>
+      <td>1432.28</td>
+      <td>70</td>
+      <td>Indiana Fever</td>
+      <td>1549.12</td>
+      <td>64</td>
+      <td>44.17%</td>
+      <td>55.83%</td>
+      <td>11.87</td>
+    </tr>
+    <tr>
+      <td>2013-08-01</td>
+      <td>Indiana Fever</td>
+      <td>1549.12</td>
+      <td>64</td>
+      <td>@ Connecticut Sun</td>
+      <td>1432.28</td>
+      <td>70</td>
+      <td>55.83%</td>
+      <td>44.17%</td>
+      <td>-11.87</td>
+    </tr>
+    <tr>
+      <td>2013-08-01</td>
+      <td>Phoenix Mercury</td>
+      <td>1449.05</td>
+      <td>79</td>
+      <td>@ Seattle Storm</td>
+      <td>1461.58</td>
+      <td>88</td>
+      <td>37.51%</td>
+      <td>62.49%</td>
+      <td>-9.76</td>
+    </tr>
+    <tr>
+      <td>2013-08-02</td>
+      <td>Tulsa Shock</td>
+      <td>1428.81</td>
+      <td>96</td>
+      <td>Los Angeles Sparks</td>
+      <td>1594.22</td>
+      <td>89</td>
+      <td>37.43%</td>
+      <td>62.57%</td>
+      <td>14.37</td>
+    </tr>
+    <tr>
+      <td>2013-08-02</td>
+      <td>Minnesota Lynx</td>
+      <td>1656.18</td>
+      <td>85</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1439.91</td>
+      <td>63</td>
+      <td>84.33%</td>
+      <td>15.67%</td>
+      <td>6.38</td>
+    </tr>
+    <tr>
+      <td>2013-08-02</td>
+      <td>Chicago Sky</td>
+      <td>1577.60</td>
+      <td>85</td>
+      <td>Washington Mystics</td>
+      <td>1422.40</td>
+      <td>78</td>
+      <td>79.11%</td>
+      <td>20.89%</td>
+      <td>4.79</td>
+    </tr>
+    <tr>
+      <td>2013-08-02</td>
+      <td>Washington Mystics</td>
+      <td>1422.40</td>
+      <td>78</td>
+      <td>@ Chicago Sky</td>
+      <td>1577.60</td>
+      <td>85</td>
+      <td>20.89%</td>
+      <td>79.11%</td>
+      <td>-4.80</td>
+    </tr>
+    <tr>
+      <td>2013-08-02</td>
+      <td>Los Angeles Sparks</td>
+      <td>1594.22</td>
+      <td>89</td>
+      <td>@ Tulsa Shock</td>
+      <td>1428.81</td>
+      <td>96</td>
+      <td>62.57%</td>
+      <td>37.43%</td>
+      <td>-14.37</td>
+    </tr>
+    <tr>
+      <td>2013-08-02</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1439.91</td>
+      <td>63</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1656.18</td>
+      <td>85</td>
+      <td>15.67%</td>
+      <td>84.33%</td>
+      <td>-6.38</td>
+    </tr>
+    <tr>
+      <td>2013-08-03</td>
+      <td>Connecticut Sun</td>
+      <td>1444.15</td>
+      <td>88</td>
+      <td>@ New York Liberty</td>
+      <td>1435.58</td>
+      <td>66</td>
+      <td>40.40%</td>
+      <td>59.60%</td>
+      <td>24.27</td>
+    </tr>
+    <tr>
+      <td>2013-08-03</td>
+      <td>New York Liberty</td>
+      <td>1435.58</td>
+      <td>66</td>
+      <td>Connecticut Sun</td>
+      <td>1444.15</td>
+      <td>88</td>
+      <td>59.60%</td>
+      <td>40.40%</td>
+      <td>-24.27</td>
+    </tr>
+    <tr>
+      <td>2013-08-03</td>
+      <td>Atlanta Dream</td>
+      <td>1553.26</td>
+      <td>76</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1439.29</td>
+      <td>82</td>
+      <td>55.43%</td>
+      <td>44.57%</td>
+      <td>-11.78</td>
+    </tr>
+    <tr>
+      <td>2013-08-03</td>
+      <td>Phoenix Mercury</td>
+      <td>1439.29</td>
+      <td>82</td>
+      <td>Atlanta Dream</td>
+      <td>1553.26</td>
+      <td>76</td>
+      <td>44.57%</td>
+      <td>55.43%</td>
+      <td>11.78</td>
+    </tr>
+    <tr>
+      <td>2013-08-03</td>
+      <td>Chicago Sky</td>
+      <td>1582.39</td>
+      <td>58</td>
+      <td>@ Indiana Fever</td>
+      <td>1537.25</td>
+      <td>79</td>
+      <td>45.55%</td>
+      <td>54.45%</td>
+      <td>-18.12</td>
+    </tr>
+    <tr>
+      <td>2013-08-03</td>
+      <td>Indiana Fever</td>
+      <td>1537.25</td>
+      <td>79</td>
+      <td>Chicago Sky</td>
+      <td>1582.39</td>
+      <td>58</td>
+      <td>54.45%</td>
+      <td>45.55%</td>
+      <td>18.12</td>
+    </tr>
+    <tr>
+      <td>2013-08-04</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1433.53</td>
+      <td>69</td>
+      <td>Tulsa Shock</td>
+      <td>1443.18</td>
+      <td>65</td>
+      <td>59.45%</td>
+      <td>40.55%</td>
+      <td>7.04</td>
+    </tr>
+    <tr>
+      <td>2013-08-04</td>
+      <td>Washington Mystics</td>
+      <td>1417.60</td>
+      <td>57</td>
+      <td>Los Angeles Sparks</td>
+      <td>1579.85</td>
+      <td>75</td>
+      <td>37.85%</td>
+      <td>62.15%</td>
+      <td>-13.94</td>
+    </tr>
+    <tr>
+      <td>2013-08-04</td>
+      <td>Los Angeles Sparks</td>
+      <td>1579.85</td>
+      <td>75</td>
+      <td>@ Washington Mystics</td>
+      <td>1417.60</td>
+      <td>57</td>
+      <td>62.15%</td>
+      <td>37.85%</td>
+      <td>13.94</td>
+    </tr>
+    <tr>
+      <td>2013-08-04</td>
+      <td>Tulsa Shock</td>
+      <td>1443.18</td>
+      <td>65</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1433.53</td>
+      <td>69</td>
+      <td>40.55%</td>
+      <td>59.45%</td>
+      <td>-7.04</td>
+    </tr>
+    <tr>
+      <td>2013-08-04</td>
+      <td>Seattle Storm</td>
+      <td>1471.35</td>
+      <td>72</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1662.56</td>
+      <td>90</td>
+      <td>17.67%</td>
+      <td>82.33%</td>
+      <td>-6.51</td>
+    </tr>
+    <tr>
+      <td>2013-08-04</td>
+      <td>Minnesota Lynx</td>
+      <td>1662.56</td>
+      <td>90</td>
+      <td>Seattle Storm</td>
+      <td>1471.35</td>
+      <td>72</td>
+      <td>82.33%</td>
+      <td>17.67%</td>
+      <td>6.51</td>
+    </tr>
+    <tr>
+      <td>2013-08-06</td>
+      <td>Indiana Fever</td>
+      <td>1555.37</td>
+      <td>64</td>
+      <td>@ Chicago Sky</td>
+      <td>1564.27</td>
+      <td>58</td>
+      <td>38.00%</td>
+      <td>62.00%</td>
+      <td>13.18</td>
+    </tr>
+    <tr>
+      <td>2013-08-06</td>
+      <td>Washington Mystics</td>
+      <td>1403.66</td>
+      <td>88</td>
+      <td>@ New York Liberty</td>
+      <td>1411.31</td>
+      <td>93</td>
+      <td>38.17%</td>
+      <td>61.83%</td>
+      <td>-7.40</td>
+    </tr>
+    <tr>
+      <td>2013-08-06</td>
+      <td>Minnesota Lynx</td>
+      <td>1669.07</td>
+      <td>93</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1440.57</td>
+      <td>80</td>
+      <td>70.62%</td>
+      <td>29.38%</td>
+      <td>9.19</td>
+    </tr>
+    <tr>
+      <td>2013-08-06</td>
+      <td>Seattle Storm</td>
+      <td>1464.84</td>
+      <td>80</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1451.07</td>
+      <td>65</td>
+      <td>41.12%</td>
+      <td>58.88%</td>
+      <td>19.80</td>
+    </tr>
+    <tr>
+      <td>2013-08-06</td>
+      <td>Phoenix Mercury</td>
+      <td>1451.07</td>
+      <td>65</td>
+      <td>Seattle Storm</td>
+      <td>1464.84</td>
+      <td>80</td>
+      <td>58.88%</td>
+      <td>41.12%</td>
+      <td>-19.79</td>
+    </tr>
+    <tr>
+      <td>2013-08-06</td>
+      <td>Los Angeles Sparks</td>
+      <td>1593.79</td>
+      <td>74</td>
+      <td>@ Connecticut Sun</td>
+      <td>1468.42</td>
+      <td>72</td>
+      <td>57.04%</td>
+      <td>42.96%</td>
+      <td>5.27</td>
+    </tr>
+    <tr>
+      <td>2013-08-06</td>
+      <td>Connecticut Sun</td>
+      <td>1468.42</td>
+      <td>72</td>
+      <td>Los Angeles Sparks</td>
+      <td>1593.79</td>
+      <td>74</td>
+      <td>42.96%</td>
+      <td>57.04%</td>
+      <td>-5.28</td>
+    </tr>
+    <tr>
+      <td>2013-08-06</td>
+      <td>Chicago Sky</td>
+      <td>1564.27</td>
+      <td>58</td>
+      <td>Indiana Fever</td>
+      <td>1555.37</td>
+      <td>64</td>
+      <td>62.00%</td>
+      <td>38.00%</td>
+      <td>-13.18</td>
+    </tr>
+    <tr>
+      <td>2013-08-06</td>
+      <td>New York Liberty</td>
+      <td>1411.31</td>
+      <td>93</td>
+      <td>Washington Mystics</td>
+      <td>1403.66</td>
+      <td>88</td>
+      <td>61.83%</td>
+      <td>38.17%</td>
+      <td>7.41</td>
+    </tr>
+    <tr>
+      <td>2013-08-06</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1440.57</td>
+      <td>80</td>
+      <td>Minnesota Lynx</td>
+      <td>1669.07</td>
+      <td>93</td>
+      <td>29.38%</td>
+      <td>70.62%</td>
+      <td>-9.19</td>
+    </tr>
+    <tr>
+      <td>2013-08-08</td>
+      <td>Minnesota Lynx</td>
+      <td>1678.26</td>
+      <td>75</td>
+      <td>Washington Mystics</td>
+      <td>1396.26</td>
+      <td>79</td>
+      <td>88.71%</td>
+      <td>11.29%</td>
+      <td>-15.40</td>
+    </tr>
+    <tr>
+      <td>2013-08-08</td>
+      <td>Los Angeles Sparks</td>
+      <td>1599.06</td>
+      <td>74</td>
+      <td>@ Indiana Fever</td>
+      <td>1568.55</td>
+      <td>64</td>
+      <td>43.47%</td>
+      <td>56.53%</td>
+      <td>15.52</td>
+    </tr>
+    <tr>
+      <td>2013-08-08</td>
+      <td>Washington Mystics</td>
+      <td>1396.26</td>
+      <td>79</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1678.26</td>
+      <td>75</td>
+      <td>11.29%</td>
+      <td>88.71%</td>
+      <td>15.40</td>
+    </tr>
+    <tr>
+      <td>2013-08-08</td>
+      <td>Indiana Fever</td>
+      <td>1568.55</td>
+      <td>64</td>
+      <td>Los Angeles Sparks</td>
+      <td>1599.06</td>
+      <td>74</td>
+      <td>56.53%</td>
+      <td>43.47%</td>
+      <td>-15.52</td>
+    </tr>
+    <tr>
+      <td>2013-08-09</td>
+      <td>Connecticut Sun</td>
+      <td>1463.14</td>
+      <td>61</td>
+      <td>Chicago Sky</td>
+      <td>1551.09</td>
+      <td>77</td>
+      <td>48.30%</td>
+      <td>51.70%</td>
+      <td>-16.77</td>
+    </tr>
+    <tr>
+      <td>2013-08-09</td>
+      <td>Phoenix Mercury</td>
+      <td>1431.28</td>
+      <td>70</td>
+      <td>Tulsa Shock</td>
+      <td>1436.14</td>
+      <td>67</td>
+      <td>60.12%</td>
+      <td>39.88%</td>
+      <td>5.99</td>
+    </tr>
+    <tr>
+      <td>2013-08-09</td>
+      <td>Seattle Storm</td>
+      <td>1484.64</td>
+      <td>56</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1431.38</td>
+      <td>77</td>
+      <td>67.80%</td>
+      <td>32.20%</td>
+      <td>-26.97</td>
+    </tr>
+    <tr>
+      <td>2013-08-09</td>
+      <td>Chicago Sky</td>
+      <td>1551.09</td>
+      <td>77</td>
+      <td>@ Connecticut Sun</td>
+      <td>1463.14</td>
+      <td>61</td>
+      <td>51.70%</td>
+      <td>48.30%</td>
+      <td>16.77</td>
+    </tr>
+    <tr>
+      <td>2013-08-09</td>
+      <td>Tulsa Shock</td>
+      <td>1436.14</td>
+      <td>67</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1431.28</td>
+      <td>70</td>
+      <td>39.88%</td>
+      <td>60.12%</td>
+      <td>-6.00</td>
+    </tr>
+    <tr>
+      <td>2013-08-09</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1431.38</td>
+      <td>77</td>
+      <td>@ Seattle Storm</td>
+      <td>1484.64</td>
+      <td>56</td>
+      <td>32.20%</td>
+      <td>67.80%</td>
+      <td>26.97</td>
+    </tr>
+    <tr>
+      <td>2013-08-10</td>
+      <td>Indiana Fever</td>
+      <td>1553.03</td>
+      <td>80</td>
+      <td>Atlanta Dream</td>
+      <td>1541.48</td>
+      <td>66</td>
+      <td>62.36%</td>
+      <td>37.64%</td>
+      <td>12.23</td>
+    </tr>
+    <tr>
+      <td>2013-08-10</td>
+      <td>New York Liberty</td>
+      <td>1418.72</td>
+      <td>67</td>
+      <td>Los Angeles Sparks</td>
+      <td>1614.58</td>
+      <td>85</td>
+      <td>33.42%</td>
+      <td>66.58%</td>
+      <td>-12.31</td>
+    </tr>
+    <tr>
+      <td>2013-08-10</td>
+      <td>Atlanta Dream</td>
+      <td>1541.48</td>
+      <td>66</td>
+      <td>@ Indiana Fever</td>
+      <td>1553.03</td>
+      <td>80</td>
+      <td>37.64%</td>
+      <td>62.36%</td>
+      <td>-12.23</td>
+    </tr>
+    <tr>
+      <td>2013-08-10</td>
+      <td>Los Angeles Sparks</td>
+      <td>1614.58</td>
+      <td>85</td>
+      <td>@ New York Liberty</td>
+      <td>1418.72</td>
+      <td>67</td>
+      <td>66.58%</td>
+      <td>33.42%</td>
+      <td>12.31</td>
+    </tr>
+    <tr>
+      <td>2013-08-11</td>
+      <td>New York Liberty</td>
+      <td>1406.41</td>
+      <td>88</td>
+      <td>@ Atlanta Dream</td>
+      <td>1529.25</td>
+      <td>82</td>
+      <td>24.13%</td>
+      <td>75.87%</td>
+      <td>16.13</td>
+    </tr>
+    <tr>
+      <td>2013-08-11</td>
+      <td>Atlanta Dream</td>
+      <td>1529.25</td>
+      <td>82</td>
+      <td>New York Liberty</td>
+      <td>1406.41</td>
+      <td>88</td>
+      <td>75.87%</td>
+      <td>24.13%</td>
+      <td>-16.13</td>
+    </tr>
+    <tr>
+      <td>2013-08-11</td>
+      <td>Washington Mystics</td>
+      <td>1411.66</td>
+      <td>74</td>
+      <td>Connecticut Sun</td>
+      <td>1446.37</td>
+      <td>63</td>
+      <td>55.93%</td>
+      <td>44.07%</td>
+      <td>12.68</td>
+    </tr>
+    <tr>
+      <td>2013-08-11</td>
+      <td>Seattle Storm</td>
+      <td>1457.67</td>
+      <td>69</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1458.35</td>
+      <td>63</td>
+      <td>60.69%</td>
+      <td>39.31%</td>
+      <td>8.35</td>
+    </tr>
+    <tr>
+      <td>2013-08-11</td>
+      <td>Phoenix Mercury</td>
+      <td>1437.27</td>
+      <td>77</td>
+      <td>Tulsa Shock</td>
+      <td>1430.14</td>
+      <td>56</td>
+      <td>61.76%</td>
+      <td>38.24%</td>
+      <td>15.22</td>
+    </tr>
+    <tr>
+      <td>2013-08-11</td>
+      <td>Connecticut Sun</td>
+      <td>1446.37</td>
+      <td>63</td>
+      <td>@ Washington Mystics</td>
+      <td>1411.66</td>
+      <td>74</td>
+      <td>44.07%</td>
+      <td>55.93%</td>
+      <td>-12.68</td>
+    </tr>
+    <tr>
+      <td>2013-08-11</td>
+      <td>Chicago Sky</td>
+      <td>1567.86</td>
+      <td>94</td>
+      <td>Minnesota Lynx</td>
+      <td>1662.86</td>
+      <td>86</td>
+      <td>47.29%</td>
+      <td>52.71%</td>
+      <td>12.94</td>
+    </tr>
+    <tr>
+      <td>2013-08-11</td>
+      <td>Minnesota Lynx</td>
+      <td>1662.86</td>
+      <td>86</td>
+      <td>@ Chicago Sky</td>
+      <td>1567.86</td>
+      <td>94</td>
+      <td>52.71%</td>
+      <td>47.29%</td>
+      <td>-12.94</td>
+    </tr>
+    <tr>
+      <td>2013-08-11</td>
+      <td>Tulsa Shock</td>
+      <td>1430.14</td>
+      <td>56</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1437.27</td>
+      <td>77</td>
+      <td>38.24%</td>
+      <td>61.76%</td>
+      <td>-15.21</td>
+    </tr>
+    <tr>
+      <td>2013-08-11</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1458.35</td>
+      <td>63</td>
+      <td>@ Seattle Storm</td>
+      <td>1457.67</td>
+      <td>69</td>
+      <td>39.31%</td>
+      <td>60.69%</td>
+      <td>-8.36</td>
+    </tr>
+    <tr>
+      <td>2013-08-13</td>
+      <td>Chicago Sky</td>
+      <td>1580.80</td>
+      <td>76</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1626.89</td>
+      <td>80</td>
+      <td>33.10%</td>
+      <td>66.90%</td>
+      <td>-5.74</td>
+    </tr>
+    <tr>
+      <td>2013-08-13</td>
+      <td>Los Angeles Sparks</td>
+      <td>1626.89</td>
+      <td>80</td>
+      <td>Chicago Sky</td>
+      <td>1580.80</td>
+      <td>76</td>
+      <td>66.90%</td>
+      <td>33.10%</td>
+      <td>5.74</td>
+    </tr>
+    <tr>
+      <td>2013-08-14</td>
+      <td>Indiana Fever</td>
+      <td>1565.26</td>
+      <td>58</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1452.49</td>
+      <td>75</td>
+      <td>55.25%</td>
+      <td>44.75%</td>
+      <td>-19.78</td>
+    </tr>
+    <tr>
+      <td>2013-08-14</td>
+      <td>Connecticut Sun</td>
+      <td>1433.69</td>
+      <td>88</td>
+      <td>Atlanta Dream</td>
+      <td>1513.12</td>
+      <td>86</td>
+      <td>49.52%</td>
+      <td>50.48%</td>
+      <td>6.19</td>
+    </tr>
+    <tr>
+      <td>2013-08-14</td>
+      <td>Phoenix Mercury</td>
+      <td>1452.49</td>
+      <td>75</td>
+      <td>Indiana Fever</td>
+      <td>1565.26</td>
+      <td>58</td>
+      <td>44.75%</td>
+      <td>55.25%</td>
+      <td>19.77</td>
+    </tr>
+    <tr>
+      <td>2013-08-14</td>
+      <td>Atlanta Dream</td>
+      <td>1513.12</td>
+      <td>86</td>
+      <td>@ Connecticut Sun</td>
+      <td>1433.69</td>
+      <td>88</td>
+      <td>50.48%</td>
+      <td>49.52%</td>
+      <td>-6.19</td>
+    </tr>
+    <tr>
+      <td>2013-08-15</td>
+      <td>Chicago Sky</td>
+      <td>1575.06</td>
+      <td>79</td>
+      <td>@ Seattle Storm</td>
+      <td>1466.02</td>
+      <td>66</td>
+      <td>54.72%</td>
+      <td>45.28%</td>
+      <td>14.17</td>
+    </tr>
+    <tr>
+      <td>2013-08-15</td>
+      <td>Seattle Storm</td>
+      <td>1466.02</td>
+      <td>66</td>
+      <td>Chicago Sky</td>
+      <td>1575.06</td>
+      <td>79</td>
+      <td>45.28%</td>
+      <td>54.72%</td>
+      <td>-14.17</td>
+    </tr>
+    <tr>
+      <td>2013-08-16</td>
+      <td>Indiana Fever</td>
+      <td>1545.48</td>
+      <td>72</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1632.63</td>
+      <td>94</td>
+      <td>28.09%</td>
+      <td>71.91%</td>
+      <td>-11.43</td>
+    </tr>
+    <tr>
+      <td>2013-08-16</td>
+      <td>Connecticut Sun</td>
+      <td>1439.88</td>
+      <td>57</td>
+      <td>@ Atlanta Dream</td>
+      <td>1506.93</td>
+      <td>88</td>
+      <td>30.49%</td>
+      <td>69.51%</td>
+      <td>-14.73</td>
+    </tr>
+    <tr>
+      <td>2013-08-16</td>
+      <td>Washington Mystics</td>
+      <td>1424.34</td>
+      <td>66</td>
+      <td>@ New York Liberty</td>
+      <td>1422.54</td>
+      <td>57</td>
+      <td>39.46%</td>
+      <td>60.54%</td>
+      <td>15.77</td>
+    </tr>
+    <tr>
+      <td>2013-08-16</td>
+      <td>Atlanta Dream</td>
+      <td>1506.93</td>
+      <td>88</td>
+      <td>Connecticut Sun</td>
+      <td>1439.88</td>
+      <td>57</td>
+      <td>69.51%</td>
+      <td>30.49%</td>
+      <td>14.73</td>
+    </tr>
+    <tr>
+      <td>2013-08-16</td>
+      <td>Los Angeles Sparks</td>
+      <td>1632.63</td>
+      <td>94</td>
+      <td>Indiana Fever</td>
+      <td>1545.48</td>
+      <td>72</td>
+      <td>71.91%</td>
+      <td>28.09%</td>
+      <td>11.44</td>
+    </tr>
+    <tr>
+      <td>2013-08-16</td>
+      <td>Minnesota Lynx</td>
+      <td>1649.92</td>
+      <td>77</td>
+      <td>Tulsa Shock</td>
+      <td>1414.93</td>
+      <td>83</td>
+      <td>85.70%</td>
+      <td>14.30%</td>
+      <td>-18.22</td>
+    </tr>
+    <tr>
+      <td>2013-08-16</td>
+      <td>New York Liberty</td>
+      <td>1422.54</td>
+      <td>57</td>
+      <td>Washington Mystics</td>
+      <td>1424.34</td>
+      <td>66</td>
+      <td>60.54%</td>
+      <td>39.46%</td>
+      <td>-15.76</td>
+    </tr>
+    <tr>
+      <td>2013-08-16</td>
+      <td>Tulsa Shock</td>
+      <td>1414.93</td>
+      <td>83</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1649.92</td>
+      <td>77</td>
+      <td>14.30%</td>
+      <td>85.70%</td>
+      <td>18.22</td>
+    </tr>
+    <tr>
+      <td>2013-08-17</td>
+      <td>Seattle Storm</td>
+      <td>1451.85</td>
+      <td>77</td>
+      <td>Indiana Fever</td>
+      <td>1534.05</td>
+      <td>70</td>
+      <td>49.13%</td>
+      <td>50.87%</td>
+      <td>11.69</td>
+    </tr>
+    <tr>
+      <td>2013-08-17</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1449.99</td>
+      <td>88</td>
+      <td>Phoenix Mercury</td>
+      <td>1472.26</td>
+      <td>82</td>
+      <td>57.69%</td>
+      <td>42.31%</td>
+      <td>9.00</td>
+    </tr>
+    <tr>
+      <td>2013-08-17</td>
+      <td>Indiana Fever</td>
+      <td>1534.05</td>
+      <td>70</td>
+      <td>@ Seattle Storm</td>
+      <td>1451.85</td>
+      <td>77</td>
+      <td>50.87%</td>
+      <td>49.13%</td>
+      <td>-11.69</td>
+    </tr>
+    <tr>
+      <td>2013-08-17</td>
+      <td>Phoenix Mercury</td>
+      <td>1472.26</td>
+      <td>82</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1449.99</td>
+      <td>88</td>
+      <td>42.31%</td>
+      <td>57.69%</td>
+      <td>-9.00</td>
+    </tr>
+    <tr>
+      <td>2013-08-18</td>
+      <td>Connecticut Sun</td>
+      <td>1425.15</td>
+      <td>78</td>
+      <td>@ Chicago Sky</td>
+      <td>1589.23</td>
+      <td>89</td>
+      <td>20.06%</td>
+      <td>79.94%</td>
+      <td>-5.78</td>
+    </tr>
+    <tr>
+      <td>2013-08-18</td>
+      <td>Minnesota Lynx</td>
+      <td>1631.70</td>
+      <td>88</td>
+      <td>New York Liberty</td>
+      <td>1406.78</td>
+      <td>57</td>
+      <td>84.98%</td>
+      <td>15.02%</td>
+      <td>7.26</td>
+    </tr>
+    <tr>
+      <td>2013-08-18</td>
+      <td>Chicago Sky</td>
+      <td>1589.23</td>
+      <td>89</td>
+      <td>Connecticut Sun</td>
+      <td>1425.15</td>
+      <td>78</td>
+      <td>79.94%</td>
+      <td>20.06%</td>
+      <td>5.77</td>
+    </tr>
+    <tr>
+      <td>2013-08-18</td>
+      <td>Atlanta Dream</td>
+      <td>1521.66</td>
+      <td>76</td>
+      <td>Washington Mystics</td>
+      <td>1440.11</td>
+      <td>58</td>
+      <td>71.25%</td>
+      <td>28.75%</td>
+      <td>10.59</td>
+    </tr>
+    <tr>
+      <td>2013-08-18</td>
+      <td>New York Liberty</td>
+      <td>1406.78</td>
+      <td>57</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1631.70</td>
+      <td>88</td>
+      <td>15.02%</td>
+      <td>84.98%</td>
+      <td>-7.26</td>
+    </tr>
+    <tr>
+      <td>2013-08-18</td>
+      <td>Washington Mystics</td>
+      <td>1440.11</td>
+      <td>58</td>
+      <td>@ Atlanta Dream</td>
+      <td>1521.66</td>
+      <td>76</td>
+      <td>28.75%</td>
+      <td>71.25%</td>
+      <td>-10.59</td>
+    </tr>
+    <tr>
+      <td>2013-08-20</td>
+      <td>Tulsa Shock</td>
+      <td>1433.15</td>
+      <td>86</td>
+      <td>Phoenix Mercury</td>
+      <td>1463.26</td>
+      <td>89</td>
+      <td>56.58%</td>
+      <td>43.42%</td>
+      <td>-8.50</td>
+    </tr>
+    <tr>
+      <td>2013-08-20</td>
+      <td>Seattle Storm</td>
+      <td>1463.54</td>
+      <td>77</td>
+      <td>Los Angeles Sparks</td>
+      <td>1644.07</td>
+      <td>57</td>
+      <td>35.41%</td>
+      <td>64.59%</td>
+      <td>25.07</td>
+    </tr>
+    <tr>
+      <td>2013-08-20</td>
+      <td>Atlanta Dream</td>
+      <td>1532.25</td>
+      <td>88</td>
+      <td>Minnesota Lynx</td>
+      <td>1638.96</td>
+      <td>75</td>
+      <td>45.61%</td>
+      <td>54.39%</td>
+      <td>17.02</td>
+    </tr>
+    <tr>
+      <td>2013-08-20</td>
+      <td>Minnesota Lynx</td>
+      <td>1638.96</td>
+      <td>75</td>
+      <td>@ Atlanta Dream</td>
+      <td>1532.25</td>
+      <td>88</td>
+      <td>54.39%</td>
+      <td>45.61%</td>
+      <td>-17.02</td>
+    </tr>
+    <tr>
+      <td>2013-08-20</td>
+      <td>Los Angeles Sparks</td>
+      <td>1644.07</td>
+      <td>57</td>
+      <td>@ Seattle Storm</td>
+      <td>1463.54</td>
+      <td>77</td>
+      <td>64.59%</td>
+      <td>35.41%</td>
+      <td>-25.07</td>
+    </tr>
+    <tr>
+      <td>2013-08-20</td>
+      <td>Phoenix Mercury</td>
+      <td>1463.26</td>
+      <td>89</td>
+      <td>@ Tulsa Shock</td>
+      <td>1433.15</td>
+      <td>86</td>
+      <td>43.42%</td>
+      <td>56.58%</td>
+      <td>8.51</td>
+    </tr>
+    <tr>
+      <td>2013-08-20</td>
+      <td>Chicago Sky</td>
+      <td>1595.00</td>
+      <td>79</td>
+      <td>@ Washington Mystics</td>
+      <td>1429.52</td>
+      <td>73</td>
+      <td>62.58%</td>
+      <td>37.42%</td>
+      <td>7.96</td>
+    </tr>
+    <tr>
+      <td>2013-08-20</td>
+      <td>Washington Mystics</td>
+      <td>1429.52</td>
+      <td>73</td>
+      <td>Chicago Sky</td>
+      <td>1595.00</td>
+      <td>79</td>
+      <td>37.42%</td>
+      <td>62.58%</td>
+      <td>-7.96</td>
+    </tr>
+    <tr>
+      <td>2013-08-21</td>
+      <td>Indiana Fever</td>
+      <td>1522.36</td>
+      <td>80</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1458.99</td>
+      <td>63</td>
+      <td>69.06%</td>
+      <td>30.94%</td>
+      <td>11.08</td>
+    </tr>
+    <tr>
+      <td>2013-08-21</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1458.99</td>
+      <td>63</td>
+      <td>@ Indiana Fever</td>
+      <td>1522.36</td>
+      <td>80</td>
+      <td>30.94%</td>
+      <td>69.06%</td>
+      <td>-11.07</td>
+    </tr>
+    <tr>
+      <td>2013-08-22</td>
+      <td>Minnesota Lynx</td>
+      <td>1621.94</td>
+      <td>91</td>
+      <td>@ Connecticut Sun</td>
+      <td>1419.37</td>
+      <td>77</td>
+      <td>67.43%</td>
+      <td>32.57%</td>
+      <td>10.57</td>
+    </tr>
+    <tr>
+      <td>2013-08-22</td>
+      <td>Connecticut Sun</td>
+      <td>1419.37</td>
+      <td>77</td>
+      <td>Minnesota Lynx</td>
+      <td>1621.94</td>
+      <td>91</td>
+      <td>32.57%</td>
+      <td>67.43%</td>
+      <td>-10.57</td>
+    </tr>
+    <tr>
+      <td>2013-08-23</td>
+      <td>Chicago Sky</td>
+      <td>1602.96</td>
+      <td>82</td>
+      <td>New York Liberty</td>
+      <td>1399.52</td>
+      <td>64</td>
+      <td>83.33%</td>
+      <td>16.67%</td>
+      <td>6.14</td>
+    </tr>
+    <tr>
+      <td>2013-08-23</td>
+      <td>Phoenix Mercury</td>
+      <td>1471.77</td>
+      <td>73</td>
+      <td>Seattle Storm</td>
+      <td>1488.61</td>
+      <td>81</td>
+      <td>58.45%</td>
+      <td>41.55%</td>
+      <td>-14.35</td>
+    </tr>
+    <tr>
+      <td>2013-08-23</td>
+      <td>Tulsa Shock</td>
+      <td>1424.65</td>
+      <td>73</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1447.92</td>
+      <td>67</td>
+      <td>57.55%</td>
+      <td>42.45%</td>
+      <td>9.02</td>
+    </tr>
+    <tr>
+      <td>2013-08-23</td>
+      <td>Washington Mystics</td>
+      <td>1421.56</td>
+      <td>74</td>
+      <td>Atlanta Dream</td>
+      <td>1549.27</td>
+      <td>64</td>
+      <td>42.63%</td>
+      <td>57.37%</td>
+      <td>15.75</td>
+    </tr>
+    <tr>
+      <td>2013-08-23</td>
+      <td>Atlanta Dream</td>
+      <td>1549.27</td>
+      <td>64</td>
+      <td>@ Washington Mystics</td>
+      <td>1421.56</td>
+      <td>74</td>
+      <td>57.37%</td>
+      <td>42.63%</td>
+      <td>-15.75</td>
+    </tr>
+    <tr>
+      <td>2013-08-23</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1447.92</td>
+      <td>67</td>
+      <td>@ Tulsa Shock</td>
+      <td>1424.65</td>
+      <td>73</td>
+      <td>42.45%</td>
+      <td>57.55%</td>
+      <td>-9.03</td>
+    </tr>
+    <tr>
+      <td>2013-08-23</td>
+      <td>Seattle Storm</td>
+      <td>1488.61</td>
+      <td>81</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1471.77</td>
+      <td>73</td>
+      <td>41.55%</td>
+      <td>58.45%</td>
+      <td>14.35</td>
+    </tr>
+    <tr>
+      <td>2013-08-23</td>
+      <td>New York Liberty</td>
+      <td>1399.52</td>
+      <td>64</td>
+      <td>@ Chicago Sky</td>
+      <td>1602.96</td>
+      <td>82</td>
+      <td>16.67%</td>
+      <td>83.33%</td>
+      <td>-6.14</td>
+    </tr>
+    <tr>
+      <td>2013-08-24</td>
+      <td>Atlanta Dream</td>
+      <td>1533.52</td>
+      <td>56</td>
+      <td>Chicago Sky</td>
+      <td>1609.10</td>
+      <td>67</td>
+      <td>50.08%</td>
+      <td>49.92%</td>
+      <td>-14.41</td>
+    </tr>
+    <tr>
+      <td>2013-08-24</td>
+      <td>Indiana Fever</td>
+      <td>1533.44</td>
+      <td>77</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1632.51</td>
+      <td>84</td>
+      <td>26.73%</td>
+      <td>73.27%</td>
+      <td>-6.14</td>
+    </tr>
+    <tr>
+      <td>2013-08-24</td>
+      <td>Chicago Sky</td>
+      <td>1609.10</td>
+      <td>67</td>
+      <td>@ Atlanta Dream</td>
+      <td>1533.52</td>
+      <td>56</td>
+      <td>49.92%</td>
+      <td>50.08%</td>
+      <td>14.41</td>
+    </tr>
+    <tr>
+      <td>2013-08-24</td>
+      <td>Minnesota Lynx</td>
+      <td>1632.51</td>
+      <td>84</td>
+      <td>Indiana Fever</td>
+      <td>1533.44</td>
+      <td>77</td>
+      <td>73.27%</td>
+      <td>26.73%</td>
+      <td>6.14</td>
+    </tr>
+    <tr>
+      <td>2013-08-25</td>
+      <td>Connecticut Sun</td>
+      <td>1408.80</td>
+      <td>66</td>
+      <td>New York Liberty</td>
+      <td>1393.38</td>
+      <td>74</td>
+      <td>62.88%</td>
+      <td>37.12%</td>
+      <td>-15.44</td>
+    </tr>
+    <tr>
+      <td>2013-08-25</td>
+      <td>Seattle Storm</td>
+      <td>1502.96</td>
+      <td>64</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1438.89</td>
+      <td>70</td>
+      <td>48.26%</td>
+      <td>51.74%</td>
+      <td>-10.26</td>
+    </tr>
+    <tr>
+      <td>2013-08-25</td>
+      <td>Tulsa Shock</td>
+      <td>1433.67</td>
+      <td>88</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1619.00</td>
+      <td>90</td>
+      <td>18.17%</td>
+      <td>81.83%</td>
+      <td>-2.23</td>
+    </tr>
+    <tr>
+      <td>2013-08-25</td>
+      <td>New York Liberty</td>
+      <td>1393.38</td>
+      <td>74</td>
+      <td>@ Connecticut Sun</td>
+      <td>1408.80</td>
+      <td>66</td>
+      <td>37.12%</td>
+      <td>62.88%</td>
+      <td>15.44</td>
+    </tr>
+    <tr>
+      <td>2013-08-25</td>
+      <td>Los Angeles Sparks</td>
+      <td>1619.00</td>
+      <td>90</td>
+      <td>Tulsa Shock</td>
+      <td>1433.67</td>
+      <td>88</td>
+      <td>81.83%</td>
+      <td>18.17%</td>
+      <td>2.23</td>
+    </tr>
+    <tr>
+      <td>2013-08-25</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1438.89</td>
+      <td>70</td>
+      <td>Seattle Storm</td>
+      <td>1502.96</td>
+      <td>64</td>
+      <td>51.74%</td>
+      <td>48.26%</td>
+      <td>10.26</td>
+    </tr>
+    <tr>
+      <td>2013-08-27</td>
+      <td>Minnesota Lynx</td>
+      <td>1638.65</td>
+      <td>73</td>
+      <td>@ New York Liberty</td>
+      <td>1408.82</td>
+      <td>47</td>
+      <td>70.78%</td>
+      <td>29.22%</td>
+      <td>12.93</td>
+    </tr>
+    <tr>
+      <td>2013-08-27</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1449.15</td>
+      <td>71</td>
+      <td>Seattle Storm</td>
+      <td>1492.70</td>
+      <td>72</td>
+      <td>54.68%</td>
+      <td>45.32%</td>
+      <td>-4.74</td>
+    </tr>
+    <tr>
+      <td>2013-08-27</td>
+      <td>Seattle Storm</td>
+      <td>1492.70</td>
+      <td>72</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1449.15</td>
+      <td>71</td>
+      <td>45.32%</td>
+      <td>54.68%</td>
+      <td>4.74</td>
+    </tr>
+    <tr>
+      <td>2013-08-27</td>
+      <td>Connecticut Sun</td>
+      <td>1393.36</td>
+      <td>78</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1621.23</td>
+      <td>91</td>
+      <td>14.81%</td>
+      <td>85.19%</td>
+      <td>-4.63</td>
+    </tr>
+    <tr>
+      <td>2013-08-27</td>
+      <td>New York Liberty</td>
+      <td>1408.82</td>
+      <td>47</td>
+      <td>Minnesota Lynx</td>
+      <td>1638.65</td>
+      <td>73</td>
+      <td>29.22%</td>
+      <td>70.78%</td>
+      <td>-12.93</td>
+    </tr>
+    <tr>
+      <td>2013-08-27</td>
+      <td>Los Angeles Sparks</td>
+      <td>1621.23</td>
+      <td>91</td>
+      <td>Connecticut Sun</td>
+      <td>1393.36</td>
+      <td>78</td>
+      <td>85.19%</td>
+      <td>14.81%</td>
+      <td>4.63</td>
+    </tr>
+    <tr>
+      <td>2013-08-28</td>
+      <td>Atlanta Dream</td>
+      <td>1519.11</td>
+      <td>80</td>
+      <td>Washington Mystics</td>
+      <td>1437.31</td>
+      <td>85</td>
+      <td>71.28%</td>
+      <td>28.72%</td>
+      <td>-13.84</td>
+    </tr>
+    <tr>
+      <td>2013-08-28</td>
+      <td>Washington Mystics</td>
+      <td>1437.31</td>
+      <td>85</td>
+      <td>@ Atlanta Dream</td>
+      <td>1519.11</td>
+      <td>80</td>
+      <td>28.72%</td>
+      <td>71.28%</td>
+      <td>13.84</td>
+    </tr>
+    <tr>
+      <td>2013-08-29</td>
+      <td>Connecticut Sun</td>
+      <td>1388.73</td>
+      <td>65</td>
+      <td>@ Seattle Storm</td>
+      <td>1497.44</td>
+      <td>78</td>
+      <td>25.65%</td>
+      <td>74.35%</td>
+      <td>-8.03</td>
+    </tr>
+    <tr>
+      <td>2013-08-29</td>
+      <td>Seattle Storm</td>
+      <td>1497.44</td>
+      <td>78</td>
+      <td>Connecticut Sun</td>
+      <td>1388.73</td>
+      <td>65</td>
+      <td>74.35%</td>
+      <td>25.65%</td>
+      <td>8.03</td>
+    </tr>
+    <tr>
+      <td>2013-08-30</td>
+      <td>New York Liberty</td>
+      <td>1395.89</td>
+      <td>67</td>
+      <td>Indiana Fever</td>
+      <td>1527.30</td>
+      <td>73</td>
+      <td>42.11%</td>
+      <td>57.89%</td>
+      <td>-8.96</td>
+    </tr>
+    <tr>
+      <td>2013-08-30</td>
+      <td>Indiana Fever</td>
+      <td>1527.30</td>
+      <td>73</td>
+      <td>@ New York Liberty</td>
+      <td>1395.89</td>
+      <td>67</td>
+      <td>57.89%</td>
+      <td>42.11%</td>
+      <td>8.95</td>
+    </tr>
+    <tr>
+      <td>2013-08-30</td>
+      <td>Tulsa Shock</td>
+      <td>1431.44</td>
+      <td>65</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1444.41</td>
+      <td>74</td>
+      <td>58.99%</td>
+      <td>41.01%</td>
+      <td>-15.36</td>
+    </tr>
+    <tr>
+      <td>2013-08-30</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1444.41</td>
+      <td>74</td>
+      <td>@ Tulsa Shock</td>
+      <td>1431.44</td>
+      <td>65</td>
+      <td>41.01%</td>
+      <td>58.99%</td>
+      <td>15.36</td>
+    </tr>
+    <tr>
+      <td>2013-08-31</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1459.77</td>
+      <td>67</td>
+      <td>Los Angeles Sparks</td>
+      <td>1625.86</td>
+      <td>80</td>
+      <td>37.33%</td>
+      <td>62.67%</td>
+      <td>-11.69</td>
+    </tr>
+    <tr>
+      <td>2013-08-31</td>
+      <td>Phoenix Mercury</td>
+      <td>1457.42</td>
+      <td>76</td>
+      <td>Connecticut Sun</td>
+      <td>1380.70</td>
+      <td>68</td>
+      <td>70.68%</td>
+      <td>29.32%</td>
+      <td>7.20</td>
+    </tr>
+    <tr>
+      <td>2013-08-31</td>
+      <td>Minnesota Lynx</td>
+      <td>1651.58</td>
+      <td>97</td>
+      <td>Seattle Storm</td>
+      <td>1505.47</td>
+      <td>74</td>
+      <td>78.23%</td>
+      <td>21.77%</td>
+      <td>9.07</td>
+    </tr>
+    <tr>
+      <td>2013-08-31</td>
+      <td>Chicago Sky</td>
+      <td>1623.51</td>
+      <td>85</td>
+      <td>Atlanta Dream</td>
+      <td>1505.27</td>
+      <td>68</td>
+      <td>75.38%</td>
+      <td>24.62%</td>
+      <td>8.81</td>
+    </tr>
+    <tr>
+      <td>2013-08-31</td>
+      <td>Los Angeles Sparks</td>
+      <td>1625.86</td>
+      <td>80</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1459.77</td>
+      <td>67</td>
+      <td>62.67%</td>
+      <td>37.33%</td>
+      <td>11.69</td>
+    </tr>
+    <tr>
+      <td>2013-08-31</td>
+      <td>Atlanta Dream</td>
+      <td>1505.27</td>
+      <td>68</td>
+      <td>@ Chicago Sky</td>
+      <td>1623.51</td>
+      <td>85</td>
+      <td>24.62%</td>
+      <td>75.38%</td>
+      <td>-8.81</td>
+    </tr>
+    <tr>
+      <td>2013-08-31</td>
+      <td>Seattle Storm</td>
+      <td>1505.47</td>
+      <td>74</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1651.58</td>
+      <td>97</td>
+      <td>21.77%</td>
+      <td>78.23%</td>
+      <td>-9.06</td>
+    </tr>
+    <tr>
+      <td>2013-08-31</td>
+      <td>Connecticut Sun</td>
+      <td>1380.70</td>
+      <td>68</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1457.42</td>
+      <td>76</td>
+      <td>29.32%</td>
+      <td>70.68%</td>
+      <td>-7.20</td>
+    </tr>
+    <tr>
+      <td>2013-09-01</td>
+      <td>New York Liberty</td>
+      <td>1386.93</td>
+      <td>88</td>
+      <td>@ Tulsa Shock</td>
+      <td>1416.08</td>
+      <td>93</td>
+      <td>35.30%</td>
+      <td>64.70%</td>
+      <td>-6.85</td>
+    </tr>
+    <tr>
+      <td>2013-09-01</td>
+      <td>Tulsa Shock</td>
+      <td>1416.08</td>
+      <td>93</td>
+      <td>New York Liberty</td>
+      <td>1386.93</td>
+      <td>88</td>
+      <td>64.70%</td>
+      <td>35.30%</td>
+      <td>6.85</td>
+    </tr>
+    <tr>
+      <td>2013-09-02</td>
+      <td>Los Angeles Sparks</td>
+      <td>1637.55</td>
+      <td>82</td>
+      <td>@ Atlanta Dream</td>
+      <td>1496.46</td>
+      <td>92</td>
+      <td>59.24%</td>
+      <td>40.76%</td>
+      <td>-16.26</td>
+    </tr>
+    <tr>
+      <td>2013-09-02</td>
+      <td>Atlanta Dream</td>
+      <td>1496.46</td>
+      <td>92</td>
+      <td>Los Angeles Sparks</td>
+      <td>1637.55</td>
+      <td>82</td>
+      <td>40.76%</td>
+      <td>59.24%</td>
+      <td>16.26</td>
+    </tr>
+    <tr>
+      <td>2013-09-04</td>
+      <td>Atlanta Dream</td>
+      <td>1512.72</td>
+      <td>89</td>
+      <td>Indiana Fever</td>
+      <td>1536.25</td>
+      <td>80</td>
+      <td>57.51%</td>
+      <td>42.49%</td>
+      <td>11.06</td>
+    </tr>
+    <tr>
+      <td>2013-09-04</td>
+      <td>Los Angeles Sparks</td>
+      <td>1621.29</td>
+      <td>74</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1660.65</td>
+      <td>83</td>
+      <td>33.97%</td>
+      <td>66.03%</td>
+      <td>-8.85</td>
+    </tr>
+    <tr>
+      <td>2013-09-04</td>
+      <td>Indiana Fever</td>
+      <td>1536.25</td>
+      <td>80</td>
+      <td>@ Atlanta Dream</td>
+      <td>1512.72</td>
+      <td>89</td>
+      <td>42.49%</td>
+      <td>57.51%</td>
+      <td>-11.06</td>
+    </tr>
+    <tr>
+      <td>2013-09-04</td>
+      <td>Minnesota Lynx</td>
+      <td>1660.65</td>
+      <td>83</td>
+      <td>Los Angeles Sparks</td>
+      <td>1621.29</td>
+      <td>74</td>
+      <td>66.03%</td>
+      <td>33.97%</td>
+      <td>8.84</td>
+    </tr>
+    <tr>
+      <td>2013-09-06</td>
+      <td>Tulsa Shock</td>
+      <td>1422.93</td>
+      <td>70</td>
+      <td>Los Angeles Sparks</td>
+      <td>1612.44</td>
+      <td>74</td>
+      <td>34.24%</td>
+      <td>65.76%</td>
+      <td>-5.94</td>
+    </tr>
+    <tr>
+      <td>2013-09-06</td>
+      <td>Connecticut Sun</td>
+      <td>1373.50</td>
+      <td>77</td>
+      <td>Washington Mystics</td>
+      <td>1451.15</td>
+      <td>70</td>
+      <td>49.78%</td>
+      <td>50.22%</td>
+      <td>11.53</td>
+    </tr>
+    <tr>
+      <td>2013-09-06</td>
+      <td>New York Liberty</td>
+      <td>1380.08</td>
+      <td>57</td>
+      <td>Atlanta Dream</td>
+      <td>1523.78</td>
+      <td>70</td>
+      <td>40.40%</td>
+      <td>59.60%</td>
+      <td>-12.64</td>
+    </tr>
+    <tr>
+      <td>2013-09-06</td>
+      <td>Phoenix Mercury</td>
+      <td>1464.62</td>
+      <td>83</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1448.08</td>
+      <td>80</td>
+      <td>63.03%</td>
+      <td>36.97%</td>
+      <td>5.56</td>
+    </tr>
+    <tr>
+      <td>2013-09-06</td>
+      <td>Los Angeles Sparks</td>
+      <td>1612.44</td>
+      <td>74</td>
+      <td>@ Tulsa Shock</td>
+      <td>1422.93</td>
+      <td>70</td>
+      <td>65.76%</td>
+      <td>34.24%</td>
+      <td>5.95</td>
+    </tr>
+    <tr>
+      <td>2013-09-06</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1448.08</td>
+      <td>80</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1464.62</td>
+      <td>83</td>
+      <td>36.97%</td>
+      <td>63.03%</td>
+      <td>-5.56</td>
+    </tr>
+    <tr>
+      <td>2013-09-06</td>
+      <td>Atlanta Dream</td>
+      <td>1523.78</td>
+      <td>70</td>
+      <td>@ New York Liberty</td>
+      <td>1380.08</td>
+      <td>57</td>
+      <td>59.60%</td>
+      <td>40.40%</td>
+      <td>12.65</td>
+    </tr>
+    <tr>
+      <td>2013-09-06</td>
+      <td>Washington Mystics</td>
+      <td>1451.15</td>
+      <td>70</td>
+      <td>@ Connecticut Sun</td>
+      <td>1373.50</td>
+      <td>77</td>
+      <td>50.22%</td>
+      <td>49.78%</td>
+      <td>-11.54</td>
+    </tr>
+    <tr>
+      <td>2013-09-06</td>
+      <td>Indiana Fever</td>
+      <td>1525.19</td>
+      <td>82</td>
+      <td>@ Chicago Sky</td>
+      <td>1632.32</td>
+      <td>77</td>
+      <td>25.83%</td>
+      <td>74.17%</td>
+      <td>14.39</td>
+    </tr>
+    <tr>
+      <td>2013-09-06</td>
+      <td>Chicago Sky</td>
+      <td>1632.32</td>
+      <td>77</td>
+      <td>Indiana Fever</td>
+      <td>1525.19</td>
+      <td>82</td>
+      <td>74.17%</td>
+      <td>25.83%</td>
+      <td>-14.39</td>
+    </tr>
+    <tr>
+      <td>2013-09-07</td>
+      <td>Indiana Fever</td>
+      <td>1539.58</td>
+      <td>69</td>
+      <td>Connecticut Sun</td>
+      <td>1385.03</td>
+      <td>60</td>
+      <td>79.05%</td>
+      <td>20.95%</td>
+      <td>5.46</td>
+    </tr>
+    <tr>
+      <td>2013-09-07</td>
+      <td>Minnesota Lynx</td>
+      <td>1669.49</td>
+      <td>75</td>
+      <td>@ Seattle Storm</td>
+      <td>1496.41</td>
+      <td>60</td>
+      <td>63.60%</td>
+      <td>36.40%</td>
+      <td>12.24</td>
+    </tr>
+    <tr>
+      <td>2013-09-07</td>
+      <td>Connecticut Sun</td>
+      <td>1385.03</td>
+      <td>60</td>
+      <td>@ Indiana Fever</td>
+      <td>1539.58</td>
+      <td>69</td>
+      <td>20.95%</td>
+      <td>79.05%</td>
+      <td>-5.45</td>
+    </tr>
+    <tr>
+      <td>2013-09-07</td>
+      <td>Seattle Storm</td>
+      <td>1496.41</td>
+      <td>60</td>
+      <td>Minnesota Lynx</td>
+      <td>1669.49</td>
+      <td>75</td>
+      <td>36.40%</td>
+      <td>63.60%</td>
+      <td>-12.24</td>
+    </tr>
+    <tr>
+      <td>2013-09-08</td>
+      <td>Tulsa Shock</td>
+      <td>1416.99</td>
+      <td>98</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1442.52</td>
+      <td>65</td>
+      <td>35.77%</td>
+      <td>64.23%</td>
+      <td>32.02</td>
+    </tr>
+    <tr>
+      <td>2013-09-08</td>
+      <td>Atlanta Dream</td>
+      <td>1536.43</td>
+      <td>71</td>
+      <td>Phoenix Mercury</td>
+      <td>1470.18</td>
+      <td>79</td>
+      <td>69.42%</td>
+      <td>30.58%</td>
+      <td>-17.05</td>
+    </tr>
+    <tr>
+      <td>2013-09-08</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1442.52</td>
+      <td>65</td>
+      <td>Tulsa Shock</td>
+      <td>1416.99</td>
+      <td>98</td>
+      <td>64.23%</td>
+      <td>35.77%</td>
+      <td>-32.02</td>
+    </tr>
+    <tr>
+      <td>2013-09-08</td>
+      <td>Washington Mystics</td>
+      <td>1439.61</td>
+      <td>79</td>
+      <td>Chicago Sky</td>
+      <td>1617.93</td>
+      <td>93</td>
+      <td>35.70%</td>
+      <td>64.30%</td>
+      <td>-11.59</td>
+    </tr>
+    <tr>
+      <td>2013-09-08</td>
+      <td>Phoenix Mercury</td>
+      <td>1470.18</td>
+      <td>79</td>
+      <td>@ Atlanta Dream</td>
+      <td>1536.43</td>
+      <td>71</td>
+      <td>30.58%</td>
+      <td>69.42%</td>
+      <td>17.04</td>
+    </tr>
+    <tr>
+      <td>2013-09-08</td>
+      <td>Chicago Sky</td>
+      <td>1617.93</td>
+      <td>93</td>
+      <td>@ Washington Mystics</td>
+      <td>1439.61</td>
+      <td>79</td>
+      <td>64.30%</td>
+      <td>35.70%</td>
+      <td>11.59</td>
+    </tr>
+    <tr>
+      <td>2013-09-10</td>
+      <td>Washington Mystics</td>
+      <td>1428.02</td>
+      <td>69</td>
+      <td>@ Indiana Fever</td>
+      <td>1545.04</td>
+      <td>67</td>
+      <td>24.75%</td>
+      <td>75.25%</td>
+      <td>9.23</td>
+    </tr>
+    <tr>
+      <td>2013-09-10</td>
+      <td>Phoenix Mercury</td>
+      <td>1487.22</td>
+      <td>80</td>
+      <td>@ New York Liberty</td>
+      <td>1367.44</td>
+      <td>76</td>
+      <td>56.25%</td>
+      <td>43.75%</td>
+      <td>7.59</td>
+    </tr>
+    <tr>
+      <td>2013-09-10</td>
+      <td>Minnesota Lynx</td>
+      <td>1681.73</td>
+      <td>73</td>
+      <td>@ Seattle Storm</td>
+      <td>1484.17</td>
+      <td>60</td>
+      <td>66.80%</td>
+      <td>33.20%</td>
+      <td>10.39</td>
+    </tr>
+    <tr>
+      <td>2013-09-10</td>
+      <td>Indiana Fever</td>
+      <td>1545.04</td>
+      <td>67</td>
+      <td>Washington Mystics</td>
+      <td>1428.02</td>
+      <td>69</td>
+      <td>75.25%</td>
+      <td>24.75%</td>
+      <td>-9.24</td>
+    </tr>
+    <tr>
+      <td>2013-09-10</td>
+      <td>Seattle Storm</td>
+      <td>1484.17</td>
+      <td>60</td>
+      <td>Minnesota Lynx</td>
+      <td>1681.73</td>
+      <td>73</td>
+      <td>33.20%</td>
+      <td>66.80%</td>
+      <td>-10.39</td>
+    </tr>
+    <tr>
+      <td>2013-09-10</td>
+      <td>New York Liberty</td>
+      <td>1367.44</td>
+      <td>76</td>
+      <td>Phoenix Mercury</td>
+      <td>1487.22</td>
+      <td>80</td>
+      <td>43.75%</td>
+      <td>56.25%</td>
+      <td>-7.59</td>
+    </tr>
+    <tr>
+      <td>2013-09-11</td>
+      <td>Phoenix Mercury</td>
+      <td>1494.81</td>
+      <td>68</td>
+      <td>@ Chicago Sky</td>
+      <td>1629.52</td>
+      <td>70</td>
+      <td>22.90%</td>
+      <td>77.10%</td>
+      <td>-2.81</td>
+    </tr>
+    <tr>
+      <td>2013-09-11</td>
+      <td>Atlanta Dream</td>
+      <td>1519.38</td>
+      <td>77</td>
+      <td>@ Connecticut Sun</td>
+      <td>1379.58</td>
+      <td>78</td>
+      <td>59.06%</td>
+      <td>40.94%</td>
+      <td>-5.12</td>
+    </tr>
+    <tr>
+      <td>2013-09-11</td>
+      <td>Connecticut Sun</td>
+      <td>1379.58</td>
+      <td>78</td>
+      <td>Atlanta Dream</td>
+      <td>1519.38</td>
+      <td>77</td>
+      <td>40.94%</td>
+      <td>59.06%</td>
+      <td>5.12</td>
+    </tr>
+    <tr>
+      <td>2013-09-11</td>
+      <td>Chicago Sky</td>
+      <td>1629.52</td>
+      <td>70</td>
+      <td>Phoenix Mercury</td>
+      <td>1494.81</td>
+      <td>68</td>
+      <td>77.10%</td>
+      <td>22.90%</td>
+      <td>2.82</td>
+    </tr>
+    <tr>
+      <td>2013-09-12</td>
+      <td>Los Angeles Sparks</td>
+      <td>1618.39</td>
+      <td>85</td>
+      <td>Minnesota Lynx</td>
+      <td>1692.12</td>
+      <td>84</td>
+      <td>50.34%</td>
+      <td>49.66%</td>
+      <td>4.31</td>
+    </tr>
+    <tr>
+      <td>2013-09-12</td>
+      <td>Seattle Storm</td>
+      <td>1473.78</td>
+      <td>76</td>
+      <td>@ Tulsa Shock</td>
+      <td>1449.01</td>
+      <td>67</td>
+      <td>42.66%</td>
+      <td>57.34%</td>
+      <td>14.93</td>
+    </tr>
+    <tr>
+      <td>2013-09-12</td>
+      <td>Minnesota Lynx</td>
+      <td>1692.12</td>
+      <td>84</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1618.39</td>
+      <td>85</td>
+      <td>49.66%</td>
+      <td>50.34%</td>
+      <td>-4.31</td>
+    </tr>
+    <tr>
+      <td>2013-09-12</td>
+      <td>Tulsa Shock</td>
+      <td>1449.01</td>
+      <td>67</td>
+      <td>Seattle Storm</td>
+      <td>1473.78</td>
+      <td>76</td>
+      <td>57.34%</td>
+      <td>42.66%</td>
+      <td>-14.93</td>
+    </tr>
+    <tr>
+      <td>2013-09-13</td>
+      <td>Atlanta Dream</td>
+      <td>1514.26</td>
+      <td>82</td>
+      <td>@ Chicago Sky</td>
+      <td>1632.34</td>
+      <td>87</td>
+      <td>24.64%</td>
+      <td>75.36%</td>
+      <td>-4.78</td>
+    </tr>
+    <tr>
+      <td>2013-09-13</td>
+      <td>New York Liberty</td>
+      <td>1359.85</td>
+      <td>63</td>
+      <td>@ Indiana Fever</td>
+      <td>1535.80</td>
+      <td>66</td>
+      <td>18.98%</td>
+      <td>81.02%</td>
+      <td>-2.86</td>
+    </tr>
+    <tr>
+      <td>2013-09-13</td>
+      <td>Connecticut Sun</td>
+      <td>1384.70</td>
+      <td>56</td>
+      <td>@ Washington Mystics</td>
+      <td>1437.25</td>
+      <td>82</td>
+      <td>32.28%</td>
+      <td>67.72%</td>
+      <td>-14.29</td>
+    </tr>
+    <tr>
+      <td>2013-09-13</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1410.50</td>
+      <td>61</td>
+      <td>@ Phoenix Mercury</td>
+      <td>1492.00</td>
+      <td>82</td>
+      <td>28.75%</td>
+      <td>71.25%</td>
+      <td>-11.44</td>
+    </tr>
+    <tr>
+      <td>2013-09-13</td>
+      <td>Washington Mystics</td>
+      <td>1437.25</td>
+      <td>82</td>
+      <td>Connecticut Sun</td>
+      <td>1384.70</td>
+      <td>56</td>
+      <td>67.72%</td>
+      <td>32.28%</td>
+      <td>14.29</td>
+    </tr>
+    <tr>
+      <td>2013-09-13</td>
+      <td>Phoenix Mercury</td>
+      <td>1492.00</td>
+      <td>82</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1410.50</td>
+      <td>61</td>
+      <td>71.25%</td>
+      <td>28.75%</td>
+      <td>11.44</td>
+    </tr>
+    <tr>
+      <td>2013-09-13</td>
+      <td>Indiana Fever</td>
+      <td>1535.80</td>
+      <td>66</td>
+      <td>New York Liberty</td>
+      <td>1359.85</td>
+      <td>63</td>
+      <td>81.02%</td>
+      <td>18.98%</td>
+      <td>2.86</td>
+    </tr>
+    <tr>
+      <td>2013-09-13</td>
+      <td>Chicago Sky</td>
+      <td>1632.34</td>
+      <td>87</td>
+      <td>Atlanta Dream</td>
+      <td>1514.26</td>
+      <td>82</td>
+      <td>75.36%</td>
+      <td>24.64%</td>
+      <td>4.78</td>
+    </tr>
+    <tr>
+      <td>2013-09-14</td>
+      <td>Tulsa Shock</td>
+      <td>1434.08</td>
+      <td>73</td>
+      <td>@ Seattle Storm</td>
+      <td>1488.71</td>
+      <td>85</td>
+      <td>32.02%</td>
+      <td>67.98%</td>
+      <td>-9.63</td>
+    </tr>
+    <tr>
+      <td>2013-09-14</td>
+      <td>Seattle Storm</td>
+      <td>1488.71</td>
+      <td>85</td>
+      <td>Tulsa Shock</td>
+      <td>1434.08</td>
+      <td>73</td>
+      <td>67.98%</td>
+      <td>32.02%</td>
+      <td>9.63</td>
+    </tr>
+    <tr>
+      <td>2013-09-14</td>
+      <td>Minnesota Lynx</td>
+      <td>1687.81</td>
+      <td>79</td>
+      <td>Chicago Sky</td>
+      <td>1637.12</td>
+      <td>66</td>
+      <td>67.48%</td>
+      <td>32.52%</td>
+      <td>10.18</td>
+    </tr>
+    <tr>
+      <td>2013-09-14</td>
+      <td>Chicago Sky</td>
+      <td>1637.12</td>
+      <td>66</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1687.81</td>
+      <td>79</td>
+      <td>32.52%</td>
+      <td>67.48%</td>
+      <td>-10.18</td>
+    </tr>
+    <tr>
+      <td>2013-09-15</td>
+      <td>Indiana Fever</td>
+      <td>1538.66</td>
+      <td>80</td>
+      <td>@ Connecticut Sun</td>
+      <td>1370.41</td>
+      <td>82</td>
+      <td>62.95%</td>
+      <td>37.05%</td>
+      <td>-7.73</td>
+    </tr>
+    <tr>
+      <td>2013-09-15</td>
+      <td>Phoenix Mercury</td>
+      <td>1503.44</td>
+      <td>55</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1622.70</td>
+      <td>89</td>
+      <td>24.51%</td>
+      <td>75.49%</td>
+      <td>-12.41</td>
+    </tr>
+    <tr>
+      <td>2013-09-15</td>
+      <td>Washington Mystics</td>
+      <td>1451.54</td>
+      <td>70</td>
+      <td>New York Liberty</td>
+      <td>1356.99</td>
+      <td>52</td>
+      <td>72.76%</td>
+      <td>27.24%</td>
+      <td>10.03</td>
+    </tr>
+    <tr>
+      <td>2013-09-15</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1399.06</td>
+      <td>97</td>
+      <td>Atlanta Dream</td>
+      <td>1509.48</td>
+      <td>68</td>
+      <td>45.08%</td>
+      <td>54.92%</td>
+      <td>25.67</td>
+    </tr>
+    <tr>
+      <td>2013-09-15</td>
+      <td>Los Angeles Sparks</td>
+      <td>1622.70</td>
+      <td>89</td>
+      <td>Phoenix Mercury</td>
+      <td>1503.44</td>
+      <td>55</td>
+      <td>75.49%</td>
+      <td>24.51%</td>
+      <td>12.40</td>
+    </tr>
+    <tr>
+      <td>2013-09-15</td>
+      <td>Connecticut Sun</td>
+      <td>1370.41</td>
+      <td>82</td>
+      <td>Indiana Fever</td>
+      <td>1538.66</td>
+      <td>80</td>
+      <td>37.05%</td>
+      <td>62.95%</td>
+      <td>7.73</td>
+    </tr>
+    <tr>
+      <td>2013-09-15</td>
+      <td>Atlanta Dream</td>
+      <td>1509.48</td>
+      <td>68</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1399.06</td>
+      <td>97</td>
+      <td>54.92%</td>
+      <td>45.08%</td>
+      <td>-25.67</td>
+    </tr>
+    <tr>
+      <td>2013-09-15</td>
+      <td>New York Liberty</td>
+      <td>1356.99</td>
+      <td>52</td>
+      <td>@ Washington Mystics</td>
+      <td>1451.54</td>
+      <td>70</td>
+      <td>27.24%</td>
+      <td>72.76%</td>
+      <td>-10.03</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

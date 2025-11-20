@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Atlanta Dream">Atlanta Dream</option><option value="Connecticut Sun">Connecticut Sun</option><option value="Indiana Fever">Indiana Fever</option><option value="Los Angeles Sparks">Los Angeles Sparks</option><option value="Minnesota Lynx">Minnesota Lynx</option><option value="New York Liberty">New York Liberty</option><option value="San Antonio Silver Stars">San Antonio Silver Stars</option><option value="Seattle Storm">Seattle Storm</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2012-09-27</td>
+      <td>Connecticut Sun</td>
+      <td>1617.85</td>
+      <td>65</td>
+      <td>New York Liberty</td>
+      <td>1449.66</td>
+      <td>60</td>
+      <td>78.66%</td>
+      <td>21.34%</td>
+      <td>5.73</td>
+    </tr>
+    <tr>
+      <td>2012-09-27</td>
+      <td>Los Angeles Sparks</td>
+      <td>1639.17</td>
+      <td>93</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1585.16</td>
+      <td>86</td>
+      <td>65.64%</td>
+      <td>34.36%</td>
+      <td>10.91</td>
+    </tr>
+    <tr>
+      <td>2012-09-27</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1585.16</td>
+      <td>86</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1639.17</td>
+      <td>93</td>
+      <td>34.36%</td>
+      <td>65.64%</td>
+      <td>-10.92</td>
+    </tr>
+    <tr>
+      <td>2012-09-27</td>
+      <td>New York Liberty</td>
+      <td>1449.66</td>
+      <td>60</td>
+      <td>@ Connecticut Sun</td>
+      <td>1617.85</td>
+      <td>65</td>
+      <td>21.34%</td>
+      <td>78.66%</td>
+      <td>-5.74</td>
+    </tr>
+    <tr>
+      <td>2012-09-28</td>
+      <td>Indiana Fever</td>
+      <td>1622.39</td>
+      <td>66</td>
+      <td>Atlanta Dream</td>
+      <td>1585.76</td>
+      <td>75</td>
+      <td>63.35%</td>
+      <td>36.65%</td>
+      <td>-22.83</td>
+    </tr>
+    <tr>
+      <td>2012-09-28</td>
+      <td>Minnesota Lynx</td>
+      <td>1695.48</td>
+      <td>78</td>
+      <td>Seattle Storm</td>
+      <td>1502.65</td>
+      <td>70</td>
+      <td>80.95%</td>
+      <td>19.05%</td>
+      <td>6.47</td>
+    </tr>
+    <tr>
+      <td>2012-09-28</td>
+      <td>Atlanta Dream</td>
+      <td>1585.76</td>
+      <td>75</td>
+      <td>@ Indiana Fever</td>
+      <td>1622.39</td>
+      <td>66</td>
+      <td>36.65%</td>
+      <td>63.35%</td>
+      <td>22.82</td>
+    </tr>
+    <tr>
+      <td>2012-09-28</td>
+      <td>Seattle Storm</td>
+      <td>1502.65</td>
+      <td>70</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1695.48</td>
+      <td>78</td>
+      <td>19.05%</td>
+      <td>80.95%</td>
+      <td>-6.47</td>
+    </tr>
+    <tr>
+      <td>2012-09-29</td>
+      <td>Los Angeles Sparks</td>
+      <td>1650.08</td>
+      <td>101</td>
+      <td>@ San Antonio Silver Stars</td>
+      <td>1574.24</td>
+      <td>94</td>
+      <td>52.50%</td>
+      <td>47.50%</td>
+      <td>15.10</td>
+    </tr>
+    <tr>
+      <td>2012-09-29</td>
+      <td>Connecticut Sun</td>
+      <td>1623.58</td>
+      <td>75</td>
+      <td>@ New York Liberty</td>
+      <td>1443.92</td>
+      <td>62</td>
+      <td>66.77%</td>
+      <td>33.23%</td>
+      <td>14.39</td>
+    </tr>
+    <tr>
+      <td>2012-09-29</td>
+      <td>San Antonio Silver Stars</td>
+      <td>1574.24</td>
+      <td>94</td>
+      <td>Los Angeles Sparks</td>
+      <td>1650.08</td>
+      <td>101</td>
+      <td>47.50%</td>
+      <td>52.50%</td>
+      <td>-15.09</td>
+    </tr>
+    <tr>
+      <td>2012-09-29</td>
+      <td>New York Liberty</td>
+      <td>1443.92</td>
+      <td>62</td>
+      <td>Connecticut Sun</td>
+      <td>1623.58</td>
+      <td>75</td>
+      <td>33.23%</td>
+      <td>66.77%</td>
+      <td>-14.39</td>
+    </tr>
+    <tr>
+      <td>2012-09-30</td>
+      <td>Minnesota Lynx</td>
+      <td>1701.95</td>
+      <td>79</td>
+      <td>@ Seattle Storm</td>
+      <td>1496.18</td>
+      <td>86</td>
+      <td>70.02%</td>
+      <td>29.98%</td>
+      <td>-22.24</td>
+    </tr>
+    <tr>
+      <td>2012-09-30</td>
+      <td>Indiana Fever</td>
+      <td>1599.56</td>
+      <td>103</td>
+      <td>@ Atlanta Dream</td>
+      <td>1608.58</td>
+      <td>88</td>
+      <td>40.41%</td>
+      <td>59.59%</td>
+      <td>27.72</td>
+    </tr>
+    <tr>
+      <td>2012-09-30</td>
+      <td>Seattle Storm</td>
+      <td>1496.18</td>
+      <td>86</td>
+      <td>Minnesota Lynx</td>
+      <td>1701.95</td>
+      <td>79</td>
+      <td>29.98%</td>
+      <td>70.02%</td>
+      <td>22.25</td>
+    </tr>
+    <tr>
+      <td>2012-09-30</td>
+      <td>Atlanta Dream</td>
+      <td>1608.58</td>
+      <td>88</td>
+      <td>Indiana Fever</td>
+      <td>1599.56</td>
+      <td>103</td>
+      <td>59.59%</td>
+      <td>40.41%</td>
+      <td>-27.72</td>
+    </tr>
+    <tr>
+      <td>2012-10-02</td>
+      <td>Indiana Fever</td>
+      <td>1627.28</td>
+      <td>75</td>
+      <td>Atlanta Dream</td>
+      <td>1580.86</td>
+      <td>64</td>
+      <td>64.65%</td>
+      <td>35.35%</td>
+      <td>14.08</td>
+    </tr>
+    <tr>
+      <td>2012-10-02</td>
+      <td>Seattle Storm</td>
+      <td>1518.43</td>
+      <td>72</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1679.71</td>
+      <td>73</td>
+      <td>22.01%</td>
+      <td>77.99%</td>
+      <td>-2.65</td>
+    </tr>
+    <tr>
+      <td>2012-10-02</td>
+      <td>Atlanta Dream</td>
+      <td>1580.86</td>
+      <td>64</td>
+      <td>@ Indiana Fever</td>
+      <td>1627.28</td>
+      <td>75</td>
+      <td>35.35%</td>
+      <td>64.65%</td>
+      <td>-14.08</td>
+    </tr>
+    <tr>
+      <td>2012-10-02</td>
+      <td>Minnesota Lynx</td>
+      <td>1679.71</td>
+      <td>73</td>
+      <td>Seattle Storm</td>
+      <td>1518.43</td>
+      <td>72</td>
+      <td>77.99%</td>
+      <td>22.01%</td>
+      <td>2.64</td>
+    </tr>
+    <tr>
+      <td>2012-10-04</td>
+      <td>Minnesota Lynx</td>
+      <td>1682.35</td>
+      <td>94</td>
+      <td>Los Angeles Sparks</td>
+      <td>1665.18</td>
+      <td>77</td>
+      <td>60.71%</td>
+      <td>39.29%</td>
+      <td>19.45</td>
+    </tr>
+    <tr>
+      <td>2012-10-04</td>
+      <td>Los Angeles Sparks</td>
+      <td>1665.18</td>
+      <td>77</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1682.35</td>
+      <td>94</td>
+      <td>39.29%</td>
+      <td>60.71%</td>
+      <td>-19.46</td>
+    </tr>
+    <tr>
+      <td>2012-10-05</td>
+      <td>Indiana Fever</td>
+      <td>1641.36</td>
+      <td>64</td>
+      <td>@ Connecticut Sun</td>
+      <td>1637.97</td>
+      <td>76</td>
+      <td>42.14%</td>
+      <td>57.86%</td>
+      <td>-17.53</td>
+    </tr>
+    <tr>
+      <td>2012-10-05</td>
+      <td>Connecticut Sun</td>
+      <td>1637.97</td>
+      <td>76</td>
+      <td>Indiana Fever</td>
+      <td>1641.36</td>
+      <td>64</td>
+      <td>57.86%</td>
+      <td>42.14%</td>
+      <td>17.53</td>
+    </tr>
+    <tr>
+      <td>2012-10-07</td>
+      <td>Minnesota Lynx</td>
+      <td>1701.80</td>
+      <td>80</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1645.72</td>
+      <td>79</td>
+      <td>49.66%</td>
+      <td>50.34%</td>
+      <td>6.05</td>
+    </tr>
+    <tr>
+      <td>2012-10-07</td>
+      <td>Los Angeles Sparks</td>
+      <td>1645.72</td>
+      <td>79</td>
+      <td>Minnesota Lynx</td>
+      <td>1701.80</td>
+      <td>80</td>
+      <td>50.34%</td>
+      <td>49.66%</td>
+      <td>-6.04</td>
+    </tr>
+    <tr>
+      <td>2012-10-08</td>
+      <td>Indiana Fever</td>
+      <td>1623.83</td>
+      <td>78</td>
+      <td>Connecticut Sun</td>
+      <td>1655.50</td>
+      <td>76</td>
+      <td>53.85%</td>
+      <td>46.15%</td>
+      <td>7.84</td>
+    </tr>
+    <tr>
+      <td>2012-10-08</td>
+      <td>Connecticut Sun</td>
+      <td>1655.50</td>
+      <td>76</td>
+      <td>@ Indiana Fever</td>
+      <td>1623.83</td>
+      <td>78</td>
+      <td>46.15%</td>
+      <td>53.85%</td>
+      <td>-7.84</td>
+    </tr>
+    <tr>
+      <td>2012-10-11</td>
+      <td>Indiana Fever</td>
+      <td>1631.67</td>
+      <td>87</td>
+      <td>@ Connecticut Sun</td>
+      <td>1647.66</td>
+      <td>71</td>
+      <td>39.45%</td>
+      <td>60.55%</td>
+      <td>29.09</td>
+    </tr>
+    <tr>
+      <td>2012-10-11</td>
+      <td>Connecticut Sun</td>
+      <td>1647.66</td>
+      <td>71</td>
+      <td>Indiana Fever</td>
+      <td>1631.67</td>
+      <td>87</td>
+      <td>60.55%</td>
+      <td>39.45%</td>
+      <td>-29.09</td>
+    </tr>
+    <tr>
+      <td>2012-10-14</td>
+      <td>Indiana Fever</td>
+      <td>1660.76</td>
+      <td>76</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1707.85</td>
+      <td>70</td>
+      <td>35.26%</td>
+      <td>64.74%</td>
+      <td>19.04</td>
+    </tr>
+    <tr>
+      <td>2012-10-14</td>
+      <td>Minnesota Lynx</td>
+      <td>1707.85</td>
+      <td>70</td>
+      <td>Indiana Fever</td>
+      <td>1660.76</td>
+      <td>76</td>
+      <td>64.74%</td>
+      <td>35.26%</td>
+      <td>-19.04</td>
+    </tr>
+    <tr>
+      <td>2012-10-17</td>
+      <td>Indiana Fever</td>
+      <td>1679.80</td>
+      <td>71</td>
+      <td>@ Minnesota Lynx</td>
+      <td>1688.81</td>
+      <td>83</td>
+      <td>40.41%</td>
+      <td>59.59%</td>
+      <td>-16.81</td>
+    </tr>
+    <tr>
+      <td>2012-10-17</td>
+      <td>Minnesota Lynx</td>
+      <td>1688.81</td>
+      <td>83</td>
+      <td>Indiana Fever</td>
+      <td>1679.80</td>
+      <td>71</td>
+      <td>59.59%</td>
+      <td>40.41%</td>
+      <td>16.81</td>
+    </tr>
+    <tr>
+      <td>2012-10-19</td>
+      <td>Minnesota Lynx</td>
+      <td>1705.62</td>
+      <td>59</td>
+      <td>@ Indiana Fever</td>
+      <td>1662.99</td>
+      <td>76</td>
+      <td>47.73%</td>
+      <td>52.27%</td>
+      <td>-23.63</td>
+    </tr>
+    <tr>
+      <td>2012-10-19</td>
+      <td>Indiana Fever</td>
+      <td>1662.99</td>
+      <td>76</td>
+      <td>Minnesota Lynx</td>
+      <td>1705.62</td>
+      <td>59</td>
+      <td>52.27%</td>
+      <td>47.73%</td>
+      <td>23.63</td>
+    </tr>
+    <tr>
+      <td>2012-10-21</td>
+      <td>Indiana Fever</td>
+      <td>1686.62</td>
+      <td>87</td>
+      <td>Minnesota Lynx</td>
+      <td>1681.99</td>
+      <td>78</td>
+      <td>58.98%</td>
+      <td>41.02%</td>
+      <td>14.78</td>
+    </tr>
+    <tr>
+      <td>2012-10-21</td>
+      <td>Minnesota Lynx</td>
+      <td>1681.99</td>
+      <td>78</td>
+      <td>@ Indiana Fever</td>
+      <td>1686.62</td>
+      <td>87</td>
+      <td>41.02%</td>
+      <td>58.98%</td>
+      <td>-14.78</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

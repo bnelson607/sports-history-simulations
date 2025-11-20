@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Connecticut Sun">Connecticut Sun</option><option value="Detroit Shock">Detroit Shock</option><option value="Houston Comets">Houston Comets</option><option value="Indiana Fever">Indiana Fever</option><option value="Los Angeles Sparks">Los Angeles Sparks</option><option value="New York Liberty">New York Liberty</option><option value="Sacramento Monarchs">Sacramento Monarchs</option><option value="Seattle Storm">Seattle Storm</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2005-08-30</td>
+      <td>Houston Comets</td>
+      <td>1543.22</td>
+      <td>67</td>
+      <td>Seattle Storm</td>
+      <td>1597.93</td>
+      <td>75</td>
+      <td>57.23%</td>
+      <td>42.77%</td>
+      <td>-20.35</td>
+    </tr>
+    <tr>
+      <td>2005-08-30</td>
+      <td>Indiana Fever</td>
+      <td>1563.85</td>
+      <td>63</td>
+      <td>@ New York Liberty</td>
+      <td>1516.37</td>
+      <td>51</td>
+      <td>41.75%</td>
+      <td>58.25%</td>
+      <td>25.36</td>
+    </tr>
+    <tr>
+      <td>2005-08-30</td>
+      <td>Seattle Storm</td>
+      <td>1597.93</td>
+      <td>75</td>
+      <td>@ Houston Comets</td>
+      <td>1543.22</td>
+      <td>67</td>
+      <td>42.77%</td>
+      <td>57.23%</td>
+      <td>20.35</td>
+    </tr>
+    <tr>
+      <td>2005-08-30</td>
+      <td>New York Liberty</td>
+      <td>1516.37</td>
+      <td>51</td>
+      <td>Indiana Fever</td>
+      <td>1563.85</td>
+      <td>63</td>
+      <td>58.25%</td>
+      <td>41.75%</td>
+      <td>-25.36</td>
+    </tr>
+    <tr>
+      <td>2005-08-31</td>
+      <td>Los Angeles Sparks</td>
+      <td>1488.68</td>
+      <td>72</td>
+      <td>Sacramento Monarchs</td>
+      <td>1662.48</td>
+      <td>75</td>
+      <td>40.27%</td>
+      <td>59.73%</td>
+      <td>-8.77</td>
+    </tr>
+    <tr>
+      <td>2005-08-31</td>
+      <td>Sacramento Monarchs</td>
+      <td>1662.48</td>
+      <td>75</td>
+      <td>@ Los Angeles Sparks</td>
+      <td>1488.68</td>
+      <td>72</td>
+      <td>59.73%</td>
+      <td>40.27%</td>
+      <td>8.77</td>
+    </tr>
+    <tr>
+      <td>2005-08-31</td>
+      <td>Connecticut Sun</td>
+      <td>1673.32</td>
+      <td>73</td>
+      <td>@ Detroit Shock</td>
+      <td>1477.52</td>
+      <td>62</td>
+      <td>62.74%</td>
+      <td>37.26%</td>
+      <td>15.54</td>
+    </tr>
+    <tr>
+      <td>2005-08-31</td>
+      <td>Detroit Shock</td>
+      <td>1477.52</td>
+      <td>62</td>
+      <td>Connecticut Sun</td>
+      <td>1673.32</td>
+      <td>73</td>
+      <td>37.26%</td>
+      <td>62.74%</td>
+      <td>-15.54</td>
+    </tr>
+    <tr>
+      <td>2005-09-01</td>
+      <td>Indiana Fever</td>
+      <td>1589.21</td>
+      <td>58</td>
+      <td>New York Liberty</td>
+      <td>1491.01</td>
+      <td>50</td>
+      <td>76.34%</td>
+      <td>23.66%</td>
+      <td>8.41</td>
+    </tr>
+    <tr>
+      <td>2005-09-01</td>
+      <td>Seattle Storm</td>
+      <td>1618.28</td>
+      <td>64</td>
+      <td>Houston Comets</td>
+      <td>1522.87</td>
+      <td>67</td>
+      <td>76.05%</td>
+      <td>23.95%</td>
+      <td>-16.56</td>
+    </tr>
+    <tr>
+      <td>2005-09-01</td>
+      <td>Houston Comets</td>
+      <td>1522.87</td>
+      <td>67</td>
+      <td>@ Seattle Storm</td>
+      <td>1618.28</td>
+      <td>64</td>
+      <td>23.95%</td>
+      <td>76.05%</td>
+      <td>16.56</td>
+    </tr>
+    <tr>
+      <td>2005-09-01</td>
+      <td>New York Liberty</td>
+      <td>1491.01</td>
+      <td>50</td>
+      <td>@ Indiana Fever</td>
+      <td>1589.21</td>
+      <td>58</td>
+      <td>23.66%</td>
+      <td>76.34%</td>
+      <td>-8.41</td>
+    </tr>
+    <tr>
+      <td>2005-09-02</td>
+      <td>Connecticut Sun</td>
+      <td>1688.86</td>
+      <td>75</td>
+      <td>Detroit Shock</td>
+      <td>1461.98</td>
+      <td>67</td>
+      <td>87.13%</td>
+      <td>12.87%</td>
+      <td>4.57</td>
+    </tr>
+    <tr>
+      <td>2005-09-02</td>
+      <td>Sacramento Monarchs</td>
+      <td>1671.25</td>
+      <td>81</td>
+      <td>Los Angeles Sparks</td>
+      <td>1479.91</td>
+      <td>63</td>
+      <td>84.65%</td>
+      <td>15.35%</td>
+      <td>8.18</td>
+    </tr>
+    <tr>
+      <td>2005-09-02</td>
+      <td>Los Angeles Sparks</td>
+      <td>1479.91</td>
+      <td>63</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1671.25</td>
+      <td>81</td>
+      <td>15.35%</td>
+      <td>84.65%</td>
+      <td>-8.18</td>
+    </tr>
+    <tr>
+      <td>2005-09-02</td>
+      <td>Detroit Shock</td>
+      <td>1461.98</td>
+      <td>67</td>
+      <td>@ Connecticut Sun</td>
+      <td>1688.86</td>
+      <td>75</td>
+      <td>12.87%</td>
+      <td>87.13%</td>
+      <td>-4.57</td>
+    </tr>
+    <tr>
+      <td>2005-09-03</td>
+      <td>Houston Comets</td>
+      <td>1539.43</td>
+      <td>75</td>
+      <td>@ Seattle Storm</td>
+      <td>1601.72</td>
+      <td>58</td>
+      <td>27.59%</td>
+      <td>72.41%</td>
+      <td>37.53</td>
+    </tr>
+    <tr>
+      <td>2005-09-03</td>
+      <td>Seattle Storm</td>
+      <td>1601.72</td>
+      <td>58</td>
+      <td>Houston Comets</td>
+      <td>1539.43</td>
+      <td>75</td>
+      <td>72.41%</td>
+      <td>27.59%</td>
+      <td>-37.53</td>
+    </tr>
+    <tr>
+      <td>2005-09-08</td>
+      <td>Connecticut Sun</td>
+      <td>1693.43</td>
+      <td>73</td>
+      <td>@ Indiana Fever</td>
+      <td>1597.62</td>
+      <td>68</td>
+      <td>48.63%</td>
+      <td>51.37%</td>
+      <td>14.44</td>
+    </tr>
+    <tr>
+      <td>2005-09-08</td>
+      <td>Sacramento Monarchs</td>
+      <td>1679.43</td>
+      <td>73</td>
+      <td>@ Houston Comets</td>
+      <td>1576.96</td>
+      <td>69</td>
+      <td>49.59%</td>
+      <td>50.41%</td>
+      <td>12.67</td>
+    </tr>
+    <tr>
+      <td>2005-09-08</td>
+      <td>Indiana Fever</td>
+      <td>1597.62</td>
+      <td>68</td>
+      <td>Connecticut Sun</td>
+      <td>1693.43</td>
+      <td>73</td>
+      <td>51.37%</td>
+      <td>48.63%</td>
+      <td>-14.44</td>
+    </tr>
+    <tr>
+      <td>2005-09-08</td>
+      <td>Houston Comets</td>
+      <td>1576.96</td>
+      <td>69</td>
+      <td>Sacramento Monarchs</td>
+      <td>1679.43</td>
+      <td>73</td>
+      <td>50.41%</td>
+      <td>49.59%</td>
+      <td>-12.68</td>
+    </tr>
+    <tr>
+      <td>2005-09-10</td>
+      <td>Houston Comets</td>
+      <td>1564.28</td>
+      <td>65</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1692.10</td>
+      <td>74</td>
+      <td>20.72%</td>
+      <td>79.28%</td>
+      <td>-7.81</td>
+    </tr>
+    <tr>
+      <td>2005-09-10</td>
+      <td>Sacramento Monarchs</td>
+      <td>1692.10</td>
+      <td>74</td>
+      <td>Houston Comets</td>
+      <td>1564.28</td>
+      <td>65</td>
+      <td>79.28%</td>
+      <td>20.72%</td>
+      <td>7.82</td>
+    </tr>
+    <tr>
+      <td>2005-09-10</td>
+      <td>Connecticut Sun</td>
+      <td>1707.87</td>
+      <td>77</td>
+      <td>Indiana Fever</td>
+      <td>1583.18</td>
+      <td>67</td>
+      <td>78.98%</td>
+      <td>21.02%</td>
+      <td>8.35</td>
+    </tr>
+    <tr>
+      <td>2005-09-10</td>
+      <td>Indiana Fever</td>
+      <td>1583.18</td>
+      <td>67</td>
+      <td>@ Connecticut Sun</td>
+      <td>1707.87</td>
+      <td>77</td>
+      <td>21.02%</td>
+      <td>78.98%</td>
+      <td>-8.35</td>
+    </tr>
+    <tr>
+      <td>2005-09-14</td>
+      <td>Sacramento Monarchs</td>
+      <td>1699.92</td>
+      <td>69</td>
+      <td>@ Connecticut Sun</td>
+      <td>1716.22</td>
+      <td>65</td>
+      <td>33.18%</td>
+      <td>66.82%</td>
+      <td>16.79</td>
+    </tr>
+    <tr>
+      <td>2005-09-14</td>
+      <td>Connecticut Sun</td>
+      <td>1716.22</td>
+      <td>65</td>
+      <td>Sacramento Monarchs</td>
+      <td>1699.92</td>
+      <td>69</td>
+      <td>66.82%</td>
+      <td>33.18%</td>
+      <td>-16.79</td>
+    </tr>
+    <tr>
+      <td>2005-09-15</td>
+      <td>Sacramento Monarchs</td>
+      <td>1716.71</td>
+      <td>70</td>
+      <td>@ Connecticut Sun</td>
+      <td>1699.43</td>
+      <td>77</td>
+      <td>37.60%</td>
+      <td>62.40%</td>
+      <td>-12.50</td>
+    </tr>
+    <tr>
+      <td>2005-09-15</td>
+      <td>Connecticut Sun</td>
+      <td>1699.43</td>
+      <td>77</td>
+      <td>Sacramento Monarchs</td>
+      <td>1716.71</td>
+      <td>70</td>
+      <td>62.40%</td>
+      <td>37.60%</td>
+      <td>12.50</td>
+    </tr>
+    <tr>
+      <td>2005-09-18</td>
+      <td>Connecticut Sun</td>
+      <td>1711.93</td>
+      <td>55</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1704.21</td>
+      <td>66</td>
+      <td>36.32%</td>
+      <td>63.68%</td>
+      <td>-15.14</td>
+    </tr>
+    <tr>
+      <td>2005-09-18</td>
+      <td>Sacramento Monarchs</td>
+      <td>1704.21</td>
+      <td>66</td>
+      <td>Connecticut Sun</td>
+      <td>1711.93</td>
+      <td>55</td>
+      <td>63.68%</td>
+      <td>36.32%</td>
+      <td>15.14</td>
+    </tr>
+    <tr>
+      <td>2005-09-20</td>
+      <td>Sacramento Monarchs</td>
+      <td>1719.35</td>
+      <td>62</td>
+      <td>Connecticut Sun</td>
+      <td>1696.79</td>
+      <td>59</td>
+      <td>67.61%</td>
+      <td>32.39%</td>
+      <td>7.05</td>
+    </tr>
+    <tr>
+      <td>2005-09-20</td>
+      <td>Connecticut Sun</td>
+      <td>1696.79</td>
+      <td>59</td>
+      <td>@ Sacramento Monarchs</td>
+      <td>1719.35</td>
+      <td>62</td>
+      <td>32.39%</td>
+      <td>67.61%</td>
+      <td>-7.05</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
