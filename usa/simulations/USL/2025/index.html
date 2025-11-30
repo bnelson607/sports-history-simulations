@@ -2,9 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>1976-77 WHA Simulation – Elo, Playoffs & Standings</title>
+        <title>2025 USL Simulation – Elo, Playoffs & Standings</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Explore the 1976-77 WHA season through a Monte Carlo simulation that tracks team performance, Elo ratings, and playoff odds as they evolved throughout the year.">
+        <meta name="description" content="Explore the 2025 USL season through a Monte Carlo simulation that tracks team performance, Elo ratings, and playoff odds as they evolved throughout the year.">
         
         <!-- Link to external styles -->
         <link rel="stylesheet" href="/sports-history-simulations/styles.css" />
@@ -22,12 +22,11 @@
         
         <div class="content">
             <div class="season-links">
-                <a href="/sports-history-simulations/usa/simulations/WHA/1975/">← 1975-76</a>
-                <a href="/sports-history-simulations/usa/simulations/WHA/1977/">1977-78 →</a>
+                <a href="/sports-history-simulations/usa/simulations/USL/2024/">← 2024</a>
             </div>
             
             <div class="season-header">
-                <h1 class="sim-title">1976-77 WHA Season</h1>
+                <h1 class="sim-title">2025 USL Season</h1>
             </div>
 
 
@@ -347,9 +346,10 @@
                 </div>
                 <div class="tab-buttons">
                     <button onclick="showTab('preseason_playoff', 'preseason_playoff_playoff_adv')" class="active">Playoff Progression</button>
-                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_quarterfinals')">Quarterfinals</button>
-                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_semifinals')">Semifinals</button>
-                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_finals')">Finals</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_conf_quarterfinals')">Conference Quarterfinals</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_conf_semifinals')">Conference Semifinals</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_conf_finals')">Conference Finals</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_usl_championship')">USL Championship</button>
                 </div>
                 
                 <!-- Playoff Advancement -->
@@ -357,19 +357,45 @@
                     <iframe data-src="playoff_success_preseason_playoff.html"></iframe>
                 </div>
 
-                <!-- Quarterfinals -->
-                <div class="tab-content preseason_playoff" id="preseason_playoff_quarterfinals">
-                    <iframe data-src="quarterfinals_preseason_playoff_combined_conferences.html"></iframe>
+                <!-- Conference Quarterfinals -->
+                <div class="tab-content preseason_playoff" id="preseason_playoff_conf_quarterfinals">
+                    <div class="iframe-block">
+                        <div class="graph-label">Eastern</div>
+                        <iframe data-src="conference_quarterfinals_preseason_playoff_eastern.html"></iframe>
+                    </div>
+                    <div class="iframe-block">
+                        <div class="graph-label">Western</div>
+                        <iframe data-src="conference_quarterfinals_preseason_playoff_western.html"></iframe>
+                    </div>
                 </div>
-
-                <!-- Semifinals-->
-                <div class="tab-content preseason_playoff" id="preseason_playoff_semifinals">
-                    <iframe data-src="semifinals_preseason_playoff_combined_conferences.html"></iframe>
+                
+                <!-- Conference Semifinals -->
+                <div class="tab-content preseason_playoff" id="preseason_playoff_conf_semifinals">
+                    <div class="iframe-block">
+                        <div class="graph-label">Eastern</div>
+                        <iframe data-src="conference_semifinals_preseason_playoff_eastern.html"></iframe>
+                    </div>
+                    <div class="iframe-block">
+                        <div class="graph-label">Western</div>
+                        <iframe data-src="conference_semifinals_preseason_playoff_western.html"></iframe>
+                    </div>
                 </div>
-             
+                
+                <!-- Conference Finals -->
+                <div class="tab-content preseason_playoff" id="preseason_playoff_conf_finals">
+                    <div class="iframe-block">
+                        <div class="graph-label">AFC</div>
+                        <iframe data-src="conference_finals_preseason_playoff_eastern.html"></iframe>
+                    </div>
+                    <div class="iframe-block">
+                        <div class="graph-label">NFC</div>
+                        <iframe data-src="conference_finals_preseason_playoff_western.html"></iframe>
+                    </div>
+                </div>
+                
                 <!-- Finals -->
-                <div class="tab-content preseason_playoff" id="preseason_playoff_finals">
-                    <iframe data-src="finals_preseason_playoff.html"></iframe>
+                <div class="tab-content preseason_playoff" id="preseason_playoff_usl_championship">
+                    <iframe data-src="usl_championship_preseason_playoff.html"></iframe>
                 </div>
             </details>
             
@@ -417,9 +443,10 @@
                 </div>
                 <div class="tab-buttons">
                     <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_playoff_adv')" class="active">Playoff Progression</button>
-                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_quarterfinals')">Quarterfinals</button>
-                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_semifinals')">Semifinals</button>
-                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_finals')">Finals</button>
+                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_conf_quarterfinals')">Conference Quarterfinals</button>
+                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_conf_semifinals')">Conference Semifinals</button>
+                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_conf_finals')">Conference Finals</button>
+                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_usl_championship')">USL Championship</button>
                 </div>
                 
                 <!-- Playoff Progression -->
@@ -427,19 +454,24 @@
                     <iframe data-src="playoff_success_end_of_regular_season.html"></iframe>
                 </div>
 
-                <!-- Quarterfinals -->
-                <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_quarterfinals">
-                    <iframe data-src="quarterfinals_end_of_regular_season_combined_conferences.html"></iframe>
+                <!-- Conference Quarterfinals -->
+                <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_conf_quarterfinals">
+                    <iframe data-src="conference_quarterfinals_end_of_regular_season_combined_conferences.html"></iframe>
                 </div>
 
-                <!-- Semifinals-->
-                <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_semifinals">
-                    <iframe data-src="semifinals_end_of_regular_season_combined_conferences.html"></iframe>
+                <!-- Conference Semifinals-->
+                <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_conf_semifinals">
+                    <iframe data-src="conference_semifinals_end_of_regular_season_combined_conferences.html"></iframe>
+                </div>
+
+                <!-- Conference Finals -->
+                <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_conf_finals">
+                    <iframe data-src="conference_finals_end_of_regular_season_combined_conferences.html"></iframe>
                 </div>
              
-                <!-- Finals -->
-                <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_finals">
-                    <iframe data-src="finals_end_of_regular_season.html"></iframe>
+                <!-- USL Championship -->
+                <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_usl_championship">
+                    <iframe data-src="usl_championship_end_of_regular_season.html"></iframe>
                 </div>
             </details>
 
@@ -484,9 +516,9 @@
             
                 
             <details class="plot-section" data-expanded="false">
-                <summary>Division Championship Probabilities</summary>
+                <summary>Conference Championship Probabilities</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How did each team's probability of winning the division change throughout the season?</i>
+                    <i>How did each team's probability of winning the conference change throughout the season?</i>
                 </div>
                 <div class="tab-buttons">
                     <button onclick="showTab('div_prob', 'div_prob_Eastern')" class="active">Eastern</button>
