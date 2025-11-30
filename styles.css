@@ -194,16 +194,6 @@ h3 {
 .standings-table th:nth-child(3),
 .standings-table td:nth-child(3) { width: 15%; text-align: center; }
 
-/* NFL override */
-.standings-table.nfl th:nth-child(1),
-.standings-table.nfl td:nth-child(1) { width: 50%; white-space: nowrap; }
-
-.standings-table.nfl th:nth-child(2),
-.standings-table.nfl td:nth-child(2) { width: 35%; text-align: center; }
-
-.standings-table.nfl th:nth-child(3),
-.standings-table.nfl td:nth-child(3) { width: 15%; text-align: center; }
-
 
 /* UEFA override */
 .standings-table.uefa {
@@ -258,7 +248,7 @@ h3 {
 }
 
 
-/* Two conference override (for MLS and USL) */
+/* Two conference override (for MLS and USL) (7 columns - Team, W, D, L, Pts, GF, GA) */
 .standings-table.two-conf {
     border-left: none; /* removes the red vertical bar */
 }
@@ -297,7 +287,7 @@ h3 {
 }
 
 
-/* Three conference override (for MLB, NBA, and 1990s NHL) */
+/* Three conference override (for MLB, NBA, and 1990s NHL) (5 columns - Team, W, L, WPct, GB) */
 .standings-table.three-conf {
     border-left: none; /* removes the red vertical bar */
 }
@@ -324,6 +314,28 @@ h3 {
 .standings-table.three-conf td:nth-child(5), .standings-table.three-conf th:nth-child(5) {
     font-weight: bold;
 }
+
+/* Only show position, team, points, and GD for narrow screens */
+@media (max-width: 600px) {
+  .standings-table.three-conf th:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)),
+  .standings-table.three-conf td:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
+    display: none;
+  }
+}
+
+
+/* Four conference override (For NFL with no ties) */
+.standings-table.four-conf th:nth-child(1),
+.standings-table.four-conf td:nth-child(1) { width: 55%; white-space: nowrap; }
+
+.standings-table.four-conf th:nth-child(2),
+.standings-table.four-conf td:nth-child(2) { width: 15%; text-align: center; }
+
+.standings-table.four-conf th:nth-child(3),
+.standings-table.four-conf td:nth-child(3) { width: 15%; text-align: center; }
+
+.standings-table.four-conf th:nth-child(4),
+.standings-table.four-conf td:nth-child(4) { width: 15%; text-align: center; }
 
 /* Only show position, team, points, and GD for narrow screens */
 @media (max-width: 600px) {
