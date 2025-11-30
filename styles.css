@@ -194,9 +194,6 @@ h3 {
 .standings-table th:nth-child(3),
 .standings-table td:nth-child(3) { width: 15%; text-align: center; }
 
-.standings-table th:nth-child(4),
-.standings-table td:nth-child(4) { width: 15%; text-align: center; }
-
 /* NFL override */
 .standings-table.nfl th:nth-child(1),
 .standings-table.nfl td:nth-child(1) { width: 50%; white-space: nowrap; }
@@ -206,11 +203,6 @@ h3 {
 
 .standings-table.nfl th:nth-child(3),
 .standings-table.nfl td:nth-child(3) { width: 15%; text-align: center; }
-
-.standings-table.nfl th:nth-child(4),
-.standings-table.nfl td:nth-child(4) {
-    display: none;
-}
 
 
 /* UEFA override */
@@ -294,6 +286,51 @@ h3 {
 /* Make points column bold */
 .standings-table.two-conf td:nth-child(5), .standings-table.two-conf th:nth-child(5) {
     font-weight: bold;
+}
+
+/* Only show position, team, points, and GD for narrow screens */
+@media (max-width: 600px) {
+  .standings-table.two-conf th:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(5)),
+  .standings-table.two-conf td:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(5)) {
+    display: none;
+  }
+}
+
+
+/* Three conference override (for MLB, NBA, and 1990s NHL) */
+.standings-table.three-conf {
+    border-left: none; /* removes the red vertical bar */
+}
+
+.standings-table.three-conf th, .standings-table.three-conf td {
+    text-align: center;
+}
+
+/* Column 1 */
+.standings-table.three-conf th:nth-child(1), .standings-table.three-conf td:nth-child(1) {
+    width: 52%;
+    text-align: left;
+}
+
+/* Columns 2-5 */
+.standings-table.three-conf th:nth-child(2),.standings-table.three-conf td:nth-child(2),
+.standings-table.three-conf th:nth-child(3),.standings-table.three-conf td:nth-child(3),
+.standings-table.three-conf th:nth-child(4),.standings-table.three-conf td:nth-child(4),
+.standings-table.three-conf th:nth-child(5),.standings-table.three-conf td:nth-child(5) {
+    width: 12%;
+}
+
+/* Make points column bold */
+.standings-table.three-conf td:nth-child(5), .standings-table.three-conf th:nth-child(5) {
+    font-weight: bold;
+}
+
+/* Only show position, team, points, and GD for narrow screens */
+@media (max-width: 600px) {
+  .standings-table.three-conf th:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)),
+  .standings-table.three-conf td:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
+    display: none;
+  }
 }
 
 
