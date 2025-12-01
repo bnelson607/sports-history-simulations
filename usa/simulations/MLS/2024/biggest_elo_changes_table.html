@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th colspan="3" halign="left"></th>
+      <th colspan="4" halign="left">Winning Team</th>
+      <th colspan="4" halign="left">Losing Team</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <th>Date</th>
+      <th>Elo Change</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Tie Pct.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2024-09-07</td>
+      <td>29.46</td>
+      <td>Seattle Sounders</td>
+      <td>1534.06</td>
+      <td>4</td>
+      <td>18.03%</td>
+      <td>Columbus Crew (H)</td>
+      <td>1647.29</td>
+      <td>0</td>
+      <td>56.67%</td>
+      <td>25.30%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2024-08-24</td>
+      <td>27.62</td>
+      <td>New England Revolution</td>
+      <td>1416.30</td>
+      <td>5</td>
+      <td>26.36%</td>
+      <td>Montreal CF (H)</td>
+      <td>1439.39</td>
+      <td>0</td>
+      <td>45.47%</td>
+      <td>28.16%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2024-09-28</td>
+      <td>25.64</td>
+      <td>New York City FC</td>
+      <td>1485.90</td>
+      <td>5</td>
+      <td>24.56%</td>
+      <td>New York RB (H)</td>
+      <td>1525.58</td>
+      <td>1</td>
+      <td>47.65%</td>
+      <td>27.79%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2024-09-18</td>
+      <td>24.20</td>
+      <td>Philadelphia Union</td>
+      <td>1494.69</td>
+      <td>5</td>
+      <td>27.39%</td>
+      <td>New York City FC (H)</td>
+      <td>1508.83</td>
+      <td>1</td>
+      <td>44.28%</td>
+      <td>28.34%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2024-08-24</td>
+      <td>24.03</td>
+      <td>San Jose Earthquakes</td>
+      <td>1348.11</td>
+      <td>2</td>
+      <td>11.63%</td>
+      <td>Real Salt Lake (H)</td>
+      <td>1571.65</td>
+      <td>0</td>
+      <td>68.56%</td>
+      <td>19.81%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2024-07-13</td>
+      <td>22.91</td>
+      <td>Columbus Crew</td>
+      <td>1625.01</td>
+      <td>5</td>
+      <td>30.09%</td>
+      <td>Los Angeles FC (H)</td>
+      <td>1616.92</td>
+      <td>1</td>
+      <td>41.24%</td>
+      <td>28.67%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2024-03-02</td>
+      <td>22.36</td>
+      <td>Inter Miami CF (H)</td>
+      <td>1492.42</td>
+      <td>5</td>
+      <td>36.86%</td>
+      <td>Orlando City</td>
+      <td>1531.62</td>
+      <td>0</td>
+      <td>34.25%</td>
+      <td>28.90%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2024-10-05</td>
+      <td>22.17</td>
+      <td>St. Louis City FC (H)</td>
+      <td>1432.21</td>
+      <td>3</td>
+      <td>24.62%</td>
+      <td>Houston Dynamo</td>
+      <td>1567.95</td>
+      <td>0</td>
+      <td>47.58%</td>
+      <td>27.80%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2024-06-15</td>
+      <td>22.08</td>
+      <td>Chicago Fire</td>
+      <td>1424.18</td>
+      <td>4</td>
+      <td>24.84%</td>
+      <td>Toronto FC (H)</td>
+      <td>1461.23</td>
+      <td>1</td>
+      <td>47.31%</td>
+      <td>27.85%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2024-04-20</td>
+      <td>20.81</td>
+      <td>Real Salt Lake</td>
+      <td>1517.24</td>
+      <td>4</td>
+      <td>34.89%</td>
+      <td>Chicago Fire (H)</td>
+      <td>1473.50</td>
+      <td>0</td>
+      <td>36.21%</td>
+      <td>28.91%</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2024-05-29</td>
+      <td>20.72</td>
+      <td>Nashville SC</td>
+      <td>1486.91</td>
+      <td>2</td>
+      <td>18.27%</td>
+      <td>FC Cincinnati (H)</td>
+      <td>1596.93</td>
+      <td>0</td>
+      <td>56.30%</td>
+      <td>25.43%</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>2024-07-13</td>
+      <td>20.66</td>
+      <td>Charlotte FC</td>
+      <td>1505.33</td>
+      <td>3</td>
+      <td>18.41%</td>
+      <td>FC Cincinnati (H)</td>
+      <td>1613.41</td>
+      <td>1</td>
+      <td>56.08%</td>
+      <td>25.51%</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2024-05-29</td>
+      <td>20.46</td>
+      <td>Atlanta United FC</td>
+      <td>1478.56</td>
+      <td>3</td>
+      <td>18.84%</td>
+      <td>Inter Miami CF (H)</td>
+      <td>1581.07</td>
+      <td>1</td>
+      <td>55.42%</td>
+      <td>25.73%</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2024-04-06</td>
+      <td>20.38</td>
+      <td>Seattle Sounders (H)</td>
+      <td>1484.23</td>
+      <td>5</td>
+      <td>41.10%</td>
+      <td>Montreal CF</td>
+      <td>1493.31</td>
+      <td>0</td>
+      <td>30.22%</td>
+      <td>28.68%</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2024-07-06</td>
+      <td>20.12</td>
+      <td>FC Cincinnati (H)</td>
+      <td>1593.29</td>
+      <td>6</td>
+      <td>41.65%</td>
+      <td>Inter Miami CF</td>
+      <td>1598.42</td>
+      <td>1</td>
+      <td>29.72%</td>
+      <td>28.63%</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>2024-04-21</td>
+      <td>20.03</td>
+      <td>Minnesota United FC</td>
+      <td>1501.42</td>
+      <td>3</td>
+      <td>29.63%</td>
+      <td>Charlotte FC (H)</td>
+      <td>1496.99</td>
+      <td>0</td>
+      <td>41.74%</td>
+      <td>28.63%</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>2024-03-23</td>
+      <td>20.01</td>
+      <td>Los Angeles FC (H)</td>
+      <td>1507.39</td>
+      <td>5</td>
+      <td>41.89%</td>
+      <td>Nashville SC</td>
+      <td>1510.75</td>
+      <td>0</td>
+      <td>29.50%</td>
+      <td>28.61%</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>2024-08-31</td>
+      <td>19.74</td>
+      <td>Houston Dynamo</td>
+      <td>1529.01</td>
+      <td>2</td>
+      <td>20.50%</td>
+      <td>Los Angeles FC (H)</td>
+      <td>1611.28</td>
+      <td>0</td>
+      <td>53.00%</td>
+      <td>26.49%</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>2024-08-24</td>
+      <td>19.72</td>
+      <td>Sporting Kansas City (H)</td>
+      <td>1446.21</td>
+      <td>3</td>
+      <td>30.41%</td>
+      <td>Orlando City</td>
+      <td>1532.29</td>
+      <td>0</td>
+      <td>40.89%</td>
+      <td>28.70%</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>2024-09-18</td>
+      <td>19.59</td>
+      <td>Sporting Kansas City (H)</td>
+      <td>1458.85</td>
+      <td>4</td>
+      <td>30.73%</td>
+      <td>Colorado Rapids</td>
+      <td>1542.42</td>
+      <td>1</td>
+      <td>40.54%</td>
+      <td>28.73%</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>2024-08-31</td>
+      <td>19.57</td>
+      <td>Philadelphia Union</td>
+      <td>1483.44</td>
+      <td>2</td>
+      <td>20.93%</td>
+      <td>New York RB (H)</td>
+      <td>1560.82</td>
+      <td>0</td>
+      <td>52.40%</td>
+      <td>26.67%</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>2024-07-13</td>
+      <td>19.48</td>
+      <td>Portland Timbers (H)</td>
+      <td>1519.70</td>
+      <td>3</td>
+      <td>31.00%</td>
+      <td>Real Salt Lake</td>
+      <td>1601.19</td>
+      <td>0</td>
+      <td>40.25%</td>
+      <td>28.75%</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>2024-06-19</td>
+      <td>19.48</td>
+      <td>Colorado Rapids</td>
+      <td>1478.83</td>
+      <td>3</td>
+      <td>31.00%</td>
+      <td>St. Louis City FC (H)</td>
+      <td>1463.62</td>
+      <td>0</td>
+      <td>40.25%</td>
+      <td>28.75%</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>2024-10-19</td>
+      <td>19.39</td>
+      <td>Nashville SC</td>
+      <td>1417.73</td>
+      <td>3</td>
+      <td>31.22%</td>
+      <td>Chicago Fire (H)</td>
+      <td>1400.89</td>
+      <td>0</td>
+      <td>40.02%</td>
+      <td>28.76%</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>2024-09-14</td>
+      <td>19.29</td>
+      <td>Nashville SC</td>
+      <td>1419.87</td>
+      <td>2</td>
+      <td>21.60%</td>
+      <td>Atlanta United FC (H)</td>
+      <td>1489.84</td>
+      <td>0</td>
+      <td>51.49%</td>
+      <td>26.91%</td>
+    </tr>
+  </tbody>
+</table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+        });
+    </script>
+</body>
+</html>
