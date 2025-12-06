@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .filter-controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .filter-controls select {
+            margin: 0 10px;
+            padding: 4px;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- Use CDN version of Tablesort for local compatibility -->
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls" id="filterControls" style="display: none;">
+        <label for="regionFilter" id="regionLabel">Filter by Division or Conference:
+            <select id="regionFilter">
+                <option value="">All</option>
+            </select>
+        </label>
+    </div>
+
+    <table class="dataframe sortable">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Team</th>
+      <th>Conference</th>
+      <th>Elo</th>
+      <th>Points</th>
+      <th>Avg. Pts.</th>
+      <th>Luck</th>
+      <th>Percentile</th>
+      <th>Min</th>
+      <th>Q1</th>
+      <th>Median</th>
+      <th>Q3</th>
+      <th>Max</th>
+      <th>Playoffs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FC Cincinnati</td>
+      <td>Eastern</td>
+      <td>1704</td>
+      <td>77</td>
+      <td>58.79</td>
+      <td>18.21</td>
+      <td>99.60%</td>
+      <td>30</td>
+      <td>53.41</td>
+      <td>58.31</td>
+      <td>63.19</td>
+      <td>89</td>
+      <td>94.71%</td>
+    </tr>
+    <tr>
+      <td>Louisville City FC</td>
+      <td>Eastern</td>
+      <td>1666</td>
+      <td>66</td>
+      <td>60.99</td>
+      <td>5.01</td>
+      <td>77.65%</td>
+      <td>26</td>
+      <td>55.64</td>
+      <td>60.55</td>
+      <td>65.40</td>
+      <td>92</td>
+      <td>97.13%</td>
+    </tr>
+    <tr>
+      <td>Reno 1868 FC</td>
+      <td>Western</td>
+      <td>1634</td>
+      <td>59</td>
+      <td>54.68</td>
+      <td>4.32</td>
+      <td>74.69%</td>
+      <td>21</td>
+      <td>49.27</td>
+      <td>54.17</td>
+      <td>59.07</td>
+      <td>87</td>
+      <td>84.39%</td>
+    </tr>
+    <tr>
+      <td>Orange County SC</td>
+      <td>Western</td>
+      <td>1627</td>
+      <td>66</td>
+      <td>55.41</td>
+      <td>10.59</td>
+      <td>93.90%</td>
+      <td>26</td>
+      <td>50.05</td>
+      <td>54.92</td>
+      <td>59.78</td>
+      <td>89</td>
+      <td>86.92%</td>
+    </tr>
+    <tr>
+      <td>Sacramento Republic</td>
+      <td>Western</td>
+      <td>1617</td>
+      <td>65</td>
+      <td>53.01</td>
+      <td>11.99</td>
+      <td>95.70%</td>
+      <td>21</td>
+      <td>47.56</td>
+      <td>52.51</td>
+      <td>57.45</td>
+      <td>83</td>
+      <td>78.57%</td>
+    </tr>
+    <tr>
+      <td>Pittsburgh Riverhounds</td>
+      <td>Eastern</td>
+      <td>1593</td>
+      <td>59</td>
+      <td>54.07</td>
+      <td>4.93</td>
+      <td>77.10%</td>
+      <td>25</td>
+      <td>48.59</td>
+      <td>53.57</td>
+      <td>58.51</td>
+      <td>86</td>
+      <td>83.98%</td>
+    </tr>
+    <tr>
+      <td>Phoenix Rising</td>
+      <td>Western</td>
+      <td>1585</td>
+      <td>63</td>
+      <td>58.60</td>
+      <td>4.40</td>
+      <td>74.86%</td>
+      <td>27</td>
+      <td>53.17</td>
+      <td>58.14</td>
+      <td>63.03</td>
+      <td>91</td>
+      <td>93.67%</td>
+    </tr>
+    <tr>
+      <td>Charleston Battery</td>
+      <td>Eastern</td>
+      <td>1572</td>
+      <td>56</td>
+      <td>54.78</td>
+      <td>1.22</td>
+      <td>59.15%</td>
+      <td>23</td>
+      <td>49.34</td>
+      <td>54.31</td>
+      <td>59.22</td>
+      <td>88</td>
+      <td>86.07%</td>
+    </tr>
+    <tr>
+      <td>New York RB II</td>
+      <td>Eastern</td>
+      <td>1557</td>
+      <td>52</td>
+      <td>51.12</td>
+      <td>0.88</td>
+      <td>57.72%</td>
+      <td>22</td>
+      <td>45.63</td>
+      <td>50.61</td>
+      <td>55.60</td>
+      <td>90</td>
+      <td>72.37%</td>
+    </tr>
+    <tr>
+      <td>Saint Louis FC</td>
+      <td>Western</td>
+      <td>1549</td>
+      <td>53</td>
+      <td>45.87</td>
+      <td>7.13</td>
+      <td>85.44%</td>
+      <td>17</td>
+      <td>40.46</td>
+      <td>45.33</td>
+      <td>50.18</td>
+      <td>78</td>
+      <td>42.28%</td>
+    </tr>
+    <tr>
+      <td>Bethlehem Steel FC</td>
+      <td>Eastern</td>
+      <td>1545</td>
+      <td>50</td>
+      <td>49.78</td>
+      <td>0.22</td>
+      <td>54.23%</td>
+      <td>17</td>
+      <td>44.28</td>
+      <td>49.22</td>
+      <td>54.20</td>
+      <td>82</td>
+      <td>66.03%</td>
+    </tr>
+    <tr>
+      <td>Real Monarchs SLC</td>
+      <td>Western</td>
+      <td>1528</td>
+      <td>60</td>
+      <td>57.22</td>
+      <td>2.78</td>
+      <td>67.33%</td>
+      <td>27</td>
+      <td>51.76</td>
+      <td>56.71</td>
+      <td>61.71</td>
+      <td>87</td>
+      <td>91.17%</td>
+    </tr>
+    <tr>
+      <td>Swope Park Rangers</td>
+      <td>Western</td>
+      <td>1528</td>
+      <td>53</td>
+      <td>51.33</td>
+      <td>1.67</td>
+      <td>61.65%</td>
+      <td>19</td>
+      <td>45.88</td>
+      <td>50.82</td>
+      <td>55.77</td>
+      <td>82</td>
+      <td>71.17%</td>
+    </tr>
+    <tr>
+      <td>OKC Energy FC</td>
+      <td>Western</td>
+      <td>1524</td>
+      <td>43</td>
+      <td>44.21</td>
+      <td>-1.21</td>
+      <td>46.54%</td>
+      <td>15</td>
+      <td>38.77</td>
+      <td>43.64</td>
+      <td>48.59</td>
+      <td>76</td>
+      <td>33.81%</td>
+    </tr>
+    <tr>
+      <td>Portland Timbers 2</td>
+      <td>Western</td>
+      <td>1520</td>
+      <td>55</td>
+      <td>43.94</td>
+      <td>11.06</td>
+      <td>94.47%</td>
+      <td>16</td>
+      <td>38.52</td>
+      <td>43.36</td>
+      <td>48.26</td>
+      <td>74</td>
+      <td>32.28%</td>
+    </tr>
+    <tr>
+      <td>San Antonio FC</td>
+      <td>Western</td>
+      <td>1517</td>
+      <td>50</td>
+      <td>50.79</td>
+      <td>-0.79</td>
+      <td>48.58%</td>
+      <td>20</td>
+      <td>45.30</td>
+      <td>50.26</td>
+      <td>55.23</td>
+      <td>84</td>
+      <td>68.75%</td>
+    </tr>
+    <tr>
+      <td>North Carolina FC</td>
+      <td>Eastern</td>
+      <td>1516</td>
+      <td>47</td>
+      <td>42.78</td>
+      <td>4.22</td>
+      <td>74.62%</td>
+      <td>15</td>
+      <td>37.39</td>
+      <td>42.19</td>
+      <td>47.09</td>
+      <td>76</td>
+      <td>29.10%</td>
+    </tr>
+    <tr>
+      <td>Indy Eleven</td>
+      <td>Eastern</td>
+      <td>1508</td>
+      <td>49</td>
+      <td>44.45</td>
+      <td>4.55</td>
+      <td>76.15%</td>
+      <td>14</td>
+      <td>39.06</td>
+      <td>43.90</td>
+      <td>48.74</td>
+      <td>74</td>
+      <td>37.42%</td>
+    </tr>
+    <tr>
+      <td>Nashville SC</td>
+      <td>Eastern</td>
+      <td>1501</td>
+      <td>49</td>
+      <td>45.83</td>
+      <td>3.17</td>
+      <td>69.81%</td>
+      <td>17</td>
+      <td>40.51</td>
+      <td>45.23</td>
+      <td>50.11</td>
+      <td>74</td>
+      <td>44.67%</td>
+    </tr>
+    <tr>
+      <td>Fresno FC</td>
+      <td>Western</td>
+      <td>1487</td>
+      <td>39</td>
+      <td>42.37</td>
+      <td>-3.37</td>
+      <td>34.90%</td>
+      <td>15</td>
+      <td>36.92</td>
+      <td>41.81</td>
+      <td>46.70</td>
+      <td>73</td>
+      <td>25.25%</td>
+    </tr>
+    <tr>
+      <td>Rio Grande Valley FC</td>
+      <td>Western</td>
+      <td>1477</td>
+      <td>38</td>
+      <td>40.89</td>
+      <td>-2.89</td>
+      <td>37.35%</td>
+      <td>14</td>
+      <td>35.50</td>
+      <td>40.27</td>
+      <td>45.12</td>
+      <td>72</td>
+      <td>19.06%</td>
+    </tr>
+    <tr>
+      <td>Tampa Bay Rowdies</td>
+      <td>Eastern</td>
+      <td>1475</td>
+      <td>41</td>
+      <td>48.80</td>
+      <td>-7.80</td>
+      <td>15.76%</td>
+      <td>18</td>
+      <td>43.38</td>
+      <td>48.28</td>
+      <td>53.16</td>
+      <td>81</td>
+      <td>61.42%</td>
+    </tr>
+    <tr>
+      <td>Los Angeles Galaxy II</td>
+      <td>Western</td>
+      <td>1461</td>
+      <td>37</td>
+      <td>39.57</td>
+      <td>-2.57</td>
+      <td>39.05%</td>
+      <td>11</td>
+      <td>34.21</td>
+      <td>38.97</td>
+      <td>43.83</td>
+      <td>70</td>
+      <td>14.43%</td>
+    </tr>
+    <tr>
+      <td>Colorado Springs Switchbacks</td>
+      <td>Western</td>
+      <td>1461</td>
+      <td>39</td>
+      <td>46.52</td>
+      <td>-7.52</td>
+      <td>16.67%</td>
+      <td>16</td>
+      <td>41.08</td>
+      <td>45.97</td>
+      <td>50.90</td>
+      <td>78</td>
+      <td>46.13%</td>
+    </tr>
+    <tr>
+      <td>Ottawa Fury</td>
+      <td>Eastern</td>
+      <td>1460</td>
+      <td>45</td>
+      <td>45.14</td>
+      <td>-0.14</td>
+      <td>52.38%</td>
+      <td>16</td>
+      <td>39.69</td>
+      <td>44.57</td>
+      <td>49.51</td>
+      <td>77</td>
+      <td>41.10%</td>
+    </tr>
+    <tr>
+      <td>Charlotte Independence</td>
+      <td>Eastern</td>
+      <td>1450</td>
+      <td>42</td>
+      <td>45.79</td>
+      <td>-3.79</td>
+      <td>32.60%</td>
+      <td>17</td>
+      <td>40.38</td>
+      <td>45.24</td>
+      <td>50.16</td>
+      <td>74</td>
+      <td>44.72%</td>
+    </tr>
+    <tr>
+      <td>Penn FC</td>
+      <td>Eastern</td>
+      <td>1418</td>
+      <td>37</td>
+      <td>43.50</td>
+      <td>-6.50</td>
+      <td>20.14%</td>
+      <td>16</td>
+      <td>38.12</td>
+      <td>42.90</td>
+      <td>47.79</td>
+      <td>77</td>
+      <td>32.31%</td>
+    </tr>
+    <tr>
+      <td>Las Vegas Lights FC</td>
+      <td>Western</td>
+      <td>1377</td>
+      <td>31</td>
+      <td>35.17</td>
+      <td>-4.17</td>
+      <td>30.27%</td>
+      <td>11</td>
+      <td>29.92</td>
+      <td>34.51</td>
+      <td>39.26</td>
+      <td>65</td>
+      <td>4.92%</td>
+    </tr>
+    <tr>
+      <td>Atlanta United II</td>
+      <td>Eastern</td>
+      <td>1363</td>
+      <td>31</td>
+      <td>32.85</td>
+      <td>-1.85</td>
+      <td>43.12%</td>
+      <td>7</td>
+      <td>27.68</td>
+      <td>32.18</td>
+      <td>36.84</td>
+      <td>65</td>
+      <td>2.75%</td>
+    </tr>
+    <tr>
+      <td>Seattle Sounders 2</td>
+      <td>Western</td>
+      <td>1357</td>
+      <td>25</td>
+      <td>32.79</td>
+      <td>-7.79</td>
+      <td>13.59%</td>
+      <td>8</td>
+      <td>27.70</td>
+      <td>32.14</td>
+      <td>36.73</td>
+      <td>66</td>
+      <td>2.20%</td>
+    </tr>
+    <tr>
+      <td>Toronto FC 2</td>
+      <td>Eastern</td>
+      <td>1332</td>
+      <td>18</td>
+      <td>28.77</td>
+      <td>-10.77</td>
+      <td>4.98%</td>
+      <td>6</td>
+      <td>23.82</td>
+      <td>28.11</td>
+      <td>32.53</td>
+      <td>58</td>
+      <td>0.61%</td>
+    </tr>
+    <tr>
+      <td>Tulsa Roughnecks</td>
+      <td>Western</td>
+      <td>1311</td>
+      <td>21</td>
+      <td>35.32</td>
+      <td>-14.32</td>
+      <td>1.84%</td>
+      <td>10</td>
+      <td>30.08</td>
+      <td>34.68</td>
+      <td>39.41</td>
+      <td>65</td>
+      <td>5.00%</td>
+    </tr>
+    <tr>
+      <td>Richmond Kickers</td>
+      <td>Eastern</td>
+      <td>1278</td>
+      <td>22</td>
+      <td>35.30</td>
+      <td>-13.30</td>
+      <td>2.57%</td>
+      <td>10</td>
+      <td>30.10</td>
+      <td>34.67</td>
+      <td>39.34</td>
+      <td>66</td>
+      <td>5.62%</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const table = document.querySelector('table.sortable');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+
+            const divColIndex = headers.indexOf("Division");
+            const confColIndex = headers.indexOf("Conference");
+
+            const regionFilter = document.getElementById("regionFilter");
+            const regionLabel = document.getElementById("regionLabel");
+            const filterControls = document.getElementById("filterControls");
+
+            const divisionSet = new Set();
+            const conferenceSet = new Set();
+
+            rows.forEach(row => {
+                if (divColIndex !== -1) {
+                    const divVal = row.cells[divColIndex].textContent.trim();
+                    if (divVal) divisionSet.add(divVal);
+                }
+                if (confColIndex !== -1) {
+                    const confVal = row.cells[confColIndex].textContent.trim();
+                    if (confVal) conferenceSet.add(confVal);
+                }
+            });
+
+            const sortedDivisions = Array.from(divisionSet).sort();
+            const sortedConfs = Array.from(conferenceSet).sort();
+
+            sortedDivisions.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                regionFilter.appendChild(opt);
+            });
+
+            sortedConfs.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                regionFilter.appendChild(opt);
+            });
+
+            if (sortedDivisions.length > 0 || sortedConfs.length > 0) {
+                regionLabel.style.display = "inline-block";
+                filterControls.style.display = "block";
+            }
+
+            regionFilter.addEventListener("change", function () {
+                const selected = regionFilter.value;
+
+                rows.forEach(row => {
+                    const divVal = divColIndex !== -1 ? row.cells[divColIndex].textContent.trim() : "";
+                    const confVal = confColIndex !== -1 ? row.cells[confColIndex].textContent.trim() : "";
+
+                    const matches = !selected || divVal === selected || confVal === selected;
+                    row.style.display = matches ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

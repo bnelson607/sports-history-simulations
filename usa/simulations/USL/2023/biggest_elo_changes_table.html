@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th colspan="3" halign="left"></th>
+      <th colspan="4" halign="left">Winning Team</th>
+      <th colspan="4" halign="left">Losing Team</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <th>Date</th>
+      <th>Elo Change</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Tie Pct.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2023-07-02</td>
+      <td>34.23</td>
+      <td>Phoenix Rising (H)</td>
+      <td>1501.42</td>
+      <td>6</td>
+      <td>24.11%</td>
+      <td>Memphis 901</td>
+      <td>1610.95</td>
+      <td>0</td>
+      <td>45.50%</td>
+      <td>30.39%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2023-03-25</td>
+      <td>28.70</td>
+      <td>El Paso Locomotive</td>
+      <td>1452.31</td>
+      <td>3</td>
+      <td>16.49%</td>
+      <td>Louisville City FC (H)</td>
+      <td>1596.49</td>
+      <td>0</td>
+      <td>56.75%</td>
+      <td>26.77%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2023-06-03</td>
+      <td>28.04</td>
+      <td>Indy Eleven</td>
+      <td>1436.21</td>
+      <td>4</td>
+      <td>23.95%</td>
+      <td>Charleston Battery (H)</td>
+      <td>1490.92</td>
+      <td>0</td>
+      <td>45.70%</td>
+      <td>30.35%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2023-07-15</td>
+      <td>27.28</td>
+      <td>San Diego Loyal</td>
+      <td>1522.00</td>
+      <td>5</td>
+      <td>30.69%</td>
+      <td>Colorado Springs Switchbacks (H)</td>
+      <td>1519.56</td>
+      <td>0</td>
+      <td>37.91%</td>
+      <td>31.40%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2023-03-25</td>
+      <td>26.68</td>
+      <td>Charleston Battery (H)</td>
+      <td>1419.33</td>
+      <td>3</td>
+      <td>19.66%</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1576.74</td>
+      <td>0</td>
+      <td>51.59%</td>
+      <td>28.75%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2023-04-02</td>
+      <td>25.87</td>
+      <td>Sacramento Republic (H)</td>
+      <td>1533.33</td>
+      <td>5</td>
+      <td>33.35%</td>
+      <td>Louisville City FC</td>
+      <td>1567.79</td>
+      <td>0</td>
+      <td>35.15%</td>
+      <td>31.51%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2023-04-15</td>
+      <td>25.51</td>
+      <td>Loudoun United (H)</td>
+      <td>1408.78</td>
+      <td>3</td>
+      <td>21.66%</td>
+      <td>Birmingham Legion</td>
+      <td>1543.17</td>
+      <td>0</td>
+      <td>48.72%</td>
+      <td>29.62%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2023-07-23</td>
+      <td>23.46</td>
+      <td>New Mexico United (H)</td>
+      <td>1503.08</td>
+      <td>3</td>
+      <td>25.59%</td>
+      <td>Sacramento Republic</td>
+      <td>1598.88</td>
+      <td>0</td>
+      <td>43.68%</td>
+      <td>30.73%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2023-03-11</td>
+      <td>23.32</td>
+      <td>Loudoun United</td>
+      <td>1408.94</td>
+      <td>3</td>
+      <td>16.71%</td>
+      <td>Memphis 901 (H)</td>
+      <td>1549.67</td>
+      <td>1</td>
+      <td>56.34%</td>
+      <td>26.94%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2023-09-10</td>
+      <td>23.23</td>
+      <td>Las Vegas Lights FC (H)</td>
+      <td>1337.73</td>
+      <td>3</td>
+      <td>16.87%</td>
+      <td>Oakland Roots</td>
+      <td>1532.51</td>
+      <td>1</td>
+      <td>56.08%</td>
+      <td>27.06%</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2023-08-13</td>
+      <td>23.06</td>
+      <td>Loudoun United</td>
+      <td>1351.89</td>
+      <td>3</td>
+      <td>26.42%</td>
+      <td>Las Vegas Lights FC (H)</td>
+      <td>1384.02</td>
+      <td>0</td>
+      <td>42.69%</td>
+      <td>30.89%</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>2023-05-14</td>
+      <td>22.92</td>
+      <td>San Antonio FC</td>
+      <td>1597.37</td>
+      <td>7</td>
+      <td>45.85%</td>
+      <td>Charleston Battery (H)</td>
+      <td>1485.16</td>
+      <td>0</td>
+      <td>23.83%</td>
+      <td>30.31%</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2023-07-08</td>
+      <td>22.89</td>
+      <td>San Antonio FC</td>
+      <td>1602.29</td>
+      <td>4</td>
+      <td>33.87%</td>
+      <td>Memphis 901 (H)</td>
+      <td>1576.72</td>
+      <td>0</td>
+      <td>34.62%</td>
+      <td>31.51%</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2023-06-18</td>
+      <td>22.87</td>
+      <td>Orange County SC</td>
+      <td>1421.84</td>
+      <td>3</td>
+      <td>26.81%</td>
+      <td>FC Tulsa (H)</td>
+      <td>1450.62</td>
+      <td>0</td>
+      <td>42.23%</td>
+      <td>30.96%</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2023-08-06</td>
+      <td>22.81</td>
+      <td>Miami FC (H)</td>
+      <td>1475.33</td>
+      <td>4</td>
+      <td>34.03%</td>
+      <td>El Paso Locomotive</td>
+      <td>1504.94</td>
+      <td>0</td>
+      <td>34.45%</td>
+      <td>31.51%</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>2023-07-27</td>
+      <td>22.75</td>
+      <td>Indy Eleven</td>
+      <td>1455.71</td>
+      <td>3</td>
+      <td>17.76%</td>
+      <td>Pittsburgh Riverhounds (H)</td>
+      <td>1581.34</td>
+      <td>1</td>
+      <td>54.56%</td>
+      <td>27.67%</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>2023-08-10</td>
+      <td>22.66</td>
+      <td>Indy Eleven (H)</td>
+      <td>1455.03</td>
+      <td>4</td>
+      <td>34.38%</td>
+      <td>Birmingham Legion</td>
+      <td>1482.25</td>
+      <td>0</td>
+      <td>34.11%</td>
+      <td>31.51%</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>2023-05-07</td>
+      <td>22.55</td>
+      <td>Oakland Roots</td>
+      <td>1497.26</td>
+      <td>4</td>
+      <td>27.51%</td>
+      <td>Birmingham Legion (H)</td>
+      <td>1520.15</td>
+      <td>1</td>
+      <td>41.43%</td>
+      <td>31.06%</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>2023-09-24</td>
+      <td>21.42</td>
+      <td>Memphis 901</td>
+      <td>1537.80</td>
+      <td>4</td>
+      <td>20.40%</td>
+      <td>Tampa Bay Rowdies (H)</td>
+      <td>1630.03</td>
+      <td>2</td>
+      <td>50.50%</td>
+      <td>29.10%</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>2023-10-14</td>
+      <td>21.38</td>
+      <td>New Mexico United (H)</td>
+      <td>1501.61</td>
+      <td>4</td>
+      <td>30.12%</td>
+      <td>Memphis 901</td>
+      <td>1559.86</td>
+      <td>1</td>
+      <td>38.52%</td>
+      <td>31.36%</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>2023-08-13</td>
+      <td>21.35</td>
+      <td>Phoenix Rising (H)</td>
+      <td>1509.95</td>
+      <td>5</td>
+      <td>42.11%</td>
+      <td>El Paso Locomotive</td>
+      <td>1482.13</td>
+      <td>0</td>
+      <td>26.92%</td>
+      <td>30.97%</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>2023-04-23</td>
+      <td>21.26</td>
+      <td>Memphis 901</td>
+      <td>1508.34</td>
+      <td>3</td>
+      <td>30.39%</td>
+      <td>Rio Grande Valley FC (H)</td>
+      <td>1508.17</td>
+      <td>0</td>
+      <td>38.23%</td>
+      <td>31.38%</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>2023-06-29</td>
+      <td>21.03</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1461.85</td>
+      <td>2</td>
+      <td>21.24%</td>
+      <td>Oakland Roots (H)</td>
+      <td>1544.57</td>
+      <td>0</td>
+      <td>49.31%</td>
+      <td>29.45%</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>2023-07-05</td>
+      <td>20.75</td>
+      <td>Colorado Springs Switchbacks (H)</td>
+      <td>1498.82</td>
+      <td>4</td>
+      <td>38.55%</td>
+      <td>Monterey Bay FC</td>
+      <td>1496.70</td>
+      <td>0</td>
+      <td>30.10%</td>
+      <td>31.35%</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>2023-07-23</td>
+      <td>20.69</td>
+      <td>Charleston Battery (H)</td>
+      <td>1471.05</td>
+      <td>3</td>
+      <td>21.98%</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1602.03</td>
+      <td>1</td>
+      <td>48.28%</td>
+      <td>29.73%</td>
+    </tr>
+  </tbody>
+</table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+        });
+    </script>
+</body>
+</html>

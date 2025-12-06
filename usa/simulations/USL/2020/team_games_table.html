@@ -1,0 +1,7248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Atlanta United II">Atlanta United II</option><option value="Austin Bold">Austin Bold</option><option value="Birmingham Legion">Birmingham Legion</option><option value="Charleston Battery">Charleston Battery</option><option value="Charlotte Independence">Charlotte Independence</option><option value="Colorado Springs Switchbacks">Colorado Springs Switchbacks</option><option value="El Paso Locomotive">El Paso Locomotive</option><option value="FC Tulsa">FC Tulsa</option><option value="Hartford Athletic">Hartford Athletic</option><option value="Indy Eleven">Indy Eleven</option><option value="Las Vegas Lights FC">Las Vegas Lights FC</option><option value="Los Angeles Galaxy II">Los Angeles Galaxy II</option><option value="Loudoun United">Loudoun United</option><option value="Louisville City FC">Louisville City FC</option><option value="Memphis 901">Memphis 901</option><option value="Miami FC">Miami FC</option><option value="New Mexico United">New Mexico United</option><option value="New York RB II">New York RB II</option><option value="North Carolina FC">North Carolina FC</option><option value="OKC Energy FC">OKC Energy FC</option><option value="Orange County SC">Orange County SC</option><option value="Philadelphia Union 2">Philadelphia Union 2</option><option value="Phoenix Rising">Phoenix Rising</option><option value="Pittsburgh Riverhounds">Pittsburgh Riverhounds</option><option value="Portland Timbers 2">Portland Timbers 2</option><option value="Real Monarchs SLC">Real Monarchs SLC</option><option value="Reno 1868 FC">Reno 1868 FC</option><option value="Rio Grande Valley FC">Rio Grande Valley FC</option><option value="Sacramento Republic">Sacramento Republic</option><option value="Saint Louis FC">Saint Louis FC</option><option value="San Antonio FC">San Antonio FC</option><option value="San Diego Loyal">San Diego Loyal</option><option value="Sporting Kansas City 2">Sporting Kansas City 2</option><option value="Tacoma Defiance">Tacoma Defiance</option><option value="Tampa Bay Rowdies">Tampa Bay Rowdies</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="3" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Tie Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2020-03-07</td>
+      <td>Orange County SC</td>
+      <td>1540.72</td>
+      <td>0</td>
+      <td>El Paso Locomotive</td>
+      <td>1519.97</td>
+      <td>0</td>
+      <td>44.71%</td>
+      <td>29.30%</td>
+      <td>25.98%</td>
+      <td>-1.81</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>Louisville City FC</td>
+      <td>1582.45</td>
+      <td>1</td>
+      <td>@ North Carolina FC</td>
+      <td>1533.37</td>
+      <td>0</td>
+      <td>38.85%</td>
+      <td>35.02%</td>
+      <td>26.13%</td>
+      <td>21.64</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>Reno 1868 FC</td>
+      <td>1544.38</td>
+      <td>3</td>
+      <td>@ Tacoma Defiance</td>
+      <td>1447.78</td>
+      <td>1</td>
+      <td>45.32%</td>
+      <td>28.73%</td>
+      <td>25.96%</td>
+      <td>26.31</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>El Paso Locomotive</td>
+      <td>1519.97</td>
+      <td>0</td>
+      <td>@ Orange County SC</td>
+      <td>1540.72</td>
+      <td>0</td>
+      <td>29.30%</td>
+      <td>44.71%</td>
+      <td>25.98%</td>
+      <td>1.81</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1535.19</td>
+      <td>1</td>
+      <td>@ New York RB II</td>
+      <td>1528.26</td>
+      <td>0</td>
+      <td>32.92%</td>
+      <td>40.98%</td>
+      <td>26.10%</td>
+      <td>24.37</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>Tacoma Defiance</td>
+      <td>1447.78</td>
+      <td>1</td>
+      <td>Reno 1868 FC</td>
+      <td>1544.38</td>
+      <td>3</td>
+      <td>28.73%</td>
+      <td>45.32%</td>
+      <td>25.96%</td>
+      <td>-26.31</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>North Carolina FC</td>
+      <td>1533.37</td>
+      <td>0</td>
+      <td>Louisville City FC</td>
+      <td>1582.45</td>
+      <td>1</td>
+      <td>35.02%</td>
+      <td>38.85%</td>
+      <td>26.13%</td>
+      <td>-21.65</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>New York RB II</td>
+      <td>1528.26</td>
+      <td>0</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1535.19</td>
+      <td>1</td>
+      <td>40.98%</td>
+      <td>32.92%</td>
+      <td>26.10%</td>
+      <td>-24.37</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Loudoun United</td>
+      <td>1488.93</td>
+      <td>0</td>
+      <td>@ Philadelphia Union 2</td>
+      <td>1449.78</td>
+      <td>0</td>
+      <td>37.43%</td>
+      <td>36.42%</td>
+      <td>26.14%</td>
+      <td>-0.12</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1432.45</td>
+      <td>2</td>
+      <td>@ OKC Energy FC</td>
+      <td>1476.49</td>
+      <td>1</td>
+      <td>26.47%</td>
+      <td>47.70%</td>
+      <td>25.83%</td>
+      <td>27.59</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Miami FC</td>
+      <td>1450.00</td>
+      <td>1</td>
+      <td>@ Saint Louis FC</td>
+      <td>1503.06</td>
+      <td>4</td>
+      <td>25.43%</td>
+      <td>48.81%</td>
+      <td>25.75%</td>
+      <td>-29.25</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>New Mexico United</td>
+      <td>1488.80</td>
+      <td>0</td>
+      <td>@ Austin Bold</td>
+      <td>1497.86</td>
+      <td>1</td>
+      <td>30.80%</td>
+      <td>43.16%</td>
+      <td>26.04%</td>
+      <td>-19.63</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Real Monarchs SLC</td>
+      <td>1572.91</td>
+      <td>0</td>
+      <td>@ San Antonio FC</td>
+      <td>1515.16</td>
+      <td>1</td>
+      <td>40.07%</td>
+      <td>33.81%</td>
+      <td>26.12%</td>
+      <td>-23.95</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Portland Timbers 2</td>
+      <td>1477.10</td>
+      <td>1</td>
+      <td>@ Phoenix Rising</td>
+      <td>1605.22</td>
+      <td>6</td>
+      <td>18.01%</td>
+      <td>57.15%</td>
+      <td>24.84%</td>
+      <td>-28.23</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1471.96</td>
+      <td>1</td>
+      <td>@ San Diego Loyal</td>
+      <td>1450.00</td>
+      <td>1</td>
+      <td>34.99%</td>
+      <td>38.88%</td>
+      <td>26.13%</td>
+      <td>0.45</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>FC Tulsa</td>
+      <td>1439.46</td>
+      <td>1</td>
+      <td>@ Sacramento Republic</td>
+      <td>1523.71</td>
+      <td>1</td>
+      <td>22.08%</td>
+      <td>52.48%</td>
+      <td>25.44%</td>
+      <td>3.74</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Charleston Battery</td>
+      <td>1515.12</td>
+      <td>1</td>
+      <td>@ Atlanta United II</td>
+      <td>1447.26</td>
+      <td>0</td>
+      <td>41.47%</td>
+      <td>32.44%</td>
+      <td>26.09%</td>
+      <td>20.43</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Charlotte Independence</td>
+      <td>1478.47</td>
+      <td>2</td>
+      <td>@ Sporting Kansas City 2</td>
+      <td>1453.42</td>
+      <td>1</td>
+      <td>35.42%</td>
+      <td>38.44%</td>
+      <td>26.14%</td>
+      <td>23.20</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1508.37</td>
+      <td>5</td>
+      <td>@ Rio Grande Valley FC</td>
+      <td>1494.78</td>
+      <td>1</td>
+      <td>33.83%</td>
+      <td>40.06%</td>
+      <td>26.12%</td>
+      <td>47.88</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Memphis 901</td>
+      <td>1463.45</td>
+      <td>2</td>
+      <td>Indy Eleven</td>
+      <td>1547.61</td>
+      <td>4</td>
+      <td>30.30%</td>
+      <td>43.68%</td>
+      <td>26.03%</td>
+      <td>-27.42</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Indy Eleven</td>
+      <td>1547.61</td>
+      <td>4</td>
+      <td>@ Memphis 901</td>
+      <td>1463.45</td>
+      <td>2</td>
+      <td>43.68%</td>
+      <td>30.30%</td>
+      <td>26.03%</td>
+      <td>27.42</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Philadelphia Union 2</td>
+      <td>1449.78</td>
+      <td>0</td>
+      <td>Loudoun United</td>
+      <td>1488.93</td>
+      <td>0</td>
+      <td>36.42%</td>
+      <td>37.43%</td>
+      <td>26.14%</td>
+      <td>0.12</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1453.42</td>
+      <td>1</td>
+      <td>Charlotte Independence</td>
+      <td>1478.47</td>
+      <td>2</td>
+      <td>38.44%</td>
+      <td>35.42%</td>
+      <td>26.14%</td>
+      <td>-23.20</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Atlanta United II</td>
+      <td>1447.26</td>
+      <td>0</td>
+      <td>Charleston Battery</td>
+      <td>1515.12</td>
+      <td>1</td>
+      <td>32.44%</td>
+      <td>41.47%</td>
+      <td>26.09%</td>
+      <td>-20.43</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Sacramento Republic</td>
+      <td>1523.71</td>
+      <td>1</td>
+      <td>FC Tulsa</td>
+      <td>1439.46</td>
+      <td>1</td>
+      <td>52.48%</td>
+      <td>22.08%</td>
+      <td>25.44%</td>
+      <td>-3.73</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>San Diego Loyal</td>
+      <td>1450.00</td>
+      <td>1</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1471.96</td>
+      <td>1</td>
+      <td>38.88%</td>
+      <td>34.99%</td>
+      <td>26.13%</td>
+      <td>-0.44</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Phoenix Rising</td>
+      <td>1605.22</td>
+      <td>6</td>
+      <td>Portland Timbers 2</td>
+      <td>1477.10</td>
+      <td>1</td>
+      <td>57.15%</td>
+      <td>18.01%</td>
+      <td>24.84%</td>
+      <td>28.23</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>San Antonio FC</td>
+      <td>1515.16</td>
+      <td>1</td>
+      <td>Real Monarchs SLC</td>
+      <td>1572.91</td>
+      <td>0</td>
+      <td>33.81%</td>
+      <td>40.07%</td>
+      <td>26.12%</td>
+      <td>23.94</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1494.78</td>
+      <td>1</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1508.37</td>
+      <td>5</td>
+      <td>40.06%</td>
+      <td>33.83%</td>
+      <td>26.12%</td>
+      <td>-47.89</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>OKC Energy FC</td>
+      <td>1476.49</td>
+      <td>1</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1432.45</td>
+      <td>2</td>
+      <td>47.70%</td>
+      <td>26.47%</td>
+      <td>25.83%</td>
+      <td>-27.59</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Saint Louis FC</td>
+      <td>1503.06</td>
+      <td>4</td>
+      <td>Miami FC</td>
+      <td>1450.00</td>
+      <td>1</td>
+      <td>48.81%</td>
+      <td>25.43%</td>
+      <td>25.75%</td>
+      <td>29.26</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Austin Bold</td>
+      <td>1497.86</td>
+      <td>1</td>
+      <td>New Mexico United</td>
+      <td>1488.80</td>
+      <td>0</td>
+      <td>43.16%</td>
+      <td>30.80%</td>
+      <td>26.04%</td>
+      <td>19.63</td>
+    </tr>
+    <tr>
+      <td>2020-03-12</td>
+      <td>San Diego Loyal</td>
+      <td>1449.56</td>
+      <td>2</td>
+      <td>@ Tacoma Defiance</td>
+      <td>1421.47</td>
+      <td>1</td>
+      <td>35.85%</td>
+      <td>38.01%</td>
+      <td>26.14%</td>
+      <td>23.00</td>
+    </tr>
+    <tr>
+      <td>2020-03-12</td>
+      <td>Tacoma Defiance</td>
+      <td>1421.47</td>
+      <td>1</td>
+      <td>San Diego Loyal</td>
+      <td>1449.56</td>
+      <td>2</td>
+      <td>38.01%</td>
+      <td>35.85%</td>
+      <td>26.14%</td>
+      <td>-23.01</td>
+    </tr>
+    <tr>
+      <td>2020-07-11</td>
+      <td>San Diego Loyal</td>
+      <td>1472.56</td>
+      <td>1</td>
+      <td>@ Real Monarchs SLC</td>
+      <td>1548.96</td>
+      <td>0</td>
+      <td>22.89%</td>
+      <td>51.58%</td>
+      <td>25.52%</td>
+      <td>29.53</td>
+    </tr>
+    <tr>
+      <td>2020-07-11</td>
+      <td>Real Monarchs SLC</td>
+      <td>1548.96</td>
+      <td>0</td>
+      <td>San Diego Loyal</td>
+      <td>1472.56</td>
+      <td>1</td>
+      <td>51.58%</td>
+      <td>22.89%</td>
+      <td>25.52%</td>
+      <td>-29.53</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>Phoenix Rising</td>
+      <td>1633.45</td>
+      <td>4</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1556.25</td>
+      <td>0</td>
+      <td>51.68%</td>
+      <td>22.81%</td>
+      <td>25.52%</td>
+      <td>30.90</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>Atlanta United II</td>
+      <td>1426.83</td>
+      <td>1</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1559.56</td>
+      <td>2</td>
+      <td>17.63%</td>
+      <td>57.61%</td>
+      <td>24.77%</td>
+      <td>-12.39</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>El Paso Locomotive</td>
+      <td>1521.78</td>
+      <td>1</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1446.89</td>
+      <td>0</td>
+      <td>51.41%</td>
+      <td>23.05%</td>
+      <td>25.54%</td>
+      <td>15.59</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>New Mexico United</td>
+      <td>1469.17</td>
+      <td>2</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1460.04</td>
+      <td>1</td>
+      <td>33.22%</td>
+      <td>40.68%</td>
+      <td>26.11%</td>
+      <td>24.23</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1585.93</td>
+      <td>3</td>
+      <td>@ Louisville City FC</td>
+      <td>1604.09</td>
+      <td>1</td>
+      <td>29.63%</td>
+      <td>44.37%</td>
+      <td>26.00%</td>
+      <td>36.73</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>Saint Louis FC</td>
+      <td>1532.32</td>
+      <td>0</td>
+      <td>@ Indy Eleven</td>
+      <td>1575.03</td>
+      <td>2</td>
+      <td>26.63%</td>
+      <td>47.53%</td>
+      <td>25.84%</td>
+      <td>-24.79</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1556.25</td>
+      <td>0</td>
+      <td>@ Phoenix Rising</td>
+      <td>1633.45</td>
+      <td>4</td>
+      <td>22.81%</td>
+      <td>51.68%</td>
+      <td>25.52%</td>
+      <td>-30.90</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>Indy Eleven</td>
+      <td>1575.03</td>
+      <td>2</td>
+      <td>Saint Louis FC</td>
+      <td>1532.32</td>
+      <td>0</td>
+      <td>47.53%</td>
+      <td>26.63%</td>
+      <td>25.84%</td>
+      <td>24.78</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1460.04</td>
+      <td>1</td>
+      <td>New Mexico United</td>
+      <td>1469.17</td>
+      <td>2</td>
+      <td>40.68%</td>
+      <td>33.22%</td>
+      <td>26.11%</td>
+      <td>-24.23</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>Louisville City FC</td>
+      <td>1604.09</td>
+      <td>1</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1585.93</td>
+      <td>3</td>
+      <td>44.37%</td>
+      <td>29.63%</td>
+      <td>26.00%</td>
+      <td>-36.73</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1559.56</td>
+      <td>2</td>
+      <td>Atlanta United II</td>
+      <td>1426.83</td>
+      <td>1</td>
+      <td>57.61%</td>
+      <td>17.63%</td>
+      <td>24.77%</td>
+      <td>12.38</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1446.89</td>
+      <td>0</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1521.78</td>
+      <td>1</td>
+      <td>23.05%</td>
+      <td>51.41%</td>
+      <td>25.54%</td>
+      <td>-15.58</td>
+    </tr>
+    <tr>
+      <td>2020-07-14</td>
+      <td>Sacramento Republic</td>
+      <td>1519.98</td>
+      <td>3</td>
+      <td>Tacoma Defiance</td>
+      <td>1398.46</td>
+      <td>3</td>
+      <td>56.48%</td>
+      <td>18.58%</td>
+      <td>24.94%</td>
+      <td>-4.77</td>
+    </tr>
+    <tr>
+      <td>2020-07-14</td>
+      <td>OKC Energy FC</td>
+      <td>1448.90</td>
+      <td>1</td>
+      <td>FC Tulsa</td>
+      <td>1443.20</td>
+      <td>1</td>
+      <td>42.71%</td>
+      <td>31.23%</td>
+      <td>26.06%</td>
+      <td>-1.34</td>
+    </tr>
+    <tr>
+      <td>2020-07-14</td>
+      <td>FC Tulsa</td>
+      <td>1443.20</td>
+      <td>1</td>
+      <td>@ OKC Energy FC</td>
+      <td>1448.90</td>
+      <td>1</td>
+      <td>31.23%</td>
+      <td>42.71%</td>
+      <td>26.06%</td>
+      <td>1.33</td>
+    </tr>
+    <tr>
+      <td>2020-07-14</td>
+      <td>Tacoma Defiance</td>
+      <td>1398.46</td>
+      <td>3</td>
+      <td>@ Sacramento Republic</td>
+      <td>1519.98</td>
+      <td>3</td>
+      <td>18.58%</td>
+      <td>56.48%</td>
+      <td>24.94%</td>
+      <td>4.77</td>
+    </tr>
+    <tr>
+      <td>2020-07-16</td>
+      <td>El Paso Locomotive</td>
+      <td>1537.37</td>
+      <td>2</td>
+      <td>New Mexico United</td>
+      <td>1493.40</td>
+      <td>2</td>
+      <td>47.69%</td>
+      <td>26.48%</td>
+      <td>25.83%</td>
+      <td>-2.54</td>
+    </tr>
+    <tr>
+      <td>2020-07-16</td>
+      <td>Birmingham Legion</td>
+      <td>1477.08</td>
+      <td>3</td>
+      <td>Memphis 901</td>
+      <td>1436.03</td>
+      <td>0</td>
+      <td>47.32%</td>
+      <td>26.82%</td>
+      <td>25.85%</td>
+      <td>30.53</td>
+    </tr>
+    <tr>
+      <td>2020-07-16</td>
+      <td>Memphis 901</td>
+      <td>1436.03</td>
+      <td>0</td>
+      <td>@ Birmingham Legion</td>
+      <td>1477.08</td>
+      <td>3</td>
+      <td>26.82%</td>
+      <td>47.32%</td>
+      <td>25.85%</td>
+      <td>-30.53</td>
+    </tr>
+    <tr>
+      <td>2020-07-16</td>
+      <td>New Mexico United</td>
+      <td>1493.40</td>
+      <td>2</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1537.37</td>
+      <td>2</td>
+      <td>26.48%</td>
+      <td>47.69%</td>
+      <td>25.83%</td>
+      <td>2.53</td>
+    </tr>
+    <tr>
+      <td>2020-07-17</td>
+      <td>Orange County SC</td>
+      <td>1538.91</td>
+      <td>1</td>
+      <td>Phoenix Rising</td>
+      <td>1664.35</td>
+      <td>1</td>
+      <td>25.31%</td>
+      <td>48.95%</td>
+      <td>25.74%</td>
+      <td>2.85</td>
+    </tr>
+    <tr>
+      <td>2020-07-17</td>
+      <td>Phoenix Rising</td>
+      <td>1664.35</td>
+      <td>1</td>
+      <td>@ Orange County SC</td>
+      <td>1538.91</td>
+      <td>1</td>
+      <td>48.95%</td>
+      <td>25.31%</td>
+      <td>25.74%</td>
+      <td>-2.85</td>
+    </tr>
+    <tr>
+      <td>2020-07-18</td>
+      <td>New York RB II</td>
+      <td>1503.89</td>
+      <td>0</td>
+      <td>Hartford Athletic</td>
+      <td>1453.52</td>
+      <td>1</td>
+      <td>48.48%</td>
+      <td>25.74%</td>
+      <td>25.78%</td>
+      <td>-27.98</td>
+    </tr>
+    <tr>
+      <td>2020-07-18</td>
+      <td>Real Monarchs SLC</td>
+      <td>1519.43</td>
+      <td>3</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1435.81</td>
+      <td>3</td>
+      <td>52.41%</td>
+      <td>22.15%</td>
+      <td>25.44%</td>
+      <td>-3.72</td>
+    </tr>
+    <tr>
+      <td>2020-07-18</td>
+      <td>North Carolina FC</td>
+      <td>1511.72</td>
+      <td>2</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1571.94</td>
+      <td>2</td>
+      <td>24.63%</td>
+      <td>49.68%</td>
+      <td>25.69%</td>
+      <td>3.03</td>
+    </tr>
+    <tr>
+      <td>2020-07-18</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1571.94</td>
+      <td>2</td>
+      <td>North Carolina FC</td>
+      <td>1511.72</td>
+      <td>2</td>
+      <td>49.68%</td>
+      <td>24.63%</td>
+      <td>25.69%</td>
+      <td>-3.03</td>
+    </tr>
+    <tr>
+      <td>2020-07-18</td>
+      <td>OKC Energy FC</td>
+      <td>1447.56</td>
+      <td>3</td>
+      <td>@ Austin Bold</td>
+      <td>1517.49</td>
+      <td>1</td>
+      <td>23.58%</td>
+      <td>50.83%</td>
+      <td>25.59%</td>
+      <td>41.23</td>
+    </tr>
+    <tr>
+      <td>2020-07-18</td>
+      <td>Austin Bold</td>
+      <td>1517.49</td>
+      <td>1</td>
+      <td>OKC Energy FC</td>
+      <td>1447.56</td>
+      <td>3</td>
+      <td>50.83%</td>
+      <td>23.58%</td>
+      <td>25.59%</td>
+      <td>-41.22</td>
+    </tr>
+    <tr>
+      <td>2020-07-18</td>
+      <td>Hartford Athletic</td>
+      <td>1453.52</td>
+      <td>1</td>
+      <td>@ New York RB II</td>
+      <td>1503.89</td>
+      <td>0</td>
+      <td>25.74%</td>
+      <td>48.48%</td>
+      <td>25.78%</td>
+      <td>27.97</td>
+    </tr>
+    <tr>
+      <td>2020-07-18</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1435.81</td>
+      <td>3</td>
+      <td>@ Real Monarchs SLC</td>
+      <td>1519.43</td>
+      <td>3</td>
+      <td>22.15%</td>
+      <td>52.41%</td>
+      <td>25.44%</td>
+      <td>3.72</td>
+    </tr>
+    <tr>
+      <td>2020-07-19</td>
+      <td>Memphis 901</td>
+      <td>1405.50</td>
+      <td>2</td>
+      <td>@ Atlanta United II</td>
+      <td>1414.44</td>
+      <td>2</td>
+      <td>30.81%</td>
+      <td>43.15%</td>
+      <td>26.04%</td>
+      <td>1.43</td>
+    </tr>
+    <tr>
+      <td>2020-07-19</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1622.66</td>
+      <td>6</td>
+      <td>@ Philadelphia Union 2</td>
+      <td>1449.90</td>
+      <td>0</td>
+      <td>54.38%</td>
+      <td>20.40%</td>
+      <td>25.22%</td>
+      <td>34.45</td>
+    </tr>
+    <tr>
+      <td>2020-07-19</td>
+      <td>Saint Louis FC</td>
+      <td>1507.53</td>
+      <td>1</td>
+      <td>@ Louisville City FC</td>
+      <td>1567.36</td>
+      <td>0</td>
+      <td>24.67%</td>
+      <td>49.63%</td>
+      <td>25.69%</td>
+      <td>28.55</td>
+    </tr>
+    <tr>
+      <td>2020-07-19</td>
+      <td>Portland Timbers 2</td>
+      <td>1448.87</td>
+      <td>0</td>
+      <td>@ Tacoma Defiance</td>
+      <td>1403.23</td>
+      <td>3</td>
+      <td>38.36%</td>
+      <td>35.50%</td>
+      <td>26.14%</td>
+      <td>-40.12</td>
+    </tr>
+    <tr>
+      <td>2020-07-19</td>
+      <td>Indy Eleven</td>
+      <td>1599.81</td>
+      <td>2</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1430.22</td>
+      <td>1</td>
+      <td>61.06%</td>
+      <td>14.81%</td>
+      <td>24.13%</td>
+      <td>10.57</td>
+    </tr>
+    <tr>
+      <td>2020-07-19</td>
+      <td>Atlanta United II</td>
+      <td>1414.44</td>
+      <td>2</td>
+      <td>Memphis 901</td>
+      <td>1405.50</td>
+      <td>2</td>
+      <td>43.15%</td>
+      <td>30.81%</td>
+      <td>26.04%</td>
+      <td>-1.44</td>
+    </tr>
+    <tr>
+      <td>2020-07-19</td>
+      <td>Philadelphia Union 2</td>
+      <td>1449.90</td>
+      <td>0</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1622.66</td>
+      <td>6</td>
+      <td>20.40%</td>
+      <td>54.38%</td>
+      <td>25.22%</td>
+      <td>-34.45</td>
+    </tr>
+    <tr>
+      <td>2020-07-19</td>
+      <td>Louisville City FC</td>
+      <td>1567.36</td>
+      <td>0</td>
+      <td>Saint Louis FC</td>
+      <td>1507.53</td>
+      <td>1</td>
+      <td>49.63%</td>
+      <td>24.67%</td>
+      <td>25.69%</td>
+      <td>-28.55</td>
+    </tr>
+    <tr>
+      <td>2020-07-19</td>
+      <td>Tacoma Defiance</td>
+      <td>1403.23</td>
+      <td>3</td>
+      <td>Portland Timbers 2</td>
+      <td>1448.87</td>
+      <td>0</td>
+      <td>35.50%</td>
+      <td>38.36%</td>
+      <td>26.14%</td>
+      <td>40.12</td>
+    </tr>
+    <tr>
+      <td>2020-07-19</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1430.22</td>
+      <td>1</td>
+      <td>@ Indy Eleven</td>
+      <td>1599.81</td>
+      <td>2</td>
+      <td>14.81%</td>
+      <td>61.06%</td>
+      <td>24.13%</td>
+      <td>-10.57</td>
+    </tr>
+    <tr>
+      <td>2020-07-20</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1431.31</td>
+      <td>1</td>
+      <td>San Antonio FC</td>
+      <td>1539.10</td>
+      <td>1</td>
+      <td>27.36%</td>
+      <td>46.75%</td>
+      <td>25.88%</td>
+      <td>2.30</td>
+    </tr>
+    <tr>
+      <td>2020-07-20</td>
+      <td>Sacramento Republic</td>
+      <td>1515.21</td>
+      <td>1</td>
+      <td>Reno 1868 FC</td>
+      <td>1570.69</td>
+      <td>0</td>
+      <td>34.13%</td>
+      <td>39.75%</td>
+      <td>26.12%</td>
+      <td>23.80</td>
+    </tr>
+    <tr>
+      <td>2020-07-20</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1525.35</td>
+      <td>1</td>
+      <td>@ San Diego Loyal</td>
+      <td>1502.09</td>
+      <td>0</td>
+      <td>35.17%</td>
+      <td>38.70%</td>
+      <td>26.14%</td>
+      <td>23.32</td>
+    </tr>
+    <tr>
+      <td>2020-07-20</td>
+      <td>Reno 1868 FC</td>
+      <td>1570.69</td>
+      <td>0</td>
+      <td>@ Sacramento Republic</td>
+      <td>1515.21</td>
+      <td>1</td>
+      <td>39.75%</td>
+      <td>34.13%</td>
+      <td>26.12%</td>
+      <td>-23.80</td>
+    </tr>
+    <tr>
+      <td>2020-07-20</td>
+      <td>San Antonio FC</td>
+      <td>1539.10</td>
+      <td>1</td>
+      <td>@ Rio Grande Valley FC</td>
+      <td>1431.31</td>
+      <td>1</td>
+      <td>46.75%</td>
+      <td>27.36%</td>
+      <td>25.88%</td>
+      <td>-2.30</td>
+    </tr>
+    <tr>
+      <td>2020-07-20</td>
+      <td>Birmingham Legion</td>
+      <td>1507.61</td>
+      <td>2</td>
+      <td>@ Charleston Battery</td>
+      <td>1535.55</td>
+      <td>1</td>
+      <td>28.41%</td>
+      <td>45.65%</td>
+      <td>25.94%</td>
+      <td>26.59</td>
+    </tr>
+    <tr>
+      <td>2020-07-20</td>
+      <td>Charleston Battery</td>
+      <td>1535.55</td>
+      <td>1</td>
+      <td>Birmingham Legion</td>
+      <td>1507.61</td>
+      <td>2</td>
+      <td>45.65%</td>
+      <td>28.41%</td>
+      <td>25.94%</td>
+      <td>-26.59</td>
+    </tr>
+    <tr>
+      <td>2020-07-20</td>
+      <td>San Diego Loyal</td>
+      <td>1502.09</td>
+      <td>0</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1525.35</td>
+      <td>1</td>
+      <td>38.70%</td>
+      <td>35.17%</td>
+      <td>26.14%</td>
+      <td>-23.31</td>
+    </tr>
+    <tr>
+      <td>2020-07-21</td>
+      <td>Loudoun United</td>
+      <td>1488.81</td>
+      <td>1</td>
+      <td>@ Hartford Athletic</td>
+      <td>1481.49</td>
+      <td>3</td>
+      <td>32.97%</td>
+      <td>40.93%</td>
+      <td>26.10%</td>
+      <td>-29.25</td>
+    </tr>
+    <tr>
+      <td>2020-07-21</td>
+      <td>Hartford Athletic</td>
+      <td>1481.49</td>
+      <td>3</td>
+      <td>Loudoun United</td>
+      <td>1488.81</td>
+      <td>1</td>
+      <td>40.93%</td>
+      <td>32.97%</td>
+      <td>26.10%</td>
+      <td>29.26</td>
+    </tr>
+    <tr>
+      <td>2020-07-22</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1657.11</td>
+      <td>0</td>
+      <td>Indy Eleven</td>
+      <td>1610.38</td>
+      <td>1</td>
+      <td>48.03%</td>
+      <td>26.16%</td>
+      <td>25.81%</td>
+      <td>-27.75</td>
+    </tr>
+    <tr>
+      <td>2020-07-22</td>
+      <td>Indy Eleven</td>
+      <td>1610.38</td>
+      <td>1</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1657.11</td>
+      <td>0</td>
+      <td>26.16%</td>
+      <td>48.03%</td>
+      <td>25.81%</td>
+      <td>27.76</td>
+    </tr>
+    <tr>
+      <td>2020-07-23</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1433.61</td>
+      <td>1</td>
+      <td>@ OKC Energy FC</td>
+      <td>1488.79</td>
+      <td>1</td>
+      <td>25.19%</td>
+      <td>49.07%</td>
+      <td>25.74%</td>
+      <td>2.88</td>
+    </tr>
+    <tr>
+      <td>2020-07-23</td>
+      <td>New York RB II</td>
+      <td>1475.91</td>
+      <td>5</td>
+      <td>@ Philadelphia Union 2</td>
+      <td>1415.45</td>
+      <td>1</td>
+      <td>40.44%</td>
+      <td>33.44%</td>
+      <td>26.11%</td>
+      <td>41.82</td>
+    </tr>
+    <tr>
+      <td>2020-07-23</td>
+      <td>Philadelphia Union 2</td>
+      <td>1415.45</td>
+      <td>1</td>
+      <td>New York RB II</td>
+      <td>1475.91</td>
+      <td>5</td>
+      <td>33.44%</td>
+      <td>40.44%</td>
+      <td>26.11%</td>
+      <td>-41.82</td>
+    </tr>
+    <tr>
+      <td>2020-07-23</td>
+      <td>OKC Energy FC</td>
+      <td>1488.79</td>
+      <td>1</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1433.61</td>
+      <td>1</td>
+      <td>49.07%</td>
+      <td>25.19%</td>
+      <td>25.74%</td>
+      <td>-2.88</td>
+    </tr>
+    <tr>
+      <td>2020-07-25</td>
+      <td>Charleston Battery</td>
+      <td>1508.96</td>
+      <td>3</td>
+      <td>Atlanta United II</td>
+      <td>1413.00</td>
+      <td>0</td>
+      <td>53.78%</td>
+      <td>20.93%</td>
+      <td>25.29%</td>
+      <td>24.90</td>
+    </tr>
+    <tr>
+      <td>2020-07-25</td>
+      <td>El Paso Locomotive</td>
+      <td>1534.83</td>
+      <td>1</td>
+      <td>New Mexico United</td>
+      <td>1495.93</td>
+      <td>2</td>
+      <td>47.05%</td>
+      <td>27.08%</td>
+      <td>25.87%</td>
+      <td>-27.27</td>
+    </tr>
+    <tr>
+      <td>2020-07-25</td>
+      <td>Atlanta United II</td>
+      <td>1413.00</td>
+      <td>0</td>
+      <td>@ Charleston Battery</td>
+      <td>1508.96</td>
+      <td>3</td>
+      <td>20.93%</td>
+      <td>53.78%</td>
+      <td>25.29%</td>
+      <td>-24.89</td>
+    </tr>
+    <tr>
+      <td>2020-07-25</td>
+      <td>New Mexico United</td>
+      <td>1495.93</td>
+      <td>2</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1534.83</td>
+      <td>1</td>
+      <td>27.08%</td>
+      <td>47.05%</td>
+      <td>25.87%</td>
+      <td>27.27</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Sacramento Republic</td>
+      <td>1539.01</td>
+      <td>0</td>
+      <td>@ Los Angeles Galaxy II</td>
+      <td>1548.67</td>
+      <td>1</td>
+      <td>30.72%</td>
+      <td>43.24%</td>
+      <td>26.04%</td>
+      <td>-19.60</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1548.67</td>
+      <td>1</td>
+      <td>Sacramento Republic</td>
+      <td>1539.01</td>
+      <td>0</td>
+      <td>43.24%</td>
+      <td>30.72%</td>
+      <td>26.04%</td>
+      <td>19.59</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Orange County SC</td>
+      <td>1541.76</td>
+      <td>1</td>
+      <td>Phoenix Rising</td>
+      <td>1661.50</td>
+      <td>0</td>
+      <td>25.96%</td>
+      <td>48.25%</td>
+      <td>25.79%</td>
+      <td>27.86</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>San Diego Loyal</td>
+      <td>1478.78</td>
+      <td>2</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1472.41</td>
+      <td>1</td>
+      <td>42.80%</td>
+      <td>31.15%</td>
+      <td>26.06%</td>
+      <td>19.80</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>New York RB II</td>
+      <td>1517.73</td>
+      <td>2</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1629.36</td>
+      <td>1</td>
+      <td>26.91%</td>
+      <td>47.24%</td>
+      <td>25.86%</td>
+      <td>27.36</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Saint Louis FC</td>
+      <td>1536.08</td>
+      <td>1</td>
+      <td>Indy Eleven</td>
+      <td>1638.14</td>
+      <td>0</td>
+      <td>28.06%</td>
+      <td>46.02%</td>
+      <td>25.92%</td>
+      <td>26.77</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Birmingham Legion</td>
+      <td>1534.20</td>
+      <td>1</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1568.91</td>
+      <td>1</td>
+      <td>37.06%</td>
+      <td>36.80%</td>
+      <td>26.14%</td>
+      <td>-0.03</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Indy Eleven</td>
+      <td>1638.14</td>
+      <td>0</td>
+      <td>@ Saint Louis FC</td>
+      <td>1536.08</td>
+      <td>1</td>
+      <td>46.02%</td>
+      <td>28.06%</td>
+      <td>25.92%</td>
+      <td>-26.77</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Louisville City FC</td>
+      <td>1538.81</td>
+      <td>1</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1419.65</td>
+      <td>0</td>
+      <td>56.24%</td>
+      <td>18.79%</td>
+      <td>24.98%</td>
+      <td>13.10</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1629.36</td>
+      <td>1</td>
+      <td>@ New York RB II</td>
+      <td>1517.73</td>
+      <td>2</td>
+      <td>47.24%</td>
+      <td>26.91%</td>
+      <td>25.86%</td>
+      <td>-27.37</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Hartford Athletic</td>
+      <td>1510.75</td>
+      <td>3</td>
+      <td>Philadelphia Union 2</td>
+      <td>1373.63</td>
+      <td>2</td>
+      <td>58.04%</td>
+      <td>17.27%</td>
+      <td>24.70%</td>
+      <td>12.16</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1472.41</td>
+      <td>1</td>
+      <td>@ San Diego Loyal</td>
+      <td>1478.78</td>
+      <td>2</td>
+      <td>31.15%</td>
+      <td>42.80%</td>
+      <td>26.06%</td>
+      <td>-19.81</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>San Antonio FC</td>
+      <td>1536.80</td>
+      <td>1</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1436.49</td>
+      <td>0</td>
+      <td>54.25%</td>
+      <td>20.51%</td>
+      <td>25.24%</td>
+      <td>14.13</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Philadelphia Union 2</td>
+      <td>1373.63</td>
+      <td>2</td>
+      <td>@ Hartford Athletic</td>
+      <td>1510.75</td>
+      <td>3</td>
+      <td>17.27%</td>
+      <td>58.04%</td>
+      <td>24.70%</td>
+      <td>-12.16</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1568.91</td>
+      <td>1</td>
+      <td>@ Birmingham Legion</td>
+      <td>1534.20</td>
+      <td>1</td>
+      <td>36.80%</td>
+      <td>37.06%</td>
+      <td>26.14%</td>
+      <td>0.03</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1419.65</td>
+      <td>0</td>
+      <td>@ Louisville City FC</td>
+      <td>1538.81</td>
+      <td>1</td>
+      <td>18.79%</td>
+      <td>56.24%</td>
+      <td>24.98%</td>
+      <td>-13.10</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Charlotte Independence</td>
+      <td>1501.67</td>
+      <td>2</td>
+      <td>@ Memphis 901</td>
+      <td>1406.93</td>
+      <td>2</td>
+      <td>45.07%</td>
+      <td>28.96%</td>
+      <td>25.97%</td>
+      <td>-1.90</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1436.49</td>
+      <td>0</td>
+      <td>@ San Antonio FC</td>
+      <td>1536.80</td>
+      <td>1</td>
+      <td>20.51%</td>
+      <td>54.25%</td>
+      <td>25.24%</td>
+      <td>-14.13</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Phoenix Rising</td>
+      <td>1661.50</td>
+      <td>0</td>
+      <td>@ Orange County SC</td>
+      <td>1541.76</td>
+      <td>1</td>
+      <td>48.25%</td>
+      <td>25.96%</td>
+      <td>25.79%</td>
+      <td>-27.86</td>
+    </tr>
+    <tr>
+      <td>2020-07-26</td>
+      <td>Memphis 901</td>
+      <td>1406.93</td>
+      <td>2</td>
+      <td>Charlotte Independence</td>
+      <td>1501.67</td>
+      <td>2</td>
+      <td>28.96%</td>
+      <td>45.07%</td>
+      <td>25.97%</td>
+      <td>1.90</td>
+    </tr>
+    <tr>
+      <td>2020-07-30</td>
+      <td>Portland Timbers 2</td>
+      <td>1408.75</td>
+      <td>1</td>
+      <td>Reno 1868 FC</td>
+      <td>1546.89</td>
+      <td>4</td>
+      <td>23.90%</td>
+      <td>50.47%</td>
+      <td>25.62%</td>
+      <td>-27.81</td>
+    </tr>
+    <tr>
+      <td>2020-07-30</td>
+      <td>Atlanta United II</td>
+      <td>1388.11</td>
+      <td>4</td>
+      <td>Miami FC</td>
+      <td>1420.75</td>
+      <td>3</td>
+      <td>37.36%</td>
+      <td>36.50%</td>
+      <td>26.14%</td>
+      <td>22.32</td>
+    </tr>
+    <tr>
+      <td>2020-07-30</td>
+      <td>Miami FC</td>
+      <td>1420.75</td>
+      <td>3</td>
+      <td>@ Atlanta United II</td>
+      <td>1388.11</td>
+      <td>4</td>
+      <td>36.50%</td>
+      <td>37.36%</td>
+      <td>26.14%</td>
+      <td>-22.32</td>
+    </tr>
+    <tr>
+      <td>2020-07-30</td>
+      <td>Reno 1868 FC</td>
+      <td>1546.89</td>
+      <td>4</td>
+      <td>@ Portland Timbers 2</td>
+      <td>1408.75</td>
+      <td>1</td>
+      <td>50.47%</td>
+      <td>23.90%</td>
+      <td>25.62%</td>
+      <td>27.82</td>
+    </tr>
+    <tr>
+      <td>2020-07-30</td>
+      <td>Hartford Athletic</td>
+      <td>1522.91</td>
+      <td>1</td>
+      <td>@ Indy Eleven</td>
+      <td>1611.37</td>
+      <td>4</td>
+      <td>21.66%</td>
+      <td>52.95%</td>
+      <td>25.39%</td>
+      <td>-25.64</td>
+    </tr>
+    <tr>
+      <td>2020-07-30</td>
+      <td>Indy Eleven</td>
+      <td>1611.37</td>
+      <td>4</td>
+      <td>Hartford Athletic</td>
+      <td>1522.91</td>
+      <td>1</td>
+      <td>52.95%</td>
+      <td>21.66%</td>
+      <td>25.39%</td>
+      <td>25.63</td>
+    </tr>
+    <tr>
+      <td>2020-07-30</td>
+      <td>Louisville City FC</td>
+      <td>1551.91</td>
+      <td>1</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1406.55</td>
+      <td>2</td>
+      <td>58.83%</td>
+      <td>16.61%</td>
+      <td>24.56%</td>
+      <td>-33.29</td>
+    </tr>
+    <tr>
+      <td>2020-07-30</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1406.55</td>
+      <td>2</td>
+      <td>@ Louisville City FC</td>
+      <td>1551.91</td>
+      <td>1</td>
+      <td>16.61%</td>
+      <td>58.83%</td>
+      <td>24.56%</td>
+      <td>33.28</td>
+    </tr>
+    <tr>
+      <td>2020-08-01</td>
+      <td>Charleston Battery</td>
+      <td>1533.86</td>
+      <td>0</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1568.94</td>
+      <td>2</td>
+      <td>27.54%</td>
+      <td>46.57%</td>
+      <td>25.89%</td>
+      <td>-25.45</td>
+    </tr>
+    <tr>
+      <td>2020-08-01</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1568.94</td>
+      <td>2</td>
+      <td>Charleston Battery</td>
+      <td>1533.86</td>
+      <td>0</td>
+      <td>46.57%</td>
+      <td>27.54%</td>
+      <td>25.89%</td>
+      <td>25.45</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>San Antonio FC</td>
+      <td>1550.93</td>
+      <td>4</td>
+      <td>@ Austin Bold</td>
+      <td>1476.27</td>
+      <td>2</td>
+      <td>42.40%</td>
+      <td>31.54%</td>
+      <td>26.07%</td>
+      <td>28.28</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>New Mexico United</td>
+      <td>1523.20</td>
+      <td>3</td>
+      <td>@ OKC Energy FC</td>
+      <td>1485.91</td>
+      <td>0</td>
+      <td>37.17%</td>
+      <td>36.69%</td>
+      <td>26.14%</td>
+      <td>38.81</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Birmingham Legion</td>
+      <td>1534.17</td>
+      <td>0</td>
+      <td>@ North Carolina FC</td>
+      <td>1514.75</td>
+      <td>1</td>
+      <td>34.63%</td>
+      <td>39.24%</td>
+      <td>26.13%</td>
+      <td>-21.47</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1439.83</td>
+      <td>1</td>
+      <td>@ Indy Eleven</td>
+      <td>1637.00</td>
+      <td>0</td>
+      <td>13.00%</td>
+      <td>63.43%</td>
+      <td>23.58%</td>
+      <td>35.69</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Saint Louis FC</td>
+      <td>1562.85</td>
+      <td>0</td>
+      <td>@ Memphis 901</td>
+      <td>1408.83</td>
+      <td>1</td>
+      <td>52.31%</td>
+      <td>22.24%</td>
+      <td>25.45%</td>
+      <td>-29.90</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1422.36</td>
+      <td>1</td>
+      <td>FC Tulsa</td>
+      <td>1444.53</td>
+      <td>2</td>
+      <td>38.85%</td>
+      <td>35.02%</td>
+      <td>26.13%</td>
+      <td>-23.38</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Phoenix Rising</td>
+      <td>1633.64</td>
+      <td>3</td>
+      <td>El Paso Locomotive</td>
+      <td>1507.56</td>
+      <td>1</td>
+      <td>56.94%</td>
+      <td>18.19%</td>
+      <td>24.87%</td>
+      <td>18.01</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1452.60</td>
+      <td>0</td>
+      <td>Reno 1868 FC</td>
+      <td>1574.71</td>
+      <td>1</td>
+      <td>25.69%</td>
+      <td>48.54%</td>
+      <td>25.77%</td>
+      <td>-17.02</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>San Diego Loyal</td>
+      <td>1498.58</td>
+      <td>0</td>
+      <td>Sacramento Republic</td>
+      <td>1519.41</td>
+      <td>0</td>
+      <td>39.04%</td>
+      <td>34.83%</td>
+      <td>26.13%</td>
+      <td>-0.48</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Austin Bold</td>
+      <td>1476.27</td>
+      <td>2</td>
+      <td>San Antonio FC</td>
+      <td>1550.93</td>
+      <td>4</td>
+      <td>31.54%</td>
+      <td>42.40%</td>
+      <td>26.07%</td>
+      <td>-28.28</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Real Monarchs SLC</td>
+      <td>1515.71</td>
+      <td>2</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1439.53</td>
+      <td>1</td>
+      <td>42.60%</td>
+      <td>31.34%</td>
+      <td>26.06%</td>
+      <td>19.90</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>OKC Energy FC</td>
+      <td>1485.91</td>
+      <td>0</td>
+      <td>New Mexico United</td>
+      <td>1523.20</td>
+      <td>3</td>
+      <td>36.69%</td>
+      <td>37.17%</td>
+      <td>26.14%</td>
+      <td>-38.81</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Memphis 901</td>
+      <td>1408.83</td>
+      <td>1</td>
+      <td>Saint Louis FC</td>
+      <td>1562.85</td>
+      <td>0</td>
+      <td>22.24%</td>
+      <td>52.31%</td>
+      <td>25.45%</td>
+      <td>29.90</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1601.99</td>
+      <td>4</td>
+      <td>Philadelphia Union 2</td>
+      <td>1361.47</td>
+      <td>0</td>
+      <td>66.81%</td>
+      <td>10.58%</td>
+      <td>22.60%</td>
+      <td>15.26</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Sacramento Republic</td>
+      <td>1519.41</td>
+      <td>0</td>
+      <td>@ San Diego Loyal</td>
+      <td>1498.58</td>
+      <td>0</td>
+      <td>34.83%</td>
+      <td>39.04%</td>
+      <td>26.13%</td>
+      <td>0.48</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Reno 1868 FC</td>
+      <td>1574.71</td>
+      <td>1</td>
+      <td>@ Las Vegas Lights FC</td>
+      <td>1452.60</td>
+      <td>0</td>
+      <td>48.54%</td>
+      <td>25.69%</td>
+      <td>25.77%</td>
+      <td>17.02</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>El Paso Locomotive</td>
+      <td>1507.56</td>
+      <td>1</td>
+      <td>@ Phoenix Rising</td>
+      <td>1633.64</td>
+      <td>3</td>
+      <td>18.19%</td>
+      <td>56.94%</td>
+      <td>24.87%</td>
+      <td>-18.01</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>FC Tulsa</td>
+      <td>1444.53</td>
+      <td>2</td>
+      <td>@ Rio Grande Valley FC</td>
+      <td>1422.36</td>
+      <td>1</td>
+      <td>35.02%</td>
+      <td>38.85%</td>
+      <td>26.13%</td>
+      <td>23.39</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1439.53</td>
+      <td>1</td>
+      <td>Real Monarchs SLC</td>
+      <td>1515.71</td>
+      <td>2</td>
+      <td>31.34%</td>
+      <td>42.60%</td>
+      <td>26.06%</td>
+      <td>-19.90</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Philadelphia Union 2</td>
+      <td>1361.47</td>
+      <td>0</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1601.99</td>
+      <td>4</td>
+      <td>10.58%</td>
+      <td>66.81%</td>
+      <td>22.60%</td>
+      <td>-15.26</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>Indy Eleven</td>
+      <td>1637.00</td>
+      <td>0</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1439.83</td>
+      <td>1</td>
+      <td>63.43%</td>
+      <td>13.00%</td>
+      <td>23.58%</td>
+      <td>-35.69</td>
+    </tr>
+    <tr>
+      <td>2020-08-02</td>
+      <td>North Carolina FC</td>
+      <td>1514.75</td>
+      <td>1</td>
+      <td>Birmingham Legion</td>
+      <td>1534.17</td>
+      <td>0</td>
+      <td>39.24%</td>
+      <td>34.63%</td>
+      <td>26.13%</td>
+      <td>21.47</td>
+    </tr>
+    <tr>
+      <td>2020-08-03</td>
+      <td>Loudoun United</td>
+      <td>1459.56</td>
+      <td>1</td>
+      <td>@ Hartford Athletic</td>
+      <td>1497.27</td>
+      <td>4</td>
+      <td>27.22%</td>
+      <td>46.90%</td>
+      <td>25.88%</td>
+      <td>-30.88</td>
+    </tr>
+    <tr>
+      <td>2020-08-03</td>
+      <td>Hartford Athletic</td>
+      <td>1497.27</td>
+      <td>4</td>
+      <td>Loudoun United</td>
+      <td>1459.56</td>
+      <td>1</td>
+      <td>46.90%</td>
+      <td>27.22%</td>
+      <td>25.88%</td>
+      <td>30.89</td>
+    </tr>
+    <tr>
+      <td>2020-08-04</td>
+      <td>Portland Timbers 2</td>
+      <td>1380.94</td>
+      <td>0</td>
+      <td>Tacoma Defiance</td>
+      <td>1443.35</td>
+      <td>4</td>
+      <td>33.18%</td>
+      <td>40.72%</td>
+      <td>26.11%</td>
+      <td>-41.57</td>
+    </tr>
+    <tr>
+      <td>2020-08-04</td>
+      <td>Tacoma Defiance</td>
+      <td>1443.35</td>
+      <td>4</td>
+      <td>@ Portland Timbers 2</td>
+      <td>1380.94</td>
+      <td>0</td>
+      <td>40.72%</td>
+      <td>33.18%</td>
+      <td>26.11%</td>
+      <td>41.57</td>
+    </tr>
+    <tr>
+      <td>2020-08-05</td>
+      <td>New York RB II</td>
+      <td>1545.09</td>
+      <td>2</td>
+      <td>@ Philadelphia Union 2</td>
+      <td>1346.21</td>
+      <td>3</td>
+      <td>57.10%</td>
+      <td>18.06%</td>
+      <td>24.85%</td>
+      <td>-32.38</td>
+    </tr>
+    <tr>
+      <td>2020-08-05</td>
+      <td>Philadelphia Union 2</td>
+      <td>1346.21</td>
+      <td>3</td>
+      <td>New York RB II</td>
+      <td>1545.09</td>
+      <td>2</td>
+      <td>18.06%</td>
+      <td>57.10%</td>
+      <td>24.85%</td>
+      <td>32.38</td>
+    </tr>
+    <tr>
+      <td>2020-08-06</td>
+      <td>Charlotte Independence</td>
+      <td>1499.77</td>
+      <td>1</td>
+      <td>@ Birmingham Legion</td>
+      <td>1512.70</td>
+      <td>4</td>
+      <td>30.29%</td>
+      <td>43.68%</td>
+      <td>26.03%</td>
+      <td>-33.58</td>
+    </tr>
+    <tr>
+      <td>2020-08-06</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1475.52</td>
+      <td>1</td>
+      <td>@ Saint Louis FC</td>
+      <td>1532.95</td>
+      <td>1</td>
+      <td>24.94%</td>
+      <td>49.34%</td>
+      <td>25.71%</td>
+      <td>2.95</td>
+    </tr>
+    <tr>
+      <td>2020-08-06</td>
+      <td>Birmingham Legion</td>
+      <td>1512.70</td>
+      <td>4</td>
+      <td>Charlotte Independence</td>
+      <td>1499.77</td>
+      <td>1</td>
+      <td>43.68%</td>
+      <td>30.29%</td>
+      <td>26.03%</td>
+      <td>33.59</td>
+    </tr>
+    <tr>
+      <td>2020-08-06</td>
+      <td>Saint Louis FC</td>
+      <td>1532.95</td>
+      <td>1</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1475.52</td>
+      <td>1</td>
+      <td>49.34%</td>
+      <td>24.94%</td>
+      <td>25.71%</td>
+      <td>-2.95</td>
+    </tr>
+    <tr>
+      <td>2020-08-06</td>
+      <td>Atlanta United II</td>
+      <td>1410.43</td>
+      <td>1</td>
+      <td>Charleston Battery</td>
+      <td>1508.41</td>
+      <td>1</td>
+      <td>28.56%</td>
+      <td>45.49%</td>
+      <td>25.95%</td>
+      <td>2.00</td>
+    </tr>
+    <tr>
+      <td>2020-08-06</td>
+      <td>Charleston Battery</td>
+      <td>1508.41</td>
+      <td>1</td>
+      <td>@ Atlanta United II</td>
+      <td>1410.43</td>
+      <td>1</td>
+      <td>45.49%</td>
+      <td>28.56%</td>
+      <td>25.95%</td>
+      <td>-2.00</td>
+    </tr>
+    <tr>
+      <td>2020-08-08</td>
+      <td>Miami FC</td>
+      <td>1398.43</td>
+      <td>0</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1594.39</td>
+      <td>3</td>
+      <td>18.30%</td>
+      <td>56.80%</td>
+      <td>24.89%</td>
+      <td>-22.18</td>
+    </tr>
+    <tr>
+      <td>2020-08-08</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1594.39</td>
+      <td>3</td>
+      <td>@ Miami FC</td>
+      <td>1398.43</td>
+      <td>0</td>
+      <td>56.80%</td>
+      <td>18.30%</td>
+      <td>24.89%</td>
+      <td>22.18</td>
+    </tr>
+    <tr>
+      <td>2020-08-08</td>
+      <td>North Carolina FC</td>
+      <td>1536.22</td>
+      <td>1</td>
+      <td>@ Memphis 901</td>
+      <td>1438.73</td>
+      <td>0</td>
+      <td>45.43%</td>
+      <td>28.62%</td>
+      <td>25.95%</td>
+      <td>18.55</td>
+    </tr>
+    <tr>
+      <td>2020-08-08</td>
+      <td>Memphis 901</td>
+      <td>1438.73</td>
+      <td>0</td>
+      <td>North Carolina FC</td>
+      <td>1536.22</td>
+      <td>1</td>
+      <td>28.62%</td>
+      <td>45.43%</td>
+      <td>25.95%</td>
+      <td>-18.54</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Tacoma Defiance</td>
+      <td>1484.92</td>
+      <td>1</td>
+      <td>@ Reno 1868 FC</td>
+      <td>1591.73</td>
+      <td>2</td>
+      <td>19.90%</td>
+      <td>54.95%</td>
+      <td>25.15%</td>
+      <td>-13.77</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>El Paso Locomotive</td>
+      <td>1489.55</td>
+      <td>4</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1419.63</td>
+      <td>2</td>
+      <td>50.83%</td>
+      <td>23.58%</td>
+      <td>25.59%</td>
+      <td>22.46</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1419.63</td>
+      <td>2</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1489.55</td>
+      <td>4</td>
+      <td>23.58%</td>
+      <td>50.83%</td>
+      <td>25.59%</td>
+      <td>-22.46</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1398.98</td>
+      <td>1</td>
+      <td>@ Austin Bold</td>
+      <td>1447.99</td>
+      <td>4</td>
+      <td>25.90%</td>
+      <td>48.32%</td>
+      <td>25.79%</td>
+      <td>-29.69</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Atlanta United II</td>
+      <td>1412.43</td>
+      <td>0</td>
+      <td>@ Birmingham Legion</td>
+      <td>1546.29</td>
+      <td>1</td>
+      <td>17.53%</td>
+      <td>57.72%</td>
+      <td>24.75%</td>
+      <td>-12.33</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>San Antonio FC</td>
+      <td>1579.21</td>
+      <td>3</td>
+      <td>@ OKC Energy FC</td>
+      <td>1447.10</td>
+      <td>0</td>
+      <td>49.75%</td>
+      <td>24.56%</td>
+      <td>25.68%</td>
+      <td>28.44</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Indy Eleven</td>
+      <td>1601.31</td>
+      <td>1</td>
+      <td>@ Louisville City FC</td>
+      <td>1518.62</td>
+      <td>1</td>
+      <td>43.48%</td>
+      <td>30.49%</td>
+      <td>26.03%</td>
+      <td>-1.51</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>New York RB II</td>
+      <td>1512.71</td>
+      <td>1</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1617.25</td>
+      <td>4</td>
+      <td>20.11%</td>
+      <td>54.71%</td>
+      <td>25.18%</td>
+      <td>-24.06</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Charleston Battery</td>
+      <td>1506.41</td>
+      <td>1</td>
+      <td>@ Charlotte Independence</td>
+      <td>1466.19</td>
+      <td>1</td>
+      <td>37.59%</td>
+      <td>36.27%</td>
+      <td>26.14%</td>
+      <td>-0.15</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>FC Tulsa</td>
+      <td>1467.92</td>
+      <td>2</td>
+      <td>@ Saint Louis FC</td>
+      <td>1530.00</td>
+      <td>0</td>
+      <td>24.43%</td>
+      <td>49.90%</td>
+      <td>25.67%</td>
+      <td>40.57</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Portland Timbers 2</td>
+      <td>1339.37</td>
+      <td>0</td>
+      <td>Sacramento Republic</td>
+      <td>1519.89</td>
+      <td>1</td>
+      <td>19.67%</td>
+      <td>55.21%</td>
+      <td>25.12%</td>
+      <td>-13.63</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Austin Bold</td>
+      <td>1447.99</td>
+      <td>4</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1398.98</td>
+      <td>1</td>
+      <td>48.32%</td>
+      <td>25.90%</td>
+      <td>25.79%</td>
+      <td>29.68</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Saint Louis FC</td>
+      <td>1530.00</td>
+      <td>0</td>
+      <td>FC Tulsa</td>
+      <td>1467.92</td>
+      <td>2</td>
+      <td>49.90%</td>
+      <td>24.43%</td>
+      <td>25.67%</td>
+      <td>-40.56</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>New Mexico United</td>
+      <td>1562.01</td>
+      <td>2</td>
+      <td>Phoenix Rising</td>
+      <td>1651.65</td>
+      <td>5</td>
+      <td>29.60%</td>
+      <td>44.40%</td>
+      <td>26.00%</td>
+      <td>-32.98</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Reno 1868 FC</td>
+      <td>1591.73</td>
+      <td>2</td>
+      <td>Tacoma Defiance</td>
+      <td>1484.92</td>
+      <td>1</td>
+      <td>54.95%</td>
+      <td>19.90%</td>
+      <td>25.15%</td>
+      <td>13.77</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Phoenix Rising</td>
+      <td>1651.65</td>
+      <td>5</td>
+      <td>@ New Mexico United</td>
+      <td>1562.01</td>
+      <td>2</td>
+      <td>44.40%</td>
+      <td>29.60%</td>
+      <td>26.00%</td>
+      <td>32.98</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Charlotte Independence</td>
+      <td>1466.19</td>
+      <td>1</td>
+      <td>Charleston Battery</td>
+      <td>1506.41</td>
+      <td>1</td>
+      <td>36.27%</td>
+      <td>37.59%</td>
+      <td>26.14%</td>
+      <td>0.15</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Sacramento Republic</td>
+      <td>1519.89</td>
+      <td>1</td>
+      <td>@ Portland Timbers 2</td>
+      <td>1339.37</td>
+      <td>0</td>
+      <td>55.21%</td>
+      <td>19.67%</td>
+      <td>25.12%</td>
+      <td>13.63</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Louisville City FC</td>
+      <td>1518.62</td>
+      <td>1</td>
+      <td>Indy Eleven</td>
+      <td>1601.31</td>
+      <td>1</td>
+      <td>30.49%</td>
+      <td>43.48%</td>
+      <td>26.03%</td>
+      <td>1.52</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1617.25</td>
+      <td>4</td>
+      <td>New York RB II</td>
+      <td>1512.71</td>
+      <td>1</td>
+      <td>54.71%</td>
+      <td>20.11%</td>
+      <td>25.18%</td>
+      <td>24.07</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>Birmingham Legion</td>
+      <td>1546.29</td>
+      <td>1</td>
+      <td>Atlanta United II</td>
+      <td>1412.43</td>
+      <td>0</td>
+      <td>57.72%</td>
+      <td>17.53%</td>
+      <td>24.75%</td>
+      <td>12.32</td>
+    </tr>
+    <tr>
+      <td>2020-08-09</td>
+      <td>OKC Energy FC</td>
+      <td>1447.10</td>
+      <td>0</td>
+      <td>San Antonio FC</td>
+      <td>1579.21</td>
+      <td>3</td>
+      <td>24.56%</td>
+      <td>49.75%</td>
+      <td>25.68%</td>
+      <td>-28.43</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>New York RB II</td>
+      <td>1488.65</td>
+      <td>1</td>
+      <td>Loudoun United</td>
+      <td>1428.68</td>
+      <td>2</td>
+      <td>49.65%</td>
+      <td>24.66%</td>
+      <td>25.69%</td>
+      <td>-28.56</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>Loudoun United</td>
+      <td>1428.68</td>
+      <td>2</td>
+      <td>@ New York RB II</td>
+      <td>1488.65</td>
+      <td>1</td>
+      <td>24.66%</td>
+      <td>49.65%</td>
+      <td>25.69%</td>
+      <td>28.56</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1616.57</td>
+      <td>2</td>
+      <td>@ Atlanta United II</td>
+      <td>1400.10</td>
+      <td>0</td>
+      <td>58.82%</td>
+      <td>16.62%</td>
+      <td>24.56%</td>
+      <td>16.62</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>San Antonio FC</td>
+      <td>1607.65</td>
+      <td>0</td>
+      <td>@ FC Tulsa</td>
+      <td>1508.49</td>
+      <td>0</td>
+      <td>45.65%</td>
+      <td>28.41%</td>
+      <td>25.94%</td>
+      <td>-2.04</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>Orange County SC</td>
+      <td>1569.62</td>
+      <td>2</td>
+      <td>@ San Diego Loyal</td>
+      <td>1498.10</td>
+      <td>0</td>
+      <td>41.97%</td>
+      <td>31.95%</td>
+      <td>26.08%</td>
+      <td>28.56</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>Sacramento Republic</td>
+      <td>1533.52</td>
+      <td>1</td>
+      <td>@ Reno 1868 FC</td>
+      <td>1605.50</td>
+      <td>0</td>
+      <td>23.36%</td>
+      <td>51.07%</td>
+      <td>25.57%</td>
+      <td>29.28</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>Birmingham Legion</td>
+      <td>1558.61</td>
+      <td>1</td>
+      <td>@ Charlotte Independence</td>
+      <td>1466.34</td>
+      <td>1</td>
+      <td>44.75%</td>
+      <td>29.27%</td>
+      <td>25.98%</td>
+      <td>-1.82</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>Charlotte Independence</td>
+      <td>1466.34</td>
+      <td>1</td>
+      <td>Birmingham Legion</td>
+      <td>1558.61</td>
+      <td>1</td>
+      <td>29.27%</td>
+      <td>44.75%</td>
+      <td>25.98%</td>
+      <td>1.82</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>Atlanta United II</td>
+      <td>1400.10</td>
+      <td>0</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1616.57</td>
+      <td>2</td>
+      <td>16.62%</td>
+      <td>58.82%</td>
+      <td>24.56%</td>
+      <td>-16.62</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>FC Tulsa</td>
+      <td>1508.49</td>
+      <td>0</td>
+      <td>San Antonio FC</td>
+      <td>1607.65</td>
+      <td>0</td>
+      <td>28.41%</td>
+      <td>45.65%</td>
+      <td>25.94%</td>
+      <td>2.03</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>San Diego Loyal</td>
+      <td>1498.10</td>
+      <td>0</td>
+      <td>Orange County SC</td>
+      <td>1569.62</td>
+      <td>2</td>
+      <td>31.95%</td>
+      <td>41.97%</td>
+      <td>26.08%</td>
+      <td>-28.56</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>Reno 1868 FC</td>
+      <td>1605.50</td>
+      <td>0</td>
+      <td>Sacramento Republic</td>
+      <td>1533.52</td>
+      <td>1</td>
+      <td>51.07%</td>
+      <td>23.36%</td>
+      <td>25.57%</td>
+      <td>-29.27</td>
+    </tr>
+    <tr>
+      <td>2020-08-15</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1397.17</td>
+      <td>0</td>
+      <td>New Mexico United</td>
+      <td>1529.03</td>
+      <td>1</td>
+      <td>24.59%</td>
+      <td>49.73%</td>
+      <td>25.69%</td>
+      <td>-16.43</td>
+    </tr>
+    <tr>
+      <td>2020-08-15</td>
+      <td>New Mexico United</td>
+      <td>1529.03</td>
+      <td>1</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1397.17</td>
+      <td>0</td>
+      <td>49.73%</td>
+      <td>24.59%</td>
+      <td>25.69%</td>
+      <td>16.43</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Birmingham Legion</td>
+      <td>1556.79</td>
+      <td>2</td>
+      <td>@ North Carolina FC</td>
+      <td>1554.77</td>
+      <td>0</td>
+      <td>32.26%</td>
+      <td>41.66%</td>
+      <td>26.09%</td>
+      <td>34.91</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1641.32</td>
+      <td>0</td>
+      <td>@ Indy Eleven</td>
+      <td>1599.80</td>
+      <td>1</td>
+      <td>37.77%</td>
+      <td>36.09%</td>
+      <td>26.14%</td>
+      <td>-22.90</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>New York RB II</td>
+      <td>1460.09</td>
+      <td>1</td>
+      <td>@ Hartford Athletic</td>
+      <td>1528.16</td>
+      <td>2</td>
+      <td>23.77%</td>
+      <td>50.61%</td>
+      <td>25.61%</td>
+      <td>-15.99</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Atlanta United II</td>
+      <td>1383.48</td>
+      <td>2</td>
+      <td>@ Charleston Battery</td>
+      <td>1506.26</td>
+      <td>3</td>
+      <td>18.47%</td>
+      <td>56.61%</td>
+      <td>24.92%</td>
+      <td>-12.90</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Memphis 901</td>
+      <td>1420.19</td>
+      <td>2</td>
+      <td>@ Charlotte Independence</td>
+      <td>1468.16</td>
+      <td>3</td>
+      <td>26.02%</td>
+      <td>48.19%</td>
+      <td>25.80%</td>
+      <td>-17.20</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Loudoun United</td>
+      <td>1457.24</td>
+      <td>0</td>
+      <td>@ Louisville City FC</td>
+      <td>1520.14</td>
+      <td>2</td>
+      <td>24.34%</td>
+      <td>50.00%</td>
+      <td>25.66%</td>
+      <td>-23.05</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1369.29</td>
+      <td>0</td>
+      <td>@ OKC Energy FC</td>
+      <td>1418.67</td>
+      <td>0</td>
+      <td>25.86%</td>
+      <td>48.36%</td>
+      <td>25.79%</td>
+      <td>2.71</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1478.47</td>
+      <td>1</td>
+      <td>@ Saint Louis FC</td>
+      <td>1489.44</td>
+      <td>3</td>
+      <td>30.55%</td>
+      <td>43.42%</td>
+      <td>26.03%</td>
+      <td>-27.60</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Austin Bold</td>
+      <td>1477.67</td>
+      <td>1</td>
+      <td>@ San Antonio FC</td>
+      <td>1605.61</td>
+      <td>1</td>
+      <td>18.03%</td>
+      <td>57.13%</td>
+      <td>24.84%</td>
+      <td>4.94</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1435.58</td>
+      <td>0</td>
+      <td>@ Orange County SC</td>
+      <td>1598.18</td>
+      <td>1</td>
+      <td>15.31%</td>
+      <td>60.44%</td>
+      <td>24.26%</td>
+      <td>-10.91</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Real Monarchs SLC</td>
+      <td>1535.61</td>
+      <td>0</td>
+      <td>El Paso Locomotive</td>
+      <td>1512.01</td>
+      <td>1</td>
+      <td>45.09%</td>
+      <td>28.94%</td>
+      <td>25.97%</td>
+      <td>-26.32</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>San Diego Loyal</td>
+      <td>1469.54</td>
+      <td>0</td>
+      <td>@ Phoenix Rising</td>
+      <td>1684.63</td>
+      <td>2</td>
+      <td>11.94%</td>
+      <td>64.87%</td>
+      <td>23.19%</td>
+      <td>-12.17</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Orange County SC</td>
+      <td>1598.18</td>
+      <td>1</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1435.58</td>
+      <td>0</td>
+      <td>60.44%</td>
+      <td>15.31%</td>
+      <td>24.26%</td>
+      <td>10.91</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>San Antonio FC</td>
+      <td>1605.61</td>
+      <td>1</td>
+      <td>Austin Bold</td>
+      <td>1477.67</td>
+      <td>1</td>
+      <td>57.13%</td>
+      <td>18.03%</td>
+      <td>24.84%</td>
+      <td>-4.94</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Saint Louis FC</td>
+      <td>1489.44</td>
+      <td>3</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1478.47</td>
+      <td>1</td>
+      <td>43.42%</td>
+      <td>30.55%</td>
+      <td>26.03%</td>
+      <td>27.59</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>OKC Energy FC</td>
+      <td>1418.67</td>
+      <td>0</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1369.29</td>
+      <td>0</td>
+      <td>48.36%</td>
+      <td>25.86%</td>
+      <td>25.79%</td>
+      <td>-2.71</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Louisville City FC</td>
+      <td>1520.14</td>
+      <td>2</td>
+      <td>Loudoun United</td>
+      <td>1457.24</td>
+      <td>0</td>
+      <td>50.00%</td>
+      <td>24.34%</td>
+      <td>25.66%</td>
+      <td>23.04</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Charleston Battery</td>
+      <td>1506.26</td>
+      <td>3</td>
+      <td>Atlanta United II</td>
+      <td>1383.48</td>
+      <td>2</td>
+      <td>56.61%</td>
+      <td>18.47%</td>
+      <td>24.92%</td>
+      <td>12.91</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>El Paso Locomotive</td>
+      <td>1512.01</td>
+      <td>1</td>
+      <td>@ Real Monarchs SLC</td>
+      <td>1535.61</td>
+      <td>0</td>
+      <td>28.94%</td>
+      <td>45.09%</td>
+      <td>25.97%</td>
+      <td>26.31</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>North Carolina FC</td>
+      <td>1554.77</td>
+      <td>0</td>
+      <td>Birmingham Legion</td>
+      <td>1556.79</td>
+      <td>2</td>
+      <td>41.66%</td>
+      <td>32.26%</td>
+      <td>26.09%</td>
+      <td>-34.91</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Hartford Athletic</td>
+      <td>1528.16</td>
+      <td>2</td>
+      <td>New York RB II</td>
+      <td>1460.09</td>
+      <td>1</td>
+      <td>50.61%</td>
+      <td>23.77%</td>
+      <td>25.61%</td>
+      <td>15.99</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Charlotte Independence</td>
+      <td>1468.16</td>
+      <td>3</td>
+      <td>Memphis 901</td>
+      <td>1420.19</td>
+      <td>2</td>
+      <td>48.19%</td>
+      <td>26.02%</td>
+      <td>25.80%</td>
+      <td>17.20</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Reno 1868 FC</td>
+      <td>1576.23</td>
+      <td>5</td>
+      <td>Portland Timbers 2</td>
+      <td>1325.74</td>
+      <td>2</td>
+      <td>67.54%</td>
+      <td>10.09%</td>
+      <td>22.36%</td>
+      <td>12.59</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Sacramento Republic</td>
+      <td>1562.80</td>
+      <td>3</td>
+      <td>Tacoma Defiance</td>
+      <td>1471.15</td>
+      <td>1</td>
+      <td>53.31%</td>
+      <td>21.35%</td>
+      <td>25.35%</td>
+      <td>20.67</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Phoenix Rising</td>
+      <td>1684.63</td>
+      <td>2</td>
+      <td>San Diego Loyal</td>
+      <td>1469.54</td>
+      <td>0</td>
+      <td>64.87%</td>
+      <td>11.94%</td>
+      <td>23.19%</td>
+      <td>12.17</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Portland Timbers 2</td>
+      <td>1325.74</td>
+      <td>2</td>
+      <td>@ Reno 1868 FC</td>
+      <td>1576.23</td>
+      <td>5</td>
+      <td>10.09%</td>
+      <td>67.54%</td>
+      <td>22.36%</td>
+      <td>-12.60</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Indy Eleven</td>
+      <td>1599.80</td>
+      <td>1</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1641.32</td>
+      <td>0</td>
+      <td>36.09%</td>
+      <td>37.77%</td>
+      <td>26.14%</td>
+      <td>22.90</td>
+    </tr>
+    <tr>
+      <td>2020-08-16</td>
+      <td>Tacoma Defiance</td>
+      <td>1471.15</td>
+      <td>1</td>
+      <td>@ Sacramento Republic</td>
+      <td>1562.80</td>
+      <td>3</td>
+      <td>21.35%</td>
+      <td>53.31%</td>
+      <td>25.35%</td>
+      <td>-20.67</td>
+    </tr>
+    <tr>
+      <td>2020-08-17</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1633.19</td>
+      <td>1</td>
+      <td>Miami FC</td>
+      <td>1376.25</td>
+      <td>1</td>
+      <td>68.00%</td>
+      <td>9.79%</td>
+      <td>22.21%</td>
+      <td>-7.73</td>
+    </tr>
+    <tr>
+      <td>2020-08-17</td>
+      <td>Miami FC</td>
+      <td>1376.25</td>
+      <td>1</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1633.19</td>
+      <td>1</td>
+      <td>9.79%</td>
+      <td>68.00%</td>
+      <td>22.21%</td>
+      <td>7.73</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Phoenix Rising</td>
+      <td>1696.80</td>
+      <td>4</td>
+      <td>@ Los Angeles Galaxy II</td>
+      <td>1568.26</td>
+      <td>1</td>
+      <td>49.32%</td>
+      <td>24.96%</td>
+      <td>25.72%</td>
+      <td>28.81</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1568.26</td>
+      <td>1</td>
+      <td>Phoenix Rising</td>
+      <td>1696.80</td>
+      <td>4</td>
+      <td>24.96%</td>
+      <td>49.32%</td>
+      <td>25.72%</td>
+      <td>-28.81</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Charleston Battery</td>
+      <td>1519.17</td>
+      <td>3</td>
+      <td>@ North Carolina FC</td>
+      <td>1519.86</td>
+      <td>0</td>
+      <td>31.90%</td>
+      <td>42.03%</td>
+      <td>26.08%</td>
+      <td>43.06</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>San Antonio FC</td>
+      <td>1600.67</td>
+      <td>4</td>
+      <td>OKC Energy FC</td>
+      <td>1415.96</td>
+      <td>0</td>
+      <td>62.38%</td>
+      <td>13.79%</td>
+      <td>23.83%</td>
+      <td>19.77</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Real Monarchs SLC</td>
+      <td>1509.29</td>
+      <td>0</td>
+      <td>New Mexico United</td>
+      <td>1545.46</td>
+      <td>2</td>
+      <td>36.85%</td>
+      <td>37.01%</td>
+      <td>26.14%</td>
+      <td>-31.79</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1424.67</td>
+      <td>3</td>
+      <td>Tacoma Defiance</td>
+      <td>1450.48</td>
+      <td>1</td>
+      <td>38.33%</td>
+      <td>35.53%</td>
+      <td>26.14%</td>
+      <td>30.94</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1618.42</td>
+      <td>2</td>
+      <td>@ Loudoun United</td>
+      <td>1434.19</td>
+      <td>0</td>
+      <td>55.60%</td>
+      <td>19.34%</td>
+      <td>25.06%</td>
+      <td>19.00</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Miami FC</td>
+      <td>1383.98</td>
+      <td>2</td>
+      <td>Atlanta United II</td>
+      <td>1370.58</td>
+      <td>2</td>
+      <td>43.74%</td>
+      <td>30.23%</td>
+      <td>26.02%</td>
+      <td>-1.58</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>North Carolina FC</td>
+      <td>1519.86</td>
+      <td>0</td>
+      <td>Charleston Battery</td>
+      <td>1519.17</td>
+      <td>3</td>
+      <td>42.03%</td>
+      <td>31.90%</td>
+      <td>26.08%</td>
+      <td>-43.06</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>FC Tulsa</td>
+      <td>1510.52</td>
+      <td>2</td>
+      <td>Austin Bold</td>
+      <td>1482.61</td>
+      <td>2</td>
+      <td>45.65%</td>
+      <td>28.41%</td>
+      <td>25.94%</td>
+      <td>-2.03</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Loudoun United</td>
+      <td>1434.19</td>
+      <td>0</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1618.42</td>
+      <td>2</td>
+      <td>19.34%</td>
+      <td>55.60%</td>
+      <td>25.06%</td>
+      <td>-19.00</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Louisville City FC</td>
+      <td>1543.18</td>
+      <td>4</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1450.87</td>
+      <td>1</td>
+      <td>53.38%</td>
+      <td>21.28%</td>
+      <td>25.34%</td>
+      <td>25.26</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Atlanta United II</td>
+      <td>1370.58</td>
+      <td>2</td>
+      <td>@ Miami FC</td>
+      <td>1383.98</td>
+      <td>2</td>
+      <td>30.23%</td>
+      <td>43.74%</td>
+      <td>26.02%</td>
+      <td>1.57</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1450.87</td>
+      <td>1</td>
+      <td>@ Louisville City FC</td>
+      <td>1543.18</td>
+      <td>4</td>
+      <td>21.28%</td>
+      <td>53.38%</td>
+      <td>25.34%</td>
+      <td>-25.25</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Austin Bold</td>
+      <td>1482.61</td>
+      <td>2</td>
+      <td>@ FC Tulsa</td>
+      <td>1510.52</td>
+      <td>2</td>
+      <td>28.41%</td>
+      <td>45.65%</td>
+      <td>25.94%</td>
+      <td>2.03</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>Tacoma Defiance</td>
+      <td>1450.48</td>
+      <td>1</td>
+      <td>@ Las Vegas Lights FC</td>
+      <td>1424.67</td>
+      <td>3</td>
+      <td>35.53%</td>
+      <td>38.33%</td>
+      <td>26.14%</td>
+      <td>-30.94</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>New Mexico United</td>
+      <td>1545.46</td>
+      <td>2</td>
+      <td>@ Real Monarchs SLC</td>
+      <td>1509.29</td>
+      <td>0</td>
+      <td>37.01%</td>
+      <td>36.85%</td>
+      <td>26.14%</td>
+      <td>31.80</td>
+    </tr>
+    <tr>
+      <td>2020-08-20</td>
+      <td>OKC Energy FC</td>
+      <td>1415.96</td>
+      <td>0</td>
+      <td>@ San Antonio FC</td>
+      <td>1600.67</td>
+      <td>4</td>
+      <td>13.79%</td>
+      <td>62.38%</td>
+      <td>23.83%</td>
+      <td>-19.77</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Atlanta United II</td>
+      <td>1372.15</td>
+      <td>1</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1625.46</td>
+      <td>2</td>
+      <td>9.96%</td>
+      <td>67.74%</td>
+      <td>22.29%</td>
+      <td>-7.17</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Sacramento Republic</td>
+      <td>1583.47</td>
+      <td>2</td>
+      <td>Portland Timbers 2</td>
+      <td>1313.14</td>
+      <td>1</td>
+      <td>68.94%</td>
+      <td>9.19%</td>
+      <td>21.87%</td>
+      <td>6.60</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1455.61</td>
+      <td>3</td>
+      <td>Phoenix Rising</td>
+      <td>1725.61</td>
+      <td>3</td>
+      <td>12.90%</td>
+      <td>63.56%</td>
+      <td>23.54%</td>
+      <td>6.62</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>San Diego Loyal</td>
+      <td>1457.37</td>
+      <td>1</td>
+      <td>Reno 1868 FC</td>
+      <td>1588.82</td>
+      <td>3</td>
+      <td>24.63%</td>
+      <td>49.68%</td>
+      <td>25.69%</td>
+      <td>-23.27</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Real Monarchs SLC</td>
+      <td>1477.50</td>
+      <td>0</td>
+      <td>New Mexico United</td>
+      <td>1577.26</td>
+      <td>2</td>
+      <td>28.34%</td>
+      <td>45.72%</td>
+      <td>25.94%</td>
+      <td>-26.03</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>San Antonio FC</td>
+      <td>1620.44</td>
+      <td>2</td>
+      <td>FC Tulsa</td>
+      <td>1508.49</td>
+      <td>0</td>
+      <td>55.49%</td>
+      <td>19.43%</td>
+      <td>25.08%</td>
+      <td>19.08</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Saint Louis FC</td>
+      <td>1517.03</td>
+      <td>2</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1637.42</td>
+      <td>2</td>
+      <td>18.68%</td>
+      <td>56.36%</td>
+      <td>24.96%</td>
+      <td>4.74</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1372.00</td>
+      <td>2</td>
+      <td>Austin Bold</td>
+      <td>1484.64</td>
+      <td>3</td>
+      <td>26.78%</td>
+      <td>47.37%</td>
+      <td>25.85%</td>
+      <td>-17.61</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1425.62</td>
+      <td>3</td>
+      <td>OKC Energy FC</td>
+      <td>1396.19</td>
+      <td>0</td>
+      <td>45.84%</td>
+      <td>28.22%</td>
+      <td>25.93%</td>
+      <td>31.78</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1380.74</td>
+      <td>0</td>
+      <td>El Paso Locomotive</td>
+      <td>1538.32</td>
+      <td>0</td>
+      <td>21.88%</td>
+      <td>52.71%</td>
+      <td>25.41%</td>
+      <td>3.80</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1625.46</td>
+      <td>2</td>
+      <td>Atlanta United II</td>
+      <td>1372.15</td>
+      <td>1</td>
+      <td>67.74%</td>
+      <td>9.96%</td>
+      <td>22.29%</td>
+      <td>7.17</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Birmingham Legion</td>
+      <td>1591.70</td>
+      <td>2</td>
+      <td>Memphis 901</td>
+      <td>1402.99</td>
+      <td>2</td>
+      <td>62.72%</td>
+      <td>13.53%</td>
+      <td>23.75%</td>
+      <td>-6.40</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1637.42</td>
+      <td>2</td>
+      <td>Saint Louis FC</td>
+      <td>1517.03</td>
+      <td>2</td>
+      <td>56.36%</td>
+      <td>18.68%</td>
+      <td>24.96%</td>
+      <td>-4.74</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1539.45</td>
+      <td>1</td>
+      <td>Orange County SC</td>
+      <td>1609.09</td>
+      <td>2</td>
+      <td>32.20%</td>
+      <td>41.71%</td>
+      <td>26.09%</td>
+      <td>-20.32</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Memphis 901</td>
+      <td>1402.99</td>
+      <td>2</td>
+      <td>@ Birmingham Legion</td>
+      <td>1591.70</td>
+      <td>2</td>
+      <td>13.53%</td>
+      <td>62.72%</td>
+      <td>23.75%</td>
+      <td>6.40</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>El Paso Locomotive</td>
+      <td>1538.32</td>
+      <td>0</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1380.74</td>
+      <td>0</td>
+      <td>52.71%</td>
+      <td>21.88%</td>
+      <td>25.41%</td>
+      <td>-3.79</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Portland Timbers 2</td>
+      <td>1313.14</td>
+      <td>1</td>
+      <td>@ Sacramento Republic</td>
+      <td>1583.47</td>
+      <td>2</td>
+      <td>9.19%</td>
+      <td>68.94%</td>
+      <td>21.87%</td>
+      <td>-6.60</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>OKC Energy FC</td>
+      <td>1396.19</td>
+      <td>0</td>
+      <td>@ Sporting Kansas City 2</td>
+      <td>1425.62</td>
+      <td>3</td>
+      <td>28.22%</td>
+      <td>45.84%</td>
+      <td>25.93%</td>
+      <td>-31.78</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Austin Bold</td>
+      <td>1484.64</td>
+      <td>3</td>
+      <td>@ Rio Grande Valley FC</td>
+      <td>1372.00</td>
+      <td>2</td>
+      <td>47.37%</td>
+      <td>26.78%</td>
+      <td>25.85%</td>
+      <td>17.61</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>FC Tulsa</td>
+      <td>1508.49</td>
+      <td>0</td>
+      <td>@ San Antonio FC</td>
+      <td>1620.44</td>
+      <td>2</td>
+      <td>19.43%</td>
+      <td>55.49%</td>
+      <td>25.08%</td>
+      <td>-19.08</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Orange County SC</td>
+      <td>1609.09</td>
+      <td>2</td>
+      <td>@ Los Angeles Galaxy II</td>
+      <td>1539.45</td>
+      <td>1</td>
+      <td>41.71%</td>
+      <td>32.20%</td>
+      <td>26.09%</td>
+      <td>20.31</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>New Mexico United</td>
+      <td>1577.26</td>
+      <td>2</td>
+      <td>@ Real Monarchs SLC</td>
+      <td>1477.50</td>
+      <td>0</td>
+      <td>45.72%</td>
+      <td>28.34%</td>
+      <td>25.94%</td>
+      <td>26.03</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Reno 1868 FC</td>
+      <td>1588.82</td>
+      <td>3</td>
+      <td>@ San Diego Loyal</td>
+      <td>1457.37</td>
+      <td>1</td>
+      <td>49.68%</td>
+      <td>24.63%</td>
+      <td>25.69%</td>
+      <td>23.28</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Phoenix Rising</td>
+      <td>1725.61</td>
+      <td>3</td>
+      <td>@ Las Vegas Lights FC</td>
+      <td>1455.61</td>
+      <td>3</td>
+      <td>63.56%</td>
+      <td>12.90%</td>
+      <td>23.54%</td>
+      <td>-6.62</td>
+    </tr>
+    <tr>
+      <td>2020-08-24</td>
+      <td>Hartford Athletic</td>
+      <td>1544.15</td>
+      <td>2</td>
+      <td>Loudoun United</td>
+      <td>1415.19</td>
+      <td>2</td>
+      <td>57.23%</td>
+      <td>17.94%</td>
+      <td>24.83%</td>
+      <td>-4.97</td>
+    </tr>
+    <tr>
+      <td>2020-08-24</td>
+      <td>Charlotte Independence</td>
+      <td>1485.36</td>
+      <td>1</td>
+      <td>@ Miami FC</td>
+      <td>1382.40</td>
+      <td>2</td>
+      <td>46.14%</td>
+      <td>27.95%</td>
+      <td>25.92%</td>
+      <td>-26.83</td>
+    </tr>
+    <tr>
+      <td>2020-08-24</td>
+      <td>Loudoun United</td>
+      <td>1415.19</td>
+      <td>2</td>
+      <td>@ Hartford Athletic</td>
+      <td>1544.15</td>
+      <td>2</td>
+      <td>17.94%</td>
+      <td>57.23%</td>
+      <td>24.83%</td>
+      <td>4.97</td>
+    </tr>
+    <tr>
+      <td>2020-08-24</td>
+      <td>Miami FC</td>
+      <td>1382.40</td>
+      <td>2</td>
+      <td>Charlotte Independence</td>
+      <td>1485.36</td>
+      <td>1</td>
+      <td>27.95%</td>
+      <td>46.14%</td>
+      <td>25.92%</td>
+      <td>26.83</td>
+    </tr>
+    <tr>
+      <td>2020-08-26</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1462.23</td>
+      <td>3</td>
+      <td>Orange County SC</td>
+      <td>1629.40</td>
+      <td>1</td>
+      <td>20.93%</td>
+      <td>53.77%</td>
+      <td>25.29%</td>
+      <td>43.35</td>
+    </tr>
+    <tr>
+      <td>2020-08-26</td>
+      <td>Orange County SC</td>
+      <td>1629.40</td>
+      <td>1</td>
+      <td>@ Las Vegas Lights FC</td>
+      <td>1462.23</td>
+      <td>3</td>
+      <td>53.77%</td>
+      <td>20.93%</td>
+      <td>25.29%</td>
+      <td>-43.35</td>
+    </tr>
+    <tr>
+      <td>2020-08-27</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1384.54</td>
+      <td>4</td>
+      <td>Austin Bold</td>
+      <td>1502.25</td>
+      <td>4</td>
+      <td>26.19%</td>
+      <td>48.00%</td>
+      <td>25.81%</td>
+      <td>2.61</td>
+    </tr>
+    <tr>
+      <td>2020-08-27</td>
+      <td>Louisville City FC</td>
+      <td>1568.44</td>
+      <td>1</td>
+      <td>Indy Eleven</td>
+      <td>1622.70</td>
+      <td>0</td>
+      <td>34.30%</td>
+      <td>39.58%</td>
+      <td>26.13%</td>
+      <td>23.72</td>
+    </tr>
+    <tr>
+      <td>2020-08-27</td>
+      <td>Portland Timbers 2</td>
+      <td>1306.54</td>
+      <td>2</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1519.13</td>
+      <td>3</td>
+      <td>16.93%</td>
+      <td>58.44%</td>
+      <td>24.63%</td>
+      <td>-11.95</td>
+    </tr>
+    <tr>
+      <td>2020-08-27</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1519.13</td>
+      <td>3</td>
+      <td>@ Portland Timbers 2</td>
+      <td>1306.54</td>
+      <td>2</td>
+      <td>58.44%</td>
+      <td>16.93%</td>
+      <td>24.63%</td>
+      <td>11.95</td>
+    </tr>
+    <tr>
+      <td>2020-08-27</td>
+      <td>Charlotte Independence</td>
+      <td>1458.53</td>
+      <td>1</td>
+      <td>North Carolina FC</td>
+      <td>1476.80</td>
+      <td>0</td>
+      <td>39.40%</td>
+      <td>34.47%</td>
+      <td>26.13%</td>
+      <td>21.39</td>
+    </tr>
+    <tr>
+      <td>2020-08-27</td>
+      <td>Miami FC</td>
+      <td>1409.23</td>
+      <td>1</td>
+      <td>@ Charleston Battery</td>
+      <td>1562.23</td>
+      <td>3</td>
+      <td>16.02%</td>
+      <td>59.55%</td>
+      <td>24.43%</td>
+      <td>-16.08</td>
+    </tr>
+    <tr>
+      <td>2020-08-27</td>
+      <td>North Carolina FC</td>
+      <td>1476.80</td>
+      <td>0</td>
+      <td>@ Charlotte Independence</td>
+      <td>1458.53</td>
+      <td>1</td>
+      <td>34.47%</td>
+      <td>39.40%</td>
+      <td>26.13%</td>
+      <td>-21.39</td>
+    </tr>
+    <tr>
+      <td>2020-08-27</td>
+      <td>Charleston Battery</td>
+      <td>1562.23</td>
+      <td>3</td>
+      <td>Miami FC</td>
+      <td>1409.23</td>
+      <td>1</td>
+      <td>59.55%</td>
+      <td>16.02%</td>
+      <td>24.43%</td>
+      <td>16.07</td>
+    </tr>
+    <tr>
+      <td>2020-08-27</td>
+      <td>Austin Bold</td>
+      <td>1502.25</td>
+      <td>4</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1384.54</td>
+      <td>4</td>
+      <td>48.00%</td>
+      <td>26.19%</td>
+      <td>25.81%</td>
+      <td>-2.61</td>
+    </tr>
+    <tr>
+      <td>2020-08-27</td>
+      <td>Indy Eleven</td>
+      <td>1622.70</td>
+      <td>0</td>
+      <td>@ Louisville City FC</td>
+      <td>1568.44</td>
+      <td>1</td>
+      <td>39.58%</td>
+      <td>34.30%</td>
+      <td>26.13%</td>
+      <td>-23.73</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Loudoun United</td>
+      <td>1420.16</td>
+      <td>2</td>
+      <td>New York RB II</td>
+      <td>1444.10</td>
+      <td>3</td>
+      <td>38.60%</td>
+      <td>35.27%</td>
+      <td>26.14%</td>
+      <td>-23.27</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1354.39</td>
+      <td>1</td>
+      <td>San Antonio FC</td>
+      <td>1639.52</td>
+      <td>3</td>
+      <td>12.01%</td>
+      <td>64.78%</td>
+      <td>23.22%</td>
+      <td>-12.23</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1632.68</td>
+      <td>3</td>
+      <td>@ Hartford Athletic</td>
+      <td>1539.18</td>
+      <td>0</td>
+      <td>44.91%</td>
+      <td>29.11%</td>
+      <td>25.98%</td>
+      <td>32.56</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>San Antonio FC</td>
+      <td>1639.52</td>
+      <td>3</td>
+      <td>@ Rio Grande Valley FC</td>
+      <td>1354.39</td>
+      <td>1</td>
+      <td>64.78%</td>
+      <td>12.01%</td>
+      <td>23.22%</td>
+      <td>12.23</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>New York RB II</td>
+      <td>1444.10</td>
+      <td>3</td>
+      <td>@ Loudoun United</td>
+      <td>1420.16</td>
+      <td>2</td>
+      <td>35.27%</td>
+      <td>38.60%</td>
+      <td>26.14%</td>
+      <td>23.27</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Hartford Athletic</td>
+      <td>1539.18</td>
+      <td>0</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1632.68</td>
+      <td>3</td>
+      <td>29.11%</td>
+      <td>44.91%</td>
+      <td>25.98%</td>
+      <td>-32.56</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1457.40</td>
+      <td>2</td>
+      <td>@ FC Tulsa</td>
+      <td>1489.41</td>
+      <td>1</td>
+      <td>27.91%</td>
+      <td>46.18%</td>
+      <td>25.92%</td>
+      <td>26.84</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Charlotte Independence</td>
+      <td>1479.92</td>
+      <td>1</td>
+      <td>Birmingham Legion</td>
+      <td>1585.30</td>
+      <td>4</td>
+      <td>27.65%</td>
+      <td>46.45%</td>
+      <td>25.90%</td>
+      <td>-31.27</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Louisville City FC</td>
+      <td>1592.16</td>
+      <td>1</td>
+      <td>@ Saint Louis FC</td>
+      <td>1521.77</td>
+      <td>1</td>
+      <td>41.81%</td>
+      <td>32.10%</td>
+      <td>26.08%</td>
+      <td>-1.12</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Real Monarchs SLC</td>
+      <td>1451.47</td>
+      <td>1</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1534.53</td>
+      <td>2</td>
+      <td>22.21%</td>
+      <td>52.34%</td>
+      <td>25.45%</td>
+      <td>-15.11</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>San Diego Loyal</td>
+      <td>1434.10</td>
+      <td>0</td>
+      <td>@ Orange County SC</td>
+      <td>1586.05</td>
+      <td>0</td>
+      <td>16.10%</td>
+      <td>59.45%</td>
+      <td>24.45%</td>
+      <td>5.55</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Phoenix Rising</td>
+      <td>1718.99</td>
+      <td>1</td>
+      <td>@ Reno 1868 FC</td>
+      <td>1612.10</td>
+      <td>2</td>
+      <td>46.64%</td>
+      <td>27.47%</td>
+      <td>25.89%</td>
+      <td>-27.07</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1505.58</td>
+      <td>3</td>
+      <td>@ Los Angeles Galaxy II</td>
+      <td>1531.08</td>
+      <td>4</td>
+      <td>28.71%</td>
+      <td>45.33%</td>
+      <td>25.96%</td>
+      <td>-18.59</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Austin Bold</td>
+      <td>1499.64</td>
+      <td>1</td>
+      <td>@ OKC Energy FC</td>
+      <td>1364.41</td>
+      <td>1</td>
+      <td>50.13%</td>
+      <td>24.22%</td>
+      <td>25.65%</td>
+      <td>-3.14</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1632.63</td>
+      <td>0</td>
+      <td>@ Charleston Battery</td>
+      <td>1578.30</td>
+      <td>1</td>
+      <td>39.59%</td>
+      <td>34.29%</td>
+      <td>26.13%</td>
+      <td>-23.73</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>New Mexico United</td>
+      <td>1603.29</td>
+      <td>1</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1387.15</td>
+      <td>1</td>
+      <td>58.78%</td>
+      <td>16.65%</td>
+      <td>24.57%</td>
+      <td>-5.38</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Birmingham Legion</td>
+      <td>1585.30</td>
+      <td>4</td>
+      <td>@ Charlotte Independence</td>
+      <td>1479.92</td>
+      <td>1</td>
+      <td>46.45%</td>
+      <td>27.65%</td>
+      <td>25.90%</td>
+      <td>31.27</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Reno 1868 FC</td>
+      <td>1612.10</td>
+      <td>2</td>
+      <td>Phoenix Rising</td>
+      <td>1718.99</td>
+      <td>1</td>
+      <td>27.47%</td>
+      <td>46.64%</td>
+      <td>25.89%</td>
+      <td>27.07</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Orange County SC</td>
+      <td>1586.05</td>
+      <td>0</td>
+      <td>San Diego Loyal</td>
+      <td>1434.10</td>
+      <td>0</td>
+      <td>59.45%</td>
+      <td>16.10%</td>
+      <td>24.45%</td>
+      <td>-5.55</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>El Paso Locomotive</td>
+      <td>1534.53</td>
+      <td>2</td>
+      <td>Real Monarchs SLC</td>
+      <td>1451.47</td>
+      <td>1</td>
+      <td>52.34%</td>
+      <td>22.21%</td>
+      <td>25.45%</td>
+      <td>15.11</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Saint Louis FC</td>
+      <td>1521.77</td>
+      <td>1</td>
+      <td>Louisville City FC</td>
+      <td>1592.16</td>
+      <td>1</td>
+      <td>32.10%</td>
+      <td>41.81%</td>
+      <td>26.08%</td>
+      <td>1.13</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>FC Tulsa</td>
+      <td>1489.41</td>
+      <td>1</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1457.40</td>
+      <td>2</td>
+      <td>46.18%</td>
+      <td>27.91%</td>
+      <td>25.92%</td>
+      <td>-26.84</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1387.15</td>
+      <td>1</td>
+      <td>New Mexico United</td>
+      <td>1603.29</td>
+      <td>1</td>
+      <td>16.65%</td>
+      <td>58.78%</td>
+      <td>24.57%</td>
+      <td>5.37</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Charleston Battery</td>
+      <td>1578.30</td>
+      <td>1</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1632.63</td>
+      <td>0</td>
+      <td>34.29%</td>
+      <td>39.59%</td>
+      <td>26.13%</td>
+      <td>23.72</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>OKC Energy FC</td>
+      <td>1364.41</td>
+      <td>1</td>
+      <td>Austin Bold</td>
+      <td>1499.64</td>
+      <td>1</td>
+      <td>24.22%</td>
+      <td>50.13%</td>
+      <td>25.65%</td>
+      <td>3.15</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1531.08</td>
+      <td>4</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1505.58</td>
+      <td>3</td>
+      <td>45.33%</td>
+      <td>28.71%</td>
+      <td>25.96%</td>
+      <td>18.59</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1665.24</td>
+      <td>3</td>
+      <td>Loudoun United</td>
+      <td>1396.89</td>
+      <td>0</td>
+      <td>68.80%</td>
+      <td>9.28%</td>
+      <td>21.92%</td>
+      <td>11.55</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Sacramento Republic</td>
+      <td>1590.07</td>
+      <td>2</td>
+      <td>@ Portland Timbers 2</td>
+      <td>1294.59</td>
+      <td>1</td>
+      <td>65.59%</td>
+      <td>11.43%</td>
+      <td>22.98%</td>
+      <td>8.24</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Loudoun United</td>
+      <td>1396.89</td>
+      <td>0</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1665.24</td>
+      <td>3</td>
+      <td>9.28%</td>
+      <td>68.80%</td>
+      <td>21.92%</td>
+      <td>-11.55</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Portland Timbers 2</td>
+      <td>1294.59</td>
+      <td>1</td>
+      <td>Sacramento Republic</td>
+      <td>1590.07</td>
+      <td>2</td>
+      <td>11.43%</td>
+      <td>65.59%</td>
+      <td>22.98%</td>
+      <td>-8.24</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Atlanta United II</td>
+      <td>1364.98</td>
+      <td>2</td>
+      <td>@ Philadelphia Union 2</td>
+      <td>1378.59</td>
+      <td>1</td>
+      <td>30.21%</td>
+      <td>43.77%</td>
+      <td>26.02%</td>
+      <td>25.69</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Miami FC</td>
+      <td>1393.15</td>
+      <td>0</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1608.90</td>
+      <td>3</td>
+      <td>11.90%</td>
+      <td>64.93%</td>
+      <td>23.17%</td>
+      <td>-14.85</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1342.16</td>
+      <td>1</td>
+      <td>@ FC Tulsa</td>
+      <td>1462.57</td>
+      <td>2</td>
+      <td>18.68%</td>
+      <td>56.37%</td>
+      <td>24.96%</td>
+      <td>-13.04</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1549.67</td>
+      <td>1</td>
+      <td>@ Orange County SC</td>
+      <td>1580.50</td>
+      <td>2</td>
+      <td>28.05%</td>
+      <td>46.02%</td>
+      <td>25.92%</td>
+      <td>-18.26</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Charlotte Independence</td>
+      <td>1448.65</td>
+      <td>2</td>
+      <td>@ Memphis 901</td>
+      <td>1409.39</td>
+      <td>0</td>
+      <td>37.45%</td>
+      <td>36.41%</td>
+      <td>26.14%</td>
+      <td>31.51</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1486.99</td>
+      <td>1</td>
+      <td>San Diego Loyal</td>
+      <td>1439.65</td>
+      <td>1</td>
+      <td>48.11%</td>
+      <td>26.09%</td>
+      <td>25.80%</td>
+      <td>-2.64</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>North Carolina FC</td>
+      <td>1455.41</td>
+      <td>2</td>
+      <td>@ Birmingham Legion</td>
+      <td>1616.57</td>
+      <td>1</td>
+      <td>15.41%</td>
+      <td>60.30%</td>
+      <td>24.28%</td>
+      <td>34.06</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Orange County SC</td>
+      <td>1580.50</td>
+      <td>2</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1549.67</td>
+      <td>1</td>
+      <td>46.02%</td>
+      <td>28.05%</td>
+      <td>25.92%</td>
+      <td>18.26</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Memphis 901</td>
+      <td>1409.39</td>
+      <td>0</td>
+      <td>Charlotte Independence</td>
+      <td>1448.65</td>
+      <td>2</td>
+      <td>36.41%</td>
+      <td>37.45%</td>
+      <td>26.14%</td>
+      <td>-31.51</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Birmingham Legion</td>
+      <td>1616.57</td>
+      <td>1</td>
+      <td>North Carolina FC</td>
+      <td>1455.41</td>
+      <td>2</td>
+      <td>60.30%</td>
+      <td>15.41%</td>
+      <td>24.28%</td>
+      <td>-34.06</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1608.90</td>
+      <td>3</td>
+      <td>Miami FC</td>
+      <td>1393.15</td>
+      <td>0</td>
+      <td>64.93%</td>
+      <td>11.90%</td>
+      <td>23.17%</td>
+      <td>14.86</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Philadelphia Union 2</td>
+      <td>1378.59</td>
+      <td>1</td>
+      <td>Atlanta United II</td>
+      <td>1364.98</td>
+      <td>2</td>
+      <td>43.77%</td>
+      <td>30.21%</td>
+      <td>26.02%</td>
+      <td>-25.68</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>FC Tulsa</td>
+      <td>1462.57</td>
+      <td>2</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1342.16</td>
+      <td>1</td>
+      <td>56.37%</td>
+      <td>18.68%</td>
+      <td>24.96%</td>
+      <td>13.03</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>San Diego Loyal</td>
+      <td>1439.65</td>
+      <td>1</td>
+      <td>@ Las Vegas Lights FC</td>
+      <td>1486.99</td>
+      <td>1</td>
+      <td>26.09%</td>
+      <td>48.11%</td>
+      <td>25.80%</td>
+      <td>2.64</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>Saint Louis FC</td>
+      <td>1522.90</td>
+      <td>3</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1484.24</td>
+      <td>2</td>
+      <td>47.02%</td>
+      <td>27.11%</td>
+      <td>25.87%</td>
+      <td>17.77</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1676.79</td>
+      <td>3</td>
+      <td>@ New York RB II</td>
+      <td>1467.37</td>
+      <td>0</td>
+      <td>58.14%</td>
+      <td>17.18%</td>
+      <td>24.68%</td>
+      <td>20.97</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>Tacoma Defiance</td>
+      <td>1419.54</td>
+      <td>0</td>
+      <td>@ Real Monarchs SLC</td>
+      <td>1436.36</td>
+      <td>1</td>
+      <td>29.80%</td>
+      <td>44.20%</td>
+      <td>26.01%</td>
+      <td>-19.14</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1484.24</td>
+      <td>2</td>
+      <td>@ Saint Louis FC</td>
+      <td>1522.90</td>
+      <td>3</td>
+      <td>27.11%</td>
+      <td>47.02%</td>
+      <td>25.87%</td>
+      <td>-17.77</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>Real Monarchs SLC</td>
+      <td>1436.36</td>
+      <td>1</td>
+      <td>Tacoma Defiance</td>
+      <td>1419.54</td>
+      <td>0</td>
+      <td>44.20%</td>
+      <td>29.80%</td>
+      <td>26.01%</td>
+      <td>19.14</td>
+    </tr>
+    <tr>
+      <td>2020-09-05</td>
+      <td>New York RB II</td>
+      <td>1467.37</td>
+      <td>0</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1676.79</td>
+      <td>3</td>
+      <td>17.18%</td>
+      <td>58.14%</td>
+      <td>24.68%</td>
+      <td>-20.97</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>New Mexico United</td>
+      <td>1597.91</td>
+      <td>2</td>
+      <td>El Paso Locomotive</td>
+      <td>1549.64</td>
+      <td>3</td>
+      <td>48.22%</td>
+      <td>25.98%</td>
+      <td>25.79%</td>
+      <td>-27.85</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Orange County SC</td>
+      <td>1598.76</td>
+      <td>1</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1531.41</td>
+      <td>2</td>
+      <td>50.53%</td>
+      <td>23.85%</td>
+      <td>25.62%</td>
+      <td>-29.00</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Reno 1868 FC</td>
+      <td>1639.17</td>
+      <td>7</td>
+      <td>Portland Timbers 2</td>
+      <td>1286.35</td>
+      <td>1</td>
+      <td>74.16%</td>
+      <td>6.24%</td>
+      <td>19.61%</td>
+      <td>10.65</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1484.35</td>
+      <td>0</td>
+      <td>Phoenix Rising</td>
+      <td>1691.92</td>
+      <td>2</td>
+      <td>17.33%</td>
+      <td>57.96%</td>
+      <td>24.71%</td>
+      <td>-17.25</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Louisville City FC</td>
+      <td>1591.04</td>
+      <td>3</td>
+      <td>@ Indy Eleven</td>
+      <td>1598.97</td>
+      <td>1</td>
+      <td>30.94%</td>
+      <td>43.01%</td>
+      <td>26.05%</td>
+      <td>35.81</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Austin Bold</td>
+      <td>1496.50</td>
+      <td>1</td>
+      <td>FC Tulsa</td>
+      <td>1475.60</td>
+      <td>1</td>
+      <td>44.73%</td>
+      <td>29.28%</td>
+      <td>25.98%</td>
+      <td>-1.82</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Memphis 901</td>
+      <td>1377.88</td>
+      <td>1</td>
+      <td>Birmingham Legion</td>
+      <td>1582.51</td>
+      <td>1</td>
+      <td>17.57%</td>
+      <td>57.67%</td>
+      <td>24.76%</td>
+      <td>5.08</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>OKC Energy FC</td>
+      <td>1367.56</td>
+      <td>0</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1392.52</td>
+      <td>0</td>
+      <td>28.77%</td>
+      <td>45.27%</td>
+      <td>25.96%</td>
+      <td>1.94</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1392.52</td>
+      <td>0</td>
+      <td>OKC Energy FC</td>
+      <td>1367.56</td>
+      <td>0</td>
+      <td>45.27%</td>
+      <td>28.77%</td>
+      <td>25.96%</td>
+      <td>-1.94</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Miami FC</td>
+      <td>1378.30</td>
+      <td>1</td>
+      <td>Charleston Battery</td>
+      <td>1602.02</td>
+      <td>1</td>
+      <td>16.06%</td>
+      <td>59.50%</td>
+      <td>24.44%</td>
+      <td>5.56</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Indy Eleven</td>
+      <td>1598.97</td>
+      <td>1</td>
+      <td>Louisville City FC</td>
+      <td>1591.04</td>
+      <td>3</td>
+      <td>43.01%</td>
+      <td>30.94%</td>
+      <td>26.05%</td>
+      <td>-35.81</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>North Carolina FC</td>
+      <td>1489.47</td>
+      <td>1</td>
+      <td>@ Charlotte Independence</td>
+      <td>1480.16</td>
+      <td>3</td>
+      <td>33.24%</td>
+      <td>40.65%</td>
+      <td>26.11%</td>
+      <td>-29.44</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Hartford Athletic</td>
+      <td>1506.62</td>
+      <td>2</td>
+      <td>Loudoun United</td>
+      <td>1385.34</td>
+      <td>1</td>
+      <td>56.46%</td>
+      <td>18.60%</td>
+      <td>24.94%</td>
+      <td>12.98</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Loudoun United</td>
+      <td>1385.34</td>
+      <td>1</td>
+      <td>@ Hartford Athletic</td>
+      <td>1506.62</td>
+      <td>2</td>
+      <td>18.60%</td>
+      <td>56.46%</td>
+      <td>24.94%</td>
+      <td>-12.99</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>San Antonio FC</td>
+      <td>1651.75</td>
+      <td>3</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1329.12</td>
+      <td>2</td>
+      <td>72.35%</td>
+      <td>7.18%</td>
+      <td>20.47%</td>
+      <td>5.08</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Charleston Battery</td>
+      <td>1602.02</td>
+      <td>1</td>
+      <td>@ Miami FC</td>
+      <td>1378.30</td>
+      <td>1</td>
+      <td>59.50%</td>
+      <td>16.06%</td>
+      <td>24.44%</td>
+      <td>-5.56</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Birmingham Legion</td>
+      <td>1582.51</td>
+      <td>1</td>
+      <td>@ Memphis 901</td>
+      <td>1377.88</td>
+      <td>1</td>
+      <td>57.67%</td>
+      <td>17.57%</td>
+      <td>24.76%</td>
+      <td>-5.08</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Charlotte Independence</td>
+      <td>1480.16</td>
+      <td>3</td>
+      <td>North Carolina FC</td>
+      <td>1489.47</td>
+      <td>1</td>
+      <td>40.65%</td>
+      <td>33.24%</td>
+      <td>26.11%</td>
+      <td>29.43</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>FC Tulsa</td>
+      <td>1475.60</td>
+      <td>1</td>
+      <td>@ Austin Bold</td>
+      <td>1496.50</td>
+      <td>1</td>
+      <td>29.28%</td>
+      <td>44.73%</td>
+      <td>25.98%</td>
+      <td>1.82</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1329.12</td>
+      <td>2</td>
+      <td>@ San Antonio FC</td>
+      <td>1651.75</td>
+      <td>3</td>
+      <td>7.18%</td>
+      <td>72.35%</td>
+      <td>20.47%</td>
+      <td>-5.08</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>El Paso Locomotive</td>
+      <td>1549.64</td>
+      <td>3</td>
+      <td>@ New Mexico United</td>
+      <td>1597.91</td>
+      <td>2</td>
+      <td>25.98%</td>
+      <td>48.22%</td>
+      <td>25.79%</td>
+      <td>27.85</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1531.41</td>
+      <td>2</td>
+      <td>@ Orange County SC</td>
+      <td>1598.76</td>
+      <td>1</td>
+      <td>23.85%</td>
+      <td>50.53%</td>
+      <td>25.62%</td>
+      <td>29.00</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Portland Timbers 2</td>
+      <td>1286.35</td>
+      <td>1</td>
+      <td>@ Reno 1868 FC</td>
+      <td>1639.17</td>
+      <td>7</td>
+      <td>6.24%</td>
+      <td>74.16%</td>
+      <td>19.61%</td>
+      <td>-10.65</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Phoenix Rising</td>
+      <td>1691.92</td>
+      <td>2</td>
+      <td>@ Las Vegas Lights FC</td>
+      <td>1484.35</td>
+      <td>0</td>
+      <td>57.96%</td>
+      <td>17.33%</td>
+      <td>24.71%</td>
+      <td>17.25</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Philadelphia Union 2</td>
+      <td>1352.91</td>
+      <td>0</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1623.76</td>
+      <td>2</td>
+      <td>9.17%</td>
+      <td>68.98%</td>
+      <td>21.85%</td>
+      <td>-9.32</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1623.76</td>
+      <td>2</td>
+      <td>Philadelphia Union 2</td>
+      <td>1352.91</td>
+      <td>0</td>
+      <td>68.98%</td>
+      <td>9.17%</td>
+      <td>21.85%</td>
+      <td>9.31</td>
+    </tr>
+    <tr>
+      <td>2020-09-09</td>
+      <td>Austin Bold</td>
+      <td>1494.68</td>
+      <td>2</td>
+      <td>FC Tulsa</td>
+      <td>1477.42</td>
+      <td>2</td>
+      <td>44.26%</td>
+      <td>29.74%</td>
+      <td>26.00%</td>
+      <td>-1.70</td>
+    </tr>
+    <tr>
+      <td>2020-09-09</td>
+      <td>New York RB II</td>
+      <td>1446.40</td>
+      <td>6</td>
+      <td>Philadelphia Union 2</td>
+      <td>1343.59</td>
+      <td>0</td>
+      <td>54.52%</td>
+      <td>20.27%</td>
+      <td>25.20%</td>
+      <td>34.27</td>
+    </tr>
+    <tr>
+      <td>2020-09-09</td>
+      <td>Philadelphia Union 2</td>
+      <td>1343.59</td>
+      <td>0</td>
+      <td>@ New York RB II</td>
+      <td>1446.40</td>
+      <td>6</td>
+      <td>20.27%</td>
+      <td>54.52%</td>
+      <td>25.20%</td>
+      <td>-34.26</td>
+    </tr>
+    <tr>
+      <td>2020-09-09</td>
+      <td>FC Tulsa</td>
+      <td>1477.42</td>
+      <td>2</td>
+      <td>@ Austin Bold</td>
+      <td>1494.68</td>
+      <td>2</td>
+      <td>29.74%</td>
+      <td>44.26%</td>
+      <td>26.00%</td>
+      <td>1.70</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1466.47</td>
+      <td>1</td>
+      <td>@ Indy Eleven</td>
+      <td>1563.16</td>
+      <td>2</td>
+      <td>20.86%</td>
+      <td>53.86%</td>
+      <td>25.28%</td>
+      <td>-14.33</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Sacramento Republic</td>
+      <td>1598.31</td>
+      <td>2</td>
+      <td>Orange County SC</td>
+      <td>1569.76</td>
+      <td>1</td>
+      <td>45.73%</td>
+      <td>28.33%</td>
+      <td>25.94%</td>
+      <td>18.41</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Indy Eleven</td>
+      <td>1563.16</td>
+      <td>2</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1466.47</td>
+      <td>1</td>
+      <td>53.86%</td>
+      <td>20.86%</td>
+      <td>25.28%</td>
+      <td>14.33</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Portland Timbers 2</td>
+      <td>1275.70</td>
+      <td>3</td>
+      <td>Tacoma Defiance</td>
+      <td>1400.40</td>
+      <td>0</td>
+      <td>25.39%</td>
+      <td>48.86%</td>
+      <td>25.75%</td>
+      <td>48.78</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1560.41</td>
+      <td>0</td>
+      <td>San Diego Loyal</td>
+      <td>1442.29</td>
+      <td>3</td>
+      <td>56.13%</td>
+      <td>18.88%</td>
+      <td>24.99%</td>
+      <td>-55.21</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Real Monarchs SLC</td>
+      <td>1455.50</td>
+      <td>4</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1390.58</td>
+      <td>1</td>
+      <td>50.24%</td>
+      <td>24.11%</td>
+      <td>25.64%</td>
+      <td>28.02</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Orange County SC</td>
+      <td>1569.76</td>
+      <td>1</td>
+      <td>@ Sacramento Republic</td>
+      <td>1598.31</td>
+      <td>2</td>
+      <td>28.33%</td>
+      <td>45.73%</td>
+      <td>25.94%</td>
+      <td>-18.40</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Tacoma Defiance</td>
+      <td>1400.40</td>
+      <td>0</td>
+      <td>@ Portland Timbers 2</td>
+      <td>1275.70</td>
+      <td>3</td>
+      <td>48.86%</td>
+      <td>25.39%</td>
+      <td>25.75%</td>
+      <td>-48.78</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>San Diego Loyal</td>
+      <td>1442.29</td>
+      <td>3</td>
+      <td>@ Los Angeles Galaxy II</td>
+      <td>1560.41</td>
+      <td>0</td>
+      <td>18.88%</td>
+      <td>56.13%</td>
+      <td>24.99%</td>
+      <td>55.21</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1390.58</td>
+      <td>1</td>
+      <td>@ Real Monarchs SLC</td>
+      <td>1455.50</td>
+      <td>4</td>
+      <td>24.11%</td>
+      <td>50.24%</td>
+      <td>25.64%</td>
+      <td>-28.02</td>
+    </tr>
+    <tr>
+      <td>2020-09-11</td>
+      <td>North Carolina FC</td>
+      <td>1460.03</td>
+      <td>2</td>
+      <td>Memphis 901</td>
+      <td>1382.96</td>
+      <td>3</td>
+      <td>51.66%</td>
+      <td>22.82%</td>
+      <td>25.52%</td>
+      <td>-29.57</td>
+    </tr>
+    <tr>
+      <td>2020-09-11</td>
+      <td>Memphis 901</td>
+      <td>1382.96</td>
+      <td>3</td>
+      <td>@ North Carolina FC</td>
+      <td>1460.03</td>
+      <td>2</td>
+      <td>22.82%</td>
+      <td>51.66%</td>
+      <td>25.52%</td>
+      <td>29.58</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>Charleston Battery</td>
+      <td>1596.46</td>
+      <td>1</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1633.07</td>
+      <td>0</td>
+      <td>36.79%</td>
+      <td>37.07%</td>
+      <td>26.14%</td>
+      <td>22.58</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>Phoenix Rising</td>
+      <td>1709.17</td>
+      <td>5</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1467.10</td>
+      <td>1</td>
+      <td>66.93%</td>
+      <td>10.50%</td>
+      <td>22.57%</td>
+      <td>15.15</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>New Mexico United</td>
+      <td>1570.06</td>
+      <td>2</td>
+      <td>Real Monarchs SLC</td>
+      <td>1483.52</td>
+      <td>0</td>
+      <td>52.74%</td>
+      <td>21.85%</td>
+      <td>25.41%</td>
+      <td>21.09</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>Real Monarchs SLC</td>
+      <td>1483.52</td>
+      <td>0</td>
+      <td>@ New Mexico United</td>
+      <td>1570.06</td>
+      <td>2</td>
+      <td>21.85%</td>
+      <td>52.74%</td>
+      <td>25.41%</td>
+      <td>-21.09</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1467.10</td>
+      <td>1</td>
+      <td>@ Phoenix Rising</td>
+      <td>1709.17</td>
+      <td>5</td>
+      <td>10.50%</td>
+      <td>66.93%</td>
+      <td>22.57%</td>
+      <td>-15.15</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1633.07</td>
+      <td>0</td>
+      <td>@ Charleston Battery</td>
+      <td>1596.46</td>
+      <td>1</td>
+      <td>37.07%</td>
+      <td>36.79%</td>
+      <td>26.14%</td>
+      <td>-22.58</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>El Paso Locomotive</td>
+      <td>1577.49</td>
+      <td>2</td>
+      <td>San Antonio FC</td>
+      <td>1656.83</td>
+      <td>1</td>
+      <td>30.92%</td>
+      <td>43.03%</td>
+      <td>26.05%</td>
+      <td>25.33</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Loudoun United</td>
+      <td>1372.35</td>
+      <td>1</td>
+      <td>Philadelphia Union 2</td>
+      <td>1309.33</td>
+      <td>1</td>
+      <td>50.02%</td>
+      <td>24.32%</td>
+      <td>25.66%</td>
+      <td>-3.11</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1697.76</td>
+      <td>5</td>
+      <td>Hartford Athletic</td>
+      <td>1519.60</td>
+      <td>0</td>
+      <td>61.82%</td>
+      <td>14.22%</td>
+      <td>23.96%</td>
+      <td>22.76</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Atlanta United II</td>
+      <td>1390.67</td>
+      <td>1</td>
+      <td>Miami FC</td>
+      <td>1383.86</td>
+      <td>2</td>
+      <td>42.86%</td>
+      <td>31.09%</td>
+      <td>26.05%</td>
+      <td>-25.26</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Birmingham Legion</td>
+      <td>1577.43</td>
+      <td>1</td>
+      <td>Charlotte Independence</td>
+      <td>1509.59</td>
+      <td>3</td>
+      <td>50.59%</td>
+      <td>23.80%</td>
+      <td>25.61%</td>
+      <td>-41.05</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Louisville City FC</td>
+      <td>1626.85</td>
+      <td>3</td>
+      <td>Saint Louis FC</td>
+      <td>1540.67</td>
+      <td>0</td>
+      <td>52.70%</td>
+      <td>21.89%</td>
+      <td>25.41%</td>
+      <td>25.86</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>FC Tulsa</td>
+      <td>1479.12</td>
+      <td>1</td>
+      <td>OKC Energy FC</td>
+      <td>1369.50</td>
+      <td>1</td>
+      <td>55.25%</td>
+      <td>19.64%</td>
+      <td>25.11%</td>
+      <td>-4.45</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Sacramento Republic</td>
+      <td>1616.72</td>
+      <td>3</td>
+      <td>Reno 1868 FC</td>
+      <td>1649.82</td>
+      <td>3</td>
+      <td>37.29%</td>
+      <td>36.57%</td>
+      <td>26.14%</td>
+      <td>-0.08</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>OKC Energy FC</td>
+      <td>1369.50</td>
+      <td>1</td>
+      <td>@ FC Tulsa</td>
+      <td>1479.12</td>
+      <td>1</td>
+      <td>19.64%</td>
+      <td>55.25%</td>
+      <td>25.11%</td>
+      <td>4.45</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Saint Louis FC</td>
+      <td>1540.67</td>
+      <td>0</td>
+      <td>@ Louisville City FC</td>
+      <td>1626.85</td>
+      <td>3</td>
+      <td>21.89%</td>
+      <td>52.70%</td>
+      <td>25.41%</td>
+      <td>-25.86</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>San Antonio FC</td>
+      <td>1656.83</td>
+      <td>1</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1577.49</td>
+      <td>2</td>
+      <td>43.03%</td>
+      <td>30.92%</td>
+      <td>26.05%</td>
+      <td>-25.33</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Reno 1868 FC</td>
+      <td>1649.82</td>
+      <td>3</td>
+      <td>@ Sacramento Republic</td>
+      <td>1616.72</td>
+      <td>3</td>
+      <td>36.57%</td>
+      <td>37.29%</td>
+      <td>26.14%</td>
+      <td>0.08</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Memphis 901</td>
+      <td>1412.54</td>
+      <td>2</td>
+      <td>@ North Carolina FC</td>
+      <td>1430.46</td>
+      <td>3</td>
+      <td>29.66%</td>
+      <td>44.34%</td>
+      <td>26.00%</td>
+      <td>-19.08</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>North Carolina FC</td>
+      <td>1430.46</td>
+      <td>3</td>
+      <td>Memphis 901</td>
+      <td>1412.54</td>
+      <td>2</td>
+      <td>44.34%</td>
+      <td>29.66%</td>
+      <td>26.00%</td>
+      <td>19.07</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Charlotte Independence</td>
+      <td>1509.59</td>
+      <td>3</td>
+      <td>@ Birmingham Legion</td>
+      <td>1577.43</td>
+      <td>1</td>
+      <td>23.80%</td>
+      <td>50.59%</td>
+      <td>25.61%</td>
+      <td>41.06</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Miami FC</td>
+      <td>1383.86</td>
+      <td>2</td>
+      <td>@ Atlanta United II</td>
+      <td>1390.67</td>
+      <td>1</td>
+      <td>31.09%</td>
+      <td>42.86%</td>
+      <td>26.05%</td>
+      <td>25.25</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Philadelphia Union 2</td>
+      <td>1309.33</td>
+      <td>1</td>
+      <td>@ Loudoun United</td>
+      <td>1372.35</td>
+      <td>1</td>
+      <td>24.32%</td>
+      <td>50.02%</td>
+      <td>25.66%</td>
+      <td>3.11</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Hartford Athletic</td>
+      <td>1519.60</td>
+      <td>0</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1697.76</td>
+      <td>5</td>
+      <td>14.22%</td>
+      <td>61.82%</td>
+      <td>23.96%</td>
+      <td>-22.76</td>
+    </tr>
+    <tr>
+      <td>2020-09-14</td>
+      <td>San Diego Loyal</td>
+      <td>1497.50</td>
+      <td>2</td>
+      <td>Orange County SC</td>
+      <td>1551.36</td>
+      <td>0</td>
+      <td>34.35%</td>
+      <td>39.52%</td>
+      <td>26.13%</td>
+      <td>33.51</td>
+    </tr>
+    <tr>
+      <td>2020-09-14</td>
+      <td>Orange County SC</td>
+      <td>1551.36</td>
+      <td>0</td>
+      <td>@ San Diego Loyal</td>
+      <td>1497.50</td>
+      <td>2</td>
+      <td>39.52%</td>
+      <td>34.35%</td>
+      <td>26.13%</td>
+      <td>-33.51</td>
+    </tr>
+    <tr>
+      <td>2020-09-16</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1505.20</td>
+      <td>3</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1451.95</td>
+      <td>2</td>
+      <td>48.84%</td>
+      <td>25.41%</td>
+      <td>25.75%</td>
+      <td>16.88</td>
+    </tr>
+    <tr>
+      <td>2020-09-16</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1451.95</td>
+      <td>2</td>
+      <td>@ Los Angeles Galaxy II</td>
+      <td>1505.20</td>
+      <td>3</td>
+      <td>25.41%</td>
+      <td>48.84%</td>
+      <td>25.75%</td>
+      <td>-16.88</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>New York RB II</td>
+      <td>1480.67</td>
+      <td>1</td>
+      <td>@ Hartford Athletic</td>
+      <td>1496.84</td>
+      <td>3</td>
+      <td>29.88%</td>
+      <td>44.11%</td>
+      <td>26.01%</td>
+      <td>-27.13</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Louisville City FC</td>
+      <td>1652.71</td>
+      <td>2</td>
+      <td>@ Indy Eleven</td>
+      <td>1577.49</td>
+      <td>0</td>
+      <td>42.47%</td>
+      <td>31.46%</td>
+      <td>26.06%</td>
+      <td>28.23</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Loudoun United</td>
+      <td>1369.24</td>
+      <td>0</td>
+      <td>@ Philadelphia Union 2</td>
+      <td>1312.44</td>
+      <td>4</td>
+      <td>39.93%</td>
+      <td>33.94%</td>
+      <td>26.12%</td>
+      <td>-47.77</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1610.49</td>
+      <td>2</td>
+      <td>@ Atlanta United II</td>
+      <td>1365.41</td>
+      <td>1</td>
+      <td>61.44%</td>
+      <td>14.52%</td>
+      <td>24.04%</td>
+      <td>10.38</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Birmingham Legion</td>
+      <td>1536.38</td>
+      <td>4</td>
+      <td>@ Miami FC</td>
+      <td>1409.11</td>
+      <td>0</td>
+      <td>49.17%</td>
+      <td>25.10%</td>
+      <td>25.73%</td>
+      <td>33.42</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Hartford Athletic</td>
+      <td>1496.84</td>
+      <td>3</td>
+      <td>New York RB II</td>
+      <td>1480.67</td>
+      <td>1</td>
+      <td>44.11%</td>
+      <td>29.88%</td>
+      <td>26.01%</td>
+      <td>27.13</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Austin Bold</td>
+      <td>1492.98</td>
+      <td>2</td>
+      <td>@ San Antonio FC</td>
+      <td>1631.50</td>
+      <td>3</td>
+      <td>17.15%</td>
+      <td>58.17%</td>
+      <td>24.67%</td>
+      <td>-12.09</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Portland Timbers 2</td>
+      <td>1324.48</td>
+      <td>2</td>
+      <td>@ Real Monarchs SLC</td>
+      <td>1462.43</td>
+      <td>1</td>
+      <td>17.20%</td>
+      <td>58.12%</td>
+      <td>24.68%</td>
+      <td>32.91</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Real Monarchs SLC</td>
+      <td>1462.43</td>
+      <td>1</td>
+      <td>Portland Timbers 2</td>
+      <td>1324.48</td>
+      <td>2</td>
+      <td>58.12%</td>
+      <td>17.20%</td>
+      <td>24.68%</td>
+      <td>-32.91</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>San Antonio FC</td>
+      <td>1631.50</td>
+      <td>3</td>
+      <td>Austin Bold</td>
+      <td>1492.98</td>
+      <td>2</td>
+      <td>58.17%</td>
+      <td>17.15%</td>
+      <td>24.67%</td>
+      <td>12.09</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>El Paso Locomotive</td>
+      <td>1602.82</td>
+      <td>2</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1362.56</td>
+      <td>1</td>
+      <td>66.79%</td>
+      <td>10.59%</td>
+      <td>22.61%</td>
+      <td>7.64</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Miami FC</td>
+      <td>1409.11</td>
+      <td>0</td>
+      <td>Birmingham Legion</td>
+      <td>1536.38</td>
+      <td>4</td>
+      <td>25.10%</td>
+      <td>49.17%</td>
+      <td>25.73%</td>
+      <td>-33.42</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Philadelphia Union 2</td>
+      <td>1312.44</td>
+      <td>4</td>
+      <td>Loudoun United</td>
+      <td>1369.24</td>
+      <td>0</td>
+      <td>33.94%</td>
+      <td>39.93%</td>
+      <td>26.12%</td>
+      <td>47.77</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Atlanta United II</td>
+      <td>1365.41</td>
+      <td>1</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1610.49</td>
+      <td>2</td>
+      <td>14.52%</td>
+      <td>61.44%</td>
+      <td>24.04%</td>
+      <td>-10.37</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Indy Eleven</td>
+      <td>1577.49</td>
+      <td>0</td>
+      <td>Louisville City FC</td>
+      <td>1652.71</td>
+      <td>2</td>
+      <td>31.46%</td>
+      <td>42.47%</td>
+      <td>26.06%</td>
+      <td>-28.23</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1362.56</td>
+      <td>1</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1602.82</td>
+      <td>2</td>
+      <td>10.59%</td>
+      <td>66.79%</td>
+      <td>22.61%</td>
+      <td>-7.64</td>
+    </tr>
+    <tr>
+      <td>2020-09-18</td>
+      <td>Reno 1868 FC</td>
+      <td>1649.90</td>
+      <td>3</td>
+      <td>Tacoma Defiance</td>
+      <td>1351.62</td>
+      <td>2</td>
+      <td>70.81%</td>
+      <td>8.06%</td>
+      <td>21.13%</td>
+      <td>5.75</td>
+    </tr>
+    <tr>
+      <td>2020-09-18</td>
+      <td>Tacoma Defiance</td>
+      <td>1351.62</td>
+      <td>2</td>
+      <td>@ Reno 1868 FC</td>
+      <td>1649.90</td>
+      <td>3</td>
+      <td>8.06%</td>
+      <td>70.81%</td>
+      <td>21.13%</td>
+      <td>-5.75</td>
+    </tr>
+    <tr>
+      <td>2020-09-19</td>
+      <td>Loudoun United</td>
+      <td>1321.47</td>
+      <td>0</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1720.52</td>
+      <td>1</td>
+      <td>7.01%</td>
+      <td>72.67%</td>
+      <td>20.32%</td>
+      <td>-4.95</td>
+    </tr>
+    <tr>
+      <td>2020-09-19</td>
+      <td>New Mexico United</td>
+      <td>1591.15</td>
+      <td>1</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1354.92</td>
+      <td>2</td>
+      <td>66.50%</td>
+      <td>10.80%</td>
+      <td>22.71%</td>
+      <td>-37.25</td>
+    </tr>
+    <tr>
+      <td>2020-09-19</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1720.52</td>
+      <td>1</td>
+      <td>@ Loudoun United</td>
+      <td>1321.47</td>
+      <td>0</td>
+      <td>72.67%</td>
+      <td>7.01%</td>
+      <td>20.32%</td>
+      <td>4.95</td>
+    </tr>
+    <tr>
+      <td>2020-09-19</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1354.92</td>
+      <td>2</td>
+      <td>@ New Mexico United</td>
+      <td>1591.15</td>
+      <td>1</td>
+      <td>10.80%</td>
+      <td>66.50%</td>
+      <td>22.71%</td>
+      <td>37.25</td>
+    </tr>
+    <tr>
+      <td>2020-09-19</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1435.07</td>
+      <td>0</td>
+      <td>@ Orange County SC</td>
+      <td>1517.85</td>
+      <td>1</td>
+      <td>22.23%</td>
+      <td>52.31%</td>
+      <td>25.45%</td>
+      <td>-15.12</td>
+    </tr>
+    <tr>
+      <td>2020-09-19</td>
+      <td>Orange County SC</td>
+      <td>1517.85</td>
+      <td>1</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1435.07</td>
+      <td>0</td>
+      <td>52.31%</td>
+      <td>22.23%</td>
+      <td>25.45%</td>
+      <td>15.13</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>San Diego Loyal</td>
+      <td>1531.01</td>
+      <td>3</td>
+      <td>@ Phoenix Rising</td>
+      <td>1724.32</td>
+      <td>2</td>
+      <td>13.24%</td>
+      <td>63.11%</td>
+      <td>23.66%</td>
+      <td>35.52</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Real Monarchs SLC</td>
+      <td>1429.52</td>
+      <td>0</td>
+      <td>@ El Paso Locomotive</td>
+      <td>1610.46</td>
+      <td>1</td>
+      <td>14.04%</td>
+      <td>62.06%</td>
+      <td>23.91%</td>
+      <td>-10.05</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1452.14</td>
+      <td>2</td>
+      <td>@ Saint Louis FC</td>
+      <td>1514.81</td>
+      <td>3</td>
+      <td>24.36%</td>
+      <td>49.97%</td>
+      <td>25.67%</td>
+      <td>-16.31</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Memphis 901</td>
+      <td>1393.46</td>
+      <td>1</td>
+      <td>@ Louisville City FC</td>
+      <td>1680.94</td>
+      <td>4</td>
+      <td>8.48%</td>
+      <td>70.10%</td>
+      <td>21.42%</td>
+      <td>-10.50</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Charlotte Independence</td>
+      <td>1550.65</td>
+      <td>1</td>
+      <td>@ North Carolina FC</td>
+      <td>1449.53</td>
+      <td>0</td>
+      <td>45.90%</td>
+      <td>28.17%</td>
+      <td>25.93%</td>
+      <td>18.32</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>OKC Energy FC</td>
+      <td>1373.95</td>
+      <td>0</td>
+      <td>@ San Antonio FC</td>
+      <td>1643.59</td>
+      <td>2</td>
+      <td>9.22%</td>
+      <td>68.89%</td>
+      <td>21.89%</td>
+      <td>-9.37</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Miami FC</td>
+      <td>1375.69</td>
+      <td>0</td>
+      <td>@ Charleston Battery</td>
+      <td>1619.04</td>
+      <td>2</td>
+      <td>10.44%</td>
+      <td>67.02%</td>
+      <td>22.54%</td>
+      <td>-10.64</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Charleston Battery</td>
+      <td>1619.04</td>
+      <td>2</td>
+      <td>Miami FC</td>
+      <td>1375.69</td>
+      <td>0</td>
+      <td>67.02%</td>
+      <td>10.44%</td>
+      <td>22.54%</td>
+      <td>10.65</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Philadelphia Union 2</td>
+      <td>1360.21</td>
+      <td>0</td>
+      <td>@ Hartford Athletic</td>
+      <td>1523.97</td>
+      <td>3</td>
+      <td>15.23%</td>
+      <td>60.54%</td>
+      <td>24.23%</td>
+      <td>-18.79</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Hartford Athletic</td>
+      <td>1523.97</td>
+      <td>3</td>
+      <td>Philadelphia Union 2</td>
+      <td>1360.21</td>
+      <td>0</td>
+      <td>60.54%</td>
+      <td>15.23%</td>
+      <td>24.23%</td>
+      <td>18.79</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Phoenix Rising</td>
+      <td>1724.32</td>
+      <td>2</td>
+      <td>San Diego Loyal</td>
+      <td>1531.01</td>
+      <td>3</td>
+      <td>63.11%</td>
+      <td>13.24%</td>
+      <td>23.66%</td>
+      <td>-35.52</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>El Paso Locomotive</td>
+      <td>1610.46</td>
+      <td>1</td>
+      <td>Real Monarchs SLC</td>
+      <td>1429.52</td>
+      <td>0</td>
+      <td>62.06%</td>
+      <td>14.04%</td>
+      <td>23.91%</td>
+      <td>10.05</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>San Antonio FC</td>
+      <td>1643.59</td>
+      <td>2</td>
+      <td>OKC Energy FC</td>
+      <td>1373.95</td>
+      <td>0</td>
+      <td>68.89%</td>
+      <td>9.22%</td>
+      <td>21.89%</td>
+      <td>9.37</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>North Carolina FC</td>
+      <td>1449.53</td>
+      <td>0</td>
+      <td>Charlotte Independence</td>
+      <td>1550.65</td>
+      <td>1</td>
+      <td>28.17%</td>
+      <td>45.90%</td>
+      <td>25.93%</td>
+      <td>-18.32</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Louisville City FC</td>
+      <td>1680.94</td>
+      <td>4</td>
+      <td>Memphis 901</td>
+      <td>1393.46</td>
+      <td>1</td>
+      <td>70.10%</td>
+      <td>8.48%</td>
+      <td>21.42%</td>
+      <td>10.50</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Saint Louis FC</td>
+      <td>1514.81</td>
+      <td>3</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1452.14</td>
+      <td>2</td>
+      <td>49.97%</td>
+      <td>24.36%</td>
+      <td>25.67%</td>
+      <td>16.31</td>
+    </tr>
+    <tr>
+      <td>2020-09-21</td>
+      <td>Reno 1868 FC</td>
+      <td>1655.65</td>
+      <td>5</td>
+      <td>@ Portland Timbers 2</td>
+      <td>1357.39</td>
+      <td>2</td>
+      <td>65.80%</td>
+      <td>11.28%</td>
+      <td>22.92%</td>
+      <td>14.09</td>
+    </tr>
+    <tr>
+      <td>2020-09-21</td>
+      <td>Sacramento Republic</td>
+      <td>1616.64</td>
+      <td>3</td>
+      <td>Tacoma Defiance</td>
+      <td>1345.87</td>
+      <td>3</td>
+      <td>68.97%</td>
+      <td>9.17%</td>
+      <td>21.86%</td>
+      <td>-7.97</td>
+    </tr>
+    <tr>
+      <td>2020-09-21</td>
+      <td>Portland Timbers 2</td>
+      <td>1357.39</td>
+      <td>2</td>
+      <td>Reno 1868 FC</td>
+      <td>1655.65</td>
+      <td>5</td>
+      <td>11.28%</td>
+      <td>65.80%</td>
+      <td>22.92%</td>
+      <td>-14.09</td>
+    </tr>
+    <tr>
+      <td>2020-09-21</td>
+      <td>Tacoma Defiance</td>
+      <td>1345.87</td>
+      <td>3</td>
+      <td>@ Sacramento Republic</td>
+      <td>1616.64</td>
+      <td>3</td>
+      <td>9.17%</td>
+      <td>68.97%</td>
+      <td>21.86%</td>
+      <td>7.96</td>
+    </tr>
+    <tr>
+      <td>2020-09-23</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1435.83</td>
+      <td>0</td>
+      <td>@ Austin Bold</td>
+      <td>1480.89</td>
+      <td>4</td>
+      <td>26.35%</td>
+      <td>47.83%</td>
+      <td>25.82%</td>
+      <td>-34.76</td>
+    </tr>
+    <tr>
+      <td>2020-09-23</td>
+      <td>Austin Bold</td>
+      <td>1480.89</td>
+      <td>4</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1435.83</td>
+      <td>0</td>
+      <td>47.83%</td>
+      <td>26.35%</td>
+      <td>25.82%</td>
+      <td>34.76</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Atlanta United II</td>
+      <td>1355.04</td>
+      <td>5</td>
+      <td>New York RB II</td>
+      <td>1453.54</td>
+      <td>3</td>
+      <td>28.49%</td>
+      <td>45.56%</td>
+      <td>25.95%</td>
+      <td>37.54</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>San Diego Loyal</td>
+      <td>1566.53</td>
+      <td>1</td>
+      <td>@ Los Angeles Galaxy II</td>
+      <td>1522.08</td>
+      <td>1</td>
+      <td>38.19%</td>
+      <td>35.67%</td>
+      <td>26.14%</td>
+      <td>-0.29</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>New York RB II</td>
+      <td>1453.54</td>
+      <td>3</td>
+      <td>@ Atlanta United II</td>
+      <td>1355.04</td>
+      <td>5</td>
+      <td>45.56%</td>
+      <td>28.49%</td>
+      <td>25.95%</td>
+      <td>-37.54</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Miami FC</td>
+      <td>1365.05</td>
+      <td>0</td>
+      <td>@ Charlotte Independence</td>
+      <td>1568.97</td>
+      <td>0</td>
+      <td>12.59%</td>
+      <td>63.98%</td>
+      <td>23.43%</td>
+      <td>6.72</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Saint Louis FC</td>
+      <td>1531.12</td>
+      <td>1</td>
+      <td>@ Indy Eleven</td>
+      <td>1549.26</td>
+      <td>1</td>
+      <td>29.63%</td>
+      <td>44.37%</td>
+      <td>26.00%</td>
+      <td>1.73</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Memphis 901</td>
+      <td>1382.96</td>
+      <td>1</td>
+      <td>North Carolina FC</td>
+      <td>1431.21</td>
+      <td>1</td>
+      <td>35.13%</td>
+      <td>38.73%</td>
+      <td>26.14%</td>
+      <td>0.41</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Indy Eleven</td>
+      <td>1549.26</td>
+      <td>1</td>
+      <td>Saint Louis FC</td>
+      <td>1531.12</td>
+      <td>1</td>
+      <td>44.37%</td>
+      <td>29.63%</td>
+      <td>26.00%</td>
+      <td>-1.72</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Charlotte Independence</td>
+      <td>1568.97</td>
+      <td>0</td>
+      <td>Miami FC</td>
+      <td>1365.05</td>
+      <td>0</td>
+      <td>63.98%</td>
+      <td>12.59%</td>
+      <td>23.43%</td>
+      <td>-6.73</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>North Carolina FC</td>
+      <td>1431.21</td>
+      <td>1</td>
+      <td>@ Memphis 901</td>
+      <td>1382.96</td>
+      <td>1</td>
+      <td>38.73%</td>
+      <td>35.13%</td>
+      <td>26.14%</td>
+      <td>-0.41</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1522.08</td>
+      <td>1</td>
+      <td>San Diego Loyal</td>
+      <td>1566.53</td>
+      <td>1</td>
+      <td>35.67%</td>
+      <td>38.19%</td>
+      <td>26.14%</td>
+      <td>0.29</td>
+    </tr>
+    <tr>
+      <td>2020-09-25</td>
+      <td>Portland Timbers 2</td>
+      <td>1343.30</td>
+      <td>3</td>
+      <td>Tacoma Defiance</td>
+      <td>1353.83</td>
+      <td>1</td>
+      <td>40.48%</td>
+      <td>33.41%</td>
+      <td>26.11%</td>
+      <td>29.55</td>
+    </tr>
+    <tr>
+      <td>2020-09-25</td>
+      <td>Tacoma Defiance</td>
+      <td>1353.83</td>
+      <td>1</td>
+      <td>@ Portland Timbers 2</td>
+      <td>1343.30</td>
+      <td>3</td>
+      <td>33.41%</td>
+      <td>40.48%</td>
+      <td>26.11%</td>
+      <td>-29.54</td>
+    </tr>
+    <tr>
+      <td>2020-09-26</td>
+      <td>New York RB II</td>
+      <td>1416.00</td>
+      <td>5</td>
+      <td>Philadelphia Union 2</td>
+      <td>1341.42</td>
+      <td>4</td>
+      <td>51.37%</td>
+      <td>23.08%</td>
+      <td>25.54%</td>
+      <td>15.61</td>
+    </tr>
+    <tr>
+      <td>2020-09-26</td>
+      <td>Philadelphia Union 2</td>
+      <td>1341.42</td>
+      <td>4</td>
+      <td>@ New York RB II</td>
+      <td>1416.00</td>
+      <td>5</td>
+      <td>23.08%</td>
+      <td>51.37%</td>
+      <td>25.54%</td>
+      <td>-15.60</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Charleston Battery</td>
+      <td>1629.69</td>
+      <td>1</td>
+      <td>Loudoun United</td>
+      <td>1316.52</td>
+      <td>3</td>
+      <td>71.76%</td>
+      <td>7.51%</td>
+      <td>20.73%</td>
+      <td>-56.15</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Miami FC</td>
+      <td>1371.77</td>
+      <td>0</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1620.87</td>
+      <td>1</td>
+      <td>14.24%</td>
+      <td>61.79%</td>
+      <td>23.97%</td>
+      <td>-10.19</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1725.47</td>
+      <td>0</td>
+      <td>Hartford Athletic</td>
+      <td>1542.76</td>
+      <td>1</td>
+      <td>62.21%</td>
+      <td>13.92%</td>
+      <td>23.87%</td>
+      <td>-35.06</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Birmingham Legion</td>
+      <td>1569.80</td>
+      <td>1</td>
+      <td>North Carolina FC</td>
+      <td>1430.80</td>
+      <td>2</td>
+      <td>58.22%</td>
+      <td>17.12%</td>
+      <td>24.67%</td>
+      <td>-32.96</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1392.17</td>
+      <td>1</td>
+      <td>Real Monarchs SLC</td>
+      <td>1419.47</td>
+      <td>1</td>
+      <td>38.12%</td>
+      <td>35.74%</td>
+      <td>26.14%</td>
+      <td>-0.27</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Phoenix Rising</td>
+      <td>1688.80</td>
+      <td>1</td>
+      <td>Orange County SC</td>
+      <td>1532.98</td>
+      <td>0</td>
+      <td>59.81%</td>
+      <td>15.81%</td>
+      <td>24.38%</td>
+      <td>11.23</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Saint Louis FC</td>
+      <td>1532.85</td>
+      <td>0</td>
+      <td>Louisville City FC</td>
+      <td>1691.44</td>
+      <td>1</td>
+      <td>21.77%</td>
+      <td>52.83%</td>
+      <td>25.40%</td>
+      <td>-14.87</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Loudoun United</td>
+      <td>1316.52</td>
+      <td>3</td>
+      <td>@ Charleston Battery</td>
+      <td>1629.69</td>
+      <td>1</td>
+      <td>7.51%</td>
+      <td>71.76%</td>
+      <td>20.73%</td>
+      <td>56.15</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Hartford Athletic</td>
+      <td>1542.76</td>
+      <td>1</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1725.47</td>
+      <td>0</td>
+      <td>13.92%</td>
+      <td>62.21%</td>
+      <td>23.87%</td>
+      <td>35.05</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>North Carolina FC</td>
+      <td>1430.80</td>
+      <td>2</td>
+      <td>@ Birmingham Legion</td>
+      <td>1569.80</td>
+      <td>1</td>
+      <td>17.12%</td>
+      <td>58.22%</td>
+      <td>24.67%</td>
+      <td>32.97</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1620.87</td>
+      <td>1</td>
+      <td>@ Miami FC</td>
+      <td>1371.77</td>
+      <td>0</td>
+      <td>61.79%</td>
+      <td>14.24%</td>
+      <td>23.97%</td>
+      <td>10.20</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Real Monarchs SLC</td>
+      <td>1419.47</td>
+      <td>1</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1392.17</td>
+      <td>1</td>
+      <td>35.74%</td>
+      <td>38.12%</td>
+      <td>26.14%</td>
+      <td>0.27</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>San Antonio FC</td>
+      <td>1652.96</td>
+      <td>0</td>
+      <td>@ FC Tulsa</td>
+      <td>1474.67</td>
+      <td>1</td>
+      <td>54.97%</td>
+      <td>19.88%</td>
+      <td>25.15%</td>
+      <td>-31.28</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Louisville City FC</td>
+      <td>1691.44</td>
+      <td>1</td>
+      <td>@ Saint Louis FC</td>
+      <td>1532.85</td>
+      <td>0</td>
+      <td>52.83%</td>
+      <td>21.77%</td>
+      <td>25.40%</td>
+      <td>14.87</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Sacramento Republic</td>
+      <td>1608.67</td>
+      <td>1</td>
+      <td>@ Reno 1868 FC</td>
+      <td>1669.74</td>
+      <td>1</td>
+      <td>24.54%</td>
+      <td>49.78%</td>
+      <td>25.68%</td>
+      <td>3.06</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1522.37</td>
+      <td>2</td>
+      <td>@ Las Vegas Lights FC</td>
+      <td>1419.95</td>
+      <td>2</td>
+      <td>46.07%</td>
+      <td>28.01%</td>
+      <td>25.92%</td>
+      <td>-2.14</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>El Paso Locomotive</td>
+      <td>1620.51</td>
+      <td>0</td>
+      <td>@ New Mexico United</td>
+      <td>1553.90</td>
+      <td>0</td>
+      <td>41.30%</td>
+      <td>32.61%</td>
+      <td>26.10%</td>
+      <td>-1.00</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>FC Tulsa</td>
+      <td>1474.67</td>
+      <td>1</td>
+      <td>San Antonio FC</td>
+      <td>1652.96</td>
+      <td>0</td>
+      <td>19.88%</td>
+      <td>54.97%</td>
+      <td>25.15%</td>
+      <td>31.27</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Orange County SC</td>
+      <td>1532.98</td>
+      <td>0</td>
+      <td>@ Phoenix Rising</td>
+      <td>1688.80</td>
+      <td>1</td>
+      <td>15.81%</td>
+      <td>59.81%</td>
+      <td>24.38%</td>
+      <td>-11.23</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Austin Bold</td>
+      <td>1515.65</td>
+      <td>0</td>
+      <td>@ OKC Energy FC</td>
+      <td>1364.58</td>
+      <td>0</td>
+      <td>51.97%</td>
+      <td>22.54%</td>
+      <td>25.49%</td>
+      <td>-3.61</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>OKC Energy FC</td>
+      <td>1364.58</td>
+      <td>0</td>
+      <td>Austin Bold</td>
+      <td>1515.65</td>
+      <td>0</td>
+      <td>22.54%</td>
+      <td>51.97%</td>
+      <td>25.49%</td>
+      <td>3.61</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Tacoma Defiance</td>
+      <td>1324.29</td>
+      <td>2</td>
+      <td>Portland Timbers 2</td>
+      <td>1372.85</td>
+      <td>1</td>
+      <td>35.09%</td>
+      <td>38.77%</td>
+      <td>26.13%</td>
+      <td>23.35</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>New Mexico United</td>
+      <td>1553.90</td>
+      <td>0</td>
+      <td>El Paso Locomotive</td>
+      <td>1620.51</td>
+      <td>0</td>
+      <td>32.61%</td>
+      <td>41.30%</td>
+      <td>26.10%</td>
+      <td>1.01</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1419.95</td>
+      <td>2</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1522.37</td>
+      <td>2</td>
+      <td>28.01%</td>
+      <td>46.07%</td>
+      <td>25.92%</td>
+      <td>2.14</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Reno 1868 FC</td>
+      <td>1669.74</td>
+      <td>1</td>
+      <td>Sacramento Republic</td>
+      <td>1608.67</td>
+      <td>1</td>
+      <td>49.78%</td>
+      <td>24.54%</td>
+      <td>25.68%</td>
+      <td>-3.06</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>Portland Timbers 2</td>
+      <td>1372.85</td>
+      <td>1</td>
+      <td>@ Tacoma Defiance</td>
+      <td>1324.29</td>
+      <td>2</td>
+      <td>38.77%</td>
+      <td>35.09%</td>
+      <td>26.13%</td>
+      <td>-23.36</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>North Carolina FC</td>
+      <td>1463.77</td>
+      <td>3</td>
+      <td>@ New York RB II</td>
+      <td>1431.61</td>
+      <td>0</td>
+      <td>36.43%</td>
+      <td>37.43%</td>
+      <td>26.14%</td>
+      <td>39.38</td>
+    </tr>
+    <tr>
+      <td>2020-09-30</td>
+      <td>New York RB II</td>
+      <td>1431.61</td>
+      <td>0</td>
+      <td>North Carolina FC</td>
+      <td>1463.77</td>
+      <td>3</td>
+      <td>37.43%</td>
+      <td>36.43%</td>
+      <td>26.14%</td>
+      <td>-39.39</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1401.07</td>
+      <td>2</td>
+      <td>@ Indy Eleven</td>
+      <td>1547.54</td>
+      <td>1</td>
+      <td>16.52%</td>
+      <td>58.94%</td>
+      <td>24.54%</td>
+      <td>33.34</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Charleston Battery</td>
+      <td>1573.54</td>
+      <td>3</td>
+      <td>@ Miami FC</td>
+      <td>1361.58</td>
+      <td>4</td>
+      <td>58.38%</td>
+      <td>16.98%</td>
+      <td>24.64%</td>
+      <td>-33.05</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Hartford Athletic</td>
+      <td>1577.81</td>
+      <td>3</td>
+      <td>@ Philadelphia Union 2</td>
+      <td>1325.82</td>
+      <td>2</td>
+      <td>62.04%</td>
+      <td>14.05%</td>
+      <td>23.91%</td>
+      <td>10.07</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>El Paso Locomotive</td>
+      <td>1619.51</td>
+      <td>0</td>
+      <td>@ Colorado Springs Switchbacks</td>
+      <td>1391.90</td>
+      <td>0</td>
+      <td>59.86%</td>
+      <td>15.77%</td>
+      <td>24.37%</td>
+      <td>-5.66</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>New Mexico United</td>
+      <td>1554.91</td>
+      <td>1</td>
+      <td>@ Real Monarchs SLC</td>
+      <td>1419.74</td>
+      <td>0</td>
+      <td>50.12%</td>
+      <td>24.23%</td>
+      <td>25.65%</td>
+      <td>16.23</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Reno 1868 FC</td>
+      <td>1666.68</td>
+      <td>2</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1422.09</td>
+      <td>2</td>
+      <td>67.11%</td>
+      <td>10.38%</td>
+      <td>22.51%</td>
+      <td>-7.51</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1520.23</td>
+      <td>3</td>
+      <td>Orange County SC</td>
+      <td>1521.75</td>
+      <td>1</td>
+      <td>41.73%</td>
+      <td>32.19%</td>
+      <td>26.09%</td>
+      <td>28.72</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Austin Bold</td>
+      <td>1512.04</td>
+      <td>0</td>
+      <td>@ Rio Grande Valley FC</td>
+      <td>1324.04</td>
+      <td>2</td>
+      <td>55.99%</td>
+      <td>19.00%</td>
+      <td>25.01%</td>
+      <td>-44.98</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Real Monarchs SLC</td>
+      <td>1419.74</td>
+      <td>0</td>
+      <td>New Mexico United</td>
+      <td>1554.91</td>
+      <td>1</td>
+      <td>24.23%</td>
+      <td>50.12%</td>
+      <td>25.65%</td>
+      <td>-16.24</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1324.04</td>
+      <td>2</td>
+      <td>Austin Bold</td>
+      <td>1512.04</td>
+      <td>0</td>
+      <td>19.00%</td>
+      <td>55.99%</td>
+      <td>25.01%</td>
+      <td>44.98</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>OKC Energy FC</td>
+      <td>1368.19</td>
+      <td>2</td>
+      <td>@ FC Tulsa</td>
+      <td>1505.94</td>
+      <td>3</td>
+      <td>17.22%</td>
+      <td>58.10%</td>
+      <td>24.69%</td>
+      <td>-12.13</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1391.90</td>
+      <td>0</td>
+      <td>El Paso Locomotive</td>
+      <td>1619.51</td>
+      <td>0</td>
+      <td>15.77%</td>
+      <td>59.86%</td>
+      <td>24.37%</td>
+      <td>5.65</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>FC Tulsa</td>
+      <td>1505.94</td>
+      <td>3</td>
+      <td>OKC Energy FC</td>
+      <td>1368.19</td>
+      <td>2</td>
+      <td>58.10%</td>
+      <td>17.22%</td>
+      <td>24.69%</td>
+      <td>12.13</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Miami FC</td>
+      <td>1361.58</td>
+      <td>4</td>
+      <td>Charleston Battery</td>
+      <td>1573.54</td>
+      <td>3</td>
+      <td>16.98%</td>
+      <td>58.38%</td>
+      <td>24.64%</td>
+      <td>33.05</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Philadelphia Union 2</td>
+      <td>1325.82</td>
+      <td>2</td>
+      <td>Hartford Athletic</td>
+      <td>1577.81</td>
+      <td>3</td>
+      <td>14.05%</td>
+      <td>62.04%</td>
+      <td>23.91%</td>
+      <td>-10.07</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Indy Eleven</td>
+      <td>1547.54</td>
+      <td>1</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1401.07</td>
+      <td>2</td>
+      <td>58.94%</td>
+      <td>16.52%</td>
+      <td>24.54%</td>
+      <td>-33.35</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1422.09</td>
+      <td>2</td>
+      <td>@ Reno 1868 FC</td>
+      <td>1666.68</td>
+      <td>2</td>
+      <td>10.38%</td>
+      <td>67.11%</td>
+      <td>22.51%</td>
+      <td>7.51</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Sacramento Republic</td>
+      <td>1611.73</td>
+      <td>0</td>
+      <td>@ Tacoma Defiance</td>
+      <td>1347.64</td>
+      <td>1</td>
+      <td>63.07%</td>
+      <td>13.27%</td>
+      <td>23.67%</td>
+      <td>-35.50</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Phoenix Rising</td>
+      <td>1700.03</td>
+      <td>3</td>
+      <td>@ San Diego Loyal</td>
+      <td>1566.24</td>
+      <td>0</td>
+      <td>49.96%</td>
+      <td>24.38%</td>
+      <td>25.67%</td>
+      <td>28.26</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Orange County SC</td>
+      <td>1521.75</td>
+      <td>1</td>
+      <td>@ Los Angeles Galaxy II</td>
+      <td>1520.23</td>
+      <td>3</td>
+      <td>32.19%</td>
+      <td>41.73%</td>
+      <td>26.09%</td>
+      <td>-28.73</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>Tacoma Defiance</td>
+      <td>1347.64</td>
+      <td>1</td>
+      <td>Sacramento Republic</td>
+      <td>1611.73</td>
+      <td>0</td>
+      <td>13.27%</td>
+      <td>63.07%</td>
+      <td>23.67%</td>
+      <td>35.50</td>
+    </tr>
+    <tr>
+      <td>2020-10-01</td>
+      <td>San Diego Loyal</td>
+      <td>1566.24</td>
+      <td>0</td>
+      <td>Phoenix Rising</td>
+      <td>1700.03</td>
+      <td>3</td>
+      <td>24.38%</td>
+      <td>49.96%</td>
+      <td>25.67%</td>
+      <td>-28.26</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Reno 1868 FC</td>
+      <td>1659.17</td>
+      <td>2</td>
+      <td>@ Tacoma Defiance</td>
+      <td>1383.14</td>
+      <td>1</td>
+      <td>64.05%</td>
+      <td>12.54%</td>
+      <td>23.41%</td>
+      <td>9.02</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>OKC Energy FC</td>
+      <td>1356.06</td>
+      <td>2</td>
+      <td>@ Rio Grande Valley FC</td>
+      <td>1369.02</td>
+      <td>4</td>
+      <td>30.29%</td>
+      <td>43.68%</td>
+      <td>26.03%</td>
+      <td>-27.42</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Birmingham Legion</td>
+      <td>1536.84</td>
+      <td>1</td>
+      <td>@ Memphis 901</td>
+      <td>1383.37</td>
+      <td>3</td>
+      <td>52.25%</td>
+      <td>22.29%</td>
+      <td>25.46%</td>
+      <td>-42.25</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Charleston Battery</td>
+      <td>1540.49</td>
+      <td>2</td>
+      <td>@ Tampa Bay Rowdies</td>
+      <td>1631.07</td>
+      <td>1</td>
+      <td>21.45%</td>
+      <td>53.19%</td>
+      <td>25.36%</td>
+      <td>30.35</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Indy Eleven</td>
+      <td>1514.19</td>
+      <td>1</td>
+      <td>@ Saint Louis FC</td>
+      <td>1517.98</td>
+      <td>2</td>
+      <td>31.48%</td>
+      <td>42.45%</td>
+      <td>26.07%</td>
+      <td>-19.97</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1434.41</td>
+      <td>1</td>
+      <td>@ Louisville City FC</td>
+      <td>1706.31</td>
+      <td>2</td>
+      <td>9.12%</td>
+      <td>69.05%</td>
+      <td>21.83%</td>
+      <td>-6.55</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Philadelphia Union 2</td>
+      <td>1315.75</td>
+      <td>1</td>
+      <td>@ Pittsburgh Riverhounds</td>
+      <td>1690.41</td>
+      <td>2</td>
+      <td>5.63%</td>
+      <td>75.41%</td>
+      <td>18.96%</td>
+      <td>-3.87</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>North Carolina FC</td>
+      <td>1503.15</td>
+      <td>1</td>
+      <td>@ Loudoun United</td>
+      <td>1372.67</td>
+      <td>0</td>
+      <td>49.56%</td>
+      <td>24.74%</td>
+      <td>25.70%</td>
+      <td>16.52</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Orange County SC</td>
+      <td>1493.02</td>
+      <td>4</td>
+      <td>@ Las Vegas Lights FC</td>
+      <td>1429.60</td>
+      <td>2</td>
+      <td>40.86%</td>
+      <td>33.04%</td>
+      <td>26.10%</td>
+      <td>29.30</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1397.55</td>
+      <td>0</td>
+      <td>@ FC Tulsa</td>
+      <td>1518.07</td>
+      <td>2</td>
+      <td>18.67%</td>
+      <td>56.38%</td>
+      <td>24.96%</td>
+      <td>-18.42</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Austin Bold</td>
+      <td>1467.06</td>
+      <td>2</td>
+      <td>San Antonio FC</td>
+      <td>1621.68</td>
+      <td>1</td>
+      <td>22.18%</td>
+      <td>52.38%</td>
+      <td>25.45%</td>
+      <td>29.94</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>San Antonio FC</td>
+      <td>1621.68</td>
+      <td>1</td>
+      <td>@ Austin Bold</td>
+      <td>1467.06</td>
+      <td>2</td>
+      <td>52.38%</td>
+      <td>22.18%</td>
+      <td>25.45%</td>
+      <td>-29.93</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Loudoun United</td>
+      <td>1372.67</td>
+      <td>0</td>
+      <td>North Carolina FC</td>
+      <td>1503.15</td>
+      <td>1</td>
+      <td>24.74%</td>
+      <td>49.56%</td>
+      <td>25.70%</td>
+      <td>-16.52</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1690.41</td>
+      <td>2</td>
+      <td>Philadelphia Union 2</td>
+      <td>1315.75</td>
+      <td>1</td>
+      <td>75.41%</td>
+      <td>5.63%</td>
+      <td>18.96%</td>
+      <td>3.88</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Louisville City FC</td>
+      <td>1706.31</td>
+      <td>2</td>
+      <td>Sporting Kansas City 2</td>
+      <td>1434.41</td>
+      <td>1</td>
+      <td>69.05%</td>
+      <td>9.12%</td>
+      <td>21.83%</td>
+      <td>6.55</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Saint Louis FC</td>
+      <td>1517.98</td>
+      <td>2</td>
+      <td>Indy Eleven</td>
+      <td>1514.19</td>
+      <td>1</td>
+      <td>42.45%</td>
+      <td>31.48%</td>
+      <td>26.07%</td>
+      <td>19.98</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1631.07</td>
+      <td>1</td>
+      <td>Charleston Battery</td>
+      <td>1540.49</td>
+      <td>2</td>
+      <td>53.19%</td>
+      <td>21.45%</td>
+      <td>25.36%</td>
+      <td>-30.36</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>FC Tulsa</td>
+      <td>1518.07</td>
+      <td>2</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1397.55</td>
+      <td>0</td>
+      <td>56.38%</td>
+      <td>18.67%</td>
+      <td>24.96%</td>
+      <td>18.42</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>El Paso Locomotive</td>
+      <td>1613.85</td>
+      <td>4</td>
+      <td>@ Real Monarchs SLC</td>
+      <td>1403.50</td>
+      <td>0</td>
+      <td>58.23%</td>
+      <td>17.11%</td>
+      <td>24.66%</td>
+      <td>24.12</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Memphis 901</td>
+      <td>1383.37</td>
+      <td>3</td>
+      <td>Birmingham Legion</td>
+      <td>1536.84</td>
+      <td>1</td>
+      <td>22.29%</td>
+      <td>52.25%</td>
+      <td>25.46%</td>
+      <td>42.24</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Tacoma Defiance</td>
+      <td>1383.14</td>
+      <td>1</td>
+      <td>Reno 1868 FC</td>
+      <td>1659.17</td>
+      <td>2</td>
+      <td>12.54%</td>
+      <td>64.05%</td>
+      <td>23.41%</td>
+      <td>-9.02</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1429.60</td>
+      <td>2</td>
+      <td>Orange County SC</td>
+      <td>1493.02</td>
+      <td>4</td>
+      <td>33.04%</td>
+      <td>40.86%</td>
+      <td>26.10%</td>
+      <td>-29.30</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Phoenix Rising</td>
+      <td>1728.29</td>
+      <td>4</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1548.95</td>
+      <td>1</td>
+      <td>61.92%</td>
+      <td>14.14%</td>
+      <td>23.94%</td>
+      <td>17.54</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Sacramento Republic</td>
+      <td>1576.23</td>
+      <td>4</td>
+      <td>Portland Timbers 2</td>
+      <td>1349.49</td>
+      <td>0</td>
+      <td>65.78%</td>
+      <td>11.30%</td>
+      <td>22.93%</td>
+      <td>16.29</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Real Monarchs SLC</td>
+      <td>1403.50</td>
+      <td>0</td>
+      <td>El Paso Locomotive</td>
+      <td>1613.85</td>
+      <td>4</td>
+      <td>17.11%</td>
+      <td>58.23%</td>
+      <td>24.66%</td>
+      <td>-24.12</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Los Angeles Galaxy II</td>
+      <td>1548.95</td>
+      <td>1</td>
+      <td>@ Phoenix Rising</td>
+      <td>1728.29</td>
+      <td>4</td>
+      <td>14.14%</td>
+      <td>61.92%</td>
+      <td>23.94%</td>
+      <td>-17.54</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Rio Grande Valley FC</td>
+      <td>1369.02</td>
+      <td>4</td>
+      <td>OKC Energy FC</td>
+      <td>1356.06</td>
+      <td>2</td>
+      <td>43.68%</td>
+      <td>30.29%</td>
+      <td>26.03%</td>
+      <td>27.41</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Portland Timbers 2</td>
+      <td>1349.49</td>
+      <td>0</td>
+      <td>@ Sacramento Republic</td>
+      <td>1576.23</td>
+      <td>4</td>
+      <td>11.30%</td>
+      <td>65.78%</td>
+      <td>22.93%</td>
+      <td>-16.29</td>
+    </tr>
+    <tr>
+      <td>2020-10-05</td>
+      <td>Miami FC</td>
+      <td>1394.63</td>
+      <td>3</td>
+      <td>Atlanta United II</td>
+      <td>1392.58</td>
+      <td>1</td>
+      <td>42.21%</td>
+      <td>31.71%</td>
+      <td>26.07%</td>
+      <td>28.40</td>
+    </tr>
+    <tr>
+      <td>2020-10-05</td>
+      <td>New York RB II</td>
+      <td>1392.22</td>
+      <td>0</td>
+      <td>Hartford Athletic</td>
+      <td>1587.88</td>
+      <td>2</td>
+      <td>18.33%</td>
+      <td>56.77%</td>
+      <td>24.90%</td>
+      <td>-18.13</td>
+    </tr>
+    <tr>
+      <td>2020-10-05</td>
+      <td>Hartford Athletic</td>
+      <td>1587.88</td>
+      <td>2</td>
+      <td>@ New York RB II</td>
+      <td>1392.22</td>
+      <td>0</td>
+      <td>56.77%</td>
+      <td>18.33%</td>
+      <td>24.90%</td>
+      <td>18.13</td>
+    </tr>
+    <tr>
+      <td>2020-10-05</td>
+      <td>Atlanta United II</td>
+      <td>1392.58</td>
+      <td>1</td>
+      <td>@ Miami FC</td>
+      <td>1394.63</td>
+      <td>3</td>
+      <td>31.71%</td>
+      <td>42.21%</td>
+      <td>26.07%</td>
+      <td>-28.40</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

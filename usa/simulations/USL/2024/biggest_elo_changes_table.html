@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th colspan="3" halign="left"></th>
+      <th colspan="4" halign="left">Winning Team</th>
+      <th colspan="4" halign="left">Losing Team</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <th>Date</th>
+      <th>Elo Change</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Tie Pct.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2024-06-22</td>
+      <td>32.47</td>
+      <td>Rhode Island FC</td>
+      <td>1418.41</td>
+      <td>5</td>
+      <td>12.12%</td>
+      <td>Louisville City FC (H)</td>
+      <td>1619.57</td>
+      <td>2</td>
+      <td>66.42%</td>
+      <td>21.46%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2024-10-26</td>
+      <td>30.45</td>
+      <td>Birmingham Legion</td>
+      <td>1438.07</td>
+      <td>5</td>
+      <td>27.16%</td>
+      <td>Oakland Roots (H)</td>
+      <td>1447.02</td>
+      <td>0</td>
+      <td>44.41%</td>
+      <td>28.44%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2024-03-30</td>
+      <td>26.12</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1431.06</td>
+      <td>3</td>
+      <td>22.16%</td>
+      <td>Oakland Roots (H)</td>
+      <td>1487.17</td>
+      <td>0</td>
+      <td>50.46%</td>
+      <td>27.38%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2024-07-13</td>
+      <td>25.74</td>
+      <td>Pittsburgh Riverhounds (H)</td>
+      <td>1455.21</td>
+      <td>5</td>
+      <td>35.56%</td>
+      <td>Oakland Roots</td>
+      <td>1509.85</td>
+      <td>0</td>
+      <td>35.47%</td>
+      <td>28.97%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2024-04-27</td>
+      <td>25.66</td>
+      <td>Memphis 901</td>
+      <td>1459.92</td>
+      <td>3</td>
+      <td>23.02%</td>
+      <td>Birmingham Legion (H)</td>
+      <td>1507.18</td>
+      <td>0</td>
+      <td>49.36%</td>
+      <td>27.62%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2024-08-17</td>
+      <td>23.89</td>
+      <td>Loudoun United</td>
+      <td>1483.84</td>
+      <td>2</td>
+      <td>16.84%</td>
+      <td>Tampa Bay Rowdies (H)</td>
+      <td>1604.54</td>
+      <td>0</td>
+      <td>58.01%</td>
+      <td>25.16%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2024-05-25</td>
+      <td>23.42</td>
+      <td>Loudoun United</td>
+      <td>1426.28</td>
+      <td>2</td>
+      <td>17.76%</td>
+      <td>Orange County SC (H)</td>
+      <td>1534.25</td>
+      <td>0</td>
+      <td>56.58%</td>
+      <td>25.66%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2024-08-24</td>
+      <td>22.91</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1504.86</td>
+      <td>3</td>
+      <td>28.59%</td>
+      <td>Birmingham Legion (H)</td>
+      <td>1501.82</td>
+      <td>0</td>
+      <td>42.79%</td>
+      <td>28.62%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2024-05-25</td>
+      <td>22.78</td>
+      <td>North Carolina FC</td>
+      <td>1487.72</td>
+      <td>4</td>
+      <td>36.07%</td>
+      <td>Miami FC (H)</td>
+      <td>1428.89</td>
+      <td>0</td>
+      <td>34.96%</td>
+      <td>28.97%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2024-05-04</td>
+      <td>21.96</td>
+      <td>Memphis 901 (H)</td>
+      <td>1485.58</td>
+      <td>4</td>
+      <td>30.72%</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1575.54</td>
+      <td>1</td>
+      <td>40.47%</td>
+      <td>28.81%</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2024-05-18</td>
+      <td>21.58</td>
+      <td>Loudoun United (H)</td>
+      <td>1404.70</td>
+      <td>3</td>
+      <td>31.57%</td>
+      <td>Monterey Bay FC</td>
+      <td>1488.14</td>
+      <td>0</td>
+      <td>39.56%</td>
+      <td>28.86%</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>2024-09-07</td>
+      <td>21.49</td>
+      <td>North Carolina FC (H)</td>
+      <td>1506.36</td>
+      <td>5</td>
+      <td>43.62%</td>
+      <td>Oakland Roots</td>
+      <td>1503.27</td>
+      <td>0</td>
+      <td>27.85%</td>
+      <td>28.53%</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2024-09-01</td>
+      <td>21.30</td>
+      <td>Colorado Springs Switchbacks</td>
+      <td>1518.67</td>
+      <td>4</td>
+      <td>32.24%</td>
+      <td>FC Tulsa (H)</td>
+      <td>1487.21</td>
+      <td>1</td>
+      <td>38.86%</td>
+      <td>28.90%</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2024-07-06</td>
+      <td>20.69</td>
+      <td>Orange County SC (H)</td>
+      <td>1481.00</td>
+      <td>4</td>
+      <td>33.71%</td>
+      <td>Memphis 901</td>
+      <td>1548.71</td>
+      <td>1</td>
+      <td>37.34%</td>
+      <td>28.95%</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2024-09-29</td>
+      <td>20.59</td>
+      <td>Sacramento Republic (H)</td>
+      <td>1557.74</td>
+      <td>4</td>
+      <td>40.76%</td>
+      <td>New Mexico United</td>
+      <td>1575.62</td>
+      <td>0</td>
+      <td>30.45%</td>
+      <td>28.79%</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>2024-06-29</td>
+      <td>20.50</td>
+      <td>Oakland Roots</td>
+      <td>1476.03</td>
+      <td>2</td>
+      <td>24.10%</td>
+      <td>Orange County SC (H)</td>
+      <td>1512.70</td>
+      <td>0</td>
+      <td>48.02%</td>
+      <td>27.88%</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>2024-07-17</td>
+      <td>20.23</td>
+      <td>Rhode Island FC</td>
+      <td>1476.38</td>
+      <td>3</td>
+      <td>24.74%</td>
+      <td>Birmingham Legion (H)</td>
+      <td>1506.98</td>
+      <td>1</td>
+      <td>47.24%</td>
+      <td>28.02%</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>2024-05-10</td>
+      <td>20.22</td>
+      <td>El Paso Locomotive</td>
+      <td>1405.58</td>
+      <td>2</td>
+      <td>24.75%</td>
+      <td>Loudoun United (H)</td>
+      <td>1436.05</td>
+      <td>0</td>
+      <td>47.23%</td>
+      <td>28.02%</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>2024-04-11</td>
+      <td>19.63</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1543.52</td>
+      <td>5</td>
+      <td>36.34%</td>
+      <td>Miami FC (H)</td>
+      <td>1482.83</td>
+      <td>2</td>
+      <td>34.69%</td>
+      <td>28.97%</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>2024-06-29</td>
+      <td>19.56</td>
+      <td>Louisville City FC</td>
+      <td>1587.10</td>
+      <td>4</td>
+      <td>36.51%</td>
+      <td>Birmingham Legion (H)</td>
+      <td>1525.24</td>
+      <td>1</td>
+      <td>34.53%</td>
+      <td>28.97%</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>2024-04-20</td>
+      <td>19.49</td>
+      <td>Pittsburgh Riverhounds</td>
+      <td>1497.08</td>
+      <td>3</td>
+      <td>26.56%</td>
+      <td>Phoenix Rising (H)</td>
+      <td>1511.18</td>
+      <td>1</td>
+      <td>45.09%</td>
+      <td>28.35%</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>2024-10-13</td>
+      <td>19.40</td>
+      <td>Las Vegas Lights FC</td>
+      <td>1529.73</td>
+      <td>3</td>
+      <td>36.91%</td>
+      <td>Birmingham Legion (H)</td>
+      <td>1465.04</td>
+      <td>0</td>
+      <td>34.13%</td>
+      <td>28.96%</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>2024-03-30</td>
+      <td>19.26</td>
+      <td>Louisville City FC (H)</td>
+      <td>1535.33</td>
+      <td>5</td>
+      <td>47.77%</td>
+      <td>Birmingham Legion</td>
+      <td>1500.61</td>
+      <td>0</td>
+      <td>24.30%</td>
+      <td>27.92%</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>2024-06-29</td>
+      <td>19.21</td>
+      <td>Loudoun United (H)</td>
+      <td>1464.69</td>
+      <td>2</td>
+      <td>27.28%</td>
+      <td>Tampa Bay Rowdies</td>
+      <td>1582.47</td>
+      <td>0</td>
+      <td>44.26%</td>
+      <td>28.45%</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>2024-03-23</td>
+      <td>19.04</td>
+      <td>Charleston Battery (H)</td>
+      <td>1523.21</td>
+      <td>4</td>
+      <td>44.01%</td>
+      <td>New Mexico United</td>
+      <td>1517.25</td>
+      <td>0</td>
+      <td>27.51%</td>
+      <td>28.48%</td>
+    </tr>
+  </tbody>
+</table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+        });
+    </script>
+</body>
+</html>
