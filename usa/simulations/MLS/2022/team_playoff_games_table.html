@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Austin FC">Austin FC</option><option value="FC Cincinnati">FC Cincinnati</option><option value="FC Dallas">FC Dallas</option><option value="Inter Miami CF">Inter Miami CF</option><option value="Los Angeles FC">Los Angeles FC</option><option value="Los Angeles Galaxy">Los Angeles Galaxy</option><option value="Minnesota United FC">Minnesota United FC</option><option value="Montreal CF">Montreal CF</option><option value="Nashville SC">Nashville SC</option><option value="New York City FC">New York City FC</option><option value="New York RB">New York RB</option><option value="Orlando City">Orlando City</option><option value="Philadelphia Union">Philadelphia Union</option><option value="Real Salt Lake">Real Salt Lake</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2022-10-15</td>
+      <td>New York RB</td>
+      <td>1534.72</td>
+      <td>1</td>
+      <td>FC Cincinnati</td>
+      <td>1511.67</td>
+      <td>2</td>
+      <td>64.36%</td>
+      <td>35.64%</td>
+      <td>-12.55</td>
+    </tr>
+    <tr>
+      <td>2022-10-15</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1518.17</td>
+      <td>1</td>
+      <td>Nashville SC</td>
+      <td>1561.18</td>
+      <td>0</td>
+      <td>55.25%</td>
+      <td>44.75%</td>
+      <td>8.72</td>
+    </tr>
+    <tr>
+      <td>2022-10-15</td>
+      <td>Nashville SC</td>
+      <td>1561.18</td>
+      <td>0</td>
+      <td>@ Los Angeles Galaxy</td>
+      <td>1518.17</td>
+      <td>1</td>
+      <td>44.75%</td>
+      <td>55.25%</td>
+      <td>-8.73</td>
+    </tr>
+    <tr>
+      <td>2022-10-15</td>
+      <td>FC Cincinnati</td>
+      <td>1511.67</td>
+      <td>2</td>
+      <td>@ New York RB</td>
+      <td>1534.72</td>
+      <td>1</td>
+      <td>35.64%</td>
+      <td>64.36%</td>
+      <td>12.55</td>
+    </tr>
+    <tr>
+      <td>2022-10-16</td>
+      <td>Austin FC</td>
+      <td>1527.06</td>
+      <td>2</td>
+      <td>Real Salt Lake</td>
+      <td>1500.69</td>
+      <td>2</td>
+      <td>64.80%</td>
+      <td>35.20%</td>
+      <td>-1.45</td>
+    </tr>
+    <tr>
+      <td>2022-10-16</td>
+      <td>Real Salt Lake</td>
+      <td>1500.69</td>
+      <td>2</td>
+      <td>@ Austin FC</td>
+      <td>1527.06</td>
+      <td>2</td>
+      <td>35.20%</td>
+      <td>64.80%</td>
+      <td>1.45</td>
+    </tr>
+    <tr>
+      <td>2022-10-17</td>
+      <td>Montreal CF</td>
+      <td>1587.36</td>
+      <td>2</td>
+      <td>Orlando City</td>
+      <td>1473.47</td>
+      <td>0</td>
+      <td>75.29%</td>
+      <td>24.71%</td>
+      <td>6.81</td>
+    </tr>
+    <tr>
+      <td>2022-10-17</td>
+      <td>Orlando City</td>
+      <td>1473.47</td>
+      <td>0</td>
+      <td>@ Montreal CF</td>
+      <td>1587.36</td>
+      <td>2</td>
+      <td>24.71%</td>
+      <td>75.29%</td>
+      <td>-6.82</td>
+    </tr>
+    <tr>
+      <td>2022-10-18</td>
+      <td>New York City FC</td>
+      <td>1551.77</td>
+      <td>3</td>
+      <td>Inter Miami CF</td>
+      <td>1481.60</td>
+      <td>0</td>
+      <td>70.31%</td>
+      <td>29.69%</td>
+      <td>10.02</td>
+    </tr>
+    <tr>
+      <td>2022-10-18</td>
+      <td>FC Dallas</td>
+      <td>1547.80</td>
+      <td>1</td>
+      <td>Minnesota United FC</td>
+      <td>1491.23</td>
+      <td>1</td>
+      <td>68.65%</td>
+      <td>31.35%</td>
+      <td>-1.81</td>
+    </tr>
+    <tr>
+      <td>2022-10-18</td>
+      <td>Inter Miami CF</td>
+      <td>1481.60</td>
+      <td>0</td>
+      <td>@ New York City FC</td>
+      <td>1551.77</td>
+      <td>3</td>
+      <td>29.69%</td>
+      <td>70.31%</td>
+      <td>-10.03</td>
+    </tr>
+    <tr>
+      <td>2022-10-18</td>
+      <td>Minnesota United FC</td>
+      <td>1491.23</td>
+      <td>1</td>
+      <td>@ FC Dallas</td>
+      <td>1547.80</td>
+      <td>1</td>
+      <td>31.35%</td>
+      <td>68.65%</td>
+      <td>1.82</td>
+    </tr>
+    <tr>
+      <td>2022-10-21</td>
+      <td>FC Cincinnati</td>
+      <td>1524.22</td>
+      <td>0</td>
+      <td>@ Philadelphia Union</td>
+      <td>1632.36</td>
+      <td>1</td>
+      <td>25.33%</td>
+      <td>74.67%</td>
+      <td>-4.94</td>
+    </tr>
+    <tr>
+      <td>2022-10-21</td>
+      <td>Los Angeles FC</td>
+      <td>1597.14</td>
+      <td>3</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1526.89</td>
+      <td>2</td>
+      <td>70.32%</td>
+      <td>29.68%</td>
+      <td>5.79</td>
+    </tr>
+    <tr>
+      <td>2022-10-21</td>
+      <td>Philadelphia Union</td>
+      <td>1632.36</td>
+      <td>1</td>
+      <td>FC Cincinnati</td>
+      <td>1524.22</td>
+      <td>0</td>
+      <td>74.67%</td>
+      <td>25.33%</td>
+      <td>4.94</td>
+    </tr>
+    <tr>
+      <td>2022-10-21</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1526.89</td>
+      <td>2</td>
+      <td>@ Los Angeles FC</td>
+      <td>1597.14</td>
+      <td>3</td>
+      <td>29.68%</td>
+      <td>70.32%</td>
+      <td>-5.78</td>
+    </tr>
+    <tr>
+      <td>2022-10-23</td>
+      <td>New York City FC</td>
+      <td>1561.79</td>
+      <td>3</td>
+      <td>@ Montreal CF</td>
+      <td>1594.17</td>
+      <td>1</td>
+      <td>34.42%</td>
+      <td>65.58%</td>
+      <td>18.09</td>
+    </tr>
+    <tr>
+      <td>2022-10-23</td>
+      <td>Montreal CF</td>
+      <td>1594.17</td>
+      <td>1</td>
+      <td>New York City FC</td>
+      <td>1561.79</td>
+      <td>3</td>
+      <td>65.58%</td>
+      <td>34.42%</td>
+      <td>-18.08</td>
+    </tr>
+    <tr>
+      <td>2022-10-24</td>
+      <td>FC Dallas</td>
+      <td>1545.99</td>
+      <td>1</td>
+      <td>@ Austin FC</td>
+      <td>1525.61</td>
+      <td>2</td>
+      <td>41.55%</td>
+      <td>58.45%</td>
+      <td>-8.11</td>
+    </tr>
+    <tr>
+      <td>2022-10-24</td>
+      <td>Austin FC</td>
+      <td>1525.61</td>
+      <td>2</td>
+      <td>FC Dallas</td>
+      <td>1545.99</td>
+      <td>1</td>
+      <td>58.45%</td>
+      <td>41.55%</td>
+      <td>8.11</td>
+    </tr>
+    <tr>
+      <td>2022-10-30</td>
+      <td>Austin FC</td>
+      <td>1533.72</td>
+      <td>0</td>
+      <td>@ Los Angeles FC</td>
+      <td>1602.93</td>
+      <td>3</td>
+      <td>29.80%</td>
+      <td>70.20%</td>
+      <td>-10.07</td>
+    </tr>
+    <tr>
+      <td>2022-10-30</td>
+      <td>Los Angeles FC</td>
+      <td>1602.93</td>
+      <td>3</td>
+      <td>Austin FC</td>
+      <td>1533.72</td>
+      <td>0</td>
+      <td>70.20%</td>
+      <td>29.80%</td>
+      <td>10.07</td>
+    </tr>
+    <tr>
+      <td>2022-10-31</td>
+      <td>New York City FC</td>
+      <td>1579.88</td>
+      <td>1</td>
+      <td>@ Philadelphia Union</td>
+      <td>1637.30</td>
+      <td>3</td>
+      <td>31.24%</td>
+      <td>68.76%</td>
+      <td>-8.62</td>
+    </tr>
+    <tr>
+      <td>2022-10-31</td>
+      <td>Philadelphia Union</td>
+      <td>1637.30</td>
+      <td>3</td>
+      <td>New York City FC</td>
+      <td>1579.88</td>
+      <td>1</td>
+      <td>68.76%</td>
+      <td>31.24%</td>
+      <td>8.61</td>
+    </tr>
+    <tr>
+      <td>2022-11-05</td>
+      <td>Los Angeles FC</td>
+      <td>1613.00</td>
+      <td>3</td>
+      <td>Philadelphia Union</td>
+      <td>1645.91</td>
+      <td>3</td>
+      <td>56.68%</td>
+      <td>43.32%</td>
+      <td>-0.66</td>
+    </tr>
+    <tr>
+      <td>2022-11-05</td>
+      <td>Philadelphia Union</td>
+      <td>1645.91</td>
+      <td>3</td>
+      <td>@ Los Angeles FC</td>
+      <td>1613.00</td>
+      <td>3</td>
+      <td>43.32%</td>
+      <td>56.68%</td>
+      <td>0.65</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

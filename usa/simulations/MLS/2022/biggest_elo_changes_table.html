@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th colspan="3" halign="left"></th>
+      <th colspan="4" halign="left">Winning Team</th>
+      <th colspan="4" halign="left">Losing Team</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <th>Date</th>
+      <th>Elo Change</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Tie Pct.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2022-10-01</td>
+      <td>26.53</td>
+      <td>Charlotte FC (H)</td>
+      <td>1442.04</td>
+      <td>4</td>
+      <td>21.33%</td>
+      <td>Philadelphia Union</td>
+      <td>1652.74</td>
+      <td>0</td>
+      <td>54.18%</td>
+      <td>24.50%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2022-05-23</td>
+      <td>23.07</td>
+      <td>Houston Dynamo</td>
+      <td>1461.39</td>
+      <td>3</td>
+      <td>21.11%</td>
+      <td>Los Angeles Galaxy (H)</td>
+      <td>1515.21</td>
+      <td>0</td>
+      <td>54.46%</td>
+      <td>24.43%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2022-07-09</td>
+      <td>22.16</td>
+      <td>Portland Timbers</td>
+      <td>1510.20</td>
+      <td>3</td>
+      <td>23.11%</td>
+      <td>Seattle Sounders (H)</td>
+      <td>1542.76</td>
+      <td>0</td>
+      <td>51.88%</td>
+      <td>25.01%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2022-08-18</td>
+      <td>21.82</td>
+      <td>Charlotte FC</td>
+      <td>1434.86</td>
+      <td>3</td>
+      <td>14.01%</td>
+      <td>New York City FC (H)</td>
+      <td>1586.65</td>
+      <td>1</td>
+      <td>65.20%</td>
+      <td>20.79%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2022-09-03</td>
+      <td>21.46</td>
+      <td>FC Dallas</td>
+      <td>1520.83</td>
+      <td>3</td>
+      <td>24.69%</td>
+      <td>Minnesota United FC (H)</td>
+      <td>1537.78</td>
+      <td>0</td>
+      <td>49.93%</td>
+      <td>25.38%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2022-04-24</td>
+      <td>20.50</td>
+      <td>New York RB</td>
+      <td>1528.28</td>
+      <td>3</td>
+      <td>27.01%</td>
+      <td>Orlando City (H)</td>
+      <td>1524.04</td>
+      <td>0</td>
+      <td>47.19%</td>
+      <td>25.80%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2022-06-19</td>
+      <td>19.73</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1466.16</td>
+      <td>2</td>
+      <td>18.85%</td>
+      <td>FC Dallas (H)</td>
+      <td>1546.73</td>
+      <td>0</td>
+      <td>57.57%</td>
+      <td>23.58%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2022-07-05</td>
+      <td>19.12</td>
+      <td>DC United</td>
+      <td>1429.41</td>
+      <td>5</td>
+      <td>20.38%</td>
+      <td>Orlando City (H)</td>
+      <td>1491.49</td>
+      <td>3</td>
+      <td>55.44%</td>
+      <td>24.18%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2022-04-17</td>
+      <td>18.86</td>
+      <td>New York City FC (H)</td>
+      <td>1514.48</td>
+      <td>6</td>
+      <td>47.03%</td>
+      <td>Real Salt Lake</td>
+      <td>1519.95</td>
+      <td>0</td>
+      <td>27.15%</td>
+      <td>25.82%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2022-07-24</td>
+      <td>18.47</td>
+      <td>Toronto FC (H)</td>
+      <td>1398.98</td>
+      <td>4</td>
+      <td>39.38%</td>
+      <td>Charlotte FC</td>
+      <td>1460.28</td>
+      <td>0</td>
+      <td>34.19%</td>
+      <td>26.43%</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2022-03-13</td>
+      <td>18.35</td>
+      <td>Chicago Fire</td>
+      <td>1477.82</td>
+      <td>2</td>
+      <td>22.41%</td>
+      <td>DC United (H)</td>
+      <td>1517.54</td>
+      <td>0</td>
+      <td>52.76%</td>
+      <td>24.82%</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>2022-08-28</td>
+      <td>18.28</td>
+      <td>Nashville SC</td>
+      <td>1521.03</td>
+      <td>3</td>
+      <td>32.78%</td>
+      <td>Vancouver Whitecaps (H)</td>
+      <td>1470.12</td>
+      <td>0</td>
+      <td>40.85%</td>
+      <td>26.37%</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2022-08-07</td>
+      <td>18.27</td>
+      <td>New England Revolution</td>
+      <td>1515.06</td>
+      <td>3</td>
+      <td>32.79%</td>
+      <td>Orlando City (H)</td>
+      <td>1464.03</td>
+      <td>0</td>
+      <td>40.83%</td>
+      <td>26.37%</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2022-07-10</td>
+      <td>18.21</td>
+      <td>Austin FC</td>
+      <td>1538.91</td>
+      <td>3</td>
+      <td>32.97%</td>
+      <td>Atlanta United FC (H)</td>
+      <td>1486.58</td>
+      <td>0</td>
+      <td>40.65%</td>
+      <td>26.38%</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2022-07-24</td>
+      <td>18.01</td>
+      <td>Chicago Fire</td>
+      <td>1451.66</td>
+      <td>3</td>
+      <td>23.33%</td>
+      <td>Vancouver Whitecaps (H)</td>
+      <td>1481.92</td>
+      <td>1</td>
+      <td>51.60%</td>
+      <td>25.07%</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>2022-07-10</td>
+      <td>17.98</td>
+      <td>Charlotte FC (H)</td>
+      <td>1450.51</td>
+      <td>4</td>
+      <td>33.63%</td>
+      <td>Nashville SC</td>
+      <td>1552.54</td>
+      <td>1</td>
+      <td>39.96%</td>
+      <td>26.41%</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>2022-04-03</td>
+      <td>17.95</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1490.83</td>
+      <td>3</td>
+      <td>23.49%</td>
+      <td>Portland Timbers (H)</td>
+      <td>1519.49</td>
+      <td>1</td>
+      <td>51.40%</td>
+      <td>25.11%</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>2022-03-05</td>
+      <td>17.83</td>
+      <td>New York RB</td>
+      <td>1527.65</td>
+      <td>4</td>
+      <td>34.04%</td>
+      <td>Toronto FC (H)</td>
+      <td>1467.41</td>
+      <td>1</td>
+      <td>39.53%</td>
+      <td>26.43%</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>2022-04-17</td>
+      <td>17.21</td>
+      <td>Orlando City</td>
+      <td>1506.84</td>
+      <td>2</td>
+      <td>25.61%</td>
+      <td>Columbus Crew (H)</td>
+      <td>1515.13</td>
+      <td>0</td>
+      <td>48.82%</td>
+      <td>25.56%</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>2022-08-22</td>
+      <td>17.18</td>
+      <td>Sporting Kansas City (H)</td>
+      <td>1434.83</td>
+      <td>4</td>
+      <td>35.91%</td>
+      <td>Portland Timbers</td>
+      <td>1520.45</td>
+      <td>1</td>
+      <td>37.62%</td>
+      <td>26.47%</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>2022-08-07</td>
+      <td>17.06</td>
+      <td>FC Cincinnati (H)</td>
+      <td>1451.82</td>
+      <td>3</td>
+      <td>26.06%</td>
+      <td>Philadelphia Union</td>
+      <td>1615.30</td>
+      <td>1</td>
+      <td>48.30%</td>
+      <td>25.65%</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>2022-08-22</td>
+      <td>17.02</td>
+      <td>Nashville SC (H)</td>
+      <td>1504.01</td>
+      <td>4</td>
+      <td>43.03%</td>
+      <td>FC Dallas</td>
+      <td>1539.17</td>
+      <td>0</td>
+      <td>30.73%</td>
+      <td>26.24%</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>2022-08-28</td>
+      <td>17.00</td>
+      <td>Toronto FC</td>
+      <td>1442.16</td>
+      <td>2</td>
+      <td>26.23%</td>
+      <td>Charlotte FC (H)</td>
+      <td>1444.82</td>
+      <td>0</td>
+      <td>48.09%</td>
+      <td>25.68%</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>2022-09-11</td>
+      <td>16.93</td>
+      <td>FC Cincinnati (H)</td>
+      <td>1480.43</td>
+      <td>6</td>
+      <td>50.88%</td>
+      <td>San Jose Earthquakes</td>
+      <td>1455.91</td>
+      <td>0</td>
+      <td>23.91%</td>
+      <td>25.21%</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>2022-07-05</td>
+      <td>16.83</td>
+      <td>Los Angeles Galaxy (H)</td>
+      <td>1492.72</td>
+      <td>4</td>
+      <td>43.51%</td>
+      <td>Montreal CF</td>
+      <td>1524.45</td>
+      <td>0</td>
+      <td>30.29%</td>
+      <td>26.20%</td>
+    </tr>
+  </tbody>
+</table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+        });
+    </script>
+</body>
+</html>

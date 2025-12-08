@@ -1,0 +1,7690 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Atlanta United FC">Atlanta United FC</option><option value="Chicago Fire">Chicago Fire</option><option value="Colorado Rapids">Colorado Rapids</option><option value="Columbus Crew">Columbus Crew</option><option value="DC United">DC United</option><option value="FC Cincinnati">FC Cincinnati</option><option value="FC Dallas">FC Dallas</option><option value="Houston Dynamo">Houston Dynamo</option><option value="Inter Miami CF">Inter Miami CF</option><option value="Los Angeles FC">Los Angeles FC</option><option value="Los Angeles Galaxy">Los Angeles Galaxy</option><option value="Minnesota United FC">Minnesota United FC</option><option value="Montreal CF">Montreal CF</option><option value="Nashville SC">Nashville SC</option><option value="New England Revolution">New England Revolution</option><option value="New York City FC">New York City FC</option><option value="New York RB">New York RB</option><option value="Orlando City">Orlando City</option><option value="Philadelphia Union">Philadelphia Union</option><option value="Portland Timbers">Portland Timbers</option><option value="Real Salt Lake">Real Salt Lake</option><option value="San Jose Earthquakes">San Jose Earthquakes</option><option value="Seattle Sounders">Seattle Sounders</option><option value="Sporting Kansas City">Sporting Kansas City</option><option value="Toronto FC">Toronto FC</option><option value="Vancouver Whitecaps">Vancouver Whitecaps</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="3" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Tie Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2020-02-29</td>
+      <td>DC United</td>
+      <td>1507.26</td>
+      <td>1</td>
+      <td>Colorado Rapids</td>
+      <td>1496.64</td>
+      <td>2</td>
+      <td>47.34%</td>
+      <td>26.80%</td>
+      <td>25.85%</td>
+      <td>-16.45</td>
+    </tr>
+    <tr>
+      <td>2020-02-29</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1503.62</td>
+      <td>1</td>
+      <td>@ Houston Dynamo</td>
+      <td>1483.63</td>
+      <td>1</td>
+      <td>30.53%</td>
+      <td>43.30%</td>
+      <td>26.17%</td>
+      <td>0.90</td>
+    </tr>
+    <tr>
+      <td>2020-02-29</td>
+      <td>Toronto FC</td>
+      <td>1529.78</td>
+      <td>2</td>
+      <td>@ San Jose Earthquakes</td>
+      <td>1488.64</td>
+      <td>2</td>
+      <td>33.31%</td>
+      <td>40.39%</td>
+      <td>26.30%</td>
+      <td>0.48</td>
+    </tr>
+    <tr>
+      <td>2020-02-29</td>
+      <td>Philadelphia Union</td>
+      <td>1519.12</td>
+      <td>0</td>
+      <td>@ FC Dallas</td>
+      <td>1508.33</td>
+      <td>2</td>
+      <td>29.37%</td>
+      <td>44.54%</td>
+      <td>26.09%</td>
+      <td>-16.08</td>
+    </tr>
+    <tr>
+      <td>2020-02-29</td>
+      <td>Real Salt Lake</td>
+      <td>1520.43</td>
+      <td>0</td>
+      <td>@ Orlando City</td>
+      <td>1469.37</td>
+      <td>0</td>
+      <td>34.68%</td>
+      <td>38.99%</td>
+      <td>26.33%</td>
+      <td>0.29</td>
+    </tr>
+    <tr>
+      <td>2020-02-29</td>
+      <td>New England Revolution</td>
+      <td>1501.33</td>
+      <td>1</td>
+      <td>@ Montreal CF</td>
+      <td>1473.65</td>
+      <td>2</td>
+      <td>31.52%</td>
+      <td>42.25%</td>
+      <td>26.22%</td>
+      <td>-12.02</td>
+    </tr>
+    <tr>
+      <td>2020-02-29</td>
+      <td>Colorado Rapids</td>
+      <td>1496.64</td>
+      <td>2</td>
+      <td>@ DC United</td>
+      <td>1507.26</td>
+      <td>1</td>
+      <td>26.80%</td>
+      <td>47.34%</td>
+      <td>25.85%</td>
+      <td>16.45</td>
+    </tr>
+    <tr>
+      <td>2020-02-29</td>
+      <td>FC Dallas</td>
+      <td>1508.33</td>
+      <td>2</td>
+      <td>Philadelphia Union</td>
+      <td>1519.12</td>
+      <td>0</td>
+      <td>44.54%</td>
+      <td>29.37%</td>
+      <td>26.09%</td>
+      <td>16.08</td>
+    </tr>
+    <tr>
+      <td>2020-02-29</td>
+      <td>Orlando City</td>
+      <td>1469.37</td>
+      <td>0</td>
+      <td>Real Salt Lake</td>
+      <td>1520.43</td>
+      <td>0</td>
+      <td>38.99%</td>
+      <td>34.68%</td>
+      <td>26.33%</td>
+      <td>-0.29</td>
+    </tr>
+    <tr>
+      <td>2020-02-29</td>
+      <td>San Jose Earthquakes</td>
+      <td>1488.64</td>
+      <td>2</td>
+      <td>Toronto FC</td>
+      <td>1529.78</td>
+      <td>2</td>
+      <td>40.39%</td>
+      <td>33.31%</td>
+      <td>26.30%</td>
+      <td>-0.49</td>
+    </tr>
+    <tr>
+      <td>2020-02-29</td>
+      <td>Houston Dynamo</td>
+      <td>1483.63</td>
+      <td>1</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1503.62</td>
+      <td>1</td>
+      <td>43.30%</td>
+      <td>30.53%</td>
+      <td>26.17%</td>
+      <td>-0.90</td>
+    </tr>
+    <tr>
+      <td>2020-02-29</td>
+      <td>Montreal CF</td>
+      <td>1473.65</td>
+      <td>2</td>
+      <td>New England Revolution</td>
+      <td>1501.33</td>
+      <td>1</td>
+      <td>42.25%</td>
+      <td>31.52%</td>
+      <td>26.22%</td>
+      <td>12.02</td>
+    </tr>
+    <tr>
+      <td>2020-03-01</td>
+      <td>Nashville SC</td>
+      <td>1450.00</td>
+      <td>1</td>
+      <td>Atlanta United FC</td>
+      <td>1541.68</td>
+      <td>2</td>
+      <td>33.27%</td>
+      <td>40.44%</td>
+      <td>26.30%</td>
+      <td>-12.52</td>
+    </tr>
+    <tr>
+      <td>2020-03-01</td>
+      <td>Inter Miami CF</td>
+      <td>1450.00</td>
+      <td>0</td>
+      <td>@ Los Angeles FC</td>
+      <td>1571.71</td>
+      <td>1</td>
+      <td>16.43%</td>
+      <td>60.06%</td>
+      <td>23.51%</td>
+      <td>-6.84</td>
+    </tr>
+    <tr>
+      <td>2020-03-01</td>
+      <td>Chicago Fire</td>
+      <td>1507.76</td>
+      <td>1</td>
+      <td>@ Seattle Sounders</td>
+      <td>1544.68</td>
+      <td>2</td>
+      <td>23.91%</td>
+      <td>50.63%</td>
+      <td>25.46%</td>
+      <td>-9.61</td>
+    </tr>
+    <tr>
+      <td>2020-03-01</td>
+      <td>FC Cincinnati</td>
+      <td>1416.92</td>
+      <td>2</td>
+      <td>@ New York RB</td>
+      <td>1511.21</td>
+      <td>3</td>
+      <td>18.55%</td>
+      <td>57.20%</td>
+      <td>24.25%</td>
+      <td>-7.68</td>
+    </tr>
+    <tr>
+      <td>2020-03-01</td>
+      <td>New York City FC</td>
+      <td>1546.42</td>
+      <td>0</td>
+      <td>@ Columbus Crew</td>
+      <td>1491.68</td>
+      <td>1</td>
+      <td>35.19%</td>
+      <td>38.47%</td>
+      <td>26.34%</td>
+      <td>-13.06</td>
+    </tr>
+    <tr>
+      <td>2020-03-01</td>
+      <td>Sporting Kansas City</td>
+      <td>1479.35</td>
+      <td>3</td>
+      <td>@ Vancouver Whitecaps</td>
+      <td>1466.03</td>
+      <td>1</td>
+      <td>29.69%</td>
+      <td>44.20%</td>
+      <td>26.11%</td>
+      <td>22.00</td>
+    </tr>
+    <tr>
+      <td>2020-03-01</td>
+      <td>Atlanta United FC</td>
+      <td>1541.68</td>
+      <td>2</td>
+      <td>@ Nashville SC</td>
+      <td>1450.00</td>
+      <td>1</td>
+      <td>40.44%</td>
+      <td>33.27%</td>
+      <td>26.30%</td>
+      <td>12.53</td>
+    </tr>
+    <tr>
+      <td>2020-03-01</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1466.03</td>
+      <td>1</td>
+      <td>Sporting Kansas City</td>
+      <td>1479.35</td>
+      <td>3</td>
+      <td>44.20%</td>
+      <td>29.69%</td>
+      <td>26.11%</td>
+      <td>-21.99</td>
+    </tr>
+    <tr>
+      <td>2020-03-01</td>
+      <td>Seattle Sounders</td>
+      <td>1544.68</td>
+      <td>2</td>
+      <td>Chicago Fire</td>
+      <td>1507.76</td>
+      <td>1</td>
+      <td>50.63%</td>
+      <td>23.91%</td>
+      <td>25.46%</td>
+      <td>9.61</td>
+    </tr>
+    <tr>
+      <td>2020-03-01</td>
+      <td>Los Angeles FC</td>
+      <td>1571.71</td>
+      <td>1</td>
+      <td>Inter Miami CF</td>
+      <td>1450.00</td>
+      <td>0</td>
+      <td>60.06%</td>
+      <td>16.43%</td>
+      <td>23.51%</td>
+      <td>6.84</td>
+    </tr>
+    <tr>
+      <td>2020-03-01</td>
+      <td>New York RB</td>
+      <td>1511.21</td>
+      <td>3</td>
+      <td>FC Cincinnati</td>
+      <td>1416.92</td>
+      <td>2</td>
+      <td>57.20%</td>
+      <td>18.55%</td>
+      <td>24.25%</td>
+      <td>7.67</td>
+    </tr>
+    <tr>
+      <td>2020-03-01</td>
+      <td>Columbus Crew</td>
+      <td>1491.68</td>
+      <td>1</td>
+      <td>New York City FC</td>
+      <td>1546.42</td>
+      <td>0</td>
+      <td>38.47%</td>
+      <td>35.19%</td>
+      <td>26.34%</td>
+      <td>13.06</td>
+    </tr>
+    <tr>
+      <td>2020-03-02</td>
+      <td>Minnesota United FC</td>
+      <td>1508.66</td>
+      <td>3</td>
+      <td>@ Portland Timbers</td>
+      <td>1512.10</td>
+      <td>1</td>
+      <td>27.64%</td>
+      <td>46.42%</td>
+      <td>25.94%</td>
+      <td>22.89</td>
+    </tr>
+    <tr>
+      <td>2020-03-02</td>
+      <td>Portland Timbers</td>
+      <td>1512.10</td>
+      <td>1</td>
+      <td>Minnesota United FC</td>
+      <td>1508.66</td>
+      <td>3</td>
+      <td>46.42%</td>
+      <td>27.64%</td>
+      <td>25.94%</td>
+      <td>-22.88</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>DC United</td>
+      <td>1490.81</td>
+      <td>2</td>
+      <td>Inter Miami CF</td>
+      <td>1443.16</td>
+      <td>1</td>
+      <td>51.92%</td>
+      <td>22.81%</td>
+      <td>25.27%</td>
+      <td>9.23</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>New York City FC</td>
+      <td>1533.36</td>
+      <td>0</td>
+      <td>@ Toronto FC</td>
+      <td>1530.26</td>
+      <td>1</td>
+      <td>28.43%</td>
+      <td>45.56%</td>
+      <td>26.01%</td>
+      <td>-11.09</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>Inter Miami CF</td>
+      <td>1443.16</td>
+      <td>1</td>
+      <td>@ DC United</td>
+      <td>1490.81</td>
+      <td>2</td>
+      <td>22.81%</td>
+      <td>51.92%</td>
+      <td>25.27%</td>
+      <td>-9.23</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>Montreal CF</td>
+      <td>1485.67</td>
+      <td>2</td>
+      <td>@ FC Dallas</td>
+      <td>1524.41</td>
+      <td>2</td>
+      <td>23.72%</td>
+      <td>50.86%</td>
+      <td>25.43%</td>
+      <td>1.98</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>New York RB</td>
+      <td>1518.88</td>
+      <td>1</td>
+      <td>@ Real Salt Lake</td>
+      <td>1520.72</td>
+      <td>1</td>
+      <td>27.83%</td>
+      <td>46.21%</td>
+      <td>25.96%</td>
+      <td>1.31</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>Chicago Fire</td>
+      <td>1498.15</td>
+      <td>1</td>
+      <td>@ New England Revolution</td>
+      <td>1489.31</td>
+      <td>1</td>
+      <td>29.13%</td>
+      <td>44.80%</td>
+      <td>26.07%</td>
+      <td>1.10</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>Toronto FC</td>
+      <td>1530.26</td>
+      <td>1</td>
+      <td>New York City FC</td>
+      <td>1533.36</td>
+      <td>0</td>
+      <td>45.56%</td>
+      <td>28.43%</td>
+      <td>26.01%</td>
+      <td>11.09</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>FC Dallas</td>
+      <td>1524.41</td>
+      <td>2</td>
+      <td>Montreal CF</td>
+      <td>1485.67</td>
+      <td>2</td>
+      <td>50.86%</td>
+      <td>23.72%</td>
+      <td>25.43%</td>
+      <td>-1.98</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>Real Salt Lake</td>
+      <td>1520.72</td>
+      <td>1</td>
+      <td>New York RB</td>
+      <td>1518.88</td>
+      <td>1</td>
+      <td>46.21%</td>
+      <td>27.83%</td>
+      <td>25.96%</td>
+      <td>-1.30</td>
+    </tr>
+    <tr>
+      <td>2020-03-07</td>
+      <td>New England Revolution</td>
+      <td>1489.31</td>
+      <td>1</td>
+      <td>Chicago Fire</td>
+      <td>1498.15</td>
+      <td>1</td>
+      <td>44.80%</td>
+      <td>29.13%</td>
+      <td>26.07%</td>
+      <td>-1.10</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Nashville SC</td>
+      <td>1437.48</td>
+      <td>0</td>
+      <td>@ Portland Timbers</td>
+      <td>1489.22</td>
+      <td>1</td>
+      <td>22.40%</td>
+      <td>52.41%</td>
+      <td>25.19%</td>
+      <td>-9.09</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Houston Dynamo</td>
+      <td>1482.73</td>
+      <td>0</td>
+      <td>@ Sporting Kansas City</td>
+      <td>1501.35</td>
+      <td>4</td>
+      <td>25.89%</td>
+      <td>48.36%</td>
+      <td>25.74%</td>
+      <td>-20.55</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1444.04</td>
+      <td>1</td>
+      <td>@ Los Angeles Galaxy</td>
+      <td>1504.52</td>
+      <td>0</td>
+      <td>21.55%</td>
+      <td>53.43%</td>
+      <td>25.02%</td>
+      <td>18.23</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>San Jose Earthquakes</td>
+      <td>1488.15</td>
+      <td>2</td>
+      <td>Minnesota United FC</td>
+      <td>1531.55</td>
+      <td>5</td>
+      <td>40.07%</td>
+      <td>33.62%</td>
+      <td>26.31%</td>
+      <td>-24.93</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Columbus Crew</td>
+      <td>1504.74</td>
+      <td>1</td>
+      <td>@ Seattle Sounders</td>
+      <td>1554.29</td>
+      <td>1</td>
+      <td>22.62%</td>
+      <td>52.15%</td>
+      <td>25.23%</td>
+      <td>2.17</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>FC Cincinnati</td>
+      <td>1409.24</td>
+      <td>1</td>
+      <td>@ Atlanta United FC</td>
+      <td>1554.21</td>
+      <td>2</td>
+      <td>14.82%</td>
+      <td>62.36%</td>
+      <td>22.82%</td>
+      <td>-6.18</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Orlando City</td>
+      <td>1469.08</td>
+      <td>1</td>
+      <td>@ Colorado Rapids</td>
+      <td>1513.09</td>
+      <td>2</td>
+      <td>23.17%</td>
+      <td>51.49%</td>
+      <td>25.34%</td>
+      <td>-9.36</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Atlanta United FC</td>
+      <td>1554.21</td>
+      <td>2</td>
+      <td>FC Cincinnati</td>
+      <td>1409.24</td>
+      <td>1</td>
+      <td>62.36%</td>
+      <td>14.82%</td>
+      <td>22.82%</td>
+      <td>6.18</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Sporting Kansas City</td>
+      <td>1501.35</td>
+      <td>4</td>
+      <td>Houston Dynamo</td>
+      <td>1482.73</td>
+      <td>0</td>
+      <td>48.36%</td>
+      <td>25.89%</td>
+      <td>25.74%</td>
+      <td>20.55</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Minnesota United FC</td>
+      <td>1531.55</td>
+      <td>5</td>
+      <td>@ San Jose Earthquakes</td>
+      <td>1488.15</td>
+      <td>2</td>
+      <td>33.62%</td>
+      <td>40.07%</td>
+      <td>26.31%</td>
+      <td>24.94</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Colorado Rapids</td>
+      <td>1513.09</td>
+      <td>2</td>
+      <td>Orlando City</td>
+      <td>1469.08</td>
+      <td>1</td>
+      <td>51.49%</td>
+      <td>23.17%</td>
+      <td>25.34%</td>
+      <td>9.36</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1504.52</td>
+      <td>0</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1444.04</td>
+      <td>1</td>
+      <td>53.43%</td>
+      <td>21.55%</td>
+      <td>25.02%</td>
+      <td>-18.23</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Seattle Sounders</td>
+      <td>1554.29</td>
+      <td>1</td>
+      <td>Columbus Crew</td>
+      <td>1504.74</td>
+      <td>1</td>
+      <td>52.15%</td>
+      <td>22.62%</td>
+      <td>25.23%</td>
+      <td>-2.17</td>
+    </tr>
+    <tr>
+      <td>2020-03-08</td>
+      <td>Portland Timbers</td>
+      <td>1489.22</td>
+      <td>1</td>
+      <td>Nashville SC</td>
+      <td>1437.48</td>
+      <td>0</td>
+      <td>52.41%</td>
+      <td>22.40%</td>
+      <td>25.19%</td>
+      <td>9.09</td>
+    </tr>
+    <tr>
+      <td>2020-03-09</td>
+      <td>Philadelphia Union</td>
+      <td>1503.04</td>
+      <td>3</td>
+      <td>@ Los Angeles FC</td>
+      <td>1578.55</td>
+      <td>3</td>
+      <td>20.16%</td>
+      <td>55.14%</td>
+      <td>24.70%</td>
+      <td>2.61</td>
+    </tr>
+    <tr>
+      <td>2020-03-09</td>
+      <td>Los Angeles FC</td>
+      <td>1578.55</td>
+      <td>3</td>
+      <td>Philadelphia Union</td>
+      <td>1503.04</td>
+      <td>3</td>
+      <td>55.14%</td>
+      <td>20.16%</td>
+      <td>24.70%</td>
+      <td>-2.61</td>
+    </tr>
+    <tr>
+      <td>2020-07-09</td>
+      <td>Inter Miami CF</td>
+      <td>1433.93</td>
+      <td>1</td>
+      <td>@ Orlando City</td>
+      <td>1459.72</td>
+      <td>2</td>
+      <td>25.10%</td>
+      <td>49.26%</td>
+      <td>25.64%</td>
+      <td>-10.02</td>
+    </tr>
+    <tr>
+      <td>2020-07-09</td>
+      <td>Philadelphia Union</td>
+      <td>1505.65</td>
+      <td>1</td>
+      <td>@ New York City FC</td>
+      <td>1522.27</td>
+      <td>0</td>
+      <td>26.12%</td>
+      <td>48.11%</td>
+      <td>25.77%</td>
+      <td>16.67</td>
+    </tr>
+    <tr>
+      <td>2020-07-09</td>
+      <td>New York City FC</td>
+      <td>1522.27</td>
+      <td>0</td>
+      <td>Philadelphia Union</td>
+      <td>1505.65</td>
+      <td>1</td>
+      <td>48.11%</td>
+      <td>26.12%</td>
+      <td>25.77%</td>
+      <td>-16.67</td>
+    </tr>
+    <tr>
+      <td>2020-07-09</td>
+      <td>Orlando City</td>
+      <td>1459.72</td>
+      <td>2</td>
+      <td>Inter Miami CF</td>
+      <td>1433.93</td>
+      <td>1</td>
+      <td>49.26%</td>
+      <td>25.10%</td>
+      <td>25.64%</td>
+      <td>10.01</td>
+    </tr>
+    <tr>
+      <td>2020-07-10</td>
+      <td>New England Revolution</td>
+      <td>1488.21</td>
+      <td>1</td>
+      <td>@ Montreal CF</td>
+      <td>1487.65</td>
+      <td>0</td>
+      <td>28.12%</td>
+      <td>45.89%</td>
+      <td>25.99%</td>
+      <td>16.03</td>
+    </tr>
+    <tr>
+      <td>2020-07-10</td>
+      <td>Montreal CF</td>
+      <td>1487.65</td>
+      <td>0</td>
+      <td>New England Revolution</td>
+      <td>1488.21</td>
+      <td>1</td>
+      <td>45.89%</td>
+      <td>28.12%</td>
+      <td>25.99%</td>
+      <td>-16.03</td>
+    </tr>
+    <tr>
+      <td>2020-07-11</td>
+      <td>Seattle Sounders</td>
+      <td>1552.12</td>
+      <td>0</td>
+      <td>San Jose Earthquakes</td>
+      <td>1463.22</td>
+      <td>0</td>
+      <td>56.62%</td>
+      <td>19.00%</td>
+      <td>24.38%</td>
+      <td>-2.83</td>
+    </tr>
+    <tr>
+      <td>2020-07-11</td>
+      <td>San Jose Earthquakes</td>
+      <td>1463.22</td>
+      <td>0</td>
+      <td>@ Seattle Sounders</td>
+      <td>1552.12</td>
+      <td>0</td>
+      <td>19.00%</td>
+      <td>56.62%</td>
+      <td>24.38%</td>
+      <td>2.83</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>New York RB</td>
+      <td>1520.19</td>
+      <td>1</td>
+      <td>@ Atlanta United FC</td>
+      <td>1560.39</td>
+      <td>0</td>
+      <td>23.56%</td>
+      <td>51.03%</td>
+      <td>25.40%</td>
+      <td>17.52</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>FC Cincinnati</td>
+      <td>1403.06</td>
+      <td>0</td>
+      <td>Columbus Crew</td>
+      <td>1506.91</td>
+      <td>4</td>
+      <td>31.64%</td>
+      <td>42.13%</td>
+      <td>26.23%</td>
+      <td>-24.10</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>Columbus Crew</td>
+      <td>1506.91</td>
+      <td>4</td>
+      <td>@ FC Cincinnati</td>
+      <td>1403.06</td>
+      <td>0</td>
+      <td>42.13%</td>
+      <td>31.64%</td>
+      <td>26.23%</td>
+      <td>24.11</td>
+    </tr>
+    <tr>
+      <td>2020-07-12</td>
+      <td>Atlanta United FC</td>
+      <td>1560.39</td>
+      <td>0</td>
+      <td>New York RB</td>
+      <td>1520.19</td>
+      <td>1</td>
+      <td>51.03%</td>
+      <td>23.56%</td>
+      <td>25.40%</td>
+      <td>-17.53</td>
+    </tr>
+    <tr>
+      <td>2020-07-13</td>
+      <td>DC United</td>
+      <td>1500.04</td>
+      <td>2</td>
+      <td>@ Toronto FC</td>
+      <td>1541.35</td>
+      <td>2</td>
+      <td>23.45%</td>
+      <td>51.17%</td>
+      <td>25.38%</td>
+      <td>2.03</td>
+    </tr>
+    <tr>
+      <td>2020-07-13</td>
+      <td>Toronto FC</td>
+      <td>1541.35</td>
+      <td>2</td>
+      <td>DC United</td>
+      <td>1500.04</td>
+      <td>2</td>
+      <td>51.17%</td>
+      <td>23.45%</td>
+      <td>25.38%</td>
+      <td>-2.03</td>
+    </tr>
+    <tr>
+      <td>2020-07-13</td>
+      <td>Sporting Kansas City</td>
+      <td>1521.90</td>
+      <td>1</td>
+      <td>Minnesota United FC</td>
+      <td>1556.49</td>
+      <td>2</td>
+      <td>41.30%</td>
+      <td>32.43%</td>
+      <td>26.27%</td>
+      <td>-14.74</td>
+    </tr>
+    <tr>
+      <td>2020-07-13</td>
+      <td>Colorado Rapids</td>
+      <td>1522.45</td>
+      <td>0</td>
+      <td>@ Real Salt Lake</td>
+      <td>1519.42</td>
+      <td>2</td>
+      <td>28.42%</td>
+      <td>45.57%</td>
+      <td>26.01%</td>
+      <td>-15.67</td>
+    </tr>
+    <tr>
+      <td>2020-07-13</td>
+      <td>Minnesota United FC</td>
+      <td>1556.49</td>
+      <td>2</td>
+      <td>@ Sporting Kansas City</td>
+      <td>1521.90</td>
+      <td>1</td>
+      <td>32.43%</td>
+      <td>41.30%</td>
+      <td>26.27%</td>
+      <td>14.73</td>
+    </tr>
+    <tr>
+      <td>2020-07-13</td>
+      <td>Real Salt Lake</td>
+      <td>1519.42</td>
+      <td>2</td>
+      <td>Colorado Rapids</td>
+      <td>1522.45</td>
+      <td>0</td>
+      <td>45.57%</td>
+      <td>28.42%</td>
+      <td>26.01%</td>
+      <td>15.67</td>
+    </tr>
+    <tr>
+      <td>2020-07-14</td>
+      <td>Los Angeles FC</td>
+      <td>1575.94</td>
+      <td>3</td>
+      <td>Houston Dynamo</td>
+      <td>1462.18</td>
+      <td>3</td>
+      <td>59.25%</td>
+      <td>17.02%</td>
+      <td>23.73%</td>
+      <td>-3.22</td>
+    </tr>
+    <tr>
+      <td>2020-07-14</td>
+      <td>Chicago Fire</td>
+      <td>1499.25</td>
+      <td>2</td>
+      <td>Seattle Sounders</td>
+      <td>1549.29</td>
+      <td>1</td>
+      <td>39.14%</td>
+      <td>34.54%</td>
+      <td>26.33%</td>
+      <td>12.88</td>
+    </tr>
+    <tr>
+      <td>2020-07-14</td>
+      <td>Portland Timbers</td>
+      <td>1498.31</td>
+      <td>2</td>
+      <td>@ Los Angeles Galaxy</td>
+      <td>1486.29</td>
+      <td>1</td>
+      <td>29.52%</td>
+      <td>44.38%</td>
+      <td>26.10%</td>
+      <td>15.60</td>
+    </tr>
+    <tr>
+      <td>2020-07-14</td>
+      <td>Houston Dynamo</td>
+      <td>1462.18</td>
+      <td>3</td>
+      <td>@ Los Angeles FC</td>
+      <td>1575.94</td>
+      <td>3</td>
+      <td>17.02%</td>
+      <td>59.25%</td>
+      <td>23.73%</td>
+      <td>3.22</td>
+    </tr>
+    <tr>
+      <td>2020-07-14</td>
+      <td>Seattle Sounders</td>
+      <td>1549.29</td>
+      <td>1</td>
+      <td>@ Chicago Fire</td>
+      <td>1499.25</td>
+      <td>2</td>
+      <td>34.54%</td>
+      <td>39.14%</td>
+      <td>26.33%</td>
+      <td>-12.88</td>
+    </tr>
+    <tr>
+      <td>2020-07-14</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1486.29</td>
+      <td>1</td>
+      <td>Portland Timbers</td>
+      <td>1498.31</td>
+      <td>2</td>
+      <td>44.38%</td>
+      <td>29.52%</td>
+      <td>26.10%</td>
+      <td>-15.61</td>
+    </tr>
+    <tr>
+      <td>2020-07-15</td>
+      <td>Orlando City</td>
+      <td>1469.73</td>
+      <td>3</td>
+      <td>New York City FC</td>
+      <td>1505.60</td>
+      <td>1</td>
+      <td>41.12%</td>
+      <td>32.61%</td>
+      <td>26.27%</td>
+      <td>17.44</td>
+    </tr>
+    <tr>
+      <td>2020-07-15</td>
+      <td>Philadelphia Union</td>
+      <td>1522.32</td>
+      <td>2</td>
+      <td>Inter Miami CF</td>
+      <td>1423.91</td>
+      <td>1</td>
+      <td>57.64%</td>
+      <td>18.21%</td>
+      <td>24.14%</td>
+      <td>7.55</td>
+    </tr>
+    <tr>
+      <td>2020-07-15</td>
+      <td>New York City FC</td>
+      <td>1505.60</td>
+      <td>1</td>
+      <td>@ Orlando City</td>
+      <td>1469.73</td>
+      <td>3</td>
+      <td>32.61%</td>
+      <td>41.12%</td>
+      <td>26.27%</td>
+      <td>-17.44</td>
+    </tr>
+    <tr>
+      <td>2020-07-15</td>
+      <td>Inter Miami CF</td>
+      <td>1423.91</td>
+      <td>1</td>
+      <td>@ Philadelphia Union</td>
+      <td>1522.32</td>
+      <td>2</td>
+      <td>18.21%</td>
+      <td>57.64%</td>
+      <td>24.14%</td>
+      <td>-7.55</td>
+    </tr>
+    <tr>
+      <td>2020-07-16</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1462.27</td>
+      <td>3</td>
+      <td>San Jose Earthquakes</td>
+      <td>1466.05</td>
+      <td>4</td>
+      <td>45.47%</td>
+      <td>28.51%</td>
+      <td>26.02%</td>
+      <td>-15.91</td>
+    </tr>
+    <tr>
+      <td>2020-07-16</td>
+      <td>Atlanta United FC</td>
+      <td>1542.86</td>
+      <td>0</td>
+      <td>FC Cincinnati</td>
+      <td>1378.96</td>
+      <td>1</td>
+      <td>64.16%</td>
+      <td>13.63%</td>
+      <td>22.21%</td>
+      <td>-21.34</td>
+    </tr>
+    <tr>
+      <td>2020-07-16</td>
+      <td>FC Cincinnati</td>
+      <td>1378.96</td>
+      <td>1</td>
+      <td>@ Atlanta United FC</td>
+      <td>1542.86</td>
+      <td>0</td>
+      <td>13.63%</td>
+      <td>64.16%</td>
+      <td>22.21%</td>
+      <td>21.34</td>
+    </tr>
+    <tr>
+      <td>2020-07-16</td>
+      <td>San Jose Earthquakes</td>
+      <td>1466.05</td>
+      <td>4</td>
+      <td>@ Vancouver Whitecaps</td>
+      <td>1462.27</td>
+      <td>3</td>
+      <td>28.51%</td>
+      <td>45.47%</td>
+      <td>26.02%</td>
+      <td>15.91</td>
+    </tr>
+    <tr>
+      <td>2020-07-17</td>
+      <td>New York RB</td>
+      <td>1537.71</td>
+      <td>0</td>
+      <td>@ Columbus Crew</td>
+      <td>1531.02</td>
+      <td>2</td>
+      <td>28.87%</td>
+      <td>45.08%</td>
+      <td>26.05%</td>
+      <td>-15.86</td>
+    </tr>
+    <tr>
+      <td>2020-07-17</td>
+      <td>Montreal CF</td>
+      <td>1471.62</td>
+      <td>3</td>
+      <td>Toronto FC</td>
+      <td>1539.32</td>
+      <td>4</td>
+      <td>36.61%</td>
+      <td>37.04%</td>
+      <td>26.35%</td>
+      <td>-13.46</td>
+    </tr>
+    <tr>
+      <td>2020-07-17</td>
+      <td>Toronto FC</td>
+      <td>1539.32</td>
+      <td>4</td>
+      <td>@ Montreal CF</td>
+      <td>1471.62</td>
+      <td>3</td>
+      <td>37.04%</td>
+      <td>36.61%</td>
+      <td>26.35%</td>
+      <td>13.45</td>
+    </tr>
+    <tr>
+      <td>2020-07-17</td>
+      <td>Columbus Crew</td>
+      <td>1531.02</td>
+      <td>2</td>
+      <td>New York RB</td>
+      <td>1537.71</td>
+      <td>0</td>
+      <td>45.08%</td>
+      <td>28.87%</td>
+      <td>26.05%</td>
+      <td>15.86</td>
+    </tr>
+    <tr>
+      <td>2020-07-18</td>
+      <td>Minnesota United FC</td>
+      <td>1571.22</td>
+      <td>0</td>
+      <td>@ Real Salt Lake</td>
+      <td>1535.09</td>
+      <td>0</td>
+      <td>32.64%</td>
+      <td>41.09%</td>
+      <td>26.27%</td>
+      <td>0.59</td>
+    </tr>
+    <tr>
+      <td>2020-07-18</td>
+      <td>Colorado Rapids</td>
+      <td>1506.78</td>
+      <td>2</td>
+      <td>@ Sporting Kansas City</td>
+      <td>1507.16</td>
+      <td>3</td>
+      <td>28.01%</td>
+      <td>46.02%</td>
+      <td>25.98%</td>
+      <td>-10.95</td>
+    </tr>
+    <tr>
+      <td>2020-07-18</td>
+      <td>New England Revolution</td>
+      <td>1504.24</td>
+      <td>1</td>
+      <td>@ DC United</td>
+      <td>1502.07</td>
+      <td>1</td>
+      <td>28.32%</td>
+      <td>45.68%</td>
+      <td>26.00%</td>
+      <td>1.23</td>
+    </tr>
+    <tr>
+      <td>2020-07-18</td>
+      <td>DC United</td>
+      <td>1502.07</td>
+      <td>1</td>
+      <td>New England Revolution</td>
+      <td>1504.24</td>
+      <td>1</td>
+      <td>45.68%</td>
+      <td>28.32%</td>
+      <td>26.00%</td>
+      <td>-1.24</td>
+    </tr>
+    <tr>
+      <td>2020-07-18</td>
+      <td>Sporting Kansas City</td>
+      <td>1507.16</td>
+      <td>3</td>
+      <td>Colorado Rapids</td>
+      <td>1506.78</td>
+      <td>2</td>
+      <td>46.02%</td>
+      <td>28.01%</td>
+      <td>25.98%</td>
+      <td>10.95</td>
+    </tr>
+    <tr>
+      <td>2020-07-18</td>
+      <td>Real Salt Lake</td>
+      <td>1535.09</td>
+      <td>0</td>
+      <td>Minnesota United FC</td>
+      <td>1571.22</td>
+      <td>0</td>
+      <td>41.09%</td>
+      <td>32.64%</td>
+      <td>26.27%</td>
+      <td>-0.59</td>
+    </tr>
+    <tr>
+      <td>2020-07-19</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1470.68</td>
+      <td>2</td>
+      <td>@ Los Angeles FC</td>
+      <td>1572.72</td>
+      <td>6</td>
+      <td>17.92%</td>
+      <td>58.03%</td>
+      <td>24.05%</td>
+      <td>-14.86</td>
+    </tr>
+    <tr>
+      <td>2020-07-19</td>
+      <td>Portland Timbers</td>
+      <td>1513.91</td>
+      <td>2</td>
+      <td>Houston Dynamo</td>
+      <td>1465.40</td>
+      <td>1</td>
+      <td>52.03%</td>
+      <td>22.72%</td>
+      <td>25.25%</td>
+      <td>9.20</td>
+    </tr>
+    <tr>
+      <td>2020-07-19</td>
+      <td>Los Angeles FC</td>
+      <td>1572.72</td>
+      <td>6</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1470.68</td>
+      <td>2</td>
+      <td>58.03%</td>
+      <td>17.92%</td>
+      <td>24.05%</td>
+      <td>14.87</td>
+    </tr>
+    <tr>
+      <td>2020-07-19</td>
+      <td>Houston Dynamo</td>
+      <td>1465.40</td>
+      <td>1</td>
+      <td>@ Portland Timbers</td>
+      <td>1513.91</td>
+      <td>2</td>
+      <td>22.72%</td>
+      <td>52.03%</td>
+      <td>25.25%</td>
+      <td>-9.20</td>
+    </tr>
+    <tr>
+      <td>2020-07-20</td>
+      <td>Inter Miami CF</td>
+      <td>1416.36</td>
+      <td>0</td>
+      <td>New York City FC</td>
+      <td>1488.16</td>
+      <td>1</td>
+      <td>36.03%</td>
+      <td>37.62%</td>
+      <td>26.35%</td>
+      <td>-13.29</td>
+    </tr>
+    <tr>
+      <td>2020-07-20</td>
+      <td>Chicago Fire</td>
+      <td>1512.13</td>
+      <td>0</td>
+      <td>San Jose Earthquakes</td>
+      <td>1481.96</td>
+      <td>2</td>
+      <td>49.81%</td>
+      <td>24.62%</td>
+      <td>25.57%</td>
+      <td>-24.27</td>
+    </tr>
+    <tr>
+      <td>2020-07-20</td>
+      <td>Seattle Sounders</td>
+      <td>1536.41</td>
+      <td>3</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1446.36</td>
+      <td>0</td>
+      <td>56.75%</td>
+      <td>18.90%</td>
+      <td>24.35%</td>
+      <td>13.53</td>
+    </tr>
+    <tr>
+      <td>2020-07-20</td>
+      <td>New York City FC</td>
+      <td>1488.16</td>
+      <td>1</td>
+      <td>@ Inter Miami CF</td>
+      <td>1416.36</td>
+      <td>0</td>
+      <td>37.62%</td>
+      <td>36.03%</td>
+      <td>26.35%</td>
+      <td>13.29</td>
+    </tr>
+    <tr>
+      <td>2020-07-20</td>
+      <td>San Jose Earthquakes</td>
+      <td>1481.96</td>
+      <td>2</td>
+      <td>@ Chicago Fire</td>
+      <td>1512.13</td>
+      <td>0</td>
+      <td>24.62%</td>
+      <td>49.81%</td>
+      <td>25.57%</td>
+      <td>24.28</td>
+    </tr>
+    <tr>
+      <td>2020-07-20</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1446.36</td>
+      <td>0</td>
+      <td>@ Seattle Sounders</td>
+      <td>1536.41</td>
+      <td>3</td>
+      <td>18.90%</td>
+      <td>56.75%</td>
+      <td>24.35%</td>
+      <td>-13.53</td>
+    </tr>
+    <tr>
+      <td>2020-07-21</td>
+      <td>New England Revolution</td>
+      <td>1505.47</td>
+      <td>0</td>
+      <td>@ Toronto FC</td>
+      <td>1552.77</td>
+      <td>0</td>
+      <td>22.84%</td>
+      <td>51.88%</td>
+      <td>25.28%</td>
+      <td>2.13</td>
+    </tr>
+    <tr>
+      <td>2020-07-21</td>
+      <td>Orlando City</td>
+      <td>1487.17</td>
+      <td>1</td>
+      <td>@ Philadelphia Union</td>
+      <td>1529.87</td>
+      <td>1</td>
+      <td>23.31%</td>
+      <td>51.33%</td>
+      <td>25.36%</td>
+      <td>2.05</td>
+    </tr>
+    <tr>
+      <td>2020-07-21</td>
+      <td>Toronto FC</td>
+      <td>1552.77</td>
+      <td>0</td>
+      <td>New England Revolution</td>
+      <td>1505.47</td>
+      <td>0</td>
+      <td>51.88%</td>
+      <td>22.84%</td>
+      <td>25.28%</td>
+      <td>-2.13</td>
+    </tr>
+    <tr>
+      <td>2020-07-21</td>
+      <td>Philadelphia Union</td>
+      <td>1529.87</td>
+      <td>1</td>
+      <td>Orlando City</td>
+      <td>1487.17</td>
+      <td>1</td>
+      <td>51.33%</td>
+      <td>23.31%</td>
+      <td>25.36%</td>
+      <td>-2.05</td>
+    </tr>
+    <tr>
+      <td>2020-07-22</td>
+      <td>Montreal CF</td>
+      <td>1458.16</td>
+      <td>1</td>
+      <td>DC United</td>
+      <td>1500.83</td>
+      <td>0</td>
+      <td>40.17%</td>
+      <td>33.52%</td>
+      <td>26.30%</td>
+      <td>12.60</td>
+    </tr>
+    <tr>
+      <td>2020-07-22</td>
+      <td>Columbus Crew</td>
+      <td>1546.88</td>
+      <td>1</td>
+      <td>@ Atlanta United FC</td>
+      <td>1521.52</td>
+      <td>0</td>
+      <td>31.22%</td>
+      <td>42.57%</td>
+      <td>26.21%</td>
+      <td>15.09</td>
+    </tr>
+    <tr>
+      <td>2020-07-22</td>
+      <td>Sporting Kansas City</td>
+      <td>1518.11</td>
+      <td>2</td>
+      <td>@ Real Salt Lake</td>
+      <td>1534.50</td>
+      <td>0</td>
+      <td>26.14%</td>
+      <td>48.08%</td>
+      <td>25.78%</td>
+      <td>23.57</td>
+    </tr>
+    <tr>
+      <td>2020-07-22</td>
+      <td>Atlanta United FC</td>
+      <td>1521.52</td>
+      <td>0</td>
+      <td>Columbus Crew</td>
+      <td>1546.88</td>
+      <td>1</td>
+      <td>42.57%</td>
+      <td>31.22%</td>
+      <td>26.21%</td>
+      <td>-15.09</td>
+    </tr>
+    <tr>
+      <td>2020-07-22</td>
+      <td>DC United</td>
+      <td>1500.83</td>
+      <td>0</td>
+      <td>@ Montreal CF</td>
+      <td>1458.16</td>
+      <td>1</td>
+      <td>33.52%</td>
+      <td>40.17%</td>
+      <td>26.30%</td>
+      <td>-12.59</td>
+    </tr>
+    <tr>
+      <td>2020-07-22</td>
+      <td>Real Salt Lake</td>
+      <td>1534.50</td>
+      <td>0</td>
+      <td>Sporting Kansas City</td>
+      <td>1518.11</td>
+      <td>2</td>
+      <td>48.08%</td>
+      <td>26.14%</td>
+      <td>25.78%</td>
+      <td>-23.56</td>
+    </tr>
+    <tr>
+      <td>2020-07-23</td>
+      <td>New York RB</td>
+      <td>1521.85</td>
+      <td>0</td>
+      <td>@ FC Cincinnati</td>
+      <td>1400.30</td>
+      <td>2</td>
+      <td>44.52%</td>
+      <td>29.39%</td>
+      <td>26.09%</td>
+      <td>-22.12</td>
+    </tr>
+    <tr>
+      <td>2020-07-23</td>
+      <td>Chicago Fire</td>
+      <td>1487.86</td>
+      <td>0</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1432.83</td>
+      <td>2</td>
+      <td>52.80%</td>
+      <td>22.07%</td>
+      <td>25.13%</td>
+      <td>-25.52</td>
+    </tr>
+    <tr>
+      <td>2020-07-23</td>
+      <td>Minnesota United FC</td>
+      <td>1571.81</td>
+      <td>2</td>
+      <td>@ Colorado Rapids</td>
+      <td>1495.83</td>
+      <td>2</td>
+      <td>38.22%</td>
+      <td>35.44%</td>
+      <td>26.34%</td>
+      <td>-0.19</td>
+    </tr>
+    <tr>
+      <td>2020-07-23</td>
+      <td>Colorado Rapids</td>
+      <td>1495.83</td>
+      <td>2</td>
+      <td>Minnesota United FC</td>
+      <td>1571.81</td>
+      <td>2</td>
+      <td>35.44%</td>
+      <td>38.22%</td>
+      <td>26.34%</td>
+      <td>0.19</td>
+    </tr>
+    <tr>
+      <td>2020-07-23</td>
+      <td>FC Cincinnati</td>
+      <td>1400.30</td>
+      <td>2</td>
+      <td>New York RB</td>
+      <td>1521.85</td>
+      <td>0</td>
+      <td>29.39%</td>
+      <td>44.52%</td>
+      <td>26.09%</td>
+      <td>22.12</td>
+    </tr>
+    <tr>
+      <td>2020-07-23</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1432.83</td>
+      <td>2</td>
+      <td>@ Chicago Fire</td>
+      <td>1487.86</td>
+      <td>0</td>
+      <td>22.07%</td>
+      <td>52.80%</td>
+      <td>25.13%</td>
+      <td>25.51</td>
+    </tr>
+    <tr>
+      <td>2020-07-24</td>
+      <td>Los Angeles FC</td>
+      <td>1587.59</td>
+      <td>2</td>
+      <td>Portland Timbers</td>
+      <td>1523.11</td>
+      <td>2</td>
+      <td>53.89%</td>
+      <td>21.17%</td>
+      <td>24.94%</td>
+      <td>-2.43</td>
+    </tr>
+    <tr>
+      <td>2020-07-24</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1455.82</td>
+      <td>1</td>
+      <td>Houston Dynamo</td>
+      <td>1456.20</td>
+      <td>1</td>
+      <td>45.92%</td>
+      <td>28.10%</td>
+      <td>25.98%</td>
+      <td>-1.27</td>
+    </tr>
+    <tr>
+      <td>2020-07-24</td>
+      <td>Portland Timbers</td>
+      <td>1523.11</td>
+      <td>2</td>
+      <td>@ Los Angeles FC</td>
+      <td>1587.59</td>
+      <td>2</td>
+      <td>21.17%</td>
+      <td>53.89%</td>
+      <td>24.94%</td>
+      <td>2.43</td>
+    </tr>
+    <tr>
+      <td>2020-07-24</td>
+      <td>Houston Dynamo</td>
+      <td>1456.20</td>
+      <td>1</td>
+      <td>@ Los Angeles Galaxy</td>
+      <td>1455.82</td>
+      <td>1</td>
+      <td>28.10%</td>
+      <td>45.92%</td>
+      <td>25.98%</td>
+      <td>1.26</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>FC Dallas</td>
+      <td>1522.43</td>
+      <td>0</td>
+      <td>Nashville SC</td>
+      <td>1428.39</td>
+      <td>1</td>
+      <td>57.18%</td>
+      <td>18.57%</td>
+      <td>24.25%</td>
+      <td>-19.33</td>
+    </tr>
+    <tr>
+      <td>2020-08-13</td>
+      <td>Nashville SC</td>
+      <td>1428.39</td>
+      <td>1</td>
+      <td>@ FC Dallas</td>
+      <td>1522.43</td>
+      <td>0</td>
+      <td>18.57%</td>
+      <td>57.18%</td>
+      <td>24.25%</td>
+      <td>19.33</td>
+    </tr>
+    <tr>
+      <td>2020-08-17</td>
+      <td>FC Dallas</td>
+      <td>1503.10</td>
+      <td>0</td>
+      <td>Nashville SC</td>
+      <td>1447.72</td>
+      <td>0</td>
+      <td>52.84%</td>
+      <td>22.04%</td>
+      <td>25.12%</td>
+      <td>-2.28</td>
+    </tr>
+    <tr>
+      <td>2020-08-17</td>
+      <td>Nashville SC</td>
+      <td>1447.72</td>
+      <td>0</td>
+      <td>@ FC Dallas</td>
+      <td>1503.10</td>
+      <td>0</td>
+      <td>22.04%</td>
+      <td>52.84%</td>
+      <td>25.12%</td>
+      <td>2.27</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1458.34</td>
+      <td>0</td>
+      <td>@ Toronto FC</td>
+      <td>1550.64</td>
+      <td>3</td>
+      <td>18.72%</td>
+      <td>56.99%</td>
+      <td>24.30%</td>
+      <td>-13.40</td>
+    </tr>
+    <tr>
+      <td>2020-08-19</td>
+      <td>Toronto FC</td>
+      <td>1550.64</td>
+      <td>3</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1458.34</td>
+      <td>0</td>
+      <td>56.99%</td>
+      <td>18.72%</td>
+      <td>24.30%</td>
+      <td>13.41</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Chicago Fire</td>
+      <td>1462.34</td>
+      <td>0</td>
+      <td>@ Columbus Crew</td>
+      <td>1561.97</td>
+      <td>3</td>
+      <td>18.12%</td>
+      <td>57.77%</td>
+      <td>24.11%</td>
+      <td>-13.01</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Philadelphia Union</td>
+      <td>1527.82</td>
+      <td>0</td>
+      <td>@ New England Revolution</td>
+      <td>1507.60</td>
+      <td>0</td>
+      <td>30.56%</td>
+      <td>43.27%</td>
+      <td>26.17%</td>
+      <td>0.89</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>New England Revolution</td>
+      <td>1507.60</td>
+      <td>0</td>
+      <td>Philadelphia Union</td>
+      <td>1527.82</td>
+      <td>0</td>
+      <td>43.27%</td>
+      <td>30.56%</td>
+      <td>26.17%</td>
+      <td>-0.89</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>New York RB</td>
+      <td>1499.73</td>
+      <td>1</td>
+      <td>New York City FC</td>
+      <td>1501.45</td>
+      <td>0</td>
+      <td>45.74%</td>
+      <td>28.26%</td>
+      <td>26.00%</td>
+      <td>11.03</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>New York City FC</td>
+      <td>1501.45</td>
+      <td>0</td>
+      <td>@ New York RB</td>
+      <td>1499.73</td>
+      <td>1</td>
+      <td>28.26%</td>
+      <td>45.74%</td>
+      <td>26.00%</td>
+      <td>-11.03</td>
+    </tr>
+    <tr>
+      <td>2020-08-21</td>
+      <td>Columbus Crew</td>
+      <td>1561.97</td>
+      <td>3</td>
+      <td>Chicago Fire</td>
+      <td>1462.34</td>
+      <td>0</td>
+      <td>57.77%</td>
+      <td>18.12%</td>
+      <td>24.11%</td>
+      <td>13.01</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Toronto FC</td>
+      <td>1564.05</td>
+      <td>1</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1444.94</td>
+      <td>0</td>
+      <td>59.80%</td>
+      <td>16.62%</td>
+      <td>23.58%</td>
+      <td>6.91</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Sporting Kansas City</td>
+      <td>1541.68</td>
+      <td>2</td>
+      <td>@ Minnesota United FC</td>
+      <td>1571.62</td>
+      <td>1</td>
+      <td>24.65%</td>
+      <td>49.78%</td>
+      <td>25.57%</td>
+      <td>17.15</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>DC United</td>
+      <td>1488.24</td>
+      <td>0</td>
+      <td>@ FC Cincinnati</td>
+      <td>1422.42</td>
+      <td>0</td>
+      <td>36.77%</td>
+      <td>36.88%</td>
+      <td>26.35%</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>FC Dallas</td>
+      <td>1500.82</td>
+      <td>0</td>
+      <td>@ Houston Dynamo</td>
+      <td>1457.46</td>
+      <td>0</td>
+      <td>33.62%</td>
+      <td>40.08%</td>
+      <td>26.31%</td>
+      <td>0.45</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1444.94</td>
+      <td>0</td>
+      <td>@ Toronto FC</td>
+      <td>1564.05</td>
+      <td>1</td>
+      <td>16.62%</td>
+      <td>59.80%</td>
+      <td>23.58%</td>
+      <td>-6.92</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1454.55</td>
+      <td>2</td>
+      <td>@ Los Angeles FC</td>
+      <td>1585.16</td>
+      <td>0</td>
+      <td>15.79%</td>
+      <td>60.96%</td>
+      <td>23.25%</td>
+      <td>28.90</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>FC Cincinnati</td>
+      <td>1422.42</td>
+      <td>0</td>
+      <td>DC United</td>
+      <td>1488.24</td>
+      <td>0</td>
+      <td>36.88%</td>
+      <td>36.77%</td>
+      <td>26.35%</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Los Angeles FC</td>
+      <td>1585.16</td>
+      <td>0</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1454.55</td>
+      <td>2</td>
+      <td>60.96%</td>
+      <td>15.79%</td>
+      <td>23.25%</td>
+      <td>-28.90</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Minnesota United FC</td>
+      <td>1571.62</td>
+      <td>1</td>
+      <td>Sporting Kansas City</td>
+      <td>1541.68</td>
+      <td>2</td>
+      <td>49.78%</td>
+      <td>24.65%</td>
+      <td>25.57%</td>
+      <td>-17.16</td>
+    </tr>
+    <tr>
+      <td>2020-08-22</td>
+      <td>Houston Dynamo</td>
+      <td>1457.46</td>
+      <td>0</td>
+      <td>FC Dallas</td>
+      <td>1500.82</td>
+      <td>0</td>
+      <td>40.08%</td>
+      <td>33.62%</td>
+      <td>26.31%</td>
+      <td>-0.44</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Nashville SC</td>
+      <td>1449.99</td>
+      <td>0</td>
+      <td>@ Atlanta United FC</td>
+      <td>1506.43</td>
+      <td>2</td>
+      <td>21.94%</td>
+      <td>52.96%</td>
+      <td>25.10%</td>
+      <td>-12.62</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Orlando City</td>
+      <td>1489.22</td>
+      <td>2</td>
+      <td>@ Inter Miami CF</td>
+      <td>1403.07</td>
+      <td>3</td>
+      <td>39.66%</td>
+      <td>34.02%</td>
+      <td>26.32%</td>
+      <td>-14.28</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Real Salt Lake</td>
+      <td>1510.94</td>
+      <td>4</td>
+      <td>@ Colorado Rapids</td>
+      <td>1496.02</td>
+      <td>1</td>
+      <td>29.89%</td>
+      <td>43.99%</td>
+      <td>26.13%</td>
+      <td>26.83</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Inter Miami CF</td>
+      <td>1403.07</td>
+      <td>3</td>
+      <td>Orlando City</td>
+      <td>1489.22</td>
+      <td>2</td>
+      <td>34.02%</td>
+      <td>39.66%</td>
+      <td>26.32%</td>
+      <td>14.29</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Atlanta United FC</td>
+      <td>1506.43</td>
+      <td>2</td>
+      <td>Nashville SC</td>
+      <td>1449.99</td>
+      <td>0</td>
+      <td>52.96%</td>
+      <td>21.94%</td>
+      <td>25.10%</td>
+      <td>12.62</td>
+    </tr>
+    <tr>
+      <td>2020-08-23</td>
+      <td>Colorado Rapids</td>
+      <td>1496.02</td>
+      <td>1</td>
+      <td>Real Salt Lake</td>
+      <td>1510.94</td>
+      <td>4</td>
+      <td>43.99%</td>
+      <td>29.89%</td>
+      <td>26.13%</td>
+      <td>-26.83</td>
+    </tr>
+    <tr>
+      <td>2020-08-24</td>
+      <td>Portland Timbers</td>
+      <td>1525.54</td>
+      <td>0</td>
+      <td>Seattle Sounders</td>
+      <td>1549.94</td>
+      <td>3</td>
+      <td>42.70%</td>
+      <td>31.10%</td>
+      <td>26.20%</td>
+      <td>-26.20</td>
+    </tr>
+    <tr>
+      <td>2020-08-24</td>
+      <td>Seattle Sounders</td>
+      <td>1549.94</td>
+      <td>3</td>
+      <td>@ Portland Timbers</td>
+      <td>1525.54</td>
+      <td>0</td>
+      <td>31.10%</td>
+      <td>42.70%</td>
+      <td>26.20%</td>
+      <td>26.20</td>
+    </tr>
+    <tr>
+      <td>2020-08-25</td>
+      <td>New York City FC</td>
+      <td>1490.42</td>
+      <td>1</td>
+      <td>Columbus Crew</td>
+      <td>1574.98</td>
+      <td>0</td>
+      <td>34.24%</td>
+      <td>39.44%</td>
+      <td>26.32%</td>
+      <td>14.23</td>
+    </tr>
+    <tr>
+      <td>2020-08-25</td>
+      <td>Columbus Crew</td>
+      <td>1574.98</td>
+      <td>0</td>
+      <td>@ New York City FC</td>
+      <td>1490.42</td>
+      <td>1</td>
+      <td>39.44%</td>
+      <td>34.24%</td>
+      <td>26.32%</td>
+      <td>-14.22</td>
+    </tr>
+    <tr>
+      <td>2020-08-26</td>
+      <td>Sporting Kansas City</td>
+      <td>1558.83</td>
+      <td>2</td>
+      <td>Houston Dynamo</td>
+      <td>1457.02</td>
+      <td>5</td>
+      <td>58.01%</td>
+      <td>17.94%</td>
+      <td>24.05%</td>
+      <td>-33.91</td>
+    </tr>
+    <tr>
+      <td>2020-08-26</td>
+      <td>DC United</td>
+      <td>1488.25</td>
+      <td>1</td>
+      <td>New England Revolution</td>
+      <td>1506.71</td>
+      <td>2</td>
+      <td>43.51%</td>
+      <td>30.34%</td>
+      <td>26.16%</td>
+      <td>-15.36</td>
+    </tr>
+    <tr>
+      <td>2020-08-26</td>
+      <td>New England Revolution</td>
+      <td>1506.71</td>
+      <td>2</td>
+      <td>@ DC United</td>
+      <td>1488.25</td>
+      <td>1</td>
+      <td>30.34%</td>
+      <td>43.51%</td>
+      <td>26.16%</td>
+      <td>15.36</td>
+    </tr>
+    <tr>
+      <td>2020-08-26</td>
+      <td>FC Cincinnati</td>
+      <td>1422.42</td>
+      <td>0</td>
+      <td>@ Chicago Fire</td>
+      <td>1449.33</td>
+      <td>3</td>
+      <td>24.97%</td>
+      <td>49.40%</td>
+      <td>25.62%</td>
+      <td>-17.28</td>
+    </tr>
+    <tr>
+      <td>2020-08-26</td>
+      <td>New York RB</td>
+      <td>1510.76</td>
+      <td>0</td>
+      <td>@ Philadelphia Union</td>
+      <td>1528.71</td>
+      <td>1</td>
+      <td>25.97%</td>
+      <td>48.28%</td>
+      <td>25.75%</td>
+      <td>-10.30</td>
+    </tr>
+    <tr>
+      <td>2020-08-26</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1438.02</td>
+      <td>0</td>
+      <td>@ Montreal CF</td>
+      <td>1470.76</td>
+      <td>2</td>
+      <td>24.35%</td>
+      <td>50.12%</td>
+      <td>25.53%</td>
+      <td>-13.81</td>
+    </tr>
+    <tr>
+      <td>2020-08-26</td>
+      <td>Houston Dynamo</td>
+      <td>1457.02</td>
+      <td>5</td>
+      <td>@ Sporting Kansas City</td>
+      <td>1558.83</td>
+      <td>2</td>
+      <td>17.94%</td>
+      <td>58.01%</td>
+      <td>24.05%</td>
+      <td>33.91</td>
+    </tr>
+    <tr>
+      <td>2020-08-26</td>
+      <td>Chicago Fire</td>
+      <td>1449.33</td>
+      <td>3</td>
+      <td>FC Cincinnati</td>
+      <td>1422.42</td>
+      <td>0</td>
+      <td>49.40%</td>
+      <td>24.97%</td>
+      <td>25.62%</td>
+      <td>17.28</td>
+    </tr>
+    <tr>
+      <td>2020-08-26</td>
+      <td>Philadelphia Union</td>
+      <td>1528.71</td>
+      <td>1</td>
+      <td>New York RB</td>
+      <td>1510.76</td>
+      <td>0</td>
+      <td>48.28%</td>
+      <td>25.97%</td>
+      <td>25.75%</td>
+      <td>10.30</td>
+    </tr>
+    <tr>
+      <td>2020-08-26</td>
+      <td>Montreal CF</td>
+      <td>1470.76</td>
+      <td>2</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1438.02</td>
+      <td>0</td>
+      <td>50.12%</td>
+      <td>24.35%</td>
+      <td>25.53%</td>
+      <td>13.80</td>
+    </tr>
+    <tr>
+      <td>2020-08-27</td>
+      <td>Nashville SC</td>
+      <td>1437.37</td>
+      <td>1</td>
+      <td>@ Orlando City</td>
+      <td>1474.94</td>
+      <td>3</td>
+      <td>23.84%</td>
+      <td>50.71%</td>
+      <td>25.45%</td>
+      <td>-13.57</td>
+    </tr>
+    <tr>
+      <td>2020-08-27</td>
+      <td>Orlando City</td>
+      <td>1474.94</td>
+      <td>3</td>
+      <td>Nashville SC</td>
+      <td>1437.37</td>
+      <td>1</td>
+      <td>50.71%</td>
+      <td>23.84%</td>
+      <td>25.45%</td>
+      <td>13.56</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Orlando City</td>
+      <td>1488.50</td>
+      <td>3</td>
+      <td>@ Atlanta United FC</td>
+      <td>1519.05</td>
+      <td>1</td>
+      <td>24.58%</td>
+      <td>49.85%</td>
+      <td>25.57%</td>
+      <td>24.30</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Atlanta United FC</td>
+      <td>1519.05</td>
+      <td>1</td>
+      <td>Orlando City</td>
+      <td>1488.50</td>
+      <td>3</td>
+      <td>49.85%</td>
+      <td>24.58%</td>
+      <td>25.57%</td>
+      <td>-24.29</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Montreal CF</td>
+      <td>1484.56</td>
+      <td>0</td>
+      <td>Toronto FC</td>
+      <td>1570.96</td>
+      <td>1</td>
+      <td>33.99%</td>
+      <td>39.70%</td>
+      <td>26.32%</td>
+      <td>-12.72</td>
+    </tr>
+    <tr>
+      <td>2020-08-29</td>
+      <td>Toronto FC</td>
+      <td>1570.96</td>
+      <td>1</td>
+      <td>@ Montreal CF</td>
+      <td>1484.56</td>
+      <td>0</td>
+      <td>39.70%</td>
+      <td>33.99%</td>
+      <td>26.32%</td>
+      <td>12.73</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Portland Timbers</td>
+      <td>1499.34</td>
+      <td>4</td>
+      <td>Real Salt Lake</td>
+      <td>1537.77</td>
+      <td>4</td>
+      <td>40.77%</td>
+      <td>32.95%</td>
+      <td>26.28%</td>
+      <td>-0.54</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Columbus Crew</td>
+      <td>1560.76</td>
+      <td>0</td>
+      <td>@ FC Cincinnati</td>
+      <td>1405.14</td>
+      <td>0</td>
+      <td>48.93%</td>
+      <td>25.39%</td>
+      <td>25.68%</td>
+      <td>-1.70</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Colorado Rapids</td>
+      <td>1469.19</td>
+      <td>1</td>
+      <td>Sporting Kansas City</td>
+      <td>1524.92</td>
+      <td>1</td>
+      <td>38.33%</td>
+      <td>35.33%</td>
+      <td>26.34%</td>
+      <td>-0.20</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>FC Dallas</td>
+      <td>1501.27</td>
+      <td>3</td>
+      <td>Minnesota United FC</td>
+      <td>1554.46</td>
+      <td>1</td>
+      <td>38.69%</td>
+      <td>34.98%</td>
+      <td>26.34%</td>
+      <td>18.39</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>New England Revolution</td>
+      <td>1522.07</td>
+      <td>1</td>
+      <td>New York RB</td>
+      <td>1500.46</td>
+      <td>1</td>
+      <td>48.74%</td>
+      <td>25.56%</td>
+      <td>25.70%</td>
+      <td>-1.67</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Philadelphia Union</td>
+      <td>1539.01</td>
+      <td>4</td>
+      <td>DC United</td>
+      <td>1472.89</td>
+      <td>1</td>
+      <td>54.08%</td>
+      <td>21.02%</td>
+      <td>24.90%</td>
+      <td>14.89</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>New York City FC</td>
+      <td>1504.65</td>
+      <td>3</td>
+      <td>Chicago Fire</td>
+      <td>1466.61</td>
+      <td>1</td>
+      <td>50.77%</td>
+      <td>23.79%</td>
+      <td>25.44%</td>
+      <td>13.53</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1483.45</td>
+      <td>3</td>
+      <td>San Jose Earthquakes</td>
+      <td>1506.24</td>
+      <td>2</td>
+      <td>42.92%</td>
+      <td>30.89%</td>
+      <td>26.19%</td>
+      <td>11.83</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>FC Cincinnati</td>
+      <td>1405.14</td>
+      <td>0</td>
+      <td>Columbus Crew</td>
+      <td>1560.76</td>
+      <td>0</td>
+      <td>25.39%</td>
+      <td>48.93%</td>
+      <td>25.68%</td>
+      <td>1.70</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>DC United</td>
+      <td>1472.89</td>
+      <td>1</td>
+      <td>@ Philadelphia Union</td>
+      <td>1539.01</td>
+      <td>4</td>
+      <td>21.02%</td>
+      <td>54.08%</td>
+      <td>24.90%</td>
+      <td>-14.89</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Chicago Fire</td>
+      <td>1466.61</td>
+      <td>1</td>
+      <td>@ New York City FC</td>
+      <td>1504.65</td>
+      <td>3</td>
+      <td>23.79%</td>
+      <td>50.77%</td>
+      <td>25.44%</td>
+      <td>-13.54</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Real Salt Lake</td>
+      <td>1537.77</td>
+      <td>4</td>
+      <td>@ Portland Timbers</td>
+      <td>1499.34</td>
+      <td>4</td>
+      <td>32.95%</td>
+      <td>40.77%</td>
+      <td>26.28%</td>
+      <td>0.54</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>New York RB</td>
+      <td>1500.46</td>
+      <td>1</td>
+      <td>@ New England Revolution</td>
+      <td>1522.07</td>
+      <td>1</td>
+      <td>25.56%</td>
+      <td>48.74%</td>
+      <td>25.70%</td>
+      <td>1.67</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Minnesota United FC</td>
+      <td>1554.46</td>
+      <td>1</td>
+      <td>@ FC Dallas</td>
+      <td>1501.27</td>
+      <td>3</td>
+      <td>34.98%</td>
+      <td>38.69%</td>
+      <td>26.34%</td>
+      <td>-18.39</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>Sporting Kansas City</td>
+      <td>1524.92</td>
+      <td>1</td>
+      <td>@ Colorado Rapids</td>
+      <td>1469.19</td>
+      <td>1</td>
+      <td>35.33%</td>
+      <td>38.33%</td>
+      <td>26.34%</td>
+      <td>0.21</td>
+    </tr>
+    <tr>
+      <td>2020-08-30</td>
+      <td>San Jose Earthquakes</td>
+      <td>1506.24</td>
+      <td>2</td>
+      <td>@ Los Angeles Galaxy</td>
+      <td>1483.45</td>
+      <td>3</td>
+      <td>30.89%</td>
+      <td>42.92%</td>
+      <td>26.19%</td>
+      <td>-11.83</td>
+    </tr>
+    <tr>
+      <td>2020-08-31</td>
+      <td>Nashville SC</td>
+      <td>1423.80</td>
+      <td>1</td>
+      <td>Inter Miami CF</td>
+      <td>1417.36</td>
+      <td>0</td>
+      <td>46.81%</td>
+      <td>27.29%</td>
+      <td>25.90%</td>
+      <td>10.73</td>
+    </tr>
+    <tr>
+      <td>2020-08-31</td>
+      <td>Seattle Sounders</td>
+      <td>1576.14</td>
+      <td>3</td>
+      <td>Los Angeles FC</td>
+      <td>1556.26</td>
+      <td>1</td>
+      <td>48.52%</td>
+      <td>25.75%</td>
+      <td>25.73%</td>
+      <td>14.47</td>
+    </tr>
+    <tr>
+      <td>2020-08-31</td>
+      <td>Inter Miami CF</td>
+      <td>1417.36</td>
+      <td>0</td>
+      <td>@ Nashville SC</td>
+      <td>1423.80</td>
+      <td>1</td>
+      <td>27.29%</td>
+      <td>46.81%</td>
+      <td>25.90%</td>
+      <td>-10.73</td>
+    </tr>
+    <tr>
+      <td>2020-08-31</td>
+      <td>Los Angeles FC</td>
+      <td>1556.26</td>
+      <td>1</td>
+      <td>@ Seattle Sounders</td>
+      <td>1576.14</td>
+      <td>3</td>
+      <td>25.75%</td>
+      <td>48.52%</td>
+      <td>25.73%</td>
+      <td>-14.47</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Montreal CF</td>
+      <td>1471.84</td>
+      <td>1</td>
+      <td>@ Toronto FC</td>
+      <td>1583.69</td>
+      <td>0</td>
+      <td>17.16%</td>
+      <td>59.06%</td>
+      <td>23.79%</td>
+      <td>19.88</td>
+    </tr>
+    <tr>
+      <td>2020-09-02</td>
+      <td>Toronto FC</td>
+      <td>1583.69</td>
+      <td>0</td>
+      <td>Montreal CF</td>
+      <td>1471.84</td>
+      <td>1</td>
+      <td>59.06%</td>
+      <td>17.16%</td>
+      <td>23.79%</td>
+      <td>-19.89</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>FC Dallas</td>
+      <td>1519.66</td>
+      <td>1</td>
+      <td>@ Sporting Kansas City</td>
+      <td>1525.13</td>
+      <td>1</td>
+      <td>27.40%</td>
+      <td>46.68%</td>
+      <td>25.92%</td>
+      <td>1.37</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>New England Revolution</td>
+      <td>1520.40</td>
+      <td>0</td>
+      <td>New York City FC</td>
+      <td>1518.18</td>
+      <td>2</td>
+      <td>46.26%</td>
+      <td>27.79%</td>
+      <td>25.95%</td>
+      <td>-22.82</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Nashville SC</td>
+      <td>1434.53</td>
+      <td>1</td>
+      <td>Orlando City</td>
+      <td>1512.80</td>
+      <td>1</td>
+      <td>35.12%</td>
+      <td>38.55%</td>
+      <td>26.34%</td>
+      <td>0.23</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Sporting Kansas City</td>
+      <td>1525.13</td>
+      <td>1</td>
+      <td>FC Dallas</td>
+      <td>1519.66</td>
+      <td>1</td>
+      <td>46.68%</td>
+      <td>27.40%</td>
+      <td>25.92%</td>
+      <td>-1.38</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Real Salt Lake</td>
+      <td>1538.31</td>
+      <td>2</td>
+      <td>Seattle Sounders</td>
+      <td>1590.61</td>
+      <td>2</td>
+      <td>38.82%</td>
+      <td>34.85%</td>
+      <td>26.33%</td>
+      <td>-0.27</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Portland Timbers</td>
+      <td>1498.80</td>
+      <td>2</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1495.28</td>
+      <td>3</td>
+      <td>46.43%</td>
+      <td>27.63%</td>
+      <td>25.94%</td>
+      <td>-16.19</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Los Angeles FC</td>
+      <td>1541.79</td>
+      <td>5</td>
+      <td>San Jose Earthquakes</td>
+      <td>1494.41</td>
+      <td>1</td>
+      <td>51.89%</td>
+      <td>22.83%</td>
+      <td>25.27%</td>
+      <td>18.49</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Orlando City</td>
+      <td>1512.80</td>
+      <td>1</td>
+      <td>@ Nashville SC</td>
+      <td>1434.53</td>
+      <td>1</td>
+      <td>38.55%</td>
+      <td>35.12%</td>
+      <td>26.34%</td>
+      <td>-0.24</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Columbus Crew</td>
+      <td>1559.06</td>
+      <td>1</td>
+      <td>Philadelphia Union</td>
+      <td>1553.90</td>
+      <td>0</td>
+      <td>46.64%</td>
+      <td>27.44%</td>
+      <td>25.92%</td>
+      <td>10.77</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>FC Cincinnati</td>
+      <td>1406.84</td>
+      <td>0</td>
+      <td>Chicago Fire</td>
+      <td>1453.07</td>
+      <td>0</td>
+      <td>39.67%</td>
+      <td>34.01%</td>
+      <td>26.32%</td>
+      <td>-0.38</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Inter Miami CF</td>
+      <td>1406.63</td>
+      <td>0</td>
+      <td>@ Atlanta United FC</td>
+      <td>1494.76</td>
+      <td>0</td>
+      <td>19.06%</td>
+      <td>56.54%</td>
+      <td>24.40%</td>
+      <td>2.82</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Houston Dynamo</td>
+      <td>1490.93</td>
+      <td>3</td>
+      <td>Minnesota United FC</td>
+      <td>1536.07</td>
+      <td>0</td>
+      <td>39.83%</td>
+      <td>33.86%</td>
+      <td>26.31%</td>
+      <td>21.98</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Chicago Fire</td>
+      <td>1453.07</td>
+      <td>0</td>
+      <td>@ FC Cincinnati</td>
+      <td>1406.84</td>
+      <td>0</td>
+      <td>34.01%</td>
+      <td>39.67%</td>
+      <td>26.32%</td>
+      <td>0.39</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Philadelphia Union</td>
+      <td>1553.90</td>
+      <td>0</td>
+      <td>@ Columbus Crew</td>
+      <td>1559.06</td>
+      <td>1</td>
+      <td>27.44%</td>
+      <td>46.64%</td>
+      <td>25.92%</td>
+      <td>-10.77</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>DC United</td>
+      <td>1458.00</td>
+      <td>1</td>
+      <td>@ New York RB</td>
+      <td>1502.13</td>
+      <td>0</td>
+      <td>23.16%</td>
+      <td>51.51%</td>
+      <td>25.33%</td>
+      <td>17.66</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Minnesota United FC</td>
+      <td>1536.07</td>
+      <td>0</td>
+      <td>@ Houston Dynamo</td>
+      <td>1490.93</td>
+      <td>3</td>
+      <td>33.86%</td>
+      <td>39.83%</td>
+      <td>26.31%</td>
+      <td>-21.98</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>New York City FC</td>
+      <td>1518.18</td>
+      <td>2</td>
+      <td>@ New England Revolution</td>
+      <td>1520.40</td>
+      <td>0</td>
+      <td>27.79%</td>
+      <td>46.26%</td>
+      <td>25.95%</td>
+      <td>22.83</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>San Jose Earthquakes</td>
+      <td>1494.41</td>
+      <td>1</td>
+      <td>@ Los Angeles FC</td>
+      <td>1541.79</td>
+      <td>5</td>
+      <td>22.83%</td>
+      <td>51.89%</td>
+      <td>25.27%</td>
+      <td>-18.49</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1495.28</td>
+      <td>3</td>
+      <td>@ Portland Timbers</td>
+      <td>1498.80</td>
+      <td>2</td>
+      <td>27.63%</td>
+      <td>46.43%</td>
+      <td>25.94%</td>
+      <td>16.19</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Seattle Sounders</td>
+      <td>1590.61</td>
+      <td>2</td>
+      <td>@ Real Salt Lake</td>
+      <td>1538.31</td>
+      <td>2</td>
+      <td>34.85%</td>
+      <td>38.82%</td>
+      <td>26.33%</td>
+      <td>0.27</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>Atlanta United FC</td>
+      <td>1494.76</td>
+      <td>0</td>
+      <td>Inter Miami CF</td>
+      <td>1406.63</td>
+      <td>0</td>
+      <td>56.54%</td>
+      <td>19.06%</td>
+      <td>24.40%</td>
+      <td>-2.82</td>
+    </tr>
+    <tr>
+      <td>2020-09-03</td>
+      <td>New York RB</td>
+      <td>1502.13</td>
+      <td>0</td>
+      <td>DC United</td>
+      <td>1458.00</td>
+      <td>1</td>
+      <td>51.51%</td>
+      <td>23.16%</td>
+      <td>25.33%</td>
+      <td>-17.66</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Houston Dynamo</td>
+      <td>1512.91</td>
+      <td>2</td>
+      <td>Sporting Kansas City</td>
+      <td>1523.75</td>
+      <td>1</td>
+      <td>44.53%</td>
+      <td>29.38%</td>
+      <td>26.09%</td>
+      <td>11.37</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1424.21</td>
+      <td>3</td>
+      <td>Toronto FC</td>
+      <td>1563.80</td>
+      <td>2</td>
+      <td>27.21%</td>
+      <td>46.89%</td>
+      <td>25.90%</td>
+      <td>16.32</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>San Jose Earthquakes</td>
+      <td>1475.92</td>
+      <td>1</td>
+      <td>Colorado Rapids</td>
+      <td>1468.99</td>
+      <td>1</td>
+      <td>46.87%</td>
+      <td>27.23%</td>
+      <td>25.90%</td>
+      <td>-1.40</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Colorado Rapids</td>
+      <td>1468.99</td>
+      <td>1</td>
+      <td>@ San Jose Earthquakes</td>
+      <td>1475.92</td>
+      <td>1</td>
+      <td>27.23%</td>
+      <td>46.87%</td>
+      <td>25.90%</td>
+      <td>1.40</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Toronto FC</td>
+      <td>1563.80</td>
+      <td>2</td>
+      <td>@ Vancouver Whitecaps</td>
+      <td>1424.21</td>
+      <td>3</td>
+      <td>46.89%</td>
+      <td>27.21%</td>
+      <td>25.90%</td>
+      <td>-16.32</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Atlanta United FC</td>
+      <td>1491.94</td>
+      <td>1</td>
+      <td>@ Orlando City</td>
+      <td>1512.56</td>
+      <td>1</td>
+      <td>25.67%</td>
+      <td>48.62%</td>
+      <td>25.72%</td>
+      <td>1.65</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Orlando City</td>
+      <td>1512.56</td>
+      <td>1</td>
+      <td>Atlanta United FC</td>
+      <td>1491.94</td>
+      <td>1</td>
+      <td>48.62%</td>
+      <td>25.67%</td>
+      <td>25.72%</td>
+      <td>-1.65</td>
+    </tr>
+    <tr>
+      <td>2020-09-06</td>
+      <td>Sporting Kansas City</td>
+      <td>1523.75</td>
+      <td>1</td>
+      <td>@ Houston Dynamo</td>
+      <td>1512.91</td>
+      <td>2</td>
+      <td>29.38%</td>
+      <td>44.53%</td>
+      <td>26.09%</td>
+      <td>-11.37</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Portland Timbers</td>
+      <td>1482.61</td>
+      <td>2</td>
+      <td>@ Seattle Sounders</td>
+      <td>1590.88</td>
+      <td>1</td>
+      <td>17.43%</td>
+      <td>58.68%</td>
+      <td>23.88%</td>
+      <td>19.78</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Philadelphia Union</td>
+      <td>1543.13</td>
+      <td>3</td>
+      <td>@ New York RB</td>
+      <td>1484.47</td>
+      <td>0</td>
+      <td>35.74%</td>
+      <td>37.91%</td>
+      <td>26.35%</td>
+      <td>23.91</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>DC United</td>
+      <td>1475.66</td>
+      <td>0</td>
+      <td>New York City FC</td>
+      <td>1541.01</td>
+      <td>0</td>
+      <td>36.95%</td>
+      <td>36.70%</td>
+      <td>26.35%</td>
+      <td>-0.02</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>New York RB</td>
+      <td>1484.47</td>
+      <td>0</td>
+      <td>Philadelphia Union</td>
+      <td>1543.13</td>
+      <td>3</td>
+      <td>37.91%</td>
+      <td>35.74%</td>
+      <td>26.35%</td>
+      <td>-23.91</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Chicago Fire</td>
+      <td>1453.46</td>
+      <td>1</td>
+      <td>New England Revolution</td>
+      <td>1497.58</td>
+      <td>2</td>
+      <td>39.97%</td>
+      <td>33.72%</td>
+      <td>26.31%</td>
+      <td>-14.37</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Columbus Crew</td>
+      <td>1569.83</td>
+      <td>3</td>
+      <td>FC Cincinnati</td>
+      <td>1406.46</td>
+      <td>0</td>
+      <td>64.11%</td>
+      <td>13.67%</td>
+      <td>22.23%</td>
+      <td>9.85</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Minnesota United FC</td>
+      <td>1514.09</td>
+      <td>4</td>
+      <td>Real Salt Lake</td>
+      <td>1538.04</td>
+      <td>0</td>
+      <td>42.76%</td>
+      <td>31.04%</td>
+      <td>26.20%</td>
+      <td>23.75</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Inter Miami CF</td>
+      <td>1409.45</td>
+      <td>0</td>
+      <td>Nashville SC</td>
+      <td>1434.76</td>
+      <td>0</td>
+      <td>42.58%</td>
+      <td>31.21%</td>
+      <td>26.21%</td>
+      <td>-0.79</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Seattle Sounders</td>
+      <td>1590.88</td>
+      <td>1</td>
+      <td>Portland Timbers</td>
+      <td>1482.61</td>
+      <td>2</td>
+      <td>58.68%</td>
+      <td>17.43%</td>
+      <td>23.88%</td>
+      <td>-19.78</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1511.47</td>
+      <td>3</td>
+      <td>Los Angeles FC</td>
+      <td>1560.28</td>
+      <td>0</td>
+      <td>39.31%</td>
+      <td>34.37%</td>
+      <td>26.32%</td>
+      <td>22.23</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Los Angeles FC</td>
+      <td>1560.28</td>
+      <td>0</td>
+      <td>@ Los Angeles Galaxy</td>
+      <td>1511.47</td>
+      <td>3</td>
+      <td>34.37%</td>
+      <td>39.31%</td>
+      <td>26.32%</td>
+      <td>-22.23</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Nashville SC</td>
+      <td>1434.76</td>
+      <td>0</td>
+      <td>@ Inter Miami CF</td>
+      <td>1409.45</td>
+      <td>0</td>
+      <td>31.21%</td>
+      <td>42.58%</td>
+      <td>26.21%</td>
+      <td>0.79</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>Real Salt Lake</td>
+      <td>1538.04</td>
+      <td>0</td>
+      <td>@ Minnesota United FC</td>
+      <td>1514.09</td>
+      <td>4</td>
+      <td>31.04%</td>
+      <td>42.76%</td>
+      <td>26.20%</td>
+      <td>-23.75</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>FC Cincinnati</td>
+      <td>1406.46</td>
+      <td>0</td>
+      <td>@ Columbus Crew</td>
+      <td>1569.83</td>
+      <td>3</td>
+      <td>13.67%</td>
+      <td>64.11%</td>
+      <td>22.23%</td>
+      <td>-9.86</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>New England Revolution</td>
+      <td>1497.58</td>
+      <td>2</td>
+      <td>@ Chicago Fire</td>
+      <td>1453.46</td>
+      <td>1</td>
+      <td>33.72%</td>
+      <td>39.97%</td>
+      <td>26.31%</td>
+      <td>14.36</td>
+    </tr>
+    <tr>
+      <td>2020-09-07</td>
+      <td>New York City FC</td>
+      <td>1541.01</td>
+      <td>0</td>
+      <td>@ DC United</td>
+      <td>1475.66</td>
+      <td>0</td>
+      <td>36.70%</td>
+      <td>36.95%</td>
+      <td>26.35%</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Toronto FC</td>
+      <td>1547.48</td>
+      <td>2</td>
+      <td>@ Montreal CF</td>
+      <td>1491.72</td>
+      <td>1</td>
+      <td>35.34%</td>
+      <td>38.32%</td>
+      <td>26.34%</td>
+      <td>13.92</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Atlanta United FC</td>
+      <td>1493.59</td>
+      <td>1</td>
+      <td>@ Inter Miami CF</td>
+      <td>1408.66</td>
+      <td>2</td>
+      <td>39.49%</td>
+      <td>34.19%</td>
+      <td>26.32%</td>
+      <td>-14.23</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>FC Dallas</td>
+      <td>1521.03</td>
+      <td>2</td>
+      <td>@ Minnesota United FC</td>
+      <td>1537.84</td>
+      <td>3</td>
+      <td>26.10%</td>
+      <td>48.13%</td>
+      <td>25.77%</td>
+      <td>-10.34</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Los Angeles FC</td>
+      <td>1538.05</td>
+      <td>0</td>
+      <td>@ Real Salt Lake</td>
+      <td>1514.29</td>
+      <td>3</td>
+      <td>31.01%</td>
+      <td>42.79%</td>
+      <td>26.20%</td>
+      <td>-20.55</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Colorado Rapids</td>
+      <td>1470.39</td>
+      <td>1</td>
+      <td>Houston Dynamo</td>
+      <td>1524.28</td>
+      <td>1</td>
+      <td>38.59%</td>
+      <td>35.07%</td>
+      <td>26.34%</td>
+      <td>-0.24</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Inter Miami CF</td>
+      <td>1408.66</td>
+      <td>2</td>
+      <td>Atlanta United FC</td>
+      <td>1493.59</td>
+      <td>1</td>
+      <td>34.19%</td>
+      <td>39.49%</td>
+      <td>26.32%</td>
+      <td>14.23</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Minnesota United FC</td>
+      <td>1537.84</td>
+      <td>3</td>
+      <td>FC Dallas</td>
+      <td>1521.03</td>
+      <td>2</td>
+      <td>48.13%</td>
+      <td>26.10%</td>
+      <td>25.77%</td>
+      <td>10.34</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Real Salt Lake</td>
+      <td>1514.29</td>
+      <td>3</td>
+      <td>Los Angeles FC</td>
+      <td>1538.05</td>
+      <td>0</td>
+      <td>42.79%</td>
+      <td>31.01%</td>
+      <td>26.20%</td>
+      <td>20.55</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Houston Dynamo</td>
+      <td>1524.28</td>
+      <td>1</td>
+      <td>@ Colorado Rapids</td>
+      <td>1470.39</td>
+      <td>1</td>
+      <td>35.07%</td>
+      <td>38.59%</td>
+      <td>26.34%</td>
+      <td>0.24</td>
+    </tr>
+    <tr>
+      <td>2020-09-10</td>
+      <td>Montreal CF</td>
+      <td>1491.72</td>
+      <td>1</td>
+      <td>Toronto FC</td>
+      <td>1547.48</td>
+      <td>2</td>
+      <td>38.32%</td>
+      <td>35.34%</td>
+      <td>26.34%</td>
+      <td>-13.91</td>
+    </tr>
+    <tr>
+      <td>2020-09-11</td>
+      <td>San Jose Earthquakes</td>
+      <td>1474.52</td>
+      <td>1</td>
+      <td>@ Seattle Sounders</td>
+      <td>1571.10</td>
+      <td>7</td>
+      <td>18.36%</td>
+      <td>57.45%</td>
+      <td>24.19%</td>
+      <td>-18.63</td>
+    </tr>
+    <tr>
+      <td>2020-09-11</td>
+      <td>Seattle Sounders</td>
+      <td>1571.10</td>
+      <td>7</td>
+      <td>San Jose Earthquakes</td>
+      <td>1474.52</td>
+      <td>1</td>
+      <td>57.45%</td>
+      <td>18.36%</td>
+      <td>24.19%</td>
+      <td>18.63</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>Columbus Crew</td>
+      <td>1579.68</td>
+      <td>2</td>
+      <td>@ Chicago Fire</td>
+      <td>1439.09</td>
+      <td>2</td>
+      <td>47.02%</td>
+      <td>27.09%</td>
+      <td>25.88%</td>
+      <td>-1.42</td>
+    </tr>
+    <tr>
+      <td>2020-09-12</td>
+      <td>Chicago Fire</td>
+      <td>1439.09</td>
+      <td>2</td>
+      <td>Columbus Crew</td>
+      <td>1579.68</td>
+      <td>2</td>
+      <td>27.09%</td>
+      <td>47.02%</td>
+      <td>25.88%</td>
+      <td>1.42</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Philadelphia Union</td>
+      <td>1567.04</td>
+      <td>2</td>
+      <td>New England Revolution</td>
+      <td>1511.94</td>
+      <td>1</td>
+      <td>52.80%</td>
+      <td>22.07%</td>
+      <td>25.13%</td>
+      <td>8.98</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Houston Dynamo</td>
+      <td>1524.52</td>
+      <td>1</td>
+      <td>@ FC Dallas</td>
+      <td>1510.69</td>
+      <td>2</td>
+      <td>29.75%</td>
+      <td>44.13%</td>
+      <td>26.12%</td>
+      <td>-11.48</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>FC Dallas</td>
+      <td>1510.69</td>
+      <td>2</td>
+      <td>Houston Dynamo</td>
+      <td>1524.52</td>
+      <td>1</td>
+      <td>44.13%</td>
+      <td>29.75%</td>
+      <td>26.12%</td>
+      <td>11.49</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Nashville SC</td>
+      <td>1435.55</td>
+      <td>4</td>
+      <td>Atlanta United FC</td>
+      <td>1479.36</td>
+      <td>2</td>
+      <td>40.01%</td>
+      <td>33.68%</td>
+      <td>26.31%</td>
+      <td>17.88</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>DC United</td>
+      <td>1475.64</td>
+      <td>0</td>
+      <td>New York RB</td>
+      <td>1460.56</td>
+      <td>2</td>
+      <td>47.91%</td>
+      <td>26.29%</td>
+      <td>25.79%</td>
+      <td>-23.49</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>New York City FC</td>
+      <td>1541.02</td>
+      <td>2</td>
+      <td>FC Cincinnati</td>
+      <td>1396.60</td>
+      <td>1</td>
+      <td>62.31%</td>
+      <td>14.86%</td>
+      <td>22.83%</td>
+      <td>6.20</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>New York RB</td>
+      <td>1460.56</td>
+      <td>2</td>
+      <td>@ DC United</td>
+      <td>1475.64</td>
+      <td>0</td>
+      <td>26.29%</td>
+      <td>47.91%</td>
+      <td>25.79%</td>
+      <td>23.50</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>FC Cincinnati</td>
+      <td>1396.60</td>
+      <td>1</td>
+      <td>@ New York City FC</td>
+      <td>1541.02</td>
+      <td>2</td>
+      <td>14.86%</td>
+      <td>62.31%</td>
+      <td>22.83%</td>
+      <td>-6.19</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Inter Miami CF</td>
+      <td>1422.89</td>
+      <td>1</td>
+      <td>@ Orlando City</td>
+      <td>1510.91</td>
+      <td>2</td>
+      <td>19.07%</td>
+      <td>56.52%</td>
+      <td>24.40%</td>
+      <td>-7.87</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>New England Revolution</td>
+      <td>1511.94</td>
+      <td>1</td>
+      <td>@ Philadelphia Union</td>
+      <td>1567.04</td>
+      <td>2</td>
+      <td>22.07%</td>
+      <td>52.80%</td>
+      <td>25.13%</td>
+      <td>-8.97</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Atlanta United FC</td>
+      <td>1479.36</td>
+      <td>2</td>
+      <td>@ Nashville SC</td>
+      <td>1435.55</td>
+      <td>4</td>
+      <td>33.68%</td>
+      <td>40.01%</td>
+      <td>26.31%</td>
+      <td>-17.88</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Real Salt Lake</td>
+      <td>1534.84</td>
+      <td>0</td>
+      <td>Colorado Rapids</td>
+      <td>1470.15</td>
+      <td>5</td>
+      <td>53.92%</td>
+      <td>21.15%</td>
+      <td>24.93%</td>
+      <td>-41.08</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Colorado Rapids</td>
+      <td>1470.15</td>
+      <td>5</td>
+      <td>@ Real Salt Lake</td>
+      <td>1534.84</td>
+      <td>0</td>
+      <td>21.15%</td>
+      <td>53.92%</td>
+      <td>24.93%</td>
+      <td>41.08</td>
+    </tr>
+    <tr>
+      <td>2020-09-13</td>
+      <td>Orlando City</td>
+      <td>1510.91</td>
+      <td>2</td>
+      <td>Inter Miami CF</td>
+      <td>1422.89</td>
+      <td>1</td>
+      <td>56.52%</td>
+      <td>19.07%</td>
+      <td>24.40%</td>
+      <td>7.87</td>
+    </tr>
+    <tr>
+      <td>2020-09-14</td>
+      <td>Minnesota United FC</td>
+      <td>1548.18</td>
+      <td>0</td>
+      <td>@ Sporting Kansas City</td>
+      <td>1512.38</td>
+      <td>1</td>
+      <td>32.60%</td>
+      <td>41.13%</td>
+      <td>26.27%</td>
+      <td>-12.33</td>
+    </tr>
+    <tr>
+      <td>2020-09-14</td>
+      <td>Sporting Kansas City</td>
+      <td>1512.38</td>
+      <td>1</td>
+      <td>Minnesota United FC</td>
+      <td>1548.18</td>
+      <td>0</td>
+      <td>41.13%</td>
+      <td>32.60%</td>
+      <td>26.27%</td>
+      <td>12.33</td>
+    </tr>
+    <tr>
+      <td>2020-09-14</td>
+      <td>San Jose Earthquakes</td>
+      <td>1455.89</td>
+      <td>0</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1533.70</td>
+      <td>0</td>
+      <td>35.18%</td>
+      <td>38.48%</td>
+      <td>26.34%</td>
+      <td>0.23</td>
+    </tr>
+    <tr>
+      <td>2020-09-14</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1440.53</td>
+      <td>2</td>
+      <td>Montreal CF</td>
+      <td>1477.81</td>
+      <td>4</td>
+      <td>40.93%</td>
+      <td>32.79%</td>
+      <td>26.28%</td>
+      <td>-20.69</td>
+    </tr>
+    <tr>
+      <td>2020-09-14</td>
+      <td>Montreal CF</td>
+      <td>1477.81</td>
+      <td>4</td>
+      <td>@ Vancouver Whitecaps</td>
+      <td>1440.53</td>
+      <td>2</td>
+      <td>32.79%</td>
+      <td>40.93%</td>
+      <td>26.28%</td>
+      <td>20.69</td>
+    </tr>
+    <tr>
+      <td>2020-09-14</td>
+      <td>Portland Timbers</td>
+      <td>1502.39</td>
+      <td>2</td>
+      <td>@ Los Angeles FC</td>
+      <td>1517.50</td>
+      <td>4</td>
+      <td>26.29%</td>
+      <td>47.92%</td>
+      <td>25.79%</td>
+      <td>-14.72</td>
+    </tr>
+    <tr>
+      <td>2020-09-14</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1533.70</td>
+      <td>0</td>
+      <td>@ San Jose Earthquakes</td>
+      <td>1455.89</td>
+      <td>0</td>
+      <td>38.48%</td>
+      <td>35.18%</td>
+      <td>26.34%</td>
+      <td>-0.23</td>
+    </tr>
+    <tr>
+      <td>2020-09-14</td>
+      <td>Los Angeles FC</td>
+      <td>1517.50</td>
+      <td>4</td>
+      <td>Portland Timbers</td>
+      <td>1502.39</td>
+      <td>2</td>
+      <td>47.92%</td>
+      <td>26.29%</td>
+      <td>25.79%</td>
+      <td>14.71</td>
+    </tr>
+    <tr>
+      <td>2020-09-16</td>
+      <td>Portland Timbers</td>
+      <td>1487.67</td>
+      <td>1</td>
+      <td>@ San Jose Earthquakes</td>
+      <td>1456.12</td>
+      <td>1</td>
+      <td>32.03%</td>
+      <td>41.72%</td>
+      <td>26.25%</td>
+      <td>0.68</td>
+    </tr>
+    <tr>
+      <td>2020-09-16</td>
+      <td>San Jose Earthquakes</td>
+      <td>1456.12</td>
+      <td>1</td>
+      <td>Portland Timbers</td>
+      <td>1487.67</td>
+      <td>1</td>
+      <td>41.72%</td>
+      <td>32.03%</td>
+      <td>26.25%</td>
+      <td>-0.68</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Montreal CF</td>
+      <td>1498.50</td>
+      <td>1</td>
+      <td>@ Vancouver Whitecaps</td>
+      <td>1419.84</td>
+      <td>3</td>
+      <td>38.60%</td>
+      <td>35.06%</td>
+      <td>26.34%</td>
+      <td>-19.79</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Colorado Rapids</td>
+      <td>1511.23</td>
+      <td>1</td>
+      <td>@ FC Dallas</td>
+      <td>1522.18</td>
+      <td>4</td>
+      <td>26.77%</td>
+      <td>47.39%</td>
+      <td>25.85%</td>
+      <td>-18.28</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>FC Dallas</td>
+      <td>1522.18</td>
+      <td>4</td>
+      <td>Colorado Rapids</td>
+      <td>1511.23</td>
+      <td>1</td>
+      <td>47.39%</td>
+      <td>26.77%</td>
+      <td>25.85%</td>
+      <td>18.28</td>
+    </tr>
+    <tr>
+      <td>2020-09-17</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1419.84</td>
+      <td>3</td>
+      <td>Montreal CF</td>
+      <td>1498.50</td>
+      <td>1</td>
+      <td>35.06%</td>
+      <td>38.60%</td>
+      <td>26.34%</td>
+      <td>19.79</td>
+    </tr>
+    <tr>
+      <td>2020-09-19</td>
+      <td>FC Dallas</td>
+      <td>1540.46</td>
+      <td>3</td>
+      <td>@ Sporting Kansas City</td>
+      <td>1524.71</td>
+      <td>2</td>
+      <td>29.99%</td>
+      <td>43.87%</td>
+      <td>26.13%</td>
+      <td>15.46</td>
+    </tr>
+    <tr>
+      <td>2020-09-19</td>
+      <td>New York City FC</td>
+      <td>1547.22</td>
+      <td>0</td>
+      <td>@ New England Revolution</td>
+      <td>1502.97</td>
+      <td>0</td>
+      <td>33.74%</td>
+      <td>39.95%</td>
+      <td>26.31%</td>
+      <td>0.42</td>
+    </tr>
+    <tr>
+      <td>2020-09-19</td>
+      <td>Los Angeles FC</td>
+      <td>1532.21</td>
+      <td>0</td>
+      <td>@ Seattle Sounders</td>
+      <td>1589.73</td>
+      <td>3</td>
+      <td>21.83%</td>
+      <td>53.09%</td>
+      <td>25.08%</td>
+      <td>-15.40</td>
+    </tr>
+    <tr>
+      <td>2020-09-19</td>
+      <td>Seattle Sounders</td>
+      <td>1589.73</td>
+      <td>3</td>
+      <td>Los Angeles FC</td>
+      <td>1532.21</td>
+      <td>0</td>
+      <td>53.09%</td>
+      <td>21.83%</td>
+      <td>25.08%</td>
+      <td>15.40</td>
+    </tr>
+    <tr>
+      <td>2020-09-19</td>
+      <td>New England Revolution</td>
+      <td>1502.97</td>
+      <td>0</td>
+      <td>New York City FC</td>
+      <td>1547.22</td>
+      <td>0</td>
+      <td>39.95%</td>
+      <td>33.74%</td>
+      <td>26.31%</td>
+      <td>-0.43</td>
+    </tr>
+    <tr>
+      <td>2020-09-19</td>
+      <td>Sporting Kansas City</td>
+      <td>1524.71</td>
+      <td>2</td>
+      <td>FC Dallas</td>
+      <td>1540.46</td>
+      <td>3</td>
+      <td>43.87%</td>
+      <td>29.99%</td>
+      <td>26.13%</td>
+      <td>-15.46</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Minnesota United FC</td>
+      <td>1535.85</td>
+      <td>2</td>
+      <td>@ Houston Dynamo</td>
+      <td>1513.04</td>
+      <td>2</td>
+      <td>30.89%</td>
+      <td>42.92%</td>
+      <td>26.19%</td>
+      <td>0.84</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1533.47</td>
+      <td>0</td>
+      <td>Colorado Rapids</td>
+      <td>1492.95</td>
+      <td>2</td>
+      <td>51.07%</td>
+      <td>23.53%</td>
+      <td>25.40%</td>
+      <td>-24.80</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>New York RB</td>
+      <td>1484.06</td>
+      <td>0</td>
+      <td>FC Cincinnati</td>
+      <td>1390.41</td>
+      <td>1</td>
+      <td>57.13%</td>
+      <td>18.60%</td>
+      <td>24.26%</td>
+      <td>-19.33</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Orlando City</td>
+      <td>1518.78</td>
+      <td>4</td>
+      <td>Chicago Fire</td>
+      <td>1440.51</td>
+      <td>1</td>
+      <td>55.45%</td>
+      <td>19.92%</td>
+      <td>24.63%</td>
+      <td>14.20</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Columbus Crew</td>
+      <td>1578.26</td>
+      <td>2</td>
+      <td>Nashville SC</td>
+      <td>1453.43</td>
+      <td>0</td>
+      <td>60.38%</td>
+      <td>16.20%</td>
+      <td>23.42%</td>
+      <td>9.54</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Houston Dynamo</td>
+      <td>1513.04</td>
+      <td>2</td>
+      <td>Minnesota United FC</td>
+      <td>1535.85</td>
+      <td>2</td>
+      <td>42.92%</td>
+      <td>30.89%</td>
+      <td>26.19%</td>
+      <td>-0.84</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>San Jose Earthquakes</td>
+      <td>1455.44</td>
+      <td>1</td>
+      <td>Portland Timbers</td>
+      <td>1488.35</td>
+      <td>6</td>
+      <td>41.53%</td>
+      <td>32.21%</td>
+      <td>26.26%</td>
+      <td>-33.09</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Real Salt Lake</td>
+      <td>1493.76</td>
+      <td>1</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1439.63</td>
+      <td>2</td>
+      <td>52.69%</td>
+      <td>22.16%</td>
+      <td>25.15%</td>
+      <td>-18.01</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Atlanta United FC</td>
+      <td>1461.48</td>
+      <td>1</td>
+      <td>Inter Miami CF</td>
+      <td>1415.02</td>
+      <td>2</td>
+      <td>51.78%</td>
+      <td>22.92%</td>
+      <td>25.29%</td>
+      <td>-17.74</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Toronto FC</td>
+      <td>1561.40</td>
+      <td>2</td>
+      <td>@ DC United</td>
+      <td>1452.15</td>
+      <td>2</td>
+      <td>42.86%</td>
+      <td>30.94%</td>
+      <td>26.19%</td>
+      <td>-0.83</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>DC United</td>
+      <td>1452.15</td>
+      <td>2</td>
+      <td>Toronto FC</td>
+      <td>1561.40</td>
+      <td>2</td>
+      <td>30.94%</td>
+      <td>42.86%</td>
+      <td>26.19%</td>
+      <td>0.83</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1439.63</td>
+      <td>2</td>
+      <td>@ Real Salt Lake</td>
+      <td>1493.76</td>
+      <td>1</td>
+      <td>22.16%</td>
+      <td>52.69%</td>
+      <td>25.15%</td>
+      <td>18.01</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Nashville SC</td>
+      <td>1453.43</td>
+      <td>0</td>
+      <td>@ Columbus Crew</td>
+      <td>1578.26</td>
+      <td>2</td>
+      <td>16.20%</td>
+      <td>60.38%</td>
+      <td>23.42%</td>
+      <td>-9.55</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Colorado Rapids</td>
+      <td>1492.95</td>
+      <td>2</td>
+      <td>@ Los Angeles Galaxy</td>
+      <td>1533.47</td>
+      <td>0</td>
+      <td>23.53%</td>
+      <td>51.07%</td>
+      <td>25.40%</td>
+      <td>24.79</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Portland Timbers</td>
+      <td>1488.35</td>
+      <td>6</td>
+      <td>@ San Jose Earthquakes</td>
+      <td>1455.44</td>
+      <td>1</td>
+      <td>32.21%</td>
+      <td>41.53%</td>
+      <td>26.26%</td>
+      <td>33.10</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Inter Miami CF</td>
+      <td>1415.02</td>
+      <td>2</td>
+      <td>@ Atlanta United FC</td>
+      <td>1461.48</td>
+      <td>1</td>
+      <td>22.92%</td>
+      <td>51.78%</td>
+      <td>25.29%</td>
+      <td>17.74</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>FC Cincinnati</td>
+      <td>1390.41</td>
+      <td>1</td>
+      <td>@ New York RB</td>
+      <td>1484.06</td>
+      <td>0</td>
+      <td>18.60%</td>
+      <td>57.13%</td>
+      <td>24.26%</td>
+      <td>19.32</td>
+    </tr>
+    <tr>
+      <td>2020-09-20</td>
+      <td>Chicago Fire</td>
+      <td>1440.51</td>
+      <td>1</td>
+      <td>@ Orlando City</td>
+      <td>1518.78</td>
+      <td>4</td>
+      <td>19.92%</td>
+      <td>55.45%</td>
+      <td>24.63%</td>
+      <td>-14.19</td>
+    </tr>
+    <tr>
+      <td>2020-09-21</td>
+      <td>Philadelphia Union</td>
+      <td>1576.02</td>
+      <td>4</td>
+      <td>@ Montreal CF</td>
+      <td>1478.71</td>
+      <td>1</td>
+      <td>41.22%</td>
+      <td>32.51%</td>
+      <td>26.27%</td>
+      <td>21.31</td>
+    </tr>
+    <tr>
+      <td>2020-09-21</td>
+      <td>Montreal CF</td>
+      <td>1478.71</td>
+      <td>1</td>
+      <td>Philadelphia Union</td>
+      <td>1576.02</td>
+      <td>4</td>
+      <td>32.51%</td>
+      <td>41.22%</td>
+      <td>26.27%</td>
+      <td>-21.31</td>
+    </tr>
+    <tr>
+      <td>2020-09-23</td>
+      <td>Montreal CF</td>
+      <td>1457.40</td>
+      <td>1</td>
+      <td>@ New England Revolution</td>
+      <td>1502.54</td>
+      <td>3</td>
+      <td>23.06%</td>
+      <td>51.63%</td>
+      <td>25.32%</td>
+      <td>-13.18</td>
+    </tr>
+    <tr>
+      <td>2020-09-23</td>
+      <td>New England Revolution</td>
+      <td>1502.54</td>
+      <td>3</td>
+      <td>Montreal CF</td>
+      <td>1457.40</td>
+      <td>1</td>
+      <td>51.63%</td>
+      <td>23.06%</td>
+      <td>25.32%</td>
+      <td>13.19</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1508.67</td>
+      <td>0</td>
+      <td>@ Real Salt Lake</td>
+      <td>1475.75</td>
+      <td>2</td>
+      <td>32.21%</td>
+      <td>41.53%</td>
+      <td>26.26%</td>
+      <td>-17.28</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Seattle Sounders</td>
+      <td>1605.13</td>
+      <td>0</td>
+      <td>@ Portland Timbers</td>
+      <td>1521.45</td>
+      <td>1</td>
+      <td>39.31%</td>
+      <td>34.36%</td>
+      <td>26.32%</td>
+      <td>-14.19</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1457.64</td>
+      <td>0</td>
+      <td>@ Los Angeles FC</td>
+      <td>1516.81</td>
+      <td>6</td>
+      <td>21.68%</td>
+      <td>53.28%</td>
+      <td>25.05%</td>
+      <td>-21.64</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Sporting Kansas City</td>
+      <td>1509.25</td>
+      <td>1</td>
+      <td>Orlando City</td>
+      <td>1532.98</td>
+      <td>2</td>
+      <td>42.79%</td>
+      <td>31.01%</td>
+      <td>26.20%</td>
+      <td>-15.16</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Inter Miami CF</td>
+      <td>1432.76</td>
+      <td>1</td>
+      <td>New York RB</td>
+      <td>1464.73</td>
+      <td>4</td>
+      <td>41.66%</td>
+      <td>32.09%</td>
+      <td>26.25%</td>
+      <td>-25.70</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>DC United</td>
+      <td>1452.98</td>
+      <td>0</td>
+      <td>@ Nashville SC</td>
+      <td>1443.88</td>
+      <td>1</td>
+      <td>29.16%</td>
+      <td>44.77%</td>
+      <td>26.07%</td>
+      <td>-11.31</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Nashville SC</td>
+      <td>1443.88</td>
+      <td>1</td>
+      <td>DC United</td>
+      <td>1452.98</td>
+      <td>0</td>
+      <td>44.77%</td>
+      <td>29.16%</td>
+      <td>26.07%</td>
+      <td>11.31</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Colorado Rapids</td>
+      <td>1517.74</td>
+      <td>5</td>
+      <td>San Jose Earthquakes</td>
+      <td>1422.35</td>
+      <td>0</td>
+      <td>57.32%</td>
+      <td>18.46%</td>
+      <td>24.22%</td>
+      <td>17.09</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Real Salt Lake</td>
+      <td>1475.75</td>
+      <td>2</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1508.67</td>
+      <td>0</td>
+      <td>41.53%</td>
+      <td>32.21%</td>
+      <td>26.26%</td>
+      <td>17.28</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Portland Timbers</td>
+      <td>1521.45</td>
+      <td>1</td>
+      <td>Seattle Sounders</td>
+      <td>1605.13</td>
+      <td>0</td>
+      <td>34.36%</td>
+      <td>39.31%</td>
+      <td>26.32%</td>
+      <td>14.18</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Los Angeles FC</td>
+      <td>1516.81</td>
+      <td>6</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1457.64</td>
+      <td>0</td>
+      <td>53.28%</td>
+      <td>21.68%</td>
+      <td>25.05%</td>
+      <td>21.64</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>San Jose Earthquakes</td>
+      <td>1422.35</td>
+      <td>0</td>
+      <td>@ Colorado Rapids</td>
+      <td>1517.74</td>
+      <td>5</td>
+      <td>18.46%</td>
+      <td>57.32%</td>
+      <td>24.22%</td>
+      <td>-17.09</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>New York RB</td>
+      <td>1464.73</td>
+      <td>4</td>
+      <td>@ Inter Miami CF</td>
+      <td>1432.76</td>
+      <td>1</td>
+      <td>32.09%</td>
+      <td>41.66%</td>
+      <td>26.25%</td>
+      <td>25.70</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Columbus Crew</td>
+      <td>1587.80</td>
+      <td>2</td>
+      <td>Minnesota United FC</td>
+      <td>1536.69</td>
+      <td>1</td>
+      <td>52.34%</td>
+      <td>22.46%</td>
+      <td>25.20%</td>
+      <td>9.12</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Minnesota United FC</td>
+      <td>1536.69</td>
+      <td>1</td>
+      <td>@ Columbus Crew</td>
+      <td>1587.80</td>
+      <td>2</td>
+      <td>22.46%</td>
+      <td>52.34%</td>
+      <td>25.20%</td>
+      <td>-9.12</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>FC Cincinnati</td>
+      <td>1409.73</td>
+      <td>0</td>
+      <td>Philadelphia Union</td>
+      <td>1597.33</td>
+      <td>0</td>
+      <td>22.06%</td>
+      <td>52.81%</td>
+      <td>25.13%</td>
+      <td>2.27</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Chicago Fire</td>
+      <td>1426.32</td>
+      <td>4</td>
+      <td>Houston Dynamo</td>
+      <td>1512.20</td>
+      <td>0</td>
+      <td>34.06%</td>
+      <td>39.62%</td>
+      <td>26.32%</td>
+      <td>28.55</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Atlanta United FC</td>
+      <td>1443.74</td>
+      <td>1</td>
+      <td>FC Dallas</td>
+      <td>1555.92</td>
+      <td>0</td>
+      <td>30.57%</td>
+      <td>43.26%</td>
+      <td>26.17%</td>
+      <td>15.29</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>New York City FC</td>
+      <td>1547.64</td>
+      <td>0</td>
+      <td>Toronto FC</td>
+      <td>1560.57</td>
+      <td>1</td>
+      <td>44.25%</td>
+      <td>29.64%</td>
+      <td>26.11%</td>
+      <td>-15.56</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Orlando City</td>
+      <td>1532.98</td>
+      <td>2</td>
+      <td>@ Sporting Kansas City</td>
+      <td>1509.25</td>
+      <td>1</td>
+      <td>31.01%</td>
+      <td>42.79%</td>
+      <td>26.20%</td>
+      <td>15.15</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Toronto FC</td>
+      <td>1560.57</td>
+      <td>1</td>
+      <td>@ New York City FC</td>
+      <td>1547.64</td>
+      <td>0</td>
+      <td>29.64%</td>
+      <td>44.25%</td>
+      <td>26.11%</td>
+      <td>15.56</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>FC Dallas</td>
+      <td>1555.92</td>
+      <td>0</td>
+      <td>@ Atlanta United FC</td>
+      <td>1443.74</td>
+      <td>1</td>
+      <td>43.26%</td>
+      <td>30.57%</td>
+      <td>26.17%</td>
+      <td>-15.28</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Houston Dynamo</td>
+      <td>1512.20</td>
+      <td>0</td>
+      <td>@ Chicago Fire</td>
+      <td>1426.32</td>
+      <td>4</td>
+      <td>39.62%</td>
+      <td>34.06%</td>
+      <td>26.32%</td>
+      <td>-28.55</td>
+    </tr>
+    <tr>
+      <td>2020-09-24</td>
+      <td>Philadelphia Union</td>
+      <td>1597.33</td>
+      <td>0</td>
+      <td>@ FC Cincinnati</td>
+      <td>1409.73</td>
+      <td>0</td>
+      <td>52.81%</td>
+      <td>22.06%</td>
+      <td>25.13%</td>
+      <td>-2.27</td>
+    </tr>
+    <tr>
+      <td>2020-09-26</td>
+      <td>Houston Dynamo</td>
+      <td>1483.65</td>
+      <td>1</td>
+      <td>@ Nashville SC</td>
+      <td>1455.19</td>
+      <td>1</td>
+      <td>31.62%</td>
+      <td>42.15%</td>
+      <td>26.23%</td>
+      <td>0.73</td>
+    </tr>
+    <tr>
+      <td>2020-09-26</td>
+      <td>Nashville SC</td>
+      <td>1455.19</td>
+      <td>1</td>
+      <td>Houston Dynamo</td>
+      <td>1483.65</td>
+      <td>1</td>
+      <td>42.15%</td>
+      <td>31.62%</td>
+      <td>26.23%</td>
+      <td>-0.73</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>New York City FC</td>
+      <td>1532.08</td>
+      <td>4</td>
+      <td>FC Cincinnati</td>
+      <td>1412.00</td>
+      <td>0</td>
+      <td>59.90%</td>
+      <td>16.54%</td>
+      <td>23.56%</td>
+      <td>13.77</td>
+    </tr>
+    <tr>
+      <td>2020-09-27</td>
+      <td>FC Cincinnati</td>
+      <td>1412.00</td>
+      <td>0</td>
+      <td>@ New York City FC</td>
+      <td>1532.08</td>
+      <td>4</td>
+      <td>16.54%</td>
+      <td>59.90%</td>
+      <td>23.56%</td>
+      <td>-13.78</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>Minnesota United FC</td>
+      <td>1527.57</td>
+      <td>0</td>
+      <td>Real Salt Lake</td>
+      <td>1493.03</td>
+      <td>0</td>
+      <td>50.34%</td>
+      <td>24.16%</td>
+      <td>25.50%</td>
+      <td>-1.90</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>FC Dallas</td>
+      <td>1540.64</td>
+      <td>0</td>
+      <td>Orlando City</td>
+      <td>1548.13</td>
+      <td>0</td>
+      <td>44.98%</td>
+      <td>28.96%</td>
+      <td>26.06%</td>
+      <td>-1.14</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>Toronto FC</td>
+      <td>1576.13</td>
+      <td>3</td>
+      <td>Columbus Crew</td>
+      <td>1596.92</td>
+      <td>1</td>
+      <td>43.19%</td>
+      <td>30.63%</td>
+      <td>26.18%</td>
+      <td>16.63</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1436.00</td>
+      <td>0</td>
+      <td>Portland Timbers</td>
+      <td>1535.63</td>
+      <td>1</td>
+      <td>32.20%</td>
+      <td>41.54%</td>
+      <td>26.26%</td>
+      <td>-12.22</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>Chicago Fire</td>
+      <td>1454.87</td>
+      <td>2</td>
+      <td>Atlanta United FC</td>
+      <td>1459.03</td>
+      <td>0</td>
+      <td>45.42%</td>
+      <td>28.56%</td>
+      <td>26.02%</td>
+      <td>15.73</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>Montreal CF</td>
+      <td>1444.22</td>
+      <td>1</td>
+      <td>@ New York RB</td>
+      <td>1490.43</td>
+      <td>4</td>
+      <td>22.95%</td>
+      <td>51.75%</td>
+      <td>25.30%</td>
+      <td>-16.08</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>New York RB</td>
+      <td>1490.43</td>
+      <td>4</td>
+      <td>Montreal CF</td>
+      <td>1444.22</td>
+      <td>1</td>
+      <td>51.75%</td>
+      <td>22.95%</td>
+      <td>25.30%</td>
+      <td>16.08</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>DC United</td>
+      <td>1441.67</td>
+      <td>0</td>
+      <td>New England Revolution</td>
+      <td>1515.73</td>
+      <td>2</td>
+      <td>35.71%</td>
+      <td>37.95%</td>
+      <td>26.35%</td>
+      <td>-18.68</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>New England Revolution</td>
+      <td>1515.73</td>
+      <td>2</td>
+      <td>@ DC United</td>
+      <td>1441.67</td>
+      <td>0</td>
+      <td>37.95%</td>
+      <td>35.71%</td>
+      <td>26.35%</td>
+      <td>18.67</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1491.39</td>
+      <td>1</td>
+      <td>Seattle Sounders</td>
+      <td>1590.94</td>
+      <td>3</td>
+      <td>32.21%</td>
+      <td>41.53%</td>
+      <td>26.26%</td>
+      <td>-17.28</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>Inter Miami CF</td>
+      <td>1407.06</td>
+      <td>0</td>
+      <td>@ Philadelphia Union</td>
+      <td>1595.06</td>
+      <td>3</td>
+      <td>12.27%</td>
+      <td>66.35%</td>
+      <td>21.39%</td>
+      <td>-8.79</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>Philadelphia Union</td>
+      <td>1595.06</td>
+      <td>3</td>
+      <td>Inter Miami CF</td>
+      <td>1407.06</td>
+      <td>0</td>
+      <td>66.35%</td>
+      <td>12.27%</td>
+      <td>21.39%</td>
+      <td>8.80</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>Los Angeles FC</td>
+      <td>1538.45</td>
+      <td>1</td>
+      <td>San Jose Earthquakes</td>
+      <td>1405.26</td>
+      <td>2</td>
+      <td>61.21%</td>
+      <td>15.61%</td>
+      <td>23.17%</td>
+      <td>-20.51</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>Atlanta United FC</td>
+      <td>1459.03</td>
+      <td>0</td>
+      <td>@ Chicago Fire</td>
+      <td>1454.87</td>
+      <td>2</td>
+      <td>28.56%</td>
+      <td>45.42%</td>
+      <td>26.02%</td>
+      <td>-15.73</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>San Jose Earthquakes</td>
+      <td>1405.26</td>
+      <td>2</td>
+      <td>@ Los Angeles FC</td>
+      <td>1538.45</td>
+      <td>1</td>
+      <td>15.61%</td>
+      <td>61.21%</td>
+      <td>23.17%</td>
+      <td>20.51</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>Seattle Sounders</td>
+      <td>1590.94</td>
+      <td>3</td>
+      <td>@ Los Angeles Galaxy</td>
+      <td>1491.39</td>
+      <td>1</td>
+      <td>41.53%</td>
+      <td>32.21%</td>
+      <td>26.26%</td>
+      <td>17.28</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>Portland Timbers</td>
+      <td>1535.63</td>
+      <td>1</td>
+      <td>@ Vancouver Whitecaps</td>
+      <td>1436.00</td>
+      <td>0</td>
+      <td>41.54%</td>
+      <td>32.20%</td>
+      <td>26.26%</td>
+      <td>12.22</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>Orlando City</td>
+      <td>1548.13</td>
+      <td>0</td>
+      <td>@ FC Dallas</td>
+      <td>1540.64</td>
+      <td>0</td>
+      <td>28.96%</td>
+      <td>44.98%</td>
+      <td>26.06%</td>
+      <td>1.13</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>Real Salt Lake</td>
+      <td>1493.03</td>
+      <td>0</td>
+      <td>@ Minnesota United FC</td>
+      <td>1527.57</td>
+      <td>0</td>
+      <td>24.16%</td>
+      <td>50.34%</td>
+      <td>25.50%</td>
+      <td>1.90</td>
+    </tr>
+    <tr>
+      <td>2020-09-28</td>
+      <td>Columbus Crew</td>
+      <td>1596.92</td>
+      <td>1</td>
+      <td>@ Toronto FC</td>
+      <td>1576.13</td>
+      <td>3</td>
+      <td>30.63%</td>
+      <td>43.19%</td>
+      <td>26.18%</td>
+      <td>-16.62</td>
+    </tr>
+    <tr>
+      <td>2020-10-03</td>
+      <td>New York RB</td>
+      <td>1506.51</td>
+      <td>1</td>
+      <td>@ Orlando City</td>
+      <td>1549.26</td>
+      <td>3</td>
+      <td>23.30%</td>
+      <td>51.34%</td>
+      <td>25.36%</td>
+      <td>-13.30</td>
+    </tr>
+    <tr>
+      <td>2020-10-03</td>
+      <td>Orlando City</td>
+      <td>1549.26</td>
+      <td>3</td>
+      <td>New York RB</td>
+      <td>1506.51</td>
+      <td>1</td>
+      <td>51.34%</td>
+      <td>23.30%</td>
+      <td>25.36%</td>
+      <td>13.30</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>New York City FC</td>
+      <td>1545.85</td>
+      <td>3</td>
+      <td>@ Inter Miami CF</td>
+      <td>1398.27</td>
+      <td>2</td>
+      <td>47.92%</td>
+      <td>26.29%</td>
+      <td>25.79%</td>
+      <td>10.41</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Chicago Fire</td>
+      <td>1470.60</td>
+      <td>2</td>
+      <td>@ Montreal CF</td>
+      <td>1428.14</td>
+      <td>2</td>
+      <td>33.49%</td>
+      <td>40.20%</td>
+      <td>26.30%</td>
+      <td>0.46</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Toronto FC</td>
+      <td>1592.76</td>
+      <td>2</td>
+      <td>Philadelphia Union</td>
+      <td>1603.86</td>
+      <td>1</td>
+      <td>44.50%</td>
+      <td>29.41%</td>
+      <td>26.09%</td>
+      <td>11.38</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Philadelphia Union</td>
+      <td>1603.86</td>
+      <td>1</td>
+      <td>@ Toronto FC</td>
+      <td>1592.76</td>
+      <td>2</td>
+      <td>29.41%</td>
+      <td>44.50%</td>
+      <td>26.09%</td>
+      <td>-11.39</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Nashville SC</td>
+      <td>1454.46</td>
+      <td>0</td>
+      <td>@ New England Revolution</td>
+      <td>1534.40</td>
+      <td>0</td>
+      <td>19.77%</td>
+      <td>55.64%</td>
+      <td>24.59%</td>
+      <td>2.69</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Columbus Crew</td>
+      <td>1580.30</td>
+      <td>2</td>
+      <td>@ FC Dallas</td>
+      <td>1539.50</td>
+      <td>2</td>
+      <td>33.27%</td>
+      <td>40.44%</td>
+      <td>26.30%</td>
+      <td>0.49</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1423.78</td>
+      <td>1</td>
+      <td>@ Seattle Sounders</td>
+      <td>1608.22</td>
+      <td>3</td>
+      <td>12.46%</td>
+      <td>66.03%</td>
+      <td>21.51%</td>
+      <td>-7.30</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1474.11</td>
+      <td>1</td>
+      <td>@ San Jose Earthquakes</td>
+      <td>1425.77</td>
+      <td>2</td>
+      <td>34.30%</td>
+      <td>39.38%</td>
+      <td>26.32%</td>
+      <td>-12.81</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>FC Cincinnati</td>
+      <td>1398.22</td>
+      <td>0</td>
+      <td>@ Minnesota United FC</td>
+      <td>1525.67</td>
+      <td>2</td>
+      <td>16.01%</td>
+      <td>60.64%</td>
+      <td>23.34%</td>
+      <td>-9.43</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Sporting Kansas City</td>
+      <td>1494.09</td>
+      <td>2</td>
+      <td>@ Houston Dynamo</td>
+      <td>1484.38</td>
+      <td>1</td>
+      <td>29.24%</td>
+      <td>44.68%</td>
+      <td>26.08%</td>
+      <td>15.69</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>New England Revolution</td>
+      <td>1534.40</td>
+      <td>0</td>
+      <td>Nashville SC</td>
+      <td>1454.46</td>
+      <td>0</td>
+      <td>55.64%</td>
+      <td>19.77%</td>
+      <td>24.59%</td>
+      <td>-2.68</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>San Jose Earthquakes</td>
+      <td>1425.77</td>
+      <td>2</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1474.11</td>
+      <td>1</td>
+      <td>39.38%</td>
+      <td>34.30%</td>
+      <td>26.32%</td>
+      <td>12.81</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Seattle Sounders</td>
+      <td>1608.22</td>
+      <td>3</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1423.78</td>
+      <td>1</td>
+      <td>66.03%</td>
+      <td>12.46%</td>
+      <td>21.51%</td>
+      <td>7.30</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>FC Dallas</td>
+      <td>1539.50</td>
+      <td>2</td>
+      <td>Columbus Crew</td>
+      <td>1580.30</td>
+      <td>2</td>
+      <td>40.44%</td>
+      <td>33.27%</td>
+      <td>26.30%</td>
+      <td>-0.49</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Minnesota United FC</td>
+      <td>1525.67</td>
+      <td>2</td>
+      <td>FC Cincinnati</td>
+      <td>1398.22</td>
+      <td>0</td>
+      <td>60.64%</td>
+      <td>16.01%</td>
+      <td>23.34%</td>
+      <td>9.44</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Inter Miami CF</td>
+      <td>1398.27</td>
+      <td>2</td>
+      <td>New York City FC</td>
+      <td>1545.85</td>
+      <td>3</td>
+      <td>26.29%</td>
+      <td>47.92%</td>
+      <td>25.79%</td>
+      <td>-10.41</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Houston Dynamo</td>
+      <td>1484.38</td>
+      <td>1</td>
+      <td>Sporting Kansas City</td>
+      <td>1494.09</td>
+      <td>2</td>
+      <td>44.68%</td>
+      <td>29.24%</td>
+      <td>26.08%</td>
+      <td>-15.69</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>DC United</td>
+      <td>1422.99</td>
+      <td>0</td>
+      <td>Atlanta United FC</td>
+      <td>1443.30</td>
+      <td>4</td>
+      <td>43.26%</td>
+      <td>30.57%</td>
+      <td>26.17%</td>
+      <td>-30.57</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Montreal CF</td>
+      <td>1428.14</td>
+      <td>2</td>
+      <td>Chicago Fire</td>
+      <td>1470.60</td>
+      <td>2</td>
+      <td>40.20%</td>
+      <td>33.49%</td>
+      <td>26.30%</td>
+      <td>-0.47</td>
+    </tr>
+    <tr>
+      <td>2020-10-04</td>
+      <td>Atlanta United FC</td>
+      <td>1443.30</td>
+      <td>4</td>
+      <td>@ DC United</td>
+      <td>1422.99</td>
+      <td>0</td>
+      <td>30.57%</td>
+      <td>43.26%</td>
+      <td>26.17%</td>
+      <td>30.57</td>
+    </tr>
+    <tr>
+      <td>2020-10-05</td>
+      <td>Real Salt Lake</td>
+      <td>1494.93</td>
+      <td>1</td>
+      <td>Los Angeles FC</td>
+      <td>1517.94</td>
+      <td>3</td>
+      <td>42.89%</td>
+      <td>30.92%</td>
+      <td>26.19%</td>
+      <td>-21.47</td>
+    </tr>
+    <tr>
+      <td>2020-10-05</td>
+      <td>Los Angeles FC</td>
+      <td>1517.94</td>
+      <td>3</td>
+      <td>@ Real Salt Lake</td>
+      <td>1494.93</td>
+      <td>1</td>
+      <td>30.92%</td>
+      <td>42.89%</td>
+      <td>26.19%</td>
+      <td>21.47</td>
+    </tr>
+    <tr>
+      <td>2020-10-07</td>
+      <td>Minnesota United FC</td>
+      <td>1535.11</td>
+      <td>0</td>
+      <td>@ Nashville SC</td>
+      <td>1457.15</td>
+      <td>0</td>
+      <td>38.50%</td>
+      <td>35.16%</td>
+      <td>26.34%</td>
+      <td>-0.23</td>
+    </tr>
+    <tr>
+      <td>2020-10-07</td>
+      <td>Nashville SC</td>
+      <td>1457.15</td>
+      <td>0</td>
+      <td>Minnesota United FC</td>
+      <td>1535.11</td>
+      <td>0</td>
+      <td>35.16%</td>
+      <td>38.50%</td>
+      <td>26.34%</td>
+      <td>0.22</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Orlando City</td>
+      <td>1562.56</td>
+      <td>0</td>
+      <td>@ Atlanta United FC</td>
+      <td>1473.87</td>
+      <td>0</td>
+      <td>40.02%</td>
+      <td>33.67%</td>
+      <td>26.31%</td>
+      <td>-0.43</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Chicago Fire</td>
+      <td>1471.06</td>
+      <td>0</td>
+      <td>@ Sporting Kansas City</td>
+      <td>1509.78</td>
+      <td>1</td>
+      <td>23.72%</td>
+      <td>50.85%</td>
+      <td>25.43%</td>
+      <td>-9.55</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Toronto FC</td>
+      <td>1604.14</td>
+      <td>1</td>
+      <td>@ New England Revolution</td>
+      <td>1531.72</td>
+      <td>0</td>
+      <td>37.71%</td>
+      <td>35.94%</td>
+      <td>26.35%</td>
+      <td>13.27</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Atlanta United FC</td>
+      <td>1473.87</td>
+      <td>0</td>
+      <td>Orlando City</td>
+      <td>1562.56</td>
+      <td>0</td>
+      <td>33.67%</td>
+      <td>40.02%</td>
+      <td>26.31%</td>
+      <td>0.43</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>New York RB</td>
+      <td>1493.21</td>
+      <td>1</td>
+      <td>Inter Miami CF</td>
+      <td>1387.86</td>
+      <td>2</td>
+      <td>58.38%</td>
+      <td>17.66%</td>
+      <td>23.96%</td>
+      <td>-19.69</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>New England Revolution</td>
+      <td>1531.72</td>
+      <td>0</td>
+      <td>Toronto FC</td>
+      <td>1604.14</td>
+      <td>1</td>
+      <td>35.94%</td>
+      <td>37.71%</td>
+      <td>26.35%</td>
+      <td>-13.27</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Philadelphia Union</td>
+      <td>1592.47</td>
+      <td>3</td>
+      <td>FC Cincinnati</td>
+      <td>1388.79</td>
+      <td>0</td>
+      <td>67.72%</td>
+      <td>11.45%</td>
+      <td>20.83%</td>
+      <td>8.17</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Columbus Crew</td>
+      <td>1580.79</td>
+      <td>1</td>
+      <td>Montreal CF</td>
+      <td>1427.67</td>
+      <td>2</td>
+      <td>63.14%</td>
+      <td>14.30%</td>
+      <td>22.56%</td>
+      <td>-21.06</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>New York City FC</td>
+      <td>1556.26</td>
+      <td>4</td>
+      <td>DC United</td>
+      <td>1392.42</td>
+      <td>1</td>
+      <td>64.15%</td>
+      <td>13.64%</td>
+      <td>22.21%</td>
+      <td>9.83</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Sporting Kansas City</td>
+      <td>1509.78</td>
+      <td>1</td>
+      <td>Chicago Fire</td>
+      <td>1471.06</td>
+      <td>0</td>
+      <td>50.85%</td>
+      <td>23.72%</td>
+      <td>25.43%</td>
+      <td>9.55</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Seattle Sounders</td>
+      <td>1615.52</td>
+      <td>2</td>
+      <td>Real Salt Lake</td>
+      <td>1473.46</td>
+      <td>1</td>
+      <td>62.08%</td>
+      <td>15.01%</td>
+      <td>22.91%</td>
+      <td>6.26</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1461.30</td>
+      <td>3</td>
+      <td>Portland Timbers</td>
+      <td>1547.85</td>
+      <td>6</td>
+      <td>33.97%</td>
+      <td>39.72%</td>
+      <td>26.32%</td>
+      <td>-22.03</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>San Jose Earthquakes</td>
+      <td>1438.58</td>
+      <td>3</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1416.48</td>
+      <td>0</td>
+      <td>48.80%</td>
+      <td>25.50%</td>
+      <td>25.69%</td>
+      <td>17.58</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1416.48</td>
+      <td>0</td>
+      <td>@ San Jose Earthquakes</td>
+      <td>1438.58</td>
+      <td>3</td>
+      <td>25.50%</td>
+      <td>48.80%</td>
+      <td>25.69%</td>
+      <td>-17.57</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Portland Timbers</td>
+      <td>1547.85</td>
+      <td>6</td>
+      <td>@ Los Angeles Galaxy</td>
+      <td>1461.30</td>
+      <td>3</td>
+      <td>39.72%</td>
+      <td>33.97%</td>
+      <td>26.32%</td>
+      <td>22.03</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Real Salt Lake</td>
+      <td>1473.46</td>
+      <td>1</td>
+      <td>@ Seattle Sounders</td>
+      <td>1615.52</td>
+      <td>2</td>
+      <td>15.01%</td>
+      <td>62.08%</td>
+      <td>22.91%</td>
+      <td>-6.26</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>FC Dallas</td>
+      <td>1539.01</td>
+      <td>0</td>
+      <td>@ Houston Dynamo</td>
+      <td>1468.69</td>
+      <td>2</td>
+      <td>37.41%</td>
+      <td>36.24%</td>
+      <td>26.35%</td>
+      <td>-19.33</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>DC United</td>
+      <td>1392.42</td>
+      <td>1</td>
+      <td>@ New York City FC</td>
+      <td>1556.26</td>
+      <td>4</td>
+      <td>13.64%</td>
+      <td>64.15%</td>
+      <td>22.21%</td>
+      <td>-9.83</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Montreal CF</td>
+      <td>1427.67</td>
+      <td>2</td>
+      <td>@ Columbus Crew</td>
+      <td>1580.79</td>
+      <td>1</td>
+      <td>14.30%</td>
+      <td>63.14%</td>
+      <td>22.56%</td>
+      <td>21.07</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>FC Cincinnati</td>
+      <td>1388.79</td>
+      <td>0</td>
+      <td>@ Philadelphia Union</td>
+      <td>1592.47</td>
+      <td>3</td>
+      <td>11.45%</td>
+      <td>67.72%</td>
+      <td>20.83%</td>
+      <td>-8.17</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Inter Miami CF</td>
+      <td>1387.86</td>
+      <td>2</td>
+      <td>@ New York RB</td>
+      <td>1493.21</td>
+      <td>1</td>
+      <td>17.66%</td>
+      <td>58.38%</td>
+      <td>23.96%</td>
+      <td>19.69</td>
+    </tr>
+    <tr>
+      <td>2020-10-08</td>
+      <td>Houston Dynamo</td>
+      <td>1468.69</td>
+      <td>2</td>
+      <td>FC Dallas</td>
+      <td>1539.01</td>
+      <td>0</td>
+      <td>36.24%</td>
+      <td>37.41%</td>
+      <td>26.35%</td>
+      <td>19.33</td>
+    </tr>
+    <tr>
+      <td>2020-10-10</td>
+      <td>Atlanta United FC</td>
+      <td>1474.30</td>
+      <td>0</td>
+      <td>New York RB</td>
+      <td>1473.52</td>
+      <td>1</td>
+      <td>46.07%</td>
+      <td>27.96%</td>
+      <td>25.97%</td>
+      <td>-16.08</td>
+    </tr>
+    <tr>
+      <td>2020-10-10</td>
+      <td>New York RB</td>
+      <td>1473.52</td>
+      <td>1</td>
+      <td>@ Atlanta United FC</td>
+      <td>1474.30</td>
+      <td>0</td>
+      <td>27.96%</td>
+      <td>46.07%</td>
+      <td>25.97%</td>
+      <td>16.09</td>
+    </tr>
+    <tr>
+      <td>2020-10-10</td>
+      <td>Houston Dynamo</td>
+      <td>1488.02</td>
+      <td>0</td>
+      <td>@ Inter Miami CF</td>
+      <td>1407.55</td>
+      <td>1</td>
+      <td>38.86%</td>
+      <td>34.81%</td>
+      <td>26.33%</td>
+      <td>-14.06</td>
+    </tr>
+    <tr>
+      <td>2020-10-10</td>
+      <td>Inter Miami CF</td>
+      <td>1407.55</td>
+      <td>1</td>
+      <td>Houston Dynamo</td>
+      <td>1488.02</td>
+      <td>0</td>
+      <td>34.81%</td>
+      <td>38.86%</td>
+      <td>26.33%</td>
+      <td>14.06</td>
+    </tr>
+    <tr>
+      <td>2020-10-11</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1398.91</td>
+      <td>2</td>
+      <td>Real Salt Lake</td>
+      <td>1467.20</td>
+      <td>1</td>
+      <td>36.53%</td>
+      <td>37.12%</td>
+      <td>26.35%</td>
+      <td>13.59</td>
+    </tr>
+    <tr>
+      <td>2020-10-11</td>
+      <td>New York City FC</td>
+      <td>1566.09</td>
+      <td>1</td>
+      <td>New England Revolution</td>
+      <td>1518.45</td>
+      <td>2</td>
+      <td>51.92%</td>
+      <td>22.81%</td>
+      <td>25.27%</td>
+      <td>-17.79</td>
+    </tr>
+    <tr>
+      <td>2020-10-11</td>
+      <td>New England Revolution</td>
+      <td>1518.45</td>
+      <td>2</td>
+      <td>@ New York City FC</td>
+      <td>1566.09</td>
+      <td>1</td>
+      <td>22.81%</td>
+      <td>51.92%</td>
+      <td>25.27%</td>
+      <td>17.78</td>
+    </tr>
+    <tr>
+      <td>2020-10-11</td>
+      <td>Real Salt Lake</td>
+      <td>1467.20</td>
+      <td>1</td>
+      <td>@ Vancouver Whitecaps</td>
+      <td>1398.91</td>
+      <td>2</td>
+      <td>37.12%</td>
+      <td>36.53%</td>
+      <td>26.35%</td>
+      <td>-13.59</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>Toronto FC</td>
+      <td>1617.41</td>
+      <td>1</td>
+      <td>@ FC Cincinnati</td>
+      <td>1380.62</td>
+      <td>0</td>
+      <td>58.27%</td>
+      <td>17.74%</td>
+      <td>23.99%</td>
+      <td>7.36</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>Seattle Sounders</td>
+      <td>1621.78</td>
+      <td>1</td>
+      <td>@ Los Angeles FC</td>
+      <td>1539.41</td>
+      <td>3</td>
+      <td>39.13%</td>
+      <td>34.54%</td>
+      <td>26.33%</td>
+      <td>-19.99</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>DC United</td>
+      <td>1382.59</td>
+      <td>1</td>
+      <td>@ Chicago Fire</td>
+      <td>1461.51</td>
+      <td>2</td>
+      <td>19.86%</td>
+      <td>55.52%</td>
+      <td>24.62%</td>
+      <td>-8.17</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>Nashville SC</td>
+      <td>1457.37</td>
+      <td>1</td>
+      <td>@ Sporting Kansas City</td>
+      <td>1519.33</td>
+      <td>2</td>
+      <td>21.41%</td>
+      <td>53.60%</td>
+      <td>24.99%</td>
+      <td>-8.74</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>Philadelphia Union</td>
+      <td>1600.64</td>
+      <td>2</td>
+      <td>Montreal CF</td>
+      <td>1448.74</td>
+      <td>1</td>
+      <td>63.03%</td>
+      <td>14.37%</td>
+      <td>22.60%</td>
+      <td>5.99</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>FC Cincinnati</td>
+      <td>1380.62</td>
+      <td>0</td>
+      <td>Toronto FC</td>
+      <td>1617.41</td>
+      <td>1</td>
+      <td>17.74%</td>
+      <td>58.27%</td>
+      <td>23.99%</td>
+      <td>-7.37</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>Sporting Kansas City</td>
+      <td>1519.33</td>
+      <td>2</td>
+      <td>Nashville SC</td>
+      <td>1457.37</td>
+      <td>1</td>
+      <td>53.60%</td>
+      <td>21.41%</td>
+      <td>24.99%</td>
+      <td>8.74</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>Portland Timbers</td>
+      <td>1569.88</td>
+      <td>3</td>
+      <td>San Jose Earthquakes</td>
+      <td>1456.16</td>
+      <td>0</td>
+      <td>59.25%</td>
+      <td>17.02%</td>
+      <td>23.73%</td>
+      <td>12.26</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>Chicago Fire</td>
+      <td>1461.51</td>
+      <td>2</td>
+      <td>DC United</td>
+      <td>1382.59</td>
+      <td>1</td>
+      <td>55.52%</td>
+      <td>19.86%</td>
+      <td>24.62%</td>
+      <td>8.17</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>Montreal CF</td>
+      <td>1448.74</td>
+      <td>1</td>
+      <td>@ Philadelphia Union</td>
+      <td>1600.64</td>
+      <td>2</td>
+      <td>14.37%</td>
+      <td>63.03%</td>
+      <td>22.60%</td>
+      <td>-5.99</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>Los Angeles FC</td>
+      <td>1539.41</td>
+      <td>3</td>
+      <td>Seattle Sounders</td>
+      <td>1621.78</td>
+      <td>1</td>
+      <td>34.54%</td>
+      <td>39.13%</td>
+      <td>26.33%</td>
+      <td>19.99</td>
+    </tr>
+    <tr>
+      <td>2020-10-12</td>
+      <td>San Jose Earthquakes</td>
+      <td>1456.16</td>
+      <td>0</td>
+      <td>@ Portland Timbers</td>
+      <td>1569.88</td>
+      <td>3</td>
+      <td>17.02%</td>
+      <td>59.25%</td>
+      <td>23.73%</td>
+      <td>-12.26</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>FC Dallas</td>
+      <td>1519.68</td>
+      <td>1</td>
+      <td>Sporting Kansas City</td>
+      <td>1528.07</td>
+      <td>0</td>
+      <td>44.86%</td>
+      <td>29.07%</td>
+      <td>26.07%</td>
+      <td>11.28</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Houston Dynamo</td>
+      <td>1473.96</td>
+      <td>1</td>
+      <td>Nashville SC</td>
+      <td>1448.63</td>
+      <td>3</td>
+      <td>49.21%</td>
+      <td>25.15%</td>
+      <td>25.65%</td>
+      <td>-24.03</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Toronto FC</td>
+      <td>1624.77</td>
+      <td>1</td>
+      <td>New York RB</td>
+      <td>1489.61</td>
+      <td>1</td>
+      <td>61.41%</td>
+      <td>15.48%</td>
+      <td>23.12%</td>
+      <td>-3.53</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Orlando City</td>
+      <td>1562.13</td>
+      <td>1</td>
+      <td>New York City FC</td>
+      <td>1548.30</td>
+      <td>1</td>
+      <td>47.75%</td>
+      <td>26.44%</td>
+      <td>25.81%</td>
+      <td>-1.53</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>FC Cincinnati</td>
+      <td>1373.25</td>
+      <td>2</td>
+      <td>Columbus Crew</td>
+      <td>1559.73</td>
+      <td>1</td>
+      <td>22.17%</td>
+      <td>52.68%</td>
+      <td>25.15%</td>
+      <td>18.01</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Montreal CF</td>
+      <td>1442.75</td>
+      <td>2</td>
+      <td>New England Revolution</td>
+      <td>1536.23</td>
+      <td>3</td>
+      <td>33.02%</td>
+      <td>40.69%</td>
+      <td>26.29%</td>
+      <td>-12.46</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Real Salt Lake</td>
+      <td>1453.61</td>
+      <td>2</td>
+      <td>Portland Timbers</td>
+      <td>1582.14</td>
+      <td>1</td>
+      <td>28.53%</td>
+      <td>45.45%</td>
+      <td>26.02%</td>
+      <td>15.91</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1412.50</td>
+      <td>2</td>
+      <td>Los Angeles FC</td>
+      <td>1559.40</td>
+      <td>1</td>
+      <td>26.36%</td>
+      <td>47.83%</td>
+      <td>25.80%</td>
+      <td>16.59</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1439.27</td>
+      <td>0</td>
+      <td>San Jose Earthquakes</td>
+      <td>1443.90</td>
+      <td>4</td>
+      <td>45.36%</td>
+      <td>28.61%</td>
+      <td>26.03%</td>
+      <td>-31.76</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Inter Miami CF</td>
+      <td>1421.61</td>
+      <td>1</td>
+      <td>Atlanta United FC</td>
+      <td>1458.22</td>
+      <td>1</td>
+      <td>41.02%</td>
+      <td>32.70%</td>
+      <td>26.28%</td>
+      <td>-0.57</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>DC United</td>
+      <td>1374.42</td>
+      <td>2</td>
+      <td>Philadelphia Union</td>
+      <td>1606.63</td>
+      <td>2</td>
+      <td>18.11%</td>
+      <td>57.79%</td>
+      <td>24.11%</td>
+      <td>3.00</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>New England Revolution</td>
+      <td>1536.23</td>
+      <td>3</td>
+      <td>@ Montreal CF</td>
+      <td>1442.75</td>
+      <td>2</td>
+      <td>40.69%</td>
+      <td>33.02%</td>
+      <td>26.29%</td>
+      <td>12.45</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Atlanta United FC</td>
+      <td>1458.22</td>
+      <td>1</td>
+      <td>@ Inter Miami CF</td>
+      <td>1421.61</td>
+      <td>1</td>
+      <td>32.70%</td>
+      <td>41.02%</td>
+      <td>26.28%</td>
+      <td>0.57</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Portland Timbers</td>
+      <td>1582.14</td>
+      <td>1</td>
+      <td>@ Real Salt Lake</td>
+      <td>1453.61</td>
+      <td>2</td>
+      <td>45.45%</td>
+      <td>28.53%</td>
+      <td>26.02%</td>
+      <td>-15.91</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Los Angeles FC</td>
+      <td>1559.40</td>
+      <td>1</td>
+      <td>@ Vancouver Whitecaps</td>
+      <td>1412.50</td>
+      <td>2</td>
+      <td>47.83%</td>
+      <td>26.36%</td>
+      <td>25.80%</td>
+      <td>-16.59</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>San Jose Earthquakes</td>
+      <td>1443.90</td>
+      <td>4</td>
+      <td>@ Los Angeles Galaxy</td>
+      <td>1439.27</td>
+      <td>0</td>
+      <td>28.61%</td>
+      <td>45.36%</td>
+      <td>26.03%</td>
+      <td>31.76</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Philadelphia Union</td>
+      <td>1606.63</td>
+      <td>2</td>
+      <td>@ DC United</td>
+      <td>1374.42</td>
+      <td>2</td>
+      <td>57.79%</td>
+      <td>18.11%</td>
+      <td>24.11%</td>
+      <td>-3.00</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>New York RB</td>
+      <td>1489.61</td>
+      <td>1</td>
+      <td>@ Toronto FC</td>
+      <td>1624.77</td>
+      <td>1</td>
+      <td>15.48%</td>
+      <td>61.41%</td>
+      <td>23.12%</td>
+      <td>3.53</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Sporting Kansas City</td>
+      <td>1528.07</td>
+      <td>0</td>
+      <td>@ FC Dallas</td>
+      <td>1519.68</td>
+      <td>1</td>
+      <td>29.07%</td>
+      <td>44.86%</td>
+      <td>26.07%</td>
+      <td>-11.28</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Columbus Crew</td>
+      <td>1559.73</td>
+      <td>1</td>
+      <td>@ FC Cincinnati</td>
+      <td>1373.25</td>
+      <td>2</td>
+      <td>52.68%</td>
+      <td>22.17%</td>
+      <td>25.15%</td>
+      <td>-18.01</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>New York City FC</td>
+      <td>1548.30</td>
+      <td>1</td>
+      <td>@ Orlando City</td>
+      <td>1562.13</td>
+      <td>1</td>
+      <td>26.44%</td>
+      <td>47.75%</td>
+      <td>25.81%</td>
+      <td>1.53</td>
+    </tr>
+    <tr>
+      <td>2020-10-15</td>
+      <td>Nashville SC</td>
+      <td>1448.63</td>
+      <td>3</td>
+      <td>@ Houston Dynamo</td>
+      <td>1473.96</td>
+      <td>1</td>
+      <td>25.15%</td>
+      <td>49.21%</td>
+      <td>25.65%</td>
+      <td>24.03</td>
+    </tr>
+    <tr>
+      <td>2020-10-17</td>
+      <td>Sporting Kansas City</td>
+      <td>1516.79</td>
+      <td>2</td>
+      <td>@ Chicago Fire</td>
+      <td>1469.68</td>
+      <td>2</td>
+      <td>34.13%</td>
+      <td>39.55%</td>
+      <td>26.32%</td>
+      <td>0.37</td>
+    </tr>
+    <tr>
+      <td>2020-10-17</td>
+      <td>Chicago Fire</td>
+      <td>1469.68</td>
+      <td>2</td>
+      <td>Sporting Kansas City</td>
+      <td>1516.79</td>
+      <td>2</td>
+      <td>39.55%</td>
+      <td>34.13%</td>
+      <td>26.32%</td>
+      <td>-0.37</td>
+    </tr>
+    <tr>
+      <td>2020-10-18</td>
+      <td>Montreal CF</td>
+      <td>1430.29</td>
+      <td>2</td>
+      <td>Inter Miami CF</td>
+      <td>1421.04</td>
+      <td>1</td>
+      <td>47.17%</td>
+      <td>26.96%</td>
+      <td>25.87%</td>
+      <td>10.62</td>
+    </tr>
+    <tr>
+      <td>2020-10-18</td>
+      <td>Columbus Crew</td>
+      <td>1541.72</td>
+      <td>3</td>
+      <td>New York City FC</td>
+      <td>1549.83</td>
+      <td>1</td>
+      <td>44.90%</td>
+      <td>29.04%</td>
+      <td>26.06%</td>
+      <td>15.94</td>
+    </tr>
+    <tr>
+      <td>2020-10-18</td>
+      <td>New York City FC</td>
+      <td>1549.83</td>
+      <td>1</td>
+      <td>@ Columbus Crew</td>
+      <td>1541.72</td>
+      <td>3</td>
+      <td>29.04%</td>
+      <td>44.90%</td>
+      <td>26.06%</td>
+      <td>-15.94</td>
+    </tr>
+    <tr>
+      <td>2020-10-18</td>
+      <td>Inter Miami CF</td>
+      <td>1421.04</td>
+      <td>1</td>
+      <td>@ Montreal CF</td>
+      <td>1430.29</td>
+      <td>2</td>
+      <td>26.96%</td>
+      <td>47.17%</td>
+      <td>25.87%</td>
+      <td>-10.62</td>
+    </tr>
+    <tr>
+      <td>2020-10-19</td>
+      <td>New York RB</td>
+      <td>1493.14</td>
+      <td>1</td>
+      <td>Orlando City</td>
+      <td>1560.60</td>
+      <td>1</td>
+      <td>36.65%</td>
+      <td>37.00%</td>
+      <td>26.35%</td>
+      <td>0.02</td>
+    </tr>
+    <tr>
+      <td>2020-10-19</td>
+      <td>FC Cincinnati</td>
+      <td>1391.26</td>
+      <td>1</td>
+      <td>DC United</td>
+      <td>1377.42</td>
+      <td>2</td>
+      <td>47.76%</td>
+      <td>26.43%</td>
+      <td>25.81%</td>
+      <td>-16.57</td>
+    </tr>
+    <tr>
+      <td>2020-10-19</td>
+      <td>San Jose Earthquakes</td>
+      <td>1475.66</td>
+      <td>0</td>
+      <td>Seattle Sounders</td>
+      <td>1601.79</td>
+      <td>0</td>
+      <td>28.82%</td>
+      <td>45.13%</td>
+      <td>26.05%</td>
+      <td>1.15</td>
+    </tr>
+    <tr>
+      <td>2020-10-19</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1407.51</td>
+      <td>1</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1429.09</td>
+      <td>0</td>
+      <td>43.09%</td>
+      <td>30.73%</td>
+      <td>26.18%</td>
+      <td>11.78</td>
+    </tr>
+    <tr>
+      <td>2020-10-19</td>
+      <td>Portland Timbers</td>
+      <td>1566.23</td>
+      <td>1</td>
+      <td>Los Angeles FC</td>
+      <td>1542.81</td>
+      <td>1</td>
+      <td>48.97%</td>
+      <td>25.36%</td>
+      <td>25.68%</td>
+      <td>-1.70</td>
+    </tr>
+    <tr>
+      <td>2020-10-19</td>
+      <td>Seattle Sounders</td>
+      <td>1601.79</td>
+      <td>0</td>
+      <td>@ San Jose Earthquakes</td>
+      <td>1475.66</td>
+      <td>0</td>
+      <td>45.13%</td>
+      <td>28.82%</td>
+      <td>26.05%</td>
+      <td>-1.15</td>
+    </tr>
+    <tr>
+      <td>2020-10-19</td>
+      <td>Orlando City</td>
+      <td>1560.60</td>
+      <td>1</td>
+      <td>@ New York RB</td>
+      <td>1493.14</td>
+      <td>1</td>
+      <td>37.00%</td>
+      <td>36.65%</td>
+      <td>26.35%</td>
+      <td>-0.02</td>
+    </tr>
+    <tr>
+      <td>2020-10-19</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1429.09</td>
+      <td>0</td>
+      <td>@ Los Angeles Galaxy</td>
+      <td>1407.51</td>
+      <td>1</td>
+      <td>30.73%</td>
+      <td>43.09%</td>
+      <td>26.18%</td>
+      <td>-11.79</td>
+    </tr>
+    <tr>
+      <td>2020-10-19</td>
+      <td>Los Angeles FC</td>
+      <td>1542.81</td>
+      <td>1</td>
+      <td>@ Portland Timbers</td>
+      <td>1566.23</td>
+      <td>1</td>
+      <td>25.36%</td>
+      <td>48.97%</td>
+      <td>25.68%</td>
+      <td>1.71</td>
+    </tr>
+    <tr>
+      <td>2020-10-19</td>
+      <td>Houston Dynamo</td>
+      <td>1449.93</td>
+      <td>2</td>
+      <td>@ Minnesota United FC</td>
+      <td>1534.88</td>
+      <td>2</td>
+      <td>19.34%</td>
+      <td>56.19%</td>
+      <td>24.48%</td>
+      <td>2.77</td>
+    </tr>
+    <tr>
+      <td>2020-10-19</td>
+      <td>Toronto FC</td>
+      <td>1621.24</td>
+      <td>1</td>
+      <td>Atlanta United FC</td>
+      <td>1458.79</td>
+      <td>0</td>
+      <td>64.02%</td>
+      <td>13.72%</td>
+      <td>22.26%</td>
+      <td>5.72</td>
+    </tr>
+    <tr>
+      <td>2020-10-19</td>
+      <td>Minnesota United FC</td>
+      <td>1534.88</td>
+      <td>2</td>
+      <td>Houston Dynamo</td>
+      <td>1449.93</td>
+      <td>2</td>
+      <td>56.19%</td>
+      <td>19.34%</td>
+      <td>24.48%</td>
+      <td>-2.77</td>
+    </tr>
+    <tr>
+      <td>2020-10-19</td>
+      <td>DC United</td>
+      <td>1377.42</td>
+      <td>2</td>
+      <td>@ FC Cincinnati</td>
+      <td>1391.26</td>
+      <td>1</td>
+      <td>26.43%</td>
+      <td>47.76%</td>
+      <td>25.81%</td>
+      <td>16.57</td>
+    </tr>
+    <tr>
+      <td>2020-10-19</td>
+      <td>Atlanta United FC</td>
+      <td>1458.79</td>
+      <td>0</td>
+      <td>@ Toronto FC</td>
+      <td>1621.24</td>
+      <td>1</td>
+      <td>13.72%</td>
+      <td>64.02%</td>
+      <td>22.26%</td>
+      <td>-5.71</td>
+    </tr>
+    <tr>
+      <td>2020-10-20</td>
+      <td>New England Revolution</td>
+      <td>1548.68</td>
+      <td>1</td>
+      <td>Philadelphia Union</td>
+      <td>1603.63</td>
+      <td>2</td>
+      <td>38.44%</td>
+      <td>35.22%</td>
+      <td>26.34%</td>
+      <td>-13.94</td>
+    </tr>
+    <tr>
+      <td>2020-10-20</td>
+      <td>Philadelphia Union</td>
+      <td>1603.63</td>
+      <td>2</td>
+      <td>@ New England Revolution</td>
+      <td>1548.68</td>
+      <td>1</td>
+      <td>35.22%</td>
+      <td>38.44%</td>
+      <td>26.34%</td>
+      <td>13.95</td>
+    </tr>
+    <tr>
+      <td>2020-10-21</td>
+      <td>Nashville SC</td>
+      <td>1472.66</td>
+      <td>3</td>
+      <td>FC Dallas</td>
+      <td>1530.96</td>
+      <td>0</td>
+      <td>37.96%</td>
+      <td>35.69%</td>
+      <td>26.34%</td>
+      <td>22.87</td>
+    </tr>
+    <tr>
+      <td>2020-10-21</td>
+      <td>FC Dallas</td>
+      <td>1530.96</td>
+      <td>0</td>
+      <td>@ Nashville SC</td>
+      <td>1472.66</td>
+      <td>3</td>
+      <td>35.69%</td>
+      <td>37.96%</td>
+      <td>26.34%</td>
+      <td>-22.86</td>
+    </tr>
+    <tr>
+      <td>2020-10-23</td>
+      <td>Seattle Sounders</td>
+      <td>1600.64</td>
+      <td>1</td>
+      <td>Portland Timbers</td>
+      <td>1564.53</td>
+      <td>1</td>
+      <td>50.53%</td>
+      <td>23.99%</td>
+      <td>25.47%</td>
+      <td>-1.94</td>
+    </tr>
+    <tr>
+      <td>2020-10-23</td>
+      <td>Portland Timbers</td>
+      <td>1564.53</td>
+      <td>1</td>
+      <td>@ Seattle Sounders</td>
+      <td>1600.64</td>
+      <td>1</td>
+      <td>23.99%</td>
+      <td>50.53%</td>
+      <td>25.47%</td>
+      <td>1.93</td>
+    </tr>
+    <tr>
+      <td>2020-10-24</td>
+      <td>DC United</td>
+      <td>1393.99</td>
+      <td>2</td>
+      <td>@ Atlanta United FC</td>
+      <td>1453.08</td>
+      <td>1</td>
+      <td>21.68%</td>
+      <td>53.27%</td>
+      <td>25.05%</td>
+      <td>18.18</td>
+    </tr>
+    <tr>
+      <td>2020-10-24</td>
+      <td>Orlando City</td>
+      <td>1560.58</td>
+      <td>1</td>
+      <td>@ Inter Miami CF</td>
+      <td>1410.42</td>
+      <td>2</td>
+      <td>48.25%</td>
+      <td>26.00%</td>
+      <td>25.76%</td>
+      <td>-16.72</td>
+    </tr>
+    <tr>
+      <td>2020-10-24</td>
+      <td>New England Revolution</td>
+      <td>1534.74</td>
+      <td>1</td>
+      <td>@ Nashville SC</td>
+      <td>1495.53</td>
+      <td>1</td>
+      <td>33.05%</td>
+      <td>40.66%</td>
+      <td>26.29%</td>
+      <td>0.52</td>
+    </tr>
+    <tr>
+      <td>2020-10-24</td>
+      <td>Inter Miami CF</td>
+      <td>1410.42</td>
+      <td>2</td>
+      <td>Orlando City</td>
+      <td>1560.58</td>
+      <td>1</td>
+      <td>26.00%</td>
+      <td>48.25%</td>
+      <td>25.76%</td>
+      <td>16.71</td>
+    </tr>
+    <tr>
+      <td>2020-10-24</td>
+      <td>Nashville SC</td>
+      <td>1495.53</td>
+      <td>1</td>
+      <td>New England Revolution</td>
+      <td>1534.74</td>
+      <td>1</td>
+      <td>40.66%</td>
+      <td>33.05%</td>
+      <td>26.29%</td>
+      <td>-0.53</td>
+    </tr>
+    <tr>
+      <td>2020-10-24</td>
+      <td>Atlanta United FC</td>
+      <td>1453.08</td>
+      <td>1</td>
+      <td>DC United</td>
+      <td>1393.99</td>
+      <td>2</td>
+      <td>53.27%</td>
+      <td>21.68%</td>
+      <td>25.05%</td>
+      <td>-18.18</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>Los Angeles FC</td>
+      <td>1544.52</td>
+      <td>2</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1419.29</td>
+      <td>0</td>
+      <td>60.42%</td>
+      <td>16.17%</td>
+      <td>23.41%</td>
+      <td>9.52</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>Chicago Fire</td>
+      <td>1469.31</td>
+      <td>2</td>
+      <td>New York RB</td>
+      <td>1493.16</td>
+      <td>2</td>
+      <td>42.78%</td>
+      <td>31.03%</td>
+      <td>26.20%</td>
+      <td>-0.82</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>FC Dallas</td>
+      <td>1508.10</td>
+      <td>0</td>
+      <td>@ Real Salt Lake</td>
+      <td>1469.52</td>
+      <td>0</td>
+      <td>32.97%</td>
+      <td>40.75%</td>
+      <td>26.29%</td>
+      <td>0.53</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>San Jose Earthquakes</td>
+      <td>1476.81</td>
+      <td>1</td>
+      <td>@ Vancouver Whitecaps</td>
+      <td>1417.30</td>
+      <td>2</td>
+      <td>35.86%</td>
+      <td>37.79%</td>
+      <td>26.35%</td>
+      <td>-13.24</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1419.29</td>
+      <td>0</td>
+      <td>@ Los Angeles FC</td>
+      <td>1544.52</td>
+      <td>2</td>
+      <td>16.17%</td>
+      <td>60.42%</td>
+      <td>23.41%</td>
+      <td>-9.53</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>New York City FC</td>
+      <td>1533.89</td>
+      <td>3</td>
+      <td>Montreal CF</td>
+      <td>1440.91</td>
+      <td>1</td>
+      <td>57.06%</td>
+      <td>18.66%</td>
+      <td>24.28%</td>
+      <td>10.92</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>Toronto FC</td>
+      <td>1626.96</td>
+      <td>0</td>
+      <td>@ Philadelphia Union</td>
+      <td>1617.58</td>
+      <td>5</td>
+      <td>29.20%</td>
+      <td>44.73%</td>
+      <td>26.08%</td>
+      <td>-25.31</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>Minnesota United FC</td>
+      <td>1532.11</td>
+      <td>1</td>
+      <td>@ FC Cincinnati</td>
+      <td>1374.69</td>
+      <td>0</td>
+      <td>49.16%</td>
+      <td>25.19%</td>
+      <td>25.65%</td>
+      <td>10.04</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>Colorado Rapids</td>
+      <td>1534.83</td>
+      <td>0</td>
+      <td>@ Sporting Kansas City</td>
+      <td>1517.16</td>
+      <td>4</td>
+      <td>30.23%</td>
+      <td>43.62%</td>
+      <td>26.15%</td>
+      <td>-23.27</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>New York RB</td>
+      <td>1493.16</td>
+      <td>2</td>
+      <td>@ Chicago Fire</td>
+      <td>1469.31</td>
+      <td>2</td>
+      <td>31.03%</td>
+      <td>42.78%</td>
+      <td>26.20%</td>
+      <td>0.82</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1417.30</td>
+      <td>2</td>
+      <td>San Jose Earthquakes</td>
+      <td>1476.81</td>
+      <td>1</td>
+      <td>37.79%</td>
+      <td>35.86%</td>
+      <td>26.35%</td>
+      <td>13.25</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>Real Salt Lake</td>
+      <td>1469.52</td>
+      <td>0</td>
+      <td>FC Dallas</td>
+      <td>1508.10</td>
+      <td>0</td>
+      <td>40.75%</td>
+      <td>32.97%</td>
+      <td>26.29%</td>
+      <td>-0.54</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>Sporting Kansas City</td>
+      <td>1517.16</td>
+      <td>4</td>
+      <td>Colorado Rapids</td>
+      <td>1534.83</td>
+      <td>0</td>
+      <td>43.62%</td>
+      <td>30.23%</td>
+      <td>26.15%</td>
+      <td>23.27</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>Houston Dynamo</td>
+      <td>1452.70</td>
+      <td>1</td>
+      <td>Columbus Crew</td>
+      <td>1557.66</td>
+      <td>1</td>
+      <td>31.50%</td>
+      <td>42.28%</td>
+      <td>26.22%</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>Philadelphia Union</td>
+      <td>1617.58</td>
+      <td>5</td>
+      <td>Toronto FC</td>
+      <td>1626.96</td>
+      <td>0</td>
+      <td>44.73%</td>
+      <td>29.20%</td>
+      <td>26.08%</td>
+      <td>25.31</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>FC Cincinnati</td>
+      <td>1374.69</td>
+      <td>0</td>
+      <td>Minnesota United FC</td>
+      <td>1532.11</td>
+      <td>1</td>
+      <td>25.19%</td>
+      <td>49.16%</td>
+      <td>25.65%</td>
+      <td>-10.04</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>Montreal CF</td>
+      <td>1440.91</td>
+      <td>1</td>
+      <td>@ New York City FC</td>
+      <td>1533.89</td>
+      <td>3</td>
+      <td>18.66%</td>
+      <td>57.06%</td>
+      <td>24.28%</td>
+      <td>-10.91</td>
+    </tr>
+    <tr>
+      <td>2020-10-25</td>
+      <td>Columbus Crew</td>
+      <td>1557.66</td>
+      <td>1</td>
+      <td>@ Houston Dynamo</td>
+      <td>1452.70</td>
+      <td>1</td>
+      <td>42.28%</td>
+      <td>31.50%</td>
+      <td>26.22%</td>
+      <td>-0.75</td>
+    </tr>
+    <tr>
+      <td>2020-10-27</td>
+      <td>Nashville SC</td>
+      <td>1495.00</td>
+      <td>1</td>
+      <td>@ Montreal CF</td>
+      <td>1430.00</td>
+      <td>0</td>
+      <td>36.65%</td>
+      <td>37.00%</td>
+      <td>26.35%</td>
+      <td>13.56</td>
+    </tr>
+    <tr>
+      <td>2020-10-27</td>
+      <td>Montreal CF</td>
+      <td>1430.00</td>
+      <td>0</td>
+      <td>Nashville SC</td>
+      <td>1495.00</td>
+      <td>1</td>
+      <td>37.00%</td>
+      <td>36.65%</td>
+      <td>26.35%</td>
+      <td>-13.56</td>
+    </tr>
+    <tr>
+      <td>2020-10-28</td>
+      <td>New England Revolution</td>
+      <td>1535.26</td>
+      <td>0</td>
+      <td>@ New York RB</td>
+      <td>1493.98</td>
+      <td>1</td>
+      <td>33.33%</td>
+      <td>40.37%</td>
+      <td>26.30%</td>
+      <td>-12.54</td>
+    </tr>
+    <tr>
+      <td>2020-10-28</td>
+      <td>Atlanta United FC</td>
+      <td>1434.90</td>
+      <td>1</td>
+      <td>@ Orlando City</td>
+      <td>1543.86</td>
+      <td>4</td>
+      <td>17.38%</td>
+      <td>58.76%</td>
+      <td>23.86%</td>
+      <td>-12.51</td>
+    </tr>
+    <tr>
+      <td>2020-10-28</td>
+      <td>Seattle Sounders</td>
+      <td>1598.70</td>
+      <td>2</td>
+      <td>@ Vancouver Whitecaps</td>
+      <td>1430.55</td>
+      <td>0</td>
+      <td>50.48%</td>
+      <td>24.04%</td>
+      <td>25.48%</td>
+      <td>13.66</td>
+    </tr>
+    <tr>
+      <td>2020-10-28</td>
+      <td>Sporting Kansas City</td>
+      <td>1540.43</td>
+      <td>1</td>
+      <td>@ FC Cincinnati</td>
+      <td>1364.65</td>
+      <td>0</td>
+      <td>51.41%</td>
+      <td>23.24%</td>
+      <td>25.35%</td>
+      <td>9.39</td>
+    </tr>
+    <tr>
+      <td>2020-10-28</td>
+      <td>New York City FC</td>
+      <td>1544.81</td>
+      <td>1</td>
+      <td>@ Toronto FC</td>
+      <td>1601.65</td>
+      <td>0</td>
+      <td>21.90%</td>
+      <td>53.01%</td>
+      <td>25.09%</td>
+      <td>18.10</td>
+    </tr>
+    <tr>
+      <td>2020-10-28</td>
+      <td>Philadelphia Union</td>
+      <td>1642.89</td>
+      <td>2</td>
+      <td>Chicago Fire</td>
+      <td>1468.49</td>
+      <td>1</td>
+      <td>65.12%</td>
+      <td>13.02%</td>
+      <td>21.86%</td>
+      <td>5.41</td>
+    </tr>
+    <tr>
+      <td>2020-10-28</td>
+      <td>Chicago Fire</td>
+      <td>1468.49</td>
+      <td>1</td>
+      <td>@ Philadelphia Union</td>
+      <td>1642.89</td>
+      <td>2</td>
+      <td>13.02%</td>
+      <td>65.12%</td>
+      <td>21.86%</td>
+      <td>-5.41</td>
+    </tr>
+    <tr>
+      <td>2020-10-28</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1430.55</td>
+      <td>0</td>
+      <td>Seattle Sounders</td>
+      <td>1598.70</td>
+      <td>2</td>
+      <td>24.04%</td>
+      <td>50.48%</td>
+      <td>25.48%</td>
+      <td>-13.65</td>
+    </tr>
+    <tr>
+      <td>2020-10-28</td>
+      <td>New York RB</td>
+      <td>1493.98</td>
+      <td>1</td>
+      <td>New England Revolution</td>
+      <td>1535.26</td>
+      <td>0</td>
+      <td>40.37%</td>
+      <td>33.33%</td>
+      <td>26.30%</td>
+      <td>12.54</td>
+    </tr>
+    <tr>
+      <td>2020-10-28</td>
+      <td>FC Cincinnati</td>
+      <td>1364.65</td>
+      <td>0</td>
+      <td>Sporting Kansas City</td>
+      <td>1540.43</td>
+      <td>1</td>
+      <td>23.24%</td>
+      <td>51.41%</td>
+      <td>25.35%</td>
+      <td>-9.39</td>
+    </tr>
+    <tr>
+      <td>2020-10-28</td>
+      <td>Orlando City</td>
+      <td>1543.86</td>
+      <td>4</td>
+      <td>Atlanta United FC</td>
+      <td>1434.90</td>
+      <td>1</td>
+      <td>58.76%</td>
+      <td>17.38%</td>
+      <td>23.86%</td>
+      <td>12.51</td>
+    </tr>
+    <tr>
+      <td>2020-10-28</td>
+      <td>Toronto FC</td>
+      <td>1601.65</td>
+      <td>0</td>
+      <td>New York City FC</td>
+      <td>1544.81</td>
+      <td>1</td>
+      <td>53.01%</td>
+      <td>21.90%</td>
+      <td>25.09%</td>
+      <td>-18.11</td>
+    </tr>
+    <tr>
+      <td>2020-10-29</td>
+      <td>Colorado Rapids</td>
+      <td>1511.56</td>
+      <td>1</td>
+      <td>@ Minnesota United FC</td>
+      <td>1542.15</td>
+      <td>2</td>
+      <td>24.58%</td>
+      <td>49.86%</td>
+      <td>25.56%</td>
+      <td>-9.83</td>
+    </tr>
+    <tr>
+      <td>2020-10-29</td>
+      <td>San Jose Earthquakes</td>
+      <td>1463.57</td>
+      <td>2</td>
+      <td>Real Salt Lake</td>
+      <td>1468.98</td>
+      <td>0</td>
+      <td>45.25%</td>
+      <td>28.71%</td>
+      <td>26.04%</td>
+      <td>15.79</td>
+    </tr>
+    <tr>
+      <td>2020-10-29</td>
+      <td>Los Angeles FC</td>
+      <td>1554.04</td>
+      <td>2</td>
+      <td>Houston Dynamo</td>
+      <td>1453.45</td>
+      <td>1</td>
+      <td>57.88%</td>
+      <td>18.04%</td>
+      <td>24.09%</td>
+      <td>7.48</td>
+    </tr>
+    <tr>
+      <td>2020-10-29</td>
+      <td>Portland Timbers</td>
+      <td>1566.46</td>
+      <td>5</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1409.76</td>
+      <td>2</td>
+      <td>63.48%</td>
+      <td>14.07%</td>
+      <td>22.44%</td>
+      <td>10.16</td>
+    </tr>
+    <tr>
+      <td>2020-10-29</td>
+      <td>FC Dallas</td>
+      <td>1508.63</td>
+      <td>2</td>
+      <td>Inter Miami CF</td>
+      <td>1427.13</td>
+      <td>1</td>
+      <td>55.81%</td>
+      <td>19.63%</td>
+      <td>24.56%</td>
+      <td>8.09</td>
+    </tr>
+    <tr>
+      <td>2020-10-29</td>
+      <td>DC United</td>
+      <td>1412.17</td>
+      <td>1</td>
+      <td>Columbus Crew</td>
+      <td>1556.91</td>
+      <td>0</td>
+      <td>26.61%</td>
+      <td>47.56%</td>
+      <td>25.83%</td>
+      <td>16.51</td>
+    </tr>
+    <tr>
+      <td>2020-10-29</td>
+      <td>Minnesota United FC</td>
+      <td>1542.15</td>
+      <td>2</td>
+      <td>Colorado Rapids</td>
+      <td>1511.56</td>
+      <td>1</td>
+      <td>49.86%</td>
+      <td>24.58%</td>
+      <td>25.56%</td>
+      <td>9.84</td>
+    </tr>
+    <tr>
+      <td>2020-10-29</td>
+      <td>Columbus Crew</td>
+      <td>1556.91</td>
+      <td>0</td>
+      <td>@ DC United</td>
+      <td>1412.17</td>
+      <td>1</td>
+      <td>47.56%</td>
+      <td>26.61%</td>
+      <td>25.83%</td>
+      <td>-16.51</td>
+    </tr>
+    <tr>
+      <td>2020-10-29</td>
+      <td>Real Salt Lake</td>
+      <td>1468.98</td>
+      <td>0</td>
+      <td>@ San Jose Earthquakes</td>
+      <td>1463.57</td>
+      <td>2</td>
+      <td>28.71%</td>
+      <td>45.25%</td>
+      <td>26.04%</td>
+      <td>-15.79</td>
+    </tr>
+    <tr>
+      <td>2020-10-29</td>
+      <td>Houston Dynamo</td>
+      <td>1453.45</td>
+      <td>1</td>
+      <td>@ Los Angeles FC</td>
+      <td>1554.04</td>
+      <td>2</td>
+      <td>18.04%</td>
+      <td>57.88%</td>
+      <td>24.09%</td>
+      <td>-7.48</td>
+    </tr>
+    <tr>
+      <td>2020-10-29</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1409.76</td>
+      <td>2</td>
+      <td>@ Portland Timbers</td>
+      <td>1566.46</td>
+      <td>5</td>
+      <td>14.07%</td>
+      <td>63.48%</td>
+      <td>22.44%</td>
+      <td>-10.15</td>
+    </tr>
+    <tr>
+      <td>2020-10-29</td>
+      <td>Inter Miami CF</td>
+      <td>1427.13</td>
+      <td>1</td>
+      <td>@ FC Dallas</td>
+      <td>1508.63</td>
+      <td>2</td>
+      <td>19.63%</td>
+      <td>55.81%</td>
+      <td>24.56%</td>
+      <td>-8.09</td>
+    </tr>
+    <tr>
+      <td>2020-10-31</td>
+      <td>Houston Dynamo</td>
+      <td>1445.97</td>
+      <td>0</td>
+      <td>@ FC Dallas</td>
+      <td>1516.72</td>
+      <td>3</td>
+      <td>20.59%</td>
+      <td>54.61%</td>
+      <td>24.80%</td>
+      <td>-14.62</td>
+    </tr>
+    <tr>
+      <td>2020-10-31</td>
+      <td>FC Dallas</td>
+      <td>1516.72</td>
+      <td>3</td>
+      <td>Houston Dynamo</td>
+      <td>1445.97</td>
+      <td>0</td>
+      <td>54.61%</td>
+      <td>20.59%</td>
+      <td>24.80%</td>
+      <td>14.62</td>
+    </tr>
+    <tr>
+      <td>2020-11-01</td>
+      <td>Philadelphia Union</td>
+      <td>1648.30</td>
+      <td>1</td>
+      <td>@ Columbus Crew</td>
+      <td>1540.40</td>
+      <td>2</td>
+      <td>42.68%</td>
+      <td>31.12%</td>
+      <td>26.20%</td>
+      <td>-15.13</td>
+    </tr>
+    <tr>
+      <td>2020-11-01</td>
+      <td>Chicago Fire</td>
+      <td>1463.08</td>
+      <td>1</td>
+      <td>@ Nashville SC</td>
+      <td>1508.56</td>
+      <td>1</td>
+      <td>23.02%</td>
+      <td>51.67%</td>
+      <td>25.31%</td>
+      <td>2.10</td>
+    </tr>
+    <tr>
+      <td>2020-11-01</td>
+      <td>Nashville SC</td>
+      <td>1508.56</td>
+      <td>1</td>
+      <td>Chicago Fire</td>
+      <td>1463.08</td>
+      <td>1</td>
+      <td>51.67%</td>
+      <td>23.02%</td>
+      <td>25.31%</td>
+      <td>-2.10</td>
+    </tr>
+    <tr>
+      <td>2020-11-01</td>
+      <td>Columbus Crew</td>
+      <td>1540.40</td>
+      <td>2</td>
+      <td>Philadelphia Union</td>
+      <td>1648.30</td>
+      <td>1</td>
+      <td>31.12%</td>
+      <td>42.68%</td>
+      <td>26.20%</td>
+      <td>15.12</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>Toronto FC</td>
+      <td>1583.54</td>
+      <td>2</td>
+      <td>Inter Miami CF</td>
+      <td>1419.04</td>
+      <td>1</td>
+      <td>64.21%</td>
+      <td>13.60%</td>
+      <td>22.19%</td>
+      <td>5.66</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>New York City FC</td>
+      <td>1562.91</td>
+      <td>5</td>
+      <td>New York RB</td>
+      <td>1506.52</td>
+      <td>2</td>
+      <td>52.96%</td>
+      <td>21.94%</td>
+      <td>25.10%</td>
+      <td>15.47</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>FC Cincinnati</td>
+      <td>1355.26</td>
+      <td>0</td>
+      <td>@ Atlanta United FC</td>
+      <td>1422.39</td>
+      <td>2</td>
+      <td>20.93%</td>
+      <td>54.20%</td>
+      <td>24.88%</td>
+      <td>-12.11</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>New York RB</td>
+      <td>1506.52</td>
+      <td>2</td>
+      <td>@ New York City FC</td>
+      <td>1562.91</td>
+      <td>5</td>
+      <td>21.94%</td>
+      <td>52.96%</td>
+      <td>25.10%</td>
+      <td>-15.47</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>Orlando City</td>
+      <td>1556.37</td>
+      <td>1</td>
+      <td>@ Montreal CF</td>
+      <td>1416.44</td>
+      <td>0</td>
+      <td>46.94%</td>
+      <td>27.17%</td>
+      <td>25.89%</td>
+      <td>10.69</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>DC United</td>
+      <td>1428.68</td>
+      <td>3</td>
+      <td>@ New England Revolution</td>
+      <td>1522.72</td>
+      <td>4</td>
+      <td>18.57%</td>
+      <td>57.18%</td>
+      <td>24.25%</td>
+      <td>-7.68</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>Inter Miami CF</td>
+      <td>1419.04</td>
+      <td>1</td>
+      <td>@ Toronto FC</td>
+      <td>1583.54</td>
+      <td>2</td>
+      <td>13.60%</td>
+      <td>64.21%</td>
+      <td>22.19%</td>
+      <td>-5.66</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>Seattle Sounders</td>
+      <td>1612.36</td>
+      <td>1</td>
+      <td>@ Colorado Rapids</td>
+      <td>1501.73</td>
+      <td>3</td>
+      <td>43.05%</td>
+      <td>30.76%</td>
+      <td>26.18%</td>
+      <td>-21.54</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>Atlanta United FC</td>
+      <td>1422.39</td>
+      <td>2</td>
+      <td>FC Cincinnati</td>
+      <td>1355.26</td>
+      <td>0</td>
+      <td>54.20%</td>
+      <td>20.93%</td>
+      <td>24.88%</td>
+      <td>12.11</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1416.90</td>
+      <td>0</td>
+      <td>@ Portland Timbers</td>
+      <td>1576.62</td>
+      <td>1</td>
+      <td>13.89%</td>
+      <td>63.77%</td>
+      <td>22.35%</td>
+      <td>-5.79</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1399.61</td>
+      <td>2</td>
+      <td>Real Salt Lake</td>
+      <td>1453.19</td>
+      <td>1</td>
+      <td>38.63%</td>
+      <td>35.03%</td>
+      <td>26.34%</td>
+      <td>13.01</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>Portland Timbers</td>
+      <td>1576.62</td>
+      <td>1</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1416.90</td>
+      <td>0</td>
+      <td>63.77%</td>
+      <td>13.89%</td>
+      <td>22.35%</td>
+      <td>5.78</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>Colorado Rapids</td>
+      <td>1501.73</td>
+      <td>3</td>
+      <td>Seattle Sounders</td>
+      <td>1612.36</td>
+      <td>1</td>
+      <td>30.76%</td>
+      <td>43.05%</td>
+      <td>26.18%</td>
+      <td>21.53</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>New England Revolution</td>
+      <td>1522.72</td>
+      <td>4</td>
+      <td>DC United</td>
+      <td>1428.68</td>
+      <td>3</td>
+      <td>57.18%</td>
+      <td>18.57%</td>
+      <td>24.25%</td>
+      <td>7.68</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>Montreal CF</td>
+      <td>1416.44</td>
+      <td>0</td>
+      <td>Orlando City</td>
+      <td>1556.37</td>
+      <td>1</td>
+      <td>27.17%</td>
+      <td>46.94%</td>
+      <td>25.89%</td>
+      <td>-10.69</td>
+    </tr>
+    <tr>
+      <td>2020-11-02</td>
+      <td>Real Salt Lake</td>
+      <td>1453.19</td>
+      <td>1</td>
+      <td>@ Los Angeles Galaxy</td>
+      <td>1399.61</td>
+      <td>2</td>
+      <td>35.03%</td>
+      <td>38.63%</td>
+      <td>26.34%</td>
+      <td>-13.02</td>
+    </tr>
+    <tr>
+      <td>2020-11-05</td>
+      <td>Columbus Crew</td>
+      <td>1555.52</td>
+      <td>1</td>
+      <td>@ Orlando City</td>
+      <td>1567.06</td>
+      <td>2</td>
+      <td>26.70%</td>
+      <td>47.46%</td>
+      <td>25.84%</td>
+      <td>-10.54</td>
+    </tr>
+    <tr>
+      <td>2020-11-05</td>
+      <td>Chicago Fire</td>
+      <td>1465.18</td>
+      <td>2</td>
+      <td>@ Minnesota United FC</td>
+      <td>1551.99</td>
+      <td>2</td>
+      <td>19.18%</td>
+      <td>56.39%</td>
+      <td>24.43%</td>
+      <td>2.80</td>
+    </tr>
+    <tr>
+      <td>2020-11-05</td>
+      <td>Colorado Rapids</td>
+      <td>1523.26</td>
+      <td>1</td>
+      <td>@ Portland Timbers</td>
+      <td>1582.40</td>
+      <td>0</td>
+      <td>21.68%</td>
+      <td>53.28%</td>
+      <td>25.05%</td>
+      <td>18.18</td>
+    </tr>
+    <tr>
+      <td>2020-11-05</td>
+      <td>Seattle Sounders</td>
+      <td>1590.82</td>
+      <td>1</td>
+      <td>@ Los Angeles Galaxy</td>
+      <td>1412.62</td>
+      <td>1</td>
+      <td>51.70%</td>
+      <td>23.00%</td>
+      <td>25.30%</td>
+      <td>-2.10</td>
+    </tr>
+    <tr>
+      <td>2020-11-05</td>
+      <td>Orlando City</td>
+      <td>1567.06</td>
+      <td>2</td>
+      <td>Columbus Crew</td>
+      <td>1555.52</td>
+      <td>1</td>
+      <td>47.46%</td>
+      <td>26.70%</td>
+      <td>25.84%</td>
+      <td>10.53</td>
+    </tr>
+    <tr>
+      <td>2020-11-05</td>
+      <td>Minnesota United FC</td>
+      <td>1551.99</td>
+      <td>2</td>
+      <td>Chicago Fire</td>
+      <td>1465.18</td>
+      <td>2</td>
+      <td>56.39%</td>
+      <td>19.18%</td>
+      <td>24.43%</td>
+      <td>-2.79</td>
+    </tr>
+    <tr>
+      <td>2020-11-05</td>
+      <td>Nashville SC</td>
+      <td>1506.46</td>
+      <td>0</td>
+      <td>FC Dallas</td>
+      <td>1531.34</td>
+      <td>1</td>
+      <td>42.64%</td>
+      <td>31.16%</td>
+      <td>26.21%</td>
+      <td>-15.11</td>
+    </tr>
+    <tr>
+      <td>2020-11-05</td>
+      <td>Portland Timbers</td>
+      <td>1582.40</td>
+      <td>0</td>
+      <td>Colorado Rapids</td>
+      <td>1523.26</td>
+      <td>1</td>
+      <td>53.28%</td>
+      <td>21.68%</td>
+      <td>25.05%</td>
+      <td>-18.18</td>
+    </tr>
+    <tr>
+      <td>2020-11-05</td>
+      <td>San Jose Earthquakes</td>
+      <td>1479.36</td>
+      <td>3</td>
+      <td>Los Angeles FC</td>
+      <td>1561.52</td>
+      <td>2</td>
+      <td>34.57%</td>
+      <td>39.10%</td>
+      <td>26.33%</td>
+      <td>14.13</td>
+    </tr>
+    <tr>
+      <td>2020-11-05</td>
+      <td>FC Dallas</td>
+      <td>1531.34</td>
+      <td>1</td>
+      <td>@ Nashville SC</td>
+      <td>1506.46</td>
+      <td>0</td>
+      <td>31.16%</td>
+      <td>42.64%</td>
+      <td>26.21%</td>
+      <td>15.11</td>
+    </tr>
+    <tr>
+      <td>2020-11-05</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1412.62</td>
+      <td>1</td>
+      <td>Seattle Sounders</td>
+      <td>1590.82</td>
+      <td>1</td>
+      <td>23.00%</td>
+      <td>51.70%</td>
+      <td>25.30%</td>
+      <td>2.11</td>
+    </tr>
+    <tr>
+      <td>2020-11-05</td>
+      <td>Los Angeles FC</td>
+      <td>1561.52</td>
+      <td>2</td>
+      <td>@ San Jose Earthquakes</td>
+      <td>1479.36</td>
+      <td>3</td>
+      <td>39.10%</td>
+      <td>34.57%</td>
+      <td>26.33%</td>
+      <td>-14.13</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Sporting Kansas City</td>
+      <td>1549.82</td>
+      <td>2</td>
+      <td>@ Real Salt Lake</td>
+      <td>1440.17</td>
+      <td>0</td>
+      <td>42.92%</td>
+      <td>30.89%</td>
+      <td>26.19%</td>
+      <td>16.73</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Portland Timbers</td>
+      <td>1564.22</td>
+      <td>1</td>
+      <td>@ Los Angeles FC</td>
+      <td>1547.39</td>
+      <td>1</td>
+      <td>30.13%</td>
+      <td>43.73%</td>
+      <td>26.14%</td>
+      <td>0.95</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Colorado Rapids</td>
+      <td>1541.44</td>
+      <td>2</td>
+      <td>@ Houston Dynamo</td>
+      <td>1431.35</td>
+      <td>1</td>
+      <td>42.98%</td>
+      <td>30.83%</td>
+      <td>26.19%</td>
+      <td>11.82</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>New England Revolution</td>
+      <td>1530.40</td>
+      <td>0</td>
+      <td>@ Philadelphia Union</td>
+      <td>1633.17</td>
+      <td>2</td>
+      <td>17.86%</td>
+      <td>58.11%</td>
+      <td>24.03%</td>
+      <td>-10.48</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Toronto FC</td>
+      <td>1589.20</td>
+      <td>1</td>
+      <td>@ New York RB</td>
+      <td>1491.05</td>
+      <td>2</td>
+      <td>41.34%</td>
+      <td>32.40%</td>
+      <td>26.26%</td>
+      <td>-14.75</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>FC Cincinnati</td>
+      <td>1343.15</td>
+      <td>1</td>
+      <td>@ Inter Miami CF</td>
+      <td>1413.38</td>
+      <td>2</td>
+      <td>20.64%</td>
+      <td>54.55%</td>
+      <td>24.81%</td>
+      <td>-8.46</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Montreal CF</td>
+      <td>1405.75</td>
+      <td>3</td>
+      <td>@ DC United</td>
+      <td>1421.00</td>
+      <td>2</td>
+      <td>26.27%</td>
+      <td>47.94%</td>
+      <td>25.79%</td>
+      <td>16.62</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Atlanta United FC</td>
+      <td>1434.50</td>
+      <td>1</td>
+      <td>@ Columbus Crew</td>
+      <td>1544.98</td>
+      <td>2</td>
+      <td>17.26%</td>
+      <td>58.91%</td>
+      <td>23.82%</td>
+      <td>-7.17</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>New York City FC</td>
+      <td>1578.38</td>
+      <td>4</td>
+      <td>@ Chicago Fire</td>
+      <td>1467.98</td>
+      <td>3</td>
+      <td>43.02%</td>
+      <td>30.79%</td>
+      <td>26.18%</td>
+      <td>11.80</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>FC Dallas</td>
+      <td>1546.45</td>
+      <td>0</td>
+      <td>@ Minnesota United FC</td>
+      <td>1549.20</td>
+      <td>3</td>
+      <td>27.73%</td>
+      <td>46.33%</td>
+      <td>25.95%</td>
+      <td>-18.81</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Nashville SC</td>
+      <td>1491.35</td>
+      <td>3</td>
+      <td>@ Orlando City</td>
+      <td>1577.59</td>
+      <td>2</td>
+      <td>19.22%</td>
+      <td>56.33%</td>
+      <td>24.44%</td>
+      <td>19.09</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1411.11</td>
+      <td>3</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1414.73</td>
+      <td>0</td>
+      <td>45.49%</td>
+      <td>28.49%</td>
+      <td>26.02%</td>
+      <td>19.23</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Seattle Sounders</td>
+      <td>1588.72</td>
+      <td>4</td>
+      <td>San Jose Earthquakes</td>
+      <td>1493.49</td>
+      <td>1</td>
+      <td>57.30%</td>
+      <td>18.47%</td>
+      <td>24.22%</td>
+      <td>13.25</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Real Salt Lake</td>
+      <td>1440.17</td>
+      <td>0</td>
+      <td>Sporting Kansas City</td>
+      <td>1549.82</td>
+      <td>2</td>
+      <td>30.89%</td>
+      <td>42.92%</td>
+      <td>26.19%</td>
+      <td>-16.73</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Minnesota United FC</td>
+      <td>1549.20</td>
+      <td>3</td>
+      <td>FC Dallas</td>
+      <td>1546.45</td>
+      <td>0</td>
+      <td>46.33%</td>
+      <td>27.73%</td>
+      <td>25.95%</td>
+      <td>18.81</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Los Angeles FC</td>
+      <td>1547.39</td>
+      <td>1</td>
+      <td>Portland Timbers</td>
+      <td>1564.22</td>
+      <td>1</td>
+      <td>43.73%</td>
+      <td>30.13%</td>
+      <td>26.14%</td>
+      <td>-0.95</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Houston Dynamo</td>
+      <td>1431.35</td>
+      <td>1</td>
+      <td>Colorado Rapids</td>
+      <td>1541.44</td>
+      <td>2</td>
+      <td>30.83%</td>
+      <td>42.98%</td>
+      <td>26.19%</td>
+      <td>-11.82</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Philadelphia Union</td>
+      <td>1633.17</td>
+      <td>2</td>
+      <td>New England Revolution</td>
+      <td>1530.40</td>
+      <td>0</td>
+      <td>58.11%</td>
+      <td>17.86%</td>
+      <td>24.03%</td>
+      <td>10.49</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Orlando City</td>
+      <td>1577.59</td>
+      <td>2</td>
+      <td>Nashville SC</td>
+      <td>1491.35</td>
+      <td>3</td>
+      <td>56.33%</td>
+      <td>19.22%</td>
+      <td>24.44%</td>
+      <td>-19.08</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>New York RB</td>
+      <td>1491.05</td>
+      <td>2</td>
+      <td>Toronto FC</td>
+      <td>1589.20</td>
+      <td>1</td>
+      <td>32.40%</td>
+      <td>41.34%</td>
+      <td>26.26%</td>
+      <td>14.75</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Inter Miami CF</td>
+      <td>1413.38</td>
+      <td>2</td>
+      <td>FC Cincinnati</td>
+      <td>1343.15</td>
+      <td>1</td>
+      <td>54.55%</td>
+      <td>20.64%</td>
+      <td>24.81%</td>
+      <td>8.46</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>DC United</td>
+      <td>1421.00</td>
+      <td>2</td>
+      <td>Montreal CF</td>
+      <td>1405.75</td>
+      <td>3</td>
+      <td>47.94%</td>
+      <td>26.27%</td>
+      <td>25.79%</td>
+      <td>-16.62</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Columbus Crew</td>
+      <td>1544.98</td>
+      <td>2</td>
+      <td>Atlanta United FC</td>
+      <td>1434.50</td>
+      <td>1</td>
+      <td>58.91%</td>
+      <td>17.26%</td>
+      <td>23.82%</td>
+      <td>7.18</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Chicago Fire</td>
+      <td>1467.98</td>
+      <td>3</td>
+      <td>New York City FC</td>
+      <td>1578.38</td>
+      <td>4</td>
+      <td>30.79%</td>
+      <td>43.02%</td>
+      <td>26.18%</td>
+      <td>-11.80</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>San Jose Earthquakes</td>
+      <td>1493.49</td>
+      <td>1</td>
+      <td>@ Seattle Sounders</td>
+      <td>1588.72</td>
+      <td>4</td>
+      <td>18.47%</td>
+      <td>57.30%</td>
+      <td>24.22%</td>
+      <td>-13.25</td>
+    </tr>
+    <tr>
+      <td>2020-11-08</td>
+      <td>Los Angeles Galaxy</td>
+      <td>1414.73</td>
+      <td>0</td>
+      <td>@ Vancouver Whitecaps</td>
+      <td>1411.11</td>
+      <td>3</td>
+      <td>28.49%</td>
+      <td>45.49%</td>
+      <td>26.02%</td>
+      <td>-19.23</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

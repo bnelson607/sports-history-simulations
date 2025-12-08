@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .filter-controls {
+            text-align: center;
+            margin: 20px;
+        }
+        .filter-controls select {
+            padding: 4px;
+            margin-left: 8px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls">
+        <label for="teamFilter">Filter by Team:
+            <select id="teamFilter">
+                <option value="">All</option>
+                <option value="Atlanta United FC">Atlanta United FC</option><option value="Charlotte FC">Charlotte FC</option><option value="Columbus Crew">Columbus Crew</option><option value="FC Cincinnati">FC Cincinnati</option><option value="FC Dallas">FC Dallas</option><option value="Houston Dynamo">Houston Dynamo</option><option value="Los Angeles FC">Los Angeles FC</option><option value="Nashville SC">Nashville SC</option><option value="New England Revolution">New England Revolution</option><option value="New York RB">New York RB</option><option value="Orlando City">Orlando City</option><option value="Philadelphia Union">Philadelphia Union</option><option value="Real Salt Lake">Real Salt Lake</option><option value="San Jose Earthquakes">San Jose Earthquakes</option><option value="Seattle Sounders">Seattle Sounders</option><option value="Sporting Kansas City">Sporting Kansas City</option><option value="St. Louis City FC">St. Louis City FC</option><option value="Vancouver Whitecaps">Vancouver Whitecaps</option>
+            </select>
+        </label>
+    </div>
+
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Selected Team</th>
+      <th colspan="3" halign="left">Opponent</th>
+      <th colspan="2" halign="left">Win Probabilities</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Opponent</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Loss Pct.</th>
+      <th>Elo Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2023-10-25</td>
+      <td>New York RB</td>
+      <td>1496.36</td>
+      <td>5</td>
+      <td>Charlotte FC</td>
+      <td>1492.60</td>
+      <td>2</td>
+      <td>62.78%</td>
+      <td>37.22%</td>
+      <td>13.72</td>
+    </tr>
+    <tr>
+      <td>2023-10-25</td>
+      <td>San Jose Earthquakes</td>
+      <td>1476.57</td>
+      <td>0</td>
+      <td>@ Sporting Kansas City</td>
+      <td>1500.97</td>
+      <td>1</td>
+      <td>34.49%</td>
+      <td>65.51%</td>
+      <td>-7.35</td>
+    </tr>
+    <tr>
+      <td>2023-10-25</td>
+      <td>Charlotte FC</td>
+      <td>1492.60</td>
+      <td>2</td>
+      <td>@ New York RB</td>
+      <td>1496.36</td>
+      <td>5</td>
+      <td>37.22%</td>
+      <td>62.78%</td>
+      <td>-13.73</td>
+    </tr>
+    <tr>
+      <td>2023-10-25</td>
+      <td>Sporting Kansas City</td>
+      <td>1500.97</td>
+      <td>1</td>
+      <td>San Jose Earthquakes</td>
+      <td>1476.57</td>
+      <td>0</td>
+      <td>65.51%</td>
+      <td>34.49%</td>
+      <td>7.34</td>
+    </tr>
+    <tr>
+      <td>2023-10-28</td>
+      <td>Los Angeles FC</td>
+      <td>1541.97</td>
+      <td>5</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1518.69</td>
+      <td>2</td>
+      <td>65.37%</td>
+      <td>34.63%</td>
+      <td>12.77</td>
+    </tr>
+    <tr>
+      <td>2023-10-28</td>
+      <td>New England Revolution</td>
+      <td>1540.05</td>
+      <td>1</td>
+      <td>@ Philadelphia Union</td>
+      <td>1584.10</td>
+      <td>3</td>
+      <td>31.98%</td>
+      <td>68.02%</td>
+      <td>-9.63</td>
+    </tr>
+    <tr>
+      <td>2023-10-28</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1518.69</td>
+      <td>2</td>
+      <td>@ Los Angeles FC</td>
+      <td>1541.97</td>
+      <td>5</td>
+      <td>34.63%</td>
+      <td>65.37%</td>
+      <td>-12.78</td>
+    </tr>
+    <tr>
+      <td>2023-10-28</td>
+      <td>Philadelphia Union</td>
+      <td>1584.10</td>
+      <td>3</td>
+      <td>New England Revolution</td>
+      <td>1540.05</td>
+      <td>1</td>
+      <td>68.02%</td>
+      <td>31.98%</td>
+      <td>9.62</td>
+    </tr>
+    <tr>
+      <td>2023-10-29</td>
+      <td>FC Cincinnati</td>
+      <td>1597.94</td>
+      <td>3</td>
+      <td>New York RB</td>
+      <td>1510.08</td>
+      <td>0</td>
+      <td>73.24%</td>
+      <td>26.76%</td>
+      <td>9.87</td>
+    </tr>
+    <tr>
+      <td>2023-10-29</td>
+      <td>Sporting Kansas City</td>
+      <td>1508.31</td>
+      <td>4</td>
+      <td>@ St. Louis City FC</td>
+      <td>1513.47</td>
+      <td>1</td>
+      <td>37.03%</td>
+      <td>62.97%</td>
+      <td>23.22</td>
+    </tr>
+    <tr>
+      <td>2023-10-29</td>
+      <td>St. Louis City FC</td>
+      <td>1513.47</td>
+      <td>1</td>
+      <td>Sporting Kansas City</td>
+      <td>1508.31</td>
+      <td>4</td>
+      <td>62.97%</td>
+      <td>37.03%</td>
+      <td>-23.22</td>
+    </tr>
+    <tr>
+      <td>2023-10-29</td>
+      <td>Houston Dynamo</td>
+      <td>1551.47</td>
+      <td>2</td>
+      <td>Real Salt Lake</td>
+      <td>1502.78</td>
+      <td>1</td>
+      <td>68.60%</td>
+      <td>31.40%</td>
+      <td>6.69</td>
+    </tr>
+    <tr>
+      <td>2023-10-29</td>
+      <td>New York RB</td>
+      <td>1510.08</td>
+      <td>0</td>
+      <td>@ FC Cincinnati</td>
+      <td>1597.94</td>
+      <td>3</td>
+      <td>26.76%</td>
+      <td>73.24%</td>
+      <td>-9.87</td>
+    </tr>
+    <tr>
+      <td>2023-10-29</td>
+      <td>Real Salt Lake</td>
+      <td>1502.78</td>
+      <td>1</td>
+      <td>@ Houston Dynamo</td>
+      <td>1551.47</td>
+      <td>2</td>
+      <td>31.40%</td>
+      <td>68.60%</td>
+      <td>-6.69</td>
+    </tr>
+    <tr>
+      <td>2023-10-30</td>
+      <td>Seattle Sounders</td>
+      <td>1539.15</td>
+      <td>2</td>
+      <td>FC Dallas</td>
+      <td>1530.33</td>
+      <td>0</td>
+      <td>63.46%</td>
+      <td>36.54%</td>
+      <td>11.00</td>
+    </tr>
+    <tr>
+      <td>2023-10-30</td>
+      <td>FC Dallas</td>
+      <td>1530.33</td>
+      <td>0</td>
+      <td>@ Seattle Sounders</td>
+      <td>1539.15</td>
+      <td>2</td>
+      <td>36.54%</td>
+      <td>63.46%</td>
+      <td>-11.00</td>
+    </tr>
+    <tr>
+      <td>2023-10-30</td>
+      <td>Nashville SC</td>
+      <td>1526.71</td>
+      <td>0</td>
+      <td>@ Orlando City</td>
+      <td>1598.69</td>
+      <td>1</td>
+      <td>28.59%</td>
+      <td>71.41%</td>
+      <td>-6.09</td>
+    </tr>
+    <tr>
+      <td>2023-10-30</td>
+      <td>Orlando City</td>
+      <td>1598.69</td>
+      <td>1</td>
+      <td>Nashville SC</td>
+      <td>1526.71</td>
+      <td>0</td>
+      <td>71.41%</td>
+      <td>28.59%</td>
+      <td>6.09</td>
+    </tr>
+    <tr>
+      <td>2023-11-01</td>
+      <td>Columbus Crew</td>
+      <td>1588.46</td>
+      <td>2</td>
+      <td>Atlanta United FC</td>
+      <td>1546.05</td>
+      <td>0</td>
+      <td>67.81%</td>
+      <td>32.19%</td>
+      <td>9.69</td>
+    </tr>
+    <tr>
+      <td>2023-11-01</td>
+      <td>Atlanta United FC</td>
+      <td>1546.05</td>
+      <td>0</td>
+      <td>@ Columbus Crew</td>
+      <td>1588.46</td>
+      <td>2</td>
+      <td>32.19%</td>
+      <td>67.81%</td>
+      <td>-9.69</td>
+    </tr>
+    <tr>
+      <td>2023-11-04</td>
+      <td>FC Cincinnati</td>
+      <td>1607.81</td>
+      <td>1</td>
+      <td>@ New York RB</td>
+      <td>1500.21</td>
+      <td>1</td>
+      <td>52.95%</td>
+      <td>47.05%</td>
+      <td>-0.32</td>
+    </tr>
+    <tr>
+      <td>2023-11-04</td>
+      <td>New York RB</td>
+      <td>1500.21</td>
+      <td>1</td>
+      <td>FC Cincinnati</td>
+      <td>1607.81</td>
+      <td>1</td>
+      <td>47.05%</td>
+      <td>52.95%</td>
+      <td>0.32</td>
+    </tr>
+    <tr>
+      <td>2023-11-04</td>
+      <td>Seattle Sounders</td>
+      <td>1550.15</td>
+      <td>1</td>
+      <td>@ FC Dallas</td>
+      <td>1519.33</td>
+      <td>3</td>
+      <td>41.98%</td>
+      <td>58.02%</td>
+      <td>-12.64</td>
+    </tr>
+    <tr>
+      <td>2023-11-04</td>
+      <td>FC Dallas</td>
+      <td>1519.33</td>
+      <td>3</td>
+      <td>Seattle Sounders</td>
+      <td>1550.15</td>
+      <td>1</td>
+      <td>58.02%</td>
+      <td>41.98%</td>
+      <td>12.64</td>
+    </tr>
+    <tr>
+      <td>2023-11-05</td>
+      <td>Los Angeles FC</td>
+      <td>1554.74</td>
+      <td>1</td>
+      <td>@ Vancouver Whitecaps</td>
+      <td>1505.91</td>
+      <td>0</td>
+      <td>44.52%</td>
+      <td>55.48%</td>
+      <td>11.81</td>
+    </tr>
+    <tr>
+      <td>2023-11-05</td>
+      <td>Sporting Kansas City</td>
+      <td>1531.53</td>
+      <td>2</td>
+      <td>St. Louis City FC</td>
+      <td>1490.25</td>
+      <td>1</td>
+      <td>67.67%</td>
+      <td>32.33%</td>
+      <td>6.89</td>
+    </tr>
+    <tr>
+      <td>2023-11-05</td>
+      <td>Vancouver Whitecaps</td>
+      <td>1505.91</td>
+      <td>0</td>
+      <td>Los Angeles FC</td>
+      <td>1554.74</td>
+      <td>1</td>
+      <td>55.48%</td>
+      <td>44.52%</td>
+      <td>-11.81</td>
+    </tr>
+    <tr>
+      <td>2023-11-05</td>
+      <td>St. Louis City FC</td>
+      <td>1490.25</td>
+      <td>1</td>
+      <td>@ Sporting Kansas City</td>
+      <td>1531.53</td>
+      <td>2</td>
+      <td>32.33%</td>
+      <td>67.67%</td>
+      <td>-6.88</td>
+    </tr>
+    <tr>
+      <td>2023-11-06</td>
+      <td>Houston Dynamo</td>
+      <td>1558.16</td>
+      <td>1</td>
+      <td>@ Real Salt Lake</td>
+      <td>1496.09</td>
+      <td>1</td>
+      <td>46.41%</td>
+      <td>53.59%</td>
+      <td>0.38</td>
+    </tr>
+    <tr>
+      <td>2023-11-06</td>
+      <td>Real Salt Lake</td>
+      <td>1496.09</td>
+      <td>1</td>
+      <td>Houston Dynamo</td>
+      <td>1558.16</td>
+      <td>1</td>
+      <td>53.59%</td>
+      <td>46.41%</td>
+      <td>-0.38</td>
+    </tr>
+    <tr>
+      <td>2023-11-07</td>
+      <td>Orlando City</td>
+      <td>1604.78</td>
+      <td>1</td>
+      <td>@ Nashville SC</td>
+      <td>1520.62</td>
+      <td>0</td>
+      <td>49.58%</td>
+      <td>50.42%</td>
+      <td>10.73</td>
+    </tr>
+    <tr>
+      <td>2023-11-07</td>
+      <td>Columbus Crew</td>
+      <td>1598.15</td>
+      <td>2</td>
+      <td>@ Atlanta United FC</td>
+      <td>1536.36</td>
+      <td>4</td>
+      <td>46.37%</td>
+      <td>53.63%</td>
+      <td>-13.96</td>
+    </tr>
+    <tr>
+      <td>2023-11-07</td>
+      <td>Atlanta United FC</td>
+      <td>1536.36</td>
+      <td>4</td>
+      <td>Columbus Crew</td>
+      <td>1598.15</td>
+      <td>2</td>
+      <td>53.63%</td>
+      <td>46.37%</td>
+      <td>13.96</td>
+    </tr>
+    <tr>
+      <td>2023-11-07</td>
+      <td>Nashville SC</td>
+      <td>1520.62</td>
+      <td>0</td>
+      <td>Orlando City</td>
+      <td>1604.78</td>
+      <td>1</td>
+      <td>50.42%</td>
+      <td>49.58%</td>
+      <td>-10.73</td>
+    </tr>
+    <tr>
+      <td>2023-11-08</td>
+      <td>Philadelphia Union</td>
+      <td>1593.72</td>
+      <td>1</td>
+      <td>@ New England Revolution</td>
+      <td>1530.42</td>
+      <td>0</td>
+      <td>46.59%</td>
+      <td>53.41%</td>
+      <td>11.38</td>
+    </tr>
+    <tr>
+      <td>2023-11-08</td>
+      <td>New England Revolution</td>
+      <td>1530.42</td>
+      <td>0</td>
+      <td>Philadelphia Union</td>
+      <td>1593.72</td>
+      <td>1</td>
+      <td>53.41%</td>
+      <td>46.59%</td>
+      <td>-11.37</td>
+    </tr>
+    <tr>
+      <td>2023-11-10</td>
+      <td>Seattle Sounders</td>
+      <td>1537.51</td>
+      <td>1</td>
+      <td>FC Dallas</td>
+      <td>1531.97</td>
+      <td>0</td>
+      <td>63.02%</td>
+      <td>36.98%</td>
+      <td>7.87</td>
+    </tr>
+    <tr>
+      <td>2023-11-10</td>
+      <td>FC Dallas</td>
+      <td>1531.97</td>
+      <td>0</td>
+      <td>@ Seattle Sounders</td>
+      <td>1537.51</td>
+      <td>1</td>
+      <td>36.98%</td>
+      <td>63.02%</td>
+      <td>-7.88</td>
+    </tr>
+    <tr>
+      <td>2023-11-11</td>
+      <td>Houston Dynamo</td>
+      <td>1558.54</td>
+      <td>1</td>
+      <td>Real Salt Lake</td>
+      <td>1495.71</td>
+      <td>1</td>
+      <td>70.32%</td>
+      <td>29.68%</td>
+      <td>-2.16</td>
+    </tr>
+    <tr>
+      <td>2023-11-11</td>
+      <td>Real Salt Lake</td>
+      <td>1495.71</td>
+      <td>1</td>
+      <td>@ Houston Dynamo</td>
+      <td>1558.54</td>
+      <td>1</td>
+      <td>29.68%</td>
+      <td>70.32%</td>
+      <td>2.16</td>
+    </tr>
+    <tr>
+      <td>2023-11-12</td>
+      <td>Atlanta United FC</td>
+      <td>1550.32</td>
+      <td>2</td>
+      <td>@ Columbus Crew</td>
+      <td>1584.19</td>
+      <td>4</td>
+      <td>33.27%</td>
+      <td>66.73%</td>
+      <td>-10.02</td>
+    </tr>
+    <tr>
+      <td>2023-11-12</td>
+      <td>Columbus Crew</td>
+      <td>1584.19</td>
+      <td>4</td>
+      <td>Atlanta United FC</td>
+      <td>1550.32</td>
+      <td>2</td>
+      <td>66.73%</td>
+      <td>33.27%</td>
+      <td>10.01</td>
+    </tr>
+    <tr>
+      <td>2023-11-25</td>
+      <td>Columbus Crew</td>
+      <td>1594.20</td>
+      <td>2</td>
+      <td>@ Orlando City</td>
+      <td>1615.51</td>
+      <td>0</td>
+      <td>34.89%</td>
+      <td>65.11%</td>
+      <td>19.61</td>
+    </tr>
+    <tr>
+      <td>2023-11-25</td>
+      <td>FC Cincinnati</td>
+      <td>1607.49</td>
+      <td>1</td>
+      <td>Philadelphia Union</td>
+      <td>1605.10</td>
+      <td>0</td>
+      <td>62.60%</td>
+      <td>37.40%</td>
+      <td>7.96</td>
+    </tr>
+    <tr>
+      <td>2023-11-25</td>
+      <td>Orlando City</td>
+      <td>1615.51</td>
+      <td>0</td>
+      <td>Columbus Crew</td>
+      <td>1594.20</td>
+      <td>2</td>
+      <td>65.11%</td>
+      <td>34.89%</td>
+      <td>-19.60</td>
+    </tr>
+    <tr>
+      <td>2023-11-25</td>
+      <td>Philadelphia Union</td>
+      <td>1605.10</td>
+      <td>0</td>
+      <td>@ FC Cincinnati</td>
+      <td>1607.49</td>
+      <td>1</td>
+      <td>37.40%</td>
+      <td>62.60%</td>
+      <td>-7.97</td>
+    </tr>
+    <tr>
+      <td>2023-11-26</td>
+      <td>Seattle Sounders</td>
+      <td>1545.38</td>
+      <td>0</td>
+      <td>@ Los Angeles FC</td>
+      <td>1566.55</td>
+      <td>1</td>
+      <td>34.91%</td>
+      <td>65.09%</td>
+      <td>-7.43</td>
+    </tr>
+    <tr>
+      <td>2023-11-26</td>
+      <td>Sporting Kansas City</td>
+      <td>1538.42</td>
+      <td>0</td>
+      <td>@ Houston Dynamo</td>
+      <td>1556.38</td>
+      <td>1</td>
+      <td>35.33%</td>
+      <td>64.67%</td>
+      <td>-7.53</td>
+    </tr>
+    <tr>
+      <td>2023-11-26</td>
+      <td>Houston Dynamo</td>
+      <td>1556.38</td>
+      <td>1</td>
+      <td>Sporting Kansas City</td>
+      <td>1538.42</td>
+      <td>0</td>
+      <td>64.67%</td>
+      <td>35.33%</td>
+      <td>7.52</td>
+    </tr>
+    <tr>
+      <td>2023-11-26</td>
+      <td>Los Angeles FC</td>
+      <td>1566.55</td>
+      <td>1</td>
+      <td>Seattle Sounders</td>
+      <td>1545.38</td>
+      <td>0</td>
+      <td>65.09%</td>
+      <td>34.91%</td>
+      <td>7.43</td>
+    </tr>
+    <tr>
+      <td>2023-12-02</td>
+      <td>Los Angeles FC</td>
+      <td>1573.98</td>
+      <td>2</td>
+      <td>Houston Dynamo</td>
+      <td>1563.90</td>
+      <td>0</td>
+      <td>63.63%</td>
+      <td>36.37%</td>
+      <td>10.96</td>
+    </tr>
+    <tr>
+      <td>2023-12-02</td>
+      <td>FC Cincinnati</td>
+      <td>1615.45</td>
+      <td>2</td>
+      <td>Columbus Crew</td>
+      <td>1613.81</td>
+      <td>3</td>
+      <td>62.49%</td>
+      <td>37.51%</td>
+      <td>-13.30</td>
+    </tr>
+    <tr>
+      <td>2023-12-02</td>
+      <td>Houston Dynamo</td>
+      <td>1563.90</td>
+      <td>0</td>
+      <td>@ Los Angeles FC</td>
+      <td>1573.98</td>
+      <td>2</td>
+      <td>36.37%</td>
+      <td>63.63%</td>
+      <td>-10.95</td>
+    </tr>
+    <tr>
+      <td>2023-12-02</td>
+      <td>Columbus Crew</td>
+      <td>1613.81</td>
+      <td>3</td>
+      <td>@ FC Cincinnati</td>
+      <td>1615.45</td>
+      <td>2</td>
+      <td>37.51%</td>
+      <td>62.49%</td>
+      <td>13.30</td>
+    </tr>
+    <tr>
+      <td>2023-12-09</td>
+      <td>Columbus Crew</td>
+      <td>1627.11</td>
+      <td>2</td>
+      <td>Los Angeles FC</td>
+      <td>1584.94</td>
+      <td>1</td>
+      <td>67.78%</td>
+      <td>32.22%</td>
+      <td>6.86</td>
+    </tr>
+    <tr>
+      <td>2023-12-09</td>
+      <td>Los Angeles FC</td>
+      <td>1584.94</td>
+      <td>1</td>
+      <td>@ Columbus Crew</td>
+      <td>1627.11</td>
+      <td>2</td>
+      <td>32.22%</td>
+      <td>67.78%</td>
+      <td>-6.86</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const teamFilter = document.getElementById("teamFilter");
+            const rows = Array.from(document.querySelectorAll("table.sortable tbody tr"));
+            const teamColIndex = Array.from(document.querySelectorAll("table.sortable thead tr:nth-child(2) th"))
+                .findIndex(th => th.textContent.trim() === "Team");
+
+            teamFilter.addEventListener("change", function () {
+                const selected = this.value;
+                rows.forEach(row => {
+                    const team = row.cells[teamColIndex].textContent.trim();
+                    row.style.display = !selected || team === selected ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
