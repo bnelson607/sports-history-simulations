@@ -188,8 +188,11 @@ h3 {
 
 /* UEFA override */
 .standings-table.uefa {
-    width: auto;
-    max-width: 900px;   /* tune this once */
+    width: 100%;        /* fills available space */
+    max-width: 900px;   /* never exceeds 900px */
+    margin-left: auto;  /* push left edge away */
+    margin-right: auto; /* push right edge away */
+    table-layout: fixed; /* keeps column widths stable */
 }
 
 .standings-table.uefa th:nth-child(1), .standings-table.uefa td:nth-child(1) {
@@ -224,7 +227,7 @@ h3 {
     font-weight: bold;
 }
 
-@media (max-width: 600px) {  /* Only show position, team, points, and GD for narrow screens */
+@media (max-width: 900px) {  /* Only show position, team, points, and GD for narrow screens */
   .standings-table.uefa th:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(6)):not(:nth-child(9)),
   .standings-table.uefa td:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(6)):not(:nth-child(9)) {
     display: none;
