@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>2024-25 Italy Simulation - Elo, Playoffs & Standings</title>
+        <title>2024-25 Italy Simulation - Elo, Playoffs & Table</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Explore the 2024-25 Italian football season through a Monte Carlo simulation that tracks team performance, Elo ratings, and playoff odds as they evolved throughout the year.">
         
@@ -309,13 +309,13 @@
 
 
             
-            <h2 class="sim-subsection">Regular Season</h2>
+            <h2 class="sim-subsection">League Phase</h2>
             
             
             <details>
-                <summary>Simulated Standings</summary>
+                <summary>Simulated Table</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How many points would we have expected each team to earn at the beginning of the season?</i>
+                    <i>How many points would we have expected each team to earn?</i>
                 </div>
                 <iframe data-src="regular_season_summary.html" class="extra-padding" style="max-height:800px;"></iframe>
             </details>
@@ -324,7 +324,7 @@
             <details>
                 <summary>League Heatmaps</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>Where was each team expected to finish within their league at the beginning of the season?</i>
+                    <i>Where was each team expected to finish within their league?</i>
                 </div>
                 <div class="tab-buttons">
                     <button onclick="showTab('league_heatmap', 'league_heatmap_Level_1')" class="active">Serie A</button>
@@ -340,7 +340,7 @@
 
 
             <details>
-                <summary>Point Total Comparisons</summary>
+                <summary>Point Totals in Context</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
                     <i>
                     How did each team's actual results compare to their simulated results, Elo rating, opponent average Elo rating, and relative position of their actual points within simulated outcomes?
@@ -460,11 +460,51 @@
 
             
             <h2 class="sim-subsection">Promotion and Relegation</h2>
+            
+            <details>
+                <summary>Points by Final Position</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How many points did the simulation believe were needed to earn each position?</i>
+                </div>
+
+                <div class="tab-buttons">
+                    <button onclick="showTab('position_points', 'position_points_Level_1')" class="active">Serie A</button>
+                    <button onclick="showTab('position_points', 'position_points_Level_2')">Serie B</button>
+                </div>
+
+                <div class="tab-content position_points active" id="position_points_Level_1">
+                    <iframe data-src="Level 1_position_points.html"></iframe>
+                </div>
+                <div class="tab-content position_points" id="position_points_Level_2">
+                    <iframe data-src="Level 2_position_points.html"></iframe>
+                </div>
+            </details>
+
 
             <details>
-                <summary>Preseason Playoff Simulation</summary>
+                <summary>Projected League for Next Season</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How did the simulation expect the playoffs to unfold at the beginning of the season?</i>
+                    <i>Which league did the simulation believe each team would each team play in next year according to the simulated final table?</i>
+                </div>
+
+                <div class="tab-buttons">
+                    <button onclick="showTab('next_season', 'next_season_Level_1')" class="active">Serie A</button>
+                    <button onclick="showTab('next_season', 'next_season_Level_2')">Serie B</button>
+                </div>
+
+                <div class="tab-content next_season active" id="next_season_Level_1">
+                    <iframe data-src="Level 1_next_season_status.html"></iframe>
+                </div>
+                <div class="tab-content next_season" id="next_season_Level_2">
+                    <iframe data-src="Level 2_next_season_status.html"></iframe>
+                </div>
+            </details>
+
+
+            <details>
+                <summary>Stochastic Promotion Playoff Simulation</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How did the simulation expect the promotion playoffs to unfold according to the simulated final table?</i>
                 </div>
                 <div class="tab-buttons">
                     <button onclick="showTab('preseason_playoff', 'preseason_playoff_playoff_adv')" class="active">Playoff Progression</button>
@@ -489,52 +529,12 @@
                     <iframe data-src="finals_preseason_playoff.html"></iframe>
                 </div>
             </details>
-
-            
-            <details>
-                <summary>Points by Final Position</summary>
-                <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How many points did the simulation believe were needed to earn each position?</i>
-                </div>
-
-                <div class="tab-buttons">
-                    <button onclick="showTab('position_points', 'position_points_Level_1')" class="active">Serie A</button>
-                    <button onclick="showTab('position_points', 'position_points_Level_2')">Serie B</button>
-                </div>
-
-                <div class="tab-content position_points active" id="position_points_Level_1">
-                    <iframe data-src="Level 1_position_points.html"></iframe>
-                </div>
-                <div class="tab-content position_points" id="position_points_Level_2">
-                    <iframe data-src="Level 2_position_points.html"></iframe>
-                </div>
-            </details>
-
-
-            <details>
-                <summary>Next Season Status</summary>
-                <div class="subheading" style="margin: 0.75em 0;">
-                    <i>Which league did the simulation believe each team would be playing next year at the beginning of the season?</i>
-                </div>
-
-                <div class="tab-buttons">
-                    <button onclick="showTab('next_season', 'next_season_Level_1')" class="active">Serie A</button>
-                    <button onclick="showTab('next_season', 'next_season_Level_2')">Serie B</button>
-                </div>
-
-                <div class="tab-content next_season active" id="next_season_Level_1">
-                    <iframe data-src="Level 1_next_season_status.html"></iframe>
-                </div>
-                <div class="tab-content next_season" id="next_season_Level_2">
-                    <iframe data-src="Level 2_next_season_status.html"></iframe>
-                </div>
-            </details>
                 
                 
             <details>
-                <summary>End of Season Playoff Simulation</summary>
+                <summary>Actual Promotion Playoff Simulation</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How did the simulation expect the actual playoff bracket to unfold?</i>
+                    <i>How did the simulation expect the actual promotion playoffs to unfold?</i>
                 </div>
                 <div class="tab-buttons">
                     <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_playoff_adv')" class="active">Playoff Progression</button>
@@ -565,18 +565,18 @@
             <h2 class="sim-subsection">Game Logs</h2>
 
             <details>
-                <summary>Regular Season</summary>
+                <summary>League Phase</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How did each team's regular season unfold?</i>
+                    <i>How did the league phase matches unfold for each team?</i>
                 </div>
                 <iframe data-src="team_games_table.html" class="extra-padding" style="max-height:800px;"></iframe>
             </details>
 
         
             <details>
-                <summary>Playoffs</summary>
+                <summary>Promotion/Relegation Playoffs</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How did each playoff team's postseason unfold?</i>
+                    <i>How did the promotion and relegation playoff matches unfold for each team?</i>
                 </div>
                 <iframe data-src="team_playoff_games_table.html" class="extra-padding" style="max-height:800px;"></iframe>
             </details>
