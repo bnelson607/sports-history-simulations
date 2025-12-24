@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="../../tablesort.min.js"></script>
+    <script src="../../tablesort.number.min.js"></script>
+</head>
+<body>
+    <table border="1" class="dataframe sortable">
+  <thead>
+    <tr>
+      <th colspan="3" halign="left"></th>
+      <th colspan="4" halign="left">Winning Team</th>
+      <th colspan="4" halign="left">Losing Team</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <th>Date</th>
+      <th>Elo Change</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Team</th>
+      <th>Elo</th>
+      <th>Score</th>
+      <th>Win Pct.</th>
+      <th>Tie Pct.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2025-11-02</td>
+      <td>23.53</td>
+      <td>Penafiel</td>
+      <td>1607.52</td>
+      <td>3</td>
+      <td>15.42%</td>
+      <td>Vizela (H)</td>
+      <td>1776.41</td>
+      <td>1</td>
+      <td>54.39%</td>
+      <td>30.19%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2025-11-01</td>
+      <td>23.49</td>
+      <td>Estoril</td>
+      <td>1808.25</td>
+      <td>4</td>
+      <td>29.96%</td>
+      <td>Rio Ave (H)</td>
+      <td>1816.63</td>
+      <td>0</td>
+      <td>32.35%</td>
+      <td>37.69%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2025-10-05</td>
+      <td>23.09</td>
+      <td>Sporting Clube de Portugal B</td>
+      <td>1635.30</td>
+      <td>4</td>
+      <td>30.80%</td>
+      <td>Leixoes (H)</td>
+      <td>1637.72</td>
+      <td>0</td>
+      <td>31.50%</td>
+      <td>37.71%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2025-10-25</td>
+      <td>23.03</td>
+      <td>Sporting Clube de Portugal B (H)</td>
+      <td>1658.39</td>
+      <td>4</td>
+      <td>30.92%</td>
+      <td>Lusitania Lourosa</td>
+      <td>1659.98</td>
+      <td>0</td>
+      <td>31.37%</td>
+      <td>37.71%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2025-10-30</td>
+      <td>22.83</td>
+      <td>Academico de Viseu</td>
+      <td>1636.26</td>
+      <td>5</td>
+      <td>31.37%</td>
+      <td>Leixoes (H)</td>
+      <td>1634.73</td>
+      <td>1</td>
+      <td>30.93%</td>
+      <td>37.71%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2025-08-10</td>
+      <td>22.40</td>
+      <td>Leixoes (H)</td>
+      <td>1631.66</td>
+      <td>3</td>
+      <td>25.34%</td>
+      <td>Felgueiras 1932</td>
+      <td>1676.39</td>
+      <td>0</td>
+      <td>37.53%</td>
+      <td>37.12%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2025-10-25</td>
+      <td>21.59</td>
+      <td>Pacos de Ferreira (H)</td>
+      <td>1580.70</td>
+      <td>4</td>
+      <td>27.07%</td>
+      <td>Portimonense</td>
+      <td>1611.02</td>
+      <td>1</td>
+      <td>35.49%</td>
+      <td>37.44%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2025-09-27</td>
+      <td>20.53</td>
+      <td>Penafiel (H)</td>
+      <td>1577.96</td>
+      <td>2</td>
+      <td>20.35%</td>
+      <td>Felgueiras 1932</td>
+      <td>1672.84</td>
+      <td>0</td>
+      <td>44.50%</td>
+      <td>35.15%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2025-10-24</td>
+      <td>20.50</td>
+      <td>Gil Vicente</td>
+      <td>1856.19</td>
+      <td>4</td>
+      <td>36.43%</td>
+      <td>Alverca (H)</td>
+      <td>1819.26</td>
+      <td>0</td>
+      <td>26.26%</td>
+      <td>37.31%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2025-08-10</td>
+      <td>20.49</td>
+      <td>Famalicao (H)</td>
+      <td>1855.54</td>
+      <td>3</td>
+      <td>29.58%</td>
+      <td>Santa Clara</td>
+      <td>1866.68</td>
+      <td>0</td>
+      <td>32.75%</td>
+      <td>37.67%</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2025-09-28</td>
+      <td>20.26</td>
+      <td>Alverca (H)</td>
+      <td>1789.30</td>
+      <td>2</td>
+      <td>20.90%</td>
+      <td>Vitoria Guimaraes</td>
+      <td>1877.73</td>
+      <td>0</td>
+      <td>43.62%</td>
+      <td>35.48%</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>2025-10-25</td>
+      <td>20.10</td>
+      <td>Leixoes</td>
+      <td>1614.63</td>
+      <td>3</td>
+      <td>21.23%</td>
+      <td>Uniao Leiria (H)</td>
+      <td>1699.39</td>
+      <td>1</td>
+      <td>43.11%</td>
+      <td>35.65%</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2025-10-25</td>
+      <td>19.91</td>
+      <td>Feirense (H)</td>
+      <td>1653.48</td>
+      <td>2</td>
+      <td>31.03%</td>
+      <td>Benfica B</td>
+      <td>1654.32</td>
+      <td>-1</td>
+      <td>31.27%</td>
+      <td>37.71%</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2025-10-05</td>
+      <td>19.69</td>
+      <td>Penafiel</td>
+      <td>1598.49</td>
+      <td>2</td>
+      <td>22.09%</td>
+      <td>Benfica B (H)</td>
+      <td>1674.00</td>
+      <td>0</td>
+      <td>41.84%</td>
+      <td>36.07%</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2025-12-14</td>
+      <td>19.69</td>
+      <td>Famalicao (H)</td>
+      <td>1885.71</td>
+      <td>4</td>
+      <td>38.21%</td>
+      <td>Estoril</td>
+      <td>1836.24</td>
+      <td>0</td>
+      <td>24.80%</td>
+      <td>36.99%</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>2025-11-01</td>
+      <td>19.14</td>
+      <td>Estrela Amadora</td>
+      <td>1724.09</td>
+      <td>5</td>
+      <td>23.29%</td>
+      <td>Casa Pia (H)</td>
+      <td>1787.54</td>
+      <td>3</td>
+      <td>40.17%</td>
+      <td>36.54%</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>2025-10-05</td>
+      <td>19.11</td>
+      <td>Rio Ave (H)</td>
+      <td>1788.47</td>
+      <td>3</td>
+      <td>33.02%</td>
+      <td>Tondela</td>
+      <td>1775.45</td>
+      <td>0</td>
+      <td>29.32%</td>
+      <td>37.66%</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>2025-08-29</td>
+      <td>18.91</td>
+      <td>Gil Vicente (H)</td>
+      <td>1799.29</td>
+      <td>2</td>
+      <td>23.83%</td>
+      <td>Moreirense</td>
+      <td>1857.60</td>
+      <td>0</td>
+      <td>39.44%</td>
+      <td>36.72%</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>2025-08-31</td>
+      <td>18.83</td>
+      <td>Sporting Clube de Portugal B (H)</td>
+      <td>1616.00</td>
+      <td>3</td>
+      <td>33.73%</td>
+      <td>Pacos de Ferreira</td>
+      <td>1598.01</td>
+      <td>0</td>
+      <td>28.66%</td>
+      <td>37.61%</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>2025-12-14</td>
+      <td>18.69</td>
+      <td>Lusitania Lourosa</td>
+      <td>1649.12</td>
+      <td>5</td>
+      <td>40.39%</td>
+      <td>Pacos de Ferreira (H)</td>
+      <td>1584.03</td>
+      <td>1</td>
+      <td>23.13%</td>
+      <td>36.48%</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>2025-08-30</td>
+      <td>18.61</td>
+      <td>Nacional</td>
+      <td>1760.88</td>
+      <td>2</td>
+      <td>24.55%</td>
+      <td>Casa Pia (H)</td>
+      <td>1812.60</td>
+      <td>0</td>
+      <td>38.52%</td>
+      <td>36.93%</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>2025-08-23</td>
+      <td>18.35</td>
+      <td>Moreirense (H)</td>
+      <td>1839.25</td>
+      <td>2</td>
+      <td>25.20%</td>
+      <td>Vitoria Guimaraes</td>
+      <td>1885.22</td>
+      <td>0</td>
+      <td>37.71%</td>
+      <td>37.09%</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>2025-11-30</td>
+      <td>17.89</td>
+      <td>Chaves</td>
+      <td>1656.56</td>
+      <td>2</td>
+      <td>26.35%</td>
+      <td>Uniao Torreense (H)</td>
+      <td>1692.73</td>
+      <td>0</td>
+      <td>36.33%</td>
+      <td>37.32%</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>2025-11-29</td>
+      <td>17.89</td>
+      <td>Oliveirense (H)</td>
+      <td>1573.73</td>
+      <td>2</td>
+      <td>26.36%</td>
+      <td>Leixoes</td>
+      <td>1609.82</td>
+      <td>0</td>
+      <td>36.31%</td>
+      <td>37.33%</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>2025-08-15</td>
+      <td>17.50</td>
+      <td>Feirense (H)</td>
+      <td>1648.50</td>
+      <td>4</td>
+      <td>37.08%</td>
+      <td>Portimonense</td>
+      <td>1607.03</td>
+      <td>1</td>
+      <td>25.72%</td>
+      <td>37.20%</td>
+    </tr>
+  </tbody>
+</table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+        });
+    </script>
+</body>
+</html>
