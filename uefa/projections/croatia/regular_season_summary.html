@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .filter-controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .filter-controls select {
+            margin: 0 10px;
+            padding: 4px;
+        }
+        table.sortable {
+            border-collapse: collapse;
+            margin: auto;
+            width: 95%;
+        }
+        table.sortable th, table.sortable td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        table.sortable th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- Use CDN version of Tablesort for local compatibility -->
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+    <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
+</head>
+<body>
+    <div class="filter-controls" id="filterControls" style="display: none;">
+        <label for="regionFilter" id="regionLabel">Filter by Level:
+            <select id="regionFilter">
+                <option value="">All</option>
+            </select>
+        </label>
+    </div>
+
+    <table class="dataframe sortable">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Team</th>
+      <th>Level</th>
+      <th>Elo</th>
+      <th>Wins</th>
+      <th>Losses</th>
+      <th>Ties</th>
+      <th>Current</th>
+      <th>Avg. Pts.</th>
+      <th>Exp. Pts. Rem.</th>
+      <th>Min</th>
+      <th>Q1</th>
+      <th>Median</th>
+      <th>Q3</th>
+      <th>Max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Dynamo Zagreb</td>
+      <td>Level 1</td>
+      <td>1687</td>
+      <td>21.64</td>
+      <td>7.72</td>
+      <td>6.65</td>
+      <td>38</td>
+      <td>71.56</td>
+      <td>33.56</td>
+      <td>54</td>
+      <td>67.55</td>
+      <td>71.16</td>
+      <td>74.63</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <td>Hajduk Split</td>
+      <td>Level 1</td>
+      <td>1644</td>
+      <td>19.52</td>
+      <td>7.49</td>
+      <td>8.99</td>
+      <td>37</td>
+      <td>67.55</td>
+      <td>30.55</td>
+      <td>49</td>
+      <td>63.44</td>
+      <td>67.14</td>
+      <td>70.62</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <td>Rijeka</td>
+      <td>Level 1</td>
+      <td>1621</td>
+      <td>14.27</td>
+      <td>10.31</td>
+      <td>11.42</td>
+      <td>24</td>
+      <td>54.24</td>
+      <td>30.24</td>
+      <td>36</td>
+      <td>50.06</td>
+      <td>53.70</td>
+      <td>57.40</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <td>Istra 1961</td>
+      <td>Level 1</td>
+      <td>1578</td>
+      <td>14.26</td>
+      <td>11.19</td>
+      <td>10.55</td>
+      <td>26</td>
+      <td>53.33</td>
+      <td>27.33</td>
+      <td>36</td>
+      <td>49.08</td>
+      <td>52.72</td>
+      <td>56.48</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <td>Slaven Belupo</td>
+      <td>Level 1</td>
+      <td>1544</td>
+      <td>13.03</td>
+      <td>12.73</td>
+      <td>10.24</td>
+      <td>26</td>
+      <td>49.33</td>
+      <td>23.33</td>
+      <td>33</td>
+      <td>45.23</td>
+      <td>48.76</td>
+      <td>52.36</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <td>Varazdin</td>
+      <td>Level 1</td>
+      <td>1534</td>
+      <td>11.79</td>
+      <td>13.95</td>
+      <td>10.26</td>
+      <td>23</td>
+      <td>45.64</td>
+      <td>22.64</td>
+      <td>27</td>
+      <td>41.54</td>
+      <td>44.98</td>
+      <td>48.61</td>
+      <td>66</td>
+    </tr>
+    <tr>
+      <td>Vukovar</td>
+      <td>Level 1</td>
+      <td>1502</td>
+      <td>8.10</td>
+      <td>16.74</td>
+      <td>11.16</td>
+      <td>15</td>
+      <td>35.46</td>
+      <td>20.46</td>
+      <td>19</td>
+      <td>31.47</td>
+      <td>34.83</td>
+      <td>38.39</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <td>Lokomotiva Zagreb</td>
+      <td>Level 1</td>
+      <td>1498</td>
+      <td>9.04</td>
+      <td>14.82</td>
+      <td>12.14</td>
+      <td>19</td>
+      <td>39.26</td>
+      <td>20.26</td>
+      <td>24</td>
+      <td>35.30</td>
+      <td>38.59</td>
+      <td>42.22</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <td>Osijek</td>
+      <td>Level 1</td>
+      <td>1496</td>
+      <td>6.98</td>
+      <td>15.89</td>
+      <td>13.13</td>
+      <td>14</td>
+      <td>34.06</td>
+      <td>20.06</td>
+      <td>18</td>
+      <td>30.08</td>
+      <td>33.46</td>
+      <td>36.95</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <td>HNK Gorica</td>
+      <td>Level 1</td>
+      <td>1476</td>
+      <td>9.60</td>
+      <td>17.40</td>
+      <td>9.01</td>
+      <td>19</td>
+      <td>37.80</td>
+      <td>18.80</td>
+      <td>21</td>
+      <td>33.78</td>
+      <td>37.14</td>
+      <td>40.66</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <td>Sibenik</td>
+      <td>Level 2</td>
+      <td>1412</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Cibalia</td>
+      <td>Level 2</td>
+      <td>1395</td>
+      <td>9.92</td>
+      <td>4.57</td>
+      <td>5.52</td>
+      <td>28</td>
+      <td>35.27</td>
+      <td>7.27</td>
+      <td>28</td>
+      <td>32.72</td>
+      <td>34.74</td>
+      <td>36.83</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <td>Karlovac</td>
+      <td>Level 2</td>
+      <td>1386</td>
+      <td>7.73</td>
+      <td>7.75</td>
+      <td>4.52</td>
+      <td>21</td>
+      <td>27.71</td>
+      <td>6.71</td>
+      <td>21</td>
+      <td>25.22</td>
+      <td>27.19</td>
+      <td>29.05</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <td>BSK Bijelo Brdo</td>
+      <td>Level 2</td>
+      <td>1375</td>
+      <td>7.56</td>
+      <td>6.24</td>
+      <td>6.20</td>
+      <td>23</td>
+      <td>28.88</td>
+      <td>5.88</td>
+      <td>23</td>
+      <td>26.59</td>
+      <td>28.38</td>
+      <td>29.93</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <td>Orijent</td>
+      <td>Level 2</td>
+      <td>1372</td>
+      <td>5.02</td>
+      <td>6.50</td>
+      <td>8.48</td>
+      <td>16</td>
+      <td>23.53</td>
+      <td>7.53</td>
+      <td>16</td>
+      <td>21.07</td>
+      <td>22.95</td>
+      <td>25.06</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <td>Rudes</td>
+      <td>Level 2</td>
+      <td>1365</td>
+      <td>9.36</td>
+      <td>4.42</td>
+      <td>6.22</td>
+      <td>29</td>
+      <td>34.29</td>
+      <td>5.29</td>
+      <td>29</td>
+      <td>32.05</td>
+      <td>33.68</td>
+      <td>35.51</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <td>Sesvete</td>
+      <td>Level 2</td>
+      <td>1362</td>
+      <td>6.68</td>
+      <td>5.12</td>
+      <td>8.20</td>
+      <td>22</td>
+      <td>28.23</td>
+      <td>6.23</td>
+      <td>22</td>
+      <td>25.90</td>
+      <td>27.81</td>
+      <td>29.46</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <td>Dubrava</td>
+      <td>Level 2</td>
+      <td>1345</td>
+      <td>7.76</td>
+      <td>6.75</td>
+      <td>5.49</td>
+      <td>22</td>
+      <td>28.77</td>
+      <td>6.77</td>
+      <td>22</td>
+      <td>26.25</td>
+      <td>28.24</td>
+      <td>30.13</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <td>Opatija</td>
+      <td>Level 2</td>
+      <td>1342</td>
+      <td>4.11</td>
+      <td>9.68</td>
+      <td>6.21</td>
+      <td>14</td>
+      <td>18.54</td>
+      <td>4.54</td>
+      <td>14</td>
+      <td>16.27</td>
+      <td>17.82</td>
+      <td>19.80</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <td>Dugopolje</td>
+      <td>Level 2</td>
+      <td>1337</td>
+      <td>8.66</td>
+      <td>6.83</td>
+      <td>4.51</td>
+      <td>24</td>
+      <td>30.49</td>
+      <td>6.49</td>
+      <td>24</td>
+      <td>28.00</td>
+      <td>29.99</td>
+      <td>31.86</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <td>Jarun</td>
+      <td>Level 2</td>
+      <td>1318</td>
+      <td>4.65</td>
+      <td>6.86</td>
+      <td>8.49</td>
+      <td>16</td>
+      <td>22.44</td>
+      <td>6.44</td>
+      <td>16</td>
+      <td>19.96</td>
+      <td>21.92</td>
+      <td>23.78</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <td>Croatia Zmijavci</td>
+      <td>Level 2</td>
+      <td>1286</td>
+      <td>4.05</td>
+      <td>10.76</td>
+      <td>5.18</td>
+      <td>13</td>
+      <td>17.35</td>
+      <td>4.35</td>
+      <td>13</td>
+      <td>15.10</td>
+      <td>16.67</td>
+      <td>18.58</td>
+      <td>25</td>
+    </tr>
+  </tbody>
+</table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Tablesort(document.querySelector('table.sortable'));
+
+            const table = document.querySelector('table.sortable');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+
+            const divColIndex = headers.indexOf("Division");
+            const confColIndex = headers.indexOf("Level");
+
+            const regionFilter = document.getElementById("regionFilter");
+            const regionLabel = document.getElementById("regionLabel");
+            const filterControls = document.getElementById("filterControls");
+
+            const divisionSet = new Set();
+            const conferenceSet = new Set();
+
+            rows.forEach(row => {
+                if (divColIndex !== -1) {
+                    const divVal = row.cells[divColIndex].textContent.trim();
+                    if (divVal) divisionSet.add(divVal);
+                }
+                if (confColIndex !== -1) {
+                    const confVal = row.cells[confColIndex].textContent.trim();
+                    if (confVal) conferenceSet.add(confVal);
+                }
+            });
+
+            const sortedDivisions = Array.from(divisionSet).sort();
+            const sortedConfs = Array.from(conferenceSet).sort();
+
+            sortedDivisions.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                regionFilter.appendChild(opt);
+            });
+
+            sortedConfs.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                regionFilter.appendChild(opt);
+            });
+
+            if (sortedDivisions.length > 0 || sortedConfs.length > 0) {
+                regionLabel.style.display = "inline-block";
+                filterControls.style.display = "block";
+            }
+
+            regionFilter.addEventListener("change", function () {
+                const selected = regionFilter.value;
+
+                rows.forEach(row => {
+                    const divVal = divColIndex !== -1 ? row.cells[divColIndex].textContent.trim() : "";
+                    const confVal = confColIndex !== -1 ? row.cells[confColIndex].textContent.trim() : "";
+
+                    const matches = !selected || divVal === selected || confVal === selected;
+                    row.style.display = matches ? "" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
