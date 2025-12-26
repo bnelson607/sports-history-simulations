@@ -2,9 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>2025-26 Greece Projection - Elo, Table & Playoff</title>
+        <title>2025-26 Cyprus Projection - Elo, Table & Playoff</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Follow the 2025-26 Greek football season through a Monte Carlo simulation that tracks team performance, Elo ratings, and promotion and relegation odds as they evolve throughout the year.">
+        <meta name="description" content="Follow the 2025-26 Cypriot football season through a Monte Carlo simulation that tracks team performance, Elo ratings, and playoff odds as they evolved throughout the year.">
         
         <!-- Link to external styles -->
         <link rel="stylesheet" href="/sports-history-simulations/styles.css" />
@@ -22,28 +22,28 @@
         <div class="content">
             
             <div class="season-links">
-                <a href="/sports-history-simulations/uefa/simulations/greece/2024/">← 2024-25</a>
+                <a href="/sports-history-simulations/uefa/simulations/cyprus/2024/">← 2024-25</a>
             </div>
         
         
             <div class="season-header">
-                <h1 class="sim-title">2025-26 Greece Projection</h1>
+                <h1 class="sim-title">2025-26 Cyprus Projection</h1>
                 <p class="update-date">Last updated: <span id="update-date"></span></p>
             </div>
 
             
-            <h2 class="sim-subsection">League Phase</h2>
+            <h2 class="sim-subsection">Regular Season</h2>
             
             
             <details>
                 <summary>Simulated Table</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How many points does the simulation expect each team to earn by the end of the season?</i>
+                    <i>How many points does the simulation expect each team to earn in the regular season?</i>
                 </div>
                 <iframe data-src="regular_season_summary.html" class="extra-padding" style="max-height:800px;"></iframe>
             </details>
-
-
+            
+            
             <details>
                 <summary>League Heatmap</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
@@ -52,8 +52,18 @@
                 
                 <iframe data-src="Level 1_finish_heatmap.html"></iframe>
             </details>
-                
-            
+
+
+            <details>
+                <summary>Simulated Points by Position</summary>
+                <div class="subheading" style="margin: 0.75em 0;">
+                    <i>How many points does the simulation believe are needed to earn each position in the regular season?</i>
+                </div>
+
+                <iframe data-src="Level 1_position_points.html"></iframe>
+            </details>
+
+
             <details>
                 <summary>Point Totals in Context</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
@@ -94,7 +104,7 @@
             <details>
                 <summary>Elo Ratings</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How has each team's Elo rating changed throughout the season?</i>
+                    <i>How did each team's Elo rating change throughout the regular season?</i>
                 </div>
 
                 <iframe data-src="Level 1_elo_ratings.html"></iframe>
@@ -104,7 +114,7 @@
             <details>
                 <summary>Simulated Points</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How has each team's expected point total changed throughout the season?</i>
+                    <i>How did each team's expected point total change throughout the regular season?</i>
                 </div>
 
                 <iframe data-src="Level 1_simulated_points.html"></iframe>
@@ -114,9 +124,9 @@
             <details>
                 <summary>League Champion Probabilities</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How has each team's probability of winning the league changed throughout the season?</i>
+                    <i>How did each team's probability of winning the league change throughout the regular season?</i>
                 </div>
-                
+
                 <iframe data-src="Level 1_league_probabilities.html"></iframe>
             </details>
             
@@ -124,9 +134,9 @@
             <details>
                 <summary>Promotion and Relegation Probabilities</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How has each team's probability of getting promoted or relegated changed throughout the season?</i>
+                    <i>How did each team's probability of being relegated change throughout the regular season?</i>
                 </div>
-
+                
                 <iframe data-src="Level 1_relegation_probabilities.html"></iframe>
             </details>
             
@@ -137,70 +147,76 @@
             <details>
                 <summary>Simulated Points by Final Position</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How many points does the simulation believe are needed to earn each position?</i>
+                    <i>How many points does the simulation believe are needed to earn each position in the championship round and relegation round?</i>
                 </div>
-                
-                <iframe data-src="Level 1_position_points.html"></iframe>
+
+                <div class="tab-buttons">
+                    <button onclick="showTab('position_points', 'position_points_championship_position')" class="active">Championship Round</button>
+                    <button onclick="showTab('position_points', 'position_points_relegation_position')">Relegation Round</button>
+                </div>
+
+                <div class="tab-content position_points active" id="position_points_championship_position">
+                    <iframe data-src="Cyprus_championship_position_points.html"></iframe>
+                </div>
+                <div class="tab-content position_points" id="position_points_relegation_position">
+                    <iframe data-src="Cyprus_relegation_position_points.html"></iframe>
+                </div>
             </details>
 
 
             <details>
                 <summary>Projected League for Next Season</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>Which league does the simulation believe each team will play in next year according to the simulated final table?</i>
+                    <i>Which league does the simulation believe each team will play in next year?</i>
                 </div>
-
                 <iframe data-src="Level 1_next_season_status.html"></iframe>
             </details>
-            
-            
+
+
             <details>
-                <summary>Stochastic Championship Simulation</summary>
+                <summary>Stochastic Playoff Simulation</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How does the simulation expect the championship playoff to unfold according to the simulated final table?</i>
-                </div>
-                <div class="tab-buttons">
-                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_playoff_adv')" class="active">Playoff Progression</button>
-                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_semifinals')">Semifinals</button>
-                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_finals')">Finals</button>
+                    <i>How does the simulation expect the playoffs to unfold according to the simulated final table after the regular season?</i>
                 </div>
                 
-                <!-- Playoff Advancement -->
-                <div class="tab-content preseason_playoff active" id="preseason_playoff_playoff_adv">
-                    <iframe data-src="playoff_success_preseason_playoff.html"></iframe>
+                <div class="tab-buttons">
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_championship_group')" class="active">Championship Round</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_relegation_group')">Relegation Round</button>
                 </div>
 
-                <!-- Semifinals -->
-                <div class="tab-content preseason_playoff" id="preseason_playoff_semifinals">
-                    <iframe data-src="semifinals_preseason_playoff.html"></iframe>
+                <!-- Championship Group -->
+                <div class="tab-content preseason_playoff active" id="preseason_playoff_championship_group">
+                    <iframe data-src="championship_finish_heatmap.html"></iframe>
                 </div>
-                
-                <!-- Finals -->
-                <div class="tab-content preseason_playoff" id="preseason_playoff_finals">
-                    <iframe data-src="finals_preseason_playoff.html"></iframe>
+
+                <!-- Relegation Group -->
+                <div class="tab-content preseason_playoff" id="preseason_playoff_relegation_group">
+                    <iframe data-src="relegation_finish_heatmap.html"></iframe>
                 </div>
             </details>
-                
-                
-<!--             <details>
-                <summary>Actual Promotion Playoff Simulation</summary>
+
+
+            <!-- <details>
+                <summary>Actual Playoff Simulation</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>How does the simulation expect the actual promotion playoff to unfold?</i>
+                    <i>How does the simulation expect the playoffs to unfold according to the actual final table after the regular season?</i>
                 </div>
+                
                 <div class="tab-buttons">
-                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_playoff_adv')" class="active">Playoff Progression</button>
-                    <button onclick="showTab('end_of_season_playoff', 'end_of_season_playoff_finals')">Finals</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_championship_group')" class="active">Championship Group</button>
+                    <button onclick="showTab('preseason_playoff', 'preseason_playoff_relegation_group')">Relegation Group</button>
                 </div>
-                
-                <div class="tab-content end_of_season_playoff active" id="end_of_season_playoff_playoff_adv">
-                    <iframe data-src="playoff_success_end_of_regular_season.html"></iframe>
+
+                <div class="tab-content preseason_playoff active" id="preseason_playoff_championship_group">
+                    <iframe data-src="championship_finish_heatmap.html"></iframe>
                 </div>
-                
-                <div class="tab-content end_of_season_playoff" id="end_of_season_playoff_finals">
-                    <iframe data-src="finals_end_of_regular_season.html"></iframe>
+
+                <div class="tab-content preseason_playoff" id="preseason_playoff_relegation_group">
+                    <iframe data-src="relegation_finish_heatmap.html"></iframe>
                 </div>
             </details> -->
 
+            
 
             <h2 class="sim-subsection">Game Logs</h2>
 
@@ -227,7 +243,7 @@
             <details>
                 <summary>Biggest Upsets and Elo Changes</summary>
                 <div class="subheading" style="margin: 0.75em 0;">
-                    <i>What have been the biggest upsets and Elo rating changes of the season?</i>
+                    <i>What were the biggest upsets and Elo rating changes of the season?</i>
                 </div>
                 <div class="tab-buttons">
                     <button onclick="showTab('games', 'games_biggest_upsets')" class="active">Biggest Upsets</button>
